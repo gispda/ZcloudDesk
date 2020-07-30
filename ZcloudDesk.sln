@@ -1,0 +1,101 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ZcloudDesk", "src\ZcloudDesk\ZcloudDesk.vcxproj", "{B12702AD-ABFB-343A-A199-8E24837244A3}"
+	ProjectSection(ProjectDependencies) = postProject
+		{15C2FC84-15C0-41F4-8ABD-99192CDAC018} = {15C2FC84-15C0-41F4-8ABD-99192CDAC018}
+		{C7490B8A-78D2-4E67-8E8D-C54ACDD0B52B} = {C7490B8A-78D2-4E67-8E8D-C54ACDD0B52B}
+		{83A741E2-8774-4AB9-8382-9D9BB96844EF} = {83A741E2-8774-4AB9-8382-9D9BB96844EF}
+		{4F8BC8EB-18BB-4764-AE95-CA6080590B01} = {4F8BC8EB-18BB-4764-AE95-CA6080590B01}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ZcloudEntCenter", "src\ZcloudEntCenter\ZcloudEntCenter.vcxproj", "{C7490B8A-78D2-4E67-8E8D-C54ACDD0B52B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{83A741E2-8774-4AB9-8382-9D9BB96844EF} = {83A741E2-8774-4AB9-8382-9D9BB96844EF}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ZcloudMsgCenter", "src\ZcloudMsgCenter\ZcloudMsgCenter.vcxproj", "{15C2FC84-15C0-41F4-8ABD-99192CDAC018}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ZcloudMsgPopup", "src\ZcloudMsgPopup\ZcloudMsgPopup.vcxproj", "{39983C85-4202-4399-B99D-EE24DE3B4FD2}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ZhicloudApp", "src\ZhicloudApp\ZhicloudApp.vcxproj", "{4F8BC8EB-18BB-4764-AE95-CA6080590B01}"
+	ProjectSection(ProjectDependencies) = postProject
+		{83A741E2-8774-4AB9-8382-9D9BB96844EF} = {83A741E2-8774-4AB9-8382-9D9BB96844EF}
+		{776D54F3-C0BE-4A38-B985-FDD55C51E613} = {776D54F3-C0BE-4A38-B985-FDD55C51E613}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ZcloudCommon", "src\ZcloudCommon\ZcloudCommon.vcxproj", "{83A741E2-8774-4AB9-8382-9D9BB96844EF}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ZBrowser", "src\ZBrowser\ZBrowser.vcxproj", "{F62F3270-58F7-43AD-8B19-350C87EBF7AD}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "zyservice", "src\zyservice\zyservice.vcxproj", "{1BDE97C9-C9F9-469C-87A9-D643FDBAF39F}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DownloadHelper", "src\DownloadHelper\DownloadHelper.vcxproj", "{D98079F7-42A7-4283-9A9A-2585FAABC6AB}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ZcloudDesk Updater", "src\ZcloudDesk Updater\ZcloudDesk Updater.vcxproj", "{E8A860F8-A590-41CA-837B-BEF3F5B68927}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ZcloudBigData", "src\ZcloudBigData\ZcloudBigData.vcxproj", "{776D54F3-C0BE-4A38-B985-FDD55C51E613}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ZcloudDeskAssist", "src\ZcloudDeskAssist\ZcloudDeskAssist.vcxproj", "{17C8D77E-FEE3-42A3-ABD8-5107106B3E44}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B12702AD-ABFB-343A-A199-8E24837244A3}.Debug|Win32.ActiveCfg = Debug|Win32
+		{B12702AD-ABFB-343A-A199-8E24837244A3}.Debug|Win32.Build.0 = Debug|Win32
+		{B12702AD-ABFB-343A-A199-8E24837244A3}.Release|Win32.ActiveCfg = Release|Win32
+		{B12702AD-ABFB-343A-A199-8E24837244A3}.Release|Win32.Build.0 = Release|Win32
+		{C7490B8A-78D2-4E67-8E8D-C54ACDD0B52B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{C7490B8A-78D2-4E67-8E8D-C54ACDD0B52B}.Debug|Win32.Build.0 = Debug|Win32
+		{C7490B8A-78D2-4E67-8E8D-C54ACDD0B52B}.Release|Win32.ActiveCfg = Release|Win32
+		{C7490B8A-78D2-4E67-8E8D-C54ACDD0B52B}.Release|Win32.Build.0 = Release|Win32
+		{15C2FC84-15C0-41F4-8ABD-99192CDAC018}.Debug|Win32.ActiveCfg = Debug|Win32
+		{15C2FC84-15C0-41F4-8ABD-99192CDAC018}.Debug|Win32.Build.0 = Debug|Win32
+		{15C2FC84-15C0-41F4-8ABD-99192CDAC018}.Release|Win32.ActiveCfg = Release|Win32
+		{15C2FC84-15C0-41F4-8ABD-99192CDAC018}.Release|Win32.Build.0 = Release|Win32
+		{39983C85-4202-4399-B99D-EE24DE3B4FD2}.Debug|Win32.ActiveCfg = Debug|Win32
+		{39983C85-4202-4399-B99D-EE24DE3B4FD2}.Debug|Win32.Build.0 = Debug|Win32
+		{39983C85-4202-4399-B99D-EE24DE3B4FD2}.Release|Win32.ActiveCfg = Release|Win32
+		{39983C85-4202-4399-B99D-EE24DE3B4FD2}.Release|Win32.Build.0 = Release|Win32
+		{4F8BC8EB-18BB-4764-AE95-CA6080590B01}.Debug|Win32.ActiveCfg = Debug|Win32
+		{4F8BC8EB-18BB-4764-AE95-CA6080590B01}.Debug|Win32.Build.0 = Debug|Win32
+		{4F8BC8EB-18BB-4764-AE95-CA6080590B01}.Release|Win32.ActiveCfg = Release|Win32
+		{4F8BC8EB-18BB-4764-AE95-CA6080590B01}.Release|Win32.Build.0 = Release|Win32
+		{83A741E2-8774-4AB9-8382-9D9BB96844EF}.Debug|Win32.ActiveCfg = Debug|Win32
+		{83A741E2-8774-4AB9-8382-9D9BB96844EF}.Debug|Win32.Build.0 = Debug|Win32
+		{83A741E2-8774-4AB9-8382-9D9BB96844EF}.Release|Win32.ActiveCfg = Release|Win32
+		{83A741E2-8774-4AB9-8382-9D9BB96844EF}.Release|Win32.Build.0 = Release|Win32
+		{F62F3270-58F7-43AD-8B19-350C87EBF7AD}.Debug|Win32.ActiveCfg = Debug|Win32
+		{F62F3270-58F7-43AD-8B19-350C87EBF7AD}.Debug|Win32.Build.0 = Debug|Win32
+		{F62F3270-58F7-43AD-8B19-350C87EBF7AD}.Release|Win32.ActiveCfg = Release|Win32
+		{F62F3270-58F7-43AD-8B19-350C87EBF7AD}.Release|Win32.Build.0 = Release|Win32
+		{1BDE97C9-C9F9-469C-87A9-D643FDBAF39F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{1BDE97C9-C9F9-469C-87A9-D643FDBAF39F}.Debug|Win32.Build.0 = Debug|Win32
+		{1BDE97C9-C9F9-469C-87A9-D643FDBAF39F}.Release|Win32.ActiveCfg = Release|Win32
+		{1BDE97C9-C9F9-469C-87A9-D643FDBAF39F}.Release|Win32.Build.0 = Release|Win32
+		{D98079F7-42A7-4283-9A9A-2585FAABC6AB}.Debug|Win32.ActiveCfg = Debug|Win32
+		{D98079F7-42A7-4283-9A9A-2585FAABC6AB}.Debug|Win32.Build.0 = Debug|Win32
+		{D98079F7-42A7-4283-9A9A-2585FAABC6AB}.Release|Win32.ActiveCfg = Release|Win32
+		{D98079F7-42A7-4283-9A9A-2585FAABC6AB}.Release|Win32.Build.0 = Release|Win32
+		{E8A860F8-A590-41CA-837B-BEF3F5B68927}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E8A860F8-A590-41CA-837B-BEF3F5B68927}.Debug|Win32.Build.0 = Debug|Win32
+		{E8A860F8-A590-41CA-837B-BEF3F5B68927}.Release|Win32.ActiveCfg = Release|Win32
+		{E8A860F8-A590-41CA-837B-BEF3F5B68927}.Release|Win32.Build.0 = Release|Win32
+		{776D54F3-C0BE-4A38-B985-FDD55C51E613}.Debug|Win32.ActiveCfg = Debug|Win32
+		{776D54F3-C0BE-4A38-B985-FDD55C51E613}.Debug|Win32.Build.0 = Debug|Win32
+		{776D54F3-C0BE-4A38-B985-FDD55C51E613}.Release|Win32.ActiveCfg = Release|Win32
+		{776D54F3-C0BE-4A38-B985-FDD55C51E613}.Release|Win32.Build.0 = Release|Win32
+		{17C8D77E-FEE3-42A3-ABD8-5107106B3E44}.Debug|Win32.ActiveCfg = Debug|Win32
+		{17C8D77E-FEE3-42A3-ABD8-5107106B3E44}.Debug|Win32.Build.0 = Debug|Win32
+		{17C8D77E-FEE3-42A3-ABD8-5107106B3E44}.Release|Win32.ActiveCfg = Release|Win32
+		{17C8D77E-FEE3-42A3-ABD8-5107106B3E44}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
