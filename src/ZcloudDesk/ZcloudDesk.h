@@ -1,6 +1,7 @@
 #ifndef ZCLOUDDESK_H
 #define ZCLOUDDESK_H
 #include <QtWidgets/QMainWindow>
+#include <qsystemtrayicon.h>
 #include "ZcloudEntCenter.h"
 #include "ui_ZcloudDesk.h"
 #include "ZcloudBigData.h"
@@ -11,11 +12,15 @@
 #include "zappmenubutton.h"
 #include "CheckServiceThread.h"
 
+#include <QWidget>
+#include <QtGui>
+
 class ZcloudDesk : public QMainWindow
 {
 	Q_OBJECT
 
 public:
+	
 	ZcloudDesk(UserInfoStruct userInfoStruct, QWidget *parent = 0);
 	~ZcloudDesk();
 
@@ -41,6 +46,14 @@ protected:
 signals:
 	void startInitSignal(int);
 private slots:
+
+//隐藏按钮
+void hideWindow();
+//显示按钮
+void showWindow();
+//托盘操作函数
+void on_activatedSysTrayIcon(QSystemTrayIcon::ActivationReason reason);
+
 	//!签到修改云币数量
 	void onModifyCoinCount(int nCount);
 
@@ -197,6 +210,8 @@ private:
 	ZcloudBigDataInterface*	m_pBigDataInterface = NULL;
 	PipeServerThread*		m_pPipeServerThread = NULL;
 	CheckServiceThread*		m_pCheckServiceThread = NULL;
+
+	QSystemTrayIcon *system_tray = NULL;
 
 	bool switchAcc = false;
 

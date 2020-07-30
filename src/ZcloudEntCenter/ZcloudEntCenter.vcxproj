@@ -285,6 +285,7 @@
     <ClInclude Include="EntInfoDataDefine.h" />
     <ClInclude Include="GeneratedFiles\ui_AccItemWidget.h" />
     <ClInclude Include="GeneratedFiles\ui_EntComWidget.h" />
+    <ClInclude Include="GeneratedFiles\ui_MemberItemWidget.h" />
     <ClInclude Include="GeneratedFiles\ui_SwitchAccWidget.h" />
     <QtMoc Include="SwitchAccWidget.h">
     </QtMoc>

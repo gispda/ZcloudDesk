@@ -35,6 +35,7 @@ public:
     QLabel *label_4;
     QLabel *label_6;
     QListWidget *listWidget;
+    QLabel *label_5;
 
     void setupUi(QWidget *FinanMemberWidget)
     {
@@ -127,7 +128,7 @@ public:
 "border-bottom:0px;"));
         label_3 = new QLabel(FinanMemberWidget);
         label_3->setObjectName(QStringLiteral("label_3"));
-        label_3->setGeometry(QRect(357, 134, 45, 15));
+        label_3->setGeometry(QRect(340, 134, 45, 15));
         sizePolicy2.setHeightForWidth(label_3->sizePolicy().hasHeightForWidth());
         label_3->setSizePolicy(sizePolicy2);
         label_3->setMinimumSize(QSize(45, 15));
@@ -137,7 +138,7 @@ public:
 "border-bottom:0px;"));
         label_4 = new QLabel(FinanMemberWidget);
         label_4->setObjectName(QStringLiteral("label_4"));
-        label_4->setGeometry(QRect(535, 134, 27, 15));
+        label_4->setGeometry(QRect(520, 134, 27, 15));
         sizePolicy2.setHeightForWidth(label_4->sizePolicy().hasHeightForWidth());
         label_4->setSizePolicy(sizePolicy2);
         label_4->setMinimumSize(QSize(27, 15));
@@ -169,6 +170,16 @@ public:
         listWidget->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
         listWidget->setSelectionMode(QAbstractItemView::SingleSelection);
         listWidget->setSelectionBehavior(QAbstractItemView::SelectItems);
+        label_5 = new QLabel(FinanMemberWidget);
+        label_5->setObjectName(QStringLiteral("label_5"));
+        label_5->setGeometry(QRect(620, 134, 28, 15));
+        sizePolicy2.setHeightForWidth(label_5->sizePolicy().hasHeightForWidth());
+        label_5->setSizePolicy(sizePolicy2);
+        label_5->setMinimumSize(QSize(27, 15));
+        label_5->setMaximumSize(QSize(270, 15));
+        label_5->setStyleSheet(QString::fromUtf8("font: 14px \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
+"color:#333333;\n"
+"border-bottom:0px;"));
 
         retranslateUi(FinanMemberWidget);
 
@@ -187,6 +198,7 @@ public:
         label_3->setText(QApplication::translate("FinanMemberWidget", "\346\211\213\346\234\272\345\217\267", 0));
         label_4->setText(QApplication::translate("FinanMemberWidget", "\350\201\214\345\212\241", 0));
         label_6->setText(QApplication::translate("FinanMemberWidget", "\346\223\215\344\275\234", 0));
+        label_5->setText(QApplication::translate("FinanMemberWidget", "\350\247\222\350\211\262", 0));
     } // retranslateUi
 
 };

@@ -38,6 +38,19 @@ ZcloudDesk::ZcloudDesk(UserInfoStruct userInfoStruct, QWidget *parent)
 	, m_stUserInfo(userInfoStruct)
 	, m_strSwitchTax(loadJsbTax())//防止插入金税宝 登录   拔出时 税号为空 
 {
+
+	QIcon icon(":/ZcloudDesk/image/ycs_logo.png");
+	system_tray = new QSystemTrayIcon(this);
+	system_tray->setIcon(icon);
+	system_tray->setToolTip(QString::fromLocal8Bit("云财税"));
+
+	connect(system_tray, SIGNAL(activated(QSystemTrayIcon::ActivationReason)), this, SLOT(on_activatedSysTrayIcon(QSystemTrayIcon::ActivationReason)));
+	//显示托盘
+	system_tray->show();
+
+
+
+
 	ui.setupUi(this);
 	setWindowFlags(Qt::FramelessWindowHint | Qt::Tool | Qt::WindowSystemMenuHint);
 	setAttribute(Qt::WA_TranslucentBackground, true);
@@ -82,9 +95,10 @@ ZcloudDesk::ZcloudDesk(UserInfoStruct userInfoStruct, QWidget *parent)
 	ui.labelCompName->installEventFilter(this);
 	connect(ui.settingButton, SIGNAL(clicked()), this, SLOT(openSettingCenterWidget()));
 	connect(ui.appButton, SIGNAL(clicked()), this, SLOT(openAppCenterWidget()));
-	connect(ui.msgButton, SIGNAL(clicked()), this, SLOT(openMsgCenterWidget()));
-	ui.msgButton->setNumber(0);
-	ui.msgButton->installEventFilter(this);
+	connect(ui.hideButton, SIGNAL(clicked()), this, SLOT(hideWindow()));
+	//connect(ui.msgButton, SIGNAL(clicked()), this, SLOT(openMsgCenterWidget()));
+	//ui.msgButton->setNumber(0);
+	//ui.msgButton->installEventFilter(this);
 
 	connect(this, SIGNAL(startInitSignal(int)), this, SLOT(startInitSlot(int)));
 	connect(m_zhicloudApp, &ZhicloudApp::bindingPhoneSignals, this, &ZcloudDesk::bingdingPhoneSlot);
@@ -98,8 +112,25 @@ ZcloudDesk::ZcloudDesk(UserInfoStruct userInfoStruct, QWidget *parent)
 	QTimer::singleShot(0, this, SLOT(noviceSlot()));
 }
 
+void ZcloudDesk::on_activatedSysTrayIcon(QSystemTrayIcon::ActivationReason reason)
+{
+	switch (reason){
+	case QSystemTrayIcon::Trigger:
+		this->hide();
+		break;
+	case QSystemTrayIcon::DoubleClick:
+		//双击托盘图标
+		//双击后显示主程序窗口
+		this->show();
+		break;
+	default:
+		break;
+	}
+}
+
 ZcloudDesk::~ZcloudDesk()
 {
+
 	release();
 }
 void ZcloudDesk::startInitSlot(int flag)
@@ -391,7 +422,7 @@ void ZcloudDesk::onTopToolClick()
 	{
 		openTaxCalculatorWidget(pInfo->m_strAppDownloadUrl);
 	}
-	else if (strToolName == QString::fromLocal8Bit("办税日历"))
+	else if (strToolName == QString::fromLocal8Bit("财税日历"))
 	{
 		openFiscalCalendarWidget(pInfo->m_strAppDownloadUrl);
 	}
@@ -443,6 +474,24 @@ void ZcloudDesk::onTopToolClick()
 
 void ZcloudDesk::openEntCenterWidget()
 {
+	if (m_stUserInfo.m_strUsername.isEmpty()){
+		LoginDialog loginDialog;
+		QString strTip;
+		int logingInt;
+		loginDialog.isUserNameLogin();
+		logingInt = loginDialog.checkLogin(strTip);
+		loginDialog.initWeChartWidget(logingInt);
+			if (loginDialog.exec() == QDialog::Accepted)
+			{
+				UserInfoStruct userInfo = loginDialog.getUserInfoStruct();
+				if (!userInfo.m_strUsername.isEmpty()){
+					m_stUserInfo = userInfo;
+					startInitWork();
+				}
+			}
+		return;
+	}
+
 	if (NULL	==	m_pEntCenter)
 	{
 		m_pEntCenter = ZcloudEntCenter::createNew();
@@ -485,6 +534,17 @@ void ZcloudDesk::openMsgCenterWidget()
 	m_pMsgCenter->openMsgCenter(m_nUnreadCount);
 	m_pBigDataInterface->produceData("M01", "OP001", "TTA007");
 }
+
+void ZcloudDesk::hideWindow(){
+	//setWindowState(Qt::WindowMinimized);
+	this->hide();
+}
+void ZcloudDesk::showWindow(){
+	if (this->isHidden()){
+		this->show();
+	}
+}
+
 
 void ZcloudDesk::openAppCenterWidget()
 {
@@ -754,7 +814,7 @@ bool ZcloudDesk::eventFilter(QObject *target, QEvent *e)
 			ui.labelCompName->installEventFilter(this);
 		}
 	}
-	else if (ui.msgButton == target)
+	/*else if (ui.msgButton == target)
 	{
 		if (e->type() == QEvent::Enter)
 		{
@@ -768,7 +828,7 @@ bool ZcloudDesk::eventFilter(QObject *target, QEvent *e)
 				ui.msgButton->setToolTip(QString::fromLocal8Bit("暂无未读消息"));
 			}	
 		}
-	}
+	}*/
 	return QMainWindow::eventFilter(target, e);
 }
 
@@ -913,6 +973,35 @@ void ZcloudDesk::openApp(AppDataInfo* pInfo, QString type)
 
 void ZcloudDesk::showCompInfo()
 {
+
+	
+	ui.labelAvatar->setVisible(false);
+	ui.billListButton->setVisible(false);
+	ui.customServiceButton->setVisible(false);
+	ui.spaceButtonName->setVisible(false);
+	ui.usernameButton->setVisible(false);
+	
+	
+
+	if (m_stUserInfo.m_strUsername.isEmpty()){
+		ui.labelCompName->setMinimumWidth(0);
+		ui.labelCompName->setText(QString::fromLocal8Bit("登录"));
+
+
+		
+		//设置图标
+		//ui.labelCompName->setPixmap();
+		return;
+	}
+	else{
+		ui.spaceButtonName->setVisible(true);
+		ui.usernameButton->setVisible(true);
+		ui.usernameButton->setText(m_stUserInfo.m_strUsername);
+	}
+
+
+
+
 	QString strText = m_stUserInfo.m_strCompanyName;
 	if (strText.isEmpty())
 	{
@@ -938,6 +1027,10 @@ void ZcloudDesk::showCompInfo()
 			{
 				strText = strUserName;
 			}
+			
+			ui.labelAvatar->setVisible(true);
+			ui.billListButton->setVisible(true);
+			ui.customServiceButton->setVisible(true);
 		}	
 	}
 	if (strText.length()>12)
@@ -964,14 +1057,14 @@ void ZcloudDesk::showCompInfo()
 
 void ZcloudDesk::refreshMsgToolTip()
 {
-	if (0 < m_nUnreadCount)
-	{
-		ui.msgButton->setNumber(1);
-	}
-	else
-	{
-		ui.msgButton->setNumber(0);
-	}
+	//if (0 < m_nUnreadCount)
+	//{
+	//	ui.msgButton->setNumber(1);
+	//}
+	//else
+	//{
+	//	ui.msgButton->setNumber(0);
+	//}
 }
 
 void ZcloudDesk::onSwitchAcc(int bLoginByTax, bool bOther, QString strTaxNo_userName, QString strPwd)
@@ -1252,6 +1345,12 @@ void ZcloudDesk::onLogout()
 
 void ZcloudDesk::release()
 {
+	
+	if (NULL != system_tray)
+	{
+		system_tray->hide();
+		system_tray = NULL;
+	}
 	if (NULL != m_pBigDataInterface)
 	{
 		m_pBigDataInterface->stopThread();
@@ -1625,10 +1724,10 @@ QRect ZcloudDesk::getWidgetRect(int i)
 		//h = ui.rightWidget->height();//zpppMenuButtonList.size() * 100;
 		break;
 	case 4:
-		x = ui.msgButton->x();
+		/*x = ui.msgButton->x();
 		y = ui.msgButton->y();
 		w = ui.msgButton->width();
-		h = ui.msgButton->height();
+		h = ui.msgButton->height();*/
 		break;
 	case 5:
 		x = ui.settingButton->x();

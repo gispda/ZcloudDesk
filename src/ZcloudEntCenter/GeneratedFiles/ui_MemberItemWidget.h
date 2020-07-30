@@ -30,6 +30,7 @@ public:
     QPushButton *operButton;
     QLabel *labelUserName;
     QLabel *labelTrueName;
+    QLabel *labelRole;
 
     void setupUi(QWidget *MemberItemWidget)
     {
@@ -55,7 +56,7 @@ public:
 "QWidget#FilletWidget:hover,pressed{background:rgb(246,251,255);border-radius:4px;border:1px solid rgb(187,223,255);};"));
         labelJob = new QLabel(FilletWidget);
         labelJob->setObjectName(QStringLiteral("labelJob"));
-        labelJob->setGeometry(QRect(503, 22, 180, 16));
+        labelJob->setGeometry(QRect(490, 22, 90, 16));
         QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Fixed);
         sizePolicy1.setHorizontalStretch(0);
         sizePolicy1.setVerticalStretch(0);
@@ -69,7 +70,7 @@ public:
 "border:0px;"));
         labelMobile = new QLabel(FilletWidget);
         labelMobile->setObjectName(QStringLiteral("labelMobile"));
-        labelMobile->setGeometry(QRect(324, 22, 178, 16));
+        labelMobile->setGeometry(QRect(320, 22, 160, 16));
         sizePolicy1.setHeightForWidth(labelMobile->sizePolicy().hasHeightForWidth());
         labelMobile->setSizePolicy(sizePolicy1);
         labelMobile->setMinimumSize(QSize(80, 16));
@@ -119,6 +120,17 @@ public:
 "color:#333333;\n"
 "background-color: rgba(255, 255, 255, 0);\n"
 "border:0px;"));
+        labelRole = new QLabel(FilletWidget);
+        labelRole->setObjectName(QStringLiteral("labelRole"));
+        labelRole->setGeometry(QRect(590, 22, 90, 16));
+        sizePolicy1.setHeightForWidth(labelRole->sizePolicy().hasHeightForWidth());
+        labelRole->setSizePolicy(sizePolicy1);
+        labelRole->setMinimumSize(QSize(80, 16));
+        labelRole->setMaximumSize(QSize(180, 16));
+        labelRole->setStyleSheet(QString::fromUtf8("font: 14px \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
+"color:#333333;\n"
+"background-color: rgba(255, 255, 255, 0);\n"
+"border:0px;"));
 
         retranslateUi(MemberItemWidget);
 
@@ -134,6 +146,7 @@ public:
         operButton->setText(QString());
         labelUserName->setText(QString());
         labelTrueName->setText(QString());
+        labelRole->setText(QString());
     } // retranslateUi
 
 };

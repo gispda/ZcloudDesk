@@ -222,6 +222,9 @@
     <ClInclude Include="EntInfoDataDefine.h">
       <Filter>EntInfo</Filter>
     </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_MemberItemWidget.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="ZcloudEntCenterImpl.h">

@@ -288,7 +288,7 @@ border-bottom:0px;</string>
   <widget class="QLabel" name="label_3">
    <property name="geometry">
     <rect>
-     <x>357</x>
+     <x>340</x>
      <y>134</y>
      <width>45</width>
      <height>15</height>
@@ -324,7 +324,7 @@ border-bottom:0px;</string>
   <widget class="QLabel" name="label_4">
    <property name="geometry">
     <rect>
-     <x>535</x>
+     <x>520</x>
      <y>134</y>
      <width>27</width>
      <height>15</height>
@@ -438,6 +438,42 @@ QListWidget::Item{background:rgb(255,255,255);}</string>
    </property>
    <property name="selectionBehavior">
     <enum>QAbstractItemView::SelectItems</enum>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_5">
+   <property name="geometry">
+    <rect>
+     <x>620</x>
+     <y>134</y>
+     <width>28</width>
+     <height>15</height>
+    </rect>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>27</width>
+     <height>15</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>270</width>
+     <height>15</height>
+    </size>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 14px &quot;微软雅黑&quot;;
+color:#333333;
+border-bottom:0px;</string>
+   </property>
+   <property name="text">
+    <string>角色</string>
    </property>
   </widget>
  </widget>

@@ -20,7 +20,6 @@
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QWidget>
-#include <zappmenubutton.h>
 #include "EdgeToHide.h"
 #include "labelex.h"
 
@@ -33,12 +32,19 @@ public:
     EdgeToHide *ZcloudTopWidget;
     QHBoxLayout *horizontalLayout;
     QSpacerItem *horizontalSpacer;
+    QPushButton *usernameButton;
+    QPushButton *spaceButtonName;
     LabelEx *labelAvatar;
     QLabel *labelCompName;
+    QPushButton *spaceButton_2;
+    QPushButton *customServiceButton;
+    QPushButton *billListButton;
     QPushButton *appButton;
-    ZAppMenuButton *msgButton;
+    QPushButton *calendarButton;
+    QPushButton *screenShootButton;
     QPushButton *spaceButton;
     QPushButton *settingButton;
+    QPushButton *hideButton;
 
     void setupUi(QMainWindow *ZcloudDesk)
     {
@@ -51,7 +57,7 @@ public:
         centralWidget->setStyleSheet(QStringLiteral(""));
         ZcloudTopWidget = new EdgeToHide(centralWidget);
         ZcloudTopWidget->setObjectName(QStringLiteral("ZcloudTopWidget"));
-        ZcloudTopWidget->setGeometry(QRect(310, 330, 391, 30));
+        ZcloudTopWidget->setGeometry(QRect(30, 330, 841, 30));
         QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -70,11 +76,40 @@ public:
 
         horizontalLayout->addItem(horizontalSpacer);
 
-        labelAvatar = new LabelEx(ZcloudTopWidget);
-        labelAvatar->setObjectName(QStringLiteral("labelAvatar"));
+        usernameButton = new QPushButton(ZcloudTopWidget);
+        usernameButton->setObjectName(QStringLiteral("usernameButton"));
         QSizePolicy sizePolicy1(QSizePolicy::Fixed, QSizePolicy::Fixed);
         sizePolicy1.setHorizontalStretch(0);
         sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(usernameButton->sizePolicy().hasHeightForWidth());
+        usernameButton->setSizePolicy(sizePolicy1);
+        usernameButton->setMinimumSize(QSize(0, 26));
+        usernameButton->setMaximumSize(QSize(160, 26));
+        usernameButton->setStyleSheet(QString::fromUtf8("QPushButton{border-image: url(:/ZcloudDesk/image/bg_transparent.png);color: rgb(255, 255, 255);\n"
+"font: 12px \"\345\276\256\350\275\257\351\233\205\351\273\221\";}\n"
+"QPushButton:hover{border-image: url(:/ZcloudDesk/image/bg_transparent_hover.png);color: rgb(255, 255, 255);\n"
+"font: 12px \"\345\276\256\350\275\257\351\233\205\351\273\221\"}\n"
+"QPushButton:pressed{border-image: url(:/ZcloudDesk/image/bg_transparent_pre.png);color: rgb(255, 255, 255);\n"
+"font: 12px \"\345\276\256\350\275\257\351\233\205\351\273\221\"};"));
+        QIcon icon;
+        icon.addFile(QStringLiteral(":/ZcloudDesk/image/icon_yyzx.png"), QSize(), QIcon::Normal, QIcon::Off);
+        usernameButton->setIcon(icon);
+        usernameButton->setIconSize(QSize(14, 26));
+
+        horizontalLayout->addWidget(usernameButton);
+
+        spaceButtonName = new QPushButton(ZcloudTopWidget);
+        spaceButtonName->setObjectName(QStringLiteral("spaceButtonName"));
+        sizePolicy1.setHeightForWidth(spaceButtonName->sizePolicy().hasHeightForWidth());
+        spaceButtonName->setSizePolicy(sizePolicy1);
+        spaceButtonName->setMinimumSize(QSize(21, 26));
+        spaceButtonName->setMaximumSize(QSize(21, 26));
+        spaceButtonName->setStyleSheet(QStringLiteral("border-image: url(:/ZcloudDesk/image/line.png);"));
+
+        horizontalLayout->addWidget(spaceButtonName);
+
+        labelAvatar = new LabelEx(ZcloudTopWidget);
+        labelAvatar->setObjectName(QStringLiteral("labelAvatar"));
         sizePolicy1.setHeightForWidth(labelAvatar->sizePolicy().hasHeightForWidth());
         labelAvatar->setSizePolicy(sizePolicy1);
         labelAvatar->setMinimumSize(QSize(26, 26));
@@ -100,6 +135,50 @@ public:
 
         horizontalLayout->addWidget(labelCompName);
 
+        spaceButton_2 = new QPushButton(ZcloudTopWidget);
+        spaceButton_2->setObjectName(QStringLiteral("spaceButton_2"));
+        sizePolicy1.setHeightForWidth(spaceButton_2->sizePolicy().hasHeightForWidth());
+        spaceButton_2->setSizePolicy(sizePolicy1);
+        spaceButton_2->setMinimumSize(QSize(21, 26));
+        spaceButton_2->setMaximumSize(QSize(21, 26));
+        spaceButton_2->setStyleSheet(QStringLiteral("border-image: url(:/ZcloudDesk/image/line.png);"));
+
+        horizontalLayout->addWidget(spaceButton_2);
+
+        customServiceButton = new QPushButton(ZcloudTopWidget);
+        customServiceButton->setObjectName(QStringLiteral("customServiceButton"));
+        sizePolicy1.setHeightForWidth(customServiceButton->sizePolicy().hasHeightForWidth());
+        customServiceButton->setSizePolicy(sizePolicy1);
+        customServiceButton->setMinimumSize(QSize(86, 26));
+        customServiceButton->setMaximumSize(QSize(86, 26));
+        customServiceButton->setStyleSheet(QString::fromUtf8("QPushButton{border-image: url(:/ZcloudDesk/image/bg_transparent.png);color: rgb(255, 255, 255);\n"
+"font: 12px \"\345\276\256\350\275\257\351\233\205\351\273\221\";}\n"
+"QPushButton:hover{border-image: url(:/ZcloudDesk/image/bg_transparent_hover.png);color: rgb(255, 255, 255);\n"
+"font: 12px \"\345\276\256\350\275\257\351\233\205\351\273\221\"}\n"
+"QPushButton:pressed{border-image: url(:/ZcloudDesk/image/bg_transparent_pre.png);color: rgb(255, 255, 255);\n"
+"font: 12px \"\345\276\256\350\275\257\351\233\205\351\273\221\"};"));
+        customServiceButton->setIcon(icon);
+        customServiceButton->setIconSize(QSize(14, 26));
+
+        horizontalLayout->addWidget(customServiceButton);
+
+        billListButton = new QPushButton(ZcloudTopWidget);
+        billListButton->setObjectName(QStringLiteral("billListButton"));
+        sizePolicy1.setHeightForWidth(billListButton->sizePolicy().hasHeightForWidth());
+        billListButton->setSizePolicy(sizePolicy1);
+        billListButton->setMinimumSize(QSize(86, 26));
+        billListButton->setMaximumSize(QSize(86, 26));
+        billListButton->setStyleSheet(QString::fromUtf8("QPushButton{border-image: url(:/ZcloudDesk/image/bg_transparent.png);color: rgb(255, 255, 255);\n"
+"font: 12px \"\345\276\256\350\275\257\351\233\205\351\273\221\";}\n"
+"QPushButton:hover{border-image: url(:/ZcloudDesk/image/bg_transparent_hover.png);color: rgb(255, 255, 255);\n"
+"font: 12px \"\345\276\256\350\275\257\351\233\205\351\273\221\"}\n"
+"QPushButton:pressed{border-image: url(:/ZcloudDesk/image/bg_transparent_pre.png);color: rgb(255, 255, 255);\n"
+"font: 12px \"\345\276\256\350\275\257\351\233\205\351\273\221\"};"));
+        billListButton->setIcon(icon);
+        billListButton->setIconSize(QSize(14, 26));
+
+        horizontalLayout->addWidget(billListButton);
+
         appButton = new QPushButton(ZcloudTopWidget);
         appButton->setObjectName(QStringLiteral("appButton"));
         sizePolicy1.setHeightForWidth(appButton->sizePolicy().hasHeightForWidth());
@@ -112,31 +191,42 @@ public:
 "font: 12px \"\345\276\256\350\275\257\351\233\205\351\273\221\"}\n"
 "QPushButton:pressed{border-image: url(:/ZcloudDesk/image/bg_transparent_pre.png);color: rgb(255, 255, 255);\n"
 "font: 12px \"\345\276\256\350\275\257\351\233\205\351\273\221\"};"));
-        QIcon icon;
-        icon.addFile(QStringLiteral(":/ZcloudDesk/image/icon_yyzx.png"), QSize(), QIcon::Normal, QIcon::Off);
         appButton->setIcon(icon);
         appButton->setIconSize(QSize(14, 26));
 
         horizontalLayout->addWidget(appButton);
 
-        msgButton = new ZAppMenuButton(ZcloudTopWidget);
-        msgButton->setObjectName(QStringLiteral("msgButton"));
-        sizePolicy1.setHeightForWidth(msgButton->sizePolicy().hasHeightForWidth());
-        msgButton->setSizePolicy(sizePolicy1);
-        msgButton->setMinimumSize(QSize(60, 26));
-        msgButton->setMaximumSize(QSize(60, 26));
-        msgButton->setStyleSheet(QString::fromUtf8("QPushButton{border-image: url(:/ZcloudDesk/image/bg_transparent.png);color: rgb(255, 255, 255);\n"
+        calendarButton = new QPushButton(ZcloudTopWidget);
+        calendarButton->setObjectName(QStringLiteral("calendarButton"));
+        sizePolicy1.setHeightForWidth(calendarButton->sizePolicy().hasHeightForWidth());
+        calendarButton->setSizePolicy(sizePolicy1);
+        calendarButton->setMinimumSize(QSize(60, 26));
+        calendarButton->setMaximumSize(QSize(60, 26));
+        calendarButton->setStyleSheet(QString::fromUtf8("QPushButton{border-image: url(:/ZcloudDesk/image/bg_transparent.png);color: rgb(255, 255, 255);\n"
 "font: 12px \"\345\276\256\350\275\257\351\233\205\351\273\221\";}\n"
 "QPushButton:hover{border-image: url(:/ZcloudDesk/image/bg_transparent_hover.png);color: rgb(255, 255, 255);\n"
 "font: 12px \"\345\276\256\350\275\257\351\233\205\351\273\221\"}\n"
 "QPushButton:pressed{border-image: url(:/ZcloudDesk/image/bg_transparent_pre.png);color: rgb(255, 255, 255);\n"
 "font: 12px \"\345\276\256\350\275\257\351\233\205\351\273\221\"};"));
-        QIcon icon1;
-        icon1.addFile(QStringLiteral(":/ZcloudDesk/image/icon_xxzx.png"), QSize(), QIcon::Normal, QIcon::Off);
-        msgButton->setIcon(icon1);
-        msgButton->setIconSize(QSize(14, 26));
+        calendarButton->setIconSize(QSize(14, 26));
 
-        horizontalLayout->addWidget(msgButton);
+        horizontalLayout->addWidget(calendarButton);
+
+        screenShootButton = new QPushButton(ZcloudTopWidget);
+        screenShootButton->setObjectName(QStringLiteral("screenShootButton"));
+        sizePolicy1.setHeightForWidth(screenShootButton->sizePolicy().hasHeightForWidth());
+        screenShootButton->setSizePolicy(sizePolicy1);
+        screenShootButton->setMinimumSize(QSize(60, 26));
+        screenShootButton->setMaximumSize(QSize(60, 26));
+        screenShootButton->setStyleSheet(QString::fromUtf8("QPushButton{border-image: url(:/ZcloudDesk/image/bg_transparent.png);color: rgb(255, 255, 255);\n"
+"font: 12px \"\345\276\256\350\275\257\351\233\205\351\273\221\";}\n"
+"QPushButton:hover{border-image: url(:/ZcloudDesk/image/bg_transparent_hover.png);color: rgb(255, 255, 255);\n"
+"font: 12px \"\345\276\256\350\275\257\351\233\205\351\273\221\"}\n"
+"QPushButton:pressed{border-image: url(:/ZcloudDesk/image/bg_transparent_pre.png);color: rgb(255, 255, 255);\n"
+"font: 12px \"\345\276\256\350\275\257\351\233\205\351\273\221\"};"));
+        screenShootButton->setIconSize(QSize(14, 26));
+
+        horizontalLayout->addWidget(screenShootButton);
 
         spaceButton = new QPushButton(ZcloudTopWidget);
         spaceButton->setObjectName(QStringLiteral("spaceButton"));
@@ -160,12 +250,28 @@ public:
 "font: 12px \"\345\276\256\350\275\257\351\233\205\351\273\221\"}\n"
 "QPushButton:pressed{border-image: url(:/ZcloudDesk/image/bg_transparent_pre.png);color: rgb(255, 255, 255);\n"
 "font: 12px \"\345\276\256\350\275\257\351\233\205\351\273\221\"};"));
-        QIcon icon2;
-        icon2.addFile(QStringLiteral(":/ZcloudDesk/image/setPng.png"), QSize(), QIcon::Normal, QIcon::Off);
-        settingButton->setIcon(icon2);
+        QIcon icon1;
+        icon1.addFile(QStringLiteral(":/ZcloudDesk/image/setPng.png"), QSize(), QIcon::Normal, QIcon::Off);
+        settingButton->setIcon(icon1);
         settingButton->setIconSize(QSize(15, 26));
 
         horizontalLayout->addWidget(settingButton);
+
+        hideButton = new QPushButton(ZcloudTopWidget);
+        hideButton->setObjectName(QStringLiteral("hideButton"));
+        sizePolicy1.setHeightForWidth(hideButton->sizePolicy().hasHeightForWidth());
+        hideButton->setSizePolicy(sizePolicy1);
+        hideButton->setMinimumSize(QSize(60, 26));
+        hideButton->setMaximumSize(QSize(60, 26));
+        hideButton->setStyleSheet(QString::fromUtf8("QPushButton{border-image: url(:/ZcloudDesk/image/bg_transparent.png);color: rgb(255, 255, 255);\n"
+"font: 12px \"\345\276\256\350\275\257\351\233\205\351\273\221\";}\n"
+"QPushButton:hover{border-image: url(:/ZcloudDesk/image/bg_transparent_hover.png);color: rgb(255, 255, 255);\n"
+"font: 12px \"\345\276\256\350\275\257\351\233\205\351\273\221\"}\n"
+"QPushButton:pressed{border-image: url(:/ZcloudDesk/image/bg_transparent_pre.png);color: rgb(255, 255, 255);\n"
+"font: 12px \"\345\276\256\350\275\257\351\233\205\351\273\221\"};"));
+        hideButton->setIconSize(QSize(15, 26));
+
+        horizontalLayout->addWidget(hideButton);
 
         ZcloudDesk->setCentralWidget(centralWidget);
 
@@ -177,12 +283,19 @@ public:
     void retranslateUi(QMainWindow *ZcloudDesk)
     {
         ZcloudDesk->setWindowTitle(QApplication::translate("ZcloudDesk", "ZcloudDesk", 0));
+        usernameButton->setText(QString());
+        spaceButtonName->setText(QString());
         labelAvatar->setText(QString());
         labelCompName->setText(QString());
+        spaceButton_2->setText(QString());
+        customServiceButton->setText(QApplication::translate("ZcloudDesk", "\350\201\224\347\263\273\345\256\242\346\234\215", 0));
+        billListButton->setText(QApplication::translate("ZcloudDesk", "\346\210\221\347\232\204\345\267\245\345\215\225", 0));
         appButton->setText(QApplication::translate("ZcloudDesk", "\345\272\224\347\224\250\344\270\255\345\277\203", 0));
-        msgButton->setText(QApplication::translate("ZcloudDesk", "\346\266\210\346\201\257", 0));
+        calendarButton->setText(QApplication::translate("ZcloudDesk", "\350\264\242\347\250\216\346\227\245\345\216\206", 0));
+        screenShootButton->setText(QApplication::translate("ZcloudDesk", "\346\210\252\345\233\276", 0));
         spaceButton->setText(QString());
         settingButton->setText(QApplication::translate("ZcloudDesk", "\350\256\276\347\275\256", 0));
+        hideButton->setText(QApplication::translate("ZcloudDesk", "\351\232\220\350\227\217", 0));
     } // retranslateUi
 
 };

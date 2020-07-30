@@ -26,4 +26,5 @@ private:
 	QString m_strUid;
 	QString m_strTrueName;
 	QString	m_strJob;
+	
 };

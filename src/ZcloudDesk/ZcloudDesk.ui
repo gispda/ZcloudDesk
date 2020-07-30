@@ -23,9 +23,9 @@
    <widget class="EdgeToHide" name="ZcloudTopWidget" native="true">
     <property name="geometry">
      <rect>
-      <x>310</x>
+      <x>30</x>
       <y>330</y>
-      <width>391</width>
+      <width>841</width>
       <height>30</height>
      </rect>
     </property>
@@ -79,6 +79,77 @@
         </size>
        </property>
       </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="usernameButton">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>26</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>160</width>
+         <height>26</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{border-image: url(:/ZcloudDesk/image/bg_transparent.png);color: rgb(255, 255, 255);
+font: 12px &quot;微软雅黑&quot;;}
+QPushButton:hover{border-image: url(:/ZcloudDesk/image/bg_transparent_hover.png);color: rgb(255, 255, 255);
+font: 12px &quot;微软雅黑&quot;}
+QPushButton:pressed{border-image: url(:/ZcloudDesk/image/bg_transparent_pre.png);color: rgb(255, 255, 255);
+font: 12px &quot;微软雅黑&quot;};</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset resource="ZcloudDesk.qrc">
+         <normaloff>:/ZcloudDesk/image/icon_yyzx.png</normaloff>:/ZcloudDesk/image/icon_yyzx.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>14</width>
+         <height>26</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="spaceButtonName">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>21</width>
+         <height>26</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>21</width>
+         <height>26</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border-image: url(:/ZcloudDesk/image/line.png);</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
      </item>
      <item>
       <widget class="LabelEx" name="labelAvatar">
@@ -146,6 +217,120 @@ font: 12px &quot;微软雅黑&quot;;padding-left:5px;padding-right:5px;};</strin
       </widget>
      </item>
      <item>
+      <widget class="QPushButton" name="spaceButton_2">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>21</width>
+         <height>26</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>21</width>
+         <height>26</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border-image: url(:/ZcloudDesk/image/line.png);</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="customServiceButton">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>86</width>
+         <height>26</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>86</width>
+         <height>26</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{border-image: url(:/ZcloudDesk/image/bg_transparent.png);color: rgb(255, 255, 255);
+font: 12px &quot;微软雅黑&quot;;}
+QPushButton:hover{border-image: url(:/ZcloudDesk/image/bg_transparent_hover.png);color: rgb(255, 255, 255);
+font: 12px &quot;微软雅黑&quot;}
+QPushButton:pressed{border-image: url(:/ZcloudDesk/image/bg_transparent_pre.png);color: rgb(255, 255, 255);
+font: 12px &quot;微软雅黑&quot;};</string>
+       </property>
+       <property name="text">
+        <string>联系客服</string>
+       </property>
+       <property name="icon">
+        <iconset resource="ZcloudDesk.qrc">
+         <normaloff>:/ZcloudDesk/image/icon_yyzx.png</normaloff>:/ZcloudDesk/image/icon_yyzx.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>14</width>
+         <height>26</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="billListButton">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>86</width>
+         <height>26</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>86</width>
+         <height>26</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{border-image: url(:/ZcloudDesk/image/bg_transparent.png);color: rgb(255, 255, 255);
+font: 12px &quot;微软雅黑&quot;;}
+QPushButton:hover{border-image: url(:/ZcloudDesk/image/bg_transparent_hover.png);color: rgb(255, 255, 255);
+font: 12px &quot;微软雅黑&quot;}
+QPushButton:pressed{border-image: url(:/ZcloudDesk/image/bg_transparent_pre.png);color: rgb(255, 255, 255);
+font: 12px &quot;微软雅黑&quot;};</string>
+       </property>
+       <property name="text">
+        <string>我的工单</string>
+       </property>
+       <property name="icon">
+        <iconset resource="ZcloudDesk.qrc">
+         <normaloff>:/ZcloudDesk/image/icon_yyzx.png</normaloff>:/ZcloudDesk/image/icon_yyzx.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>14</width>
+         <height>26</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item>
       <widget class="QPushButton" name="appButton">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -189,7 +374,7 @@ font: 12px &quot;微软雅黑&quot;};</string>
       </widget>
      </item>
      <item>
-      <widget class="ZAppMenuButton" name="msgButton">
+      <widget class="QPushButton" name="calendarButton">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
          <horstretch>0</horstretch>
@@ -217,11 +402,46 @@ QPushButton:pressed{border-image: url(:/ZcloudDesk/image/bg_transparent_pre.png)
 font: 12px &quot;微软雅黑&quot;};</string>
        </property>
        <property name="text">
-        <string>消息</string>
+        <string>财税日历</string>
        </property>
-       <property name="icon">
-        <iconset resource="ZcloudDesk.qrc">
-         <normaloff>:/ZcloudDesk/image/icon_xxzx.png</normaloff>:/ZcloudDesk/image/icon_xxzx.png</iconset>
+       <property name="iconSize">
+        <size>
+         <width>14</width>
+         <height>26</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="screenShootButton">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>60</width>
+         <height>26</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>60</width>
+         <height>26</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{border-image: url(:/ZcloudDesk/image/bg_transparent.png);color: rgb(255, 255, 255);
+font: 12px &quot;微软雅黑&quot;;}
+QPushButton:hover{border-image: url(:/ZcloudDesk/image/bg_transparent_hover.png);color: rgb(255, 255, 255);
+font: 12px &quot;微软雅黑&quot;}
+QPushButton:pressed{border-image: url(:/ZcloudDesk/image/bg_transparent_pre.png);color: rgb(255, 255, 255);
+font: 12px &quot;微软雅黑&quot;};</string>
+       </property>
+       <property name="text">
+        <string>截图</string>
        </property>
        <property name="iconSize">
         <size>
@@ -302,6 +522,45 @@ font: 12px &quot;微软雅黑&quot;};</string>
        </property>
       </widget>
      </item>
+     <item>
+      <widget class="QPushButton" name="hideButton">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>60</width>
+         <height>26</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>60</width>
+         <height>26</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{border-image: url(:/ZcloudDesk/image/bg_transparent.png);color: rgb(255, 255, 255);
+font: 12px &quot;微软雅黑&quot;;}
+QPushButton:hover{border-image: url(:/ZcloudDesk/image/bg_transparent_hover.png);color: rgb(255, 255, 255);
+font: 12px &quot;微软雅黑&quot;}
+QPushButton:pressed{border-image: url(:/ZcloudDesk/image/bg_transparent_pre.png);color: rgb(255, 255, 255);
+font: 12px &quot;微软雅黑&quot;};</string>
+       </property>
+       <property name="text">
+        <string>隐藏</string>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>15</width>
+         <height>26</height>
+        </size>
+       </property>
+      </widget>
+     </item>
     </layout>
    </widget>
   </widget>
@@ -318,11 +577,6 @@ font: 12px &quot;微软雅黑&quot;};</string>
    <extends>QWidget</extends>
    <header>EdgeToHide.h</header>
    <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>ZAppMenuButton</class>
-   <extends>QPushButton</extends>
-   <header location="global">zappmenubutton.h</header>
   </customwidget>
  </customwidgets>
  <resources>

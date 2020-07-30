@@ -60,7 +60,8 @@ MemberItemWidget::MemberItemWidget(int nAdmin,int nIndex, QString strUid, QStrin
 		{
 			strTrueName = strTrueName.left(2) + "...";
 		}
-		ui.labelTrueName->setText(strTrueName + QString::fromLocal8Bit("(管理员)"));
+		//ui.labelTrueName->setText(strTrueName + QString::fromLocal8Bit("(管理员)"));
+		ui.labelTrueName->setText(strTrueName );
 	}
 	else
 	{
@@ -88,6 +89,7 @@ MemberItemWidget::MemberItemWidget(int nAdmin,int nIndex, QString strUid, QStrin
 	}
 	ZcloudComFun::setElideText(14, ui.labelJob, strJob);
 
+
 	if (nAdmin	==	1)
 	{
 		m_pMenu = new QMenu();
@@ -107,6 +109,7 @@ MemberItemWidget::MemberItemWidget(int nAdmin,int nIndex, QString strUid, QStrin
 		m_pActionModifyMember->setText(QString::fromLocal8Bit("编辑资料"));
 		m_pActionHandOver->setText(QString::fromLocal8Bit("移交管理员"));
 
+		
 		if (1 != nRoleType)
 		{
 			m_pMenu->addAction(m_pActionHandOver);
@@ -115,7 +118,9 @@ MemberItemWidget::MemberItemWidget(int nAdmin,int nIndex, QString strUid, QStrin
 		}
 		else
 		{
-			m_pMenu->setFixedSize(96, 32);
+
+			ui.labelRole->setText(QString::fromLocal8Bit("管理员"));
+			//m_pMenu->setFixedSize(96, 32);
 		}
 		m_pMenu->addAction(m_pActionModifyMember);
 		m_pMenu->setAttribute(Qt::WA_TranslucentBackground);
@@ -136,10 +141,17 @@ MemberItemWidget::MemberItemWidget(int nAdmin,int nIndex, QString strUid, QStrin
 			"QMenu::item:selected{"//菜单项按下效果
 			"font-size: 12px 'Microsoft Yahei';color:rgb(51,51,51);"//字体颜色
 			"background-color:rgb(242, 242, 242);}"));
+
+
+		m_pMenu->addAction(m_pActionHandOver);
+		m_pMenu->addAction(m_pActionRemoveMember);
+
 		ui.operButton->setMenu(m_pMenu);
+		ui.labelRole->setText(QString::fromLocal8Bit("普通用户"));
 	}
 	else
 	{
+		
 		ui.operButton->hide();
 	}	
 }

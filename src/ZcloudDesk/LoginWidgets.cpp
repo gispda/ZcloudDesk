@@ -1100,9 +1100,11 @@ void LoginWidget::loginFinish(int status, UserInfoStruct userInfoStruct)
 //////////////////////////////////////////////////////////////////华丽的分割线/////////////////////////////////////////////////////////////////
 int LoginWidget::checkLogin(QString &tipSt)
 {
+	m_loginSetingStruct.token;
 	QString strTaxNo_ID, strMachine_PW;
 	//1.检测网络无网络
-	if (!ZcloudComFun::isNetActive())
+	bool net = ZcloudComFun::isNetActive();
+	if (!net)
 	{
 		//是否是第一次登录
 		if (!m_loginSetingStruct.firstLogin &&  !m_loginSetingStruct.uid.isEmpty())
@@ -1116,6 +1118,18 @@ int LoginWidget::checkLogin(QString &tipSt)
 	}
 	else
 	{
+		//调试用设置---S	dr
+		m_loginSetingStruct.taxNo = "95666635875685456";
+		m_loginSetingStruct.machine = "11PN1I";
+		m_loginSetingStruct.userName="nick_default_qpfzjh";
+		m_loginSetingStruct.firstLogin = false;
+
+		m_loginSetingStruct.taxNo = "";
+		m_loginSetingStruct.machine = "";
+		m_loginSetingStruct.userName = "";
+		m_loginSetingStruct.firstLogin = true;
+		//调试用设置---E	dr
+
 		//第一次登录
 		if (m_loginSetingStruct.firstLogin)
 		{

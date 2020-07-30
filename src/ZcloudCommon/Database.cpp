@@ -42,10 +42,14 @@ void Database::DestoryInstance()
 bool Database::openDatabase()
 {
 	QString dbPath = QApplication::applicationDirPath() + "/zhicloudUser.db";
+	
 	m_DataBase = QSqlDatabase::addDatabase("ZCWXSQL", "zhicloudDatabase");
+	//m_DataBase = QSqlDatabase::addDatabase("QSQLITE", "zhicloudDatabase");
 	m_DataBase.setPassword("ZhiCloudUserPwd");
 	m_DataBase.setDatabaseName(dbPath);
-	if (m_DataBase.open())
+	QString name = m_DataBase.userName();
+	bool open = m_DataBase.open();
+	if (open)
 	{
 		if (!createDB(dbPath))
 		{

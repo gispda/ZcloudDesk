@@ -68,9 +68,9 @@ QWidget#FilletWidget:hover,pressed{background:rgb(246,251,255);border-radius:4px
    <widget class="QLabel" name="labelJob">
     <property name="geometry">
      <rect>
-      <x>503</x>
+      <x>490</x>
       <y>22</y>
-      <width>180</width>
+      <width>90</width>
       <height>16</height>
      </rect>
     </property>
@@ -105,9 +105,9 @@ border:0px;</string>
    <widget class="QLabel" name="labelMobile">
     <property name="geometry">
      <rect>
-      <x>324</x>
+      <x>320</x>
       <y>22</y>
-      <width>178</width>
+      <width>160</width>
       <height>16</height>
      </rect>
     </property>
@@ -273,6 +273,43 @@ border:0px;</string>
     <property name="maximumSize">
      <size>
       <width>110</width>
+      <height>16</height>
+     </size>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 14px &quot;微软雅黑&quot;;
+color:#333333;
+background-color: rgba(255, 255, 255, 0);
+border:0px;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelRole">
+    <property name="geometry">
+     <rect>
+      <x>590</x>
+      <y>22</y>
+      <width>90</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>80</width>
+      <height>16</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>180</width>
       <height>16</height>
      </size>
     </property>

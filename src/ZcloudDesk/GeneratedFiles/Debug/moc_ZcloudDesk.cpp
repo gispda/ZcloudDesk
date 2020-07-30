@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_ZcloudDesk_t {
-    QByteArrayData data[64];
-    char stringdata0[823];
+    QByteArrayData data[69];
+    char stringdata0[910];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -32,73 +32,80 @@ static const qt_meta_stringdata_ZcloudDesk_t qt_meta_stringdata_ZcloudDesk = {
 QT_MOC_LITERAL(0, 0, 10), // "ZcloudDesk"
 QT_MOC_LITERAL(1, 11, 15), // "startInitSignal"
 QT_MOC_LITERAL(2, 27, 0), // ""
-QT_MOC_LITERAL(3, 28, 17), // "onModifyCoinCount"
-QT_MOC_LITERAL(4, 46, 6), // "nCount"
-QT_MOC_LITERAL(5, 53, 11), // "onSwitchTip"
-QT_MOC_LITERAL(6, 65, 4), // "flag"
-QT_MOC_LITERAL(7, 70, 16), // "openSignInWidegt"
-QT_MOC_LITERAL(8, 87, 8), // "QWidget*"
-QT_MOC_LITERAL(9, 96, 13), // "pParentWidget"
-QT_MOC_LITERAL(10, 110, 14), // "registerDevice"
-QT_MOC_LITERAL(11, 125, 18), // "onAdvertisingClick"
-QT_MOC_LITERAL(12, 144, 5), // "nType"
-QT_MOC_LITERAL(13, 150, 9), // "strTarget"
-QT_MOC_LITERAL(14, 160, 16), // "onReciveMsgPopUp"
-QT_MOC_LITERAL(15, 177, 13), // "startInitSlot"
-QT_MOC_LITERAL(16, 191, 18), // "onCheckTokenFailed"
-QT_MOC_LITERAL(17, 210, 6), // "status"
-QT_MOC_LITERAL(18, 217, 10), // "exitThread"
-QT_MOC_LITERAL(19, 228, 11), // "showDlgWait"
-QT_MOC_LITERAL(20, 240, 6), // "isShow"
-QT_MOC_LITERAL(21, 247, 5), // "bBind"
-QT_MOC_LITERAL(22, 253, 14), // "onlyExitThread"
-QT_MOC_LITERAL(23, 268, 15), // "UserInfoStruct&"
-QT_MOC_LITERAL(24, 284, 8), // "userInfo"
-QT_MOC_LITERAL(25, 293, 12), // "strOldUserId"
-QT_MOC_LITERAL(26, 306, 12), // "strNewUserId"
-QT_MOC_LITERAL(27, 319, 11), // "strNewToken"
-QT_MOC_LITERAL(28, 331, 13), // "startInitWork"
-QT_MOC_LITERAL(29, 345, 15), // "closeAllWindows"
-QT_MOC_LITERAL(30, 361, 15), // "resizeAllWidget"
-QT_MOC_LITERAL(31, 377, 20), // "onChangeUnreadMsgNum"
-QT_MOC_LITERAL(32, 398, 4), // "nNum"
-QT_MOC_LITERAL(33, 403, 4), // "bAdd"
-QT_MOC_LITERAL(34, 408, 14), // "onTopToolClick"
-QT_MOC_LITERAL(35, 423, 17), // "onReduceUnreadNum"
-QT_MOC_LITERAL(36, 441, 19), // "openAppCenterWidget"
-QT_MOC_LITERAL(37, 461, 19), // "openMsgCenterWidget"
-QT_MOC_LITERAL(38, 481, 23), // "openSettingCenterWidget"
-QT_MOC_LITERAL(39, 505, 11), // "onSwitchAcc"
-QT_MOC_LITERAL(40, 517, 11), // "bLoginByTax"
-QT_MOC_LITERAL(41, 529, 6), // "bOther"
-QT_MOC_LITERAL(42, 536, 17), // "strTaxNo_userName"
-QT_MOC_LITERAL(43, 554, 6), // "strPwd"
-QT_MOC_LITERAL(44, 561, 17), // "onTopCheckChanged"
-QT_MOC_LITERAL(45, 579, 5), // "bShow"
-QT_MOC_LITERAL(46, 585, 19), // "onRightCheckChanged"
-QT_MOC_LITERAL(47, 605, 18), // "onToolCheckChanged"
-QT_MOC_LITERAL(48, 624, 9), // "strToolId"
-QT_MOC_LITERAL(49, 634, 8), // "onLogout"
-QT_MOC_LITERAL(50, 643, 11), // "onChangeTax"
-QT_MOC_LITERAL(51, 655, 8), // "strTaxNo"
-QT_MOC_LITERAL(52, 664, 10), // "strMachine"
-QT_MOC_LITERAL(53, 675, 17), // "bingdingPhoneSlot"
-QT_MOC_LITERAL(54, 693, 20), // "slotBindingSucceeded"
-QT_MOC_LITERAL(55, 714, 9), // "strUserId"
-QT_MOC_LITERAL(56, 724, 9), // "strMobile"
-QT_MOC_LITERAL(57, 734, 8), // "strToken"
-QT_MOC_LITERAL(58, 743, 16), // "slotChangeMobile"
-QT_MOC_LITERAL(59, 760, 10), // "noviceSlot"
-QT_MOC_LITERAL(60, 771, 17), // "buyMembershipSlot"
-QT_MOC_LITERAL(61, 789, 11), // "vipNameList"
-QT_MOC_LITERAL(62, 801, 9), // "vipIdList"
-QT_MOC_LITERAL(63, 811, 11) // "vipTimeList"
+QT_MOC_LITERAL(3, 28, 10), // "hideWindow"
+QT_MOC_LITERAL(4, 39, 10), // "showWindow"
+QT_MOC_LITERAL(5, 50, 23), // "on_activatedSysTrayIcon"
+QT_MOC_LITERAL(6, 74, 33), // "QSystemTrayIcon::ActivationRe..."
+QT_MOC_LITERAL(7, 108, 6), // "reason"
+QT_MOC_LITERAL(8, 115, 17), // "onModifyCoinCount"
+QT_MOC_LITERAL(9, 133, 6), // "nCount"
+QT_MOC_LITERAL(10, 140, 11), // "onSwitchTip"
+QT_MOC_LITERAL(11, 152, 4), // "flag"
+QT_MOC_LITERAL(12, 157, 16), // "openSignInWidegt"
+QT_MOC_LITERAL(13, 174, 8), // "QWidget*"
+QT_MOC_LITERAL(14, 183, 13), // "pParentWidget"
+QT_MOC_LITERAL(15, 197, 14), // "registerDevice"
+QT_MOC_LITERAL(16, 212, 18), // "onAdvertisingClick"
+QT_MOC_LITERAL(17, 231, 5), // "nType"
+QT_MOC_LITERAL(18, 237, 9), // "strTarget"
+QT_MOC_LITERAL(19, 247, 16), // "onReciveMsgPopUp"
+QT_MOC_LITERAL(20, 264, 13), // "startInitSlot"
+QT_MOC_LITERAL(21, 278, 18), // "onCheckTokenFailed"
+QT_MOC_LITERAL(22, 297, 6), // "status"
+QT_MOC_LITERAL(23, 304, 10), // "exitThread"
+QT_MOC_LITERAL(24, 315, 11), // "showDlgWait"
+QT_MOC_LITERAL(25, 327, 6), // "isShow"
+QT_MOC_LITERAL(26, 334, 5), // "bBind"
+QT_MOC_LITERAL(27, 340, 14), // "onlyExitThread"
+QT_MOC_LITERAL(28, 355, 15), // "UserInfoStruct&"
+QT_MOC_LITERAL(29, 371, 8), // "userInfo"
+QT_MOC_LITERAL(30, 380, 12), // "strOldUserId"
+QT_MOC_LITERAL(31, 393, 12), // "strNewUserId"
+QT_MOC_LITERAL(32, 406, 11), // "strNewToken"
+QT_MOC_LITERAL(33, 418, 13), // "startInitWork"
+QT_MOC_LITERAL(34, 432, 15), // "closeAllWindows"
+QT_MOC_LITERAL(35, 448, 15), // "resizeAllWidget"
+QT_MOC_LITERAL(36, 464, 20), // "onChangeUnreadMsgNum"
+QT_MOC_LITERAL(37, 485, 4), // "nNum"
+QT_MOC_LITERAL(38, 490, 4), // "bAdd"
+QT_MOC_LITERAL(39, 495, 14), // "onTopToolClick"
+QT_MOC_LITERAL(40, 510, 17), // "onReduceUnreadNum"
+QT_MOC_LITERAL(41, 528, 19), // "openAppCenterWidget"
+QT_MOC_LITERAL(42, 548, 19), // "openMsgCenterWidget"
+QT_MOC_LITERAL(43, 568, 23), // "openSettingCenterWidget"
+QT_MOC_LITERAL(44, 592, 11), // "onSwitchAcc"
+QT_MOC_LITERAL(45, 604, 11), // "bLoginByTax"
+QT_MOC_LITERAL(46, 616, 6), // "bOther"
+QT_MOC_LITERAL(47, 623, 17), // "strTaxNo_userName"
+QT_MOC_LITERAL(48, 641, 6), // "strPwd"
+QT_MOC_LITERAL(49, 648, 17), // "onTopCheckChanged"
+QT_MOC_LITERAL(50, 666, 5), // "bShow"
+QT_MOC_LITERAL(51, 672, 19), // "onRightCheckChanged"
+QT_MOC_LITERAL(52, 692, 18), // "onToolCheckChanged"
+QT_MOC_LITERAL(53, 711, 9), // "strToolId"
+QT_MOC_LITERAL(54, 721, 8), // "onLogout"
+QT_MOC_LITERAL(55, 730, 11), // "onChangeTax"
+QT_MOC_LITERAL(56, 742, 8), // "strTaxNo"
+QT_MOC_LITERAL(57, 751, 10), // "strMachine"
+QT_MOC_LITERAL(58, 762, 17), // "bingdingPhoneSlot"
+QT_MOC_LITERAL(59, 780, 20), // "slotBindingSucceeded"
+QT_MOC_LITERAL(60, 801, 9), // "strUserId"
+QT_MOC_LITERAL(61, 811, 9), // "strMobile"
+QT_MOC_LITERAL(62, 821, 8), // "strToken"
+QT_MOC_LITERAL(63, 830, 16), // "slotChangeMobile"
+QT_MOC_LITERAL(64, 847, 10), // "noviceSlot"
+QT_MOC_LITERAL(65, 858, 17), // "buyMembershipSlot"
+QT_MOC_LITERAL(66, 876, 11), // "vipNameList"
+QT_MOC_LITERAL(67, 888, 9), // "vipIdList"
+QT_MOC_LITERAL(68, 898, 11) // "vipTimeList"
 
     },
-    "ZcloudDesk\0startInitSignal\0\0"
-    "onModifyCoinCount\0nCount\0onSwitchTip\0"
-    "flag\0openSignInWidegt\0QWidget*\0"
-    "pParentWidget\0registerDevice\0"
+    "ZcloudDesk\0startInitSignal\0\0hideWindow\0"
+    "showWindow\0on_activatedSysTrayIcon\0"
+    "QSystemTrayIcon::ActivationReason\0"
+    "reason\0onModifyCoinCount\0nCount\0"
+    "onSwitchTip\0flag\0openSignInWidegt\0"
+    "QWidget*\0pParentWidget\0registerDevice\0"
     "onAdvertisingClick\0nType\0strTarget\0"
     "onReciveMsgPopUp\0startInitSlot\0"
     "onCheckTokenFailed\0status\0exitThread\0"
@@ -128,7 +135,7 @@ static const uint qt_meta_data_ZcloudDesk[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-      36,   14, // methods
+      39,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -136,84 +143,90 @@ static const uint qt_meta_data_ZcloudDesk[] = {
        1,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    1,  194,    2, 0x06 /* Public */,
+       1,    1,  209,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       3,    1,  197,    2, 0x08 /* Private */,
-       5,    1,  200,    2, 0x08 /* Private */,
-       5,    0,  203,    2, 0x28 /* Private | MethodCloned */,
-       7,    1,  204,    2, 0x08 /* Private */,
-      10,    0,  207,    2, 0x08 /* Private */,
-      11,    2,  208,    2, 0x08 /* Private */,
-      14,    1,  213,    2, 0x08 /* Private */,
-      15,    1,  216,    2, 0x08 /* Private */,
-      16,    1,  219,    2, 0x08 /* Private */,
-      18,    1,  222,    2, 0x08 /* Private */,
-      18,    0,  225,    2, 0x28 /* Private | MethodCloned */,
-      19,    2,  226,    2, 0x08 /* Private */,
-      19,    1,  231,    2, 0x28 /* Private | MethodCloned */,
-      22,    4,  234,    2, 0x08 /* Private */,
-      28,    0,  243,    2, 0x08 /* Private */,
-      29,    1,  244,    2, 0x08 /* Private */,
-      30,    0,  247,    2, 0x08 /* Private */,
-      31,    2,  248,    2, 0x08 /* Private */,
-      34,    0,  253,    2, 0x08 /* Private */,
-      35,    1,  254,    2, 0x08 /* Private */,
-      36,    0,  257,    2, 0x08 /* Private */,
-      37,    0,  258,    2, 0x08 /* Private */,
-      38,    0,  259,    2, 0x08 /* Private */,
-      39,    4,  260,    2, 0x08 /* Private */,
-      44,    1,  269,    2, 0x08 /* Private */,
-      46,    1,  272,    2, 0x08 /* Private */,
-      47,    2,  275,    2, 0x08 /* Private */,
-      49,    0,  280,    2, 0x08 /* Private */,
-      50,    2,  281,    2, 0x08 /* Private */,
-      53,    0,  286,    2, 0x08 /* Private */,
-      54,    4,  287,    2, 0x08 /* Private */,
-      58,    1,  296,    2, 0x08 /* Private */,
-      59,    1,  299,    2, 0x08 /* Private */,
-      59,    0,  302,    2, 0x28 /* Private | MethodCloned */,
-      60,    3,  303,    2, 0x08 /* Private */,
+       3,    0,  212,    2, 0x08 /* Private */,
+       4,    0,  213,    2, 0x08 /* Private */,
+       5,    1,  214,    2, 0x08 /* Private */,
+       8,    1,  217,    2, 0x08 /* Private */,
+      10,    1,  220,    2, 0x08 /* Private */,
+      10,    0,  223,    2, 0x28 /* Private | MethodCloned */,
+      12,    1,  224,    2, 0x08 /* Private */,
+      15,    0,  227,    2, 0x08 /* Private */,
+      16,    2,  228,    2, 0x08 /* Private */,
+      19,    1,  233,    2, 0x08 /* Private */,
+      20,    1,  236,    2, 0x08 /* Private */,
+      21,    1,  239,    2, 0x08 /* Private */,
+      23,    1,  242,    2, 0x08 /* Private */,
+      23,    0,  245,    2, 0x28 /* Private | MethodCloned */,
+      24,    2,  246,    2, 0x08 /* Private */,
+      24,    1,  251,    2, 0x28 /* Private | MethodCloned */,
+      27,    4,  254,    2, 0x08 /* Private */,
+      33,    0,  263,    2, 0x08 /* Private */,
+      34,    1,  264,    2, 0x08 /* Private */,
+      35,    0,  267,    2, 0x08 /* Private */,
+      36,    2,  268,    2, 0x08 /* Private */,
+      39,    0,  273,    2, 0x08 /* Private */,
+      40,    1,  274,    2, 0x08 /* Private */,
+      41,    0,  277,    2, 0x08 /* Private */,
+      42,    0,  278,    2, 0x08 /* Private */,
+      43,    0,  279,    2, 0x08 /* Private */,
+      44,    4,  280,    2, 0x08 /* Private */,
+      49,    1,  289,    2, 0x08 /* Private */,
+      51,    1,  292,    2, 0x08 /* Private */,
+      52,    2,  295,    2, 0x08 /* Private */,
+      54,    0,  300,    2, 0x08 /* Private */,
+      55,    2,  301,    2, 0x08 /* Private */,
+      58,    0,  306,    2, 0x08 /* Private */,
+      59,    4,  307,    2, 0x08 /* Private */,
+      63,    1,  316,    2, 0x08 /* Private */,
+      64,    1,  319,    2, 0x08 /* Private */,
+      64,    0,  322,    2, 0x28 /* Private | MethodCloned */,
+      65,    3,  323,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::Int,    2,
 
  // slots: parameters
-    QMetaType::Void, QMetaType::Int,    4,
-    QMetaType::Void, QMetaType::Bool,    6,
     QMetaType::Void,
-    QMetaType::Void, 0x80000000 | 8,    9,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::Int, QMetaType::QString,   12,   13,
+    QMetaType::Void, 0x80000000 | 6,    7,
+    QMetaType::Void, QMetaType::Int,    9,
+    QMetaType::Void, QMetaType::Bool,   11,
+    QMetaType::Void,
+    QMetaType::Void, 0x80000000 | 13,   14,
+    QMetaType::Void,
+    QMetaType::Void, QMetaType::Int, QMetaType::QString,   17,   18,
     QMetaType::Void, QMetaType::QString,    2,
-    QMetaType::Void, QMetaType::Int,    6,
-    QMetaType::Void, QMetaType::Int,   17,
-    QMetaType::Void, QMetaType::Int,    6,
+    QMetaType::Void, QMetaType::Int,   11,
+    QMetaType::Void, QMetaType::Int,   22,
+    QMetaType::Void, QMetaType::Int,   11,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::Bool, QMetaType::Bool,   20,   21,
-    QMetaType::Void, QMetaType::Bool,   20,
-    QMetaType::Void, 0x80000000 | 23, QMetaType::QString, QMetaType::QString, QMetaType::QString,   24,   25,   26,   27,
+    QMetaType::Void, QMetaType::Bool, QMetaType::Bool,   25,   26,
+    QMetaType::Void, QMetaType::Bool,   25,
+    QMetaType::Void, 0x80000000 | 28, QMetaType::QString, QMetaType::QString, QMetaType::QString,   29,   30,   31,   32,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::Int,    6,
+    QMetaType::Void, QMetaType::Int,   11,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::Int, QMetaType::Bool,   32,   33,
+    QMetaType::Void, QMetaType::Int, QMetaType::Bool,   37,   38,
     QMetaType::Void,
     QMetaType::Void, QMetaType::Int,    2,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::Int, QMetaType::Bool, QMetaType::QString, QMetaType::QString,   40,   41,   42,   43,
-    QMetaType::Void, QMetaType::Bool,   45,
-    QMetaType::Void, QMetaType::Bool,   45,
-    QMetaType::Void, QMetaType::QString, QMetaType::Bool,   48,   45,
+    QMetaType::Void, QMetaType::Int, QMetaType::Bool, QMetaType::QString, QMetaType::QString,   45,   46,   47,   48,
+    QMetaType::Void, QMetaType::Bool,   50,
+    QMetaType::Void, QMetaType::Bool,   50,
+    QMetaType::Void, QMetaType::QString, QMetaType::Bool,   53,   50,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::QString, QMetaType::QString,   51,   52,
+    QMetaType::Void, QMetaType::QString, QMetaType::QString,   56,   57,
     QMetaType::Void,
-    QMetaType::Void, 0x80000000 | 23, QMetaType::QString, QMetaType::QString, QMetaType::QString,   24,   55,   56,   57,
-    QMetaType::Void, QMetaType::QString,   56,
-    QMetaType::Void, QMetaType::Bool,    6,
+    QMetaType::Void, 0x80000000 | 28, QMetaType::QString, QMetaType::QString, QMetaType::QString,   29,   60,   61,   62,
+    QMetaType::Void, QMetaType::QString,   61,
+    QMetaType::Void, QMetaType::Bool,   11,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::QStringList, QMetaType::QStringList, QMetaType::QStringList,   61,   62,   63,
+    QMetaType::Void, QMetaType::QStringList, QMetaType::QStringList, QMetaType::QStringList,   66,   67,   68,
 
        0        // eod
 };
@@ -225,47 +238,50 @@ void ZcloudDesk::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->startInitSignal((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 1: _t->onModifyCoinCount((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 2: _t->onSwitchTip((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 3: _t->onSwitchTip(); break;
-        case 4: _t->openSignInWidegt((*reinterpret_cast< QWidget*(*)>(_a[1]))); break;
-        case 5: _t->registerDevice(); break;
-        case 6: _t->onAdvertisingClick((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2]))); break;
-        case 7: _t->onReciveMsgPopUp((*reinterpret_cast< QString(*)>(_a[1]))); break;
-        case 8: _t->startInitSlot((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 9: _t->onCheckTokenFailed((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 10: _t->exitThread((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 11: _t->exitThread(); break;
-        case 12: _t->showDlgWait((*reinterpret_cast< bool(*)>(_a[1])),(*reinterpret_cast< bool(*)>(_a[2]))); break;
-        case 13: _t->showDlgWait((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 14: _t->onlyExitThread((*reinterpret_cast< UserInfoStruct(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])),(*reinterpret_cast< QString(*)>(_a[3])),(*reinterpret_cast< QString(*)>(_a[4]))); break;
-        case 15: _t->startInitWork(); break;
-        case 16: _t->closeAllWindows((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 17: _t->resizeAllWidget(); break;
-        case 18: _t->onChangeUnreadMsgNum((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< bool(*)>(_a[2]))); break;
-        case 19: _t->onTopToolClick(); break;
-        case 20: _t->onReduceUnreadNum((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 21: _t->openAppCenterWidget(); break;
-        case 22: _t->openMsgCenterWidget(); break;
-        case 23: _t->openSettingCenterWidget(); break;
-        case 24: _t->onSwitchAcc((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< bool(*)>(_a[2])),(*reinterpret_cast< QString(*)>(_a[3])),(*reinterpret_cast< QString(*)>(_a[4]))); break;
-        case 25: _t->onTopCheckChanged((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 26: _t->onRightCheckChanged((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 27: _t->onToolCheckChanged((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< bool(*)>(_a[2]))); break;
-        case 28: _t->onLogout(); break;
-        case 29: _t->onChangeTax((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2]))); break;
-        case 30: _t->bingdingPhoneSlot(); break;
-        case 31: _t->slotBindingSucceeded((*reinterpret_cast< UserInfoStruct(*)>(_a[1])),(*reinterpret_cast< const QString(*)>(_a[2])),(*reinterpret_cast< const QString(*)>(_a[3])),(*reinterpret_cast< const QString(*)>(_a[4]))); break;
-        case 32: _t->slotChangeMobile((*reinterpret_cast< const QString(*)>(_a[1]))); break;
-        case 33: _t->noviceSlot((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 34: _t->noviceSlot(); break;
-        case 35: _t->buyMembershipSlot((*reinterpret_cast< QStringList(*)>(_a[1])),(*reinterpret_cast< QStringList(*)>(_a[2])),(*reinterpret_cast< QStringList(*)>(_a[3]))); break;
+        case 1: _t->hideWindow(); break;
+        case 2: _t->showWindow(); break;
+        case 3: _t->on_activatedSysTrayIcon((*reinterpret_cast< QSystemTrayIcon::ActivationReason(*)>(_a[1]))); break;
+        case 4: _t->onModifyCoinCount((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 5: _t->onSwitchTip((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 6: _t->onSwitchTip(); break;
+        case 7: _t->openSignInWidegt((*reinterpret_cast< QWidget*(*)>(_a[1]))); break;
+        case 8: _t->registerDevice(); break;
+        case 9: _t->onAdvertisingClick((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2]))); break;
+        case 10: _t->onReciveMsgPopUp((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 11: _t->startInitSlot((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 12: _t->onCheckTokenFailed((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 13: _t->exitThread((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 14: _t->exitThread(); break;
+        case 15: _t->showDlgWait((*reinterpret_cast< bool(*)>(_a[1])),(*reinterpret_cast< bool(*)>(_a[2]))); break;
+        case 16: _t->showDlgWait((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 17: _t->onlyExitThread((*reinterpret_cast< UserInfoStruct(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])),(*reinterpret_cast< QString(*)>(_a[3])),(*reinterpret_cast< QString(*)>(_a[4]))); break;
+        case 18: _t->startInitWork(); break;
+        case 19: _t->closeAllWindows((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 20: _t->resizeAllWidget(); break;
+        case 21: _t->onChangeUnreadMsgNum((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< bool(*)>(_a[2]))); break;
+        case 22: _t->onTopToolClick(); break;
+        case 23: _t->onReduceUnreadNum((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 24: _t->openAppCenterWidget(); break;
+        case 25: _t->openMsgCenterWidget(); break;
+        case 26: _t->openSettingCenterWidget(); break;
+        case 27: _t->onSwitchAcc((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< bool(*)>(_a[2])),(*reinterpret_cast< QString(*)>(_a[3])),(*reinterpret_cast< QString(*)>(_a[4]))); break;
+        case 28: _t->onTopCheckChanged((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 29: _t->onRightCheckChanged((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 30: _t->onToolCheckChanged((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< bool(*)>(_a[2]))); break;
+        case 31: _t->onLogout(); break;
+        case 32: _t->onChangeTax((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2]))); break;
+        case 33: _t->bingdingPhoneSlot(); break;
+        case 34: _t->slotBindingSucceeded((*reinterpret_cast< UserInfoStruct(*)>(_a[1])),(*reinterpret_cast< const QString(*)>(_a[2])),(*reinterpret_cast< const QString(*)>(_a[3])),(*reinterpret_cast< const QString(*)>(_a[4]))); break;
+        case 35: _t->slotChangeMobile((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 36: _t->noviceSlot((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 37: _t->noviceSlot(); break;
+        case 38: _t->buyMembershipSlot((*reinterpret_cast< QStringList(*)>(_a[1])),(*reinterpret_cast< QStringList(*)>(_a[2])),(*reinterpret_cast< QStringList(*)>(_a[3]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
         switch (_id) {
         default: *reinterpret_cast<int*>(_a[0]) = -1; break;
-        case 4:
+        case 7:
             switch (*reinterpret_cast<int*>(_a[1])) {
             default: *reinterpret_cast<int*>(_a[0]) = -1; break;
             case 0:
@@ -310,13 +326,13 @@ int ZcloudDesk::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 36)
+        if (_id < 39)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 36;
+        _id -= 39;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 36)
+        if (_id < 39)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 36;
+        _id -= 39;
     }
     return _id;
 }

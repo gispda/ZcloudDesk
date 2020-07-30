@@ -180,95 +180,97 @@ int main(int argc, char *argv[])
 	updater();
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	LoginDialog loginDialog;
-	DlgWait 	dlgWait(QString::fromLocal8Bit("登录中..."));
-	QString strTip;
-	int logingInt;
-	if (loginDialog.isUserNameLogin())//非税号登录
-		logingInt = 3;
-	else
-		logingInt = loginDialog.checkLogin(strTip);
-	dlgWait.stop();
-	if (logingInt == 2 || logingInt == 0 || logingInt == 3)
-	{
-		if (logingInt == 2)
-		{
-			/*
-			//让用户确认是否安装开票软件
-			if (ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_OKCANCEL, QString::fromLocal8Bit("提示"), strTip) == QDialog::Accepted)
-			{
-				//安装开票软件
-				QString softUrl;
-				QString softVersion;
-				if (ZcloudComFun::getSoftwareData(softUrl, softVersion))
-				{
-					if (ZhicloudApp::openDownloadSoftware(0, softUrl) == QDialog::Accepted)
-					{
-						//安装成功重启软件
-						a.appDisConnect();
-						QProcess::startDetached(qApp->applicationFilePath(), QStringList());
-						return 0;
-					}
-				}
-				else
-					ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_TIP, QString::fromLocal8Bit("提示"), QString::fromLocal8Bit("获取开票软件失败，请稍后再试！"));
-			}*/
-		}
-		else if (logingInt == 0)
-		{
-			//登录失败提示
-			ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_TIP, QString::fromLocal8Bit("提示"), strTip);
-		}
-		//账号登录框
-		//扫码 下提示安装开票软件
-		loginDialog.initWeChartWidget(logingInt);
-		if (loginDialog.exec() != QDialog::Accepted)
-		{
-			return 0;
-		}
-	}
-	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	//如果是税号登录登录成功 检测开票软件版本
-	if (loginDialog.getUserInfoStruct().m_bLoginByTax == 1)
-	{
-		QString softUrl;
-		QString softVersion = loginDialog.getUserInfoStruct().m_strHzsId;
-		if (ZcloudComFun::getSoftwareData(softUrl, softVersion))
-		{
-			QString strVerSion = "";
-			if (ZcloudComFun::readsoft(strVerSion, loginDialog.getUserInfoStruct().m_strTaxNumber) && !strVerSion.isEmpty())
-			{
-				QStringList oldVerList = strVerSion.split(".");
-				QStringList newVerList = softVersion.split(".");
-				for (size_t i = 0; i < (oldVerList.size() > newVerList.size() ? newVerList.size() : oldVerList.size()); i++)
-				{
-					if (oldVerList.at(i).toInt() != newVerList.at(i).toInt())
-					{
-						if (oldVerList.at(i).toInt() < newVerList.at(i).toInt())
-						{
-							//让用户确认是否安装开票软件
-							if (ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_OKCANCEL, QString::fromLocal8Bit("提示"), QString::fromLocal8Bit("检测到新的开票软件，是否更新？")) == QDialog::Accepted)
-							{
-								//安装开票软件
-								if (ZhicloudApp::openDownloadSoftware(0, softUrl) == QDialog::Accepted)
-								{
-									//安装成功重启软件
-									a.appDisConnect();
-									QProcess::startDetached(qApp->applicationFilePath(), QStringList());
-									return 0;
-								}
-							}
-							break;
-						}
-					}
-				}
-			}
-		}
-	}
+	//LoginDialog loginDialog;
+	//DlgWait 	dlgWait(QString::fromLocal8Bit("登录中..."));
+	//QString strTip;
+	//int logingInt;
+	//if (loginDialog.isUserNameLogin())//非税号登录
+	//	logingInt = 3;
+	//else
+	//	logingInt = loginDialog.checkLogin(strTip);
+	//dlgWait.stop();
+	//if (logingInt == 2 || logingInt == 0 || logingInt == 3)
+	//{
+	//	if (logingInt == 2)
+	//	{
+	//		/*
+	//		//让用户确认是否安装开票软件
+	//		if (ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_OKCANCEL, QString::fromLocal8Bit("提示"), strTip) == QDialog::Accepted)
+	//		{
+	//			//安装开票软件
+	//			QString softUrl;
+	//			QString softVersion;
+	//			if (ZcloudComFun::getSoftwareData(softUrl, softVersion))
+	//			{
+	//				if (ZhicloudApp::openDownloadSoftware(0, softUrl) == QDialog::Accepted)
+	//				{
+	//					//安装成功重启软件
+	//					a.appDisConnect();
+	//					QProcess::startDetached(qApp->applicationFilePath(), QStringList());
+	//					return 0;
+	//				}
+	//			}
+	//			else
+	//				ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_TIP, QString::fromLocal8Bit("提示"), QString::fromLocal8Bit("获取开票软件失败，请稍后再试！"));
+	//		}*/
+	//	}
+	//	else if (logingInt == 0)
+	//	{
+	//		//登录失败提示
+	//		ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_TIP, QString::fromLocal8Bit("提示"), strTip);
+	//	}
+	//	//账号登录框
+	//	//扫码 下提示安装开票软件
+	//	loginDialog.initWeChartWidget(logingInt);
+	//	if (loginDialog.exec() != QDialog::Accepted)
+	//	{
+	//		return 0;
+	//	}
+	//}
+	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	////如果是税号登录登录成功 检测开票软件版本
+	//if (loginDialog.getUserInfoStruct().m_bLoginByTax == 1)
+	//{
+	//	QString softUrl;
+	//	QString softVersion = loginDialog.getUserInfoStruct().m_strHzsId;
+	//	if (ZcloudComFun::getSoftwareData(softUrl, softVersion))
+	//	{
+	//		QString strVerSion = "";
+	//		if (ZcloudComFun::readsoft(strVerSion, loginDialog.getUserInfoStruct().m_strTaxNumber) && !strVerSion.isEmpty())
+	//		{
+	//			QStringList oldVerList = strVerSion.split(".");
+	//			QStringList newVerList = softVersion.split(".");
+	//			for (size_t i = 0; i < (oldVerList.size() > newVerList.size() ? newVerList.size() : oldVerList.size()); i++)
+	//			{
+	//				if (oldVerList.at(i).toInt() != newVerList.at(i).toInt())
+	//				{
+	//					if (oldVerList.at(i).toInt() < newVerList.at(i).toInt())
+	//					{
+	//						//让用户确认是否安装开票软件
+	//						if (ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_OKCANCEL, QString::fromLocal8Bit("提示"), QString::fromLocal8Bit("检测到新的开票软件，是否更新？")) == QDialog::Accepted)
+	//						{
+	//							//安装开票软件
+	//							if (ZhicloudApp::openDownloadSoftware(0, softUrl) == QDialog::Accepted)
+	//							{
+	//								//安装成功重启软件
+	//								a.appDisConnect();
+	//								QProcess::startDetached(qApp->applicationFilePath(), QStringList());
+	//								return 0;
+	//							}
+	//						}
+	//						break;
+	//					}
+	//				}
+	//			}
+	//		}
+	//	}
+	//}
 
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//登陆成功
-	UserInfoStruct userInfo = loginDialog.getUserInfoStruct();
+	//UserInfoStruct userInfo = loginDialog.getUserInfoStruct();
+	//ZcloudDesk w(userInfo);
+	UserInfoStruct userInfo ;
 	ZcloudDesk w(userInfo);
 	w.show();
 	a.mainWindow = &w;
