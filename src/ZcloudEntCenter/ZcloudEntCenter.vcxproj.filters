@@ -1,0 +1,296 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;cxx;c;def</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h</Extensions>
+    </Filter>
+    <Filter Include="Form Files">
+      <UniqueIdentifier>{99349809-55BA-4b9d-BF79-8FDBB0286EB3}</UniqueIdentifier>
+      <Extensions>ui</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{D9D6E242-F8AF-46E4-B9FD-80ECBC20BA3E}</UniqueIdentifier>
+      <Extensions>qrc;*</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+    <Filter Include="Generated Files">
+      <UniqueIdentifier>{71ED8ED8-ACB9-4CE9-BBE1-E00B30144E11}</UniqueIdentifier>
+      <Extensions>moc;h;cpp</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="Generated Files\Debug">
+      <UniqueIdentifier>{6ae82619-4781-4f26-bb6b-c977992079c8}</UniqueIdentifier>
+      <Extensions>cpp;moc</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="Generated Files\Release">
+      <UniqueIdentifier>{5653ccdb-8bbb-4aab-b548-5b871581657b}</UniqueIdentifier>
+      <Extensions>cpp;moc</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="FinanMember">
+      <UniqueIdentifier>{dbd14e2f-7203-42db-ba4a-5b9c13392a4e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SwitchAcc">
+      <UniqueIdentifier>{8f0b9530-8568-444c-8f45-a2ed973b4003}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AccSetting">
+      <UniqueIdentifier>{c5eaa0f2-0813-418a-9b8b-1aa46fd9d8ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EntInfo">
+      <UniqueIdentifier>{1db1e5f7-b638-4897-a2b4-9b8c17504250}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="EntCenterWidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AvatarLabel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EntComWidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ZcloudEntCenterImpl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EntDataBase.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="VipInfoWidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DefaultVipWidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="JoinEntWidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AddMemberWidget.cpp">
+      <Filter>FinanMember</Filter>
+    </ClCompile>
+    <ClCompile Include="AuditMemberWidget.cpp">
+      <Filter>FinanMember</Filter>
+    </ClCompile>
+    <ClCompile Include="FinanMemberWidget.cpp">
+      <Filter>FinanMember</Filter>
+    </ClCompile>
+    <ClCompile Include="MemberItemWidget.cpp">
+      <Filter>FinanMember</Filter>
+    </ClCompile>
+    <ClCompile Include="ModifyMemberWidget.cpp">
+      <Filter>FinanMember</Filter>
+    </ClCompile>
+    <ClCompile Include="SwitchAccWidget.cpp">
+      <Filter>SwitchAcc</Filter>
+    </ClCompile>
+    <ClCompile Include="AccItemWidget.cpp">
+      <Filter>SwitchAcc</Filter>
+    </ClCompile>
+    <ClCompile Include="AccSettingWidget.cpp">
+      <Filter>AccSetting</Filter>
+    </ClCompile>
+    <ClCompile Include="EntInfoWidget.cpp">
+      <Filter>EntInfo</Filter>
+    </ClCompile>
+    <ClCompile Include="EditEntInfoWidget.cpp">
+      <Filter>EntInfo</Filter>
+    </ClCompile>
+    <ClCompile Include="EditInvoiceInfoWidget.cpp">
+      <Filter>EntInfo</Filter>
+    </ClCompile>
+    <ClCompile Include="ModifyUserInfoWidget.cpp">
+      <Filter>AccSetting</Filter>
+    </ClCompile>
+    <ClCompile Include="BindMobileWidget.cpp">
+      <Filter>AccSetting</Filter>
+    </ClCompile>
+    <ClCompile Include="BindEmailWidget.cpp">
+      <Filter>AccSetting</Filter>
+    </ClCompile>
+    <ClCompile Include="AcceptAddressWidget.cpp">
+      <Filter>AccSetting</Filter>
+    </ClCompile>
+    <ClCompile Include="ModifyPwdWidget.cpp">
+      <Filter>AccSetting</Filter>
+    </ClCompile>
+    <ClCompile Include="SetPwdWidget.cpp">
+      <Filter>AccSetting</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="EntCenterWidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtUic Include="EntCenterWidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtRcc Include="EntCenterWidget.qrc">
+      <Filter>Resource Files</Filter>
+    </QtRcc>
+    <QtMoc Include="AvatarLabel.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="EntComWidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtUic Include="EntComWidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtMoc Include="..\..\include\ZcloudEntCenter.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="VipInfoWidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="DefaultVipWidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="JoinEntWidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="AddMemberWidget.h">
+      <Filter>FinanMember</Filter>
+    </QtMoc>
+    <QtMoc Include="AuditMemberWidget.h">
+      <Filter>FinanMember</Filter>
+    </QtMoc>
+    <QtMoc Include="FinanMemberWidget.h">
+      <Filter>FinanMember</Filter>
+    </QtMoc>
+    <QtMoc Include="MemberItemWidget.h">
+      <Filter>FinanMember</Filter>
+    </QtMoc>
+    <QtMoc Include="ModifyMemberWidget.h">
+      <Filter>FinanMember</Filter>
+    </QtMoc>
+    <QtMoc Include="AccItemWidget.h">
+      <Filter>SwitchAcc</Filter>
+    </QtMoc>
+    <QtMoc Include="SwitchAccWidget.h">
+      <Filter>SwitchAcc</Filter>
+    </QtMoc>
+    <QtMoc Include="AccSettingWidget.h">
+      <Filter>AccSetting</Filter>
+    </QtMoc>
+    <QtMoc Include="EntInfoWidget.h">
+      <Filter>EntInfo</Filter>
+    </QtMoc>
+    <QtMoc Include="EditEntInfoWidget.h">
+      <Filter>EntInfo</Filter>
+    </QtMoc>
+    <QtMoc Include="EditInvoiceInfoWidget.h">
+      <Filter>EntInfo</Filter>
+    </QtMoc>
+    <QtMoc Include="ModifyUserInfoWidget.h">
+      <Filter>AccSetting</Filter>
+    </QtMoc>
+    <QtMoc Include="BindMobileWidget.h">
+      <Filter>AccSetting</Filter>
+    </QtMoc>
+    <QtMoc Include="BindEmailWidget.h">
+      <Filter>AccSetting</Filter>
+    </QtMoc>
+    <QtMoc Include="AcceptAddressWidget.h">
+      <Filter>AccSetting</Filter>
+    </QtMoc>
+    <QtMoc Include="ModifyPwdWidget.h">
+      <Filter>AccSetting</Filter>
+    </QtMoc>
+    <QtMoc Include="SetPwdWidget.h">
+      <Filter>AccSetting</Filter>
+    </QtMoc>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GeneratedFiles\ui_EntCenterWidget.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_SwitchAccWidget.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_AccItemWidget.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_EntComWidget.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EntInfoDataDefine.h">
+      <Filter>EntInfo</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="ZcloudEntCenterImpl.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="EntDataBase.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+  </ItemGroup>
+  <ItemGroup>
+    <QtUic Include="VipInfoWidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="DefaultVipWidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="JoinEntWidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="AddMemberWidget.ui">
+      <Filter>FinanMember</Filter>
+    </QtUic>
+    <QtUic Include="AuditMemberWidget.ui">
+      <Filter>FinanMember</Filter>
+    </QtUic>
+    <QtUic Include="FinanMemberWidget.ui">
+      <Filter>FinanMember</Filter>
+    </QtUic>
+    <QtUic Include="MemberItemWidget.ui">
+      <Filter>FinanMember</Filter>
+    </QtUic>
+    <QtUic Include="ModifyMemberWidget.ui">
+      <Filter>FinanMember</Filter>
+    </QtUic>
+    <QtUic Include="AccItemWidget.ui">
+      <Filter>SwitchAcc</Filter>
+    </QtUic>
+    <QtUic Include="SwitchAccWidget.ui">
+      <Filter>SwitchAcc</Filter>
+    </QtUic>
+    <QtUic Include="AccSettingWidget.ui">
+      <Filter>AccSetting</Filter>
+    </QtUic>
+    <QtUic Include="EntInfoWidget.ui">
+      <Filter>EntInfo</Filter>
+    </QtUic>
+    <QtUic Include="EditEntInfoWidget.ui">
+      <Filter>EntInfo</Filter>
+    </QtUic>
+    <QtUic Include="EditInvoiceInfoWidget.ui">
+      <Filter>EntInfo</Filter>
+    </QtUic>
+    <QtUic Include="ModifyUserInfoWidget.ui">
+      <Filter>AccSetting</Filter>
+    </QtUic>
+    <QtUic Include="BindMobileWidget.ui">
+      <Filter>AccSetting</Filter>
+    </QtUic>
+    <QtUic Include="BindEmailWidget.ui">
+      <Filter>AccSetting</Filter>
+    </QtUic>
+    <QtUic Include="AcceptAddressWidget.ui">
+      <Filter>AccSetting</Filter>
+    </QtUic>
+    <QtUic Include="ModifyPwdWidget.ui">
+      <Filter>AccSetting</Filter>
+    </QtUic>
+    <QtUic Include="SetPwdWidget.ui">
+      <Filter>AccSetting</Filter>
+    </QtUic>
+  </ItemGroup>
+</Project>

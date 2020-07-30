@@ -1,0 +1,22 @@
+<RCC>
+  <qresource prefix="ZcloudMsgCenter">
+    <file>image/noContent.png</file>
+    <file>image/arrow.png</file>
+    <file>image/back.png</file>
+    <file>image/back_msg.png</file>
+    <file>image/back_msg_un.png</file>
+    <file>image/back_sel.png</file>
+    <file>image/close.png</file>
+    <file>image/close_sel.png</file>
+    <file>image/del_msg.png</file>
+    <file>image/del_msg_sel.png</file>
+    <file>image/fee_msg.png</file>
+    <file>image/fee_msg_un.png</file>
+    <file>image/max.png</file>
+    <file>image/max_sel.png</file>
+    <file>image/min.png</file>
+    <file>image/min_sel.png</file>
+    <file>image/sys_msg.png</file>
+    <file>image/sys_msg_un.png</file>
+  </qresource>
+</RCC>

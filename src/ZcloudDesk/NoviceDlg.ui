@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>NoviceDlg</class>
+ <widget class="QDialog" name="NoviceDlg">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1810</width>
+    <height>1119</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>NoviceDlg</string>
+  </property>
+  <widget class="QLabel" name="frame2">
+   <property name="geometry">
+    <rect>
+     <x>1490</x>
+     <y>120</y>
+     <width>287</width>
+     <height>549</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-image: url(:/ZcloudDesk/image/Novice/app_class.png);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="frame">
+   <property name="geometry">
+    <rect>
+     <x>1230</x>
+     <y>20</y>
+     <width>196</width>
+     <height>34</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-image: url(:/ZcloudDesk/image/Novice/userCenter_1.png);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QWidget" name="photoWidget" native="true">
+   <property name="geometry">
+    <rect>
+     <x>280</x>
+     <y>130</y>
+     <width>814</width>
+     <height>714</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QWidget#photoWidget{
+border-image: url(:/ZcloudDesk/image/Novice/userCenter.png);
+}</string>
+   </property>
+   <widget class="QPushButton" name="skipPushButton">
+    <property name="geometry">
+     <rect>
+      <x>760</x>
+      <y>20</y>
+      <width>32</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+	
+	border-image: url(:/ZcloudDesk/image/Novice/close_nor.png);
+ }
+QPushButton:hover,pressed{
+border-image: url(:/ZcloudDesk/image/Novice/close_hov.png);
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="nextPushButton">
+    <property name="geometry">
+     <rect>
+      <x>332</x>
+      <y>600</y>
+      <width>150</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>150</width>
+      <height>40</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>150</width>
+      <height>40</height>
+     </size>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(6, 167, 253, 255), stop:1 rgba(33, 143, 237, 255));
+border-radius:4px;
+	color: rgb(255, 255, 255);
+	font: 18px &quot;微软雅黑&quot;;
+ }
+
+QPushButton:hover,pressed{
+background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(40, 178, 253, 255), stop:1 rgba(64, 156, 250, 255));
+border-radius:4px;
+color: rgb(255, 255, 255);
+	font: 18px &quot;微软雅黑&quot;;
+};</string>
+    </property>
+    <property name="text">
+     <string>下一步</string>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources>
+  <include location="ZcloudDesk.qrc"/>
+ </resources>
+ <connections/>
+</ui>

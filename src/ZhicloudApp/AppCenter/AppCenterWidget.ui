@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>AppCenterWidget</class>
+ <widget class="QWidget" name="AppCenterWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1016</width>
+    <height>626</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1016</width>
+    <height>626</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>10080</width>
+    <height>6260</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>AppCenterWidget</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <widget class="QFrame" name="appCenterFrame">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1016</width>
+     <height>626</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QFrame#appCenterFrame{border-image: url(:/new/imageFile/appCenter_new.png);}</string>
+   </property>
+   <widget class="QPushButton" name="mainPushButton">
+    <property name="geometry">
+     <rect>
+      <x>223</x>
+      <y>22</y>
+      <width>64</width>
+      <height>54</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{border-image: url(:/new/imageFile/AppCenterPng/rec_nor.png);}
+QPushButton:hover{border-image: url(:/new/imageFile/AppCenterPng/rec_hover.png);}
+QPushButton:checked {border-image: url(:/new/imageFile/AppCenterPng/rec_hov.png);};</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
+    </property>
+    <property name="checked">
+     <bool>true</bool>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="categoryPushButton">
+    <property name="geometry">
+     <rect>
+      <x>346</x>
+      <y>22</y>
+      <width>64</width>
+      <height>54</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{border-image: url(:/new/imageFile/AppCenterPng/class_nor.png);}
+QPushButton:hover{border-image: url(:/new/imageFile/AppCenterPng/class_hover.png);}
+QPushButton:checked {border-image: url(:/new/imageFile/AppCenterPng/class_hov.png);};</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="managerPushButton">
+    <property name="geometry">
+     <rect>
+      <x>469</x>
+      <y>22</y>
+      <width>64</width>
+      <height>54</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{border-image: url(:/new/imageFile/AppCenterPng/desk_nor.png);}
+QPushButton:hover{border-image: url(:/new/imageFile/AppCenterPng/desk_hover.png);}
+QPushButton:checked {border-image: url(:/new/imageFile/AppCenterPng/desk_hov.png);};</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="seekLineEdit">
+    <property name="geometry">
+     <rect>
+      <x>744</x>
+      <y>51</y>
+      <width>200</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit{
+	border-image: url(:/new/imageFile/AppCenterPng/search_nor.png);
+	color: rgb(102, 102, 102);
+	font: 14px &quot;微软雅黑&quot;;
+}
+</string>
+    </property>
+    <property name="placeholderText">
+     <string>搜索</string>
+    </property>
+    <property name="clearButtonEnabled">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="downloadButton">
+    <property name="geometry">
+     <rect>
+      <x>962</x>
+      <y>51</y>
+      <width>24</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>24</width>
+      <height>24</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>24</width>
+      <height>24</height>
+     </size>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QToolButton{border-image: url(:/new/imageFile/AppCenterPng/download_nor.png);}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="miniButton">
+    <property name="geometry">
+     <rect>
+      <x>934</x>
+      <y>15</y>
+      <width>32</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>32</width>
+      <height>28</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>32</width>
+      <height>28</height>
+     </size>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{border-image: url(:/new/imageFile/AppCenterPng/appcenter_min_nor.png);}
+QPushButton:hover{border-image: url(:/new/imageFile/AppCenterPng/appcenter_min_hov.png);}
+QPushButton:pressed{border-image: url(:/new/imageFile/AppCenterPng/appcenter_min_hov.png);};</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="closeButton">
+    <property name="geometry">
+     <rect>
+      <x>966</x>
+      <y>15</y>
+      <width>32</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>32</width>
+      <height>28</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>32</width>
+      <height>28</height>
+     </size>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{border-image: url(:/new/imageFile/AppCenterPng/appcenter_close_nor.png);}
+QPushButton:hover{border-image: url(:/new/imageFile/AppCenterPng/appcenter_close_hov.png);}
+QPushButton:pressed{border-image: url(:/new/imageFile/AppCenterPng/appcenter_close_hov.png);};</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="AppCenterHomeWidget" name="homeWidget" native="true">
+    <property name="geometry">
+     <rect>
+      <x>8</x>
+      <y>88</y>
+      <width>1000</width>
+      <height>528</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="AppCenterAtegoryWidget" name="categoryWidget" native="true">
+    <property name="geometry">
+     <rect>
+      <x>1080</x>
+      <y>190</y>
+      <width>1000</width>
+      <height>528</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="AppCenterUUWidget" name="appManagerWidget" native="true">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>710</y>
+      <width>1000</width>
+      <height>528</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>1000</width>
+      <height>528</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>1000</width>
+      <height>528</height>
+     </size>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>AppCenterHomeWidget</class>
+   <extends>QWidget</extends>
+   <header>AppCenter/appcenterhomewidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>AppCenterAtegoryWidget</class>
+   <extends>QWidget</extends>
+   <header>AppCenter/AppCenterAtegoryWidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>AppCenterUUWidget</class>
+   <extends>QWidget</extends>
+   <header>AppCenter\AppCenterUUWidget.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="../AppCenterResource.qrc"/>
+ </resources>
+ <connections/>
+</ui>

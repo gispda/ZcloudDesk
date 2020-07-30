@@ -1,0 +1,36 @@
+<RCC>
+  <qresource prefix="EntCenterWidget">
+    <file>image/setted.png</file>
+    <file>image/unsetted.png</file>
+    <file>image/edit.png</file>
+    <file>image/oper.png</file>
+    <file>image/search_nor.png</file>
+    <file>image/search_sel.png</file>
+    <file>image/no_ent.png</file>
+    <file>image/noContent.png</file>
+    <file>image/userVipDefualt.png</file>
+    <file>image/defaultVip.png</file>
+    <file>image/icon_zwxx.png</file>
+    <file>image/web_close_hover.png</file>
+    <file>image/web_close_nor.png</file>
+    <file>image/img_tx_d.png</file>
+    <file>image/qyzx_icon_vip.png</file>
+    <file>image/qyzx_icon_vip_wjr.png</file>
+    <file>image/lineEdit.png</file>
+    <file>image/lineEdit_sel.png</file>
+    <file>image/completeInfo.png</file>
+    <file>image/copy.png</file>
+    <file>image/copy_sel.png</file>
+    <file>image/coupon.png</file>
+    <file>image/expired.png</file>
+    <file>image/notExpired.png</file>
+    <file>image/score.png</file>
+    <file>image/signIn.png</file>
+    <file>image/swtich.png</file>
+    <file>image/vip.png</file>
+    <file>image/close.png</file>
+    <file>image/close_sel.png</file>
+    <file>image/min.png</file>
+    <file>image/min_sel.png</file>
+  </qresource>
+</RCC>

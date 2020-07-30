@@ -1,0 +1,29 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Image/left_hov.png</file>
+        <file>Image/left_nor.png</file>
+        <file>Image/refresh_hov.png</file>
+        <file>Image/refresh_nor.png</file>
+        <file>Image/right_hov.png</file>
+        <file>Image/right_nor.png</file>
+        <file>Image/browser_close_hov.png</file>
+        <file>Image/browser_close_nor.png</file>
+        <file>Image/browser_max_hov.png</file>
+        <file>Image/browser_max_nor.png</file>
+        <file>Image/browser_mini_hov.png</file>
+        <file>Image/browser_mini_nor.png</file>
+        <file>Image/browser_nomal_hov.png</file>
+        <file>Image/browser_nomal_nor.png</file>
+        <file>Image/tabBar_close_hov.png</file>
+        <file>Image/tabBar_close_nor.png</file>
+        <file>Image/tabBar_close_nor1.png</file>
+        <file>Image/tabBar_home1.png</file>
+        <file>Image/tabBar_home2.png</file>
+        <file>Image/refresh_cancel_hov.png</file>
+        <file>Image/refresh_cancel_nor.png</file>
+        <file>Image/left_off.png</file>
+        <file>Image/right_off.png</file>
+        <file>qt_zh_CN.qm</file>
+        <file>zc64.ico</file>
+    </qresource>
+</RCC>

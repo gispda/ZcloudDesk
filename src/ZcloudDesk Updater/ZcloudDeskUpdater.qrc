@@ -1,0 +1,7 @@
+<RCC>
+  <qresource prefix="/ZcloudDeskUpdater">
+    <file>Resources/sucess.png</file>
+    <file>Resources/msgTip.png</file>
+    <file>Resources/tip.png</file>
+  </qresource>
+</RCC>

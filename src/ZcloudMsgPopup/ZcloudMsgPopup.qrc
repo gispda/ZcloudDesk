@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/ZcloudMsgPopup">
+        <file>image/activtyFire.png</file>
+        <file>image/msg_clos_nor.png</file>
+        <file>image/msg_close.png</file>
+        <file>image/fee_tip.png</file>
+        <file>image/close.png</file>
+        <file>image/close_sel.png</file>
+        <file>image/msg_right_icon.png</file>
+        <file>image/msg_icon.png</file>
+    </qresource>
+</RCC>
