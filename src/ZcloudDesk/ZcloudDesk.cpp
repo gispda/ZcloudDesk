@@ -96,6 +96,8 @@ ZcloudDesk::ZcloudDesk(UserInfoStruct userInfoStruct, QWidget *parent)
 	connect(ui.settingButton, SIGNAL(clicked()), this, SLOT(openSettingCenterWidget()));
 	connect(ui.appButton, SIGNAL(clicked()), this, SLOT(openAppCenterWidget()));
 	connect(ui.hideButton, SIGNAL(clicked()), this, SLOT(hideWindow()));
+
+
 	//connect(ui.msgButton, SIGNAL(clicked()), this, SLOT(openMsgCenterWidget()));
 	//ui.msgButton->setNumber(0);
 	//ui.msgButton->installEventFilter(this);
@@ -479,7 +481,7 @@ void ZcloudDesk::openEntCenterWidget()
 		QString strTip;
 		int logingInt;
 		loginDialog.isUserNameLogin();
-		logingInt = loginDialog.checkLogin(strTip);
+		//logingInt = loginDialog.checkLogin(strTip);
 		loginDialog.initWeChartWidget(logingInt);
 			if (loginDialog.exec() == QDialog::Accepted)
 			{
