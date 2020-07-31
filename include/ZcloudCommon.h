@@ -22,7 +22,7 @@ namespace ZcloudComFun
 	extern "C" __declspec(dllexport) int openMessageTipDlg_2(EN_BTN_TYPE enBtnType, QString strTitle, QString strMsg, QString buttonStr_1, QString tuttonStr_2, QWidget *parent = 0);
 
 	//!httpµ÷ÓÃ
-	extern "C" __declspec(dllexport) bool httpPost(QString strUrl, QString strPost, int nTimeout, QString& strRet, bool isCheckToken = false);
+	extern "C" __declspec(dllexport) bool httpPost(QString strUrl, QString strPost, int nTimeout, QString& strRet, bool isCheckToken = false,int _type = 0);
 	//ÅÐ¶¨token
 	extern "C" __declspec(dllexport) bool winHttpSSO(QString strToken, QString strUserId);
 

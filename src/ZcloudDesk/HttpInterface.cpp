@@ -51,9 +51,9 @@ bool HttpInterface::winHttpLogin(bool accountPhone, QString strAccount, QString 
 		qDebug("zcd-0x10000005:login by account,account or password is empty!");
 		return false;
 	}
-	QString strUrl = QString("/user/login");
+	QString strUrl = QString("/ucenter/user/login");
 	QString strPost = accountPhone ? QString("account=%1&password=%2").arg(strAccount).arg(strPwd) : QString("account=%1&captcha=%2").arg(strAccount).arg(strPwd);
-	return ZcloudComFun::httpPost(strUrl, strPost, 5000, strRet);
+	return ZcloudComFun::httpPost(strUrl, strPost, 5000, strRet,false,1);
 }
 
 bool HttpInterface::winHttpGetTopToolInfo(QString strUid, QString strToken, QString& strRet)
@@ -85,10 +85,10 @@ bool HttpInterface::winHttpTaxResponse(QString strUid, QString strToken, QString
 //发送验证码
 bool  HttpInterface::winHttpSendCode(QString phoneNumber, QString codeType, QString & strRet)
 {
-	QString strUrl = QString("/general/send-captcha");
+	QString strUrl = QString("/common/sms/send");
 	//验证码类型(register注册,login登录,bind_mobile绑定手机,reset_mobile重置手机号,forgot_password忘记密码)
-	QString strPost = QString("mobile=%1&type=%2").arg(phoneNumber).arg(codeType);
-	return ZcloudComFun::httpPost(strUrl, strPost, 10000, strRet);
+	QString strPost = QString("type=%1&mobile=%2").arg(codeType).arg(phoneNumber);
+	return ZcloudComFun::httpPost(strUrl, strPost, 10000, strRet,false,1);
 }
 
 //检测验证码

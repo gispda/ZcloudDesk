@@ -167,6 +167,7 @@
     <ClCompile Include="zdot.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <QtUic Include="..\ZcloudEntCenter\CreateEntInfoWidget.ui" />
     <QtUic Include="CalculatorWidget.ui" />
     <QtUic Include="NoviceDlg.ui" />
     <QtUic Include="SignInWidget.ui" />

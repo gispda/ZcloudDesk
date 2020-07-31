@@ -163,6 +163,9 @@
     <QtUic Include="SignInWidget.ui">
       <Filter>Form Files</Filter>
     </QtUic>
+    <QtUic Include="..\ZcloudEntCenter\CreateEntInfoWidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_ZcloudDesk.h">
