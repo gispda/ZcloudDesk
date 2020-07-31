@@ -1,19 +1,5 @@
 #include "SrvInterface.h"
-#include <QTimer>
-#include <QtNetwork/QNetworkAccessManager>
-#include <QtNetwork/QNetworkReply>
-#include <QtNetwork/QNetworkRequest>
-#include <QtNetwork/QNetworkAccessManager>
-#include <QtNetwork/QNetworkProxy>
-#include <QEventLoop>
-#include <codecvt>
-#include <QSettings>
-#include <QApplication>
-#include <WinSock2.h>
-#include <QJsonParseError>
-#include <QJsonDocument>
-#include <QJsonParseError>
-#include <QJsonObject>
+
 //#include "ZcloudCommon.h"
 
 #pragma comment(lib,"Ws2_32.lib ")
@@ -45,6 +31,13 @@ SrvInterface::~SrvInterface()
 	curl_global_cleanup();
 }
 
+void SrvInterface::slotError(QNetworkReply::NetworkError sss)
+{
+	qDebug() << sss;//<< (QNetworkReply*)sender()->
+
+	
+}
+
 bool SrvInterface::httpQtPost(QString strUrl, QString strPost, int nTimeout, QString& strRet)
 {
 	QNetworkAccessManager login_pNetworkManager;//网络管理类
@@ -61,14 +54,34 @@ bool SrvInterface::httpQtPost(QString strUrl, QString strPost, int nTimeout, QSt
 	netRequest.setHeader(QNetworkRequest::ContentTypeHeader, "application/x-www-form-urlencoded");
 	netRequest.setUrl(QUrl(strUrl)); //地址信息
 
+	if (login_pNetworkManager.networkAccessible() == QNetworkAccessManager::NotAccessible)
+	{
+		login_pNetworkManager.setNetworkAccessible(QNetworkAccessManager::Accessible);
+	}
+
 	if (strPost.isEmpty())
 		login_pNetworkReply = login_pNetworkManager.get(netRequest);
 	else
 		login_pNetworkReply = login_pNetworkManager.post(netRequest, strPost.toUtf8());//发起post请求
-	connect(login_pNetworkReply, SIGNAL(finished()), &loop, SLOT(quit()));
 
+
+	connect(login_pNetworkReply, SIGNAL(error(QNetworkReply::NetworkError)),
+		this, SLOT(slotError(QNetworkReply::NetworkError)));
+
+	connect(login_pNetworkReply, SIGNAL(finished()), &loop, SLOT(quit()));
 	login_pTimer.start(nTimeout);
 	loop.exec();
+
+	if (login_pNetworkReply->error() == QNetworkReply::ContentNotFoundError)
+	{
+		QUrl failedUrl;
+		failedUrl = login_pNetworkReply->request().url();
+		int httpStatus = login_pNetworkReply->attribute(
+			QNetworkRequest::HttpStatusCodeAttribute).toInt();
+		QString reason = login_pNetworkReply->attribute(QNetworkRequest::HttpReasonPhraseAttribute).toString();
+		qDebug() << "url" << failedUrl << httpStatus << "   " << reason;
+	}
+
 	QByteArray resultContent = login_pNetworkReply->readAll();
 	int nHttpCode = login_pNetworkReply->attribute(QNetworkRequest::HttpStatusCodeAttribute).toInt();//http返回码
 	strRet = "";
@@ -223,8 +236,12 @@ bool SrvInterface::httpCurlPost(QString strUrl, QString strPost, int nTimeout, Q
 //	delete settings;
 //}
 
-bool SrvInterface::httpPost(QString strUrl, QString strPost, int nTimeout, QString& strRet)
+bool SrvInterface::httpPost(QString strUrl, QString strPost, int nTimeout, QString& strRet, int _type)
 {
+	if (_type == 1) //使用新的接口地址
+	{
+		return httpQtPost(m_strHostName_new + strUrl, strPost, nTimeout, strRet);
+	}
 	return httpQtPost(m_strHostName + strUrl, strPost, nTimeout, strRet);
 }
 
@@ -233,6 +250,7 @@ void SrvInterface::getApiUrl()
 	QString strIniPath = QApplication::applicationDirPath();
 	QSettings settings(strIniPath+ "/config.ini", QSettings::IniFormat);
 	m_strHostName	= settings.value("api/hostName").toString();
+	m_strHostName_new = settings.value("api/hostGw").toString();
 }
 
 QString SrvInterface::getHostName()

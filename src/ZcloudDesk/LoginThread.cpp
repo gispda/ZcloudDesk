@@ -364,7 +364,7 @@ int LoginThread::analySucessJson(QString strRet, UserInfoStruct &userInfoStruct)
 		userInfoStruct.m_strCompanyId = data.take("company_id").toString();			//公司业务编号
 		userInfoStruct.m_strCompanyName = data.take("company_name").toString();		//公司名字
 		userInfoStruct.m_strTaxNumber = data.take("tax_number").toString();			//税号
-		userInfoStruct.m_strUsername = data.take("username").toString();			//登录账号
+		userInfoStruct.m_strUsername = data.take("user_name").toString();			//登录账号
 		userInfoStruct.m_strTruename = data.take("truename").toString();			//真实名字
 		userInfoStruct.m_strJob = data.take("job").toString();			//真实名字
 		userInfoStruct.m_strUserId = data.take("user_id").toString();			//用户编号

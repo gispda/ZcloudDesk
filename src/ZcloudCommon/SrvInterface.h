@@ -4,6 +4,23 @@
 #include "curl\curl.h"
 using namespace std;
 
+
+#include <QTimer>
+#include <QtNetwork/QNetworkAccessManager>
+#include <QtNetwork/QNetworkReply>
+#include <QtNetwork/QNetworkRequest>
+#include <QtNetwork/QNetworkAccessManager>
+#include <QtNetwork/QNetworkProxy>
+#include <QEventLoop>
+#include <codecvt>
+#include <QSettings>
+#include <QApplication>
+#include <WinSock2.h>
+#include <QJsonParseError>
+#include <QJsonDocument>
+#include <QJsonParseError>
+#include <QJsonObject>
+
 class SrvInterface:public QObject
 {
 	Q_OBJECT
@@ -12,9 +29,12 @@ public:
 	~SrvInterface();
 
 	//!http调用接口
-	bool httpPost(QString strUrl, QString strPost, int nTimeout, QString& strRet);
+	bool httpPost(QString strUrl, QString strPost, int nTimeout, QString& strRet , int _type = 0);
 
 	QString getHostName();
+
+	private slots:
+	void slotError(QNetworkReply::NetworkError);
 
 private:
 	bool httpQtPost(QString strUrl, QString strPost, int nTimeout, QString& strRet);
@@ -29,6 +49,7 @@ private:
 	QString m_strProxyHost;
 	QString m_strProxyPort;
 	QString m_strHostName;
+	QString m_strHostName_new;
 	//bool m_bHaveProxy = false;
 };
 

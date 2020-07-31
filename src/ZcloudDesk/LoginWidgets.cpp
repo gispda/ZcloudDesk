@@ -307,7 +307,7 @@ bool LoginWidget::eventFilter(QObject *target, QEvent *e)
 					{
 						ZcloudBigDataInterface::GetInstance()->produceData("M00", "OP001", "SLG033", accountLineEdit->text());
 						if (zhicloudStrToken.isEmpty())
-							strCodeType = "login";
+							strCodeType = "registr";
 						else
 							strCodeType = "bind_mobile";
 					}

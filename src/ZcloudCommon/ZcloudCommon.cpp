@@ -46,13 +46,13 @@ int SSO(QString jsonStr)
 	
 }
 
-bool ZcloudComFun::httpPost(QString strUrl, QString strPost, int nTimeout, QString& strRet, bool isCheckToken /*= false*/)
+bool ZcloudComFun::httpPost(QString strUrl, QString strPost, int nTimeout, QString& strRet, bool isCheckToken /*= false*/,int _type)
 {
 	(-1 == strUrl.indexOf("?")) ? strUrl.append("?") : strUrl.append("&");
 	strUrl.append("mac=").append(getHostMacAddress()).append("&version=")
 		.append(getFileVertion(QApplication::applicationFilePath())).append("&system=").append(getOsVer());
 	SrvInterface	sInter;
-	bool httpS = sInter.httpPost(strUrl, strPost, nTimeout, strRet);
+	bool httpS = sInter.httpPost(strUrl, strPost, nTimeout, strRet,_type);
 	//如果是线程 调用 有UI窗口 ，会崩溃 所有加此字段
 	if (isCheckToken)
 	{
