@@ -10,10 +10,22 @@
     <height>493</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>539</width>
+    <height>493</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>539</width>
+    <height>493</height>
+   </size>
+  </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QLabel" name="label_9">
+  <widget class="QLabel" name="labelCompanyNotFound">
    <property name="geometry">
     <rect>
      <x>158</x>
@@ -46,7 +58,7 @@ color: #ff0000;
 border-bottom:0px;</string>
    </property>
    <property name="text">
-    <string>请选择完善的行政区域</string>
+    <string>未查询到该公司，请重新输入</string>
    </property>
   </widget>
   <widget class="QComboBox" name="comboBoxArea">
@@ -136,11 +148,14 @@ QLineEdit:disabled{background-color: rgb(247,248, 250);};</string>
    <property name="text">
     <string/>
    </property>
+   <property name="maxLength">
+    <number>11</number>
+   </property>
    <property name="placeholderText">
     <string>请输入负责人手机号</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_12">
+  <widget class="QLabel" name="labelPhoneError">
    <property name="geometry">
     <rect>
      <x>158</x>
@@ -335,7 +350,7 @@ QComboBox QAbstractItemView::item
     <bool>true</bool>
    </property>
   </widget>
-  <widget class="QLabel" name="label_7">
+  <widget class="QLabel" name="labelLegalPeasonError">
    <property name="geometry">
     <rect>
      <x>158</x>
@@ -368,7 +383,7 @@ color: #ff0000;
 border-bottom:0px;</string>
    </property>
    <property name="text">
-    <string>请输入2～20个任意字符</string>
+    <string>请输入2～15个任意字符</string>
    </property>
   </widget>
   <widget class="QComboBox" name="comboBoxPro">
@@ -495,10 +510,10 @@ QLineEdit:disabled{background-color: rgb(247,248, 250);};</string>
     <string/>
    </property>
    <property name="readOnly">
-    <bool>true</bool>
+    <bool>false</bool>
    </property>
    <property name="placeholderText">
-    <string/>
+    <string>请输入完整的公司名称后点击查询</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_2">
@@ -571,6 +586,9 @@ QLineEdit:disabled{background-color: rgb(247,248, 250);};</string>
    </property>
    <property name="text">
     <string/>
+   </property>
+   <property name="maxLength">
+    <number>100</number>
    </property>
    <property name="placeholderText">
     <string>请输入街道、楼牌号等</string>
@@ -683,6 +701,9 @@ QLineEdit:disabled{background-color: rgb(247,248, 250);};</string>
    </property>
    <property name="text">
     <string/>
+   </property>
+   <property name="maxLength">
+    <number>15</number>
    </property>
    <property name="placeholderText">
     <string>请输入企业负责人姓名</string>
@@ -803,7 +824,7 @@ QLineEdit:disabled{background-color: rgb(247,248, 250);};</string>
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="label_6">
+  <widget class="QLabel" name="labelAddressError">
    <property name="geometry">
     <rect>
      <x>158</x>
@@ -836,10 +857,10 @@ color: #ff0000;
 border-bottom:0px;</string>
    </property>
    <property name="text">
-    <string>请输入2～20个任意字符</string>
+    <string>请输入5～100个任意字符</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_8">
+  <widget class="QLabel" name="labelAreaError">
    <property name="geometry">
     <rect>
      <x>158</x>

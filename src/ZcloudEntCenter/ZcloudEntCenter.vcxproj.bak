@@ -148,7 +148,6 @@
     <ClCompile Include="AuditMemberWidget.cpp" />
     <ClCompile Include="AvatarLabel.cpp" />
     <ClCompile Include="BindEmailWidget.cpp" />
-    <ClCompile Include="CreateEntInfoWidget.cpp" />
     <ClCompile Include="DefaultVipWidget.cpp" />
     <ClCompile Include="EditEntInfoWidget.cpp" />
     <ClCompile Include="EditInvoiceInfoWidget.cpp" />
@@ -284,13 +283,8 @@
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(QTDIR)\include;.\..\..\include;$(QTDIR)\include\QtWebKit;$(QTDIR)\include\QtWebkitWidgets;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtSql;$(QTDIR)\include\QtWidgets</IncludePath>
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(QTDIR)\include;.\..\..\include;$(QTDIR)\include\QtWebKit;$(QTDIR)\include\QtWebkitWidgets;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtSql;$(QTDIR)\include\QtWidgets</IncludePath>
     </QtMoc>
-    <QtMoc Include="CreateEntInfoWidget.h">
-      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(QTDIR)\include;.\..\..\include;$(QTDIR)\include\QtWebKit;$(QTDIR)\include\QtWebkitWidgets;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtSql;$(QTDIR)\include\QtWidgets</IncludePath>
-      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(QTDIR)\include;.\..\..\include;$(QTDIR)\include\QtWebKit;$(QTDIR)\include\QtWebkitWidgets;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtSql;$(QTDIR)\include\QtWidgets</IncludePath>
-    </QtMoc>
     <ClInclude Include="EntInfoDataDefine.h" />
     <ClInclude Include="GeneratedFiles\ui_AccItemWidget.h" />
-    <ClInclude Include="GeneratedFiles\ui_CreateEntInfoWidget.h" />
     <ClInclude Include="GeneratedFiles\ui_EntComWidget.h" />
     <ClInclude Include="GeneratedFiles\ui_MemberItemWidget.h" />
     <ClInclude Include="GeneratedFiles\ui_SwitchAccWidget.h" />

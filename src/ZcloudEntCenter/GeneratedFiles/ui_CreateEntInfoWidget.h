@@ -25,15 +25,15 @@ QT_BEGIN_NAMESPACE
 class Ui_CreateEntInfoWidget
 {
 public:
-    QLabel *label_9;
+    QLabel *labelCompanyNotFound;
     QComboBox *comboBoxArea;
     QLineEdit *lineEditPhone;
-    QLabel *label_12;
+    QLabel *labelPhoneError;
     QPushButton *closeButton;
     QLabel *label;
     QLabel *label_11;
     QComboBox *comboBoxCity;
-    QLabel *label_7;
+    QLabel *labelLegalPeasonError;
     QComboBox *comboBoxPro;
     QLabel *label_5;
     QLineEdit *lineEditCompanyName;
@@ -45,8 +45,8 @@ public:
     QLabel *label_4;
     QPushButton *buttonSearch;
     QLineEdit *lineEditSocietyCode;
-    QLabel *label_6;
-    QLabel *label_8;
+    QLabel *labelAddressError;
+    QLabel *labelAreaError;
     QLabel *label_3;
     QPushButton *buttonCancel;
 
@@ -55,17 +55,19 @@ public:
         if (CreateEntInfoWidget->objectName().isEmpty())
             CreateEntInfoWidget->setObjectName(QStringLiteral("CreateEntInfoWidget"));
         CreateEntInfoWidget->resize(539, 493);
-        label_9 = new QLabel(CreateEntInfoWidget);
-        label_9->setObjectName(QStringLiteral("label_9"));
-        label_9->setGeometry(QRect(158, 110, 131, 15));
+        CreateEntInfoWidget->setMinimumSize(QSize(539, 493));
+        CreateEntInfoWidget->setMaximumSize(QSize(539, 493));
+        labelCompanyNotFound = new QLabel(CreateEntInfoWidget);
+        labelCompanyNotFound->setObjectName(QStringLiteral("labelCompanyNotFound"));
+        labelCompanyNotFound->setGeometry(QRect(158, 110, 131, 15));
         QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(label_9->sizePolicy().hasHeightForWidth());
-        label_9->setSizePolicy(sizePolicy);
-        label_9->setMinimumSize(QSize(0, 15));
-        label_9->setMaximumSize(QSize(16777215, 15));
-        label_9->setStyleSheet(QString::fromUtf8("font: 12px \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
+        sizePolicy.setHeightForWidth(labelCompanyNotFound->sizePolicy().hasHeightForWidth());
+        labelCompanyNotFound->setSizePolicy(sizePolicy);
+        labelCompanyNotFound->setMinimumSize(QSize(0, 15));
+        labelCompanyNotFound->setMaximumSize(QSize(16777215, 15));
+        labelCompanyNotFound->setStyleSheet(QString::fromUtf8("font: 12px \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
 "color: #ff0000;\n"
 "border-bottom:0px;"));
         comboBoxArea = new QComboBox(CreateEntInfoWidget);
@@ -108,14 +110,15 @@ public:
         lineEditPhone->setStyleSheet(QLatin1String("QLineEdit{border-radius:4px;color:rgba(51,51,51,1);border:1px solid rgb(222,222,222);font:14px 'Microsoft Yahei';padding-left:10px;}\n"
 "QLineEdit:laceholder{color:rgba(51,51,51,1);}QLineEdit:focus{border:1px solid rgba(30,140,238,1);}\n"
 "QLineEdit:disabled{background-color: rgb(247,248, 250);};"));
-        label_12 = new QLabel(CreateEntInfoWidget);
-        label_12->setObjectName(QStringLiteral("label_12"));
-        label_12->setGeometry(QRect(158, 410, 141, 15));
-        sizePolicy.setHeightForWidth(label_12->sizePolicy().hasHeightForWidth());
-        label_12->setSizePolicy(sizePolicy);
-        label_12->setMinimumSize(QSize(0, 15));
-        label_12->setMaximumSize(QSize(16777215, 15));
-        label_12->setStyleSheet(QString::fromUtf8("font: 12px \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
+        lineEditPhone->setMaxLength(11);
+        labelPhoneError = new QLabel(CreateEntInfoWidget);
+        labelPhoneError->setObjectName(QStringLiteral("labelPhoneError"));
+        labelPhoneError->setGeometry(QRect(158, 410, 141, 15));
+        sizePolicy.setHeightForWidth(labelPhoneError->sizePolicy().hasHeightForWidth());
+        labelPhoneError->setSizePolicy(sizePolicy);
+        labelPhoneError->setMinimumSize(QSize(0, 15));
+        labelPhoneError->setMaximumSize(QSize(16777215, 15));
+        labelPhoneError->setStyleSheet(QString::fromUtf8("font: 12px \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
 "color: #ff0000;\n"
 "border-bottom:0px;"));
         closeButton = new QPushButton(CreateEntInfoWidget);
@@ -174,14 +177,14 @@ public:
 "    height:32px;\n"
 "}"));
         comboBoxCity->setEditable(true);
-        label_7 = new QLabel(CreateEntInfoWidget);
-        label_7->setObjectName(QStringLiteral("label_7"));
-        label_7->setGeometry(QRect(158, 350, 131, 15));
-        sizePolicy.setHeightForWidth(label_7->sizePolicy().hasHeightForWidth());
-        label_7->setSizePolicy(sizePolicy);
-        label_7->setMinimumSize(QSize(0, 15));
-        label_7->setMaximumSize(QSize(16777215, 15));
-        label_7->setStyleSheet(QString::fromUtf8("font: 12px \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
+        labelLegalPeasonError = new QLabel(CreateEntInfoWidget);
+        labelLegalPeasonError->setObjectName(QStringLiteral("labelLegalPeasonError"));
+        labelLegalPeasonError->setGeometry(QRect(158, 350, 131, 15));
+        sizePolicy.setHeightForWidth(labelLegalPeasonError->sizePolicy().hasHeightForWidth());
+        labelLegalPeasonError->setSizePolicy(sizePolicy);
+        labelLegalPeasonError->setMinimumSize(QSize(0, 15));
+        labelLegalPeasonError->setMaximumSize(QSize(16777215, 15));
+        labelLegalPeasonError->setStyleSheet(QString::fromUtf8("font: 12px \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
 "color: #ff0000;\n"
 "border-bottom:0px;"));
         comboBoxPro = new QComboBox(CreateEntInfoWidget);
@@ -231,7 +234,7 @@ public:
         lineEditCompanyName->setStyleSheet(QLatin1String("QLineEdit{border-radius:4px;color:rgba(51,51,51,1);border:1px solid rgb(222,222,222);font:14px 'Microsoft Yahei';padding-left:10px;}\n"
 "QLineEdit:laceholder{color:rgba(51,51,51,1);}QLineEdit:focus{border:1px solid rgba(30,140,238,1);}\n"
 "QLineEdit:disabled{background-color: rgb(247,248, 250);};"));
-        lineEditCompanyName->setReadOnly(true);
+        lineEditCompanyName->setReadOnly(false);
         label_2 = new QLabel(CreateEntInfoWidget);
         label_2->setObjectName(QStringLiteral("label_2"));
         label_2->setGeometry(QRect(18, 75, 61, 30));
@@ -252,6 +255,7 @@ public:
         lineEditAddress->setStyleSheet(QLatin1String("QLineEdit{border-radius:4px;color:rgba(51,51,51,1);border:1px solid rgb(222,222,222);font:14px 'Microsoft Yahei';padding-left:10px;}\n"
 "QLineEdit:laceholder{color:rgba(51,51,51,1);}QLineEdit:focus{border:1px solid rgba(30,140,238,1);}\n"
 "QLineEdit:disabled{background-color: rgb(247,248, 250);};"));
+        lineEditAddress->setMaxLength(100);
         label_10 = new QLabel(CreateEntInfoWidget);
         label_10->setObjectName(QStringLiteral("label_10"));
         label_10->setGeometry(QRect(18, 140, 120, 30));
@@ -283,6 +287,7 @@ public:
         lineEditLegalPeasonName->setStyleSheet(QLatin1String("QLineEdit{border-radius:4px;color:rgba(51,51,51,1);border:1px solid rgb(222,222,222);font:14px 'Microsoft Yahei';padding-left:10px;}\n"
 "QLineEdit:laceholder{color:rgba(51,51,51,1);}QLineEdit:focus{border:1px solid rgba(30,140,238,1);}\n"
 "QLineEdit:disabled{background-color: rgb(247,248, 250);};"));
+        lineEditLegalPeasonName->setMaxLength(15);
         label_4 = new QLabel(CreateEntInfoWidget);
         label_4->setObjectName(QStringLiteral("label_4"));
         label_4->setGeometry(QRect(18, 255, 72, 30));
@@ -315,24 +320,24 @@ public:
 "QLineEdit:laceholder{color:rgba(51,51,51,1);}QLineEdit:focus{border:1px solid rgba(30,140,238,1);}\n"
 "QLineEdit:disabled{background-color: rgb(247,248, 250);};"));
         lineEditSocietyCode->setReadOnly(true);
-        label_6 = new QLabel(CreateEntInfoWidget);
-        label_6->setObjectName(QStringLiteral("label_6"));
-        label_6->setGeometry(QRect(158, 290, 131, 15));
-        sizePolicy.setHeightForWidth(label_6->sizePolicy().hasHeightForWidth());
-        label_6->setSizePolicy(sizePolicy);
-        label_6->setMinimumSize(QSize(0, 15));
-        label_6->setMaximumSize(QSize(16777215, 15));
-        label_6->setStyleSheet(QString::fromUtf8("font: 12px \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
+        labelAddressError = new QLabel(CreateEntInfoWidget);
+        labelAddressError->setObjectName(QStringLiteral("labelAddressError"));
+        labelAddressError->setGeometry(QRect(158, 290, 131, 15));
+        sizePolicy.setHeightForWidth(labelAddressError->sizePolicy().hasHeightForWidth());
+        labelAddressError->setSizePolicy(sizePolicy);
+        labelAddressError->setMinimumSize(QSize(0, 15));
+        labelAddressError->setMaximumSize(QSize(16777215, 15));
+        labelAddressError->setStyleSheet(QString::fromUtf8("font: 12px \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
 "color: #ff0000;\n"
 "border-bottom:0px;"));
-        label_8 = new QLabel(CreateEntInfoWidget);
-        label_8->setObjectName(QStringLiteral("label_8"));
-        label_8->setGeometry(QRect(158, 230, 131, 15));
-        sizePolicy.setHeightForWidth(label_8->sizePolicy().hasHeightForWidth());
-        label_8->setSizePolicy(sizePolicy);
-        label_8->setMinimumSize(QSize(0, 15));
-        label_8->setMaximumSize(QSize(16777215, 15));
-        label_8->setStyleSheet(QString::fromUtf8("font: 12px \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
+        labelAreaError = new QLabel(CreateEntInfoWidget);
+        labelAreaError->setObjectName(QStringLiteral("labelAreaError"));
+        labelAreaError->setGeometry(QRect(158, 230, 131, 15));
+        sizePolicy.setHeightForWidth(labelAreaError->sizePolicy().hasHeightForWidth());
+        labelAreaError->setSizePolicy(sizePolicy);
+        labelAreaError->setMinimumSize(QSize(0, 15));
+        labelAreaError->setMaximumSize(QSize(16777215, 15));
+        labelAreaError->setStyleSheet(QString::fromUtf8("font: 12px \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
 "color: #ff0000;\n"
 "border-bottom:0px;"));
         label_3 = new QLabel(CreateEntInfoWidget);
@@ -363,17 +368,17 @@ public:
     void retranslateUi(QWidget *CreateEntInfoWidget)
     {
         CreateEntInfoWidget->setWindowTitle(QApplication::translate("CreateEntInfoWidget", "Form", 0));
-        label_9->setText(QApplication::translate("CreateEntInfoWidget", "\350\257\267\351\200\211\346\213\251\345\256\214\345\226\204\347\232\204\350\241\214\346\224\277\345\214\272\345\237\237", 0));
+        labelCompanyNotFound->setText(QApplication::translate("CreateEntInfoWidget", "\346\234\252\346\237\245\350\257\242\345\210\260\350\257\245\345\205\254\345\217\270\357\274\214\350\257\267\351\207\215\346\226\260\350\276\223\345\205\245", 0));
         lineEditPhone->setText(QString());
         lineEditPhone->setPlaceholderText(QApplication::translate("CreateEntInfoWidget", "\350\257\267\350\276\223\345\205\245\350\264\237\350\264\243\344\272\272\346\211\213\346\234\272\345\217\267", 0));
-        label_12->setText(QApplication::translate("CreateEntInfoWidget", "\350\257\267\350\276\223\345\205\24511\344\275\215\346\255\243\347\241\256\347\232\204\346\211\213\346\234\272\345\217\267", 0));
+        labelPhoneError->setText(QApplication::translate("CreateEntInfoWidget", "\350\257\267\350\276\223\345\205\24511\344\275\215\346\255\243\347\241\256\347\232\204\346\211\213\346\234\272\345\217\267", 0));
         closeButton->setText(QString());
         label->setText(QApplication::translate("CreateEntInfoWidget", "\345\210\233\345\273\272\346\226\260\344\274\201\344\270\232", 0));
         label_11->setText(QApplication::translate("CreateEntInfoWidget", "<font color = red>*</font><font color =#333333>\350\264\237\350\264\243\344\272\272\346\211\213\346\234\272</font>", 0));
-        label_7->setText(QApplication::translate("CreateEntInfoWidget", "\350\257\267\350\276\223\345\205\2452\357\275\23620\344\270\252\344\273\273\346\204\217\345\255\227\347\254\246", 0));
+        labelLegalPeasonError->setText(QApplication::translate("CreateEntInfoWidget", "\350\257\267\350\276\223\345\205\2452\357\275\23615\344\270\252\344\273\273\346\204\217\345\255\227\347\254\246", 0));
         label_5->setText(QApplication::translate("CreateEntInfoWidget", "<font color = red>*</font><font color =#333333>\344\274\201\344\270\232\350\264\237\350\264\243\344\272\272</font>", 0));
         lineEditCompanyName->setText(QString());
-        lineEditCompanyName->setPlaceholderText(QString());
+        lineEditCompanyName->setPlaceholderText(QApplication::translate("CreateEntInfoWidget", "\350\257\267\350\276\223\345\205\245\345\256\214\346\225\264\347\232\204\345\205\254\345\217\270\345\220\215\347\247\260\345\220\216\347\202\271\345\207\273\346\237\245\350\257\242", 0));
         label_2->setText(QApplication::translate("CreateEntInfoWidget", "<font color = red>*</font><font color =#333333>\345\205\254\345\217\270\345\220\215\347\247\260</font>", 0));
         lineEditAddress->setText(QString());
         lineEditAddress->setPlaceholderText(QApplication::translate("CreateEntInfoWidget", "\350\257\267\350\276\223\345\205\245\350\241\227\351\201\223\343\200\201\346\245\274\347\211\214\345\217\267\347\255\211", 0));
@@ -385,8 +390,8 @@ public:
         buttonSearch->setText(QApplication::translate("CreateEntInfoWidget", "\346\237\245\350\257\242", 0));
         lineEditSocietyCode->setText(QString());
         lineEditSocietyCode->setPlaceholderText(QString());
-        label_6->setText(QApplication::translate("CreateEntInfoWidget", "\350\257\267\350\276\223\345\205\2452\357\275\23620\344\270\252\344\273\273\346\204\217\345\255\227\347\254\246", 0));
-        label_8->setText(QApplication::translate("CreateEntInfoWidget", "\350\257\267\351\200\211\346\213\251\345\256\214\345\226\204\347\232\204\350\241\214\346\224\277\345\214\272\345\237\237", 0));
+        labelAddressError->setText(QApplication::translate("CreateEntInfoWidget", "\350\257\267\350\276\223\345\205\2455\357\275\236100\344\270\252\344\273\273\346\204\217\345\255\227\347\254\246", 0));
+        labelAreaError->setText(QApplication::translate("CreateEntInfoWidget", "\350\257\267\351\200\211\346\213\251\345\256\214\345\226\204\347\232\204\350\241\214\346\224\277\345\214\272\345\237\237", 0));
         label_3->setText(QApplication::translate("CreateEntInfoWidget", "<font color = red>*</font><font color =#333333>\346\211\200\345\234\250\345\234\260\345\214\272</font>", 0));
         buttonCancel->setText(QApplication::translate("CreateEntInfoWidget", "\345\217\226\346\266\210", 0));
     } // retranslateUi

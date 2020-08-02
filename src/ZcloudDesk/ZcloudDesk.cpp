@@ -28,6 +28,7 @@
 #include "JsInterface.h"
 #include <SignInWidget.h>
 
+
 QString zhicloudStrToken;
 QString zhicloudStrUserId;
 extern QString g_strAppName;
@@ -494,6 +495,10 @@ void ZcloudDesk::openEntCenterWidget()
 		return;
 	}
 
+
+	
+
+
 	if (NULL	==	m_pEntCenter)
 	{
 		m_pEntCenter = ZcloudEntCenter::createNew();
@@ -509,6 +514,14 @@ void ZcloudDesk::openEntCenterWidget()
 
 		});
 	}
+	if ((m_stUserInfo.m_strCompanyName.isEmpty())){
+
+		m_pEntCenter->createEntCenter();
+
+			return;
+	}
+
+
 	m_pEntCenter->openEntCenter(m_stUserInfo.m_strUserId, m_stUserInfo.m_strToken, m_stUserInfo.m_strTruename, m_stUserInfo.m_strJob, m_stUserInfo.m_bLoginByTax, m_stUserInfo.m_strMobile, m_stUserInfo.m_strCompanyId, m_stUserInfo.m_strUsername);
 	m_pBigDataInterface->produceData("M01", "OP001", "TTA013");
 }
@@ -988,18 +1001,15 @@ void ZcloudDesk::showCompInfo()
 	if (m_stUserInfo.m_strUsername.isEmpty()){
 		ui.labelCompName->setMinimumWidth(0);
 		ui.labelCompName->setText(QString::fromLocal8Bit("µÇÂ¼"));
-
-
-		
 		//ÉèÖÃÍ¼±ê
 		//ui.labelCompName->setPixmap();
 		return;
 	}
-	else{
-		ui.spaceButtonName->setVisible(true);
-		ui.usernameButton->setVisible(true);
-		ui.usernameButton->setText(m_stUserInfo.m_strUsername);
-	}
+	//else{
+	//	ui.spaceButtonName->setVisible(true);
+	//	ui.usernameButton->setVisible(true);
+	//	ui.usernameButton->setText(m_stUserInfo.m_strUsername);
+	//}
 
 
 

@@ -4,6 +4,8 @@
 #include <QDialog>
 #include "DefaultVipWidget.h"
 #include "JoinEntWidget.h"
+#include "CreateEntInfoWidget.h"
+
 ZcloudEntCenterImpl::ZcloudEntCenterImpl()
 {
 }
@@ -11,6 +13,12 @@ ZcloudEntCenterImpl::ZcloudEntCenterImpl()
 ZcloudEntCenterImpl::~ZcloudEntCenterImpl()
 {
 	closeAllEntWidget();
+}
+
+void ZcloudEntCenterImpl::createEntCenter(){
+	CreateEntInfoWidget* pEntComWidget = new CreateEntInfoWidget(NULL);
+	pEntComWidget->setAttribute(Qt::WA_DeleteOnClose);
+	pEntComWidget->show();
 }
 
 void ZcloudEntCenterImpl::openEntCenter(QString strUid, QString strToken, QString strTrueName, QString strJob, int isLoginByTax, QString strMobile, QString strCompId,QString strUserName)

@@ -122,6 +122,9 @@
     <ClCompile Include="SetPwdWidget.cpp">
       <Filter>AccSetting</Filter>
     </ClCompile>
+    <ClCompile Include="CreateEntInfoWidget.cpp">
+      <Filter>EntInfo</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="EntCenterWidget.h">
@@ -205,6 +208,9 @@
     <QtMoc Include="SetPwdWidget.h">
       <Filter>AccSetting</Filter>
     </QtMoc>
+    <QtMoc Include="CreateEntInfoWidget.h">
+      <Filter>EntInfo</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_EntCenterWidget.h">
@@ -223,6 +229,9 @@
       <Filter>EntInfo</Filter>
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_MemberItemWidget.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_CreateEntInfoWidget.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -294,6 +303,9 @@
     </QtUic>
     <QtUic Include="SetPwdWidget.ui">
       <Filter>AccSetting</Filter>
+    </QtUic>
+    <QtUic Include="CreateEntInfoWidget.ui">
+      <Filter>EntInfo</Filter>
     </QtUic>
   </ItemGroup>
 </Project>

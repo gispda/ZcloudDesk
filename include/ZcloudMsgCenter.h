@@ -21,6 +21,7 @@ public:
 	//!开始消息线程
 	virtual void startMsgThread(QString strUid, QString strToken, QString strCompId) = 0;
 
+
 	//!打开消息中心
 	virtual void openMsgCenter(int nUnread)	=	0;
 
