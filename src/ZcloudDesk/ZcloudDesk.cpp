@@ -98,6 +98,8 @@ ZcloudDesk::ZcloudDesk(UserInfoStruct userInfoStruct, QWidget *parent)
 	connect(ui.appButton, SIGNAL(clicked()), this, SLOT(openAppCenterWidget()));
 	connect(ui.hideButton, SIGNAL(clicked()), this, SLOT(hideWindow()));
 
+	connect(ui.billListButton, SIGNAL(clicked()), this, SLOT(openOrderList()));
+
 
 	//connect(ui.msgButton, SIGNAL(clicked()), this, SLOT(openMsgCenterWidget()));
 	//ui.msgButton->setNumber(0);
@@ -499,7 +501,7 @@ void ZcloudDesk::openEntCenterWidget()
 	
 
 
-	if (NULL	==	m_pEntCenter)
+	if (NULL ==	m_pEntCenter)
 	{
 		m_pEntCenter = ZcloudEntCenter::createNew();
 		connect(m_pEntCenter, SIGNAL(sigSwitchAcc(int, bool, QString, QString)), this, SLOT(onSwitchAcc(int, bool, QString, QString)));
@@ -525,6 +527,28 @@ void ZcloudDesk::openEntCenterWidget()
 	m_pEntCenter->openEntCenter(m_stUserInfo.m_strUserId, m_stUserInfo.m_strToken, m_stUserInfo.m_strTruename, m_stUserInfo.m_strJob, m_stUserInfo.m_bLoginByTax, m_stUserInfo.m_strMobile, m_stUserInfo.m_strCompanyId, m_stUserInfo.m_strUsername);
 	m_pBigDataInterface->produceData("M01", "OP001", "TTA013");
 }
+
+void  ZcloudDesk::openOrderList(){
+	if (NULL == m_pEntCenter)
+	{
+		m_pEntCenter = ZcloudEntCenter::createNew();
+		connect(m_pEntCenter, SIGNAL(sigSwitchAcc(int, bool, QString, QString)), this, SLOT(onSwitchAcc(int, bool, QString, QString)));
+		connect(m_pEntCenter, SIGNAL(bingdingPhoneSignal()), this, SLOT(bingdingPhoneSlot()));
+		connect(m_pEntCenter, SIGNAL(sigSignBindingSucceeded(const QString&)), this, SLOT(slotChangeMobile(const QString&)));
+		connect(m_pEntCenter, SIGNAL(openSignInWidegt()), this, SLOT(openSignInWidegt()));
+		connect(m_pEntCenter, &ZcloudEntCenter::sendVipListSignals, this, &ZcloudDesk::buyMembershipSlot);
+		connect(m_pEntCenter, &ZcloudEntCenter::trueNameJobChange, [this](QString trueName, QString strJob)
+		{
+			m_stUserInfo.m_strTruename = trueName;
+			m_stUserInfo.m_strJob = strJob;
+
+		});
+	}
+	m_pEntCenter->openOrderList(m_stUserInfo.m_strUserId, m_stUserInfo.m_strToken);
+
+}
+
+
 
 void  ZcloudDesk::buyMembershipSlot(QStringList vipNameList, QStringList vipIdList, QStringList vipTimeList)
 {

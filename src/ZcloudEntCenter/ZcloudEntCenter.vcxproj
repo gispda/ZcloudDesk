@@ -163,6 +163,10 @@
     <ClCompile Include="ModifyMemberWidget.cpp" />
     <ClCompile Include="ModifyPwdWidget.cpp" />
     <ClCompile Include="ModifyUserInfoWidget.cpp" />
+    <ClCompile Include="OrderCommentWidget.cpp" />
+    <ClCompile Include="OrderDetialWidget.cpp" />
+    <ClCompile Include="OrderListItemWidget.cpp" />
+    <ClCompile Include="OrderListWidget.cpp" />
     <ClCompile Include="SetPwdWidget.cpp" />
     <ClCompile Include="SwitchAccWidget.cpp" />
     <ClCompile Include="VipInfoWidget.cpp" />
@@ -208,10 +212,30 @@
     <QtUic Include="ModifyMemberWidget.ui" />
     <QtUic Include="ModifyPwdWidget.ui" />
     <QtUic Include="ModifyUserInfoWidget.ui" />
+    <QtUic Include="OrderCommentWidget.ui" />
+    <QtUic Include="OrderDetialWidget.ui" />
+    <QtUic Include="OrderListItemWidget.ui" />
+    <QtUic Include="OrderListWidget.ui" />
     <QtUic Include="SetPwdWidget.ui" />
     <QtUic Include="VipInfoWidget.ui" />
   </ItemGroup>
   <ItemGroup>
+    <QtMoc Include="OrderDetialWidget.h">
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(QTDIR)\include;.\..\..\include;$(QTDIR)\include\QtWebKit;$(QTDIR)\include\QtWebkitWidgets;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtSql;$(QTDIR)\include\QtWidgets</IncludePath>
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(QTDIR)\include;.\..\..\include;$(QTDIR)\include\QtWebKit;$(QTDIR)\include\QtWebkitWidgets;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtSql;$(QTDIR)\include\QtWidgets</IncludePath>
+    </QtMoc>
+    <QtMoc Include="OrderCommentWidget.h">
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(QTDIR)\include;.\..\..\include;$(QTDIR)\include\QtWebKit;$(QTDIR)\include\QtWebkitWidgets;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtSql;$(QTDIR)\include\QtWidgets</IncludePath>
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(QTDIR)\include;.\..\..\include;$(QTDIR)\include\QtWebKit;$(QTDIR)\include\QtWebkitWidgets;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtSql;$(QTDIR)\include\QtWidgets</IncludePath>
+    </QtMoc>
+    <QtMoc Include="OrderListWidget.h">
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(QTDIR)\include;.\..\..\include;$(QTDIR)\include\QtWebKit;$(QTDIR)\include\QtWebkitWidgets;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtSql;$(QTDIR)\include\QtWidgets</IncludePath>
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(QTDIR)\include;.\..\..\include;$(QTDIR)\include\QtWebKit;$(QTDIR)\include\QtWebkitWidgets;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtSql;$(QTDIR)\include\QtWidgets</IncludePath>
+    </QtMoc>
+    <QtMoc Include="OrderListItemWidget.h">
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(QTDIR)\include;.\..\..\include;$(QTDIR)\include\QtWebKit;$(QTDIR)\include\QtWebkitWidgets;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtSql;$(QTDIR)\include\QtWidgets</IncludePath>
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(QTDIR)\include;.\..\..\include;$(QTDIR)\include\QtWebKit;$(QTDIR)\include\QtWebkitWidgets;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtSql;$(QTDIR)\include\QtWidgets</IncludePath>
+    </QtMoc>
     <QtMoc Include="SetPwdWidget.h">
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(QTDIR)\include;.\..\..\include;$(QTDIR)\include\QtWebKit;$(QTDIR)\include\QtWebkitWidgets;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtSql;$(QTDIR)\include\QtWidgets</IncludePath>
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(QTDIR)\include;.\..\..\include;$(QTDIR)\include\QtWebKit;$(QTDIR)\include\QtWebkitWidgets;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtSql;$(QTDIR)\include\QtWidgets</IncludePath>
@@ -293,6 +317,10 @@
     <ClInclude Include="GeneratedFiles\ui_CreateEntInfoWidget.h" />
     <ClInclude Include="GeneratedFiles\ui_EntComWidget.h" />
     <ClInclude Include="GeneratedFiles\ui_MemberItemWidget.h" />
+    <ClInclude Include="GeneratedFiles\ui_OrderCommentWidget.h" />
+    <ClInclude Include="GeneratedFiles\ui_OrderDetialWidget.h" />
+    <ClInclude Include="GeneratedFiles\ui_OrderListItemWidget.h" />
+    <ClInclude Include="GeneratedFiles\ui_OrderListWidget.h" />
     <ClInclude Include="GeneratedFiles\ui_SwitchAccWidget.h" />
     <QtMoc Include="SwitchAccWidget.h">
     </QtMoc>

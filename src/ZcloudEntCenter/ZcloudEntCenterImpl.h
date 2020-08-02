@@ -16,6 +16,8 @@ public:
 	virtual void destroy();
 	//!新建企业
 	virtual void createEntCenter();
+	//!打开工单列表
+	virtual void openOrderList(QString strUid, QString strToken);
 
 	//!打开企业中心
 	virtual void openEntCenter(QString strUid, QString strToken, QString strTrueName, QString strJob, int isLoginByTax, QString strMobile, QString strCompId, QString strUserName);

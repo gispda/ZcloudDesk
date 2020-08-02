@@ -45,6 +45,9 @@
     <Filter Include="EntInfo">
       <UniqueIdentifier>{1db1e5f7-b638-4897-a2b4-9b8c17504250}</UniqueIdentifier>
     </Filter>
+    <Filter Include="OrderList">
+      <UniqueIdentifier>{426c359e-f8de-4cff-b705-a676e7624acf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EntCenterWidget.cpp">
@@ -124,6 +127,18 @@
     </ClCompile>
     <ClCompile Include="CreateEntInfoWidget.cpp">
       <Filter>EntInfo</Filter>
+    </ClCompile>
+    <ClCompile Include="OrderListItemWidget.cpp">
+      <Filter>OrderList</Filter>
+    </ClCompile>
+    <ClCompile Include="OrderListWidget.cpp">
+      <Filter>OrderList</Filter>
+    </ClCompile>
+    <ClCompile Include="OrderCommentWidget.cpp">
+      <Filter>OrderList</Filter>
+    </ClCompile>
+    <ClCompile Include="OrderDetialWidget.cpp">
+      <Filter>OrderList</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -211,6 +226,18 @@
     <QtMoc Include="CreateEntInfoWidget.h">
       <Filter>EntInfo</Filter>
     </QtMoc>
+    <QtMoc Include="OrderListItemWidget.h">
+      <Filter>OrderList</Filter>
+    </QtMoc>
+    <QtMoc Include="OrderListWidget.h">
+      <Filter>OrderList</Filter>
+    </QtMoc>
+    <QtMoc Include="OrderCommentWidget.h">
+      <Filter>OrderList</Filter>
+    </QtMoc>
+    <QtMoc Include="OrderDetialWidget.h">
+      <Filter>OrderList</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_EntCenterWidget.h">
@@ -232,6 +259,18 @@
       <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_CreateEntInfoWidget.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_OrderListWidget.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_OrderCommentWidget.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_OrderDetialWidget.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_OrderListItemWidget.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -306,6 +345,18 @@
     </QtUic>
     <QtUic Include="CreateEntInfoWidget.ui">
       <Filter>EntInfo</Filter>
+    </QtUic>
+    <QtUic Include="OrderListItemWidget.ui">
+      <Filter>OrderList</Filter>
+    </QtUic>
+    <QtUic Include="OrderListWidget.ui">
+      <Filter>OrderList</Filter>
+    </QtUic>
+    <QtUic Include="OrderCommentWidget.ui">
+      <Filter>OrderList</Filter>
+    </QtUic>
+    <QtUic Include="OrderDetialWidget.ui">
+      <Filter>OrderList</Filter>
     </QtUic>
   </ItemGroup>
 </Project>

@@ -47,6 +47,7 @@ signals:
 	void startInitSignal(int);
 private slots:
 
+void openOrderList();
 //Òþ²Ø°´Å¥
 void hideWindow();
 //ÏÔÊ¾°´Å¥
