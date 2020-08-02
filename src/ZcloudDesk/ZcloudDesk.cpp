@@ -1005,11 +1005,11 @@ void ZcloudDesk::showCompInfo()
 		//ui.labelCompName->setPixmap();
 		return;
 	}
-	//else{
-	//	ui.spaceButtonName->setVisible(true);
-	//	ui.usernameButton->setVisible(true);
-	//	ui.usernameButton->setText(m_stUserInfo.m_strUsername);
-	//}
+	else{
+		ui.spaceButtonName->setVisible(true);
+		ui.usernameButton->setVisible(true);
+		ui.usernameButton->setText(m_stUserInfo.m_strUsername);
+	}
 
 
 
@@ -1023,21 +1023,16 @@ void ZcloudDesk::showCompInfo()
 		}
 		else
 		{
-			QString strUserName = m_stUserInfo.m_strUsername;
-			if (strUserName.isEmpty()|| strUserName.contains("wechat_") || strUserName.contains("nick_") || strUserName.contains("user_"))
+			QString strCompanyName = m_stUserInfo.m_strCompanyName;
+			//if (strCompanyName.isEmpty() || strCompanyName.contains("wechat_") || strCompanyName.contains("nick_") || strCompanyName.contains("user_"))
+			if (strCompanyName.isEmpty() )
+
 			{
-				if (m_stUserInfo.m_strMobile.isEmpty())
-				{
-					strText = QString::fromLocal8Bit("——");
-				}
-				else
-				{
-					strText = m_stUserInfo.m_strMobile;
-				}
+				strText = QString::fromLocal8Bit("加入企业");
 			}
 			else
 			{
-				strText = strUserName;
+				strText = strCompanyName;
 			}
 			
 			ui.labelAvatar->setVisible(true);
