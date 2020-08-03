@@ -104,6 +104,9 @@
     <ClCompile Include="SignInWidget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="TwobarCodeWidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="ZcloudDesk.ui">
@@ -163,6 +166,9 @@
     <QtUic Include="SignInWidget.ui">
       <Filter>Form Files</Filter>
     </QtUic>
+    <QtUic Include="TwobarCodeWidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_ZcloudDesk.h">
@@ -185,6 +191,9 @@
     </ClInclude>
     <ClInclude Include="zdot.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_TwobarCodeWidget.h">
+      <Filter>Generated Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -229,6 +238,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="SignInWidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="TwobarCodeWidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

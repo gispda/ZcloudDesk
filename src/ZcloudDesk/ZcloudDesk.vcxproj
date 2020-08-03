@@ -160,6 +160,7 @@
     <ClCompile Include="SignInWidget.cpp" />
     <ClCompile Include="SingleApplication.cpp" />
     <ClCompile Include="TopToolWidget.cpp" />
+    <ClCompile Include="TwobarCodeWidget.cpp" />
     <ClCompile Include="VerDesWidget.cpp" />
     <ClCompile Include="WallpaperWidget.cpp" />
     <ClCompile Include="zappmenubutton.cpp" />
@@ -171,6 +172,7 @@
     <QtUic Include="NoviceDlg.ui" />
     <QtUic Include="SignInWidget.ui" />
     <QtUic Include="TopToolWidget.ui" />
+    <QtUic Include="TwobarCodeWidget.ui" />
     <QtUic Include="VerDesWidget.ui">
       <SubType>Designer</SubType>
     </QtUic>
@@ -193,6 +195,11 @@
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(QTDIR)\include;.\..\..\include;$(QTDIR)\include\QtWebKit;$(QTDIR)\include\QtWebkitWidgets;.\..\..\include\qiniu\qiniu;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtSql;$(QTDIR)\include\QtWidgets</IncludePath>
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(QTDIR)\include;.\..\..\include;$(QTDIR)\include\QtWebKit;$(QTDIR)\include\QtWebkitWidgets;.\..\..\include\qiniu\qiniu;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtSql;$(QTDIR)\include\QtWidgets</IncludePath>
     </QtMoc>
+    <QtMoc Include="TwobarCodeWidget.h">
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(QTDIR)\include;.\..\..\include;$(QTDIR)\include\QtWebKit;$(QTDIR)\include\QtWebkitWidgets;.\..\..\include\qiniu\qiniu;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtSql;$(QTDIR)\include\QtWidgets</IncludePath>
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(QTDIR)\include;.\..\..\include;$(QTDIR)\include\QtWebKit;$(QTDIR)\include\QtWebkitWidgets;.\..\..\include\qiniu\qiniu;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtSql;$(QTDIR)\include\QtWidgets</IncludePath>
+    </QtMoc>
+    <ClInclude Include="GeneratedFiles\ui_TwobarCodeWidget.h" />
     <ClInclude Include="zdot.h" />
     <QtMoc Include="zappmenubutton.h" />
     <QtMoc Include="ActivityWidget.h" />

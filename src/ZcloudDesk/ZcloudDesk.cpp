@@ -27,6 +27,8 @@
 #include "NoviceDlg.h"
 #include "JsInterface.h"
 #include <SignInWidget.h>
+#include <QMenu>
+#include <TwobarCodeWidget.h>
 
 
 QString zhicloudStrToken;
@@ -518,7 +520,47 @@ void ZcloudDesk::openEntCenterWidget()
 	}
 	if ((m_stUserInfo.m_strCompanyName.isEmpty())){
 
-		m_pEntCenter->createEntCenter();
+		QMenu* m_pMenu = new QMenu();
+		QAction* m_pActionCustomerManager = new QAction(m_pMenu);
+		QAction* m_pActionEnterpriseManager = new QAction(m_pMenu);
+		QAction* m_pActionCreateEntCompany = new QAction(m_pMenu);
+		m_pActionCustomerManager->setText(QString::fromLocal8Bit("由客户经理邀请加入"));
+		m_pActionEnterpriseManager->setText(QString::fromLocal8Bit("由企业管理员邀请加入"));
+		m_pActionCreateEntCompany->setText(QString::fromLocal8Bit("创建新企业"));
+
+		m_pMenu->addAction(m_pActionCustomerManager);
+		m_pMenu->addAction(m_pActionEnterpriseManager);
+		m_pMenu->addAction(m_pActionCreateEntCompany);
+
+		ui.labelCompName->setMenu(m_pMenu);
+		
+
+		connect(m_pActionCustomerManager, &QAction::triggered, this, &ZcloudDesk::CustomerManagerinvite);
+		connect(m_pActionEnterpriseManager, &QAction::triggered, this, &ZcloudDesk::EnterpriseManagerinvite);
+		connect(m_pActionCreateEntCompany, &QAction::triggered, m_pEntCenter, &ZcloudEntCenter::createEntCenter);
+
+		m_pMenu->setAttribute(Qt::WA_TranslucentBackground);
+		m_pMenu->setStyleSheet(QString::fromLocal8Bit(
+			"QMenu{background-color:rgba(255, 255, 255, 1);"//整个背景
+			"border:1px solid rgba(222, 222, 222,1);"//整个菜单边缘
+			"font-size:12px 'Microsoft Yahei';"
+			"text-align:center;"
+			"color:rgb(51, 51, 51);}"
+			"QMenu::item{"//字体颜色
+			"height:30px;"
+			"background-color:rgb(255, 255, 255);"
+			"margin:0px 0px;"//设置菜单项的外边距
+			"padding:1px 20px;}"//设置菜单项文字上下和左右的内边距，效果就是菜单中的条目左右上下有了间隔
+			"QMenu::item:pressed{"
+			"background-color:rgb(242,242,242);"//选中的样式
+			"font-size: 12px 'Microsoft Yahei';color:rgb(51,51,51);}"//字体颜色
+			"QMenu::item:selected{"//菜单项按下效果
+			"font-size: 12px 'Microsoft Yahei';color:rgb(51,51,51);"//字体颜色
+			"background-color:rgb(242, 242, 242);}"));
+
+		
+
+		//m_pEntCenter->createEntCenter();
 
 			return;
 	}
@@ -527,6 +569,17 @@ void ZcloudDesk::openEntCenterWidget()
 	m_pEntCenter->openEntCenter(m_stUserInfo.m_strUserId, m_stUserInfo.m_strToken, m_stUserInfo.m_strTruename, m_stUserInfo.m_strJob, m_stUserInfo.m_bLoginByTax, m_stUserInfo.m_strMobile, m_stUserInfo.m_strCompanyId, m_stUserInfo.m_strUsername);
 	m_pBigDataInterface->produceData("M01", "OP001", "TTA013");
 }
+//!客户经理邀请
+void ZcloudDesk::CustomerManagerinvite(){
+	TwobarCodeWidget* ptwobarCodeWidget = new TwobarCodeWidget("",QString::fromLocal8Bit("由客户经理邀请加入"),NULL);
+	ptwobarCodeWidget->show();
+};
+//!企业管理员邀请
+void ZcloudDesk::EnterpriseManagerinvite(){
+	TwobarCodeWidget* ptwobarCodeWidget = new TwobarCodeWidget("", QString::fromLocal8Bit("由企业管理员邀请加入"), NULL);
+	ptwobarCodeWidget->show();
+};
+
 
 void  ZcloudDesk::openOrderList(){
 	if (NULL == m_pEntCenter)
@@ -1067,7 +1120,7 @@ void ZcloudDesk::showCompInfo()
 	if (strText.length()>12)
 	{
 		ui.labelCompName->setMinimumWidth(150);
-		setElideText(12, ui.labelCompName, strText);
+		//setElideText(12, ui.labelCompName, strText);
 	}
 	else
 	{

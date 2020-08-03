@@ -147,7 +147,12 @@ void on_activatedSysTrayIcon(QSystemTrayIcon::ActivationReason reason);
 	//购买会员成功
 	void  buyMembershipSlot(QStringList vipNameList, QStringList vipIdList, QStringList vipTimeList);
 
-private: 
+private:
+	//!客户经理邀请
+	void CustomerManagerinvite();
+	//!企业管理员邀请
+	void EnterpriseManagerinvite();
+
 	//!打开服务费续费窗口 
 	void openServiceFee(QString strUrl);
 

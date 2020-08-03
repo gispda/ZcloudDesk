@@ -15,7 +15,6 @@
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
-#include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
@@ -35,7 +34,7 @@ public:
     QPushButton *usernameButton;
     QPushButton *spaceButtonName;
     LabelEx *labelAvatar;
-    QLabel *labelCompName;
+    QPushButton *labelCompName;
     QPushButton *spaceButton_2;
     QPushButton *customServiceButton;
     QPushButton *billListButton;
@@ -117,19 +116,15 @@ public:
 
         horizontalLayout->addWidget(labelAvatar);
 
-        labelCompName = new QLabel(ZcloudTopWidget);
+        labelCompName = new QPushButton(ZcloudTopWidget);
         labelCompName->setObjectName(QStringLiteral("labelCompName"));
-        sizePolicy.setHeightForWidth(labelCompName->sizePolicy().hasHeightForWidth());
-        labelCompName->setSizePolicy(sizePolicy);
-        labelCompName->setMinimumSize(QSize(0, 26));
-        labelCompName->setMaximumSize(QSize(1000, 26));
-        labelCompName->setStyleSheet(QString::fromUtf8("QLabel{border-image: url(:/ZcloudDesk/image/bg_transparent.png);color: rgb(255, 255, 255);\n"
-"font: 12px \"\345\276\256\350\275\257\351\233\205\351\273\221\";padding-left:5px;padding-right:5px;}\n"
-"QLabel:hover{border-image: url(:/ZcloudDesk/image/bg_transparent_hover.png);color: rgb(255, 255, 255);\n"
-"font: 12px \"\345\276\256\350\275\257\351\233\205\351\273\221\";padding-left:5px;padding-right:5px;}\n"
-"QLabel:pressed{border-image: url(:/ZcloudDesk/image/bg_transparent_pre.png);color: rgb(255, 255, 255);\n"
-"font: 12px \"\345\276\256\350\275\257\351\233\205\351\273\221\";padding-left:5px;padding-right:5px;};"));
-        labelCompName->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
+        labelCompName->setStyleSheet(QString::fromUtf8("QPushButton{border-image: url(:/ZcloudDesk/image/bg_transparent.png);color: rgb(255, 255, 255);\n"
+"font: 12px \"\345\276\256\350\275\257\351\233\205\351\273\221\";}\n"
+"QPushButton:hover{border-image: url(:/ZcloudDesk/image/bg_transparent_hover.png);color: rgb(255, 255, 255);\n"
+"font: 12px \"\345\276\256\350\275\257\351\233\205\351\273\221\"}\n"
+"QPushButton:pressed{border-image: url(:/ZcloudDesk/image/bg_transparent_pre.png);color: rgb(255, 255, 255);\n"
+"font: 12px \"\345\276\256\350\275\257\351\233\205\351\273\221\"};"));
+        labelCompName->setFlat(true);
 
         horizontalLayout->addWidget(labelCompName);
 
