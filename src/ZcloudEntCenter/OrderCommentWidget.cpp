@@ -22,6 +22,14 @@ OrderCommentWidget::OrderCommentWidget(QString strOrderCode, QWidget *parent)
 	setWindowModality(Qt::WindowModal);
 	setStyleSheet("outline: none");
 
+	setGrade(3);
+
+	connect(ui.buttonGrade1, &QPushButton::clicked, this, &OrderCommentWidget::push1);
+	connect(ui.buttonGrade2, &QPushButton::clicked, this, &OrderCommentWidget::push2);
+	connect(ui.buttonGrade3, &QPushButton::clicked, this, &OrderCommentWidget::push3);
+	connect(ui.buttonGrade4, &QPushButton::clicked, this, &OrderCommentWidget::push4);
+	connect(ui.buttonGrade5, &QPushButton::clicked, this, &OrderCommentWidget::push5);
+
 
 
 	connect(ui.buttonCancel, &QPushButton::clicked, [this](){
@@ -59,7 +67,65 @@ OrderCommentWidget::OrderCommentWidget(QString strOrderCode, QWidget *parent)
 OrderCommentWidget::~OrderCommentWidget()
 {
 }
+void OrderCommentWidget::push1(){
+	setGrade(1);
+}void OrderCommentWidget::push2(){
+	setGrade(2);
+}void OrderCommentWidget::push3(){
+	setGrade(3);
+}void OrderCommentWidget::push4(){
+	setGrade(4);
+}void OrderCommentWidget::push5(){
+	setGrade(5);
+}
 
+void OrderCommentWidget::setGrade(int pushindex){
+	
+	if (grades == pushindex){
+		grades = grades - 1;
+	}
+	else{
+		grades = pushindex;
+	}
+	QIcon iconfull(":/EntCenterWidget/image/fafull.png");
+
+	QIcon iconspace(":/EntCenterWidget/image/faspace.png");
+	if (grades < 1){
+		ui.buttonGrade1->setIcon(iconspace);
+	}
+	else{
+		ui.buttonGrade1->setIcon(iconfull);
+	}
+	if (grades < 2){
+		ui.buttonGrade2->setIcon(iconspace);
+	}
+	else{
+		ui.buttonGrade2->setIcon(iconfull);
+	}
+	if (grades < 3){
+		ui.buttonGrade3->setIcon(iconspace);
+	}
+	else{
+		ui.buttonGrade3->setIcon(iconfull);
+	}
+	if (grades < 4){
+		ui.buttonGrade4->setIcon(iconspace);
+	}
+	else{
+		ui.buttonGrade4->setIcon(iconfull);
+	}
+	if (grades < 5){
+		ui.buttonGrade5->setIcon(iconspace);
+	}
+	else{
+		ui.buttonGrade5->setIcon(iconfull);
+	}
+	ui.buttonGrade1->repaint();
+	ui.buttonGrade2->repaint();
+	ui.buttonGrade3->repaint();
+	ui.buttonGrade4->repaint();
+	ui.buttonGrade5->repaint();
+}
 
 void OrderCommentWidget::mousePressEvent(QMouseEvent *event)
 {

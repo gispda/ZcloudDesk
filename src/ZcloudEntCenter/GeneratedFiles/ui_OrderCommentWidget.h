@@ -15,7 +15,6 @@
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
-#include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QTextEdit>
 #include <QtWidgets/QWidget>
@@ -38,7 +37,6 @@ public:
     QPushButton *buttonProfessional;
     QTextEdit *editContent;
     QPushButton *buttonCancel;
-    QLineEdit *lineEdit;
 
     void setupUi(QWidget *OrderCommentWidget)
     {
@@ -79,7 +77,7 @@ public:
         buttonGrade1->setObjectName(QStringLiteral("buttonGrade1"));
         buttonGrade1->setGeometry(QRect(60, 80, 40, 40));
         QIcon icon;
-        icon.addFile(QStringLiteral(":/EntCenterWidget/image/fafull.ico"), QSize(), QIcon::Normal, QIcon::Off);
+        icon.addFile(QStringLiteral(":/EntCenterWidget/image/faspace.png"), QSize(), QIcon::Normal, QIcon::Off);
         buttonGrade1->setIcon(icon);
         buttonGrade1->setIconSize(QSize(40, 40));
         buttonGrade1->setFlat(true);
@@ -98,15 +96,15 @@ public:
         buttonGrade5 = new QPushButton(OrderCommentWidget);
         buttonGrade5->setObjectName(QStringLiteral("buttonGrade5"));
         buttonGrade5->setGeometry(QRect(300, 80, 40, 40));
-        QIcon icon1;
-        icon1.addFile(QStringLiteral(":/EntCenterWidget/image/faspace.ico"), QSize(), QIcon::Normal, QIcon::Off);
-        buttonGrade5->setIcon(icon1);
+        buttonGrade5->setIcon(icon);
         buttonGrade5->setIconSize(QSize(40, 40));
+        buttonGrade5->setCheckable(false);
+        buttonGrade5->setChecked(false);
         buttonGrade5->setFlat(true);
         buttonGrade4 = new QPushButton(OrderCommentWidget);
         buttonGrade4->setObjectName(QStringLiteral("buttonGrade4"));
         buttonGrade4->setGeometry(QRect(240, 80, 40, 40));
-        buttonGrade4->setIcon(icon1);
+        buttonGrade4->setIcon(icon);
         buttonGrade4->setIconSize(QSize(40, 40));
         buttonGrade4->setFlat(true);
         labelGrade = new QLabel(OrderCommentWidget);
@@ -145,9 +143,6 @@ public:
         buttonCancel->setMinimumSize(QSize(72, 32));
         buttonCancel->setMaximumSize(QSize(100, 32));
         buttonCancel->setStyleSheet(QStringLiteral(""));
-        lineEdit = new QLineEdit(OrderCommentWidget);
-        lineEdit->setObjectName(QStringLiteral("lineEdit"));
-        lineEdit->setGeometry(QRect(270, 130, 113, 20));
 
         retranslateUi(OrderCommentWidget);
 

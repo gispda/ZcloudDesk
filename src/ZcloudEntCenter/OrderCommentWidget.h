@@ -17,7 +17,15 @@ signals:
 	void sigDetial(QString);
 	//£¡ÆÀ¼Û
 	void sigEvaluate(QString, QString, QString);
+private slots:
+	void push1();
+	void push2();
+	void push3();
+	void push4();
+	void push5();
 protected:
+
+	void setGrade(int);
 	void mousePressEvent(QMouseEvent *event);
 	void mouseMoveEvent(QMouseEvent *event);
 
@@ -38,4 +46,5 @@ private:
 	QString m_strCreateTime;
 	QString m_strAction2;
 	QPoint dPos;
+	int grades;
 };

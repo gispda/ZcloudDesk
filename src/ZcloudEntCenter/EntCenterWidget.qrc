@@ -32,7 +32,7 @@
         <file>image/close_sel.png</file>
         <file>image/min.png</file>
         <file>image/min_sel.png</file>
-        <file>image/fafull.ico</file>
-        <file>image/faspace.ico</file>
+        <file>image/fafull.png</file>
+        <file>image/faspace.png</file>
     </qresource>
 </RCC>

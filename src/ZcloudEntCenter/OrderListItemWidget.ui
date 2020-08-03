@@ -256,7 +256,10 @@ border-radius:5px;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true"/>
+     <string notr="true">font: 14px &quot;微软雅黑&quot;;
+color:#333333;
+background-color: rgba(255, 255, 255, 0);
+border:0px;color:blue</string>
     </property>
     <property name="text">
      <string>详情</string>

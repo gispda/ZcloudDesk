@@ -109,7 +109,10 @@ public:
         buttonDetial = new QPushButton(FilletWidget);
         buttonDetial->setObjectName(QStringLiteral("buttonDetial"));
         buttonDetial->setGeometry(QRect(680, 10, 40, 40));
-        buttonDetial->setStyleSheet(QStringLiteral(""));
+        buttonDetial->setStyleSheet(QString::fromUtf8("font: 14px \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
+"color:#333333;\n"
+"background-color: rgba(255, 255, 255, 0);\n"
+"border:0px;color:blue"));
         buttonDetial->setFlat(true);
         buttonAction = new QPushButton(FilletWidget);
         buttonAction->setObjectName(QStringLiteral("buttonAction"));
