@@ -41,7 +41,7 @@ int main(int argc, char *argv[])
 
 	//QString strDownloadUrl = "http://download.zhicloud.com/app/pkg/guizhou/Package5.0.3-love.zip";
 	//QString strMd5 = "E68656427DB02D2C8390D4F79A1BF020";
-	//QString strShowWindow = "0";
+	//QString strShowWindow = "1";
 	bool bShowWindow = strShowWindow.toInt();
 
 	QApplication::setApplicationDisplayName(QString::fromLocal8Bit("%1¸üÐÂ³ÌÐò").arg(g_strAppName));

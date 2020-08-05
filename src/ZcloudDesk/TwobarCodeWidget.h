@@ -23,7 +23,7 @@ protected:
 	void setGrade(int);
 	void mousePressEvent(QMouseEvent *event);
 	void mouseMoveEvent(QMouseEvent *event);
-	QPixmap TwobarCodeWidget::generateQRcode(QString tempstr);
+	QPixmap TwobarCodeWidget::generateQRcode(char *string);
 private:
 
 	Ui::TwobarCodeWidget ui;
