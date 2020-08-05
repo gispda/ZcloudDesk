@@ -234,18 +234,18 @@ int LoginThread::httpLogin(int bytaxFlag, QString strTaxNo_ID, QString strMachin
 
 	}
 	int code = analySucessJson(strRet, userInfoStruct);
-	userInfoStruct.m_strCompanyId = "13JZBY";
-	userInfoStruct.m_strCompanyName = QString::fromLocal8Bit("阿克塞中汇劳务有限公司");
-	userInfoStruct.m_strTaxNumber = "91620924MA74U5801R";
-	userInfoStruct.m_strUsername = "17707456666";
-	userInfoStruct.m_strPwd = "666666";
-	userInfoStruct.m_strTruename = QString::fromLocal8Bit("曹进发");
-	userInfoStruct.m_strUserId = "11NECP";
-	userInfoStruct.m_strJob = QString::fromLocal8Bit("销售");
-	userInfoStruct.m_strProvinceId = "620000";
-	userInfoStruct.m_strCityId = "620900";
-	userInfoStruct.m_strAreaId = "620924";
-	userInfoStruct.m_strHzsId = "10026";
+	//userInfoStruct.m_strCompanyId = "13JZBY";
+	//userInfoStruct.m_strCompanyName = QString::fromLocal8Bit("阿克塞中汇劳务有限公司");
+	//userInfoStruct.m_strTaxNumber = "91620924MA74U5801R";
+	//userInfoStruct.m_strUsername = "17707456666";
+	//userInfoStruct.m_strPwd = "666666";
+	//userInfoStruct.m_strTruename = QString::fromLocal8Bit("曹进发");
+	//userInfoStruct.m_strUserId = "11NECP";
+	//userInfoStruct.m_strJob = QString::fromLocal8Bit("销售");
+	//userInfoStruct.m_strProvinceId = "620000";
+	//userInfoStruct.m_strCityId = "620900";
+	//userInfoStruct.m_strAreaId = "620924";
+	//userInfoStruct.m_strHzsId = "10026";
 
 	if (code == 0)
 	{
