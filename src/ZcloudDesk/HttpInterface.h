@@ -11,6 +11,10 @@ public:
 	HttpInterface(QObject *parent=0);
 	~HttpInterface();
 
+	//!游客以税号信息获取临时token
+	bool winHttpLogin(QString strTaxNo,QString& strRet);
+
+
 	//!税号登录
 	bool winHttpLogin(QString strTaxNo,QString strUserId, QString& strRet);
 
@@ -65,6 +69,9 @@ public:
 
 	//!获取服务器系统时间
 	bool winHttpGetSystemTime(QString &strRet);
+
+
+	bool winHttpSetUsername(QString strTaxNo_ID,QString m_strUsername,QString &strRet);
 
 private:
 	

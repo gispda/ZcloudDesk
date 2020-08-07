@@ -8,7 +8,7 @@
 #include <QJsonArray>
 #include "HttpInterface.h"
 #include "ZcloudBigData.h"
-
+#include "ZcloudCommon.h"
 extern QString zhicloudStrToken;
 extern QString zhicloudStrUserId;
 
@@ -30,6 +30,7 @@ void LoginThread::setValue(WayEnum wayEnum, QString id, QString pw, QString code
 	m_Id = id;
 	m_PW = pw;
 	m_codeType = codeType;
+	
 }
 
 QString LoginThread::checkLogoExist(QString strUrl)
@@ -80,6 +81,13 @@ void LoginThread::run()
 			//emit getFilishSignals(bindingTaxNumber(m_Id, m_PW));
 			break;
 		}
+		case SetUserNameWay:
+		{
+			int rtCode = httpLogin(4, m_userInfoStruct.m_strToken, m_Id, m_userInfoStruct);
+			emit getFilishSignals(rtCode);
+		
+		}
+			break;
 		default:
 			break;
 		}
@@ -182,6 +190,24 @@ int LoginThread::analyCodeSucess(QString strRet)
 	return code;
 }
 
+int LoginThread::clsanalyCodeSucess(QString strRet)
+{
+	QByteArray byte_array = strRet.toUtf8();
+	QJsonParseError json_error;
+	QJsonDocument parse_doucment = QJsonDocument::fromJson(byte_array, &json_error);
+	if (json_error.error != QJsonParseError::NoError)
+	{
+		return -1;
+	}
+	if (!parse_doucment.isObject())
+	{
+		return -1;
+	}
+	QJsonObject obj = parse_doucment.object();
+	int code = obj.take("status").toInt();
+	return code;
+}
+
 int LoginThread::httpLogin(int bytaxFlag, QString strTaxNo_ID, QString strMachine_PW, UserInfoStruct &userInfoStruct, QString strSkid)
 {
 	HttpInterface	sInter;
@@ -227,6 +253,15 @@ int LoginThread::httpLogin(int bytaxFlag, QString strTaxNo_ID, QString strMachin
 		if (!sInter.winHttpTokenLogin(strTaxNo_ID, strMachine_PW, strRet))
 			return -1;
 		userInfoStruct.m_bLoginByTax = -1;
+	}
+	else if (bytaxFlag == 4){
+		//设置用户名称
+		if (!sInter.winHttpSetUsername(strTaxNo_ID, strMachine_PW, strRet))
+			return -1;
+		userInfoStruct.m_bLoginByTax = -1;
+
+
+		return clsanalyCodeSucess(strRet);
 	}
 	else
 	{
@@ -442,4 +477,56 @@ bool LoginThread::analySucessJsonSign(QString strRet,QString &strSign)
 		return true;
 	}
 	return false;
+}
+
+int LoginThread::visitorLogin(UserInfoStruct &userInfoStruct)
+{
+
+	QString strtax = ZcloudComFun::getTaxnumber();
+
+	HttpInterface	sInter;
+	QString			strRet;
+	
+		//游客登陆取临时token
+	if (!sInter.winHttpLogin(strtax, strRet))
+	{
+		return -1;
+	}
+
+	
+	return analySucessTempJson(strRet, userInfoStruct);;
+}
+
+int LoginThread::analySucessTempJson(QString strRet, UserInfoStruct &userInfoStruct)
+{
+	QByteArray byte_array = strRet.toUtf8();
+	QJsonParseError json_error;
+	QJsonDocument parse_doucment = QJsonDocument::fromJson(byte_array, &json_error);
+	if (json_error.error != QJsonParseError::NoError)
+	{
+		return -1;
+	}
+	if (!parse_doucment.isObject())
+	{
+		return -1;
+	}
+	QJsonObject obj = parse_doucment.object();
+	int code = obj.take("status").toInt();
+	if (code == 0)
+	{
+		QJsonObject data = obj.take("data").toObject();
+		userInfoStruct.m_strCompanyId = data.take("company_id").toString();			//公司业务编号
+		userInfoStruct.m_strCompanyName = data.take("company_name").toString();		//公司名字
+		userInfoStruct.m_strTaxNumber = data.take("tax_number").toString();			//税号
+
+	
+		userInfoStruct.m_strUserId = data.take("user_id").toString();			//用户编号
+
+		userInfoStruct.m_strProvinceId = QString::number(data.take("province_id").toInt());		//省Id
+		userInfoStruct.m_strCityId = QString::number(data.take("city_id").toInt());			//市Id
+		userInfoStruct.m_strAreaId = QString::number(data.take("area_id").toInt());			//区Id
+		userInfoStruct.m_strHzsId = QString::number(data.take("hzs_id").toInt());				//合作商Id
+		userInfoStruct.m_strToken = data.take("token").toString();				//token 
+	}
+	return code;
 }

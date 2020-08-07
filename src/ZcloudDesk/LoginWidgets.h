@@ -79,6 +79,9 @@ public:
 	LoginWidget( QWidget *parent);
 	~LoginWidget();
 	UserInfoStruct m_userInfoStruct;
+
+	void initModifyUserNameWidget();
+
 	//判断是账号非自动登录
 	bool isUserNameLogin()
 	{

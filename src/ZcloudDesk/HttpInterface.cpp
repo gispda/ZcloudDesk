@@ -56,6 +56,23 @@ bool HttpInterface::winHttpLogin(bool accountPhone, QString strAccount, QString 
 	return ZcloudComFun::httpPost(strUrl, strPost, 5000, strRet,false,1);
 }
 
+bool HttpInterface::winHttpLogin(QString strTaxNo, QString& strRet)
+{
+
+	QString strUrl = QString("/ucenter/user/get-key");
+	QString strPost;
+
+	if (strTaxNo != "")
+		strPost = QString("tax=%1").arg(strTaxNo);
+	else
+		strPost = "";
+	//if (!strUserId.isEmpty())
+	//{
+	//	strPost.append("&user_id=").append(strUserId);
+	//}
+	return ZcloudComFun::httpPost(strUrl, strPost, 5000, strRet,false,1);
+}
+
 bool HttpInterface::winHttpGetTopToolInfo(QString strUid, QString strToken, QString& strRet)
 {
 	QString strUrl = QString("/general/get-top-app-list?user_id=%1&token=%2").arg(strUid).arg(strToken);
@@ -190,4 +207,12 @@ bool HttpInterface::winHttpGetSystemTime(QString &strRet)
 {
 	QString strUrl = QString("/general/get-server-time");
 	return ZcloudComFun::httpPost(strUrl, "", 5000, strRet);
+}
+
+bool HttpInterface::winHttpSetUsername(QString strToken, QString m_strUsername, QString &strRet)
+{
+	QString strUrl = QString("/ucenter/user/update-name");
+	QString strPost = QString("token=%1&username=%2").arg(strToken).arg(m_strUsername);
+
+	return ZcloudComFun::httpPost(strUrl, strPost, 5000, strRet,false,1);
 }

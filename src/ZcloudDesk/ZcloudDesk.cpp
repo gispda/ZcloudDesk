@@ -491,9 +491,26 @@ void ZcloudDesk::openEntCenterWidget()
 			if (loginDialog.exec() == QDialog::Accepted)
 			{
 				UserInfoStruct userInfo = loginDialog.getUserInfoStruct();
+			//	userInfo.m_strUsername = "";
 				if (!userInfo.m_strUsername.isEmpty()){
 					m_stUserInfo = userInfo;
 					startInitWork();
+				}
+				else
+				{
+                   ////设置用户名称
+					loginDialog.initModifyUserNameWidget();
+					if (loginDialog.exec() == QDialog::Accepted)
+					{
+						userInfo = loginDialog.getUserInfoStruct();
+					//	userInfo.m_strUsername = "";
+						if (!userInfo.m_strUsername.isEmpty()){
+							m_stUserInfo = userInfo;
+							startInitWork();
+						}
+
+					}
+
 				}
 			}
 		return;

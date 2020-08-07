@@ -353,3 +353,12 @@ void LoginDialog::installSoftwareSlot()
 		ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_TIP, QString::fromLocal8Bit("提示"), QString::fromLocal8Bit("获取开票软件失败，请稍后再试！"));
 
 }
+
+void LoginDialog::initModifyUserNameWidget()
+{
+
+	lodingLabel->hide();
+	movie->stop();
+	setButton->setEnabled(true);
+	loginWidget->initModifyUserNameWidget();
+}

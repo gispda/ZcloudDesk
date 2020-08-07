@@ -180,6 +180,9 @@ int main(int argc, char *argv[])
 	//!更新
 	updater();
 	
+
+
+
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//LoginDialog loginDialog;
 	//DlgWait 	dlgWait(QString::fromLocal8Bit("登录中..."));
@@ -271,7 +274,20 @@ int main(int argc, char *argv[])
 	//登陆成功
 	//UserInfoStruct userInfo = loginDialog.getUserInfoStruct();
 	//ZcloudDesk w(userInfo);
-	UserInfoStruct userInfo ;
+	//LoginDialog loginDialog;
+
+
+	UserInfoStruct userInfo;
+
+	
+	int code = LoginThread::visitorLogin(userInfo);
+
+	if (code != 0)
+	{
+		ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_TIP, QString::fromLocal8Bit("游客登陆"), QString::fromLocal8Bit("游客获取临时权限异常"));
+	}
+
+
 	ZcloudDesk w(userInfo);
 	w.show();
 	a.mainWindow = &w;

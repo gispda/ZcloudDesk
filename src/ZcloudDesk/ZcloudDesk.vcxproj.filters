@@ -243,7 +243,7 @@
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="ZcloudDesk.ui">
-      <Filter>Generated Files</Filter>
+      <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>
 </Project>

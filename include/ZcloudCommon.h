@@ -78,6 +78,9 @@ namespace ZcloudComFun
 	 //开票软件已存在读取开票软件
 	 bool readSoftV(QString &verSion, QString tax_number);
 
+	 //获取税号
+	 __declspec(dllexport) QString getTaxnumber();
+
 	 bool getPublicIp(QString& ip);
 
 	 __declspec(dllexport) void setElideText(int nPixSize, QLabel* pLabel, const QString& strText);

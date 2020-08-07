@@ -287,6 +287,23 @@ bool ZcloudComFun::qtReadsoft(QString &verSion, QString taxNumber)
 	return false;
 }
 
+QString ZcloudComFun::getTaxnumber()
+{
+	QSettings settings("HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App Paths\\fwkp.exe", QSettings::NativeFormat);
+	QStringList groupsList = settings.childGroups();
+	
+	QString strCode;
+	foreach(QString group, groupsList)
+	{
+		settings.beginGroup(group);
+		strCode = settings.value("code", QVariant()).toString();			//£°∆Û“µÀ∞∫≈
+	
+		settings.endGroup();
+	}
+	return strCode;
+
+}
+
 bool ZcloudComFun::readSoftV(QString &verSion, QString tax_number)
 {
 	QSettings settings("HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App Paths\\fwkp.exe", QSettings::NativeFormat);

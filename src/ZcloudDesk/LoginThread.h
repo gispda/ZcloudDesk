@@ -17,7 +17,8 @@ public:
 		ResetPwWay,		//重置密码确认
 		VerifyWay,		//注册
 		BindingPhoneWay,//微信绑定手机号
-		BindingEin		//税号绑定手机号
+		BindingEin,		//税号绑定手机号
+		SetUserNameWay //设置用户名称
 	};
 
 	LoginThread(QObject *parent = NULL);
@@ -28,6 +29,10 @@ public:
 	static int httpLogin(int bytaxFlag, QString strTaxNo_ID, QString strMachine_PW, UserInfoStruct &userInfoStruct, QString strSkid = "");
 	//!检测用户头像是否存在 存在返回路径 不存在下载之后返回路径
 	static QString checkLogoExist(QString strUrl);
+
+	//游客后台获取临时token
+
+	static int visitorLogin(UserInfoStruct &userInfoStruct);
 private:
 	//获取验证码
 	int getCode(QString phoneNumber, QString codeType);
@@ -46,10 +51,20 @@ private:
 	
 	//税号 token userid 写注册表·
 	static void writeRegdit(UserInfoStruct);
+
+
+
+	//解析临时登录token
+	static int analySucessTempJson(QString strRet, UserInfoStruct &userInfoStruct);
+
 	//解析登录数据
 	static int analySucessJson(QString strRet, UserInfoStruct &userInfoStruct);
+
 	//验证返回成功与否
 	int analyCodeSucess(QString strRet);
+
+	static int clsanalyCodeSucess(QString strRet);
+
 	//解析json 是否为未注册用户（用户手机号快捷登录）
 	static bool analySucessJsonSign(QString strRet,QString &strSign);
 
@@ -57,6 +72,8 @@ private:
 	QString m_Id;
 	QString m_PW;
 	QString m_codeType = "";
+	///用于设置用户名称
+	QString m_strUsername;  
 	//用于手机快捷登录时 未注册时 保存sign（sign 用户设置密码时用 注册接口）
 	QString m_strSign = "";
 

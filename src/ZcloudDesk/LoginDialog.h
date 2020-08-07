@@ -22,6 +22,8 @@ public:
 	~LoginDialog();
 	void initWeChartWidget(int logingInt = 0);
 	void initBindingEinWidget();
+
+	void initModifyUserNameWidget();
 	UserInfoStruct getUserInfoStruct()
 	{
 		return loginWidget->m_userInfoStruct;

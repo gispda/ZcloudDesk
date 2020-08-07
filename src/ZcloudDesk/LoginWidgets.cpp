@@ -535,6 +535,37 @@ void LoginWidget::changeLoginMethod(int statusFlag, bool isClear)
 		loginButton->setText(QString::fromLocal8Bit("确定"));
 		loginButton->setGeometry(48, 164, 320, 50);
 		passwordLineEdit->show();
+		break;
+	}
+	
+	case 7:
+	{
+		//设置密码
+		//statusLoginLabel_2->setText(QString::fromLocal8Bit("<html><head/><body><p><span style=\" font:14px 'Microsoft YaHei'; font-weight:600; color:#1f8bed;\">&lt;"
+		//	"</span><span style=\" font:14px 'Microsoft YaHei';  font-weight:600;color:#666666;\">已有%1账号</span></p></body></html>").arg(g_strAppName));
+		//statusLoginLabel_2->setGeometry(48, 410, 113, 35);
+		statusLoginLabel->setText(QString::fromLocal8Bit("设置用户名称"));
+		statusLoginLabel->show();
+		verificationCodeLabel->hide();
+		verificationCodeLineEdit->hide();
+
+		accountLineEdit->setPlaceholderText(QString::fromLocal8Bit("请输入您的用户名"));
+		accountLineEdit->setEchoMode(QLineEdit::Normal);
+		accountLineEdit->setEnabled(true);
+		QRegExp regx("^[0-9a-zA-Z_]{1,}$");
+		QValidator *validator = new QRegExpValidator(regx, accountLineEdit);
+		accountLineEdit->setValidator(validator);
+
+		accountLineEdit->show();
+		registerLael->hide();
+		statusLoginLabel_2->hide();
+
+		passwordLineEdit->setGeometry(48, 91, 320, 50);
+		passwordLineEdit->hide();
+		loginButton->setText(QString::fromLocal8Bit("确定"));
+		loginButton->setGeometry(48, 164, 320, 50);
+		loginButton->show();
+		//passwordLineEdit->show();
 	}
 	default:
 		break;
@@ -677,6 +708,27 @@ void LoginWidget::onLoginButtonClicked()
 			m_loginThread->setValue(LoginThread::VerifyWay, accountStr, passwordStr, verificationCodeStr);
 			m_loginThread->start();
 		}
+		else if (statusLoginLabel->text() == QString::fromLocal8Bit("设置用户名称"))
+		{
+			if (accountStr.isEmpty())
+			{
+				accountLineEdit->errorStyle();
+				m_hintLabel_1->setText(QString::fromLocal8Bit("用户名称不能为空"));
+				m_hintLabel_1->show();
+				return;
+			}
+			else if (accountStr.size() > 20)
+			{
+				accountLineEdit->errorStyle();
+				m_hintLabel_1->setText(QString::fromLocal8Bit("用户名称超过20个字，请重新输入"));
+				m_hintLabel_1->show();
+				return;
+			}
+			ZcloudBigDataInterface::GetInstance()->produceData("M00", "OP001", "SLG037", accountStr);
+			emit lodingStartSiganl();
+			m_loginThread->setValue(LoginThread::SetUserNameWay, accountStr, passwordStr, verificationCodeStr);
+			m_loginThread->start();
+		}
 		else
 		{
 			QString pass_1 = passwordLineEdit->text();
@@ -796,6 +848,11 @@ void LoginWidget::getFinish(int status)
 				emit logingSucceed();
 			}
 			break;
+		}
+		case LoginThread::SetUserNameWay:
+		{
+			m_userInfoStruct.m_strUsername = accountLineEdit->text();
+			emit logingSucceed();
 		}
 		default:
 			break;
@@ -1258,6 +1315,13 @@ bool LoginWidget::loginNotNet(QString &tipSt)
 
 LoginWidget::~LoginWidget()
 {
+}
+
+void LoginWidget::initModifyUserNameWidget()
+{
+	changeLoginMethod(7);
+
+	this->show();
 }
 
 
