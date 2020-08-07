@@ -37,6 +37,7 @@ public:
 	QRect getWidgetRect(int i);
 
 	QString loadJsbTax();
+	ZcloudEntCenter* getEntCenter();
 
 protected:
 	bool eventFilter(QObject *target, QEvent *e);
@@ -47,6 +48,7 @@ signals:
 	void startInitSignal(int);
 private slots:
 
+void openCreateEntDlg();
 void openOrderList();
 //Òþ²Ø°´Å¥
 void hideWindow();

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>539</width>
-    <height>493</height>
+    <width>540</width>
+    <height>650</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -18,78 +18,69 @@
   </property>
   <property name="maximumSize">
    <size>
-    <width>539</width>
-    <height>493</height>
+    <width>800</width>
+    <height>900</height>
    </size>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QLabel" name="labelCompanyNotFound">
+  <widget class="QWidget" name="verticalLayoutWidget">
    <property name="geometry">
     <rect>
-     <x>158</x>
-     <y>110</y>
-     <width>131</width>
-     <height>15</height>
+     <x>0</x>
+     <y>0</y>
+     <width>541</width>
+     <height>641</height>
     </rect>
    </property>
-   <property name="sizePolicy">
-    <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-     <horstretch>0</horstretch>
-     <verstretch>0</verstretch>
-    </sizepolicy>
-   </property>
-   <property name="minimumSize">
-    <size>
-     <width>0</width>
-     <height>15</height>
-    </size>
-   </property>
-   <property name="maximumSize">
-    <size>
-     <width>16777215</width>
-     <height>15</height>
-    </size>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">font: 12px &quot;微软雅黑&quot;;
-color: #ff0000;
-border-bottom:0px;</string>
-   </property>
-   <property name="text">
-    <string>未查询到该公司，请重新输入</string>
-   </property>
-  </widget>
-  <widget class="QComboBox" name="comboBoxArea">
-   <property name="geometry">
-    <rect>
-     <x>424</x>
-     <y>190</y>
-     <width>98</width>
-     <height>40</height>
-    </rect>
-   </property>
-   <property name="sizePolicy">
-    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-     <horstretch>0</horstretch>
-     <verstretch>0</verstretch>
-    </sizepolicy>
-   </property>
-   <property name="minimumSize">
-    <size>
-     <width>98</width>
-     <height>40</height>
-    </size>
-   </property>
-   <property name="maximumSize">
-    <size>
-     <width>98</width>
-     <height>40</height>
-    </size>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QComboBox{border-radius:4px;color:rgba(51,51,51,1);border:1px solid rgb(222,222,222);font:14px 'Microsoft Yahei';padding-left:10px;}
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <property name="spacing">
+     <number>0</number>
+    </property>
+    <property name="sizeConstraint">
+     <enum>QLayout::SetMinimumSize</enum>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
+    <item>
+     <widget class="QWidget" name="widget" native="true">
+      <property name="maximumSize">
+       <size>
+        <width>540</width>
+        <height>320</height>
+       </size>
+      </property>
+      <widget class="QComboBox" name="comboBoxArea">
+       <property name="geometry">
+        <rect>
+         <x>425</x>
+         <y>180</y>
+         <width>98</width>
+         <height>40</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>98</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>98</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QComboBox{border-radius:4px;color:rgba(51,51,51,1);border:1px solid rgb(222,222,222);font:14px 'Microsoft Yahei';padding-left:10px;}
 
 QComboBox:focus{border:1px solid rgba(30,140,238,1);}
 
@@ -108,225 +99,267 @@ QComboBox QAbstractItemView::item
 	font:14px &quot;微软雅黑&quot;;
     height:32px;
 }</string>
-   </property>
-   <property name="editable">
-    <bool>true</bool>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEditPhone">
-   <property name="geometry">
-    <rect>
-     <x>154</x>
-     <y>370</y>
-     <width>368</width>
-     <height>40</height>
-    </rect>
-   </property>
-   <property name="sizePolicy">
-    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-     <horstretch>0</horstretch>
-     <verstretch>0</verstretch>
-    </sizepolicy>
-   </property>
-   <property name="minimumSize">
-    <size>
-     <width>368</width>
-     <height>40</height>
-    </size>
-   </property>
-   <property name="maximumSize">
-    <size>
-     <width>368</width>
-     <height>40</height>
-    </size>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QLineEdit{border-radius:4px;color:rgba(51,51,51,1);border:1px solid rgb(222,222,222);font:14px 'Microsoft Yahei';padding-left:10px;}
-QLineEdit:laceholder{color:rgba(51,51,51,1);}QLineEdit:focus{border:1px solid rgba(30,140,238,1);}
-QLineEdit:disabled{background-color: rgb(247,248, 250);};</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="maxLength">
-    <number>11</number>
-   </property>
-   <property name="placeholderText">
-    <string>请输入负责人手机号</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="labelPhoneError">
-   <property name="geometry">
-    <rect>
-     <x>158</x>
-     <y>410</y>
-     <width>141</width>
-     <height>15</height>
-    </rect>
-   </property>
-   <property name="sizePolicy">
-    <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-     <horstretch>0</horstretch>
-     <verstretch>0</verstretch>
-    </sizepolicy>
-   </property>
-   <property name="minimumSize">
-    <size>
-     <width>0</width>
-     <height>15</height>
-    </size>
-   </property>
-   <property name="maximumSize">
-    <size>
-     <width>16777215</width>
-     <height>15</height>
-    </size>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">font: 12px &quot;微软雅黑&quot;;
+       </property>
+       <property name="editable">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QLabel" name="labelAddressError">
+       <property name="geometry">
+        <rect>
+         <x>159</x>
+         <y>280</y>
+         <width>191</width>
+         <height>15</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>15</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>15</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 12px &quot;微软雅黑&quot;;
 color: #ff0000;
 border-bottom:0px;</string>
-   </property>
-   <property name="text">
-    <string>请输入11位正确的手机号</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="closeButton">
-   <property name="geometry">
-    <rect>
-     <x>478</x>
-     <y>15</y>
-     <width>32</width>
-     <height>28</height>
-    </rect>
-   </property>
-   <property name="sizePolicy">
-    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-     <horstretch>0</horstretch>
-     <verstretch>0</verstretch>
-    </sizepolicy>
-   </property>
-   <property name="minimumSize">
-    <size>
-     <width>32</width>
-     <height>28</height>
-    </size>
-   </property>
-   <property name="maximumSize">
-    <size>
-     <width>32</width>
-     <height>28</height>
-    </size>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QPushButton{border-image: url(:/EntCenterWidget/image/close.png);}
+       </property>
+       <property name="text">
+        <string>请输入5～100个任意字符</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lineEditSocietyCode">
+       <property name="geometry">
+        <rect>
+         <x>155</x>
+         <y>125</y>
+         <width>368</width>
+         <height>40</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>368</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>368</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLineEdit{border-radius:4px;color:rgba(51,51,51,1);border:1px solid rgb(222,222,222);font:14px 'Microsoft Yahei';padding-left:10px;}
+QLineEdit:laceholder{color:rgba(51,51,51,1);}QLineEdit:focus{border:1px solid rgba(30,140,238,1);}
+QLineEdit:disabled{background-color: rgb(247,248, 250);};</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+       <property name="placeholderText">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_4">
+       <property name="geometry">
+        <rect>
+         <x>18</x>
+         <y>290</y>
+         <width>100</width>
+         <height>30</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>56</width>
+         <height>30</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>100</width>
+         <height>30</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 14px &quot;微软雅黑&quot;;
+color:#333333;
+border-bottom:0px;</string>
+       </property>
+       <property name="text">
+        <string>&lt;font color = red&gt;*&lt;/font&gt;&lt;font color =#333333&gt;企业办公地址&lt;/font&gt;</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="labelAreaError">
+       <property name="geometry">
+        <rect>
+         <x>159</x>
+         <y>220</y>
+         <width>131</width>
+         <height>15</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>15</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>15</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 12px &quot;微软雅黑&quot;;
+color: #ff0000;
+border-bottom:0px;</string>
+       </property>
+       <property name="text">
+        <string>请选择完善的行政区域</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lineEditCompanyName">
+       <property name="geometry">
+        <rect>
+         <x>155</x>
+         <y>60</y>
+         <width>298</width>
+         <height>40</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>260</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>368</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLineEdit{border-radius:4px;color:rgba(51,51,51,1);border:1px solid rgb(222,222,222);font:14px 'Microsoft Yahei';padding-left:10px;}
+QLineEdit:laceholder{color:rgba(51,51,51,1);}QLineEdit:focus{border:1px solid rgba(30,140,238,1);}
+QLineEdit:disabled{background-color: rgb(247,248, 250);};</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="readOnly">
+        <bool>false</bool>
+       </property>
+       <property name="placeholderText">
+        <string>请输入完整的公司名称后点击查询</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="closeButton">
+       <property name="geometry">
+        <rect>
+         <x>479</x>
+         <y>5</y>
+         <width>32</width>
+         <height>28</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>32</width>
+         <height>28</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>32</width>
+         <height>28</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{border-image: url(:/EntCenterWidget/image/close.png);}
 QPushButton:hover,pressed{border-image: url(:/EntCenterWidget/image/close_sel.png);};</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label">
-   <property name="geometry">
-    <rect>
-     <x>18</x>
-     <y>25</y>
-     <width>91</width>
-     <height>14</height>
-    </rect>
-   </property>
-   <property name="sizePolicy">
-    <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-     <horstretch>0</horstretch>
-     <verstretch>0</verstretch>
-    </sizepolicy>
-   </property>
-   <property name="minimumSize">
-    <size>
-     <width>56</width>
-     <height>14</height>
-    </size>
-   </property>
-   <property name="maximumSize">
-    <size>
-     <width>100</width>
-     <height>14</height>
-    </size>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">font: 14px &quot;微软雅黑&quot;;
-color:#333333;
-border-bottom:0px;</string>
-   </property>
-   <property name="text">
-    <string>创建新企业</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_11">
-   <property name="geometry">
-    <rect>
-     <x>18</x>
-     <y>375</y>
-     <width>91</width>
-     <height>30</height>
-    </rect>
-   </property>
-   <property name="sizePolicy">
-    <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-     <horstretch>0</horstretch>
-     <verstretch>0</verstretch>
-    </sizepolicy>
-   </property>
-   <property name="minimumSize">
-    <size>
-     <width>56</width>
-     <height>30</height>
-    </size>
-   </property>
-   <property name="maximumSize">
-    <size>
-     <width>100</width>
-     <height>30</height>
-    </size>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">font: 14px &quot;微软雅黑&quot;;
-color:#333333;
-border-bottom:0px;</string>
-   </property>
-   <property name="text">
-    <string>&lt;font color = red&gt;*&lt;/font&gt;&lt;font color =#333333&gt;负责人手机&lt;/font&gt;</string>
-   </property>
-  </widget>
-  <widget class="QComboBox" name="comboBoxCity">
-   <property name="geometry">
-    <rect>
-     <x>299</x>
-     <y>190</y>
-     <width>120</width>
-     <height>40</height>
-    </rect>
-   </property>
-   <property name="sizePolicy">
-    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-     <horstretch>0</horstretch>
-     <verstretch>0</verstretch>
-    </sizepolicy>
-   </property>
-   <property name="minimumSize">
-    <size>
-     <width>120</width>
-     <height>40</height>
-    </size>
-   </property>
-   <property name="maximumSize">
-    <size>
-     <width>120</width>
-     <height>40</height>
-    </size>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QComboBox{border-radius:4px;color:rgba(51,51,51,1);border:1px solid rgb(222,222,222);font:14px 'Microsoft Yahei';padding-left:10px;}
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="comboBoxPro">
+       <property name="geometry">
+        <rect>
+         <x>155</x>
+         <y>180</y>
+         <width>140</width>
+         <height>40</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>140</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>140</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QComboBox{border-radius:4px;color:rgba(51,51,51,1);border:1px solid rgb(222,222,222);font:14px 'Microsoft Yahei';padding-left:10px;}
 
 QComboBox:focus{border:1px solid rgba(30,140,238,1);}
 
@@ -345,76 +378,338 @@ QComboBox QAbstractItemView::item
 	font:14px &quot;微软雅黑&quot;;
     height:32px;
 }</string>
-   </property>
-   <property name="editable">
-    <bool>true</bool>
-   </property>
-  </widget>
-  <widget class="QLabel" name="labelLegalPeasonError">
-   <property name="geometry">
-    <rect>
-     <x>158</x>
-     <y>350</y>
-     <width>131</width>
-     <height>15</height>
-    </rect>
-   </property>
-   <property name="sizePolicy">
-    <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-     <horstretch>0</horstretch>
-     <verstretch>0</verstretch>
-    </sizepolicy>
-   </property>
-   <property name="minimumSize">
-    <size>
-     <width>0</width>
-     <height>15</height>
-    </size>
-   </property>
-   <property name="maximumSize">
-    <size>
-     <width>16777215</width>
-     <height>15</height>
-    </size>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">font: 12px &quot;微软雅黑&quot;;
+       </property>
+       <property name="editable">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_2">
+       <property name="geometry">
+        <rect>
+         <x>18</x>
+         <y>65</y>
+         <width>61</width>
+         <height>30</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>56</width>
+         <height>15</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>100</width>
+         <height>30</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 14px &quot;微软雅黑&quot;;
+color:#333333;
+border-bottom:0px;</string>
+       </property>
+       <property name="text">
+        <string>&lt;font color = red&gt;*&lt;/font&gt;&lt;font color =#333333&gt;公司名称&lt;/font&gt;</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lineEditAddress">
+       <property name="geometry">
+        <rect>
+         <x>155</x>
+         <y>240</y>
+         <width>368</width>
+         <height>40</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>368</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>368</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLineEdit{border-radius:4px;color:rgba(51,51,51,1);border:1px solid rgb(222,222,222);font:14px 'Microsoft Yahei';padding-left:10px;}
+QLineEdit:laceholder{color:rgba(51,51,51,1);}QLineEdit:focus{border:1px solid rgba(30,140,238,1);}
+QLineEdit:disabled{background-color: rgb(247,248, 250);};</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="maxLength">
+        <number>100</number>
+       </property>
+       <property name="placeholderText">
+        <string>请输入街道、楼牌号等</string>
+       </property>
+      </widget>
+      <widget class="QRadioButton" name="radioButtonAddressNew">
+       <property name="geometry">
+        <rect>
+         <x>351</x>
+         <y>300</y>
+         <width>151</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 14px &quot;微软雅黑&quot;;
+color:#333333;
+border-bottom:0px;</string>
+       </property>
+       <property name="text">
+        <string>使用新地址</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label">
+       <property name="geometry">
+        <rect>
+         <x>18</x>
+         <y>15</y>
+         <width>91</width>
+         <height>14</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>56</width>
+         <height>14</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>100</width>
+         <height>14</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 14px &quot;微软雅黑&quot;;
+color:#333333;
+border-bottom:0px;</string>
+       </property>
+       <property name="text">
+        <string>创建新企业</string>
+       </property>
+      </widget>
+      <widget class="QRadioButton" name="radioButtonAddressReg">
+       <property name="geometry">
+        <rect>
+         <x>161</x>
+         <y>300</y>
+         <width>161</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 14px &quot;微软雅黑&quot;;
+color:#333333;
+border-bottom:0px;</string>
+       </property>
+       <property name="text">
+        <string>使用企业注册地址</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_10">
+       <property name="geometry">
+        <rect>
+         <x>18</x>
+         <y>130</y>
+         <width>120</width>
+         <height>30</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>56</width>
+         <height>30</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>120</width>
+         <height>30</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 14px &quot;微软雅黑&quot;;
+color:#333333;
+border-bottom:0px;</string>
+       </property>
+       <property name="text">
+        <string>&lt;font color = red&gt;*&lt;/font&gt;&lt;font color =#333333&gt;统一社会信用代码&lt;/font&gt;</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_3">
+       <property name="geometry">
+        <rect>
+         <x>18</x>
+         <y>185</y>
+         <width>100</width>
+         <height>30</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>56</width>
+         <height>30</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>100</width>
+         <height>30</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 14px &quot;微软雅黑&quot;;
+color:#333333;
+border-bottom:0px;</string>
+       </property>
+       <property name="text">
+        <string>&lt;font color = red&gt;*&lt;/font&gt;&lt;font color =#333333&gt;企业注册地址&lt;/font&gt;</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="buttonSearch">
+       <property name="geometry">
+        <rect>
+         <x>453</x>
+         <y>60</y>
+         <width>70</width>
+         <height>40</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>70</width>
+         <height>32</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>72</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{background-color:qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(2, 164, 253, 1), stop:1 rgba(31, 139, 237, 1));border-radius:4px;font: 14px &quot;微软雅黑&quot;;color:rgba(255, 255, 255, 1);}
+			QPushButton:hover,pressed{ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(40, 178, 253, 1),stop:1 rgba(64, 156, 240, 1));
+		  border-radius:4px;font: 14px &quot;微软雅黑&quot;;color:rgba(255, 255, 255, 1);}
+QPushButton:disabled{ background-color:rgba(200,200,200,1);border-radius:4px;};</string>
+       </property>
+       <property name="text">
+        <string>查询</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="labelCompanyNotFound">
+       <property name="geometry">
+        <rect>
+         <x>159</x>
+         <y>100</y>
+         <width>271</width>
+         <height>15</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>15</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>15</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 12px &quot;微软雅黑&quot;;
 color: #ff0000;
 border-bottom:0px;</string>
-   </property>
-   <property name="text">
-    <string>请输入2～15个任意字符</string>
-   </property>
-  </widget>
-  <widget class="QComboBox" name="comboBoxPro">
-   <property name="geometry">
-    <rect>
-     <x>154</x>
-     <y>190</y>
-     <width>140</width>
-     <height>40</height>
-    </rect>
-   </property>
-   <property name="sizePolicy">
-    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-     <horstretch>0</horstretch>
-     <verstretch>0</verstretch>
-    </sizepolicy>
-   </property>
-   <property name="minimumSize">
-    <size>
-     <width>140</width>
-     <height>40</height>
-    </size>
-   </property>
-   <property name="maximumSize">
-    <size>
-     <width>140</width>
-     <height>40</height>
-    </size>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QComboBox{border-radius:4px;color:rgba(51,51,51,1);border:1px solid rgb(222,222,222);font:14px 'Microsoft Yahei';padding-left:10px;}
+       </property>
+       <property name="text">
+        <string>未查询到该公司，请重新输入</string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="comboBoxCity">
+       <property name="geometry">
+        <rect>
+         <x>300</x>
+         <y>180</y>
+         <width>120</width>
+         <height>40</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>120</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>120</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QComboBox{border-radius:4px;color:rgba(51,51,51,1);border:1px solid rgb(222,222,222);font:14px 'Microsoft Yahei';padding-left:10px;}
 
 QComboBox:focus{border:1px solid rgba(30,140,238,1);}
 
@@ -433,539 +728,640 @@ QComboBox QAbstractItemView::item
 	font:14px &quot;微软雅黑&quot;;
     height:32px;
 }</string>
-   </property>
-   <property name="editable">
-    <bool>true</bool>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_5">
-   <property name="geometry">
-    <rect>
-     <x>18</x>
-     <y>315</y>
-     <width>91</width>
-     <height>30</height>
-    </rect>
-   </property>
-   <property name="sizePolicy">
-    <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-     <horstretch>0</horstretch>
-     <verstretch>0</verstretch>
-    </sizepolicy>
-   </property>
-   <property name="minimumSize">
-    <size>
-     <width>56</width>
-     <height>15</height>
-    </size>
-   </property>
-   <property name="maximumSize">
-    <size>
-     <width>100</width>
-     <height>30</height>
-    </size>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">font: 14px &quot;微软雅黑&quot;;
-color:#333333;
-border-bottom:0px;</string>
-   </property>
-   <property name="text">
-    <string>&lt;font color = red&gt;*&lt;/font&gt;&lt;font color =#333333&gt;企业负责人&lt;/font&gt;</string>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEditCompanyName">
-   <property name="geometry">
-    <rect>
-     <x>154</x>
-     <y>70</y>
-     <width>298</width>
-     <height>40</height>
-    </rect>
-   </property>
-   <property name="sizePolicy">
-    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-     <horstretch>0</horstretch>
-     <verstretch>0</verstretch>
-    </sizepolicy>
-   </property>
-   <property name="minimumSize">
-    <size>
-     <width>260</width>
-     <height>40</height>
-    </size>
-   </property>
-   <property name="maximumSize">
-    <size>
-     <width>368</width>
-     <height>40</height>
-    </size>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QLineEdit{border-radius:4px;color:rgba(51,51,51,1);border:1px solid rgb(222,222,222);font:14px 'Microsoft Yahei';padding-left:10px;}
+       </property>
+       <property name="editable">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <zorder>comboBoxArea</zorder>
+      <zorder>labelAddressError</zorder>
+      <zorder>lineEditSocietyCode</zorder>
+      <zorder>label_4</zorder>
+      <zorder>labelAreaError</zorder>
+      <zorder>lineEditCompanyName</zorder>
+      <zorder>closeButton</zorder>
+      <zorder>comboBoxPro</zorder>
+      <zorder>label_2</zorder>
+      <zorder>lineEditAddress</zorder>
+      <zorder>radioButtonAddressNew</zorder>
+      <zorder>label</zorder>
+      <zorder>radioButtonAddressReg</zorder>
+      <zorder>label_10</zorder>
+      <zorder>label_3</zorder>
+      <zorder>buttonSearch</zorder>
+      <zorder>labelCompanyNotFound</zorder>
+      <zorder>comboBoxCity</zorder>
+      <zorder>widgetAddressOffice</zorder>
+     </widget>
+    </item>
+    <item>
+     <widget class="QWidget" name="widgetAddressOffice" native="true">
+      <property name="maximumSize">
+       <size>
+        <width>540</width>
+        <height>130</height>
+       </size>
+      </property>
+      <widget class="QComboBox" name="comboBoxProOffice">
+       <property name="geometry">
+        <rect>
+         <x>155</x>
+         <y>10</y>
+         <width>140</width>
+         <height>40</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>140</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>140</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QComboBox{border-radius:4px;color:rgba(51,51,51,1);border:1px solid rgb(222,222,222);font:14px 'Microsoft Yahei';padding-left:10px;}
+
+QComboBox:focus{border:1px solid rgba(30,140,238,1);}
+
+QComboBox::drop-down{subcontrol-origin:padding;subcontrol-position:top right;width:32px;border-radius:4px;}
+
+QComboBox:down-arrow{image:url(:/ZcloudDesk/image/comboBoxDownArrow.png);}
+
+QComboBox QAbstractItemView
+{
+	border-radius:0px;
+	border: 1px solid rgb(161,161,161);
+	outline: 0px;	
+}
+QComboBox QAbstractItemView::item 
+{
+	font:14px &quot;微软雅黑&quot;;
+    height:32px;
+}</string>
+       </property>
+       <property name="editable">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lineEditAddressOffice">
+       <property name="geometry">
+        <rect>
+         <x>155</x>
+         <y>70</y>
+         <width>368</width>
+         <height>40</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>368</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>368</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLineEdit{border-radius:4px;color:rgba(51,51,51,1);border:1px solid rgb(222,222,222);font:14px 'Microsoft Yahei';padding-left:10px;}
 QLineEdit:laceholder{color:rgba(51,51,51,1);}QLineEdit:focus{border:1px solid rgba(30,140,238,1);}
 QLineEdit:disabled{background-color: rgb(247,248, 250);};</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="readOnly">
-    <bool>false</bool>
-   </property>
-   <property name="placeholderText">
-    <string>请输入完整的公司名称后点击查询</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_2">
-   <property name="geometry">
-    <rect>
-     <x>18</x>
-     <y>75</y>
-     <width>61</width>
-     <height>30</height>
-    </rect>
-   </property>
-   <property name="sizePolicy">
-    <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-     <horstretch>0</horstretch>
-     <verstretch>0</verstretch>
-    </sizepolicy>
-   </property>
-   <property name="minimumSize">
-    <size>
-     <width>56</width>
-     <height>15</height>
-    </size>
-   </property>
-   <property name="maximumSize">
-    <size>
-     <width>100</width>
-     <height>30</height>
-    </size>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">font: 14px &quot;微软雅黑&quot;;
-color:#333333;
-border-bottom:0px;</string>
-   </property>
-   <property name="text">
-    <string>&lt;font color = red&gt;*&lt;/font&gt;&lt;font color =#333333&gt;公司名称&lt;/font&gt;</string>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEditAddress">
-   <property name="geometry">
-    <rect>
-     <x>154</x>
-     <y>250</y>
-     <width>368</width>
-     <height>40</height>
-    </rect>
-   </property>
-   <property name="sizePolicy">
-    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-     <horstretch>0</horstretch>
-     <verstretch>0</verstretch>
-    </sizepolicy>
-   </property>
-   <property name="minimumSize">
-    <size>
-     <width>368</width>
-     <height>40</height>
-    </size>
-   </property>
-   <property name="maximumSize">
-    <size>
-     <width>368</width>
-     <height>40</height>
-    </size>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QLineEdit{border-radius:4px;color:rgba(51,51,51,1);border:1px solid rgb(222,222,222);font:14px 'Microsoft Yahei';padding-left:10px;}
-QLineEdit:laceholder{color:rgba(51,51,51,1);}QLineEdit:focus{border:1px solid rgba(30,140,238,1);}
-QLineEdit:disabled{background-color: rgb(247,248, 250);};</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="maxLength">
-    <number>100</number>
-   </property>
-   <property name="placeholderText">
-    <string>请输入街道、楼牌号等</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_10">
-   <property name="geometry">
-    <rect>
-     <x>18</x>
-     <y>140</y>
-     <width>120</width>
-     <height>30</height>
-    </rect>
-   </property>
-   <property name="sizePolicy">
-    <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-     <horstretch>0</horstretch>
-     <verstretch>0</verstretch>
-    </sizepolicy>
-   </property>
-   <property name="minimumSize">
-    <size>
-     <width>56</width>
-     <height>30</height>
-    </size>
-   </property>
-   <property name="maximumSize">
-    <size>
-     <width>120</width>
-     <height>30</height>
-    </size>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">font: 14px &quot;微软雅黑&quot;;
-color:#333333;
-border-bottom:0px;</string>
-   </property>
-   <property name="text">
-    <string>&lt;font color = red&gt;*&lt;/font&gt;&lt;font color =#333333&gt;统一社会信用代码&lt;/font&gt;</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="buttonOK">
-   <property name="geometry">
-    <rect>
-     <x>218</x>
-     <y>450</y>
-     <width>72</width>
-     <height>32</height>
-    </rect>
-   </property>
-   <property name="sizePolicy">
-    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-     <horstretch>0</horstretch>
-     <verstretch>0</verstretch>
-    </sizepolicy>
-   </property>
-   <property name="minimumSize">
-    <size>
-     <width>72</width>
-     <height>32</height>
-    </size>
-   </property>
-   <property name="maximumSize">
-    <size>
-     <width>72</width>
-     <height>32</height>
-    </size>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QPushButton{background-color:qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(2, 164, 253, 1), stop:1 rgba(31, 139, 237, 1));border-radius:4px;font: 14px &quot;微软雅黑&quot;;color:rgba(255, 255, 255, 1);}
-			QPushButton:hover,pressed{ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(40, 178, 253, 1),stop:1 rgba(64, 156, 240, 1));
-		  border-radius:4px;font: 14px &quot;微软雅黑&quot;;color:rgba(255, 255, 255, 1);}
-QPushButton:disabled{ background-color:rgba(200,200,200,1);border-radius:4px;};</string>
-   </property>
-   <property name="text">
-    <string>确定</string>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEditLegalPeasonName">
-   <property name="geometry">
-    <rect>
-     <x>154</x>
-     <y>310</y>
-     <width>368</width>
-     <height>40</height>
-    </rect>
-   </property>
-   <property name="sizePolicy">
-    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-     <horstretch>0</horstretch>
-     <verstretch>0</verstretch>
-    </sizepolicy>
-   </property>
-   <property name="minimumSize">
-    <size>
-     <width>368</width>
-     <height>40</height>
-    </size>
-   </property>
-   <property name="maximumSize">
-    <size>
-     <width>368</width>
-     <height>40</height>
-    </size>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QLineEdit{border-radius:4px;color:rgba(51,51,51,1);border:1px solid rgb(222,222,222);font:14px 'Microsoft Yahei';padding-left:10px;}
-QLineEdit:laceholder{color:rgba(51,51,51,1);}QLineEdit:focus{border:1px solid rgba(30,140,238,1);}
-QLineEdit:disabled{background-color: rgb(247,248, 250);};</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="maxLength">
-    <number>15</number>
-   </property>
-   <property name="placeholderText">
-    <string>请输入企业负责人姓名</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_4">
-   <property name="geometry">
-    <rect>
-     <x>18</x>
-     <y>255</y>
-     <width>72</width>
-     <height>30</height>
-    </rect>
-   </property>
-   <property name="sizePolicy">
-    <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-     <horstretch>0</horstretch>
-     <verstretch>0</verstretch>
-    </sizepolicy>
-   </property>
-   <property name="minimumSize">
-    <size>
-     <width>56</width>
-     <height>16</height>
-    </size>
-   </property>
-   <property name="maximumSize">
-    <size>
-     <width>100</width>
-     <height>30</height>
-    </size>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">font: 14px &quot;微软雅黑&quot;;
-color:#333333;
-border-bottom:0px;</string>
-   </property>
-   <property name="text">
-    <string>&lt;font color = red&gt;*&lt;/font&gt;&lt;font color =#333333&gt;详细地址&lt;/font&gt;</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="buttonSearch">
-   <property name="geometry">
-    <rect>
-     <x>452</x>
-     <y>70</y>
-     <width>70</width>
-     <height>40</height>
-    </rect>
-   </property>
-   <property name="sizePolicy">
-    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-     <horstretch>0</horstretch>
-     <verstretch>0</verstretch>
-    </sizepolicy>
-   </property>
-   <property name="minimumSize">
-    <size>
-     <width>70</width>
-     <height>32</height>
-    </size>
-   </property>
-   <property name="maximumSize">
-    <size>
-     <width>72</width>
-     <height>40</height>
-    </size>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QPushButton{background-color:qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(2, 164, 253, 1), stop:1 rgba(31, 139, 237, 1));border-radius:4px;font: 14px &quot;微软雅黑&quot;;color:rgba(255, 255, 255, 1);}
-			QPushButton:hover,pressed{ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(40, 178, 253, 1),stop:1 rgba(64, 156, 240, 1));
-		  border-radius:4px;font: 14px &quot;微软雅黑&quot;;color:rgba(255, 255, 255, 1);}
-QPushButton:disabled{ background-color:rgba(200,200,200,1);border-radius:4px;};</string>
-   </property>
-   <property name="text">
-    <string>查询</string>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEditSocietyCode">
-   <property name="geometry">
-    <rect>
-     <x>154</x>
-     <y>135</y>
-     <width>368</width>
-     <height>40</height>
-    </rect>
-   </property>
-   <property name="sizePolicy">
-    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-     <horstretch>0</horstretch>
-     <verstretch>0</verstretch>
-    </sizepolicy>
-   </property>
-   <property name="minimumSize">
-    <size>
-     <width>368</width>
-     <height>40</height>
-    </size>
-   </property>
-   <property name="maximumSize">
-    <size>
-     <width>368</width>
-     <height>40</height>
-    </size>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QLineEdit{border-radius:4px;color:rgba(51,51,51,1);border:1px solid rgb(222,222,222);font:14px 'Microsoft Yahei';padding-left:10px;}
-QLineEdit:laceholder{color:rgba(51,51,51,1);}QLineEdit:focus{border:1px solid rgba(30,140,238,1);}
-QLineEdit:disabled{background-color: rgb(247,248, 250);};</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="readOnly">
-    <bool>true</bool>
-   </property>
-   <property name="placeholderText">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QLabel" name="labelAddressError">
-   <property name="geometry">
-    <rect>
-     <x>158</x>
-     <y>290</y>
-     <width>131</width>
-     <height>15</height>
-    </rect>
-   </property>
-   <property name="sizePolicy">
-    <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-     <horstretch>0</horstretch>
-     <verstretch>0</verstretch>
-    </sizepolicy>
-   </property>
-   <property name="minimumSize">
-    <size>
-     <width>0</width>
-     <height>15</height>
-    </size>
-   </property>
-   <property name="maximumSize">
-    <size>
-     <width>16777215</width>
-     <height>15</height>
-    </size>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">font: 12px &quot;微软雅黑&quot;;
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="maxLength">
+        <number>100</number>
+       </property>
+       <property name="placeholderText">
+        <string>请输入街道、楼牌号等</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="labelAddressOfficeError">
+       <property name="geometry">
+        <rect>
+         <x>159</x>
+         <y>110</y>
+         <width>191</width>
+         <height>15</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>15</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>15</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 12px &quot;微软雅黑&quot;;
 color: #ff0000;
 border-bottom:0px;</string>
-   </property>
-   <property name="text">
-    <string>请输入5～100个任意字符</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="labelAreaError">
-   <property name="geometry">
-    <rect>
-     <x>158</x>
-     <y>230</y>
-     <width>131</width>
-     <height>15</height>
-    </rect>
-   </property>
-   <property name="sizePolicy">
-    <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-     <horstretch>0</horstretch>
-     <verstretch>0</verstretch>
-    </sizepolicy>
-   </property>
-   <property name="minimumSize">
-    <size>
-     <width>0</width>
-     <height>15</height>
-    </size>
-   </property>
-   <property name="maximumSize">
-    <size>
-     <width>16777215</width>
-     <height>15</height>
-    </size>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">font: 12px &quot;微软雅黑&quot;;
+       </property>
+       <property name="text">
+        <string>请输入5～100个任意字符</string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="comboBoxAreaOffice">
+       <property name="geometry">
+        <rect>
+         <x>425</x>
+         <y>10</y>
+         <width>98</width>
+         <height>40</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>98</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>98</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QComboBox{border-radius:4px;color:rgba(51,51,51,1);border:1px solid rgb(222,222,222);font:14px 'Microsoft Yahei';padding-left:10px;}
+
+QComboBox:focus{border:1px solid rgba(30,140,238,1);}
+
+QComboBox::drop-down{subcontrol-origin:padding;subcontrol-position:top right;width:32px;border-radius:4px;}
+
+QComboBox:down-arrow{image:url(:/ZcloudDesk/image/comboBoxDownArrow.png);}
+
+QComboBox QAbstractItemView
+{
+	border-radius:0px;
+	border: 1px solid rgb(161,161,161);
+	outline: 0px;	
+}
+QComboBox QAbstractItemView::item 
+{
+	font:14px &quot;微软雅黑&quot;;
+    height:32px;
+}</string>
+       </property>
+       <property name="editable">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QLabel" name="labelAreaOfficeError">
+       <property name="geometry">
+        <rect>
+         <x>159</x>
+         <y>50</y>
+         <width>131</width>
+         <height>15</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>15</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>15</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 12px &quot;微软雅黑&quot;;
 color: #ff0000;
 border-bottom:0px;</string>
-   </property>
-   <property name="text">
-    <string>请选择完善的行政区域</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_3">
-   <property name="geometry">
-    <rect>
-     <x>18</x>
-     <y>195</y>
-     <width>71</width>
-     <height>30</height>
-    </rect>
-   </property>
-   <property name="sizePolicy">
-    <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-     <horstretch>0</horstretch>
-     <verstretch>0</verstretch>
-    </sizepolicy>
-   </property>
-   <property name="minimumSize">
-    <size>
-     <width>56</width>
-     <height>30</height>
-    </size>
-   </property>
-   <property name="maximumSize">
-    <size>
-     <width>100</width>
-     <height>30</height>
-    </size>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">font: 14px &quot;微软雅黑&quot;;
+       </property>
+       <property name="text">
+        <string>请选择完善的行政区域</string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="comboBoxCityOffice">
+       <property name="geometry">
+        <rect>
+         <x>300</x>
+         <y>10</y>
+         <width>120</width>
+         <height>40</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>120</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>120</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QComboBox{border-radius:4px;color:rgba(51,51,51,1);border:1px solid rgb(222,222,222);font:14px 'Microsoft Yahei';padding-left:10px;}
+
+QComboBox:focus{border:1px solid rgba(30,140,238,1);}
+
+QComboBox::drop-down{subcontrol-origin:padding;subcontrol-position:top right;width:32px;border-radius:4px;}
+
+QComboBox:down-arrow{image:url(:/ZcloudDesk/image/comboBoxDownArrow.png);}
+
+QComboBox QAbstractItemView
+{
+	border-radius:0px;
+	border: 1px solid rgb(161,161,161);
+	outline: 0px;	
+}
+QComboBox QAbstractItemView::item 
+{
+	font:14px &quot;微软雅黑&quot;;
+    height:32px;
+}</string>
+       </property>
+       <property name="editable">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <zorder>comboBoxProOffice</zorder>
+      <zorder>lineEditAddressOffice</zorder>
+      <zorder>labelAddressOfficeError</zorder>
+      <zorder>comboBoxAreaOffice</zorder>
+      <zorder>labelAreaOfficeError</zorder>
+      <zorder>comboBoxCityOffice</zorder>
+      <zorder>verticalLayoutWidget</zorder>
+     </widget>
+    </item>
+    <item>
+     <widget class="QWidget" name="widget_2" native="true">
+      <property name="maximumSize">
+       <size>
+        <width>540</width>
+        <height>130</height>
+       </size>
+      </property>
+      <widget class="QLineEdit" name="lineEditPhone">
+       <property name="geometry">
+        <rect>
+         <x>160</x>
+         <y>70</y>
+         <width>368</width>
+         <height>40</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>368</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>368</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLineEdit{border-radius:4px;color:rgba(51,51,51,1);border:1px solid rgb(222,222,222);font:14px 'Microsoft Yahei';padding-left:10px;}
+QLineEdit:laceholder{color:rgba(51,51,51,1);}QLineEdit:focus{border:1px solid rgba(30,140,238,1);}
+QLineEdit:disabled{background-color: rgb(247,248, 250);};</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="maxLength">
+        <number>11</number>
+       </property>
+       <property name="placeholderText">
+        <string>请输入负责人手机号</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_11">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>75</y>
+         <width>91</width>
+         <height>30</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>56</width>
+         <height>30</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>100</width>
+         <height>30</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 14px &quot;微软雅黑&quot;;
 color:#333333;
 border-bottom:0px;</string>
-   </property>
-   <property name="text">
-    <string>&lt;font color = red&gt;*&lt;/font&gt;&lt;font color =#333333&gt;所在地区&lt;/font&gt;</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="buttonCancel">
-   <property name="geometry">
-    <rect>
-     <x>310</x>
-     <y>450</y>
-     <width>72</width>
-     <height>32</height>
-    </rect>
-   </property>
-   <property name="sizePolicy">
-    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-     <horstretch>0</horstretch>
-     <verstretch>0</verstretch>
-    </sizepolicy>
-   </property>
-   <property name="minimumSize">
-    <size>
-     <width>72</width>
-     <height>32</height>
-    </size>
-   </property>
-   <property name="maximumSize">
-    <size>
-     <width>72</width>
-     <height>32</height>
-    </size>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QPushButton{background-color:#FFFFFF;border-radius:4px;font:14px &quot;微软雅黑&quot;;color:#333333;border:1px solid #DEDEDE;}
+       </property>
+       <property name="text">
+        <string>&lt;font color = red&gt;*&lt;/font&gt;&lt;font color =#333333&gt;负责人手机&lt;/font&gt;</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_5">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>15</y>
+         <width>91</width>
+         <height>30</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>56</width>
+         <height>15</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>100</width>
+         <height>30</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 14px &quot;微软雅黑&quot;;
+color:#333333;
+border-bottom:0px;</string>
+       </property>
+       <property name="text">
+        <string>&lt;font color = red&gt;*&lt;/font&gt;&lt;font color =#333333&gt;企业负责人&lt;/font&gt;</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="labelPhoneError">
+       <property name="geometry">
+        <rect>
+         <x>162</x>
+         <y>110</y>
+         <width>141</width>
+         <height>15</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>15</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>15</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 12px &quot;微软雅黑&quot;;
+color: #ff0000;
+border-bottom:0px;</string>
+       </property>
+       <property name="text">
+        <string>请输入11位正确的手机号</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="labelLegalPeasonError">
+       <property name="geometry">
+        <rect>
+         <x>162</x>
+         <y>50</y>
+         <width>131</width>
+         <height>15</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>15</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>15</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 12px &quot;微软雅黑&quot;;
+color: #ff0000;
+border-bottom:0px;</string>
+       </property>
+       <property name="text">
+        <string>请输入2～15个任意字符</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lineEditLegalPeasonName">
+       <property name="geometry">
+        <rect>
+         <x>160</x>
+         <y>10</y>
+         <width>368</width>
+         <height>40</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>368</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>368</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLineEdit{border-radius:4px;color:rgba(51,51,51,1);border:1px solid rgb(222,222,222);font:14px 'Microsoft Yahei';padding-left:10px;}
+QLineEdit:laceholder{color:rgba(51,51,51,1);}QLineEdit:focus{border:1px solid rgba(30,140,238,1);}
+QLineEdit:disabled{background-color: rgb(247,248, 250);};</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="maxLength">
+        <number>15</number>
+       </property>
+       <property name="placeholderText">
+        <string>请输入企业负责人姓名</string>
+       </property>
+      </widget>
+     </widget>
+    </item>
+    <item>
+     <widget class="QWidget" name="widget_3" native="true">
+      <property name="maximumSize">
+       <size>
+        <width>540</width>
+        <height>60</height>
+       </size>
+      </property>
+      <widget class="QPushButton" name="buttonCancel">
+       <property name="geometry">
+        <rect>
+         <x>280</x>
+         <y>15</y>
+         <width>72</width>
+         <height>32</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>72</width>
+         <height>32</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>72</width>
+         <height>32</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{background-color:#FFFFFF;border-radius:4px;font:14px &quot;微软雅黑&quot;;color:#333333;border:1px solid #DEDEDE;}
 QPushButton:hover,pressed{background-color:#F4F4F4;border-radius:4px;font:14px &quot;微软雅黑&quot;;color:#333333;}</string>
-   </property>
-   <property name="text">
-    <string>取消</string>
-   </property>
+       </property>
+       <property name="text">
+        <string>取消</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="buttonOK">
+       <property name="geometry">
+        <rect>
+         <x>188</x>
+         <y>15</y>
+         <width>72</width>
+         <height>32</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>72</width>
+         <height>32</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>72</width>
+         <height>32</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{background-color:qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(2, 164, 253, 1), stop:1 rgba(31, 139, 237, 1));border-radius:4px;font: 14px &quot;微软雅黑&quot;;color:rgba(255, 255, 255, 1);}
+			QPushButton:hover,pressed{ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(40, 178, 253, 1),stop:1 rgba(64, 156, 240, 1));
+		  border-radius:4px;font: 14px &quot;微软雅黑&quot;;color:rgba(255, 255, 255, 1);}
+QPushButton:disabled{ background-color:rgba(200,200,200,1);border-radius:4px;};</string>
+       </property>
+       <property name="text">
+        <string>确定</string>
+       </property>
+      </widget>
+     </widget>
+    </item>
+   </layout>
   </widget>
  </widget>
  <resources/>

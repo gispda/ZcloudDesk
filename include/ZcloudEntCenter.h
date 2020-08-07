@@ -18,7 +18,7 @@ public:
 	//!销毁对象
 	virtual void destroy() = 0;
 	//!新建企业
-	virtual void createEntCenter() = 0;
+	virtual void createEntCenter(QString strUid, QString strToken) = 0;
 
 	//!打开工单列表
 	virtual void openWorkers(QString strUid, QString strToken) = 0;

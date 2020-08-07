@@ -5,6 +5,7 @@
 #include "DefaultVipWidget.h"
 #include "JoinEntWidget.h"
 #include "CreateEntInfoWidget.h"
+#include "UploadLicenseDlg.h"
 #include "WorkersWidget.h"
 
 ZcloudEntCenterImpl::ZcloudEntCenterImpl()
@@ -16,17 +17,31 @@ ZcloudEntCenterImpl::~ZcloudEntCenterImpl()
 	closeAllEntWidget();
 }
 
-void ZcloudEntCenterImpl::createEntCenter(){
-	CreateEntInfoWidget* pEntComWidget = new CreateEntInfoWidget(NULL);
+void ZcloudEntCenterImpl::createEntCenter(QString strUid, QString strToken){
+	CreateEntInfoWidget* pEntComWidget = new CreateEntInfoWidget(strUid,  strToken);
 	pEntComWidget->setAttribute(Qt::WA_DeleteOnClose);
-	pEntComWidget->show();
+	//pEntComWidget->show();
+	pEntComWidget->exec();
+	
+
+	//int result = ZcloudComFun::openMessageTipDlg_2(ZcloudComFun::EN_BINDING, QString::fromLocal8Bit("创建失败"), QString::fromLocal8Bit("该企业已绑定管理员，您可以联系企业管理员将您\r\n添加到企业成员，或申述成为该企业管理员"), QString::fromLocal8Bit("申述"), QString::fromLocal8Bit("取消"));
+	//if (result == 1){
+		//	上传图片
+
+		UploadLicenseDlg dlg;
+		int rst=dlg.exec();
+
+		int result = ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_CLOSE, QString::fromLocal8Bit("申述提交成功"), QString::fromLocal8Bit("您的申述已提交成功，我们会尽快为您处理，\r\n请耐心等待"));
+
+	//}
+
 }
 
 void ZcloudEntCenterImpl::openWorkers(QString strUid, QString strToken){//,
 	WorkersWidget* pEntComWidget = new WorkersWidget(strUid, strToken);
 	pEntComWidget->setAttribute(Qt::WA_DeleteOnClose);
 	pEntComWidget->show();
-};
+}
 
 
 void ZcloudEntCenterImpl::openEntCenter(QString strUid, QString strToken, QString strTrueName, QString strJob, int isLoginByTax, QString strMobile, QString strCompId,QString strUserName)

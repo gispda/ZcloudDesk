@@ -140,6 +140,9 @@
     <ClCompile Include="WorkerItemWidget.cpp">
       <Filter>Worker</Filter>
     </ClCompile>
+    <ClCompile Include="UploadLicense.cpp">
+      <Filter>EntInfo</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="EntCenterWidget.h">
@@ -237,6 +240,9 @@
     </QtMoc>
     <QtMoc Include="WorkerItemWidget.h">
       <Filter>Worker</Filter>
+    </QtMoc>
+    <QtMoc Include="UploadLicenseDlg.h">
+      <Filter>EntInfo</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>
@@ -360,6 +366,9 @@
     </QtUic>
     <QtUic Include="WorkerItemWidget.ui">
       <Filter>Worker</Filter>
+    </QtUic>
+    <QtUic Include="UploadLicenseDlg.ui">
+      <Filter>EntInfo</Filter>
     </QtUic>
   </ItemGroup>
 </Project>

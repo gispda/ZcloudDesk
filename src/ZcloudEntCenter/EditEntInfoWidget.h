@@ -21,13 +21,15 @@ private slots:
 	void onCityIndexChanged(int index);
 	void onAreaIndexChanged(int index);
 	void onTradeIndexChanged(int index);
-	void onOfficeEditingFinished();
+	void onLegalPeasonEditingFinished();
 	void onPhoneEditingFinished();
 	void onEditOkBtnClick();
+	void onRadioBtnAddressRegClick();
+	void onRadioBtnAddressNewClick();
 private:
 	bool showTradeData();
 
-	bool showXzAreaData(QComboBox* pComBoBox,int nCode);
+	bool showAreaData(QComboBox* pComBoBox,int nCode);
 
 	//!获取行业
 	bool winHttpGetTradeList(QString& strRet);
@@ -41,6 +43,6 @@ private:
 	stEntInfo m_stEntInfo;
 	QString	m_strUid;
 	QString	m_strToken;
-	bool	m_bOffice	= true;
+	bool	m_bLegalPeason = true;
 	bool	m_bPhone	= true;
 };

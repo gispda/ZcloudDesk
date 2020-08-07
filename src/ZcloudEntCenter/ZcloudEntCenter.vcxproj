@@ -163,6 +163,7 @@
     <ClCompile Include="ModifyMemberWidget.cpp" />
     <ClCompile Include="ModifyPwdWidget.cpp" />
     <ClCompile Include="ModifyUserInfoWidget.cpp" />
+    <ClCompile Include="UploadLicense.cpp" />
     <ClCompile Include="WorkerCommentWidget.cpp" />
     <ClCompile Include="WorkerDetailWidget.cpp" />
     <ClCompile Include="WorkerItemWidget.cpp" />
@@ -212,6 +213,7 @@
     <QtUic Include="ModifyMemberWidget.ui" />
     <QtUic Include="ModifyPwdWidget.ui" />
     <QtUic Include="ModifyUserInfoWidget.ui" />
+    <QtUic Include="UploadLicenseDlg.ui" />
     <QtUic Include="WorkerCommentWidget.ui" />
     <QtUic Include="WorkerDetailWidget.ui" />
     <QtUic Include="WorkerItemWidget.ui" />
@@ -224,6 +226,10 @@
     <ClInclude Include="GeneratedFiles\ui_WorkerDetailWidget.h" />
     <ClInclude Include="GeneratedFiles\ui_WorkersWidget.h" />
     <ClInclude Include="GeneratedFiles\ui_WorkertemWidget.h" />
+    <QtMoc Include="UploadLicenseDlg.h">
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(QTDIR)\include;.\..\..\include;$(QTDIR)\include\QtWebKit;$(QTDIR)\include\QtWebkitWidgets;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtSql;$(QTDIR)\include\QtWidgets</IncludePath>
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(QTDIR)\include;.\..\..\include;$(QTDIR)\include\QtWebKit;$(QTDIR)\include\QtWebkitWidgets;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtSql;$(QTDIR)\include\QtWidgets</IncludePath>
+    </QtMoc>
     <ClInclude Include="WorkerDataBase.h">
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(QTDIR)\include;.\..\..\include;$(QTDIR)\include\QtWebKit;$(QTDIR)\include\QtWebkitWidgets;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtSql;$(QTDIR)\include\QtWidgets</IncludePath>
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(QTDIR)\include;.\..\..\include;$(QTDIR)\include\QtWebKit;$(QTDIR)\include\QtWebkitWidgets;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtSql;$(QTDIR)\include\QtWidgets</IncludePath>

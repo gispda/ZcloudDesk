@@ -29,6 +29,7 @@
 #include <SignInWidget.h>
 #include <QMenu>
 #include <TwobarCodeWidget.h>
+#include "ZcloudEntCenter.h"
 
 
 QString zhicloudStrToken;
@@ -491,19 +492,18 @@ void ZcloudDesk::openEntCenterWidget()
 			if (loginDialog.exec() == QDialog::Accepted)
 			{
 				UserInfoStruct userInfo = loginDialog.getUserInfoStruct();
-			//	userInfo.m_strUsername = "";
 				if (!userInfo.m_strUsername.isEmpty()){
 					m_stUserInfo = userInfo;
 					startInitWork();
 				}
 				else
 				{
-                   ////设置用户名称
+					////设置用户名称
 					loginDialog.initModifyUserNameWidget();
 					if (loginDialog.exec() == QDialog::Accepted)
 					{
 						userInfo = loginDialog.getUserInfoStruct();
-					//	userInfo.m_strUsername = "";
+						//	userInfo.m_strUsername = "";
 						if (!userInfo.m_strUsername.isEmpty()){
 							m_stUserInfo = userInfo;
 							startInitWork();
@@ -534,6 +534,9 @@ void ZcloudDesk::openEntCenterWidget()
 			m_stUserInfo.m_strJob = strJob;
 
 		});
+
+		
+
 	}
 	if ((m_stUserInfo.m_strCompanyName.isEmpty())){
 
@@ -551,11 +554,12 @@ void ZcloudDesk::openEntCenterWidget()
 
 		//ui.labelCompName->setMenu(m_pMenu);
 		
-		
 
 		connect(m_pActionCustomerManager, &QAction::triggered, this, &ZcloudDesk::CustomerManagerinvite);
 		connect(m_pActionEnterpriseManager, &QAction::triggered, this, &ZcloudDesk::EnterpriseManagerinvite);
-		connect(m_pActionCreateEntCompany, &QAction::triggered, m_pEntCenter, &ZcloudEntCenter::createEntCenter);
+
+		connect(m_pActionCreateEntCompany, &QAction::triggered, this, &ZcloudDesk::openCreateEntDlg);
+
 
 		m_pMenu->setAttribute(Qt::WA_TranslucentBackground);
 		m_pMenu->setStyleSheet(QString::fromLocal8Bit(
@@ -598,8 +602,7 @@ void ZcloudDesk::EnterpriseManagerinvite(){
 	ptwobarCodeWidget->show();
 };
 
-
-void  ZcloudDesk::openOrderList(){
+ZcloudEntCenter* ZcloudDesk::getEntCenter(){
 	if (NULL == m_pEntCenter)
 	{
 		m_pEntCenter = ZcloudEntCenter::createNew();
@@ -615,7 +618,16 @@ void  ZcloudDesk::openOrderList(){
 
 		});
 	}
-	m_pEntCenter->openWorkers(m_stUserInfo.m_strUserId, m_stUserInfo.m_strToken);
+	return m_pEntCenter;
+}
+void ZcloudDesk::openCreateEntDlg()
+{
+	ZcloudEntCenter* pEntCenter = getEntCenter();
+	pEntCenter->createEntCenter(m_stUserInfo.m_strUserId, m_stUserInfo.m_strToken);
+}
+void  ZcloudDesk::openOrderList(){
+	ZcloudEntCenter* pEntCenter=getEntCenter();
+	pEntCenter->openWorkers(m_stUserInfo.m_strUserId, m_stUserInfo.m_strToken);
 
 }
 
@@ -664,21 +676,7 @@ void ZcloudDesk::openAppCenterWidget()
 
 void ZcloudDesk::openVipCenterWidget()
 {
-	if (NULL == m_pEntCenter)
-	{
-		m_pEntCenter = ZcloudEntCenter::createNew();
-		connect(m_pEntCenter, SIGNAL(sigSwitchAcc(int, bool, QString, QString)), this, SLOT(onSwitchAcc(int, bool, QString, QString)));
-		connect(m_pEntCenter, SIGNAL(bingdingPhoneSignal()), this, SLOT(bingdingPhoneSlot()));
-		connect(m_pEntCenter, SIGNAL(sigSignBindingSucceeded(const QString&)), this, SLOT(slotChangeMobile(const QString&)));
-		connect(m_pEntCenter, SIGNAL(openSignInWidegt()), this, SLOT(openSignInWidegt()));
-		connect(m_pEntCenter, &ZcloudEntCenter::sendVipListSignals, this, &ZcloudDesk::buyMembershipSlot);
-		connect(m_pEntCenter, &ZcloudEntCenter::trueNameJobChange, [this](QString trueName, QString strJob)
-		{
-			m_stUserInfo.m_strTruename = trueName;
-			m_stUserInfo.m_strJob = strJob;
-
-		});
-	}
+	ZcloudEntCenter* pEntCenter = getEntCenter();
 
 	bool bJoinEnt = true;
 	if (m_stUserInfo.m_strCompanyName.isEmpty())
@@ -688,7 +686,7 @@ void ZcloudDesk::openVipCenterWidget()
 			bJoinEnt	=	false;
 		}
 	}
-	m_pEntCenter->openVipInfoCenter(m_stUserInfo.m_strUserId, m_stUserInfo.m_strToken, bJoinEnt, m_stUserInfo.m_bHasMember);
+	pEntCenter->openVipInfoCenter(m_stUserInfo.m_strUserId, m_stUserInfo.m_strToken, bJoinEnt, m_stUserInfo.m_bHasMember);
 	m_pBigDataInterface->produceData("M01", "OP001", "TTA009");
 }
 
@@ -1896,22 +1894,8 @@ void ZcloudDesk::onAdvertisingClick(int nType, QString strTarget)
 
 void ZcloudDesk::openServiceFee(QString strUrl)
 {
-	if (NULL == m_pEntCenter)
-	{
-		m_pEntCenter = ZcloudEntCenter::createNew();
-		connect(m_pEntCenter, SIGNAL(sigSwitchAcc(int, bool, QString, QString)), this, SLOT(onSwitchAcc(int, bool, QString, QString)));
-		connect(m_pEntCenter, SIGNAL(bingdingPhoneSignal()), this, SLOT(bingdingPhoneSlot()));
-		connect(m_pEntCenter, SIGNAL(sigSignBindingSucceeded(const QString&)), this, SLOT(slotChangeMobile(const QString&)));
-		connect(m_pEntCenter, SIGNAL(openSignInWidegt()), this, SLOT(openSignInWidegt()));
-		connect(m_pEntCenter, &ZcloudEntCenter::sendVipListSignals, this, &ZcloudDesk::buyMembershipSlot);
-		connect(m_pEntCenter, &ZcloudEntCenter::trueNameJobChange, [this](QString trueName, QString strJob)
-		{
-			m_stUserInfo.m_strTruename = trueName;
-			m_stUserInfo.m_strJob = strJob;
-
-		});
-	}
-	m_pEntCenter->openServiceFeeCenter(strUrl);
+	ZcloudEntCenter* pEntCenter = getEntCenter();
+	pEntCenter->openServiceFeeCenter(strUrl);
 }
 
 void ZcloudDesk::onModifyCoinCount(int nCount)
