@@ -46,6 +46,8 @@ int SSO(QString jsonStr)
 	
 }
 
+
+
 bool ZcloudComFun::httpPost(QString strUrl, QString strPost, int nTimeout, QString& strRet, bool isCheckToken /*= false*/,int _type)
 {
 	(-1 == strUrl.indexOf("?")) ? strUrl.append("?") : strUrl.append("&");

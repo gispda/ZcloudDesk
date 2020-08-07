@@ -1,13 +1,13 @@
 /********************************************************************************
-** Form generated from reading UI file 'OrderListItemWidget.ui'
+** Form generated from reading UI file 'WorkerItemWidget.ui'
 **
 ** Created by: Qt User Interface Compiler version 5.5.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef UI_ORDERLISTITEMWIDGET_H
-#define UI_ORDERLISTITEMWIDGET_H
+#ifndef UI_WORKERITEMWIDGET_H
+#define UI_WORKERITEMWIDGET_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QAction>
@@ -20,7 +20,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class Ui_OrderListItemWidget
+class Ui_WorkerItemWidget
 {
 public:
     QWidget *FilletWidget;
@@ -32,20 +32,20 @@ public:
     QPushButton *buttonDetial;
     QPushButton *buttonAction;
 
-    void setupUi(QWidget *OrderListItemWidget)
+    void setupUi(QWidget *WorkerItemWidget)
     {
-        if (OrderListItemWidget->objectName().isEmpty())
-            OrderListItemWidget->setObjectName(QStringLiteral("OrderListItemWidget"));
-        OrderListItemWidget->resize(780, 70);
+        if (WorkerItemWidget->objectName().isEmpty())
+            WorkerItemWidget->setObjectName(QStringLiteral("WorkerItemWidget"));
+        WorkerItemWidget->resize(780, 70);
         QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(OrderListItemWidget->sizePolicy().hasHeightForWidth());
-        OrderListItemWidget->setSizePolicy(sizePolicy);
-        OrderListItemWidget->setMinimumSize(QSize(730, 70));
-        OrderListItemWidget->setMaximumSize(QSize(780, 70));
-        OrderListItemWidget->setStyleSheet(QStringLiteral("QWidget#MemberItemWidget{background-color: rgb(255, 255, 255);};"));
-        FilletWidget = new QWidget(OrderListItemWidget);
+        sizePolicy.setHeightForWidth(WorkerItemWidget->sizePolicy().hasHeightForWidth());
+        WorkerItemWidget->setSizePolicy(sizePolicy);
+        WorkerItemWidget->setMinimumSize(QSize(730, 70));
+        WorkerItemWidget->setMaximumSize(QSize(780, 70));
+        WorkerItemWidget->setStyleSheet(QStringLiteral("QWidget#MemberItemWidget{background-color: rgb(255, 255, 255);};"));
+        FilletWidget = new QWidget(WorkerItemWidget);
         FilletWidget->setObjectName(QStringLiteral("FilletWidget"));
         FilletWidget->setGeometry(QRect(0, 5, 780, 60));
         sizePolicy.setHeightForWidth(FilletWidget->sizePolicy().hasHeightForWidth());
@@ -123,29 +123,29 @@ public:
 "border:0px;color:blue"));
         buttonAction->setFlat(true);
 
-        retranslateUi(OrderListItemWidget);
+        retranslateUi(WorkerItemWidget);
 
-        QMetaObject::connectSlotsByName(OrderListItemWidget);
+        QMetaObject::connectSlotsByName(WorkerItemWidget);
     } // setupUi
 
-    void retranslateUi(QWidget *OrderListItemWidget)
+    void retranslateUi(QWidget *WorkerItemWidget)
     {
-        OrderListItemWidget->setWindowTitle(QApplication::translate("OrderListItemWidget", "MemberItemWidget", 0));
+        WorkerItemWidget->setWindowTitle(QApplication::translate("WorkerItemWidget", "MemberItemWidget", 0));
         labelCreateTime->setText(QString());
         labelState->setText(QString());
         labelOrderCode->setText(QString());
         labelOrderName->setText(QString());
         labelStateColor->setText(QString());
-        buttonDetial->setText(QApplication::translate("OrderListItemWidget", "\350\257\246\346\203\205", 0));
+        buttonDetial->setText(QApplication::translate("WorkerItemWidget", "\350\257\246\346\203\205", 0));
         buttonAction->setText(QString());
     } // retranslateUi
 
 };
 
 namespace Ui {
-    class OrderListItemWidget: public Ui_OrderListItemWidget {};
+    class WorkerItemWidget: public Ui_WorkerItemWidget {};
 } // namespace Ui
 
 QT_END_NAMESPACE
 
-#endif // UI_ORDERLISTITEMWIDGET_H
+#endif // UI_WORKERITEMWIDGET_H

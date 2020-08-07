@@ -532,7 +532,8 @@ void ZcloudDesk::openEntCenterWidget()
 		m_pMenu->addAction(m_pActionEnterpriseManager);
 		m_pMenu->addAction(m_pActionCreateEntCompany);
 
-		ui.labelCompName->setMenu(m_pMenu);
+		//ui.labelCompName->setMenu(m_pMenu);
+		
 		
 
 		connect(m_pActionCustomerManager, &QAction::triggered, this, &ZcloudDesk::CustomerManagerinvite);
@@ -597,7 +598,7 @@ void  ZcloudDesk::openOrderList(){
 
 		});
 	}
-	m_pEntCenter->openOrderList(m_stUserInfo.m_strUserId, m_stUserInfo.m_strToken);
+	m_pEntCenter->openWorkers(m_stUserInfo.m_strUserId, m_stUserInfo.m_strToken);
 
 }
 

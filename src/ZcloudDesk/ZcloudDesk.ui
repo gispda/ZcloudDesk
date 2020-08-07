@@ -181,20 +181,38 @@ font: 12px &quot;微软雅黑&quot;;padding-left:8px;padding-right:8px;}</string
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="labelCompName">
+      <widget class="QLabel" name="labelCompName">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>26</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>1000</width>
+         <height>26</height>
+        </size>
+       </property>
        <property name="styleSheet">
-        <string notr="true">QPushButton{border-image: url(:/ZcloudDesk/image/bg_transparent.png);color: rgb(255, 255, 255);
-font: 12px &quot;微软雅黑&quot;;}
-QPushButton:hover{border-image: url(:/ZcloudDesk/image/bg_transparent_hover.png);color: rgb(255, 255, 255);
-font: 12px &quot;微软雅黑&quot;}
-QPushButton:pressed{border-image: url(:/ZcloudDesk/image/bg_transparent_pre.png);color: rgb(255, 255, 255);
-font: 12px &quot;微软雅黑&quot;};</string>
+        <string notr="true">QLabel{border-image: url(:/ZcloudDesk/image/bg_transparent.png);color: rgb(255, 255, 255);
+font: 12px &quot;微软雅黑&quot;;padding-left:5px;padding-right:5px;}
+QLabel:hover{border-image: url(:/ZcloudDesk/image/bg_transparent_hover.png);color: rgb(255, 255, 255);
+font: 12px &quot;微软雅黑&quot;;padding-left:5px;padding-right:5px;}
+QLabel:pressed{border-image: url(:/ZcloudDesk/image/bg_transparent_pre.png);color: rgb(255, 255, 255);
+font: 12px &quot;微软雅黑&quot;;padding-left:5px;padding-right:5px;};</string>
        </property>
        <property name="text">
         <string/>
        </property>
-       <property name="flat">
-        <bool>true</bool>
+       <property name="alignment">
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
        </property>
       </widget>
      </item>
@@ -346,6 +364,84 @@ font: 12px &quot;微软雅黑&quot;};</string>
        <property name="icon">
         <iconset resource="ZcloudDesk.qrc">
          <normaloff>:/ZcloudDesk/image/icon_yyzx.png</normaloff>:/ZcloudDesk/image/icon_yyzx.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>14</width>
+         <height>26</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="calendarButton">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>60</width>
+         <height>26</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>60</width>
+         <height>26</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{border-image: url(:/ZcloudDesk/image/bg_transparent.png);color: rgb(255, 255, 255);
+font: 12px &quot;微软雅黑&quot;;}
+QPushButton:hover{border-image: url(:/ZcloudDesk/image/bg_transparent_hover.png);color: rgb(255, 255, 255);
+font: 12px &quot;微软雅黑&quot;}
+QPushButton:pressed{border-image: url(:/ZcloudDesk/image/bg_transparent_pre.png);color: rgb(255, 255, 255);
+font: 12px &quot;微软雅黑&quot;};</string>
+       </property>
+       <property name="text">
+        <string>财税日历</string>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>14</width>
+         <height>26</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="screenShootButton">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>60</width>
+         <height>26</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>60</width>
+         <height>26</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{border-image: url(:/ZcloudDesk/image/bg_transparent.png);color: rgb(255, 255, 255);
+font: 12px &quot;微软雅黑&quot;;}
+QPushButton:hover{border-image: url(:/ZcloudDesk/image/bg_transparent_hover.png);color: rgb(255, 255, 255);
+font: 12px &quot;微软雅黑&quot;}
+QPushButton:pressed{border-image: url(:/ZcloudDesk/image/bg_transparent_pre.png);color: rgb(255, 255, 255);
+font: 12px &quot;微软雅黑&quot;};</string>
+       </property>
+       <property name="text">
+        <string>截图</string>
        </property>
        <property name="iconSize">
         <size>

@@ -109,9 +109,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <QtUic Include="ZcloudDesk.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
     <QtMoc Include="ZcloudDesk.h">
       <Filter>Header Files</Filter>
     </QtMoc>
@@ -243,5 +240,10 @@
     <QtMoc Include="TwobarCodeWidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+  </ItemGroup>
+  <ItemGroup>
+    <QtUic Include="ZcloudDesk.ui">
+      <Filter>Generated Files</Filter>
+    </QtUic>
   </ItemGroup>
 </Project>

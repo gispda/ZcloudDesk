@@ -5,7 +5,7 @@
 #include "DefaultVipWidget.h"
 #include "JoinEntWidget.h"
 #include "CreateEntInfoWidget.h"
-#include "OrderListWidget.h"
+#include "WorkersWidget.h"
 
 ZcloudEntCenterImpl::ZcloudEntCenterImpl()
 {
@@ -22,8 +22,8 @@ void ZcloudEntCenterImpl::createEntCenter(){
 	pEntComWidget->show();
 }
 
-void ZcloudEntCenterImpl::openOrderList(QString strUid, QString strToken){//,
-	OrderListWidget* pEntComWidget = new OrderListWidget(strUid, strToken);
+void ZcloudEntCenterImpl::openWorkers(QString strUid, QString strToken){//,
+	WorkersWidget* pEntComWidget = new WorkersWidget(strUid, strToken);
 	pEntComWidget->setAttribute(Qt::WA_DeleteOnClose);
 	pEntComWidget->show();
 };

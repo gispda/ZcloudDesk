@@ -1,30 +1,29 @@
 #pragma once
 
 #include <QWidget>
-#include "ui_OrderDetialWidget.h"
-#include "ZcloudCommonWidget.h"
+#include "ui_WorkerItemWidget.h"
+#include "WorkerDataBase.h"
 
-class OrderDetialWidget : public QWidget
+class WorkerItemWidget : public QWidget
 {
 	Q_OBJECT
 
 public:
-	OrderDetialWidget(QString strOrderCode, QWidget *parent = Q_NULLPTR);
-	~OrderDetialWidget();
+	WorkerItemWidget(WorkerInfo _info, QString strAction2, QWidget *parent = Q_NULLPTR);
+	~WorkerItemWidget();
 
 signals:
 	//!œÍ«È
-	void sigDetial(QString);
+	void sigDetial(QString strworkerid);
 	//£°∆¿º€
-	void sigEvaluate(QString, QString, QString);
+	void sigEvaluate(WorkerInfo _sinfo);
 
-protected:
-	void mousePressEvent(QMouseEvent *event);
-	void mouseMoveEvent(QMouseEvent *event);
+private slots:
+void test(QString);
 
 private:
 
-	Ui::OrderDetialWidget ui;
+	Ui::WorkerItemWidget ui;
 	//QMenu	*m_pMenu;
 	//QAction *m_pActionRemoveOrderList;
 	//QAction *m_pActionModifyOrderList;
@@ -33,10 +32,12 @@ private:
 	//QString m_strTrueName;
 	//QString	m_strJob;
 
+	WorkerInfo m_info;
+
+
 	QString m_strOrderCode;
 	QString m_strOrderName;
 	QString m_strOrderState;
 	QString m_strCreateTime;
 	QString m_strAction2;
-	QPoint dPos;
 };

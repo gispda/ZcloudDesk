@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>OrderCommentWidget</class>
- <widget class="QWidget" name="OrderCommentWidget">
+ <class>WorkerCommentWidget</class>
+ <widget class="QWidget" name="WorkerCommentWidget">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>347</height>
+    <width>478</width>
+    <height>409</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -37,8 +37,8 @@
   <widget class="QPushButton" name="buttonOK">
    <property name="geometry">
     <rect>
-     <x>100</x>
-     <y>300</y>
+     <x>140</x>
+     <y>370</y>
      <width>80</width>
      <height>32</height>
     </rect>
@@ -139,7 +139,7 @@ border-bottom:0px;</string>
   <widget class="QPushButton" name="buttonGrade2">
    <property name="geometry">
     <rect>
-     <x>120</x>
+     <x>140</x>
      <y>80</y>
      <width>40</width>
      <height>40</height>
@@ -165,7 +165,7 @@ border-bottom:0px;</string>
   <widget class="QPushButton" name="buttonGrade3">
    <property name="geometry">
     <rect>
-     <x>180</x>
+     <x>210</x>
      <y>80</y>
      <width>40</width>
      <height>40</height>
@@ -191,7 +191,7 @@ border-bottom:0px;</string>
   <widget class="QPushButton" name="buttonGrade5">
    <property name="geometry">
     <rect>
-     <x>300</x>
+     <x>360</x>
      <y>80</y>
      <width>40</width>
      <height>40</height>
@@ -223,7 +223,7 @@ border-bottom:0px;</string>
   <widget class="QPushButton" name="buttonGrade4">
    <property name="geometry">
     <rect>
-     <x>240</x>
+     <x>290</x>
      <y>80</y>
      <width>40</width>
      <height>40</height>
@@ -246,34 +246,13 @@ border-bottom:0px;</string>
     <bool>true</bool>
    </property>
   </widget>
-  <widget class="QLabel" name="labelGrade">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>140</y>
-     <width>400</width>
-     <height>12</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">font: 12px &quot;微软雅黑&quot;;
-color: rgb(51, 51, 51);
-border-bottom:0px;</string>
-   </property>
-   <property name="text">
-    <string>一般</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="buttonDelay">
+  <widget class="QLabel" name="labellevel">
    <property name="geometry">
     <rect>
      <x>40</x>
-     <y>170</y>
-     <width>100</width>
-     <height>23</height>
+     <y>140</y>
+     <width>371</width>
+     <height>20</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -282,52 +261,19 @@ color: rgb(51, 51, 51);
 border-bottom:0px;</string>
    </property>
    <property name="text">
-    <string>问题处理不及时</string>
+    <string/>
    </property>
-  </widget>
-  <widget class="QPushButton" name="buttonService">
-   <property name="geometry">
-    <rect>
-     <x>150</x>
-     <y>170</y>
-     <width>100</width>
-     <height>23</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">font: 12px &quot;微软雅黑&quot;;
-color: rgb(51, 51, 51);
-border-bottom:0px;</string>
-   </property>
-   <property name="text">
-    <string>工作人员态度不好</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="buttonProfessional">
-   <property name="geometry">
-    <rect>
-     <x>260</x>
-     <y>170</y>
-     <width>100</width>
-     <height>23</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">font: 12px &quot;微软雅黑&quot;;
-color: rgb(51, 51, 51);
-border-bottom:0px;</string>
-   </property>
-   <property name="text">
-    <string>工作人员不够专业</string>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
   <widget class="QTextEdit" name="editContent">
    <property name="geometry">
     <rect>
      <x>40</x>
-     <y>200</y>
-     <width>320</width>
-     <height>71</height>
+     <y>240</y>
+     <width>411</width>
+     <height>111</height>
     </rect>
    </property>
    <property name="placeholderText">
@@ -337,8 +283,8 @@ border-bottom:0px;</string>
   <widget class="QPushButton" name="buttonCancel">
    <property name="geometry">
     <rect>
-     <x>220</x>
-     <y>300</y>
+     <x>260</x>
+     <y>370</y>
      <width>80</width>
      <height>32</height>
     </rect>
@@ -366,6 +312,84 @@ border-bottom:0px;</string>
    </property>
    <property name="text">
     <string>暂不评价</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="labestar1">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>170</y>
+     <width>120</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="labestar2">
+   <property name="geometry">
+    <rect>
+     <x>190</x>
+     <y>170</y>
+     <width>120</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="labestar3">
+   <property name="geometry">
+    <rect>
+     <x>350</x>
+     <y>170</y>
+     <width>120</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="labestar5">
+   <property name="geometry">
+    <rect>
+     <x>190</x>
+     <y>200</y>
+     <width>120</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="labestar6">
+   <property name="geometry">
+    <rect>
+     <x>350</x>
+     <y>200</y>
+     <width>120</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="labestar4">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>200</y>
+     <width>120</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
    </property>
   </widget>
  </widget>

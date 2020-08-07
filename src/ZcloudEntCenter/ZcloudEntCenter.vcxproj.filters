@@ -45,7 +45,7 @@
     <Filter Include="EntInfo">
       <UniqueIdentifier>{1db1e5f7-b638-4897-a2b4-9b8c17504250}</UniqueIdentifier>
     </Filter>
-    <Filter Include="OrderList">
+    <Filter Include="Worker">
       <UniqueIdentifier>{426c359e-f8de-4cff-b705-a676e7624acf}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -128,17 +128,17 @@
     <ClCompile Include="CreateEntInfoWidget.cpp">
       <Filter>EntInfo</Filter>
     </ClCompile>
-    <ClCompile Include="OrderListItemWidget.cpp">
-      <Filter>OrderList</Filter>
+    <ClCompile Include="WorkerDetailWidget.cpp">
+      <Filter>Worker</Filter>
     </ClCompile>
-    <ClCompile Include="OrderListWidget.cpp">
-      <Filter>OrderList</Filter>
+    <ClCompile Include="WorkerCommentWidget.cpp">
+      <Filter>Worker</Filter>
     </ClCompile>
-    <ClCompile Include="OrderCommentWidget.cpp">
-      <Filter>OrderList</Filter>
+    <ClCompile Include="WorkersWidget.cpp">
+      <Filter>Worker</Filter>
     </ClCompile>
-    <ClCompile Include="OrderDetialWidget.cpp">
-      <Filter>OrderList</Filter>
+    <ClCompile Include="WorkerItemWidget.cpp">
+      <Filter>Worker</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -226,17 +226,17 @@
     <QtMoc Include="CreateEntInfoWidget.h">
       <Filter>EntInfo</Filter>
     </QtMoc>
-    <QtMoc Include="OrderListItemWidget.h">
-      <Filter>OrderList</Filter>
+    <QtMoc Include="WorkerDetailWidget.h">
+      <Filter>Worker</Filter>
     </QtMoc>
-    <QtMoc Include="OrderListWidget.h">
-      <Filter>OrderList</Filter>
+    <QtMoc Include="WorkerCommentWidget.h">
+      <Filter>Worker</Filter>
     </QtMoc>
-    <QtMoc Include="OrderCommentWidget.h">
-      <Filter>OrderList</Filter>
+    <QtMoc Include="WorkersWidget.h">
+      <Filter>Worker</Filter>
     </QtMoc>
-    <QtMoc Include="OrderDetialWidget.h">
-      <Filter>OrderList</Filter>
+    <QtMoc Include="WorkerItemWidget.h">
+      <Filter>Worker</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>
@@ -261,16 +261,19 @@
     <ClInclude Include="GeneratedFiles\ui_CreateEntInfoWidget.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
-    <ClInclude Include="GeneratedFiles\ui_OrderListWidget.h">
+    <ClInclude Include="WorkerDataBase.h">
+      <Filter>Worker</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_WorkerDetailWidget.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
-    <ClInclude Include="GeneratedFiles\ui_OrderCommentWidget.h">
+    <ClInclude Include="GeneratedFiles\ui_WorkersWidget.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
-    <ClInclude Include="GeneratedFiles\ui_OrderDetialWidget.h">
+    <ClInclude Include="GeneratedFiles\ui_WorkerCommentWidget.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
-    <ClInclude Include="GeneratedFiles\ui_OrderListItemWidget.h">
+    <ClInclude Include="GeneratedFiles\ui_WorkertemWidget.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -346,17 +349,17 @@
     <QtUic Include="CreateEntInfoWidget.ui">
       <Filter>EntInfo</Filter>
     </QtUic>
-    <QtUic Include="OrderListItemWidget.ui">
-      <Filter>OrderList</Filter>
+    <QtUic Include="WorkerDetailWidget.ui">
+      <Filter>Worker</Filter>
     </QtUic>
-    <QtUic Include="OrderListWidget.ui">
-      <Filter>OrderList</Filter>
+    <QtUic Include="WorkersWidget.ui">
+      <Filter>Worker</Filter>
     </QtUic>
-    <QtUic Include="OrderCommentWidget.ui">
-      <Filter>OrderList</Filter>
+    <QtUic Include="WorkerCommentWidget.ui">
+      <Filter>Worker</Filter>
     </QtUic>
-    <QtUic Include="OrderDetialWidget.ui">
-      <Filter>OrderList</Filter>
+    <QtUic Include="WorkerItemWidget.ui">
+      <Filter>Worker</Filter>
     </QtUic>
   </ItemGroup>
 </Project>
