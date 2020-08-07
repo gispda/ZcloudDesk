@@ -49,7 +49,7 @@ WorkerItemWidget::WorkerItemWidget(WorkerInfo _info, QString strAction2, QWidget
 	ui.buttonAction->setText(m_strAction2);
 
 	connect(ui.buttonDetial, &QPushButton::clicked, [this](){
-		sigDetial(m_strOrderCode);
+		emit sigDetial(m_info.strWorkerid);
 	});
 
 
