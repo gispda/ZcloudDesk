@@ -37,7 +37,7 @@ private:
 	bool winHttpGetAreaList(int code,QString& strRet);
 
 	//!更新企业资料
-	bool winHttpUpdateCompanyInfo(QString strUid,QString strToken,int nTradeId,int nProId,int nCityId,int nAreaId,QString strOfficer,QString strPhone,QString& strRet);
+	bool winHttpUpdateCompanyInfo(QString strUid,QString strToken,QString& strRet);
 
 	Ui::EditEntInfoWidget ui;
 	stEntInfo m_stEntInfo;

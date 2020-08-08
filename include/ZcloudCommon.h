@@ -15,6 +15,10 @@ namespace ZcloudComFun
 		EN_TIP = 4,			//失败的提示
 	};
 
+
+
+	extern "C" __declspec(dllexport) void LoadAvatar(const std::string &strAvatarUrl, QLabel* lable);
+
 	//!提示框
 	extern "C" __declspec(dllexport) int openMessageTipDlg(EN_BTN_TYPE enBtnType, QString strTitle, QString strMsg, QWidget *parent = 0);
 

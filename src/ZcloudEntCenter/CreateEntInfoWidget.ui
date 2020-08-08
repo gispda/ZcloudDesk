@@ -176,7 +176,7 @@ QLineEdit:disabled{background-color: rgb(247,248, 250);};</string>
         <string/>
        </property>
        <property name="readOnly">
-        <bool>true</bool>
+        <bool>false</bool>
        </property>
        <property name="placeholderText">
         <string/>
@@ -733,25 +733,6 @@ QComboBox QAbstractItemView::item
         <bool>true</bool>
        </property>
       </widget>
-      <zorder>comboBoxArea</zorder>
-      <zorder>labelAddressError</zorder>
-      <zorder>lineEditSocietyCode</zorder>
-      <zorder>label_4</zorder>
-      <zorder>labelAreaError</zorder>
-      <zorder>lineEditCompanyName</zorder>
-      <zorder>closeButton</zorder>
-      <zorder>comboBoxPro</zorder>
-      <zorder>label_2</zorder>
-      <zorder>lineEditAddress</zorder>
-      <zorder>radioButtonAddressNew</zorder>
-      <zorder>label</zorder>
-      <zorder>radioButtonAddressReg</zorder>
-      <zorder>label_10</zorder>
-      <zorder>label_3</zorder>
-      <zorder>buttonSearch</zorder>
-      <zorder>labelCompanyNotFound</zorder>
-      <zorder>comboBoxCity</zorder>
-      <zorder>widgetAddressOffice</zorder>
      </widget>
     </item>
     <item>
@@ -1032,13 +1013,6 @@ QComboBox QAbstractItemView::item
         <bool>true</bool>
        </property>
       </widget>
-      <zorder>comboBoxProOffice</zorder>
-      <zorder>lineEditAddressOffice</zorder>
-      <zorder>labelAddressOfficeError</zorder>
-      <zorder>comboBoxAreaOffice</zorder>
-      <zorder>labelAreaOfficeError</zorder>
-      <zorder>comboBoxCityOffice</zorder>
-      <zorder>verticalLayoutWidget</zorder>
      </widget>
     </item>
     <item>

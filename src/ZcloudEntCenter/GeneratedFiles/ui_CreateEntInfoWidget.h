@@ -137,7 +137,7 @@ public:
         lineEditSocietyCode->setStyleSheet(QLatin1String("QLineEdit{border-radius:4px;color:rgba(51,51,51,1);border:1px solid rgb(222,222,222);font:14px 'Microsoft Yahei';padding-left:10px;}\n"
 "QLineEdit:laceholder{color:rgba(51,51,51,1);}QLineEdit:focus{border:1px solid rgba(30,140,238,1);}\n"
 "QLineEdit:disabled{background-color: rgb(247,248, 250);};"));
-        lineEditSocietyCode->setReadOnly(true);
+        lineEditSocietyCode->setReadOnly(false);
         label_4 = new QLabel(widget);
         label_4->setObjectName(QStringLiteral("label_4"));
         label_4->setGeometry(QRect(18, 290, 100, 30));
@@ -317,24 +317,6 @@ public:
 "    height:32px;\n"
 "}"));
         comboBoxCity->setEditable(true);
-        comboBoxArea->raise();
-        labelAddressError->raise();
-        lineEditSocietyCode->raise();
-        label_4->raise();
-        labelAreaError->raise();
-        lineEditCompanyName->raise();
-        closeButton->raise();
-        comboBoxPro->raise();
-        label_2->raise();
-        lineEditAddress->raise();
-        radioButtonAddressNew->raise();
-        label->raise();
-        radioButtonAddressReg->raise();
-        label_10->raise();
-        label_3->raise();
-        buttonSearch->raise();
-        labelCompanyNotFound->raise();
-        comboBoxCity->raise();
 
         verticalLayout->addWidget(widget);
 
@@ -453,13 +435,6 @@ public:
 "    height:32px;\n"
 "}"));
         comboBoxCityOffice->setEditable(true);
-        comboBoxProOffice->raise();
-        lineEditAddressOffice->raise();
-        labelAddressOfficeError->raise();
-        comboBoxAreaOffice->raise();
-        labelAreaOfficeError->raise();
-        comboBoxCityOffice->raise();
-        verticalLayoutWidget->raise();
 
         verticalLayout->addWidget(widgetAddressOffice);
 

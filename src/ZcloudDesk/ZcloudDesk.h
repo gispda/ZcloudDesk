@@ -166,7 +166,10 @@ private:
 
 	//!打开企业中心
 	void openEntCenterWidget();
+
+	void createEnterCenterMgr();
 	
+
 	//!打开壁纸
 	void openWallpaperWidget(QString strUrl);
 

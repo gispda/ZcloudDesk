@@ -879,3 +879,29 @@ void ZcloudComFun::setElideText(int nPixSize, QLabel* pLabel, const QString& str
 	pLabel->setText(strElideText);
 }
 
+void ZcloudComFun::LoadAvatar(const std::string &strAvatarUrl, QLabel* lable)
+{
+	QUrl url(QString().fromStdString(strAvatarUrl));
+	QNetworkAccessManager manager;
+	QEventLoop loop;
+
+	QNetworkReply *reply = manager.get(QNetworkRequest(url));
+	QObject::connect(reply, &QNetworkReply::finished, &loop, [&reply, &lable, &loop](){
+		if (reply->error() == QNetworkReply::NoError)
+		{
+			QByteArray jpegData = reply->readAll();
+			QPixmap pixmap;
+			pixmap.loadFromData(jpegData);
+			if (!pixmap.isNull())
+			{
+				lable->clear();
+				lable->setPixmap(pixmap);
+				lable->setScaledContents(true);
+			}
+		}
+		loop.quit();
+	});
+
+	loop.exec();
+}
+

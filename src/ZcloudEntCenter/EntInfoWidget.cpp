@@ -136,15 +136,15 @@ bool EntInfoWidget::showEntInfo()
 	ui.labelIndustry->adjustSize();
 
 	//!ÐÐÕþÇøÓò
-	m_stEntInfo._nProId		= data.take("province_id").toInt();
-	m_stEntInfo._nCityId	= data.take("city_id").toInt();
-	m_stEntInfo._nAreaId	= data.take("area_id").toInt();
-	m_stEntInfo._strPro		= data.take("province_name").toString();
-	QString strPro			= m_stEntInfo._strPro;
-	m_stEntInfo._strCity	= data.take("city_name").toString();
-	QString strCity			= m_stEntInfo._strCity;
-	m_stEntInfo._strArea	= data.take("area_name").toString();
-	QString strArea			= m_stEntInfo._strArea;
+	m_stEntInfo.m_registerAddress._nProId		= data.take("province_id").toInt();
+	m_stEntInfo.m_registerAddress._nCityId	= data.take("city_id").toInt();
+	m_stEntInfo.m_registerAddress._nAreaId	= data.take("area_id").toInt();
+	m_stEntInfo.m_registerAddress._strPro		= data.take("province_name").toString();
+	QString strPro			= m_stEntInfo.m_registerAddress._strPro;
+	m_stEntInfo.m_registerAddress._strCity	= data.take("city_name").toString();
+	QString strCity			= m_stEntInfo.m_registerAddress._strCity;
+	m_stEntInfo.m_registerAddress._strArea	= data.take("area_name").toString();
+	QString strArea			= m_stEntInfo.m_registerAddress._strArea;
 	QString strText;
 	if (strPro.isEmpty())
 	{

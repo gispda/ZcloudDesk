@@ -4,6 +4,13 @@
 #include <QPushButton>
 //#include "qrencode.h"
 #include <QPainter>
+#include <QPixmap>
+
+
+#include <QJsonParseError>
+#include <QJsonObject>
+#include <QJsonArray>
+
 
 const QString g_strColor0 = "rgba(95,217,153,1)";
 const QString g_strColor1 = "rgba(237,164,60,1)";
@@ -12,10 +19,10 @@ const QString g_strColor3 = "rgba(217,95,216,1)";
 const QString g_strColor4 = "rgba(67,222,224,1)";
 const QString g_strColor5 = "rgba(255,120,102,1)";
 
-TwobarCodeWidget::TwobarCodeWidget(QString code, QString str, QWidget *parent )
+TwobarCodeWidget::TwobarCodeWidget(QString strcompanyid, QString strToken, QString strTitle, QWidget *parent)
 	: QWidget(parent)
-	, m_code(code)
-	, m_str(str)
+	, m_strcompanyid(strcompanyid)
+	, m_strToken(strToken)
 {
 
 	ui.setupUi(this);
@@ -34,17 +41,28 @@ TwobarCodeWidget::TwobarCodeWidget(QString code, QString str, QWidget *parent )
 
 	connect(ui.closeButton, &QPushButton::clicked, this, &QWidget::close);
 
-	ui.labelStr->setText(str);
+	ui.labelStr->setText(strTitle);
 
-	QPixmap map = generateQRcode("1234567");
-	ui.labelStr->setPixmap(map);
+	getCodeImg();
+	//QPixmap map = generateQRcode("1234567");
+	
+
+	
+	//ui->label->setStyleSheet("border-image:url(:/2.png);");
+	
+
+	
+	
 
 }
+
 
 
 TwobarCodeWidget::~TwobarCodeWidget()
 {
 }
+
+
 
 void TwobarCodeWidget::mousePressEvent(QMouseEvent *event)
 {
@@ -73,6 +91,9 @@ void TwobarCodeWidget::mouseMoveEvent(QMouseEvent *event)
 
 
 QPixmap TwobarCodeWidget::generateQRcode(char *string){
+
+
+
 	//unsigned int    unWidth, x, y, l, n, unWidthAdjusted, unDataBytes;
 	//unsigned char*  pRGBData, *pSourceData, *pDestData;
 	//QRcode*         pQRC;
@@ -174,4 +195,54 @@ QPixmap TwobarCodeWidget::generateQRcode(char *string){
 	//	return NULL;
 	//}
 return NULL;
+}
+
+void TwobarCodeWidget::getCodeImg()
+{
+	QString strRet;
+	if (!winHttpGetTwoCodeInfo(m_strcompanyid, m_strToken, strRet))
+	{
+		ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_TIP, QString::fromLocal8Bit("操作失败"), QString::fromLocal8Bit("\r\n更新企业资料失败，请稍后再试！"));
+		return;
+	}
+
+
+
+
+	QByteArray byte_array = strRet.toUtf8();
+	QJsonParseError json_error;
+	QJsonDocument parse_doucment = QJsonDocument::fromJson(byte_array, &json_error);
+	if (json_error.error != QJsonParseError::NoError)
+	{
+		return;
+	}
+	if (!parse_doucment.isObject())
+	{
+		return;
+	}
+	QJsonObject obj = parse_doucment.object();
+	int status = obj.take("code").toInt();
+	if (0 != status)
+	{
+		return;
+	}
+
+	QJsonObject data = obj.take("data").toObject();
+
+	m_tbid = data.take("flag").toString();
+
+	m_tburl = data.take("qrimg").toString();
+		
+	//m_tblocalpath = ZcloudComFun::downloadPic(m_tburl, QApplication::applicationDirPath().append("/CacheImage/qrImage"));
+
+	ZcloudComFun::LoadAvatar(m_tburl.toStdString(), ui.labelCode);
+
+}
+
+bool TwobarCodeWidget::winHttpGetTwoCodeInfo(QString strCompanyid, QString strToken, QString& strRet)
+{
+	QString strUrl = QString("/serviceorder/pc-worker/min-qrcode");
+	QString strPost = QString("token=%1&company_id=%2")
+		.arg(strToken).arg(strCompanyid);
+	return ZcloudComFun::httpPost(strUrl, strPost, 5000, strRet, false, 1);
 }

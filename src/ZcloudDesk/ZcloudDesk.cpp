@@ -442,9 +442,25 @@ void ZcloudDesk::onTopToolClick()
 	{
 		openActivityCenterWidget(pInfo->m_strAppDownloadUrl);
 	}
+
+	
 	else if (strToolName == QString::fromLocal8Bit("锁屏"))
 	{
-		lockScreen();
+
+		/////借用下来测试添加创建企业   测试ok
+		/*if (m_pEntCenter == NULL)
+			createEnterCenterMgr();
+		m_pEntCenter->createEntCenter(m_stUserInfo.m_strUserId, m_stUserInfo.m_strToken);*/
+
+
+		//////二维码客户经理邀请加入 测试ok
+		
+		///CustomerManagerinvite();
+
+
+
+
+		//lockScreen();
 	}
 	else if (strToolName == QString::fromLocal8Bit("搜索"))
 	{
@@ -529,24 +545,8 @@ void ZcloudDesk::openEntCenterWidget()
 	
 
 
-	if (NULL ==	m_pEntCenter)
-	{
-		m_pEntCenter = ZcloudEntCenter::createNew();
-		connect(m_pEntCenter, SIGNAL(sigSwitchAcc(int, bool, QString, QString)), this, SLOT(onSwitchAcc(int, bool, QString, QString)));
-		connect(m_pEntCenter, SIGNAL(bingdingPhoneSignal()), this, SLOT(bingdingPhoneSlot()));
-		connect(m_pEntCenter, SIGNAL(sigSignBindingSucceeded(const QString&)), this, SLOT(slotChangeMobile( const QString&)));
-		connect(m_pEntCenter, SIGNAL(openSignInWidget(QWidget*)), this, SLOT(openSignInWidegt(QWidget*)));
-		connect(m_pEntCenter, &ZcloudEntCenter::sendVipListSignals,this, &ZcloudDesk::buyMembershipSlot);
-		connect(m_pEntCenter, &ZcloudEntCenter::trueNameJobChange, [this](QString trueName, QString strJob)
-		{
-			m_stUserInfo.m_strTruename = trueName;
-			m_stUserInfo.m_strJob = strJob;
+	createEnterCenterMgr();
 
-		});
-
-		
-
-	}
 	if ((m_stUserInfo.m_strCompanyName.isEmpty())){
 
 		QMenu* m_pMenu = new QMenu();
@@ -602,12 +602,12 @@ void ZcloudDesk::openEntCenterWidget()
 }
 //!客户经理邀请
 void ZcloudDesk::CustomerManagerinvite(){
-	TwobarCodeWidget* ptwobarCodeWidget = new TwobarCodeWidget("",QString::fromLocal8Bit("由客户经理邀请加入"),NULL);
+	TwobarCodeWidget* ptwobarCodeWidget = new TwobarCodeWidget(m_stUserInfo.m_strCompanyId,m_stUserInfo.m_strToken,QString::fromLocal8Bit("由客户经理邀请加入"),NULL);
 	ptwobarCodeWidget->show();
 };
 //!企业管理员邀请
 void ZcloudDesk::EnterpriseManagerinvite(){
-	TwobarCodeWidget* ptwobarCodeWidget = new TwobarCodeWidget("", QString::fromLocal8Bit("由企业管理员邀请加入"), NULL);
+	TwobarCodeWidget* ptwobarCodeWidget = new TwobarCodeWidget("", m_stUserInfo.m_strToken, QString::fromLocal8Bit("由企业管理员邀请加入"), NULL);
 	ptwobarCodeWidget->show();
 };
 
@@ -1919,4 +1919,24 @@ void ZcloudDesk::onModifyCoinCount(int nCount)
 	}
 }
 
+void ZcloudDesk::createEnterCenterMgr()
+{
+	if (NULL == m_pEntCenter)
+	{
+		m_pEntCenter = ZcloudEntCenter::createNew();
+		connect(m_pEntCenter, SIGNAL(sigSwitchAcc(int, bool, QString, QString)), this, SLOT(onSwitchAcc(int, bool, QString, QString)));
+		connect(m_pEntCenter, SIGNAL(bingdingPhoneSignal()), this, SLOT(bingdingPhoneSlot()));
+		connect(m_pEntCenter, SIGNAL(sigSignBindingSucceeded(const QString&)), this, SLOT(slotChangeMobile(const QString&)));
+		connect(m_pEntCenter, SIGNAL(openSignInWidget(QWidget*)), this, SLOT(openSignInWidegt(QWidget*)));
+		connect(m_pEntCenter, &ZcloudEntCenter::sendVipListSignals, this, &ZcloudDesk::buyMembershipSlot);
+		connect(m_pEntCenter, &ZcloudEntCenter::trueNameJobChange, [this](QString trueName, QString strJob)
+		{
+			m_stUserInfo.m_strTruename = trueName;
+			m_stUserInfo.m_strJob = strJob;
 
+		});
+
+
+
+	}
+}

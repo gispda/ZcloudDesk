@@ -3,6 +3,7 @@
 #include "ui_CreateEntInfoWidget.h"
 #include "ZcloudCommonWidget.h"
 #include "EntInfoDataDefine.h"
+#include "Database.h"
 
 class CreateEntInfoWidget : public QDialog
 {
@@ -34,11 +35,17 @@ protected:
 	void mousePressEvent(QMouseEvent *event);
 	void mouseMoveEvent(QMouseEvent *event);
 private:
+
+	///前端企业信息的逻辑判断并提示警告
+	void submitCompany();
+
+	void clear();
+
 	bool showAreaData(QComboBox* pComBoBox,int nCode);
 	//!获取省市区
 	bool winHttpGetAreaList(int code,QString& strRet);
 	//!更新企业资料
-	bool winHttpCreateCompanyInfo(QString strUid,QString strToken,int nTradeId,int nProId,int nCityId,int nAreaId,QString strOfficer,QString strPhone,QString& strRet);
+	bool winHttpCreateCompanyInfo(QString strUid,QString strToken,QString& strRet);
 	Ui::CreateEntInfoWidget ui;
 	stEntInfo m_stEntInfo;
 	//QString	m_strUid;
@@ -49,6 +56,8 @@ private:
 	bool	m_bAddress = true;
 	bool	m_bLegalPeason = true;
 	bool	m_bPhone = true;
+
+
 
 	QString	m_strUid;
 	QString	m_strToken;
