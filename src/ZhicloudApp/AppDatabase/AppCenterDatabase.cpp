@@ -228,8 +228,13 @@ bool AppCenterDatabase::removeClassAppInfo(QString strClassId)
 	QSqlQuery sqlQuery(m_appCenterSqlDatabase);
 
 	if (sqlQuery.isActive()) sqlQuery.finish();
+	QString exestr;
 
-	if (!sqlQuery.exec(QString("delete from ClassAppInfo where userId = '%1' AND classId = '%2' AND compId = '%3';").arg(app_userInfo.m_strUserId).arg(strClassId).arg(app_userInfo.m_strCompanyId)))
+	if (app_userInfo.m_strCompanyId == "")
+	exestr = QString("delete from ClassAppInfo where userId = '%1' AND classId = '%2';").arg(app_userInfo.m_strUserId).arg(strClassId);
+	else
+	exestr = QString("delete from ClassAppInfo where userId = '%1' AND classId = '%2' AND compId = '%3';").arg(app_userInfo.m_strUserId).arg(strClassId).arg(app_userInfo.m_strCompanyId);
+	if (!sqlQuery.exec(exestr))
 	{
 		qDebug() << "zcd-0x00000051:" << sqlQuery.lastError() << sqlQuery.lastError().driverText().toStdString().c_str();
 		return false;
@@ -244,7 +249,13 @@ bool AppCenterDatabase::removeClassAppInfo_Class(QString strAppId)
 
 	if (sqlQuery.isActive()) sqlQuery.finish();
 
-	if (!sqlQuery.exec(QString("delete from ClassAppInfo where userId = '%1' AND appId = '%2' AND compId = '%3';").arg(app_userInfo.m_strUserId).arg(strAppId).arg(app_userInfo.m_strCompanyId)))
+
+	QString exestr;
+	if (app_userInfo.m_strCompanyId == "")
+	exestr = QString("delete from ClassAppInfo where userId = '%1' AND appId = '%2';").arg(app_userInfo.m_strUserId).arg(strAppId);
+	else
+	exestr = QString("delete from ClassAppInfo where userId = '%1' AND appId = '%2' AND compId = '%3';").arg(app_userInfo.m_strUserId).arg(strAppId).arg(app_userInfo.m_strCompanyId);
+	if (!sqlQuery.exec(exestr))
 	{
 		qDebug() << "zcd-0x00000052:" << sqlQuery.lastError() << sqlQuery.lastError().driverText().toStdString().c_str();
 		return false;
@@ -259,14 +270,28 @@ bool AppCenterDatabase::removeClass(QString classId)
 	QSqlQuery sqlQuery(m_appCenterSqlDatabase);
 
 	if (sqlQuery.isActive()) sqlQuery.finish();
-	sqlQuery.prepare(QString("delete from Class where userId = '%1' AND  classId = '%2' AND reserved1 = '%3';").arg(app_userInfo.m_strUserId).arg(classId).arg(app_userInfo.m_strCompanyId));
+
+	QString exestr;
+	if (app_userInfo.m_strCompanyId == "")
+		exestr = QString("delete from Class where userId = '%1' AND  classId = '%2';").arg(app_userInfo.m_strUserId).arg(classId);
+	else
+		exestr = QString("delete from Class where userId = '%1' AND  classId = '%2' AND reserved1 = '%3';").arg(app_userInfo.m_strUserId).arg(classId).arg(app_userInfo.m_strCompanyId);
+
+
+	sqlQuery.prepare(exestr);
 	if (!sqlQuery.exec())
 	{
 		qDebug() << "zcd-0x0000000A:" << sqlQuery.lastError() << sqlQuery.lastError().driverText().toStdString().c_str();
 		return false;
 	}
+	if (app_userInfo.m_strCompanyId == "")
+		exestr = QString("delete from ClassAppInfo where userId = '%1' AND classId = '%2';").arg(app_userInfo.m_strUserId).arg(classId);
+	else
+		exestr = QString("delete from ClassAppInfo where userId = '%1' AND classId = '%2' AND compId = '%3';").arg(app_userInfo.m_strUserId).arg(classId).arg(app_userInfo.m_strCompanyId);
 
-	if (!sqlQuery.exec(QString("delete from ClassAppInfo where userId = '%1' AND classId = '%2' AND compId = '%3';").arg(app_userInfo.m_strUserId).arg(classId).arg(app_userInfo.m_strCompanyId)))
+
+
+	if (!sqlQuery.exec(exestr))
 	{
 		qDebug() << "zcd-0x0000000B:" << sqlQuery.lastError() << sqlQuery.lastError().driverText().toStdString().c_str();
 		return false;
@@ -300,9 +325,20 @@ bool AppCenterDatabase::findAppClassList(QList<AppClassInfo> &appClassInfoList, 
 	if (sqlQuery.isActive()) sqlQuery.finish();
 	QString sqlStr;
 	if (classFlag == CLASSALL)
+	{ 
+		if (app_userInfo.m_strCompanyId=="")
+			sqlStr = QString::fromLocal8Bit("select *from Class where userId = '%1';").arg(app_userInfo.m_strUserId);
+		else
 		sqlStr = QString::fromLocal8Bit("select *from Class where userId = '%1' AND reserved1 = '%2';").arg(app_userInfo.m_strUserId).arg(app_userInfo.m_strCompanyId);
+	}		
 	else
+	{
+		if (app_userInfo.m_strCompanyId == "")
+		sqlStr = QString::fromLocal8Bit("select *from Class where userId = '%1' AND pageFlag = %2 order by sort desc;").arg(app_userInfo.m_strUserId).arg(classFlag);
+		else
 		sqlStr = QString::fromLocal8Bit("select *from Class where userId = '%1' AND pageFlag = %2 AND reserved1  = '%3' order by sort desc;").arg(app_userInfo.m_strUserId).arg(classFlag).arg(app_userInfo.m_strCompanyId);
+	}
+	
 	if (!sqlQuery.exec(sqlStr))
 	{
 		qDebug() << "zcd-0x0000000C:" << sqlQuery.lastError() << sqlQuery.lastError().driverText().toStdString().c_str();
@@ -365,13 +401,33 @@ bool AppCenterDatabase::findClassAppInfo(QString strClassId, QStringList &appIdL
 	QReadLocker locker(&m_readWriteLock);
 	QSqlQuery sqlQuery(m_appCenterSqlDatabase);
 	if (sqlQuery.isActive()) sqlQuery.finish();
-	QString execStr = QString("select *from ClassAppInfo where userId = ? AND classId = ? AND compId = ?;");
-	sqlQuery.prepare(execStr);
-	sqlQuery.bindValue(0, app_userInfo.m_strUserId);
-	sqlQuery.bindValue(1, strClassId);
-	sqlQuery.bindValue(2, app_userInfo.m_strCompanyId);
+	QString execStr;
+	
+	
+	
+	
+	
+	if (app_userInfo.m_strCompanyId == "")
+	{
+		execStr = QString("select *from ClassAppInfo where userId = ? AND classId = ?;");
+		sqlQuery.prepare(execStr);
+		sqlQuery.bindValue(0, app_userInfo.m_strUserId);
+		sqlQuery.bindValue(1, strClassId);
 
-	if (!sqlQuery.exec())
+	}
+	else
+	{
+		execStr = QString("select *from ClassAppInfo where userId = ? AND classId = ? AND compId = ?;");
+		sqlQuery.prepare(execStr);
+		sqlQuery.bindValue(0, app_userInfo.m_strUserId);
+		sqlQuery.bindValue(1, strClassId);
+		sqlQuery.bindValue(2, app_userInfo.m_strCompanyId);
+	}
+
+
+
+
+	if (!sqlQuery.exec(execStr))
 	{
 		qDebug() << "zcd-0x00000053:" << sqlQuery.lastError() << sqlQuery.lastError().driverText().toStdString().c_str();
 		return false;
@@ -412,7 +468,11 @@ bool AppCenterDatabase::alterApp(AppDataInfo appDataInfo)
 	QWriteLocker locker(&m_readWriteLock);
 	QSqlQuery sqlQuery(m_appCenterSqlDatabase);
 	if (sqlQuery.isActive()) sqlQuery.finish();
-	QString strSql = QString("select * from App where  userId = '%1' AND appId = '%2' AND reserved1 = '%3';").arg(app_userInfo.m_strUserId).arg(appDataInfo.m_strAppId).arg(app_userInfo.m_strCompanyId);
+	QString strSql;
+	if (app_userInfo.m_strCompanyId == "")
+	strSql = QString("select * from App where  userId = '%1' AND appId = '%2';").arg(app_userInfo.m_strUserId).arg(appDataInfo.m_strAppId);
+	else
+	strSql= QString("select * from App where  userId = '%1' AND appId = '%2' AND reserved1 = '%3';").arg(app_userInfo.m_strUserId).arg(appDataInfo.m_strAppId).arg(app_userInfo.m_strCompanyId);
 	if (!sqlQuery.exec(strSql))
 	{
 		qDebug() << "zcd-0x00000054:" << sqlQuery.lastError() << sqlQuery.lastError().driverText().toStdString().c_str();
@@ -600,13 +660,26 @@ bool AppCenterDatabase::removeApp(QString appId)
 	QWriteLocker locker(&m_readWriteLock);
 	QSqlQuery sqlQuery(m_appCenterSqlDatabase);
 	if (sqlQuery.isActive()) sqlQuery.finish();
-	if (!sqlQuery.exec(QString("delete from App where userId = '%1' AND appID = '%2' AND reserved1 = '%3';").arg(app_userInfo.m_strUserId).arg(appId).arg(app_userInfo.m_strCompanyId)))
+	QString exestr;
+
+	if (app_userInfo.m_strCompanyId == "")
+	exestr = QString("delete from App where userId = '%1' AND appID = '%2';").arg(app_userInfo.m_strUserId).arg(appId);
+	else
+	exestr = QString("delete from App where userId = '%1' AND appID = '%2' AND reserved1 = '%3';").arg(app_userInfo.m_strUserId).arg(appId).arg(app_userInfo.m_strCompanyId);
+	if (!sqlQuery.exec(exestr))
 	{
 		qDebug() << "zcd-0x00000012:" << sqlQuery.lastError() << sqlQuery.lastError().driverText().toStdString().c_str();
 		return false;
 	}
 
-	if (!sqlQuery.exec(QString("delete from ClassAppInfo where userId = '%1' AND appId = '%2' AND compId = '%3';").arg(app_userInfo.m_strUserId).arg(appId).arg(app_userInfo.m_strCompanyId)))
+	if (app_userInfo.m_strCompanyId == "")
+		exestr = QString("delete from ClassAppInfo where userId = '%1' AND appId = '%2';").arg(app_userInfo.m_strUserId).arg(appId);
+	else
+		exestr = QString("delete from ClassAppInfo where userId = '%1' AND appId = '%2' AND compId = '%3';").arg(app_userInfo.m_strUserId).arg(appId).arg(app_userInfo.m_strCompanyId);
+
+
+
+	if (!sqlQuery.exec(exestr))
 	{
 		qDebug() << "zcd-0x00000013:" << sqlQuery.lastError() << sqlQuery.lastError().driverText().toStdString().c_str();
 		return false;
@@ -661,6 +734,9 @@ bool AppCenterDatabase::findClassAppList(QList<AppDataInfo > &appDataInfoList, Q
 	QString execStr;
 	if (classId.isEmpty())
 	{
+		if (app_userInfo.m_strCompanyId=="")
+		execStr = QString("select *from App where userId = '%1'").arg(app_userInfo.m_strUserId);
+		else
 		execStr = QString("select *from App where userId = '%1' AND reserved1 = '%2' ").arg(app_userInfo.m_strUserId).arg(app_userInfo.m_strCompanyId);
 		if (isInstall)  execStr.append("AND appIsInstall = 1 ");
 		if (!findStr.isEmpty())
@@ -671,8 +747,15 @@ bool AppCenterDatabase::findClassAppList(QList<AppDataInfo > &appDataInfoList, Q
 	}
 	else
 	{
+		if (app_userInfo.m_strCompanyId == "")
+			execStr = QString("select * from  App as a inner join ClassAppInfo as i on i.appId = a.appId AND a.userId = i.userId where a.userId = '%1' AND i.classId = '%2'").arg(app_userInfo.m_strUserId).arg(classId);
+		else
+			execStr = QString("select * from  App as a inner join ClassAppInfo as i on i.appId = a.appId AND i.compId = a.reserved1 AND a.userId = i.userId where a.userId = '%1' AND i.classId = '%2' AND i.compId = '%3' ").arg(app_userInfo.m_strUserId).arg(classId).arg(app_userInfo.m_strCompanyId);
+
+
 		//select * from goods as g inner join goods_classes as gc on g.sid = gc.goodsID where 
-		execStr = QString("select * from  App as a inner join ClassAppInfo as i on i.appId = a.appId AND i.compId = a.reserved1 AND a.userId = i.userId where a.userId = '%1' AND i.classId = '%2' AND i.compId = '%3' ").arg(app_userInfo.m_strUserId).arg(classId).arg(app_userInfo.m_strCompanyId);
+
+
 		if (isInstall)  execStr.append("AND a.appIsInstall = 1 ");
 		execStr.append(" order by i.sort asc,a.appId desc");
 	}
@@ -795,7 +878,12 @@ bool AppCenterDatabase::findApp(AppDataInfo &appDataInfo)
 	if (sqlQuery.isActive()) sqlQuery.finish();
 	QString execStr;
 
-	execStr = QString("select * from  App  where userId = '%1' AND appId = '%2' AND reserved1 = '%3';").arg(app_userInfo.m_strUserId).arg(appDataInfo.m_strAppId).arg(app_userInfo.m_strCompanyId);
+	if (app_userInfo.m_strCompanyId == "")
+		QString("select * from  App  where userId = '%1' AND appId = '%2';").arg(app_userInfo.m_strUserId).arg(appDataInfo.m_strAppId);
+	else
+		QString("select * from  App  where userId = '%1' AND appId = '%2' AND reserved1 = '%3';").arg(app_userInfo.m_strUserId).arg(appDataInfo.m_strAppId).arg(app_userInfo.m_strCompanyId);
+
+	
 	if (!sqlQuery.exec(execStr))
 	{
 		qDebug() << "zcd-0x00000014:" << sqlQuery.lastError() << sqlQuery.lastError().driverText().toStdString().c_str();
@@ -940,7 +1028,11 @@ bool AppCenterDatabase::findSider(QList<SliderInfo > &sliderInfoList)
 	QReadLocker locker(&m_readWriteLock);
 	QSqlQuery sqlQuery(m_appCenterSqlDatabase);
 	if (sqlQuery.isActive()) sqlQuery.finish();
-	QString	execStr = QString("select *from Slider where userId = '%1' AND compId = '%2' order by sort desc;").arg(app_userInfo.m_strUserId).arg(app_userInfo.m_strCompanyId);
+	QString	execStr;
+	if (app_userInfo.m_strCompanyId == "")
+	execStr = QString("select *from Slider where userId = '%1'order by sort desc;").arg(app_userInfo.m_strUserId);
+	else
+	execStr= QString("select *from Slider where userId = '%1' AND compId = '%2' order by sort desc;").arg(app_userInfo.m_strUserId).arg(app_userInfo.m_strCompanyId);
 
 	if (!sqlQuery.exec(execStr))
 	{
@@ -990,7 +1082,14 @@ bool AppCenterDatabase::removeOneSue(QString strAppId)
 	QWriteLocker locker(&m_readWriteLock);
 	QSqlQuery sqlQuery(m_appCenterSqlDatabase);
 	if (sqlQuery.isActive()) sqlQuery.finish();
-	if (!sqlQuery.exec(QString("delete from Sue where userId = '%1' AND appId = '%2' AND compId = '%3';").arg(app_userInfo.m_strUserId).arg(strAppId).arg(app_userInfo.m_strCompanyId)))
+	QString exeStr;
+	if (app_userInfo.m_strCompanyId == "")
+		exeStr = QString("delete from Sue where userId = '%1' AND appId = '%2';").arg(app_userInfo.m_strUserId).arg(strAppId);
+	else
+		exeStr = QString("delete from Sue where userId = '%1' AND appId = '%2' AND compId = '%3';").arg(app_userInfo.m_strUserId).arg(strAppId).arg(app_userInfo.m_strCompanyId);
+
+
+	if (!sqlQuery.exec(exeStr))
 	{
 		qDebug() << "zcd-0x00000016:" << sqlQuery.lastError() << sqlQuery.lastError().driverText().toStdString().c_str();
 		return false;
@@ -1005,10 +1104,24 @@ bool AppCenterDatabase::removeAppAllClassAll(QString strUserId)
 	QWriteLocker locker(&m_readWriteLock);
 	QSqlQuery sqlQuery(m_appCenterSqlDatabase);
 	//App
-	sqlQuery.prepare("delete from  App  where userId = ? AND reserved1 = ?;");
-	sqlQuery.bindValue(0, strUserId);
-	sqlQuery.bindValue(1, app_userInfo.m_strCompanyId);
-	if (!sqlQuery.exec())
+	QString exeStr;
+	if (app_userInfo.m_strCompanyId == "")
+	{
+		exeStr = QString("delete from  App  where userId = ?;");
+		sqlQuery.prepare(exeStr);
+		sqlQuery.bindValue(0, strUserId);
+	}
+	else
+	{
+		exeStr = QString("delete from  App  where userId = ? AND reserved1 = ?;");
+		sqlQuery.prepare(exeStr);
+		sqlQuery.bindValue(0, strUserId);
+		sqlQuery.bindValue(1, app_userInfo.m_strCompanyId);
+
+	}
+	
+	
+	if (!sqlQuery.exec(exeStr))
 	{
 		lastError = sqlQuery.lastError();
 		qDebug() << "zcd-0x0000003B:" << "zcd-0x00000021:" << "removeAppAllClassAll App" << lastError << lastError.driverText().toStdString().c_str();
@@ -1017,9 +1130,23 @@ bool AppCenterDatabase::removeAppAllClassAll(QString strUserId)
 	}
 	m_appCenterSqlDatabase.commit();
 	//Class
-	sqlQuery.prepare("delete from Class where userId = ? AND reserved1 = ?;");
-	sqlQuery.bindValue(0, strUserId);
-	sqlQuery.bindValue(1, app_userInfo.m_strCompanyId);
+
+
+	if (app_userInfo.m_strCompanyId == "")
+	{
+		exeStr = QString("delete from Class where userId = ?;");
+		sqlQuery.prepare(exeStr);
+		sqlQuery.bindValue(0, strUserId);
+	}
+	else
+	{
+		exeStr = QString("delete from Class where userId = ? AND reserved1 = ?;");
+		sqlQuery.prepare(exeStr);
+		sqlQuery.bindValue(0, strUserId);
+		sqlQuery.bindValue(1, app_userInfo.m_strCompanyId);
+
+	}
+
 
 	if (!sqlQuery.exec())
 	{
@@ -1030,9 +1157,23 @@ bool AppCenterDatabase::removeAppAllClassAll(QString strUserId)
 	}
 	m_appCenterSqlDatabase.commit();
 	//ClassAppInfo
-	sqlQuery.prepare("delete from ClassAppInfo  where userId = ? AND compId = ?;");
-	sqlQuery.bindValue(0, strUserId);
-	sqlQuery.bindValue(1, app_userInfo.m_strCompanyId);
+
+
+	if (app_userInfo.m_strCompanyId == "")
+	{
+		exeStr = QString("delete from ClassAppInfo  where userId = ?;");
+		sqlQuery.prepare(exeStr);
+		sqlQuery.bindValue(0, strUserId);
+	}
+	else
+	{
+		exeStr = QString("delete from ClassAppInfo  where userId = ? AND compId = ? ; ");
+		sqlQuery.prepare(exeStr);
+		sqlQuery.bindValue(0, strUserId);
+		sqlQuery.bindValue(1, app_userInfo.m_strCompanyId);
+
+	}
+
 
 	if (!sqlQuery.exec())
 	{
@@ -1050,13 +1191,32 @@ bool AppCenterDatabase::changeAppCenterUserId(QString strOldUserId, QString strN
 	QSqlError lastError;
 	QWriteLocker locker(&m_readWriteLock);
 	QSqlQuery sqlQuery(m_appCenterSqlDatabase);
-	//App
-	sqlQuery.prepare("update App set userId= ? where userId = ? AND reserved1 = ?;");
-	sqlQuery.bindValue(0, strNewUserId);
-	sqlQuery.bindValue(1, strOldUserId);
-	sqlQuery.bindValue(2, app_userInfo.m_strCompanyId);
 
-	if (!sqlQuery.exec())
+
+	QString execStr;
+
+
+	if (app_userInfo.m_strCompanyId == "")
+	{
+		execStr = QString("update App set userId= ? where userId = ?;");
+		sqlQuery.prepare(execStr);
+		sqlQuery.bindValue(0, strNewUserId);
+		sqlQuery.bindValue(1, strOldUserId);
+
+	}
+	else
+	{
+		execStr = QString("update App set userId= ? where userId = ? AND reserved1 = ?; ");
+		sqlQuery.prepare(execStr);
+		sqlQuery.bindValue(0, strNewUserId);
+		sqlQuery.bindValue(1, strOldUserId);
+		sqlQuery.bindValue(2, app_userInfo.m_strCompanyId);
+	}
+
+	//App
+
+
+	if (!sqlQuery.exec(execStr))
 	{
 		lastError = sqlQuery.lastError();
 		qDebug() << "zcd-0x0000003E:" << "changeAppCenterUserId App" << lastError << lastError.driverText().toStdString().c_str();
@@ -1064,13 +1224,31 @@ bool AppCenterDatabase::changeAppCenterUserId(QString strOldUserId, QString strN
 		//return false;
 	}
 	m_appCenterSqlDatabase.commit();
-	//Class
-	sqlQuery.prepare("update Class set userId=? where userId = ? AND reserved1 = ?;");
-	sqlQuery.bindValue(0, strNewUserId);
-	sqlQuery.bindValue(1, strOldUserId);
-	sqlQuery.bindValue(2, app_userInfo.m_strCompanyId);
 
-	if (!sqlQuery.exec())
+
+	if (app_userInfo.m_strCompanyId == "")
+	{
+		execStr = QString("update Class set userId= ? where userId = ?;");
+		sqlQuery.prepare(execStr);
+		sqlQuery.bindValue(0, strNewUserId);
+		sqlQuery.bindValue(1, strOldUserId);
+
+	}
+	else
+	{
+		execStr = QString("update Class set userId= ? where userId = ? AND reserved1 = ?; ");
+		sqlQuery.prepare(execStr);
+		sqlQuery.bindValue(0, strNewUserId);
+		sqlQuery.bindValue(1, strOldUserId);
+		sqlQuery.bindValue(2, app_userInfo.m_strCompanyId);
+	}
+
+
+
+	//Class
+	
+
+	if (!sqlQuery.exec(execStr))
 	{
 		lastError = sqlQuery.lastError();
 		qDebug() << "zcd-0x0000003F:" << "changeAppCenterUserId Class" << lastError << lastError.driverText().toStdString().c_str();
@@ -1078,13 +1256,28 @@ bool AppCenterDatabase::changeAppCenterUserId(QString strOldUserId, QString strN
 		//return false;
 	}
 	m_appCenterSqlDatabase.commit();
-	//ClassAppInfo
-	sqlQuery.prepare("update ClassAppInfo set userId=? where userId = ? AND compId = ?;");
-	sqlQuery.bindValue(0, strNewUserId);
-	sqlQuery.bindValue(1, strOldUserId);
-	sqlQuery.bindValue(2, app_userInfo.m_strCompanyId);
 
-	if (!sqlQuery.exec())
+	if (app_userInfo.m_strCompanyId == "")
+	{
+		execStr = QString("update ClassAppInfo set userId= ? where userId = ?;");
+		sqlQuery.prepare(execStr);
+		sqlQuery.bindValue(0, strNewUserId);
+		sqlQuery.bindValue(1, strOldUserId);
+
+	}
+	else
+	{
+		execStr = QString("update ClassAppInfo set userId= ? where userId = ? AND reserved1 = ?; ");
+		sqlQuery.prepare(execStr);
+		sqlQuery.bindValue(0, strNewUserId);
+		sqlQuery.bindValue(1, strOldUserId);
+		sqlQuery.bindValue(2, app_userInfo.m_strCompanyId);
+	}
+
+	//ClassAppInfo
+	
+
+	if (!sqlQuery.exec(execStr))
 	{
 		lastError = sqlQuery.lastError();
 		qDebug() << "zcd-0x00000040:" << "changeAppCenterUserId ClassAppInfo" << lastError << lastError.driverText().toStdString().c_str();
@@ -1093,10 +1286,25 @@ bool AppCenterDatabase::changeAppCenterUserId(QString strOldUserId, QString strN
 	}
 	m_appCenterSqlDatabase.commit();
 	//Slider
-	sqlQuery.prepare("update Slider set userId=? where userId = ? AND compId = ?;");
-	sqlQuery.bindValue(0, strNewUserId);
-	sqlQuery.bindValue(1, strOldUserId);
-	sqlQuery.bindValue(2, app_userInfo.m_strCompanyId);
+
+	if (app_userInfo.m_strCompanyId == "")
+	{
+		execStr = QString("update Slider set userId= ? where userId = ?;");
+		sqlQuery.prepare(execStr);
+		sqlQuery.bindValue(0, strNewUserId);
+		sqlQuery.bindValue(1, strOldUserId);
+
+	}
+	else
+	{
+		execStr = QString("update Slider set userId= ? where userId = ? AND reserved1 = ?; ");
+		sqlQuery.prepare(execStr);
+		sqlQuery.bindValue(0, strNewUserId);
+		sqlQuery.bindValue(1, strOldUserId);
+		sqlQuery.bindValue(2, app_userInfo.m_strCompanyId);
+	}
+
+	
 
 	if (!sqlQuery.exec())
 	{
@@ -1107,12 +1315,25 @@ bool AppCenterDatabase::changeAppCenterUserId(QString strOldUserId, QString strN
 	}
 	m_appCenterSqlDatabase.commit();
 	//Sue
-	sqlQuery.prepare("update Sue set userId=? where userId = ? AND compId = ?;");
-	sqlQuery.bindValue(0, strNewUserId);
-	sqlQuery.bindValue(1, strOldUserId);
-	sqlQuery.bindValue(2, app_userInfo.m_strCompanyId);
 
-	if (!sqlQuery.exec())
+	
+	if (app_userInfo.m_strCompanyId == "")
+	{
+		execStr = QString("update Sue set userId=? where userId = ?;");
+		sqlQuery.prepare(execStr);
+		sqlQuery.bindValue(0, strNewUserId);
+		sqlQuery.bindValue(1, strOldUserId);
+
+	}
+	else
+	{
+		execStr = QString("update Sue set userId = ? where userId = ? AND compId = ? ; ");
+		sqlQuery.prepare(execStr);
+		sqlQuery.bindValue(0, strNewUserId);
+		sqlQuery.bindValue(1, strOldUserId);
+		sqlQuery.bindValue(2, app_userInfo.m_strCompanyId);
+	}
+	if (!sqlQuery.exec(execStr))
 	{
 		lastError = sqlQuery.lastError();
 		qDebug() << "zcd-0x00000042:" << "changeAppCenterUserId Sue" << lastError << lastError.driverText().toStdString().c_str();
@@ -1128,7 +1349,20 @@ bool AppCenterDatabase::insertSue(QStringList issueStringList)
 	QWriteLocker locker(&m_readWriteLock);
 	QSqlQuery sqlQuery(m_appCenterSqlDatabase);
 	if (sqlQuery.isActive()) sqlQuery.finish();
-	if (!sqlQuery.exec(QString("delete from Sue where userId = '%1' AND compId = '%2';").arg(app_userInfo.m_strUserId).arg(app_userInfo.m_strCompanyId)))
+    
+
+	QString execStr;
+	if (app_userInfo.m_strCompanyId == "")
+	{
+		execStr = QString("delete from Sue where userId = '%1';").arg(app_userInfo.m_strUserId);
+	}
+	else
+	{
+		execStr = QString("delete from Sue where userId = '%1' AND compId = '%2';").arg(app_userInfo.m_strUserId).arg(app_userInfo.m_strCompanyId);
+	}
+
+
+	if (!sqlQuery.exec(execStr))
 	{
 		qDebug() << "zcd-0x00000016:" << sqlQuery.lastError() << sqlQuery.lastError().driverText().toStdString().c_str();
 		return false;
@@ -1154,7 +1388,18 @@ bool AppCenterDatabase::readSue(QStringList &issueStringList)
 	QReadLocker locker(&m_readWriteLock);
 	QSqlQuery sqlQuery(m_appCenterSqlDatabase);
 	if (sqlQuery.isActive()) sqlQuery.finish();
-	QString	execStr = QString("select *from Sue where userId = '%1' AND compId = '%2';").arg(app_userInfo.m_strUserId).arg(app_userInfo.m_strCompanyId);
+	QString	execStr;
+	
+	
+
+	if (app_userInfo.m_strCompanyId == "")
+	{
+		execStr = QString("select *from Sue where userId = '%1';").arg(app_userInfo.m_strUserId);		
+	}
+	else
+	{
+		execStr = QString("select *from Sue where userId = '%1' AND compId = '%2';").arg(app_userInfo.m_strUserId).arg(app_userInfo.m_strCompanyId);
+	}
 
 	if (!sqlQuery.exec(execStr))
 	{

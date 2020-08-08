@@ -565,6 +565,12 @@ void RightClassAppWidget::initClass()
 		emit m_tButton->clicked(true);
 }
 
+void RightClassAppWidget::initClass(bool bremote)
+{
+	rightMFLag = bremote;
+	initClass();
+}
+
 void RightClassAppWidget::getScreenInfo()
 {
 	QDesktopWidget *deskWgt = QApplication::desktop();
@@ -766,8 +772,13 @@ bool RightClassAppWidget::findClassAppRUninstall(QList<DragButton *> &appButtonL
 
 	//读取下载列表
 	DownLoadManager*	pDownloadManager = RightClassAppWidget::getDownLoadManager();
-	for each (AppDataInfo pData in appReadList)
+
+
+	if (app_userInfo.m_strCompanyId != "")
 	{
+	
+	 for each (AppDataInfo pData in appReadList)
+	 {
 
 		AppDownLoadThread *downloadThread = pDownloadManager->isRightManager(pData.m_strAppName, pData.m_strAppId);
 		if (downloadThread != NULL)
@@ -830,6 +841,71 @@ bool RightClassAppWidget::findClassAppRUninstall(QList<DragButton *> &appButtonL
 
 			appButtonList.append(btn);
 		}
+	 }
+    }
+	else
+	{
+		for each (AppDataInfo pData in appReadList)
+		{
+						
+
+
+				DragButton *btn = new DragButton;
+				btn->setFocusPolicy(Qt::NoFocus);
+				btn->settUserData(pData);
+				btn->setContextMenuPolicy(Qt::CustomContextMenu);
+				QString strName;
+				if (pData.m_strAppAlias.isEmpty())
+				{
+					strName = pData.m_strAppName;
+				}
+				else
+				{
+					strName = pData.m_strAppAlias;
+				}
+				btn->setToolTip(strName);
+				if (strName.length() > 8)
+				{
+					strName = strName.left(7) + "...";
+				}
+
+				btn->setText(strName);
+				btn->statusAppButton = pData.m_statusAppButton;
+
+				QString icon = pData.m_strAppIconPath;
+				QFileInfo fileInfo(icon);
+
+				if (icon.isEmpty() || !fileInfo.exists())
+				{
+					icon = ":/new/imageFile/photoError.png";
+				}
+				btn->setPixmap(icon);
+
+				btn->setStyleSheet("QToolButton{border-radius: 1px;color:rgb(255,255,255);}");
+				connect(btn, SIGNAL(dragDoubleClicked()), this, SLOT(clickbtn()));
+				connect(btn, SIGNAL(closeDownload(QString)), this, SLOT(flushButton(QString)));
+				//if (downloadThread != NULL && downloadThread->getType() != mapp_CLOSE)
+				//{
+				//	connect(downloadThread, SIGNAL(signalDownloadProcess(qint64, qint64)), btn, SLOT(upDownloadProcess(qint64, qint64)));
+				//	connect(downloadThread, SIGNAL(signalStatusChanged(APPDOWNLOADETYPE)), btn, SLOT(upStatusChanged(APPDOWNLOADETYPE)));
+				//}
+
+				if (!pData.m_bAppType && !pData.m_strAppDownloadUrl.isEmpty() && !pData.m_strAppCurrentVerson.isEmpty())
+				{
+					//如果当前版本为空  未处理
+					bool isNewVerson = false;
+					AppCommFun::isHaveNewVerson(pData, isNewVerson, false);
+					if (!isNewVerson)
+					{
+						btn->m_isUpdate = true;
+					}
+				
+			
+			   }
+				appButtonList.append(btn);
+		}
+
+
 	}
 	return true;
 }

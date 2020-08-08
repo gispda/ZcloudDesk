@@ -493,8 +493,12 @@ void ZcloudDesk::openEntCenterWidget()
 			{
 				UserInfoStruct userInfo = loginDialog.getUserInfoStruct();
 				if (!userInfo.m_strUsername.isEmpty()){
+					/*m_stUserInfo = userInfo;
+					startInitWork();*/
+					//showDlgWait(true);
 					m_stUserInfo = userInfo;
-					startInitWork();
+					m_nUnreadCount = 0;
+					QFuture<void>	funIr = QtConcurrent::run(this, &ZcloudDesk::exitThread, 0);
 				}
 				else
 				{
@@ -505,8 +509,13 @@ void ZcloudDesk::openEntCenterWidget()
 						userInfo = loginDialog.getUserInfoStruct();
 						//	userInfo.m_strUsername = "";
 						if (!userInfo.m_strUsername.isEmpty()){
+							/*m_stUserInfo = userInfo;
+							startInitWork();*/
+
+							showDlgWait(true);
 							m_stUserInfo = userInfo;
-							startInitWork();
+							m_nUnreadCount = 0;
+							QFuture<void>	funIr = QtConcurrent::run(this, &ZcloudDesk::exitThread, 0);
 						}
 
 					}
@@ -552,7 +561,7 @@ void ZcloudDesk::openEntCenterWidget()
 		m_pMenu->addAction(m_pActionEnterpriseManager);
 		m_pMenu->addAction(m_pActionCreateEntCompany);
 
-		//ui.labelCompName->setMenu(m_pMenu);
+		ui.twobarcodebtn->setMenu(m_pMenu);
 		
 
 		connect(m_pActionCustomerManager, &QAction::triggered, this, &ZcloudDesk::CustomerManagerinvite);
@@ -1335,11 +1344,15 @@ void ZcloudDesk::closeAllWindows(int flag)
 	if (0 == flag)
 	{
 		//!企业中心关闭
+		if (m_pEntCenter!=NULL)
 		m_pEntCenter->closeAllEntWidget();
 	}
+
 	//!消息中心关闭
+	if (m_pMsgCenter!=NULL)
 	m_pMsgCenter->closeAllMsgWidget();
 	//!应用中心关闭
+	if (m_zhicloudApp!=NULL)
 	m_zhicloudApp->closeAppCenter();
 
 	//!关闭顶栏窗口

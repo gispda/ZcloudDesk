@@ -169,6 +169,7 @@ private slots:
 	void clickBtnOp(bool);
 	//初始化右侧应用
 	void initClass();
+	void initClass(bool bremote);
 	//点击应用
 	void clickbtn();
 	//更改布局

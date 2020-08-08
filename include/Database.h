@@ -62,24 +62,57 @@ struct LoginSetingStruct
 
 };
 
+
+
+
+///客户经理的数据结构
+struct UserService
+{
+	QString m_businessid;  //业务id
+	QString m_strUsername;  //用户名
+	QString m_strPhone;    //电话
+	QString m_strTruename;  //姓名
+	QString m_sex;   ///性别 0，1
+	QString m_strProvinceId;		//省Id
+	QString m_strCityId;			//市Id
+	QString m_strAreaId;			//区Id
+	QString m_strHzsId;				//合作商Id
+	QString m_strAddress;           //地址
+	QString m_wechat;              //微信
+	QString m_qq;                  //qq
+	QString m_nickname;           //昵称
+	QString m_avatarurl;          //头像
+};
+
 struct UserInfoStruct
 {
 	QString m_strCompanyId;			//公司业务编号
 	QString m_strCompanyName;		//公司名称
 	QString m_strTaxNumber;			//税号
+	QString m_strProvinceId;		//省Id
+	QString m_strCityId;			//市Id
+	QString m_strAreaId;			//区Id
+	QString m_strHzsId;				//合作商Id
+
+	UserService userservice;        //关联的客户经理信息
+
 	QString m_strMachine;
 	QString m_strUsername;			//登录账号
 	QString m_strPwd;				//登录密码
 	QString m_strTruename;			//真实名字
 	QString m_strUserId;			//用户编号
+	QString m_sex;                      //性别 0 ,1 
+	QString m_strToken;				//token 
+	int m_iisbindc;                //有无绑定企业，1至少绑定一个， 0未绑定任何企业
+	int m_iisbinds;                ///有无绑定客服经理 1：已绑定 0：未绑定
+
+
+
+
 	QString m_strJob;				//职务
-	QString m_strProvinceId;		//省Id
-	QString m_strCityId;			//市Id
-	QString m_strAreaId;			//区Id
-	QString m_strHzsId;				//合作商Id
 	QString m_logoUrl;				//LOGO链接地址
 	QString m_logoPath;				//LOGO链接地址
-	QString m_strToken;				//token 
+
 	QDateTime m_timeChargeExpire;	//服务费到期时间
 	bool m_isHxNumber;				//是否是航信会员
 	bool m_bHideAppClass;			//!是否隐藏右侧分类（应用和按钮一起）

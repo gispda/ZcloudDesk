@@ -409,25 +409,59 @@ int LoginThread::analySucessJson(QString strRet, UserInfoStruct &userInfoStruct)
 	if (code == 0)
 	{
 		QJsonObject data = obj.take("data").toObject();
-		userInfoStruct.m_strCompanyId = data.take("company_id").toString();			//公司业务编号
-		userInfoStruct.m_strCompanyName = data.take("company_name").toString();		//公司名字
-		userInfoStruct.m_strTaxNumber = data.take("tax_number").toString();			//税号
+		//userInfoStruct.m_strCompanyId = data.take("company_id").toString();			//公司业务编号
+		//userInfoStruct.m_strCompanyName = data.take("company_name").toString();		//公司名字
+		//userInfoStruct.m_strTaxNumber = data.take("tax_number").toString();			//税号
 		userInfoStruct.m_strUsername = data.take("user_name").toString();			//登录账号
-		userInfoStruct.m_strTruename = data.take("truename").toString();			//真实名字
-		userInfoStruct.m_strJob = data.take("job").toString();			//真实名字
+		userInfoStruct.m_strTruename = data.take("true_name").toString();			//真实名字
+		//userInfoStruct.m_strJob = data.take("job").toString();			//真实名字
 		userInfoStruct.m_strUserId = data.take("user_id").toString();			//用户编号
+		userInfoStruct.m_strMobile = data.take("mobile").toString();
+		userInfoStruct.m_sex = data.take("sex").toString();
+		userInfoStruct.m_iisbindc = data.take("is_bind_c").toInt();    /// //有无绑定企业，1至少绑定一个， 0未绑定任何企业
+		userInfoStruct.m_iisbinds = data.take("is_bind_s").toInt();    /// //有无绑定客服经理 1：已绑定 0：未绑定
 
-		userInfoStruct.m_strProvinceId = QString::number(data.take("province_id").toInt());		//省Id
-		userInfoStruct.m_strCityId = QString::number(data.take("city_id").toInt());			//市Id
-		userInfoStruct.m_strAreaId = QString::number(data.take("area_id").toInt());			//区Id
-		userInfoStruct.m_strHzsId = QString::number(data.take("hzs_id").toInt());				//合作商Id
+		QJsonObject  objValue = data.take("company").toObject();
+		
+
+		userInfoStruct.m_strCompanyId = objValue.take("company_id").toString();		//公司业务编号
+		userInfoStruct.m_strCompanyName = objValue.take("company_name").toString();		//公司名字
+		userInfoStruct.m_strTaxNumber = objValue.take("tax").toString();			//税号
+
+		userInfoStruct.m_strProvinceId = QString::number(objValue.take("province_id").toInt());		//省Id
+		userInfoStruct.m_strCityId = QString::number(objValue.take("city_id").toInt());			//市Id
+		userInfoStruct.m_strAreaId = QString::number(objValue.take("area_id").toInt());			//区Id
+		userInfoStruct.m_strHzsId = QString::number(objValue.take("hzs_id").toInt());				//合作商Id
+
+		if (userInfoStruct.m_iisbinds == 1)
+		{
+			objValue = data.take("service").toObject();
+			userInfoStruct.userservice.m_strProvinceId = QString::number(objValue.take("province_id").toInt());		//省Id
+			userInfoStruct.userservice.m_strCityId = QString::number(objValue.take("city_id").toInt());			//市Id
+			userInfoStruct.userservice.m_strAreaId = QString::number(objValue.take("area_id").toInt());			//区Id
+			userInfoStruct.userservice.m_strHzsId = QString::number(objValue.take("hzs_id").toInt());				//合作商Id
+			userInfoStruct.userservice.m_businessid = objValue.take("business_id").toString();  
+			userInfoStruct.userservice.m_strUsername = objValue.take("username").toString();
+			userInfoStruct.userservice.m_strPhone = objValue.take("phone").toString();
+			userInfoStruct.userservice.m_strTruename = objValue.take("truename").toString();
+			userInfoStruct.userservice.m_sex = objValue.take("sex").toString();
+			userInfoStruct.userservice.m_strAddress = objValue.take("address").toString();
+
+			userInfoStruct.userservice.m_wechat = objValue.take("weixin").toString();
+			userInfoStruct.userservice.m_qq = objValue.take("qq").toString();
+			userInfoStruct.userservice.m_nickname = objValue.take("nickname").toString();
+			userInfoStruct.userservice.m_avatarurl = objValue.take("avatarurl").toString();
+
+
+		}
+
 		userInfoStruct.m_logoUrl = data.take("logo").toString();							//LOGO链接地址
 		userInfoStruct.m_logoPath = checkLogoExist(userInfoStruct.m_logoUrl);
 		userInfoStruct.m_strToken = data.take("token").toString();				//token 
 		userInfoStruct.m_timeChargeExpire = QDateTime::fromTime_t(data.take("charge_expire").toInt());	//服务费到期时间
 		userInfoStruct.m_isHxNumber = (data.take("is_hx_member").toInt() == 0 ? false : true);
 		userInfoStruct.m_bHideAppClass = data.take("hide_desktop_apps").toBool();
-		userInfoStruct.m_strMobile = data.take("mobile").toString();
+
 		userInfoStruct.m_bHasMember = data.take("has_member").toInt();
 		QJsonValue memberValue = data.take("member_list");
 		if (memberValue.isArray())

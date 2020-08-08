@@ -86,6 +86,7 @@ void InitDeskThread::run()
 			if (last_update_time) last_update_time--;
 			continue;
 		}
+		
 
 		//»ñÈ¡ÂÖ²¥Í¼
 		if (!isRunningFlag) return;
