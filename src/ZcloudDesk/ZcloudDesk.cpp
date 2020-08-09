@@ -30,7 +30,7 @@
 #include <QMenu>
 #include <TwobarCodeWidget.h>
 #include "ZcloudEntCenter.h"
-
+#include "ZcloudClient.h"
 
 QString zhicloudStrToken;
 QString zhicloudStrUserId;
@@ -457,8 +457,10 @@ void ZcloudDesk::onTopToolClick()
 		
 		///CustomerManagerinvite();
 
-
-
+		////…œ¥´ Õº∆¨   ≤‚ ‘ok
+		
+		//QString strRet;
+		//ZcloudClient::winHttpUploadImage("", m_stUserInfo.m_strToken, strRet);
 
 		//lockScreen();
 	}

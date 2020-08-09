@@ -20,6 +20,7 @@ using namespace std;
 #include <QJsonDocument>
 #include <QJsonParseError>
 #include <QJsonObject>
+#include <QHttpMultiPart>
 
 class SrvInterface:public QObject
 {
@@ -29,7 +30,12 @@ public:
 	~SrvInterface();
 
 	//!http调用接口
-	bool httpPost(QString strUrl, QString strPost, int nTimeout, QString& strRet , int _type = 0);
+	bool httpPost(QString strUrl, QString strPost, int nTimeout, QString& strRet, int _type = 0);
+
+	bool httpPost(QString strUrl, QByteArray strPost, int nTimeout, QString& strRet, int _type = 0);
+
+
+
 
 	QString getHostName();
 
@@ -38,6 +44,7 @@ public:
 
 private:
 	bool httpQtPost(QString strUrl, QString strPost, int nTimeout, QString& strRet);
+	bool httpQtPost(QString strUrl, QByteArray strPost, int nTimeout, QString& strRet);
 	bool httpCurlPost(QString strUrl, QString strPost, int nTimeout, QString& strRet);
 	wstring utf8_to_wstring(const string& str);
 	string wstring_to_utf8(const wstring& str);

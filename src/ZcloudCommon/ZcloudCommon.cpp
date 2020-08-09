@@ -88,6 +88,46 @@ bool ZcloudComFun::httpPost(QString strUrl, QString strPost, int nTimeout, QStri
 	return httpS;
 }
 
+bool ZcloudComFun::httpPostFile(QString strUrl, QByteArray strPost, int nTimeout, QString& strRet, bool isCheckToken /*= false*/, int _type /*= 0*/)
+{
+	(-1 == strUrl.indexOf("?")) ? strUrl.append("?") : strUrl.append("&");
+	strUrl.append("mac=").append(getHostMacAddress()).append("&version=")
+		.append(getFileVertion(QApplication::applicationFilePath())).append("&system=").append(getOsVer());
+	SrvInterface	sInter;
+	bool httpS = sInter.httpPost(strUrl, strPost, nTimeout, strRet, _type);
+	//如果是线程 调用 有UI窗口 ，会崩溃 所有加此字段
+	if (isCheckToken)
+	{
+		if (httpS && strUrl.contains("token") && !strRet.isEmpty())
+		{
+			int status = SSO(strRet);
+			if (-1 == status)
+			{
+				//token 过期
+				ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_TIP, QString::fromLocal8Bit("提示"), QString::fromLocal8Bit("您的登录已过期，请重新登录！"));
+
+				ZcloudComFun::writeRegReboot(ZcloudComFun::EN_NOREBOOT);
+				QProcess p;
+				QString c = "taskkill /im ZcloudDesk.exe /f";
+				p.execute(c);
+				p.close();
+			}
+			else if (-2 == status)
+			{
+				//其它地方登录 单点登录
+				ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_TIP, QString::fromLocal8Bit("提示"), QString::fromLocal8Bit("您的账号已在其他地方登录，若不是您本人操\r\n作，请注意账号安全！"));
+
+				ZcloudComFun::writeRegReboot(ZcloudComFun::EN_NOREBOOT);
+				QProcess p;
+				QString c = "taskkill /im ZcloudDesk.exe /f";
+				p.execute(c);
+				p.close();
+			}
+		}
+	}
+	return httpS;
+}
+
 
 bool ZcloudComFun::winHttpSSO(QString strToken, QString strUserId)
 {

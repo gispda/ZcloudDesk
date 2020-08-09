@@ -4,6 +4,9 @@
 #include <QString>
 #include <QWidget>
 #include <QLabel>
+
+#include <QHttpMultiPart>
+
 namespace ZcloudComFun
 {
 	enum EN_BTN_TYPE
@@ -27,6 +30,10 @@ namespace ZcloudComFun
 
 	//!httpµ÷ÓÃ
 	extern "C" __declspec(dllexport) bool httpPost(QString strUrl, QString strPost, int nTimeout, QString& strRet, bool isCheckToken = false,int _type = 0);
+
+	extern "C" __declspec(dllexport) bool httpPostFile(QString strUrl, QByteArray strPost, int nTimeout, QString& strRet, bool isCheckToken = false, int _type = 0);
+	
+
 	//ÅÐ¶¨token
 	extern "C" __declspec(dllexport) bool winHttpSSO(QString strToken, QString strUserId);
 

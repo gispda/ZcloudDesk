@@ -38,6 +38,8 @@ void SrvInterface::slotError(QNetworkReply::NetworkError sss)
 	
 }
 
+
+
 bool SrvInterface::httpQtPost(QString strUrl, QString strPost, int nTimeout, QString& strRet)
 {
 	QNetworkAccessManager login_pNetworkManager;//网络管理类
@@ -51,7 +53,10 @@ bool SrvInterface::httpQtPost(QString strUrl, QString strPost, int nTimeout, QSt
 	config.setPeerVerifyMode(QSslSocket::VerifyNone);
 	config.setProtocol(QSsl::TlsV1SslV3);
 	netRequest.setSslConfiguration(config);
+
+
 	netRequest.setHeader(QNetworkRequest::ContentTypeHeader, "application/x-www-form-urlencoded");
+	
 	netRequest.setUrl(QUrl(strUrl)); //地址信息
 
 	if (login_pNetworkManager.networkAccessible() == QNetworkAccessManager::NotAccessible)
@@ -124,6 +129,109 @@ bool SrvInterface::httpQtPost(QString strUrl, QString strPost, int nTimeout, QSt
 	{  
 		// 处理超时
 		qDebug() << "zcd-0x10000050:" << QString("timeOut:STRLogin = %2,body = %3").arg(strUrl).arg(strPost);
+	}
+	return false;
+}
+
+
+
+bool SrvInterface::httpQtPost(QString strUrl, QByteArray strPost, int nTimeout, QString& strRet)
+{
+	QNetworkAccessManager login_pNetworkManager;//网络管理类
+	QNetworkReply *login_pNetworkReply = NULL; //封装请求返回信息
+	QTimer login_pTimer; //请求超时计时器
+	QEventLoop loop;
+	connect(&login_pTimer, SIGNAL(timeout()), &loop, SLOT(quit()));
+
+	QNetworkRequest netRequest;
+	QSslConfiguration config = netRequest.sslConfiguration();
+	config.setPeerVerifyMode(QSslSocket::VerifyNone);
+	config.setProtocol(QSsl::TlsV1SslV3);
+	netRequest.setSslConfiguration(config);
+
+	QString boundary("eidevelop1010101010");
+	QString contentType("multipart/form-data; boundary=" + boundary);
+
+	
+	int qq = strPost.size();
+	netRequest.setHeader(QNetworkRequest::ContentTypeHeader, QVariant(contentType));
+	netRequest.setHeader(QNetworkRequest::ContentLengthHeader, QVariant(QString::number(strPost.size())));
+	//netRequest.setRawHeader(QString("Content-Type").toUtf8(), QString("multipart/form-data; boundary=" + multiPart->boundary()).toUtf8());
+	//netRequest.setRawHeader(QString("Content-Length").toUtf8(), QString::number(multiPart->)).toUtf8());
+
+
+	//netRequest.setHeader(QNetworkRequest::ContentTypeHeader, "application/x-www-form-urlencoded");
+
+	netRequest.setUrl(QUrl(strUrl)); //地址信息
+
+	if (login_pNetworkManager.networkAccessible() == QNetworkAccessManager::NotAccessible)
+	{
+		login_pNetworkManager.setNetworkAccessible(QNetworkAccessManager::Accessible);
+	}
+
+	
+	login_pNetworkReply = login_pNetworkManager.post(netRequest, strPost);//发起post请求
+
+
+	connect(login_pNetworkReply, SIGNAL(error(QNetworkReply::NetworkError)),
+		this, SLOT(slotError(QNetworkReply::NetworkError)));
+
+	connect(login_pNetworkReply, SIGNAL(finished()), &loop, SLOT(quit()));
+	login_pTimer.start(nTimeout);
+	loop.exec();
+
+	if (login_pNetworkReply->error() == QNetworkReply::ContentNotFoundError)
+	{
+		QUrl failedUrl;
+		failedUrl = login_pNetworkReply->request().url();
+		int httpStatus = login_pNetworkReply->attribute(
+			QNetworkRequest::HttpStatusCodeAttribute).toInt();
+		QString reason = login_pNetworkReply->attribute(QNetworkRequest::HttpReasonPhraseAttribute).toString();
+		qDebug() << "url" << failedUrl << httpStatus << "   " << reason;
+	}
+
+	QByteArray resultContent = login_pNetworkReply->readAll();
+	int nHttpCode = login_pNetworkReply->attribute(QNetworkRequest::HttpStatusCodeAttribute).toInt();//http返回码
+	strRet = "";
+	if (login_pTimer.isActive())
+	{  // 处理响应
+		login_pTimer.stop();
+		int nErrorCode = login_pNetworkReply->error();
+		if (nErrorCode == QNetworkReply::NoError)
+		{
+			if (nHttpCode == 200)//成功返回
+			{
+				strRet = QString(resultContent);
+
+				return true;
+			}
+			else
+			{
+				strRet = QString(resultContent);
+				QString str = login_pNetworkReply->attribute(QNetworkRequest::HttpReasonPhraseAttribute).toString();
+				qDebug() << "zcd-0x10000048:" << QString("code:%1 \r\n ret:%2\r\n info:%3\r\n STRLogin:%4\r\n body:%5").arg(nHttpCode).arg(strRet).arg(str).arg(strUrl).arg(QString(strPost));
+			}
+		}
+		else
+		{
+			//解析域名
+			QString zhiStr = "";
+			QByteArray url = m_strHostName.toLatin1();
+			struct hostent *h = gethostbyname(url);
+			if (h != NULL)
+			{
+				struct in_addr *in = (in_addr *)h->h_addr;
+				char *ch = inet_ntoa(*in);
+				zhiStr = QString(QLatin1String(ch));
+			}
+			// "请求失败" 
+			qDebug() << "zcd-0x10000049:" << QString("code:%1\r\n errorCode=%2\r\n domain name=%3\r\n errorMsg=%4\r\n STRLogin = %5\r\n body = %6").arg(nHttpCode).arg(nErrorCode).arg(zhiStr).arg(login_pNetworkReply->errorString()).arg(strUrl).arg(QString(strPost));
+		}
+	}
+	else
+	{
+		// 处理超时
+		qDebug() << "zcd-0x10000050:" << QString("timeOut:STRLogin = %2,body = %3").arg(strUrl).arg(QString(strPost));
 	}
 	return false;
 }
@@ -221,6 +329,8 @@ bool SrvInterface::httpCurlPost(QString strUrl, QString strPost, int nTimeout, Q
 	return false;
 }
 
+
+
 //void SrvInterface::getNetProxy()
 //{
 //	QSettings *settings = new QSettings("HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Internet Settings", QSettings::NativeFormat);
@@ -241,6 +351,15 @@ bool SrvInterface::httpPost(QString strUrl, QString strPost, int nTimeout, QStri
 	if (_type == 1) //使用新的接口地址
 	{
 		return httpQtPost(m_strHostName_new + strUrl, strPost, nTimeout, strRet);
+	}
+	return httpQtPost(m_strHostName + strUrl, strPost, nTimeout, strRet);
+}
+
+bool SrvInterface::httpPost(QString strUrl, QByteArray strPost, int nTimeout, QString& strRet, int _type /*= 0*/)
+{
+	if (_type == 1) //使用新的接口地址
+	{
+		return httpQtPost(m_strHostName_new + strUrl, strPost,nTimeout, strRet);
 	}
 	return httpQtPost(m_strHostName + strUrl, strPost, nTimeout, strRet);
 }
