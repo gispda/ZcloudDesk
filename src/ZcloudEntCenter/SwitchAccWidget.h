@@ -25,7 +25,7 @@ protected:
 	void mouseMoveEvent(QMouseEvent *event);
 private:
 	//!获取当前用户所属所有企业
-	bool winHttpGetCompanyList(QString strUid, QString strToken, QString& strRet);
+	bool winHttpGetCompanyList(QString strTaxno, QString strToken, QString& strRet);
 
 	//!获取当前用户所属所有企业
 	void getCompanyList();

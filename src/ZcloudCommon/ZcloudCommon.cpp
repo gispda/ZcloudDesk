@@ -945,3 +945,29 @@ void ZcloudComFun::LoadAvatar(const std::string &strAvatarUrl, QLabel* lable)
 	loop.exec();
 }
 
+//QString ZcloudComFun::getTaxnumber()
+//{
+//	QString strTaxno;
+//	//!查询注册表获取税号信息
+//	QSettings *settings = new QSettings("HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App Paths\\fwkp.exe", QSettings::NativeFormat);
+//	QStringList groupsList = settings->childGroups();
+//	foreach(QString group, groupsList)
+//	{
+//		settings->beginGroup(group);
+//		QString strCode = settings->value("code", QVariant()).toString();			//！企业税号
+//		strCode = strCode.replace(" ", "");
+//		settings->endGroup();
+//		if (!strCode.isEmpty())
+//		{
+//			if (!isTaxExistRegedit(strCode))
+//			{
+//				
+//				strTaxno = strCode;
+//				
+//				
+//			}
+//		}
+//	}
+//	delete settings;
+//	return strTaxno;
+//}

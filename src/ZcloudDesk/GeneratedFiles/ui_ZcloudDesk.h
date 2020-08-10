@@ -135,6 +135,12 @@ public:
 
         twobarcodebtn = new QPushButton(ZcloudTopWidget);
         twobarcodebtn->setObjectName(QStringLiteral("twobarcodebtn"));
+        twobarcodebtn->setStyleSheet(QString::fromUtf8("QPushButton{border-image: url(:/ZcloudDesk/image/bg_transparent.png);color: rgb(255, 255, 255);\n"
+"font: 12px \"\345\276\256\350\275\257\351\233\205\351\273\221\";}\n"
+"QPushButton:hover{border-image: url(:/ZcloudDesk/image/bg_transparent_hover.png);color: rgb(255, 255, 255);\n"
+"font: 12px \"\345\276\256\350\275\257\351\233\205\351\273\221\"}\n"
+"QPushButton:pressed{border-image: url(:/ZcloudDesk/image/bg_transparent_pre.png);color: rgb(255, 255, 255);\n"
+"font: 12px \"\345\276\256\350\275\257\351\233\205\351\273\221\"};"));
 
         horizontalLayout->addWidget(twobarcodebtn);
 

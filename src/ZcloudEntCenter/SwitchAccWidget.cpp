@@ -163,6 +163,8 @@ void SwitchAccWidget::showListWidget(QString strText)
 			}
 			QListWidgetItem* pListWidgetItem = new QListWidgetItem;
 			AccItemWidget* pItem = NULL;
+		/*	if (pInfo->strCompName == QString::fromLocal8Bit("暂未查询到您的企业"))
+				continue;*/
 			if (pInfo->strUid == m_strUid	&& pInfo->strCompId	==	m_strCompId)
 			{
 				pItem = new AccItemWidget(true, pInfo, "", ui.listWidget);
@@ -273,16 +275,35 @@ void SwitchAccWidget::onSwitchAcc(int bLoginByTax, bool bOther, QString strTaxNo
 	emit sigSwitchAcc(bLoginByTax, bOther, strTaxNo_userName, strPwd);
 }
 
-bool SwitchAccWidget::winHttpGetCompanyList(QString strUid, QString strToken, QString& strRet)
+bool SwitchAccWidget::winHttpGetCompanyList(QString strTaxno, QString strToken, QString& strRet)
 {
-	QString strUrl = QString("/user/get-user-company-list?user_id=%1&token=%2").arg(strUid).arg(strToken);
-	return ZcloudComFun::httpPost(strUrl, "", 5000, strRet);
+	QString strUrl = QString("/ucenter/user/company-list");
+
+
+
+	QString strPost;
+
+
+	if (strTaxno.isEmpty())
+		strPost = QString("token=%1").arg(strToken);
+	else
+	   strPost = QString("tax=%1&token=%2").arg(strTaxno).arg(m_strToken);
+
+    
+	return ZcloudComFun::httpPost(strUrl, strPost, 5000, strRet,false,1);
 }
 
 void SwitchAccWidget::getCompanyList()
 {
+
+	QString strTaxno = ZcloudComFun::getTaxnumber();
+
+
 	QString strRet;
-	if (!winHttpGetCompanyList(m_strUid,m_strToken,strRet))
+
+
+
+	if (!winHttpGetCompanyList(strTaxno, m_strToken, strRet))
 	{
 		return;
 	}

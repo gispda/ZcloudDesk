@@ -1473,6 +1473,50 @@ void ZcloudDesk::onLogout()
 {
 	ZcloudComFun::writeRegReboot(ZcloudComFun::EN_REBOOT_PARAMS);
 
+
+
+	QString strUrl = QString("/ucenter/user/logout");
+
+
+
+
+	QString strPost,strRet;
+
+	strPost = QString("token=%1").arg(m_stUserInfo.m_strToken);
+
+
+	bool bret = ZcloudComFun::httpPost(strUrl, strPost, 5000, strRet, false, 1);
+
+	QByteArray byte_array = strRet.toUtf8();
+	QJsonParseError json_error;
+	QJsonDocument parse_doucment = QJsonDocument::fromJson(byte_array, &json_error);
+	if (json_error.error != QJsonParseError::NoError)
+	{
+		//return false;
+		ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_TIP, QString::fromLocal8Bit("系统退出"), QString::fromLocal8Bit("服务器异常"));
+	}
+	if (!parse_doucment.isObject())
+	{
+		ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_TIP, QString::fromLocal8Bit("系统退出"), QString::fromLocal8Bit("服务器异常"));
+	}
+	QJsonObject obj = parse_doucment.object();
+	int status = obj.take("code").toInt();
+
+	bool jmsg;
+	if (0 == status)
+	{
+		jmsg = obj.take("data").toBool();	
+		if (jmsg)
+		{
+			//ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_TIP, QString::fromLocal8Bit("系统退出"), QString::fromLocal8Bit("正常退出"));
+		}
+		else
+			ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_TIP, QString::fromLocal8Bit("系统退出"), QString::fromLocal8Bit("退出失败"));
+	}
+
+    
+	
+
 	QProcess p;
 	QString c = "taskkill /im ZcloudDesk.exe /f";
 	p.execute(c);

@@ -33,10 +33,11 @@ JoinEntWidget::~JoinEntWidget()
 {
 }
 
-bool JoinEntWidget::winHttpSearchCompany(QString strUid, QString strToken, QString strKeyWord, QString& strRet)
+bool JoinEntWidget::winHttpSearchCompany(QString strUserid, QString strToken, QString strKeyWord, QString& strRet)
 {
-	QString strUrl = QString("/v2/company/search-company?user_id=%1&token=%2&keywords=%3").arg(strUid).arg(strToken).arg(strKeyWord);
-	return ZcloudComFun::httpPost(strUrl, "", 5000, strRet);
+	QString strUrl = QString("/ucenter/company/info");
+	QString strPost = QString("tax=%1&token=%2").arg(strKeyWord).arg(strToken);
+	return ZcloudComFun::httpPost(strUrl, strPost, 5000, strRet,false,1);
 }
 
 void JoinEntWidget::onSearchBtnClick()
@@ -67,6 +68,7 @@ void JoinEntWidget::onSearchBtnClick()
 	}
 	ZcloudBigDataInterface::GetInstance()->produceData("M00", "OP001", "BJC001", strKeyWord);
 	QString strRet;
+
 	if (!winHttpSearchCompany(m_strUid, m_strToken, strKeyWord, strRet))
 	{
 		ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_TIP, QString::fromLocal8Bit("搜索失败"), QString::fromLocal8Bit("\r\n搜索企业信息失败，请稍后再试！"));
@@ -173,13 +175,25 @@ void JoinEntWidget::onJoinEnt(QString strComId)
 		}
 		pItem->setReviewStatue(true);
 	}
-	else if (20004 == status)
+	else if (20034 == status)
 	{
-		ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_TIP, QString::fromLocal8Bit("操作失败"), QString::fromLocal8Bit("\r\n加入申请失败，企业编号不存在！"));
+		ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_TIP, QString::fromLocal8Bit("操作失败"), QString::fromLocal8Bit("\r\n加入申请失败，系统不存在此企业信息，请确认你的操作！"));
 	}
-	else if (10055 == status)
+	else if (60001 == status)
 	{
-		ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_TIP, QString::fromLocal8Bit("操作失败"), QString::fromLocal8Bit("\r\n加入申请失败，企业编号错误！"));
+		ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_TIP, QString::fromLocal8Bit("操作失败"), QString::fromLocal8Bit("\r\n加入申请失败，申请的企业不能为空！"));
+	}
+	else if (60002 == status)
+	{
+		ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_TIP, QString::fromLocal8Bit("操作失败"), QString::fromLocal8Bit("\r\n加入申请失败，申请的企业id类型不正确！"));
+	}
+	else if (60003 == status)
+	{
+		ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_TIP, QString::fromLocal8Bit("操作提示"), QString::fromLocal8Bit("\r\n加入申请失败，你已提交过此申请了，请等待企业管理员审核！"));
+	}
+	else if (60004 == status)
+	{
+		ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_TIP, QString::fromLocal8Bit("操作提示"), QString::fromLocal8Bit("\r\n加入申请失败，你已经是企业的成员了，请不要重复加入！"));
 	}
 	else
 	{
@@ -239,9 +253,9 @@ void JoinEntWidget::onCancelReview(QString strComId)
 
 bool JoinEntWidget::winHttpJoinEnt(QString strUid, QString strToken, QString strComId, QString& strRet)
 {
-	QString strUrl = QString("/v2/company/apply-join-company?user_id=%1&token=%2").arg(m_strUid).arg(m_strToken);
-	QString strPost = QString("company_id=%1").arg(strComId);
-	return ZcloudComFun::httpPost(strUrl, strPost, 5000, strRet);
+	QString strUrl = QString("/ucenter/company/apply-join");
+	QString strPost = QString("company_id=%1&token=%2").arg(strComId).arg(m_strToken);
+	return ZcloudComFun::httpPost(strUrl, strPost, 5000, strRet,false,1);
 }
 
 bool JoinEntWidget::winHttpCancelJoinEnt(QString strUid, QString strToken, QString strComId, QString& strRet)

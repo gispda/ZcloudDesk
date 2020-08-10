@@ -764,6 +764,8 @@ bool Database::querySwitchInfo(vtrSwitchAccInfos& switchInfos)
 		stSwitchAccInfo*	pSwitchInfo = new stSwitchAccInfo;
 		pSwitchInfo->strUid			= query.value(0).toString();
 		pSwitchInfo->strCompName	= query.value(1).toString();
+		if (pSwitchInfo->strCompName.isEmpty())
+			continue;
 		pSwitchInfo->strTaxNo		= query.value(2).toString();
 		pSwitchInfo->strUserName	= query.value(3).toString();
 		pSwitchInfo->strLogoPath	= query.value(4).toString();

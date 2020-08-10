@@ -45,8 +45,10 @@ FinanMemberWidget::~FinanMemberWidget()
 
 bool FinanMemberWidget::winHttpGetMemberInfo(QString strUid, QString strToken, QString& strRet)
 {
-	QString strUrl = QString("/v2/company/member-index?user_id=%1&token=%2").arg(m_strUid).arg(m_strToken);
-	return ZcloudComFun::httpPost(strUrl, "", 5000, strRet);
+	QString strUrl = QString("/ucenter/user/user-list");
+	QString strPost = QString("token=%1").arg(strToken);
+
+	return ZcloudComFun::httpPost(strUrl, strPost, 5000, strRet,false,1);
 }
 
 bool FinanMemberWidget::showMemberInfo()
@@ -75,9 +77,9 @@ bool FinanMemberWidget::showMemberInfo()
 	}
 	
 	QJsonObject data = obj.take("data").toObject();
-	int		nAdmin = data.take("is_admin").toInt();
+	int		nAdmin;
 	int		nAuditCount = data.take("audit_count").toInt();
-	QJsonValue list = data.take("user_list");
+	QJsonValue list = data.take("list");
 	if (!list.isArray())
 	{
 		return false;
@@ -95,6 +97,8 @@ bool FinanMemberWidget::showMemberInfo()
 		int		nRoleType = dataList.take("role_type").toInt();
 
 		QListWidgetItem* pListWidgetItem = new QListWidgetItem;
+
+
 		MemberItemWidget* pItem = new MemberItemWidget(nAdmin, nIndex % 6, strUid, strUserName, strTrueName, strJob, strMobile, nRoleType, ui.listWidget);
 		connect(pItem, &MemberItemWidget::sigRemoveMember, this, &FinanMemberWidget::onRemoveMember);
 		connect(pItem, &MemberItemWidget::sigModifyMember, this, &FinanMemberWidget::onModifyMember);

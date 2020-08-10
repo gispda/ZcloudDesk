@@ -218,6 +218,14 @@ font: 12px &quot;微软雅黑&quot;;padding-left:5px;padding-right:5px;};</strin
      </item>
      <item>
       <widget class="QPushButton" name="twobarcodebtn">
+       <property name="styleSheet">
+        <string notr="true">QPushButton{border-image: url(:/ZcloudDesk/image/bg_transparent.png);color: rgb(255, 255, 255);
+font: 12px &quot;微软雅黑&quot;;}
+QPushButton:hover{border-image: url(:/ZcloudDesk/image/bg_transparent_hover.png);color: rgb(255, 255, 255);
+font: 12px &quot;微软雅黑&quot;}
+QPushButton:pressed{border-image: url(:/ZcloudDesk/image/bg_transparent_pre.png);color: rgb(255, 255, 255);
+font: 12px &quot;微软雅黑&quot;};</string>
+       </property>
        <property name="text">
         <string>二维码</string>
        </property>
