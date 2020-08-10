@@ -214,8 +214,8 @@ int LoginThread::httpLogin(int bytaxFlag, QString strTaxNo_ID, QString strMachin
 	QString			strRet;
 	if (bytaxFlag == 1)
 	{
-		//税号登录
-		if (!sInter.winHttpLogin(strTaxNo_ID, strMachine_PW,strRet))
+		//税号登录失效 修改成切换当前关联企业
+		if (!sInter.winHttpLogin(strTaxNo_ID, userInfoStruct.m_strToken, strRet))
 			return -1;
 		userInfoStruct.m_bLoginByTax = 1;
 	}

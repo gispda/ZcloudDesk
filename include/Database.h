@@ -63,6 +63,18 @@ struct LoginSetingStruct
 };
 
 
+/////企业开户行信息数据结构
+typedef struct CompanyBankInfo
+{
+	QString m_strTaxno;     ///企业税号
+	QString m_strAddress;   ///地址
+	QString m_strBankaccount;//企业开户行账号
+	QString m_strBankname;  //企业开户行
+	QString m_strTelno;     //企业固定电话
+
+};
+
+
 
 
 
@@ -121,7 +133,7 @@ struct UserInfoStruct
 	QStringList m_strListAppVipList;		//vip等级链表
 	QStringList m_strListAppVipNameList;//vip等级名字链表
 	QStringList m_vipDateTimeList;			//vip 到期时间链表
-	int  m_bLoginByTax;			//!是否是税号登录   -2:手机验证码登录 -1:微信登录  0：账号登录  1:税号登录
+	int  m_bLoginByTax;			//!是否是税号登录   -2:手机验证码登录 -1:微信登录  0：账号登录  1:税号登录   目前没有税号登陆说法，只是切换当前企业
 	QString m_strMobile;			//手机号
 	bool isHideNR = false;		//是否隐藏开票软件和重装开票
 
@@ -145,7 +157,7 @@ struct stSwitchAccInfo
 	QString strTaxNo;
 	QString strUserName;
 	QString strCompName;
-	int    bLoginByTax	=	1; //!是否是税号登录  -2 手机验证码 -1:微信登录  0：账号登录  1 : 税号登录
+	int    bLoginByTax	=	1; //!是否是税号登录(没有税号登陆说法，只是切换当前企业)  -2 手机验证码 -1:微信登录  0：账号登录  1 : 税号登录没有税号登陆说法，只是切换当前企业
 	QString strPwd;
 	QString strToken;
 	QString strMobliePhone;

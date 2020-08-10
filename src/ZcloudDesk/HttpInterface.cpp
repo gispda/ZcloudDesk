@@ -15,20 +15,22 @@ HttpInterface::~HttpInterface()
 
 }
 
-bool HttpInterface::winHttpLogin(QString strTaxNo, QString strUserId, QString& strRet)
+
+////新版本开始，没有税号登陆说法，改为用户切换当前的关联企业
+bool HttpInterface::winHttpLogin(QString strTaxNo, QString strToken, QString& strRet)
 {
 	if (strTaxNo.isEmpty())
 	{
 		qDebug("zcd-0x10000004:login by tax,tax is empty!");
 		return false;
 	}
-	QString strUrl = QString("/user/login");
-	QString strPost = QString("tax_number=%1").arg(strTaxNo);
-	if (!strUserId.isEmpty())
-	{
-		strPost.append("&user_id=").append(strUserId);
-	}
-	return ZcloudComFun::httpPost(strUrl, strPost, 5000, strRet);
+	QString strUrl = QString("/ucenter/company/switch");
+	QString strPost = QString("tax=%1&token=%2").arg(strTaxNo).arg(strToken);
+	//if (!strUserId.isEmpty())
+	//{
+	//	strPost.append("&user_id=").append(strUserId);
+	//}
+	return ZcloudComFun::httpPost(strUrl, strPost, 5000, strRet,false,1);
 }
 
 

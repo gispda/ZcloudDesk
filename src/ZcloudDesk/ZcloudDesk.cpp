@@ -446,7 +446,7 @@ void ZcloudDesk::onTopToolClick()
 	
 	else if (strToolName == QString::fromLocal8Bit("锁屏"))
 	{
-
+		//ui.billListButton
 		/////借用下来测试添加创建企业   测试ok
 		/*if (m_pEntCenter == NULL)
 			createEnterCenterMgr();
@@ -461,6 +461,17 @@ void ZcloudDesk::onTopToolClick()
 		
 		//QString strRet;
 		//ZcloudClient::winHttpUploadImage("", m_stUserInfo.m_strToken, strRet);
+
+		/////更新企业开户行信息   测试成功
+
+		//CompanyBankInfo  bankinfo;
+		//bankinfo.m_strTaxno = "210624197305200017";
+		//bankinfo.m_strBankname = QString::fromLocal8Bit("中国银行成都市双林南支路支行");
+		//bankinfo.m_strBankaccount = "609358084893";
+		//bankinfo.m_strAddress = QString::fromLocal8Bit("成都市成华区双林南支路28号");
+		//bankinfo.m_strTelno = "028 82909982";
+		//QString strRet;
+		//ZcloudClient::winHttpUpdatebankInfo(bankinfo, m_stUserInfo.m_strToken, strRet);
 
 		//lockScreen();
 	}
@@ -1144,23 +1155,28 @@ void ZcloudDesk::showCompInfo()
 			ui.customServiceButton->setVisible(true);
 		}	
 	}
-	if (strText.length()>12)
-	{
-		ui.labelCompName->setMinimumWidth(150);
-		QFontMetrics fontMetrics(ui.labelCompName->font());
-		int fontSize = fontMetrics.width(strText);//获取之前设置的字符串的像素大小
-
-		QString strElideText = fontMetrics.elidedText(strText, Qt::ElideRight, ui.labelCompName->width());
-		ui.labelCompName->setText(strElideText);
-		//setElideText(12, ui.labelCompName, strText);
-	}
 	else
 	{
-		ui.labelCompName->setMinimumWidth(0);
-		ui.labelCompName->setText(strText);
-	}
-	
+		if (strText.length() > 12)
+		{
+			ui.labelCompName->setMinimumWidth(150);
+			QFontMetrics fontMetrics(ui.labelCompName->font());
+			int fontSize = fontMetrics.width(strText);//获取之前设置的字符串的像素大小
 
+			QString strElideText = fontMetrics.elidedText(strText, Qt::ElideRight, ui.labelCompName->width());
+			ui.labelCompName->setText(strElideText);
+			//setElideText(12, ui.labelCompName, strText);
+		}
+		else
+		{
+			ui.labelCompName->setMinimumWidth(0);
+			ui.labelCompName->setText(strText);
+		}
+		ui.labelAvatar->setVisible(true);
+		ui.billListButton->setVisible(true);
+		ui.customServiceButton->setVisible(true);
+
+	}
 	bool bVip = (0 == m_stUserInfo.m_strListAppVipList.size()) ? false : true;
 	QFileInfo fileInfo(m_stUserInfo.m_logoPath);
 	if (!fileInfo.isFile())
@@ -1191,7 +1207,7 @@ void ZcloudDesk::onSwitchAcc(int bLoginByTax, bool bOther, QString strTaxNo_user
 	switchAcc = true;
 	m_bCheckToken = false;
 	int loginFlag = -1;	
-	UserInfoStruct userInfoStruct;
+	UserInfoStruct userInfoStruct = m_stUserInfo;
 	if (bOther)
 	{
 		zhicloudStrToken = "";
@@ -1215,7 +1231,7 @@ void ZcloudDesk::onSwitchAcc(int bLoginByTax, bool bOther, QString strTaxNo_user
 	else
 	{
 		showDlgWait(true);
-		loginFlag = LoginThread::httpLogin(bLoginByTax, strTaxNo_userName, strPwd, userInfoStruct);	
+		loginFlag = LoginThread::httpLogin(bLoginByTax, strTaxNo_userName, strPwd, userInfoStruct);
 	}
 
 	if (loginFlag == 0)

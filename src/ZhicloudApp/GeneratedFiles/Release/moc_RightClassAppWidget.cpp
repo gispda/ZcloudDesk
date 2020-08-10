@@ -219,8 +219,8 @@ int RightAppsWidget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     return _id;
 }
 struct qt_meta_stringdata_RightClassAppWidget_t {
-    QByteArrayData data[21];
-    char stringdata0[250];
+    QByteArrayData data[22];
+    char stringdata0[258];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -248,8 +248,9 @@ QT_MOC_LITERAL(15, 187, 8), // "drawShow"
 QT_MOC_LITERAL(16, 196, 8), // "drawHide"
 QT_MOC_LITERAL(17, 205, 10), // "clickBtnOp"
 QT_MOC_LITERAL(18, 216, 9), // "initClass"
-QT_MOC_LITERAL(19, 226, 8), // "clickbtn"
-QT_MOC_LITERAL(20, 235, 14) // "resetInterface"
+QT_MOC_LITERAL(19, 226, 7), // "bremote"
+QT_MOC_LITERAL(20, 234, 8), // "clickbtn"
+QT_MOC_LITERAL(21, 243, 14) // "resetInterface"
 
     },
     "RightClassAppWidget\0changeTaxSignals\0"
@@ -258,7 +259,7 @@ QT_MOC_LITERAL(20, 235, 14) // "resetInterface"
     "pData\0Operand_id\0flushButton\0classId\0"
     "flushFlag\0installUnnstallSucessed\0"
     "drawShow\0drawHide\0clickBtnOp\0initClass\0"
-    "clickbtn\0resetInterface"
+    "bremote\0clickbtn\0resetInterface"
 };
 #undef QT_MOC_LITERAL
 
@@ -268,7 +269,7 @@ static const uint qt_meta_data_RightClassAppWidget[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-      15,   14, // methods
+      16,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -276,23 +277,24 @@ static const uint qt_meta_data_RightClassAppWidget[] = {
        3,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    2,   89,    2, 0x06 /* Public */,
-       5,    0,   94,    2, 0x06 /* Public */,
-       6,    3,   95,    2, 0x06 /* Public */,
+       1,    2,   94,    2, 0x06 /* Public */,
+       5,    0,   99,    2, 0x06 /* Public */,
+       6,    3,  100,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       7,    2,  102,    2, 0x0a /* Public */,
-       7,    1,  107,    2, 0x2a /* Public | MethodCloned */,
-      11,    2,  110,    2, 0x0a /* Public */,
-      11,    1,  115,    2, 0x2a /* Public | MethodCloned */,
-      11,    0,  118,    2, 0x2a /* Public | MethodCloned */,
-      14,    1,  119,    2, 0x0a /* Public */,
-      15,    0,  122,    2, 0x08 /* Private */,
-      16,    0,  123,    2, 0x08 /* Private */,
-      17,    1,  124,    2, 0x08 /* Private */,
-      18,    0,  127,    2, 0x08 /* Private */,
-      19,    0,  128,    2, 0x08 /* Private */,
-      20,    0,  129,    2, 0x08 /* Private */,
+       7,    2,  107,    2, 0x0a /* Public */,
+       7,    1,  112,    2, 0x2a /* Public | MethodCloned */,
+      11,    2,  115,    2, 0x0a /* Public */,
+      11,    1,  120,    2, 0x2a /* Public | MethodCloned */,
+      11,    0,  123,    2, 0x2a /* Public | MethodCloned */,
+      14,    1,  124,    2, 0x0a /* Public */,
+      15,    0,  127,    2, 0x08 /* Private */,
+      16,    0,  128,    2, 0x08 /* Private */,
+      17,    1,  129,    2, 0x08 /* Private */,
+      18,    0,  132,    2, 0x08 /* Private */,
+      18,    1,  133,    2, 0x08 /* Private */,
+      20,    0,  136,    2, 0x08 /* Private */,
+      21,    0,  137,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::QString, QMetaType::QString,    3,    4,
@@ -310,6 +312,7 @@ static const uint qt_meta_data_RightClassAppWidget[] = {
     QMetaType::Void,
     QMetaType::Void, QMetaType::Bool,    2,
     QMetaType::Void,
+    QMetaType::Void, QMetaType::Bool,   19,
     QMetaType::Void,
     QMetaType::Void,
 
@@ -337,8 +340,9 @@ void RightClassAppWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, 
         case 10: _t->drawHide(); break;
         case 11: _t->clickBtnOp((*reinterpret_cast< bool(*)>(_a[1]))); break;
         case 12: _t->initClass(); break;
-        case 13: _t->clickbtn(); break;
-        case 14: _t->resetInterface(); break;
+        case 13: _t->initClass((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 14: _t->clickbtn(); break;
+        case 15: _t->resetInterface(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -390,13 +394,13 @@ int RightClassAppWidget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 15)
+        if (_id < 16)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 15;
+        _id -= 16;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 15)
+        if (_id < 16)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 15;
+        _id -= 16;
     }
     return _id;
 }
