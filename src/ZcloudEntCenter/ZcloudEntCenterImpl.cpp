@@ -43,21 +43,47 @@ void ZcloudEntCenterImpl::openWorkers(QString strUid, QString strToken){//,
 	pEntComWidget->show();
 }
 
+void ZcloudEntCenterImpl::setUserInfo(QString strUid, QString strToken, QString strTrueName, QString strJob, int isLoginByTax, QString strMobile, QString strCompId, QString strUserName)
+{
+	m_strUid = strUid;
+	m_strToken = strToken;
+	m_strTrueName = strTrueName;
+	m_strJob = strJob;
+	m_isLoginByTax = isLoginByTax;
+	m_strMobile = strMobile;
+	m_strCompId = strCompId;
+	m_strUserName = strUserName;
+}
+
+
+
 
 void ZcloudEntCenterImpl::openEntCenter(QString strUid, QString strToken, QString strTrueName, QString strJob, int isLoginByTax, QString strMobile, QString strCompId,QString strUserName)
 {
-	if (NULL == m_pEntCenterWidget)
-	{
-		m_pEntCenterWidget = new EntCenterWidget;
-		connect(m_pEntCenterWidget, SIGNAL(sigSwitchAcc(int, bool, QString, QString)), this, SIGNAL(sigSwitchAcc(int, bool, QString, QString)));
-		connect(m_pEntCenterWidget, SIGNAL(sendVipListSignals(QStringList, QStringList, QStringList)), this, SIGNAL(sendVipListSignals(QStringList, QStringList, QStringList)));
-		connect(m_pEntCenterWidget, SIGNAL(trueNameJobChange(QString, QString)), this, SIGNAL(trueNameJobChange(QString, QString)));
-		connect(m_pEntCenterWidget, SIGNAL(bingdingPhoneSignal()), this, SIGNAL(bingdingPhoneSignal()));
-		connect(m_pEntCenterWidget, SIGNAL(sigSignBindingSucceeded(const QString &)), this, SIGNAL(sigSignBindingSucceeded(const QString &)));
-		connect(m_pEntCenterWidget, SIGNAL(openSignInWidget(QWidget*)), this, SIGNAL(openSignInWidget(QWidget*)));
-	}
-	m_pEntCenterWidget->setUserInfo(strUid, strToken, strTrueName, strJob, isLoginByTax, strMobile, strCompId,strUserName);
-	m_pEntCenterWidget->showWindow();
+
+	//合并后的企业中心和个人中心   用id查询企业信息和用户信息失败
+	if (NULL == m_pInfoCenterWidget)
+		{
+			m_pInfoCenterWidget = new InfoCenterWidget;
+		}
+	m_pInfoCenterWidget->setUserInfo(m_strUid, m_strToken, m_strTrueName, m_strJob, m_isLoginByTax, m_strMobile, m_strCompId, m_strUserName);
+	m_pInfoCenterWidget->init();
+	m_pInfoCenterWidget->show();
+
+
+	//旧企业中心
+	//if (NULL == m_pEntCenterWidget)
+	//{
+	//	m_pEntCenterWidget = new EntCenterWidget;
+	//	connect(m_pEntCenterWidget, SIGNAL(sigSwitchAcc(int, bool, QString, QString)), this, SIGNAL(sigSwitchAcc(int, bool, QString, QString)));
+	//	connect(m_pEntCenterWidget, SIGNAL(sendVipListSignals(QStringList, QStringList, QStringList)), this, SIGNAL(sendVipListSignals(QStringList, QStringList, QStringList)));
+	//	connect(m_pEntCenterWidget, SIGNAL(trueNameJobChange(QString, QString)), this, SIGNAL(trueNameJobChange(QString, QString)));
+	//	connect(m_pEntCenterWidget, SIGNAL(bingdingPhoneSignal()), this, SIGNAL(bingdingPhoneSignal()));
+	//	connect(m_pEntCenterWidget, SIGNAL(sigSignBindingSucceeded(const QString &)), this, SIGNAL(sigSignBindingSucceeded(const QString &)));
+	//	connect(m_pEntCenterWidget, SIGNAL(openSignInWidget(QWidget*)), this, SIGNAL(openSignInWidget(QWidget*)));
+	//}
+	//m_pEntCenterWidget->setUserInfo(strUid, strToken, strTrueName, strJob, isLoginByTax, strMobile, strCompId,strUserName);
+	//m_pEntCenterWidget->showWindow();
 }
 
 void ZcloudEntCenterImpl::setMobile(QString mobile)

@@ -1,0 +1,851 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>UserCenterMainWidget</class>
+ <widget class="QWidget" name="UserCenterMainWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>750</width>
+    <height>620</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>750</width>
+    <height>620</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1002</width>
+    <height>6200</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>EntCenterWidget</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget#EntCenterWidget{background-color: rgb(255, 255, 255);};</string>
+  </property>
+  <widget class="QWidget" name="EntRightWidget" native="true">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>750</width>
+     <height>618</height>
+    </rect>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>750</width>
+     <height>618</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>750</width>
+     <height>618</height>
+    </size>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QWidget#EntRightWidget{background-color: rgb(252, 252, 252);border-top-right-radius:8px;border-bottom-right-radius:8px;}</string>
+   </property>
+   <widget class="QLabel" name="labelSpaceRight">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>80</y>
+      <width>750</width>
+      <height>1</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>750</width>
+      <height>1</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>750</width>
+      <height>1</height>
+     </size>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(235, 235, 235);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QWidget" name="ServiceFeeWidget" native="true">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>140</y>
+      <width>710</width>
+      <height>180</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>710</width>
+      <height>80</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>710</width>
+      <height>180</height>
+     </size>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QWidget#ServiceFeeWidget{background-color: rgb(252, 252, 252);border:1px solid rgba(235,235,235,1);
+border-radius:10px;}</string>
+    </property>
+    <widget class="QLabel" name="label_3">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>710</width>
+       <height>180</height>
+      </rect>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>710</width>
+       <height>180</height>
+      </size>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap resource="EntCenterWidget.qrc">:/EntCenterWidget/image/userVipDefualt.png</pixmap>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="SignInWidget" native="true">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>399</y>
+      <width>710</width>
+      <height>80</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>710</width>
+      <height>80</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>710</width>
+      <height>80</height>
+     </size>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QWidget#SignInWidget{background-color: rgb(252, 252, 252);border:1px solid rgba(235,235,235,1);
+border-radius:10px;}</string>
+    </property>
+    <widget class="QPushButton" name="SignInButton">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>618</x>
+       <y>24</y>
+       <width>72</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>72</width>
+       <height>32</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>72</width>
+       <height>32</height>
+      </size>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(2, 164, 253, 1), stop:1 rgba(31, 139, 237, 1));border-radius:4px;font: 14px &quot;微软雅黑&quot;;color:rgba(255, 255, 255, 1);}
+QPushButton:hover,pressed{ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(40, 178, 253, 1),stop:1 rgba(64, 156, 240, 1));
+border-radius:4px;font: 14px &quot;微软雅黑&quot;;color:rgba(255, 255, 255, 1);}
+QPushButton:disabled{ background-color:rgba(200,200,200,1);border-radius:4px;};</string>
+     </property>
+     <property name="text">
+      <string>去完成</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_8">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>15</y>
+       <width>50</width>
+       <height>50</height>
+      </rect>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>50</width>
+       <height>50</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>50</width>
+       <height>50</height>
+      </size>
+     </property>
+     <property name="toolTip">
+      <string>完成签到，可获得云币+10</string>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel{border-image: url(:/EntCenterWidget/image/signIn.png);}</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_10">
+     <property name="geometry">
+      <rect>
+       <x>89</x>
+       <y>31</y>
+       <width>56</width>
+       <height>15</height>
+      </rect>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>56</width>
+       <height>15</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>56</width>
+       <height>15</height>
+      </size>
+     </property>
+     <property name="toolTip">
+      <string>完成签到，可获得云币+10</string>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel{font: 14px &quot;微软雅黑&quot;;
+color:#333333;}</string>
+     </property>
+     <property name="text">
+      <string>每日签到</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_12">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>31</y>
+       <width>20</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>20</width>
+       <height>20</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>20</width>
+       <height>20</height>
+      </size>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/EntCenterWidget/image/score.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_14">
+     <property name="geometry">
+      <rect>
+       <x>290</x>
+       <y>32</y>
+       <width>20</width>
+       <height>15</height>
+      </rect>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>20</width>
+       <height>15</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>20</width>
+       <height>15</height>
+      </size>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 14px &quot;微软雅黑&quot;;
+color:#333333;</string>
+     </property>
+     <property name="text">
+      <string>10</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_16">
+     <property name="geometry">
+      <rect>
+       <x>451</x>
+       <y>32</y>
+       <width>56</width>
+       <height>15</height>
+      </rect>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>56</width>
+       <height>15</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>56</width>
+       <height>15</height>
+      </size>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 14px &quot;微软雅黑&quot;;
+color:#333333;</string>
+     </property>
+     <property name="text">
+      <string>日常任务</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="CompeteDataWidget" native="true">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>499</y>
+      <width>710</width>
+      <height>80</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>710</width>
+      <height>80</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>710</width>
+      <height>80</height>
+     </size>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QWidget#CompeteDataWidget{background-color: rgb(252, 252, 252);border:1px solid rgba(235,235,235,1);
+border-radius:10px;}</string>
+    </property>
+    <widget class="QLabel" name="label_9">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>15</y>
+       <width>50</width>
+       <height>50</height>
+      </rect>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>50</width>
+       <height>50</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>50</width>
+       <height>50</height>
+      </size>
+     </property>
+     <property name="toolTip">
+      <string>完善个人资料，可获得云币+50</string>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel{border-image: url(:/EntCenterWidget/image/completeInfo.png);}</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_11">
+     <property name="geometry">
+      <rect>
+       <x>89</x>
+       <y>31</y>
+       <width>56</width>
+       <height>15</height>
+      </rect>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>56</width>
+       <height>15</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>56</width>
+       <height>15</height>
+      </size>
+     </property>
+     <property name="toolTip">
+      <string>完善个人资料，可获得云币+50</string>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel{font: 14px &quot;微软雅黑&quot;;
+color:#333333;}</string>
+     </property>
+     <property name="text">
+      <string>完善资料</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_13">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>31</y>
+       <width>20</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>20</width>
+       <height>20</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>20</width>
+       <height>20</height>
+      </size>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/EntCenterWidget/image/score.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_15">
+     <property name="geometry">
+      <rect>
+       <x>290</x>
+       <y>32</y>
+       <width>20</width>
+       <height>15</height>
+      </rect>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>20</width>
+       <height>15</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>20</width>
+       <height>15</height>
+      </size>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 14px &quot;微软雅黑&quot;;
+color:#333333;</string>
+     </property>
+     <property name="text">
+      <string>50</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_17">
+     <property name="geometry">
+      <rect>
+       <x>451</x>
+       <y>32</y>
+       <width>70</width>
+       <height>15</height>
+      </rect>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>70</width>
+       <height>15</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>70</width>
+       <height>15</height>
+      </size>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 14px &quot;微软雅黑&quot;;
+color:#333333;</string>
+     </property>
+     <property name="text">
+      <string>一次性任务</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="CompeteDataButton">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>619</x>
+       <y>24</y>
+       <width>72</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>72</width>
+       <height>32</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>72</width>
+       <height>32</height>
+      </size>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(2, 164, 253, 1), stop:1 rgba(31, 139, 237, 1));
+			border-radius:4px;font: 14px &quot;微软雅黑&quot;;color:rgba(255, 255, 255, 1);}
+QPushButton:hover,pressed{ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(40, 178, 253, 1),stop:1 rgba(64, 156, 240, 1));
+		  border-radius:4px;font: 14px &quot;微软雅黑&quot;;color:rgba(255, 255, 255, 1);}
+QPushButton:disabled{ background-color:rgba(200,200,200,1);border-radius:4px;};</string>
+     </property>
+     <property name="text">
+      <string>去完成</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>25</x>
+      <y>100</y>
+      <width>64</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>64</width>
+      <height>17</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>64</width>
+      <height>17</height>
+     </size>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 16px &quot;微软雅黑&quot;;
+color:#333333;</string>
+    </property>
+    <property name="text">
+     <string>个人服务</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>25</x>
+      <y>359</y>
+      <width>64</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>64</width>
+      <height>17</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>64</width>
+      <height>17</height>
+     </size>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 16px &quot;微软雅黑&quot;;
+color:#333333;</string>
+    </property>
+    <property name="text">
+     <string>云币任务</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelFirstName">
+    <property name="geometry">
+     <rect>
+      <x>26</x>
+      <y>30</y>
+      <width>30</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>30</width>
+      <height>30</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>30</width>
+      <height>30</height>
+     </size>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background:rgba(95,217,153,1);
+border-radius:15px;
+font: 14px &quot;微软雅黑&quot;;
+color:#FDFDFD;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelUserName">
+    <property name="geometry">
+     <rect>
+      <x>62</x>
+      <y>36</y>
+      <width>28</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>28</width>
+      <height>16</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>16777215</width>
+      <height>16</height>
+     </size>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 14px &quot;微软雅黑&quot;;
+color:#333333;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelUserJob">
+    <property name="geometry">
+     <rect>
+      <x>62</x>
+      <y>58</y>
+      <width>60</width>
+      <height>18</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>60</width>
+      <height>18</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>16777215</width>
+      <height>18</height>
+     </size>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 12px &quot;微软雅黑&quot;;
+color:#3EACF7;
+background-color: rgb(237, 244, 255);
+padding-left:2px;
+border-radius:2px;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources>
+  <include location="EntCenterWidget.qrc"/>
+ </resources>
+ <connections/>
+</ui>

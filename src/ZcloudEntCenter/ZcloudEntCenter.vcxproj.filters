@@ -143,6 +143,30 @@
     <ClCompile Include="UploadLicense.cpp">
       <Filter>EntInfo</Filter>
     </ClCompile>
+    <ClCompile Include="EntCenterMainWidget.cpp">
+      <Filter>EntInfo</Filter>
+    </ClCompile>
+    <ClCompile Include="InfoCenterWidget.cpp">
+      <Filter>EntInfo</Filter>
+    </ClCompile>
+    <ClCompile Include="UserCenterMainWidget.cpp">
+      <Filter>EntInfo</Filter>
+    </ClCompile>
+    <ClCompile Include="UserCenterAccWidget.cpp">
+      <Filter>EntInfo</Filter>
+    </ClCompile>
+    <ClCompile Include="UserCenterWidget.cpp">
+      <Filter>EntInfo</Filter>
+    </ClCompile>
+    <ClCompile Include="EntCenterInfoWidget.cpp">
+      <Filter>EntInfo</Filter>
+    </ClCompile>
+    <ClCompile Include="EntCenterMemberWidget.cpp">
+      <Filter>EntInfo</Filter>
+    </ClCompile>
+    <ClCompile Include="EntCenterNewWidget.cpp">
+      <Filter>EntInfo</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="EntCenterWidget.h">
@@ -242,6 +266,30 @@
       <Filter>Worker</Filter>
     </QtMoc>
     <QtMoc Include="UploadLicenseDlg.h">
+      <Filter>EntInfo</Filter>
+    </QtMoc>
+    <QtMoc Include="EntCenterMainWidget.h">
+      <Filter>EntInfo</Filter>
+    </QtMoc>
+    <QtMoc Include="InfoCenterWidget.h">
+      <Filter>EntInfo</Filter>
+    </QtMoc>
+    <QtMoc Include="UserCenterWidget.h">
+      <Filter>EntInfo</Filter>
+    </QtMoc>
+    <QtMoc Include="UserCenterMainWidget.h">
+      <Filter>EntInfo</Filter>
+    </QtMoc>
+    <QtMoc Include="UserCenterAccWidget.h">
+      <Filter>EntInfo</Filter>
+    </QtMoc>
+    <QtMoc Include="EntCenterInfoWidget.h">
+      <Filter>EntInfo</Filter>
+    </QtMoc>
+    <QtMoc Include="EntCenterMemberWidget.h">
+      <Filter>EntInfo</Filter>
+    </QtMoc>
+    <QtMoc Include="EntCenterNewWidget.h">
       <Filter>EntInfo</Filter>
     </QtMoc>
   </ItemGroup>
@@ -368,6 +416,30 @@
       <Filter>Worker</Filter>
     </QtUic>
     <QtUic Include="UploadLicenseDlg.ui">
+      <Filter>EntInfo</Filter>
+    </QtUic>
+    <QtUic Include="EntCenterInfoWidget.ui">
+      <Filter>EntInfo</Filter>
+    </QtUic>
+    <QtUic Include="EntCenterMainWidget.ui">
+      <Filter>EntInfo</Filter>
+    </QtUic>
+    <QtUic Include="EntCenterMemberWidget.ui">
+      <Filter>EntInfo</Filter>
+    </QtUic>
+    <QtUic Include="EntCenterNewWidget.ui">
+      <Filter>EntInfo</Filter>
+    </QtUic>
+    <QtUic Include="UserCenterAccWidget.ui">
+      <Filter>EntInfo</Filter>
+    </QtUic>
+    <QtUic Include="UserCenterMainWidget.ui">
+      <Filter>EntInfo</Filter>
+    </QtUic>
+    <QtUic Include="UserCenterWidget.ui">
+      <Filter>EntInfo</Filter>
+    </QtUic>
+    <QtUic Include="InfoCenterWidget.ui">
       <Filter>EntInfo</Filter>
     </QtUic>
   </ItemGroup>

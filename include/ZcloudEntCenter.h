@@ -15,6 +15,11 @@ public:
 	//创建实例对象
 	static ZcloudEntCenter * createNew();
 
+
+	//!设置用户数据
+	virtual void setUserInfo(QString strUid, QString strToken, QString strTrueName, QString strJob, int isLoginByTax, QString strMobile, QString strCompId, QString strUserName)=0;
+
+
 	//!销毁对象
 	virtual void destroy() = 0;
 	//!新建企业

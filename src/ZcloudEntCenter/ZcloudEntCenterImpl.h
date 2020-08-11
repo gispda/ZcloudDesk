@@ -4,6 +4,7 @@
 #include "ZcloudEntCenter.h"
 #include "EntCenterWidget.h"
 #include "VipInfoWidget.h"
+#include "InfoCenterWidget.h"
 class ZcloudEntCenterImpl : public ZcloudEntCenter
 {
 	Q_OBJECT
@@ -11,6 +12,10 @@ class ZcloudEntCenterImpl : public ZcloudEntCenter
 public:
 	ZcloudEntCenterImpl();
 	~ZcloudEntCenterImpl();
+
+
+	//!设置用户数据
+	void setUserInfo(QString strUid, QString strToken, QString strTrueName, QString strJob, int isLoginByTax, QString strMobile, QString strCompId, QString strUserName) ;
 
 	//!销毁对象
 	virtual void destroy();
@@ -43,6 +48,17 @@ public:
 
 private:
 	EntCenterWidget*		m_pEntCenterWidget = NULL;
+	InfoCenterWidget*		m_pInfoCenterWidget = NULL;
 	VipInfoWidget*			m_pVipInfoWidget = NULL;
+
+	QString m_strUserName;
+	QString m_strUid;
+	QString m_strToken;
+	QString m_strTrueName;
+	QString m_strJob;
+	QString m_strMobile;
+	int		m_isLoginByTax;
+	QString m_strCompId;
+	bool	m_isNetActive = true;
 };
 #endif // ZCLOUDENTCENTERIMPL_H
