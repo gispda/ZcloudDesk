@@ -456,6 +456,9 @@ bool InitDeskThread::upAppData()
 		appDataInfo.m_enPaidTime = QString::number(appJsonObject.take("paid_expireTime").toInt());		//到期时间
 		appDataInfo.m_enExperienceTime = QString::number(appJsonObject.take("try_expireTime").toInt());		//试用结束时间
 
+
+
+
 		QJsonValue memberValue = appJsonObject.take("member_grade_list");
 		if (memberValue.isArray())
 		{
@@ -520,7 +523,7 @@ bool InitDeskThread::upAppData()
 			{
 				//如果是发布到桌面 不上报服务器 用户点击了 才上报
 			}
-			if (!AppCenterDatabase::instance()->updateApp(appDataInfo))
+			if (!AppCenterDatabase::instance()->updateApp(appDataInfo,false,false))
 			{
 				return false;
 			}

@@ -6,6 +6,8 @@
 #include "Database.h"
 #include "ZcloudCommon.h"
 
+
+#define enumtoStr(val) Setstr(#val)
 //"zcd-0x00000056 可用
 AppCenterDatabase *AppCenterDatabase::m_appCenterDatabase = NULL;
 extern UserInfoStruct app_userInfo;
@@ -562,12 +564,57 @@ bool AppCenterDatabase::alterApp(AppDataInfo appDataInfo)
 * 日期：2018-09-03 10:04:00
 
 //////////////////////////////////////////////////////////////////*/
-bool AppCenterDatabase::updateApp(AppDataInfo appDataInfo, bool isAppear)
+bool AppCenterDatabase::updateApp(AppDataInfo appDataInfo, bool isAppear, bool updateState)
 {
+	if (appDataInfo.m_strAppName == QString::fromLocal8Bit("航信易用系统 - 免费版")){
+		QString a;
+	}
 	QWriteLocker locker(&m_readWriteLock);
 	QSqlQuery sqlQuery(m_appCenterSqlDatabase);
 	if (sqlQuery.isActive()) sqlQuery.finish();
-	sqlQuery.prepare("UPDATE  App SET appIconPath = ?,appExecPathUrl = ?, appUninstallPath = ?,appCurrentVerson = ?, appIsInstall = ? WHERE userId = ? AND appId = ? AND reserved1 = ?;");
+	//sqlQuery.prepare("UPDATE  App SET appIconPath = ?,appExecPathUrl = ?, appUninstallPath = ?,appCurrentVerson = ?, appIsInstall = ? WHERE userId = ? AND appId = ? AND reserved1 = ?;");
+
+	if (updateState){
+	//增加下载更新状态
+	sqlQuery.prepare("UPDATE  App SET appIconPath = ?,appExecPathUrl = ?, appUninstallPath = ?,appCurrentVerson = ?, appIsInstall = ? , name = ? WHERE userId = ? AND appId = ? AND reserved1 = ? ;");
+	
+	sqlQuery.bindValue(0, appDataInfo.m_strAppIconPath);
+	sqlQuery.bindValue(1, appDataInfo.m_strAppExecPathUrl);
+	sqlQuery.bindValue(2, appDataInfo.m_strAppUninstallPath);
+	sqlQuery.bindValue(3, appDataInfo.m_strAppCurrentVerson);
+	sqlQuery.bindValue(4, appDataInfo.m_bAppIsInstall);
+
+	//下载更新状态  enumtoCharArr(FLASH)
+	QString statusApp;
+	
+		if (appDataInfo.m_statusAppButton == mapp_DOWNLOADING){
+			statusApp = "mapp_DOWNLOADING";
+		}if (appDataInfo.m_statusAppButton == mapp_ERROR){
+			statusApp = "mapp_ERROR";
+		}if (appDataInfo.m_statusAppButton == mapp_TIMEOUTERROR){
+			statusApp = "mapp_TIMEOUTERROR";
+		}if (appDataInfo.m_statusAppButton == mapp_FINISH){
+			statusApp = "mapp_FINISH";
+		}if (appDataInfo.m_statusAppButton == mapp_INSTALLFINLSH){
+			statusApp = "mapp_INSTALLFINLSH";
+		}if (appDataInfo.m_statusAppButton == mapp_INSTALLERROR){
+			statusApp = "mapp_INSTALLERROR";
+		}if (appDataInfo.m_statusAppButton == mapp_PAUSE){
+			statusApp = "mapp_PAUSE";
+		}if (appDataInfo.m_statusAppButton == mapp_CLOSE){
+			statusApp = "mapp_CLOSE";
+		}
+	
+
+		sqlQuery.bindValue(5, statusApp);
+
+	sqlQuery.bindValue(6, app_userInfo.m_strUserId);
+	sqlQuery.bindValue(7, appDataInfo.m_strAppId);
+	sqlQuery.bindValue(8, app_userInfo.m_strCompanyId);
+
+	}
+else{
+	sqlQuery.prepare("UPDATE  App SET appIconPath = ?,appExecPathUrl = ?, appUninstallPath = ?,appCurrentVerson = ?, appIsInstall = ? WHERE userId = ? AND appId = ? AND reserved1 = ? ;");
 	sqlQuery.bindValue(0, appDataInfo.m_strAppIconPath);
 	sqlQuery.bindValue(1, appDataInfo.m_strAppExecPathUrl);
 	sqlQuery.bindValue(2, appDataInfo.m_strAppUninstallPath);
@@ -576,6 +623,11 @@ bool AppCenterDatabase::updateApp(AppDataInfo appDataInfo, bool isAppear)
 	sqlQuery.bindValue(5, app_userInfo.m_strUserId);
 	sqlQuery.bindValue(6, appDataInfo.m_strAppId);
 	sqlQuery.bindValue(7, app_userInfo.m_strCompanyId);
+}
+
+
+
+
 	if (!sqlQuery.exec())
 	{
 		qDebug() << "zcd-0x0000000F:" << sqlQuery.lastError() << sqlQuery.lastError().driverText().toStdString().c_str();
@@ -734,6 +786,7 @@ bool AppCenterDatabase::findClassAppList(QList<AppDataInfo > &appDataInfoList, Q
 	QString execStr;
 	if (classId.isEmpty())
 	{
+		
 		if (app_userInfo.m_strCompanyId=="")
 		execStr = QString("select *from App where userId = '%1'").arg(app_userInfo.m_strUserId);
 		else
@@ -770,6 +823,11 @@ bool AppCenterDatabase::findClassAppList(QList<AppDataInfo > &appDataInfoList, Q
 	}
 	while (sqlQuery.next())
 	{
+		for (int i = 0; i < 34; i++){
+			QVariant v=sqlQuery.value(i);
+			qDebug() << v;
+		}
+
 		AppDataInfo appDataInfo;
 		appDataInfo.mStrAppCateId = classId;
 		appDataInfo.m_strAppId = sqlQuery.value(1).toString();					//应用id
@@ -859,6 +917,36 @@ bool AppCenterDatabase::findClassAppList(QList<AppDataInfo > &appDataInfoList, Q
 		appDataInfo.m_isBindingPhone = sqlQuery.value(31).toBool();
 		appDataInfo.m_strReserved1 = sqlQuery.value(32).toString();		
 		appDataInfo.m_strReserved2 = sqlQuery.value(33).toString();
+
+		QString stausApp = sqlQuery.value(34).toString();
+
+		if (appDataInfo.m_strAppName == QString::fromLocal8Bit("航信易用系统 - 免费版")){
+			QString a;
+		}
+
+		if (!stausApp.isEmpty()){
+			if (stausApp == "mapp_DOWNLOADING"){
+				appDataInfo.m_statusAppButton = mapp_DOWNLOADING;
+			}if (stausApp == "mapp_ERROR"){
+				appDataInfo.m_statusAppButton = mapp_ERROR;
+			}if (stausApp == "mapp_TIMEOUTERROR"){
+				appDataInfo.m_statusAppButton = mapp_TIMEOUTERROR;
+			}if (stausApp == "mapp_FINISH"){
+				appDataInfo.m_statusAppButton = mapp_FINISH;
+			}if (stausApp == "mapp_INSTALLFINLSH"){
+				appDataInfo.m_statusAppButton = mapp_INSTALLFINLSH;
+			}if (stausApp == "mapp_INSTALLERROR"){
+				appDataInfo.m_statusAppButton = mapp_INSTALLERROR;
+			}if (stausApp == "mapp_PAUSE"){
+				appDataInfo.m_statusAppButton = mapp_PAUSE;
+			}if (stausApp == "mapp_CLOSE"){
+				appDataInfo.m_statusAppButton = mapp_CLOSE;
+			}
+		}
+		else{
+			appDataInfo.m_statusAppButton = mapp_INSTALLFINLSH;
+			}
+		
 		if (app_userInfo.isHideNR)
 		{
 			if (appDataInfo.m_strAppName == QString::fromLocal8Bit("开票软件") || appDataInfo.m_strAppName == QString::fromLocal8Bit("重装开票"))

@@ -28,11 +28,11 @@ void ZcloudEntCenterImpl::createEntCenter(QString strUid, QString strToken){
 	//if (result == 1){
 		//	上传图片
 
-		UploadLicenseDlg dlg;
+	/*	UploadLicenseDlg dlg;
 		int rst=dlg.exec();
 
 		int result = ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_CLOSE, QString::fromLocal8Bit("申述提交成功"), QString::fromLocal8Bit("您的申述已提交成功，我们会尽快为您处理，\r\n请耐心等待"));
-
+*/
 	//}
 
 }
@@ -62,10 +62,8 @@ void ZcloudEntCenterImpl::openEntCenter(QString strUid, QString strToken, QStrin
 {
 
 	//合并后的企业中心和个人中心   用id查询企业信息和用户信息失败
-	if (NULL == m_pInfoCenterWidget)
-		{
-			m_pInfoCenterWidget = new InfoCenterWidget;
-		}
+	getInfoCenterWidget();
+
 	m_pInfoCenterWidget->setUserInfo(m_strUid, m_strToken, m_strTrueName, m_strJob, m_isLoginByTax, m_strMobile, m_strCompId, m_strUserName);
 	m_pInfoCenterWidget->init();
 	m_pInfoCenterWidget->show();
@@ -187,3 +185,18 @@ void ZcloudEntCenterImpl::modifyCoinCount(int nCount)
 		m_pEntCenterWidget->modifyCoinCount(nCount);
 	}
 }
+
+void ZcloudEntCenterImpl::setUserInfo(UserInfoStruct _userInfo)
+{
+	m_userInfo = _userInfo;
+}
+
+//void ZcloudEntCenterImpl::InitCompanyInfo(UserInfoStruct _userInfo)
+//{
+//
+//	m_userInfo = _userInfo;
+//	getInfoCenterWidget();
+//	m_pInfoCenterWidget->init();
+//
+//
+//}

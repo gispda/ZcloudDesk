@@ -8,13 +8,15 @@
 #include "AppCommWidget.h"
 #include "UserCenterMainWidget.h"
 #include "UserCenterAccWidget.h"
+#include "Database.h"
+
 
 class UserCenterWidget : public QWidget
 {
 	Q_OBJECT
 
 public:
-	UserCenterWidget(QWidget *parent = 0);
+	UserCenterWidget(UserInfoStruct _userInfo,QWidget *parent = 0);
 	~UserCenterWidget();
 	void init(EntCenterInfo*	info);
 
@@ -106,7 +108,7 @@ private:
 //
 //	//!显示头像及VIP标识
 //	void showAvatar(QString strAvatarPath, bool bVip);
-
+	UserInfoStruct m_userInfo;
 	QString m_strUserName;
 	QString m_strUid;
 	QString m_strToken;

@@ -8,13 +8,14 @@
 #include "AppCommWidget.h"
 #include "EntCenterNewWidget.h"
 #include "UserCenterWidget.h"
+#include "Database.h"
 
 class InfoCenterWidget : public QWidget
 {
 	Q_OBJECT
 
 public:
-	InfoCenterWidget(QWidget *parent = 0);
+	InfoCenterWidget(UserInfoStruct _userInfo, QWidget *parent = 0);
 	~InfoCenterWidget();
 	//!设置用户数据
 	void setUserInfo(QString strUid, QString strToken, QString strTrueName, QString strJob, int isLoginByTax, QString strMobile, QString strCompId, QString strUserName);
@@ -44,10 +45,14 @@ private:
 	//!检测用户头像是否存在 存在返回路径 不存在下载之后返回路径
 	QString checkLogoExist(QString strUrl);
 	Ui::InfoCenterWidget ui;
-	QWidget* m_pUserDefult = NULL;
+	QWidget* m_pUserDefault = NULL;
 	EntCenterNewWidget* m_pEntCenter = NULL;
 	UserCenterWidget* m_pUserCenter = NULL;
 	QPoint dPos;
+
+
+	EntCenterInfo m_pInfo;
+	UserInfoStruct m_userInfo;
 	QString m_strUserName;
 	QString m_strUid;
 	QString m_strToken;

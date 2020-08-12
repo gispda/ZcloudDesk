@@ -16,10 +16,12 @@
 #include "FinanMemberWidget.h"
 #include "AccSettingWidget.h"
 
-EntCenterMainWidget::EntCenterMainWidget(QWidget *parent)
+EntCenterMainWidget::EntCenterMainWidget(UserInfoStruct _userinfo,QWidget *parent)
 	: AppCommWidget("", true, parent)
 {
 	ui.setupUi(this);
+
+	m_userinfo = _userinfo;
 	connect(ui.ServiceFeeButton, &QPushButton::clicked, this, &EntCenterMainWidget::onServiceFeeBtnClick);
 
 	m_isNetActive = ZcloudComFun::isNetActive();

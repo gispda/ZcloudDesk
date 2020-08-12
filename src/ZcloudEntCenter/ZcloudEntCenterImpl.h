@@ -14,6 +14,8 @@ public:
 	~ZcloudEntCenterImpl();
 
 
+	virtual void setUserInfo(UserInfoStruct _userInfo);
+
 	//!设置用户数据
 	void setUserInfo(QString strUid, QString strToken, QString strTrueName, QString strJob, int isLoginByTax, QString strMobile, QString strCompId, QString strUserName) ;
 
@@ -26,6 +28,14 @@ public:
 
 	//!打开企业中心
 	virtual void openEntCenter(QString strUid, QString strToken, QString strTrueName, QString strJob, int isLoginByTax, QString strMobile, QString strCompId, QString strUserName);
+
+	void getInfoCenterWidget()
+	{
+		if (NULL == m_pInfoCenterWidget)
+		{
+			m_pInfoCenterWidget = new InfoCenterWidget(m_userInfo);
+		}
+	}
 
 	//! 企业中心是否显示
 	virtual bool isEntCenterShow();
@@ -51,6 +61,7 @@ private:
 	InfoCenterWidget*		m_pInfoCenterWidget = NULL;
 	VipInfoWidget*			m_pVipInfoWidget = NULL;
 
+	UserInfoStruct m_userInfo;
 	QString m_strUserName;
 	QString m_strUid;
 	QString m_strToken;

@@ -9,7 +9,7 @@
 #include "EntCenterMemberWidget.h"
 #include "EntCenterInfoWidget.h"
 #include "EntCenterMainWidget.h"
-
+#include "Database.h"
 
 
 class EntCenterNewWidget : public QWidget
@@ -17,7 +17,7 @@ class EntCenterNewWidget : public QWidget
 	Q_OBJECT
 
 public:
-	EntCenterNewWidget(QWidget *parent = 0);
+	EntCenterNewWidget(UserInfoStruct _userInfo,QWidget *parent = 0);
 	~EntCenterNewWidget();
 
 	void init(EntCenterInfo*	info);
@@ -43,7 +43,7 @@ protected:
 
 private:
 
-
+	UserInfoStruct m_userInfo;
 	QString m_strUserName;
 	QString m_strUid;
 	QString m_strToken;

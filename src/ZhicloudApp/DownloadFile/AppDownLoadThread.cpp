@@ -69,8 +69,12 @@ void AppDownLoadThread::run()
 		if (isInstallFlag && (!m_isHaveApp || isNewVerson))//判断 已经安装了的  且是最新版本(如果是第一次安装 就不会判定版本)
 		{
 			m_APPDOWNLOADETYPE = mapp_INSTALLFINLSH;
+			//保存app下载更新情况
+			m_pData.m_statusAppButton = mapp_INSTALLFINLSH;
+			AppCenterDatabase::instance()->updateApp(m_pData);
+
 			m_pData.m_bAppIsInstall = true;
-			AppCenterDatabase::instance()->updateApp( m_pData);
+
 			emit signalStatusChanged(mapp_INSTALLFINLSH);
 			emit installFinishAdd(m_pData);
 			return;
@@ -85,15 +89,27 @@ void AppDownLoadThread::run()
 			{
 
 			}
-
+			//m_pData.m_statusAppButton = mapp_INSTALLERROR;
+			//AppCenterDatabase::instance()->updateApp(m_pData);
 			m_APPDOWNLOADETYPE = mapp_INSTALLERROR;
+
+			//保存app下载更新情况
+			m_pData.m_statusAppButton = mapp_INSTALLERROR;
+			AppCenterDatabase::instance()->updateApp(m_pData);
 			emit signalStatusChanged(mapp_INSTALLERROR);
 			return;
 		}
 	}
 	else	
 	{
+		m_pData.m_statusAppButton = mapp_DOWNLOADING;
 		m_APPDOWNLOADETYPE = mapp_DOWNLOADING;
+
+
+		//保存app下载更新情况
+		m_pData.m_statusAppButton = mapp_DOWNLOADING;
+		AppCenterDatabase::instance()->updateApp(m_pData);
+
 		emit signalStatusChanged(mapp_DOWNLOADING);
 		if (m_bytesCurrentReceived <= 0)
 		{
@@ -101,8 +117,13 @@ void AppDownLoadThread::run()
 			{
 				if (isNewVerson)
 				{
+
+					//保存app下载更新情况
+					m_pData.m_statusAppButton = mapp_INSTALLFINLSH;
+					AppCenterDatabase::instance()->updateApp(m_pData);
 					m_APPDOWNLOADETYPE = mapp_INSTALLFINLSH;
 					m_pData.m_bAppIsInstall = true;
+					m_pData.m_statusAppButton = mapp_INSTALLFINLSH;
 					AppCenterDatabase::instance()->updateApp( m_pData, true);
 					emit signalStatusChanged(mapp_INSTALLFINLSH);
 					emit installFinishAdd(m_pData);
@@ -202,7 +223,16 @@ void AppDownLoadThread::onFinished()
 		QString realName;
 		if ((m_reply->error() == QNetworkReply::NoError || nStatusCode == 200) && m_APPDOWNLOADETYPE == mapp_DOWNLOADING)
 		{
+			//保存app下载更新情况
+			m_pData.m_statusAppButton = mapp_FINISH;
+			AppCenterDatabase::instance()->updateApp(m_pData);
+
 			m_APPDOWNLOADETYPE = mapp_FINISH;
+
+			//保存app下载更新情况
+			m_pData.m_statusAppButton = mapp_FINISH;
+			AppCenterDatabase::instance()->updateApp(m_pData);
+
 			// 重命名临时文件;
 			QFileInfo fileInfo(m_fileName);
 			if (fileInfo.exists())
@@ -243,11 +273,17 @@ void AppDownLoadThread::errorReset(int errorInt)
 {
 	if (m_reply->error() == QNetworkReply::TimeoutError || m_reply->error() == QNetworkReply::NetworkSessionFailedError || m_reply->error() == QNetworkReply::RemoteHostClosedError)
 	{
+		//保存app下载更新情况
+		m_pData.m_statusAppButton = mapp_PAUSE;
+		AppCenterDatabase::instance()->updateApp(m_pData);
 		m_APPDOWNLOADETYPE = mapp_PAUSE;
 		emit signalStatusChanged(mapp_TIMEOUTERROR);
 	}
 	else
 	{
+		//保存app下载更新情况
+		m_pData.m_statusAppButton = mapp_ERROR;
+		AppCenterDatabase::instance()->updateApp(m_pData);
 		m_APPDOWNLOADETYPE = mapp_ERROR;
 		emit signalStatusChanged(mapp_ERROR);
 		reset();
@@ -271,6 +307,11 @@ void AppDownLoadThread::continueDownload()
 	if (m_downloadFilish)
 	{
 		m_downloadFilish = false;
+
+		//保存app下载更新情况
+		m_pData.m_statusAppButton = mapp_FINISH;
+		AppCenterDatabase::instance()->updateApp(m_pData);
+
 		m_APPDOWNLOADETYPE = mapp_FINISH;
 		this->start();
 		return;
@@ -301,6 +342,9 @@ void AppDownLoadThread::reDownload()
 	}
 	reset();
 
+	//保存app下载更新情况
+	m_pData.m_statusAppButton = mapp_DOWNLOADING;
+	AppCenterDatabase::instance()->updateApp(m_pData);
 	m_APPDOWNLOADETYPE = mapp_DOWNLOADING;
 	this->start();
 }
@@ -322,6 +366,9 @@ void AppDownLoadThread::closeDownload()
 		removeFile(m_fileName);
 		loop->quit();
 	}
+	//保存app下载更新情况
+	m_pData.m_statusAppButton = mapp_CLOSE;
+	AppCenterDatabase::instance()->updateApp(m_pData);
 	m_APPDOWNLOADETYPE = mapp_CLOSE;
 	emit signalStatusChanged(mapp_CLOSE);
 	//通知右侧分类刷新
@@ -337,12 +384,20 @@ void AppDownLoadThread::stopDownload()
 	emit signalStatusChanged(mapp_PAUSE);
 	m_APPDOWNLOADETYPE = mapp_PAUSE;
 
+
 	// 这里m_isStop变量为了保护多次点击暂停下载按钮，导致m_bytesCurrentReceived 被不停累加;
 	//记录当前已经下载字节数；
 	if (m_reply != NULL)
 	{
-		if (m_APPDOWNLOADETYPE == mapp_FINISH)
+		if (m_APPDOWNLOADETYPE == mapp_FINISH){
+			//保存app下载更新情况
+			m_pData.m_statusAppButton = mapp_FINISH;
+			AppCenterDatabase::instance()->updateApp(m_pData);
 			return;
+		}
+		//保存app下载更新情况
+		m_pData.m_statusAppButton = mapp_PAUSE;
+		AppCenterDatabase::instance()->updateApp(m_pData);
 		disconnect(m_reply, SIGNAL(finished()), this, SLOT(onFinished()));
 		disconnect(m_reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(onError(QNetworkReply::NetworkError)));
 		m_reply->abort();

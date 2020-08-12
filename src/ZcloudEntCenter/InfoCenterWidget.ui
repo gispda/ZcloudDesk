@@ -178,7 +178,7 @@
        <string notr="true">color:#000000;</string>
       </property>
       <property name="text">
-       <string>用户中心</string>
+       <string>个人中心</string>
       </property>
       <property name="flat">
        <bool>true</bool>

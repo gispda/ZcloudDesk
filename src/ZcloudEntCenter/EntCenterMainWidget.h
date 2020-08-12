@@ -12,7 +12,7 @@ class EntCenterMainWidget : public AppCommWidget
 	Q_OBJECT
 
 public:
-	EntCenterMainWidget(QWidget *parent = 0);
+	EntCenterMainWidget(UserInfoStruct _userinfo,QWidget *parent = 0);
 	~EntCenterMainWidget();
 
 	//!设置用户数据
@@ -52,7 +52,7 @@ private:
 	//!检测用户头像是否存在 存在返回路径 不存在下载之后返回路径
 	QString checkLogoExist(QString strUrl);
 
-
+	UserInfoStruct m_userinfo;
 	QString m_strUserName;
 	QString m_strUid;
 	QString m_strToken;

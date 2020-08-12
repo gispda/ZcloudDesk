@@ -8,14 +8,15 @@
 #include "EditInvoiceInfoWidget.h"
 #include "ZcloudBigData.h"
 
-EntCenterInfoWidget::EntCenterInfoWidget(QWidget *parent)
+EntCenterInfoWidget::EntCenterInfoWidget(UserInfoStruct _userInfo, QWidget *parent)
 	:AppCommWidget("", true, parent)
 {
 	ui.setupUi(m_widget);
 
-	
+	m_userinfo = _userInfo;
 	ui.entEditWidget->installEventFilter(this);
 	ui.invoiceEditWidget->installEventFilter(this);
+
 }
 
 EntCenterInfoWidget::~EntCenterInfoWidget()
@@ -23,13 +24,31 @@ EntCenterInfoWidget::~EntCenterInfoWidget()
 
 }
 
-void EntCenterInfoWidget::init(EntCenterInfo*	info){}
+void EntCenterInfoWidget::init(EntCenterInfo*	info){
+	m_stEntInfo._strCompId = info->_strCompId;
+	m_stEntInfo._strCompName = info->_strCompName;
+	m_stEntInfo._nTradeId = info->_nTradeid;
+	m_stEntInfo._strLogoPath = info->_strLogoPath;
+	m_stEntInfo._strOfficeMobile = info->_strlegalbossmobile;
+	m_stEntInfo._strOfficeName = info->_strlegalboss;
+	m_stEntInfo._strTaxNo = info->_strTaxNo;
+	m_stEntInfo.m_registerAddress._nProId = info->_nProvinceid;
+	m_stEntInfo.m_registerAddress._nCityId = info->_nCityid;
+	m_stEntInfo.m_registerAddress._nAreaId = info->_nAreaid;
+	m_stEntInfo.m_registerAddress._address = info->_strRegisterFulladdress;
+
+	m_stEntInfo.m_officeAddress._nProId = info->_nOfficeProvinceid;
+	m_stEntInfo.m_officeAddress._nCityId = info->_nOfficeCityid;
+	m_stEntInfo.m_officeAddress._nAreaId = info->_nOfficeAreaid;
+	m_stEntInfo.m_officeAddress._address = info->_strOfficeFulladdress;
+
+}
 
 
 void EntCenterInfoWidget::onEntEditBtnClick()
 {
 	ZcloudBigDataInterface::GetInstance()->produceData("M00", "OP001", "BBD001");
-	EditEntInfoWidget*	pWidget = new EditEntInfoWidget(m_strUid, m_strToken, m_stEntInfo, this);
+	EditEntInfoWidget*	pWidget = new EditEntInfoWidget(m_userinfo.m_strUserId, m_userinfo.m_strToken, m_stEntInfo, this);
 	connect(pWidget, &EditEntInfoWidget::sigUpdateSucessed, this, &EntCenterInfoWidget::onUpdateEntSucessed);
 	pWidget->show();
 }
@@ -37,21 +56,24 @@ void EntCenterInfoWidget::onEntEditBtnClick()
 void EntCenterInfoWidget::onInvoiceEditBtnClick()
 {
 	ZcloudBigDataInterface::GetInstance()->produceData("M00", "OP001", "BBD005");
-	EditInvoiceInfoWidget*	pWidget = new EditInvoiceInfoWidget(m_strUid, m_strToken, m_stInvoiceInfo, this);
+	EditInvoiceInfoWidget*	pWidget = new EditInvoiceInfoWidget(m_userinfo.m_strUserId, m_userinfo.m_strToken, m_stInvoiceInfo, this);
 	connect(pWidget, &EditInvoiceInfoWidget::sigUpdateSucessed, this, &EntCenterInfoWidget::onUpdateinvoiceSucessed);
 	pWidget->show();
 }
 
-bool EntCenterInfoWidget::winHttpGetEntInfo(QString strUid, QString strToken, QString& strRet)
+bool EntCenterInfoWidget::winHttpGetEntInfo(QString strTaxno, QString strToken, QString& strRet)
 {
-	QString strUrl = QString("/v2/company/get-company-info?user_id=%1&token=%2").arg(strUid).arg(strToken);
-	return ZcloudComFun::httpPost(strUrl, "", 5000, strRet);
+	QString strUrl = QString("/ucenter/company/info");
+	QString strPost;
+
+	strPost = QString("tax=%1").arg(strTaxno);
+	return ZcloudComFun::httpPost(strUrl, strPost, 5000, strRet,false,1);
 }
 
 bool EntCenterInfoWidget::showEntInfo()
 {
 	QString strRet;
-	if (!winHttpGetEntInfo(m_strUid, m_strToken, strRet))
+	if (!winHttpGetEntInfo(m_stEntInfo._strTaxNo, m_userinfo.m_strToken, strRet))
 	{
 		return false;
 	}
@@ -67,7 +89,7 @@ bool EntCenterInfoWidget::showEntInfo()
 		return false;
 	}
 	QJsonObject obj = parse_doucment.object();
-	int status = obj.take("status").toInt();
+	int status = obj.take("code").toInt();
 	if (0 != status)
 	{
 		return false;
@@ -160,7 +182,7 @@ bool EntCenterInfoWidget::showEntInfo()
 	ui.labelArea->adjustSize();
 
 	//!财税负责人
-	m_stEntInfo._strOfficeName = data.take("financial_officer").toString();
+	m_stEntInfo._strOfficeName = data.take("legal_person_name").toString();
 	QString strOfficerName = m_stEntInfo._strOfficeName;
 	if (strOfficerName.isEmpty())
 	{
@@ -169,7 +191,7 @@ bool EntCenterInfoWidget::showEntInfo()
 	ZcloudComFun::setElideText(14, ui.labelName, strOfficerName);
 
 	//!负责人手机号
-	m_stEntInfo._strOfficeMobile = data.take("financial_phone").toString();
+	m_stEntInfo._strOfficeMobile = data.take("legal_person_phone").toString();
 	QString strPhone = m_stEntInfo._strOfficeMobile;
 	if (strPhone.isEmpty())
 	{
@@ -215,7 +237,10 @@ bool EntCenterInfoWidget::showEntInfo()
 	ui.labelAddr->setText(strAddr);
 	ui.labelAddr->adjustSize();
 
-	int	nAdmin = data.take("is_admin").toInt();
+
+	QJsonObject userdata = data.take("user").toObject();
+
+	int	nAdmin = userdata.take("role_type").toInt();
 
 	if (nAdmin != 1)
 	{

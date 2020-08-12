@@ -4,14 +4,53 @@
 #include <QReadWriteLock>
 #include <QSqlDatabase>
 #include <QDateTime>
+#include "Database.h"
 class EntCenterInfo
 {
 public:
-	QString _strUid;
+	QString _strId;   
 	QString _strToken;
 	QString _strCompId;		//!公司编号
+
 	QString _strCompName;	//!公司名称
 	QString _strTaxNo;		//!税号
+	/////-------------------------新增加
+	QString _strHzsid;           ///合作商id
+	QString _strEmail;          ///企业邮箱
+	int _nCompanytype;     /////企业类型
+	int  _nTradeid;        /////
+	int     _nProvinceid;      ///企业注册地省份id
+	int     _nCityid;          ////企业注册地市id
+	int     _nAreaid;          ////企业注册地区id
+	QString _strAddress;        ///地址
+	int     _nOfficeProvinceid;      ///企业办公地省份id
+	int     _nOfficeCityid;          ////企业办公地市id
+	int     _nOfficeAreaid;          ////企业办公地区id
+	QString _strOfficeaddress;
+
+	int _nisjoin;     ///用户有无绑定企业信息
+
+	int _nisbinds;     //用户有无绑定客户经理
+	int _nhasadmin;    ///企业有无管理员
+
+	QString _strUid;  
+	QString _strUsername;
+	QString _strTruename;
+	int _nrole_type;   //身份id
+	QString _strJob;//用户在这个企业的身份，管理员，财务等
+
+	QString _strRegisterFulladdress;
+	QString _strOfficeFulladdress;
+
+	QString _strlegalboss;   ///法人
+	QString _strlegalbossmobile;   //法人电话
+	QString  _strBankname;    ///开户行
+	QString  _strBankaccount; //开户行账号
+
+
+	UserService _oservice;    ///客户经理
+
+	////-----------------------------
 	QString _strLogo;		//!头像图标
 	QString _strLogoPath;	//!头像图标本地地址
 	bool	_bIsHxMember		= false;		//!是否是航信会员

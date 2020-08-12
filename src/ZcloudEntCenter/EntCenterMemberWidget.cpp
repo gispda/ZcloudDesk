@@ -17,7 +17,7 @@
 #include "ModifyMemberWidget.h"
 #include "ZcloudBigData.h"
 
-EntCenterMemberWidget::EntCenterMemberWidget(QWidget *parent)
+EntCenterMemberWidget::EntCenterMemberWidget(UserInfoStruct _userInfo,QWidget *parent)
 	: AppCommWidget("", true, parent)
 {
 
@@ -28,12 +28,17 @@ EntCenterMemberWidget::EntCenterMemberWidget(QWidget *parent)
 
 
 
+	m_userInfo = _userInfo;
 
-	if (!showMemberInfo())
-	{
-		ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_TIP, QString::fromLocal8Bit("操作失败"), QString::fromLocal8Bit("\r\n打开财务成员失败，请稍后再试！"));
-		close();
-	}
+	///游客登陆
+	//if (m_userInfo.m_bLoginByTax != -8)
+	//{
+		if (!showMemberInfo())
+		{
+			ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_TIP, QString::fromLocal8Bit("操作失败"), QString::fromLocal8Bit("\r\n打开财务成员失败，请稍后再试！"));
+			close();
+		}
+//	}
 
 	ui.labelAudit->installEventFilter(this);
 	connect(ui.addMemberButton, &QPushButton::clicked, this, &EntCenterMemberWidget::onAddMember);
@@ -63,14 +68,18 @@ void EntCenterMemberWidget::init(EntCenterInfo*	info){
 
 bool EntCenterMemberWidget::winHttpGetMemberInfo(QString strUid, QString strToken, QString& strRet)
 {
-	QString strUrl = QString("/v2/company/member-index?user_id=%1&token=%2").arg(m_strUid).arg(m_strToken);
-	return ZcloudComFun::httpPost(strUrl, "", 5000, strRet);
+	QString strUrl = QString("/ucenter/user/user-list");
+	QString strPost = QString("token=%1").arg(strToken);
+
+		
+
+	return ZcloudComFun::httpPost(strUrl, strPost, 5000, strRet,false,1);
 }
 
 bool EntCenterMemberWidget::showMemberInfo()
 {
 	QString  strRet;
-	if (!winHttpGetMemberInfo(m_strUid, m_strToken, strRet))
+	if (!winHttpGetMemberInfo(m_userInfo.m_strTaxNumber,m_userInfo.m_strToken, strRet))
 	{
 		return false;
 	}
@@ -86,7 +95,7 @@ bool EntCenterMemberWidget::showMemberInfo()
 		return false;
 	}
 	QJsonObject obj = parse_doucment.object();
-	int status = obj.take("status").toInt();
+	int status = obj.take("code").toInt();
 	if (0 != status)
 	{
 		return false;
@@ -95,7 +104,7 @@ bool EntCenterMemberWidget::showMemberInfo()
 	QJsonObject data = obj.take("data").toObject();
 	int		nAdmin = data.take("is_admin").toInt();
 	int		nAuditCount = data.take("audit_count").toInt();
-	QJsonValue list = data.take("user_list");
+	QJsonValue list = data.take("list");
 	if (!list.isArray())
 	{
 		return false;
@@ -113,7 +122,7 @@ bool EntCenterMemberWidget::showMemberInfo()
 		int		nRoleType = dataList.take("role_type").toInt();
 
 		QListWidgetItem* pListWidgetItem = new QListWidgetItem;
-		MemberItemWidget* pItem = new MemberItemWidget(nAdmin, nIndex % 6, strUid, strUserName, strTrueName, strJob, strMobile, nRoleType, ui.listWidget);
+		MemberItemWidget* pItem = new MemberItemWidget(nAdmin, nIndex % 6, strUid, strUserName, strUserName, strJob, strMobile, nRoleType, ui.listWidget);
 		connect(pItem, &MemberItemWidget::sigRemoveMember, this, &EntCenterMemberWidget::onRemoveMember);
 		connect(pItem, &MemberItemWidget::sigModifyMember, this, &EntCenterMemberWidget::onModifyMember);
 		connect(pItem, &MemberItemWidget::sigHandOver, this, &EntCenterMemberWidget::onHandOver);

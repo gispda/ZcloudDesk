@@ -186,7 +186,7 @@ int LoginThread::analyCodeSucess(QString strRet)
 		return -1;
 	}
 	QJsonObject obj = parse_doucment.object();
-	int code = obj.take("status").toInt();
+	int code = obj.take("code").toInt();
 	return code;
 }
 
@@ -204,7 +204,7 @@ int LoginThread::clsanalyCodeSucess(QString strRet)
 		return -1;
 	}
 	QJsonObject obj = parse_doucment.object();
-	int code = obj.take("status").toInt();
+	int code = obj.take("code").toInt();
 	return code;
 }
 
@@ -405,7 +405,7 @@ int LoginThread::analySucessJson(QString strRet, UserInfoStruct &userInfoStruct)
 		return -1;
 	}
 	QJsonObject obj = parse_doucment.object();
-	int code = obj.take("status").toInt();
+	int code = obj.take("code").toInt();
 	if (code == 0)
 	{
 		QJsonObject data = obj.take("data").toObject();
@@ -436,9 +436,9 @@ int LoginThread::analySucessJson(QString strRet, UserInfoStruct &userInfoStruct)
 		if (userInfoStruct.m_iisbinds == 1)
 		{
 			objValue = data.take("service").toObject();
-			userInfoStruct.userservice.m_strProvinceId = QString::number(objValue.take("province_id").toInt());		//省Id
-			userInfoStruct.userservice.m_strCityId = QString::number(objValue.take("city_id").toInt());			//市Id
-			userInfoStruct.userservice.m_strAreaId = QString::number(objValue.take("area_id").toInt());			//区Id
+			userInfoStruct.userservice.m_nProvinceId = objValue.take("province_id").toInt();		//省Id
+			userInfoStruct.userservice.m_nCityId = objValue.take("city_id").toInt();			//市Id
+			userInfoStruct.userservice.m_nAreaId = objValue.take("area_id").toInt();			//区Id
 			userInfoStruct.userservice.m_strHzsId = QString::number(objValue.take("hzs_id").toInt());				//合作商Id
 			userInfoStruct.userservice.m_businessid = objValue.take("business_id").toString();  
 			userInfoStruct.userservice.m_strUsername = objValue.take("username").toString();
@@ -503,7 +503,7 @@ bool LoginThread::analySucessJsonSign(QString strRet,QString &strSign)
 		return false;
 	}
 	QJsonObject obj = parse_doucment.object();
-	int code = obj.take("status").toInt();
+	int code = obj.take("code").toInt();
 	if (code == 30025)
 	{
 		QJsonObject data = obj.take("data").toObject();
@@ -545,7 +545,7 @@ int LoginThread::analySucessTempJson(QString strRet, UserInfoStruct &userInfoStr
 		return -1;
 	}
 	QJsonObject obj = parse_doucment.object();
-	int code = obj.take("status").toInt();
+	int code = obj.take("code").toInt();
 	if (code == 0)
 	{
 		QJsonObject data = obj.take("data").toObject();
@@ -561,6 +561,8 @@ int LoginThread::analySucessTempJson(QString strRet, UserInfoStruct &userInfoStr
 		userInfoStruct.m_strAreaId = QString::number(data.take("area_id").toInt());			//区Id
 		userInfoStruct.m_strHzsId = QString::number(data.take("hzs_id").toInt());				//合作商Id
 		userInfoStruct.m_strToken = data.take("token").toString();				//token 
+
+		userInfoStruct.m_bLoginByTax = -8;
 	}
 	return code;
 }

@@ -101,7 +101,7 @@ ZcloudDesk::ZcloudDesk(UserInfoStruct userInfoStruct, QWidget *parent)
 	connect(ui.appButton, SIGNAL(clicked()), this, SLOT(openAppCenterWidget()));
 	connect(ui.hideButton, SIGNAL(clicked()), this, SLOT(hideWindow()));
 
-	connect(ui.billListButton, SIGNAL(clicked()), this, SLOT(openOrderList()));
+	connect(ui.billListButton, SIGNAL(clicked()), this, SLOT(openWorkers()));
 
 
 	//connect(ui.msgButton, SIGNAL(clicked()), this, SLOT(openMsgCenterWidget()));
@@ -560,6 +560,9 @@ void ZcloudDesk::openEntCenterWidget()
 
 	createEnterCenterMgr();
 
+	InitEntCenter();
+
+
 	if ((m_stUserInfo.m_strCompanyName.isEmpty())){
 
 		QMenu* m_pMenu = new QMenu();
@@ -647,7 +650,7 @@ void ZcloudDesk::openCreateEntDlg()
 	ZcloudEntCenter* pEntCenter = getEntCenter();
 	pEntCenter->createEntCenter(m_stUserInfo.m_strUserId, m_stUserInfo.m_strToken);
 }
-void  ZcloudDesk::openOrderList(){
+void  ZcloudDesk::openWorkers(){
 	ZcloudEntCenter* pEntCenter=getEntCenter();
 	pEntCenter->openWorkers(m_stUserInfo.m_strUserId, m_stUserInfo.m_strToken);
 
@@ -1110,12 +1113,15 @@ void ZcloudDesk::showCompInfo()
 	ui.customServiceButton->setVisible(false);
 	ui.spaceButtonName->setVisible(false);
 	ui.usernameButton->setVisible(false);
+	QString strText;
 	
-	
-
-	if (m_stUserInfo.m_strUsername.isEmpty()){
+	////游客登陆
+	if (m_stUserInfo.m_bLoginByTax==-8){
 		ui.labelCompName->setMinimumWidth(0);
-		ui.labelCompName->setText(QString::fromLocal8Bit("登录"));
+
+
+		strText = queryTaxInfo();
+		ui.labelCompName->setText(strText);
 		//设置图标
 		//ui.labelCompName->setPixmap();
 		return;
@@ -1129,7 +1135,9 @@ void ZcloudDesk::showCompInfo()
 
 
 
-	QString strText = m_stUserInfo.m_strCompanyName;
+	
+	strText = m_stUserInfo.m_strCompanyName;
+
 	if (strText.isEmpty())
 	{
 		if (1 == m_stUserInfo.m_bLoginByTax)
@@ -1362,8 +1370,11 @@ void ZcloudDesk::closeAllWindows(int flag)
 	if (0 == flag)
 	{
 		//!企业中心关闭
-		if (m_pEntCenter!=NULL)
-		m_pEntCenter->closeAllEntWidget();
+		if (m_pEntCenter != NULL)
+		{
+			m_pEntCenter->closeAllEntWidget();
+			m_pEntCenter = NULL;
+		}
 	}
 
 	//!消息中心关闭
@@ -1444,6 +1455,13 @@ void ZcloudDesk::startInitWork()
 {
 	//!初始化顶栏工具
 	getTopTool();
+
+
+	////将企业中心的创建函数提到这里，方便从注册表读取的税号到后台匹配。
+
+
+	///createEnterCenterMgr();
+
 
 	//!设置公司名字、头像
 	showCompInfo();
@@ -1981,24 +1999,64 @@ void ZcloudDesk::onModifyCoinCount(int nCount)
 	}
 }
 
+QString ZcloudDesk::queryTaxInfo()
+{
+	QString strTaxno = ZcloudComFun::getTaxnumber();
+
+	//strTaxno = "210624197305200017";
+
+	////游客登陆
+	if (m_stUserInfo.m_bLoginByTax == -8)
+	{
+	///	m_stUserInfo.m_strTaxNumber = strTaxno;
+
+		QString strRet, strCompany;
+		bool bret;
+		if (!strTaxno.isEmpty())
+		{
+			bret = ZcloudClient::winHttpQueryCompanyInfoLocalTax(strTaxno, m_stUserInfo.m_strToken, strRet, strCompany);
+
+			return strCompany;
+		}
+		else
+		{
+			strCompany = QString::fromLocal8Bit("暂未查询到您的企业");
+			return strCompany;
+		}
+
+	}
+	else
+	{
+		return "";
+	}
+}
 void ZcloudDesk::createEnterCenterMgr()
 {
+	
+
 	if (NULL == m_pEntCenter)
 	{
 		m_pEntCenter = ZcloudEntCenter::createNew();
-		connect(m_pEntCenter, SIGNAL(sigSwitchAcc(int, bool, QString, QString)), this, SLOT(onSwitchAcc(int, bool, QString, QString)));
-		connect(m_pEntCenter, SIGNAL(bingdingPhoneSignal()), this, SLOT(bingdingPhoneSlot()));
-		connect(m_pEntCenter, SIGNAL(sigSignBindingSucceeded(const QString&)), this, SLOT(slotChangeMobile(const QString&)));
-		connect(m_pEntCenter, SIGNAL(openSignInWidget(QWidget*)), this, SLOT(openSignInWidegt(QWidget*)));
-		connect(m_pEntCenter, &ZcloudEntCenter::sendVipListSignals, this, &ZcloudDesk::buyMembershipSlot);
-		connect(m_pEntCenter, &ZcloudEntCenter::trueNameJobChange, [this](QString trueName, QString strJob)
-		{
-			m_stUserInfo.m_strTruename = trueName;
-			m_stUserInfo.m_strJob = strJob;
-
-		});
-
-
+		m_pEntCenter->setUserInfo(m_stUserInfo);
+///		m_pEntCenter->InitCompanyInfo(m_stUserInfo);
 
 	}
+	
 }
+
+void ZcloudDesk::InitEntCenter()
+{
+
+	connect(m_pEntCenter, SIGNAL(sigSwitchAcc(int, bool, QString, QString)), this, SLOT(onSwitchAcc(int, bool, QString, QString)));
+	connect(m_pEntCenter, SIGNAL(bingdingPhoneSignal()), this, SLOT(bingdingPhoneSlot()));
+	connect(m_pEntCenter, SIGNAL(sigSignBindingSucceeded(const QString&)), this, SLOT(slotChangeMobile(const QString&)));
+	connect(m_pEntCenter, SIGNAL(openSignInWidget(QWidget*)), this, SLOT(openSignInWidegt(QWidget*)));
+	connect(m_pEntCenter, &ZcloudEntCenter::sendVipListSignals, this, &ZcloudDesk::buyMembershipSlot);
+	connect(m_pEntCenter, &ZcloudEntCenter::trueNameJobChange, [this](QString trueName, QString strJob)
+	{
+		m_stUserInfo.m_strTruename = trueName;
+		m_stUserInfo.m_strJob = strJob;
+
+	});
+}
+

@@ -786,8 +786,17 @@ bool RightClassAppWidget::findClassAppRUninstall(QList<DragButton *> &appButtonL
 			//更新
 			pData.m_statusAppButton = downloadThread->getType();
 		}
-		if (pData.m_bAppIsInstall || (downloadThread != NULL && downloadThread->getType() != mapp_CLOSE))
+		//if (pData.m_bAppIsInstall || (downloadThread != NULL && downloadThread->getType() != mapp_CLOSE))
+		
+		//if (pData.bState)
 		{
+			//去掉未安装完成不显示的判断
+			//增加 显示标志位 判断
+			//航信易用系统 - 免费版  // = 
+			if (pData.m_strAppName == QString::fromLocal8Bit("航信易用系统 - 免费版")){
+				QString a;
+			}
+
 			DragButton *btn = new DragButton;
 			btn->setFocusPolicy(Qt::NoFocus);
 			btn->settUserData(pData);
@@ -1002,6 +1011,7 @@ void RightClassAppWidget::clickbtn()
 		}
 		}
 	}
+
 }
 
 void RightClassAppWidget::installUnnstallSucessed(AppDataInfo pData)

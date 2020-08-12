@@ -6,13 +6,14 @@
 #include "ui_EntCenterMemberWidget.h"
 #include "EntDataBase.h"
 #include "AppCommWidget.h"
+#include "Database.h"
 
 class EntCenterMemberWidget : public AppCommWidget
 {
 	Q_OBJECT
 
 public:
-	EntCenterMemberWidget(QWidget *parent = 0);
+	EntCenterMemberWidget(UserInfoStruct _userInfo,QWidget *parent = 0);
 	~EntCenterMemberWidget();
 	void init(EntCenterInfo*	info);
 
@@ -58,6 +59,8 @@ private:
 	bool winHttpRemoveMember(QString strUid, QString strToken, QString strUserId, QString& strRet);
 
 
+
+	UserInfoStruct m_userInfo;
 	QString m_strUserName;
 	QString m_strUid;
 	QString m_strToken;

@@ -16,7 +16,7 @@
 #include "FinanMemberWidget.h"
 #include "AccSettingWidget.h"
 
-EntCenterNewWidget::EntCenterNewWidget(QWidget *parent)
+EntCenterNewWidget::EntCenterNewWidget(UserInfoStruct _userInfo,QWidget *parent)
 	:QWidget(parent)
 {
 	ui.setupUi(this);
@@ -28,15 +28,15 @@ EntCenterNewWidget::EntCenterNewWidget(QWidget *parent)
 
 
 
+	m_userInfo = _userInfo;
 
-
-	mp_EntCenterMember = new EntCenterMemberWidget(ui.EntRightWidget);
-	mp_EntCenterInfo = new EntCenterInfoWidget(ui.EntRightWidget);
-	mp_EntCenterMain = new EntCenterMainWidget(ui.EntRightWidget);
+	mp_EntCenterMember = new EntCenterMemberWidget(_userInfo,ui.EntRightWidget);
+	mp_EntCenterInfo = new EntCenterInfoWidget(_userInfo,ui.EntRightWidget);
+	mp_EntCenterMain = new EntCenterMainWidget(_userInfo,ui.EntRightWidget);
 	mp_EntCenterMember->hide();
 	mp_EntCenterInfo->hide();
 
-
+//	m_userInfo = _userInfo;
 	//connect(ui.entInfoButton, &QPushButton::clicked, this, &EntCenterNewWidget::onEntInfoBtnClick);
 	connect(ui.entInfoButton, SIGNAL(clicked()), this, SLOT(onShowInfo()));
 	connect(ui.memberButton, SIGNAL(clicked()), this, SLOT(onShowMember()));
@@ -63,10 +63,10 @@ void EntCenterNewWidget::init(EntCenterInfo*	info){
 	mp_EntCenterInfo->init(info);
 	mp_EntCenterInfo->showEntInfo();
 
-	mp_EntCenterMain->setUserInfo(m_strUid, m_strToken, m_strTrueName, m_strJob, m_isLoginByTax, m_strMobile, m_strCompId, m_strUserName);
+	mp_EntCenterMain->setUserInfo(m_userInfo.m_strUserId, m_userInfo.m_strToken, m_userInfo.m_strTruename, m_userInfo.m_strJob, m_userInfo.m_bLoginByTax, m_userInfo.m_strMobile, m_userInfo.m_strCompanyId, m_userInfo.m_strUsername);
 	mp_EntCenterMain->init(info);
 	
-	mp_EntCenterMember->setUserInfo(m_strUid, m_strToken, m_strTrueName, m_strJob, m_isLoginByTax, m_strMobile, m_strCompId, m_strUserName);
+	mp_EntCenterMember->setUserInfo(m_userInfo.m_strUserId, m_userInfo.m_strToken, m_userInfo.m_strTruename, m_userInfo.m_strJob, m_userInfo.m_bLoginByTax, m_userInfo.m_strMobile, m_userInfo.m_strCompanyId, m_userInfo.m_strUsername);
 	mp_EntCenterMember->init(info);
 
 }

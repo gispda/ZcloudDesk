@@ -16,7 +16,7 @@
 #include "FinanMemberWidget.h"
 #include "AccSettingWidget.h"
 
-UserCenterWidget::UserCenterWidget(QWidget *parent)
+UserCenterWidget::UserCenterWidget(UserInfoStruct _userInfo,QWidget *parent)
 	:QWidget(parent)
 {
 	ui.setupUi(this);
@@ -28,6 +28,8 @@ UserCenterWidget::UserCenterWidget(QWidget *parent)
 
 	connect(ui.pushButtonAcc, SIGNAL(clicked()), this, SLOT(onShowAcc()));
 
+
+	m_userInfo = _userInfo;
 	/*connect(ui.copyTaxButton, SIGNAL(clicked()), this, SLOT(onCopyBtnClick()));
 	connect(ui.switchButton, SIGNAL(clicked()), this, SLOT(onSwitchBtnClick()));
 	connect(ui.memberButton, SIGNAL(clicked()), this, SLOT(onMemberBtnClick()));

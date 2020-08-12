@@ -2,6 +2,8 @@
 #define ZCLOUDENTCENTER_H
 #include <QObject>
 #include <QtCore/qglobal.h>
+
+#include "Database.h"
 #ifdef ZCLOUDENTCENTER_LIB
 # define ZCLOUDENTCENTER_EXPORT Q_DECL_EXPORT
 #else
@@ -15,6 +17,10 @@ public:
 	//创建实例对象
 	static ZcloudEntCenter * createNew();
 
+
+	virtual void setUserInfo(UserInfoStruct _userInfo) = 0;
+	/////提前取公司信息
+	//virtual void InitCompanyInfo(UserInfoStruct _userInfo) = 0;
 
 	//!设置用户数据
 	virtual void setUserInfo(QString strUid, QString strToken, QString strTrueName, QString strJob, int isLoginByTax, QString strMobile, QString strCompId, QString strUserName)=0;

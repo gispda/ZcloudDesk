@@ -16,8 +16,7 @@
 #include "FinanMemberWidget.h"
 #include "AccSettingWidget.h"
 
-InfoCenterWidget::InfoCenterWidget(QWidget *parent)
-	:QWidget( parent)
+InfoCenterWidget::InfoCenterWidget(UserInfoStruct _userInfo, QWidget *parent /*= 0*/) :QWidget( parent)
 {
 	ui.setupUi(this);
 	//resize(1002, 620);
@@ -32,14 +31,15 @@ InfoCenterWidget::InfoCenterWidget(QWidget *parent)
 	connect(ui.pushButtonEntCenter, SIGNAL(clicked()), this, SLOT(showEntCenter()));
 	connect(ui.pushButtonUserCenter, SIGNAL(clicked()), this, SLOT(showUserCenter()));
 	
+	m_userInfo = _userInfo;
 
-	m_pEntCenter = new EntCenterNewWidget(ui.widgetCenter);
+	m_pEntCenter = new EntCenterNewWidget(_userInfo,ui.widgetCenter);
 
 
-	m_pUserCenter = new UserCenterWidget(ui.widgetCenter);
+	m_pUserCenter = new UserCenterWidget(_userInfo,ui.widgetCenter);
 	m_pUserCenter->hide();
 	
-
+	
 	//m_pUserDefult = new QWidget(ui.EntRightWidget);
 	//m_pUserDefult->setGeometry(20, 140, 711, 181);
 	//m_pUserDefult->setStyleSheet("border-image:url(:/InfoCenterWidget/image/userVipDefualt.png);");
@@ -78,35 +78,47 @@ void InfoCenterWidget::setUserInfo(QString strUid, QString strToken, QString str
 	m_strUserName = strUserName;
 }
 
-bool InfoCenterWidget::winHttpGetCompanyInfo(QString strUid, QString strToken, QString& strRet)
+bool InfoCenterWidget::winHttpGetCompanyInfo(QString strTaxno, QString strToken, QString& strRet)
 {
-	QString strUrl = QString("/company/get-company-info?user_id=%1&token=%2").arg(strUid).arg(strToken);
-	return ZcloudComFun::httpPost(strUrl, "", 5000, strRet);
+	QString strUrl = QString("/ucenter/company/info");
+	QString strPost;
+
+	if (!strTaxno.isEmpty())
+	{
+		strPost = QString("tax=%1&token=%2").arg(strTaxno).arg(strToken);
+		return ZcloudComFun::httpPost(strUrl, strPost, 5000, strRet, false, 1);
+	}
+	return false;
 }
 
 void InfoCenterWidget::init(){
-	EntCenterInfo	info;
+	//EntCenterInfo	info;
 	QString strRet;
-	EntCenterInfo* m_pInfo = &info;
-	if (!winHttpGetCompanyInfo(m_strUid, m_strToken, strRet))
+
+
+
+	
+	if (!winHttpGetCompanyInfo(m_userInfo.m_strTaxNumber,m_userInfo.m_strToken,strRet))
 	{
 		//!失败 从数据库读出
-		EntDataBase::GetInstance()->queryEntCenterInfo(m_strUid,info);
+		EntDataBase::GetInstance()->queryEntCenterInfo(m_strUid,m_pInfo);
 	}
 	else
 	{
 		//!接口解析并replace数据库
-		if (analysisJson(strRet, info))
+		if (analysisJson(strRet, m_pInfo))
 		{
-			EntDataBase::GetInstance()->insertEntCenterInfo(info);
+			/*m_pInfo._strBankname = QString("234242342");
+			m_pInfo._strlegalboss = QString("234242342");*/
+			EntDataBase::GetInstance()->insertEntCenterInfo(m_pInfo);
 		}
 		else
 		{
-			EntDataBase::GetInstance()->queryEntCenterInfo(m_strUid, info);
+			EntDataBase::GetInstance()->queryEntCenterInfo(m_strUid, m_pInfo);
 		}	
 	}	
-	m_pEntCenter->init(&info);
-	m_pUserCenter->init(&info);
+	m_pEntCenter->init(&m_pInfo);
+	m_pUserCenter->init(&m_pInfo);
 	
 }
 InfoCenterWidget::~InfoCenterWidget()
@@ -119,6 +131,9 @@ InfoCenterWidget::~InfoCenterWidget()
 		m_pUserCenter->deleteLater();
 		m_pUserCenter = NULL;
 	}
+
+
+
 }
 void InfoCenterWidget::mousePressEvent(QMouseEvent *event)
 {
@@ -159,7 +174,7 @@ bool InfoCenterWidget::analysisJson(const QString& strJson, EntCenterInfo& info)
 		return false;
 	}
 	QJsonObject obj = parse_doucment.object();
-	int status = obj.take("status").toInt();
+	int status = obj.take("code").toInt();
 
 	if (status != 0)
 	{
@@ -167,30 +182,89 @@ bool InfoCenterWidget::analysisJson(const QString& strJson, EntCenterInfo& info)
 	}
 
 	QJsonObject data = obj.take("data").toObject();
-	info._strUid = m_strUid;
-	info._strToken = m_strToken;
+	
+
+	info._strId = data.take("id").toString();
+	info._strToken = m_userInfo.m_strToken;
 	info._strCompId = data.take("company_id").toString();
 	info._strCompName = data.take("company_name").toString();
 	info._strTaxNo = data.take("tax_number").toString();
 	info._strLogo = data.take("logo").toString();
 	info._strLogoPath = checkLogoExist(info._strLogo);
-	info._bIsHxMember = data.take("is_hx_member").toInt();
-	info._nChargeExpire = data.take("charge_expire").toInt();
+	info._bIsHxMember = data.take("is_hx_member").toInt();  ///没有了 航信会员
+	info._nChargeExpire = data.take("charge_expire").toInt();  
 	info._nEndDays = data.take("end_days").toInt();
-	info._bIsManualFulled = data.take("perfect_user_info").toInt();
-	info._nLastSignTime = data.take("last_sign_time").toInt();
-	info._nCoin = data.take("zc_coin").toInt();
-	info._nCoupon = data.take("coupon_num").toInt();
-	info._strCompanyInfoUrl = data.take("company_info_url").toString();
-	info._strTradeInfoUrl = data.take("trade_info_url").toString();
-	info._strFinancialMemberUrl = data.take("financial_member_url").toString();
-	info._strAccountSettingUrl = data.take("account_setting_url").toString();
-	info._strRenewUrl = data.take("renew_url").toString();
-	info._strMemberInfoUrl = data.take("member_info_url").toString();
-	info._strSignUrl = data.take("sign_url").toString();
-	info._strCreateCompanyUrl = data.take("create_company_url").toString();
-	info._dtServerTime = QDateTime::fromTime_t(data.take("server_time").toInt());
-	info._bHasMember = data.take("has_member").toInt();
+	info._bIsManualFulled = data.take("perfect_user_info").toInt(); ///没有了
+	info._nLastSignTime = data.take("last_sign_time").toInt();  //没有了
+	info._nCoin = data.take("zc_coin").toInt();      //没有了
+	info._nCoupon = data.take("coupon_num").toInt();   //没有了
+	info._strCompanyInfoUrl = data.take("company_info_url").toString();  //没有了
+	info._strTradeInfoUrl = data.take("trade_info_url").toString();   ///没有额
+	info._strFinancialMemberUrl = data.take("financial_member_url").toString();  //没有
+	info._strAccountSettingUrl = data.take("account_setting_url").toString(); //没有
+	info._strRenewUrl = data.take("renew_url").toString();  //没有
+	info._strMemberInfoUrl = data.take("member_info_url").toString();   ///没有
+	info._strSignUrl = data.take("sign_url").toString();  //没有
+	info._strCreateCompanyUrl = data.take("create_company_url").toString();   ///没有
+	info._dtServerTime = QDateTime::fromTime_t(data.take("server_time").toInt()); //没有
+	info._bHasMember = data.take("has_member").toInt();  //没有
+
+
+	////-------------------------------新增----------------------------
+	info._strHzsid = data.take("hzs_id").toString();  //
+	info._strEmail = data.take("email").toString();  //
+	info._nCompanytype = data.take("company_type").toInt();  //
+	info._nTradeid = data.take("trade_id").toInt();  //
+	info._nProvinceid = data.take("province_id").toInt();  //
+	info._nCityid = data.take("city_id").toInt();  //
+	info._nAreaid = data.take("area_id").toInt();  //
+	info._nOfficeProvinceid = data.take("office_province_id").toInt();  //
+	info._nOfficeCityid = data.take("office_city_id").toInt();  //
+	info._nOfficeAreaid = data.take("office_area_id").toInt();  //
+	info._strOfficeaddress = data.take("office_address").toString();  //
+	info._strAddress = data.take("address").toString();  //
+	info._strRegisterFulladdress = data.take("reg_full_address").toString();  //
+	info._strOfficeFulladdress = data.take("office_full_address").toString();  //
+
+	info._nisjoin = data.take("is_join").toInt();  //
+	info._nisbinds = data.take("is_bind_s").toInt();  //
+	info._nhasadmin = data.take("has_admin").toInt();  //
+
+	info._strlegalboss = data.take("legal_person_name").toString();  //
+	info._strlegalbossmobile = data.take("legal_person_phone").toString();  //
+	info._strBankname = data.take("bank_name").toString();  //
+	info._strBankaccount = data.take("bank_account").toString();  //
+	QJsonObject  objValue;
+	if (info._nisbinds == 1)
+	{
+			objValue = data.take("service").toObject();
+			info._oservice.m_nProvinceId = objValue.take("province_id").toInt();		//省Id
+			info._oservice.m_nCityId = objValue.take("city_id").toInt();			//市Id
+			info._oservice.m_nAreaId = objValue.take("area_id").toInt();			//区Id
+			info._oservice.m_strHzsId = QString::number(objValue.take("hzs_id").toInt());				//合作商Id
+			info._oservice.m_businessid = objValue.take("business_id").toString();
+			info._oservice.m_strUsername = objValue.take("username").toString();
+			info._oservice.m_strPhone = objValue.take("phone").toString();
+			info._oservice.m_strTruename = objValue.take("truename").toString();
+			info._oservice.m_sex = objValue.take("sex").toString();
+			info._oservice.m_strAddress = objValue.take("address").toString();
+
+			info._oservice.m_wechat = objValue.take("weixin").toString();
+			info._oservice.m_qq = objValue.take("qq").toString();
+			info._oservice.m_nickname = objValue.take("nickname").toString();
+			info._oservice.m_avatarurl = objValue.take("avatarurl").toString();		
+
+	}
+	objValue = data.take("user").toObject();
+
+	info._strUid = objValue.take("user_id").toString();  //
+	info._strUsername = objValue.take("user_name").toString();  //
+	info._strTruename = objValue.take("true_name").toString();  //
+	info._strJob = objValue.take("job").toString();  //
+	info._nrole_type = objValue.take("role_type").toInt();  //
+
+	////-------------------------------------------------------------------
+
 	QJsonValue jsonValue = data.take("member_list");
 	if (jsonValue.isArray())
 	{

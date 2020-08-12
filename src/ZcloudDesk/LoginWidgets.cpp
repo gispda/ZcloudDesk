@@ -1096,7 +1096,11 @@ void LoginWidget::loginFinish(int status, UserInfoStruct userInfoStruct)
 			else
 			{
 				QString errorStr = QString::fromLocal8Bit("验证码错误，请重新输入!错误码：%1").arg(status);
-				if (status == 30014)
+				if (status == 30003)
+				{
+					errorStr = QString::fromLocal8Bit("验证码已经超时过期");
+				}
+				else if (status == 30014)
 				{
 					errorStr = QString::fromLocal8Bit("该账号未绑定公司");
 				}

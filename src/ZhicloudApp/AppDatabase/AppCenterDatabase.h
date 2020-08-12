@@ -162,7 +162,7 @@ public:
 	* ÈÕÆÚ£º2018-09-14 12:49:00
 
 	//////////////////////////////////////////////////////////////////*/
-	bool updateApp(AppDataInfo appDataInfo, bool isAppear = false);
+	bool updateApp(AppDataInfo appDataInfo, bool isAppear = false,bool updateState =true);
 
 	/*//////////////////////////////////////////////////////////////////
 

@@ -49,7 +49,7 @@ signals:
 private slots:
 
 void openCreateEntDlg();
-void openOrderList();
+void openWorkers();
 //隐藏按钮
 void hideWindow();
 //显示按钮
@@ -168,7 +168,13 @@ private:
 	void openEntCenterWidget();
 
 	void createEnterCenterMgr();
+
+	QString queryTaxInfo();
 	
+	void InitEntCenter();
+	
+
+
 
 	//!打开壁纸
 	void openWallpaperWidget(QString strUrl);

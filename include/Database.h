@@ -86,9 +86,9 @@ struct UserService
 	QString m_strPhone;    //电话
 	QString m_strTruename;  //姓名
 	QString m_sex;   ///性别 0，1
-	QString m_strProvinceId;		//省Id
-	QString m_strCityId;			//市Id
-	QString m_strAreaId;			//区Id
+	int m_nProvinceId;		//省Id
+	int m_nCityId;			//市Id
+	int m_nAreaId;			//区Id
 	QString m_strHzsId;				//合作商Id
 	QString m_strAddress;           //地址
 	QString m_wechat;              //微信
