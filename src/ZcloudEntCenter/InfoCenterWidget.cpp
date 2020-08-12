@@ -38,6 +38,10 @@ InfoCenterWidget::InfoCenterWidget(UserInfoStruct _userInfo, QWidget *parent /*=
 
 	m_pUserCenter = new UserCenterWidget(_userInfo,ui.widgetCenter);
 	m_pUserCenter->hide();
+
+	connect(ui.closeButton, &QPushButton::clicked, [this](){
+		close();
+	});
 	
 	
 	//m_pUserDefult = new QWidget(ui.EntRightWidget);

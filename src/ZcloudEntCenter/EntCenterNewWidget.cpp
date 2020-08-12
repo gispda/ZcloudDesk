@@ -43,7 +43,9 @@ EntCenterNewWidget::EntCenterNewWidget(UserInfoStruct _userInfo,QWidget *parent)
 	connect(ui.copyTaxButton, SIGNAL(clicked()), this, SLOT(onCopyBtnClick()));
 	connect(ui.switchButton, SIGNAL(clicked()), this, SLOT(onSwitchBtnClick()));
 
-
+	
+	ui.labelAddComp->installEventFilter(this);
+	
 	
 }
 
@@ -103,23 +105,24 @@ EntCenterNewWidget ::~EntCenterNewWidget(){
 
 bool EntCenterNewWidget ::eventFilter(QObject *target, QEvent *e)
 {
-	if (target == ui.copyTaxButton)
-	{
-		if (e->type() == QEvent::Enter) //
-		{
-			QString strText = ui.labelCopy->text();
-			if (QString::fromLocal8Bit("复制")!=	strText)
-			{
-				ui.labelCopy->setText(QString::fromLocal8Bit("复制"));
-			}
-			ui.labelCopy->show();
-		}
-		else if (e->type() == QEvent::Leave)
-		{
-			ui.labelCopy->hide();
-		}
-	}
-	else if (target == ui.labelAddComp)
+	//if (target == ui.copyTaxButton)
+	//{
+	//	if (e->type() == QEvent::Enter) //
+	//	{
+	//		QString strText = ui.labelCopy->text();
+	//		if (QString::fromLocal8Bit("复制")!=	strText)
+	//		{
+	//			ui.labelCopy->setText(QString::fromLocal8Bit("复制"));
+	//		}
+	//		ui.labelCopy->show();
+	//	}
+	//	else if (e->type() == QEvent::Leave)
+	//	{
+	//		ui.labelCopy->hide();
+	//	}
+	//}
+	//else 
+		if (target == ui.labelAddComp)
 	{
 		if (e->type() == QEvent::MouseButtonRelease) //
 		{

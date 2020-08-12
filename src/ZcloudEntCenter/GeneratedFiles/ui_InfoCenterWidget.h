@@ -34,6 +34,7 @@ public:
     QPushButton *pushButtonUserCenter;
     QLabel *labelEntCenter;
     QLabel *labelUserCenter;
+    QPushButton *closeButton;
     QWidget *widgetCenter;
 
     void setupUi(QWidget *InfoCenterWidget)
@@ -103,6 +104,18 @@ public:
         labelUserCenter->setObjectName(QStringLiteral("labelUserCenter"));
         labelUserCenter->setGeometry(QRect(125, 55, 120, 2));
         labelUserCenter->setStyleSheet(QStringLiteral("border:2px solid #1E8BED;"));
+        closeButton = new QPushButton(widgetTop);
+        closeButton->setObjectName(QStringLiteral("closeButton"));
+        closeButton->setGeometry(QRect(960, 10, 32, 28));
+        QSizePolicy sizePolicy1(QSizePolicy::Fixed, QSizePolicy::Fixed);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(closeButton->sizePolicy().hasHeightForWidth());
+        closeButton->setSizePolicy(sizePolicy1);
+        closeButton->setMinimumSize(QSize(32, 28));
+        closeButton->setMaximumSize(QSize(32, 28));
+        closeButton->setStyleSheet(QLatin1String("QPushButton{border-image: url(:/EntCenterWidget/image/close.png);}\n"
+"QPushButton:hover,pressed{border-image: url(:/EntCenterWidget/image/close_sel.png);};"));
 
         verticalLayout_2->addWidget(widgetTop);
 
@@ -130,6 +143,7 @@ public:
         pushButtonUserCenter->setText(QApplication::translate("InfoCenterWidget", "\344\270\252\344\272\272\344\270\255\345\277\203", 0));
         labelEntCenter->setText(QString());
         labelUserCenter->setText(QString());
+        closeButton->setText(QString());
     } // retranslateUi
 
 };
