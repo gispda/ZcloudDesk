@@ -609,7 +609,7 @@ void ZcloudDesk::openEntCenterWidget()
 
 		//m_pEntCenter->createEntCenter();
 
-			return;
+		//	return;
 	}
 
 
@@ -2012,11 +2012,11 @@ QString ZcloudDesk::queryTaxInfo()
 	{
 	///	m_stUserInfo.m_strTaxNumber = strTaxno;
 
-		QString strRet, strCompany;
+		QString strRet, strCompany, strServerUserid;
 		bool bret;
 		if (!strTaxno.isEmpty())
 		{
-			bret = ZcloudClient::winHttpQueryCompanyInfoLocalTax(strTaxno, m_stUserInfo.m_strToken, strRet, strCompany);
+			bret = ZcloudComFun::winHttpQueryCompanyInfoLocalTax(strTaxno, m_stUserInfo.m_strToken, strServerUserid, strRet, strCompany);
 
 			return strCompany;
 		}

@@ -32,7 +32,7 @@ public:
     QToolButton *switchButton;
     AvatarLabel *labelAvatar;
     QPushButton *copyTaxButton;
-    QLabel *labelComName;
+    QLabel *labeltaxno;
     QLabel *labelTaxNo;
     QLabel *labelSpaceLeft;
     QPushButton *scoreButton;
@@ -47,6 +47,7 @@ public:
     QLabel *labelCopy;
     QLabel *labelAddComp;
     QLabel *labelVip;
+    QLabel *labelComName;
     QWidget *EntRightWidget;
 
     void setupUi(QWidget *EntCenterNewWidget)
@@ -113,18 +114,20 @@ public:
         copyTaxButton->setMaximumSize(QSize(14, 14));
         copyTaxButton->setStyleSheet(QLatin1String("QPushButton{border-image: url(:/EntCenterWidget/image/copy.png);}\n"
 "QPushButton:hover,pressed{border-image: url(:/EntCenterWidget/image/copy_sel.png);}"));
-        labelComName = new QLabel(EntLeftWidget);
-        labelComName->setObjectName(QStringLiteral("labelComName"));
-        labelComName->setGeometry(QRect(21, 100, 210, 35));
-        sizePolicy1.setHeightForWidth(labelComName->sizePolicy().hasHeightForWidth());
-        labelComName->setSizePolicy(sizePolicy1);
-        labelComName->setMinimumSize(QSize(210, 35));
-        labelComName->setMaximumSize(QSize(210, 35));
-        labelComName->setStyleSheet(QString::fromUtf8("font:14px \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
-"font-weight:bold;\n"
-"color:#333333;"));
-        labelComName->setAlignment(Qt::AlignCenter);
-        labelComName->setWordWrap(true);
+        labeltaxno = new QLabel(EntLeftWidget);
+        labeltaxno->setObjectName(QStringLiteral("labeltaxno"));
+        labeltaxno->setGeometry(QRect(50, 110, 122, 12));
+        sizePolicy1.setHeightForWidth(labeltaxno->sizePolicy().hasHeightForWidth());
+        labeltaxno->setSizePolicy(sizePolicy1);
+        labeltaxno->setMinimumSize(QSize(122, 12));
+        labeltaxno->setMaximumSize(QSize(122, 12));
+        labeltaxno->setStyleSheet(QLatin1String("font-size:12px;\n"
+"font-family:SourceHanSansCN-Normal,SourceHanSansCN;\n"
+"font-weight:400;\n"
+"color:rgba(51,51,51,1);\n"
+"line-height:18px;"));
+        labeltaxno->setAlignment(Qt::AlignCenter);
+        labeltaxno->setWordWrap(true);
         labelTaxNo = new QLabel(EntLeftWidget);
         labelTaxNo->setObjectName(QStringLiteral("labelTaxNo"));
         labelTaxNo->setGeometry(QRect(52, 144, 150, 12));
@@ -242,9 +245,13 @@ public:
         labelCopy->setAlignment(Qt::AlignCenter);
         labelAddComp = new QLabel(EntLeftWidget);
         labelAddComp->setObjectName(QStringLiteral("labelAddComp"));
-        labelAddComp->setGeometry(QRect(97, 130, 61, 21));
-        labelAddComp->setStyleSheet(QString::fromUtf8("font: 14px \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
-"color:#1E8BED;"));
+        labelAddComp->setGeometry(QRect(50, 140, 126, 14));
+        labelAddComp->setMaximumSize(QSize(126, 14));
+        labelAddComp->setStyleSheet(QLatin1String("font-size:14px;\n"
+"font-family:SourceHanSansCN-Normal,SourceHanSansCN;\n"
+"font-weight:400;\n"
+"color:rgba(102,102,102,1);\n"
+"line-height:21px;"));
         labelVip = new QLabel(EntLeftWidget);
         labelVip->setObjectName(QStringLiteral("labelVip"));
         labelVip->setGeometry(QRect(95, 30, 60, 60));
@@ -253,6 +260,20 @@ public:
         labelVip->setMinimumSize(QSize(60, 60));
         labelVip->setMaximumSize(QSize(60, 60));
         labelVip->setStyleSheet(QStringLiteral("border-image: url(:/EntCenterWidget/image/qyzx_icon_vip_wjr.png);"));
+        labelComName = new QLabel(EntLeftWidget);
+        labelComName->setObjectName(QStringLiteral("labelComName"));
+        labelComName->setGeometry(QRect(50, 90, 140, 14));
+        sizePolicy1.setHeightForWidth(labelComName->sizePolicy().hasHeightForWidth());
+        labelComName->setSizePolicy(sizePolicy1);
+        labelComName->setMinimumSize(QSize(140, 14));
+        labelComName->setMaximumSize(QSize(140, 14));
+        labelComName->setStyleSheet(QLatin1String("font-size:14px;\n"
+"font-family:SourceHanSansCN-Normal,SourceHanSansCN;\n"
+"font-weight:400;\n"
+"color:rgba(51,51,51,1);\n"
+"line-height:21px;"));
+        labelComName->setAlignment(Qt::AlignCenter);
+        labelComName->setWordWrap(true);
 
         horizontalLayout->addWidget(EntLeftWidget);
 
@@ -284,7 +305,7 @@ public:
         copyTaxButton->setToolTip(QString());
 #endif // QT_NO_TOOLTIP
         copyTaxButton->setText(QString());
-        labelComName->setText(QString());
+        labeltaxno->setText(QString());
         labelTaxNo->setText(QString());
         labelSpaceLeft->setText(QString());
 #ifndef QT_NO_TOOLTIP
@@ -305,6 +326,7 @@ public:
         labelCopy->setText(QApplication::translate("EntCenterNewWidget", "\345\244\215\345\210\266", 0));
         labelAddComp->setText(QApplication::translate("EntCenterNewWidget", "\345\212\240\345\205\245\344\274\201\344\270\232", 0));
         labelVip->setText(QString());
+        labelComName->setText(QString());
     } // retranslateUi
 
 };

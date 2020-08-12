@@ -16,6 +16,7 @@
 #include "FinanMemberWidget.h"
 #include "AccSettingWidget.h"
 
+
 EntCenterNewWidget::EntCenterNewWidget(UserInfoStruct _userInfo,QWidget *parent)
 	:QWidget(parent)
 {
@@ -45,6 +46,12 @@ EntCenterNewWidget::EntCenterNewWidget(UserInfoStruct _userInfo,QWidget *parent)
 
 	
 	ui.labelAddComp->installEventFilter(this);
+
+	m_strLocalTaxno = ZcloudComFun::getTaxnumber();
+	showUserCompanyInfoTitle();
+
+
+
 	pWidget = NULL;
 	
 }
@@ -122,7 +129,7 @@ bool EntCenterNewWidget ::eventFilter(QObject *target, QEvent *e)
 	//	}
 	//}
 	//else 
-		if (target == ui.labelAddComp)
+	if (target == ui.labelAddComp)
 	{
 		if (e->type() == QEvent::MouseButtonRelease) //
 		{
@@ -175,5 +182,40 @@ void EntCenterNewWidget ::onSwitchBtnClick()
 void EntCenterNewWidget::onSwitchAcc(int bLoginByTax, bool bOther, QString strTaxNo_userName, QString strPwd)
 {
 	emit sigSwitchAcc(bLoginByTax, bOther, strTaxNo_userName, strPwd);
+}
+
+void EntCenterNewWidget::showUserCompanyInfoTitle()
+{
+	clearUserCompanyInfoTitle();
+   
+	QString strCompany,strServerUserid,strRet;
+	bool bret = false;
+
+	if (m_userInfo.m_strCompanyName.isEmpty())
+	{
+		ui.labelComName->setText(QString::fromLocal8Bit("暂未查询到您的企业"));
+
+
+		if (!m_strLocalTaxno.isEmpty())
+		{
+			ui.labelTaxNo->setText(m_strLocalTaxno);
+
+
+			bret = ZcloudComFun::winHttpQueryCompanyInfoLocalTax(m_strLocalTaxno, m_userInfo.m_strToken, strServerUserid, strRet, strCompany);
+			//ui.labelAddComp->setText("");
+		}
+		else
+		{
+			ui.labelTaxNo->setText("");
+			ui.labelAddComp->setText("");
+		}
+	}
+}
+
+void EntCenterNewWidget::clearUserCompanyInfoTitle()
+{
+	ui.labelComName->setText("");
+	ui.labelTaxNo->setText("");
+	ui.labelAddComp->setText("");
 }
 

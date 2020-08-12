@@ -205,7 +205,7 @@ bool ZcloudClient::winHttpUploadImage(QString strFile, QString strToken, QString
 	return jmsg;
 }
 
-bool ZcloudClient::winHttpQueryCompanyInfoLocalTax(QString strTaxno, QString strToken, QString& strRet, QString& strCompany)
+bool ZcloudClient::winHttpQueryCompanyInfoLocalTax(QString strTaxno, QString strToken, QString& strServerUserid,QString& strRet, QString& strCompany)
 {
 
 	QString strUrl = QString("/ucenter/company/info");
@@ -279,6 +279,10 @@ bool ZcloudClient::winHttpQueryCompanyInfoLocalTax(QString strTaxno, QString str
 	QJsonObject jdata = obj.take("data").toObject();
 
 	strCompany = jdata.take("company_name").toString();
+
+	QJsonObject userdata = jdata.take("user").toObject();
+
+	strServerUserid = userdata.take("user_id").toString();
 
 	bool jmsg = false;
 	if (!strCompany.isEmpty())

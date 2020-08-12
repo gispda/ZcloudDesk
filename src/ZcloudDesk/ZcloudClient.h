@@ -18,7 +18,7 @@ public:
 
 
 	///查询本地注册表中税号关联的后台公司信息，并返回
-	static bool winHttpQueryCompanyInfoLocalTax(QString strTaxno, QString strToken, QString& strRet, QString& strMsg);
+	static bool winHttpQueryCompanyInfoLocalTax(QString strTaxno, QString strToken, QString& strServerUserid,QString& strRet, QString& strMsg);
 
 
 

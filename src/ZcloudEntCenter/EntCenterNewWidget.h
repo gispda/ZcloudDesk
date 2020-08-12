@@ -24,6 +24,9 @@ public:
 	//!设置用户数据
 	void setUserInfo(QString strUid, QString strToken, QString strTrueName, QString strJob, int isLoginByTax, QString strMobile, QString strCompId, QString strUserName);
 
+protected:
+	void showUserCompanyInfoTitle();
+	void clearUserCompanyInfoTitle();
 signals:
 	//!切换账号
 	void sigSwitchAcc(int, bool, QString, QString);
@@ -55,6 +58,8 @@ private:
 	int		m_isLoginByTax;
 	QString m_strCompId;
 	bool	m_isNetActive	= true;
+
+	QString m_strLocalTaxno;
 	Ui::EntCenterNewWidget ui;
 
 	bool	m_bJoinEnt = true;

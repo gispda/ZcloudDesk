@@ -394,7 +394,7 @@ void LoginWidget::changeLoginMethod(int statusFlag, bool isClear)
 
 		loginButton->setGeometry(48, 240, 320, 50);
 		registerLael->setGeometry(178, 305, 60, 15);
-		registerLael->show();
+		registerLael->hide();
 		verificationCodeLabel->show();
 		verificationCodeLabel->raise();
 

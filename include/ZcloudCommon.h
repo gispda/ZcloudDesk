@@ -98,6 +98,10 @@ namespace ZcloudComFun
 	 bool getPublicIp(QString& ip);
 
 	 __declspec(dllexport) void setElideText(int nPixSize, QLabel* pLabel, const QString& strText);
+
+
+
+	 __declspec(dllexport) bool winHttpQueryCompanyInfoLocalTax(QString strTaxno, QString strToken, QString& strServerUserid, QString& strRet, QString& strMsg);
 };
 #endif // ZCLOUDCOMMON_H
 
