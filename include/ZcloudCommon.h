@@ -45,6 +45,9 @@ namespace ZcloudComFun
 
 	 //!检测联网
 	 extern "C" __declspec(dllexport) bool isNetActive();
+
+		 //!检测联网
+	extern "C" __declspec(dllexport) bool isNetActiveByToken(QString strToken);
 	 
 	 //读取开票软件是否存在  
 	 extern "C" __declspec(dllexport)  bool readsoft(QString &verSion, QString taxNumber = "");

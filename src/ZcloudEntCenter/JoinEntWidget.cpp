@@ -89,7 +89,7 @@ void JoinEntWidget::onSearchBtnClick()
 		return ;
 	}
 	QJsonObject obj = parse_doucment.object();
-	int status = obj.take("status").toInt();
+	int status = obj.take("code").toInt();
 
 	if (status == 0)
 	{
@@ -110,7 +110,7 @@ void JoinEntWidget::onSearchBtnClick()
 			QString	strTaxNo	= data.take("tax_number").toString();
 			QString	strComName	= data.take("company_name").toString();
 			QString	strLogo		= ZcloudComFun::downloadPic(data.take("logo").toString(), QApplication::applicationDirPath().append("/CacheImage/logoImage"));
-			int		nState		= data.take("audit_state").toInt();
+			int		nState = data.take("is_join").toInt();;
 
 			QListWidgetItem* pListWidgetItem = new QListWidgetItem;
 			AccItemWidget* pItem = new AccItemWidget(strComId, strTaxNo, strComName, strLogo, nState, ui.listWidget);
@@ -159,7 +159,7 @@ void JoinEntWidget::onJoinEnt(QString strComId)
 		return;
 	}
 	QJsonObject obj = parse_doucment.object();
-	int status = obj.take("status").toInt();
+	int status = obj.take("code").toInt();
 	if (0 == status)
 	{
 		ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_CLOSE, QString::fromLocal8Bit("操作成功"), QString::fromLocal8Bit("已成功提交加入申请，\r\n请等待对方管理员审核通过！"));

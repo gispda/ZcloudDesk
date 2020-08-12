@@ -45,7 +45,7 @@ EntCenterNewWidget::EntCenterNewWidget(UserInfoStruct _userInfo,QWidget *parent)
 
 	
 	ui.labelAddComp->installEventFilter(this);
-	
+	pWidget = NULL;
 	
 }
 
@@ -127,11 +127,11 @@ bool EntCenterNewWidget ::eventFilter(QObject *target, QEvent *e)
 		if (e->type() == QEvent::MouseButtonRelease) //
 		{
 			ZcloudBigDataInterface::GetInstance()->produceData("M00", "OP001", "BBC003");
-			if (ZcloudComFun::winHttpSSO(m_strToken, m_strUid))
+			if (ZcloudComFun::winHttpSSO(m_userInfo.m_strToken, m_userInfo.m_strUserId))
 			{
 				if (!this->findChild <JoinEntWidget*>("addEntEnter"))
 				{
-					JoinEntWidget*	pJoinEntWidget = new JoinEntWidget(m_strUid,m_strToken,this);
+					JoinEntWidget*	pJoinEntWidget = new JoinEntWidget(m_userInfo.m_strUserId, m_userInfo.m_strToken, this);
 					pJoinEntWidget->show();
 				}
 			}
@@ -160,10 +160,20 @@ void EntCenterNewWidget ::onCopyBtnClick()
 
 void EntCenterNewWidget ::onSwitchBtnClick()
 {
-	SwitchAccWidget*	pWidget = new SwitchAccWidget(m_strUid,m_strToken,m_strUserName,m_strMobile,m_strCompId,this);
-	connect(pWidget, SIGNAL(sigSwitchAcc(int, bool, QString, QString)), this, SIGNAL(sigSwitchAcc(int, bool, QString, QString)));
-	pWidget->setAttribute(Qt::WA_DeleteOnClose);
+	if (pWidget == NULL)
+	{
+		pWidget = new SwitchAccWidget(m_userInfo.m_strUserId, m_userInfo.m_strToken, m_userInfo.m_strUsername, m_userInfo.m_strMobile, m_userInfo.m_strCompanyId, this);
+		connect(pWidget, SIGNAL(sigSwitchAcc(int, bool, QString, QString)), this, SLOT(onSwitchAcc(int, bool, QString, QString)));
+		//connect(this, SIGNAL(sigSwitchAcc(int, bool, QString, QString)), this, SLOT(onSwitchAcc(int, bool, QString, QString)));
+
+		pWidget->setAttribute(Qt::WA_DeleteOnClose);
+	}
 	pWidget->show();
 	ZcloudBigDataInterface::GetInstance()->produceData("M00", "OP001", "BBC010");
+}
+
+void EntCenterNewWidget::onSwitchAcc(int bLoginByTax, bool bOther, QString strTaxNo_userName, QString strPwd)
+{
+	emit sigSwitchAcc(bLoginByTax, bOther, strTaxNo_userName, strPwd);
 }
 

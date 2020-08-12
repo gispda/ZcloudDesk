@@ -24,7 +24,7 @@ public:
 
 signals:
 
-	
+	void sigSwitchAcc(int, bool, QString, QString);
 
 protected:
 	//bool eventFilter(QObject *target, QEvent *e);
@@ -35,7 +35,7 @@ private slots:
 void showEntCenter();
 void showUserCenter();	
 
-
+void onSwitchAcc(int bLoginByTax, bool bOther, QString strTaxNo_userName, QString strPwd);
 
 private:
 	//!查询企业信息

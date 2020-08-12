@@ -241,7 +241,7 @@ void TwobarCodeWidget::getCodeImg()
 
 bool TwobarCodeWidget::winHttpGetTwoCodeInfo(QString strCompanyid, QString strToken, QString& strRet)
 {
-	QString strUrl = QString("/serviceorder/pc-worker/min-qrcode");
+	QString strUrl = QString("/ucenter/qr/min-qrcode");
 	QString strPost = QString("token=%1&company_id=%2")
 		.arg(strToken).arg(strCompanyid);
 	return ZcloudComFun::httpPost(strUrl, strPost, 5000, strRet, false, 1);

@@ -319,7 +319,7 @@ bool LoginWidget::eventFilter(QObject *target, QEvent *e)
 					else if (loginButton->text() == QString::fromLocal8Bit("立即注册")) //注册获取验证码
 					{
 						ZcloudBigDataInterface::GetInstance()->produceData("M00", "OP001", "SLG026", accountLineEdit->text());
-						strCodeType = "register";
+						strCodeType = "registr";
 					}
 					else
 						strCodeType = "";
@@ -390,6 +390,7 @@ void LoginWidget::changeLoginMethod(int statusFlag, bool isClear)
 		verificationCodeLineEdit->setGeometry(48, 164, 320, 50);
 		verificationCodeLineEdit->show();
 		passwordLineEdit->hide();
+		statusLoginLabel_2->hide();
 
 		loginButton->setGeometry(48, 240, 320, 50);
 		registerLael->setGeometry(178, 305, 60, 15);
@@ -1180,15 +1181,15 @@ int LoginWidget::checkLogin(QString &tipSt)
 	else
 	{
 		//调试用设置---S	dr
-		m_loginSetingStruct.taxNo = "95666635875685456";
-		m_loginSetingStruct.machine = "11PN1I";
-		m_loginSetingStruct.userName="nick_default_qpfzjh";
-		m_loginSetingStruct.firstLogin = false;
+		//m_loginSetingStruct.taxNo = "95666635875685456";
+		//m_loginSetingStruct.machine = "11PN1I";
+		//m_loginSetingStruct.userName="nick_default_qpfzjh";
+		//m_loginSetingStruct.firstLogin = false;
 
-		m_loginSetingStruct.taxNo = "";
-		m_loginSetingStruct.machine = "";
-		m_loginSetingStruct.userName = "";
-		m_loginSetingStruct.firstLogin = true;
+		//m_loginSetingStruct.taxNo = "";
+		//m_loginSetingStruct.machine = "";
+		//m_loginSetingStruct.userName = "";
+		//m_loginSetingStruct.firstLogin = true;
 		//调试用设置---E	dr
 
 		//第一次登录

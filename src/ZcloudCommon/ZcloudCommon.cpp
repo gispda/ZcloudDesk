@@ -41,7 +41,7 @@ int SSO(QString jsonStr)
 		return 1;
 	}
 	QJsonObject obj = parse_doucment.object();
-	int status = obj.take("status").toInt();
+	int status = obj.take("code").toInt();
 	return status;
 	
 }
@@ -131,9 +131,10 @@ bool ZcloudComFun::httpPostFile(QString strUrl, QByteArray strPost, int nTimeout
 
 bool ZcloudComFun::winHttpSSO(QString strToken, QString strUserId)
 {
-	QString strUrl = QString("/user/check-token?token=%1&user_id=%2").arg(strToken).arg(strUserId);
+	QString strUrl = QString("/ucenter/general/ping");
+	QString strPost = QString("token=%1").arg(strToken);
 	QString strRet;
-	bool httpR = ZcloudComFun::httpPost(strUrl, "", 2000, strRet,true);
+	bool httpR = ZcloudComFun::httpPost(strUrl, strPost, 2000, strRet,true,1);
 	if (httpR && !strRet.isEmpty())
 	{
 		int status = SSO(strRet);
@@ -210,7 +211,9 @@ QString ZcloudComFun::downloadIconFromUrl(QString strUrl, QString strDirPath, QS
 bool ZcloudComFun::isNetActive()
 {
 	QString strRet;
-	QString strUrl = QString("/general/get-server-time");
+	QString strUrl = QString("/ucenter/general/ping");
+
+	
 	return httpPost(strUrl, "", 15000, strRet);
 }
 
@@ -943,6 +946,15 @@ void ZcloudComFun::LoadAvatar(const std::string &strAvatarUrl, QLabel* lable)
 	});
 
 	loop.exec();
+}
+
+bool ZcloudComFun::isNetActiveByToken(QString strToken)
+{
+	QString strRet;
+	QString strUrl = QString("/ucenter/general/ping");
+	QString strPost = QString("token=%1").arg(strToken);
+
+	return httpPost(strUrl, strToken, 15000, strRet,false,1);
 }
 
 //QString ZcloudComFun::getTaxnumber()

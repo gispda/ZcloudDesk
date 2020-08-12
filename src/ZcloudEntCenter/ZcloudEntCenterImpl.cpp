@@ -64,10 +64,14 @@ void ZcloudEntCenterImpl::openEntCenter(QString strUid, QString strToken, QStrin
 	//合并后的企业中心和个人中心   用id查询企业信息和用户信息失败
 	getInfoCenterWidget();
 
+	
+
 	m_pInfoCenterWidget->setUserInfo(m_strUid, m_strToken, m_strTrueName, m_strJob, m_isLoginByTax, m_strMobile, m_strCompId, m_strUserName);
 	m_pInfoCenterWidget->init();
 	m_pInfoCenterWidget->show();
 
+
+	
 
 	//旧企业中心
 	//if (NULL == m_pEntCenterWidget)
@@ -116,6 +120,13 @@ void ZcloudEntCenterImpl::closeAllEntWidget()
 	{
 		m_pEntCenterWidget->deleteLater();
 		m_pEntCenterWidget = NULL;
+	}
+
+	if (NULL != m_pInfoCenterWidget)
+	{
+
+		m_pInfoCenterWidget->deleteLater();
+		m_pInfoCenterWidget= NULL;
 	}
 	if (NULL != m_pVipInfoWidget)
 	{
@@ -189,6 +200,11 @@ void ZcloudEntCenterImpl::modifyCoinCount(int nCount)
 void ZcloudEntCenterImpl::setUserInfo(UserInfoStruct _userInfo)
 {
 	m_userInfo = _userInfo;
+}
+
+void ZcloudEntCenterImpl::onSwitchAcc(int bLoginByTax, bool bOther, QString strTaxNo_userName, QString strPwd)
+{
+	emit sigSwitchAcc(bLoginByTax, bOther, strTaxNo_userName, strPwd);
 }
 
 //void ZcloudEntCenterImpl::InitCompanyInfo(UserInfoStruct _userInfo)

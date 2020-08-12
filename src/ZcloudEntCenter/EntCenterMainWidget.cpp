@@ -149,7 +149,7 @@ void EntCenterMainWidget::init(EntCenterInfo*	info)
 	}
 
 	//!°´Å¥×´Ì¬
-	m_isNetActive = ZcloudComFun::isNetActive();
+	m_isNetActive = ZcloudComFun::isNetActiveByToken(m_userinfo.m_strToken);
 	if (!m_isNetActive)
 	{
 		ui.ServiceFeeButton->setEnabled(false); 

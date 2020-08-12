@@ -10,7 +10,7 @@
 #include "EntCenterInfoWidget.h"
 #include "EntCenterMainWidget.h"
 #include "Database.h"
-
+#include "SwitchAccWidget.h"
 
 class EntCenterNewWidget : public QWidget
 {
@@ -41,6 +41,8 @@ protected:
 	//!’À∫≈«–ªª
 	void onSwitchBtnClick();
 
+
+	void onSwitchAcc(int bLoginByTax, bool bOther, QString strTaxNo_userName, QString strPwd);
 private:
 
 	UserInfoStruct m_userInfo;
@@ -62,7 +64,7 @@ private:
 	EntCenterInfoWidget* mp_EntCenterInfo;
 	EntCenterMainWidget* mp_EntCenterMain;
 
-
+	SwitchAccWidget*	pWidget;
 };
 
 #endif // EntCenterNewWidget_H

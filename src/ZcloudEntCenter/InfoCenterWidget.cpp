@@ -43,7 +43,8 @@ InfoCenterWidget::InfoCenterWidget(UserInfoStruct _userInfo, QWidget *parent /*=
 		close();
 	});
 	
-	
+	connect(m_pEntCenter, SIGNAL(sigSwitchAcc(int, bool, QString, QString)), this, SLOT(onSwitchAcc(int, bool, QString, QString)));
+	//connect(this, SIGNAL(sigSwitchAcc(int, bool, QString, QString)), this, SLOT(onSwitchAcc(int, bool, QString, QString)));
 	//m_pUserDefult = new QWidget(ui.EntRightWidget);
 	//m_pUserDefult->setGeometry(20, 140, 711, 181);
 	//m_pUserDefult->setStyleSheet("border-image:url(:/InfoCenterWidget/image/userVipDefualt.png);");
@@ -285,4 +286,9 @@ bool InfoCenterWidget::analysisJson(const QString& strJson, EntCenterInfo& info)
 QString InfoCenterWidget::checkLogoExist(QString strUrl)
 {
 	return ZcloudComFun::downloadPic(strUrl, QApplication::applicationDirPath().append("/CacheImage/logoImage"));
+}
+
+void InfoCenterWidget::onSwitchAcc(int bLoginByTax, bool bOther, QString strTaxNo_userName, QString strPwd)
+{
+	emit sigSwitchAcc(bLoginByTax, bOther, strTaxNo_userName, strPwd);
 }

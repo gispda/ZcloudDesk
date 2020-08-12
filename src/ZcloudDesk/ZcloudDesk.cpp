@@ -1376,6 +1376,8 @@ void ZcloudDesk::closeAllWindows(int flag)
 			m_pEntCenter = NULL;
 		}
 	}
+	
+
 
 	//!消息中心关闭
 	if (m_pMsgCenter!=NULL)

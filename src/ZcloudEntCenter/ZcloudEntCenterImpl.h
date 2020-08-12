@@ -34,6 +34,9 @@ public:
 		if (NULL == m_pInfoCenterWidget)
 		{
 			m_pInfoCenterWidget = new InfoCenterWidget(m_userInfo);
+
+			connect(m_pInfoCenterWidget, SIGNAL(sigSwitchAcc(int, bool, QString, QString)), this, SLOT(onSwitchAcc(int, bool, QString, QString)));
+			//connect(this, SIGNAL(sigSwitchAcc(int, bool, QString, QString)), this, SLOT(onSwitchAcc(int, bool, QString, QString)));
 		}
 	}
 
@@ -55,6 +58,13 @@ public:
 
 	//!签到成功修改云币数据
 	virtual void modifyCoinCount(int nCount);
+public:
+signals :
+
+	void sigSwitchAcc(int, bool, QString, QString);
+public
+slots:
+	void onSwitchAcc(int bLoginByTax, bool bOther, QString strTaxNo_userName, QString strPwd);
 
 private:
 	EntCenterWidget*		m_pEntCenterWidget = NULL;
