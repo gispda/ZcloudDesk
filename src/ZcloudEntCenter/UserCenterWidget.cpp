@@ -16,20 +16,19 @@
 #include "FinanMemberWidget.h"
 #include "AccSettingWidget.h"
 
-UserCenterWidget::UserCenterWidget(UserInfoStruct _userInfo,QWidget *parent)
-	:QWidget(parent)
+UserCenterWidget::UserCenterWidget(UserInfoStruct* _userInfo,QWidget *parent)
+	:QWidget(parent), m_userInfo(_userInfo)
 {
 	ui.setupUi(this);
-	mp_UserCenterMain = new UserCenterMainWidget(ui.RightWidget);
+	mp_UserCenterMain = new UserCenterMainWidget(_userInfo,ui.RightWidget);
 
-	mp_UserCenterAcc = new UserCenterAccWidget( ui.RightWidget);
+	mp_UserCenterAcc = new UserCenterAccWidget(_userInfo, ui.RightWidget);
 	mp_UserCenterAcc->hide();
 
 
 	connect(ui.pushButtonAcc, SIGNAL(clicked()), this, SLOT(onShowAcc()));
 
 
-	m_userInfo = _userInfo;
 	/*connect(ui.copyTaxButton, SIGNAL(clicked()), this, SLOT(onCopyBtnClick()));
 	connect(ui.switchButton, SIGNAL(clicked()), this, SLOT(onSwitchBtnClick()));
 	connect(ui.memberButton, SIGNAL(clicked()), this, SLOT(onMemberBtnClick()));
@@ -150,63 +149,63 @@ bool UserCenterWidget::winHttpGetCompanyInfo(QString strUid, QString strToken, Q
 }
 
 
-bool UserCenterWidget::analysisJson(const QString& strJson, EntCenterInfo& info)
-{
-	QByteArray byte_array = strJson.toUtf8();
-	QJsonParseError json_error;
-	QJsonDocument parse_doucment = QJsonDocument::fromJson(byte_array, &json_error);
-	if (json_error.error != QJsonParseError::NoError)
-	{
-		return false;
-	}
-	if (!parse_doucment.isObject())
-	{
-		return false;
-	}
-	QJsonObject obj = parse_doucment.object();
-	int status = obj.take("status").toInt();
-
-	if (status != 0)
-	{
-		return false;
-	}
-
-	QJsonObject data = obj.take("data").toObject();
-	info._strUid = m_strUid;
-	info._strToken = m_strToken;
-	info._strCompId = data.take("company_id").toString();
-	info._strCompName = data.take("company_name").toString();
-	info._strTaxNo = data.take("tax_number").toString();
-	info._strLogo = data.take("logo").toString();
-	info._strLogoPath = checkLogoExist(info._strLogo);
-	info._bIsHxMember = data.take("is_hx_member").toInt();
-	info._nChargeExpire = data.take("charge_expire").toInt();
-	info._nEndDays = data.take("end_days").toInt();
-	info._bIsManualFulled = data.take("perfect_user_info").toInt();
-	info._nLastSignTime = data.take("last_sign_time").toInt();
-	info._nCoin = data.take("zc_coin").toInt();
-	info._nCoupon = data.take("coupon_num").toInt();
-	info._strCompanyInfoUrl = data.take("company_info_url").toString();
-	info._strTradeInfoUrl = data.take("trade_info_url").toString();
-	info._strFinancialMemberUrl = data.take("financial_member_url").toString();
-	info._strAccountSettingUrl = data.take("account_setting_url").toString();
-	info._strRenewUrl = data.take("renew_url").toString();
-	info._strMemberInfoUrl = data.take("member_info_url").toString();
-	info._strSignUrl = data.take("sign_url").toString();
-	info._strCreateCompanyUrl = data.take("create_company_url").toString();
-	info._dtServerTime = QDateTime::fromTime_t(data.take("server_time").toInt());
-	info._bHasMember = data.take("has_member").toInt();
-	QJsonValue jsonValue = data.take("member_list");
-	if (jsonValue.isArray())
-	{
-		QJsonArray BtnArray = jsonValue.toArray();
-		QJsonDocument document;
-		document.setArray(BtnArray);
-		QByteArray byte_array = document.toJson(QJsonDocument::Compact);
-		info._memberList = byte_array;
-	}
-	return true;
-}
+//bool UserCenterWidget::analysisJson(const QString& strJson, EntCenterInfo& info)
+//{
+//	QByteArray byte_array = strJson.toUtf8();
+//	QJsonParseError json_error;
+//	QJsonDocument parse_doucment = QJsonDocument::fromJson(byte_array, &json_error);
+//	if (json_error.error != QJsonParseError::NoError)
+//	{
+//		return false;
+//	}
+//	if (!parse_doucment.isObject())
+//	{
+//		return false;
+//	}
+//	QJsonObject obj = parse_doucment.object();
+//	int status = obj.take("status").toInt();
+//
+//	if (status != 0)
+//	{
+//		return false;
+//	}
+//
+//	QJsonObject data = obj.take("data").toObject();
+//	info._strUid = m_strUid;
+//	info._strToken = m_strToken;
+//	info._strCompId = data.take("company_id").toString();
+//	info._strCompName = data.take("company_name").toString();
+//	info._strTaxNo = data.take("tax_number").toString();
+//	info._strLogo = data.take("logo").toString();
+//	info._strLogoPath = checkLogoExist(info._strLogo);
+//	info._bIsHxMember = data.take("is_hx_member").toInt();
+//	info._nChargeExpire = data.take("charge_expire").toInt();
+//	info._nEndDays = data.take("end_days").toInt();
+//	info._bIsManualFulled = data.take("perfect_user_info").toInt();
+//	info._nLastSignTime = data.take("last_sign_time").toInt();
+//	info._nCoin = data.take("zc_coin").toInt();
+//	info._nCoupon = data.take("coupon_num").toInt();
+//	info._strCompanyInfoUrl = data.take("company_info_url").toString();
+//	info._strTradeInfoUrl = data.take("trade_info_url").toString();
+//	info._strFinancialMemberUrl = data.take("financial_member_url").toString();
+//	info._strAccountSettingUrl = data.take("account_setting_url").toString();
+//	info._strRenewUrl = data.take("renew_url").toString();
+//	info._strMemberInfoUrl = data.take("member_info_url").toString();
+//	info._strSignUrl = data.take("sign_url").toString();
+//	info._strCreateCompanyUrl = data.take("create_company_url").toString();
+//	info._dtServerTime = QDateTime::fromTime_t(data.take("server_time").toInt());
+//	info._bHasMember = data.take("has_member").toInt();
+//	QJsonValue jsonValue = data.take("member_list");
+//	if (jsonValue.isArray())
+//	{
+//		QJsonArray BtnArray = jsonValue.toArray();
+//		QJsonDocument document;
+//		document.setArray(BtnArray);
+//		QByteArray byte_array = document.toJson(QJsonDocument::Compact);
+//		info._memberList = byte_array;
+//	}
+//	return true;
+//}
 
 QString UserCenterWidget::checkLogoExist(QString strUrl)
 {

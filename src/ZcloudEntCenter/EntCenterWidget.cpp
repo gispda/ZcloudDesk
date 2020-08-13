@@ -163,7 +163,7 @@ void EntCenterWidget::onCopyBtnClick()
 
 void EntCenterWidget::onSwitchBtnClick()
 {
-	SwitchAccWidget*	pWidget = new SwitchAccWidget(m_strUid,m_strToken,m_strUserName,m_strMobile,m_strCompId,this);
+	SwitchAccWidget*	pWidget = new SwitchAccWidget(m_strUid,m_strToken,m_strUserName,m_strCompId,this);
 	connect(pWidget, SIGNAL(sigSwitchAcc(int, bool, QString, QString)), this, SIGNAL(sigSwitchAcc(int, bool, QString, QString)));
 	pWidget->setAttribute(Qt::WA_DeleteOnClose);
 	pWidget->show();

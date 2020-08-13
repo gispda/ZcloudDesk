@@ -11,7 +11,7 @@ class SwitchAccWidget : public QWidget
 	Q_OBJECT
 
 public:
-	SwitchAccWidget(QString strUid,QString strToken, QString strUserName,QString strMobile,QString strCompId, QWidget *parent = 0);
+	SwitchAccWidget(QString strUid,QString strToken, QString strUserName,QString strCompId, QWidget *parent = 0);
 	~SwitchAccWidget();
 
 signals:

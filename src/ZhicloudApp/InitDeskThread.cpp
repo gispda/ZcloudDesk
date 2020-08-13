@@ -2,7 +2,7 @@
 #include "AppDatabase/AppCenterDatabase.h"
 #include "AppCommFun.h"
 #include "AppHttpInterface.h"
-#include <QDebug>
+#include <qDebug>
 #include <QJsonParseError>
 #include <QJsonObject>
 #include <QJsonDocument>
@@ -62,7 +62,7 @@ void InitDeskThread::run()
 			updateIconPath();
 			continue;
 		}
-		qDebug() << "start getClass---------------------------;";
+		//qDebug() << "start getClass---------------------------;";
 	
 		oldAppIdUpTimeMap.clear();
 		newAppIdUpTimeMap.clear();
@@ -190,7 +190,7 @@ bool InitDeskThread::isUpdateApp(int &last_update_time)
 	QString	strResult = "";
 	if (!severface.WinHttpGetAppStatus(app_userInfo.m_strUserId, app_userInfo.m_strToken, last_update_time, strResult))
 	{
-		qDebug() << "zcd-0x00000080:" << "WinHttpGetAppStatus Error";
+		//qDebug() << "zcd-0x00000080:" << "WinHttpGetAppStatus Error";
 		return false;
 	}
 	QByteArray byte_array = strResult.toUtf8();
@@ -198,13 +198,13 @@ bool InitDeskThread::isUpdateApp(int &last_update_time)
 	QJsonDocument parse_doucment = QJsonDocument::fromJson(byte_array, &json_error);
 	if (json_error.error != QJsonParseError::NoError)
 	{
-		qDebug() << "zcd-0x0000007E:" << "json error:" << strResult;
+		//qDebug() << "zcd-0x0000007E:" << "json error:" << strResult;
 		return   false;
 	}
 
 	if (!parse_doucment.isObject())
 	{
-		qDebug() << "zcd-0x0000007F:" << "json error:" << strResult;
+		//qDebug() << "zcd-0x0000007F:" << "json error:" << strResult;
 		return false;;
 	}
 
@@ -212,7 +212,7 @@ bool InitDeskThread::isUpdateApp(int &last_update_time)
 	int code = obj.take("status").toInt();
 	if (code != 0)
 	{
-		qDebug() << "zcd-0x00000081:" << "code error:" << QString::number(code);
+		//qDebug() << "zcd-0x00000081:" << "code error:" << QString::number(code);
 		httpCodeError(code);
 		return false;
 	}
@@ -292,7 +292,7 @@ bool InitDeskThread::getAllClass()
 	AppHttpInterface	severface;
 	if (!severface.WinHttpGetAllClassInfo(app_userInfo.m_strUserId, app_userInfo.m_strToken, strResult))
 	{
-		qDebug() << "zcd-0x00000024:" << "can not get local desktop app";
+		//qDebug() << "zcd-0x00000024:" << "can not get local desktop app";
 		return false;
 	}
 
@@ -301,13 +301,13 @@ bool InitDeskThread::getAllClass()
 	QJsonDocument parse_doucment = QJsonDocument::fromJson(byte_array, &json_error);
 	if (json_error.error != QJsonParseError::NoError)
 	{
-		qDebug() << "zcd-0x0000002A:" << "json error:" << strResult;
+		//qDebug() << "zcd-0x0000002A:" << "json error:" << strResult;
 		return   false;
 	}
 
 	if (!parse_doucment.isObject())
 	{
-		qDebug() << "zcd-0x0000002B:" << "json error:" << strResult;
+		//qDebug() << "zcd-0x0000002B:" << "json error:" << strResult;
 		return false;;
 	}
 
@@ -315,7 +315,7 @@ bool InitDeskThread::getAllClass()
 	int code = obj.take("status").toInt();
 	if (code != 0)
 	{
-		qDebug() << "zcd-0x0000002C:" << "code error:" << QString::number(code);
+		//qDebug() << "zcd-0x0000002C:" << "code error:" << QString::number(code);
 		httpCodeError(code);
 		return false;
 	}
@@ -374,7 +374,7 @@ bool InitDeskThread::upAppData()
 	AppHttpInterface	severface;
 	if (!severface.WinHttpGetAppInfoList(app_userInfo.m_strUserId, app_userInfo.m_strToken, (updateAppidList + addAppList).join(","), strResult))
 	{
-		qDebug() << "zcd-0x00000026:" << "can not get local desktop app";
+		//qDebug() << "zcd-0x00000026:" << "can not get local desktop app";
 		return false;
 	}
 
@@ -384,13 +384,13 @@ bool InitDeskThread::upAppData()
 	QJsonDocument parse_doucment = QJsonDocument::fromJson(byte_array, &json_error);
 	if (json_error.error != QJsonParseError::NoError)
 	{
-		qDebug() << "zcd-0x00000027:" << "json error:" << strResult;
+		//qDebug() << "zcd-0x00000027:" << "json error:" << strResult;
 		return   false;
 	}
 
 	if (!parse_doucment.isObject())
 	{
-		qDebug() << "zcd-0x00000028:" << "json error:" << strResult;
+		//qDebug() << "zcd-0x00000028:" << "json error:" << strResult;
 		return false;;
 	}
 
@@ -398,7 +398,7 @@ bool InitDeskThread::upAppData()
 	int code = obj.take("status").toInt();
 	if (code != 0)
 	{
-		qDebug() << "zcd-0x00000029:" << "code error:" << QString::number(code);
+		//qDebug() << "zcd-0x00000029:" << "code error:" << QString::number(code);
 		httpCodeError(code);
 		return false;
 	}
@@ -550,7 +550,7 @@ bool InitDeskThread::analysisJson(const QJsonValue jsonValue, APPCLASSPAGEFLAG f
 		QJsonArray child = valueO.take("app_list").toArray();
 		if (pClassInfo.m_strClassId.isEmpty())
 		{
-			qDebug() << "zcd-0x0000002D:" << "classId = NULL";
+			//qDebug() << "zcd-0x0000002D:" << "classId = NULL";
 			continue;
 		}
 
@@ -590,7 +590,7 @@ bool InitDeskThread::analysisJson(const QJsonValue jsonValue, APPCLASSPAGEFLAG f
 			}
 			if (appId.isEmpty())
 			{
-				qDebug() << "zcd-0x0000002E:" << "appId = NULL!!";
+				//qDebug() << "zcd-0x0000002E:" << "appId = NULL!!";
 				continue;
 			}
 			//插入一个关系表 由于没有app_sort字段  所以去掉 在应用详情中增加
@@ -624,7 +624,7 @@ bool InitDeskThread::getSlideshow()
 	QJsonDocument parse_doucment = QJsonDocument::fromJson(byte_array, &json_error);
 	if (json_error.error != QJsonParseError::NoError || !parse_doucment.isObject())
 	{
-		qDebug() << "zcd-0x00000030:" << " get Store Rotation json error:" << strResult;
+		//qDebug() << "zcd-0x00000030:" << " get Store Rotation json error:" << strResult;
 		return false;
 	}
 	QJsonObject obj = parse_doucment.object();
@@ -743,7 +743,7 @@ void InitDeskThread::updateIconPath()
 //	QString	strJson;
 //	if (!severface.WinHttpGetApplistByCateId(app_userInfo.m_strUserId, app_userInfo.m_strToken, app_userInfo.m_strHzsId, cateId, pageId, strJson))
 //	{
-//		qDebug() << "zcd-0x00000033:" << "initDatabase error";
+//		//qDebug() << "zcd-0x00000033:" << "initDatabase error";
 //		return  false;
 //	}
 //
@@ -752,13 +752,13 @@ void InitDeskThread::updateIconPath()
 //	QJsonDocument parse_doucment = QJsonDocument::fromJson(byte_array, &json_error);
 //	if (json_error.error != QJsonParseError::NoError)
 //	{
-//		qDebug() << "zcd-0x00000034:" << "initDatabase json error:" << strJson;
+//		//qDebug() << "zcd-0x00000034:" << "initDatabase json error:" << strJson;
 //		return false;
 //	}
 //
 //	if (!parse_doucment.isObject())
 //	{
-//		qDebug() << "zcd-0x00000035:" << "init Database json error:" << strJson;
+//		//qDebug() << "zcd-0x00000035:" << "init Database json error:" << strJson;
 //		return false;
 //	}
 //
@@ -768,7 +768,7 @@ void InitDeskThread::updateIconPath()
 //	QString message = obj.take("message").toString();
 //	if (code != 200 || message != "ok")
 //	{
-//		qDebug() << "zcd-0x00000036:" << "init Database code error:" << QString::number(code);
+//		//qDebug() << "zcd-0x00000036:" << "init Database code error:" << QString::number(code);
 //		return false;
 //	}
 //	QJsonObject data = obj.take("data").toObject();
@@ -783,7 +783,7 @@ void InitDeskThread::updateIconPath()
 //	QJsonValue jsonValue = data.take("app");
 //	if (!jsonValue.isArray())
 //	{
-//		qDebug() << "zcd-0x00000037:" << "init Database json error:" << strJson;
+//		//qDebug() << "zcd-0x00000037:" << "init Database json error:" << strJson;
 //		return false;
 //	}
 //

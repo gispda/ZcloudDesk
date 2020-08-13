@@ -16,15 +16,16 @@
 #include "FinanMemberWidget.h"
 #include "AccSettingWidget.h"
 
-EntCenterMainWidget::EntCenterMainWidget(UserInfoStruct _userinfo,QWidget *parent)
+EntCenterMainWidget::EntCenterMainWidget(EntCenterInfo* pEntInfo, UserInfoStruct* userinfo, QWidget *parent)
 	: AppCommWidget("", true, parent)
 {
 	ui.setupUi(this);
 
-	m_userinfo = _userinfo;
+	m_pInfo = pEntInfo;
+	m_userinfo = userinfo;
 	connect(ui.ServiceFeeButton, &QPushButton::clicked, this, &EntCenterMainWidget::onServiceFeeBtnClick);
 
-	m_isNetActive = ZcloudComFun::isNetActive();
+	bool m_isNetActive = ZcloudComFun::isNetActive();
 	if (!m_isNetActive)
 	{
 		ui.ServiceFeeButton->setEnabled(false);
@@ -39,27 +40,28 @@ void EntCenterMainWidget::init(EntCenterInfo*	info)
 {
 	m_pInfo = info;
 
-	m_bHasMember = m_pInfo->_bHasMember;
+	QString m_bHasMember = m_pInfo->_bHasMember;
 	QString strCompName =m_pInfo->_strCompName;
 	QString strTaxNo =m_pInfo->_strTaxNo;
+	bool m_bJoinEnt;
 	if (strCompName.isEmpty())
 	{
-		if (1 == m_isLoginByTax)
+		if (1 == m_userinfo->m_bLoginByTax)
 		{
 			strCompName = QString::fromLocal8Bit("暂未查询到您的企业");
 		}
 		else
 		{
-			QString strUserName = m_strUserName;
+			QString strUserName = m_userinfo->m_strUsername;
 			if (strUserName.isEmpty() || strUserName.contains("wechat_") || strUserName.contains("nick_") || strUserName.contains("user_"))
 			{
-				if (m_strMobile.isEmpty())
+				if (m_userinfo->m_strMobile.isEmpty())
 				{
 					strCompName = QString::fromLocal8Bit("——");
 				}
 				else
 				{
-					strCompName = m_strMobile;
+					strCompName = m_userinfo->m_strMobile;
 				}
 			}
 			else
@@ -73,7 +75,7 @@ void EntCenterMainWidget::init(EntCenterInfo*	info)
 
 
 	//!姓名与职务
-	if (m_strTrueName.isEmpty())
+	if (m_userinfo->m_strTruename.isEmpty())
 	{
 		//ui.labelFirstName->setText("");
 		//ui.labelFirstName->setStyleSheet("background:rgba(222,222,222,1);border-radius:15px;");
@@ -149,7 +151,7 @@ void EntCenterMainWidget::init(EntCenterInfo*	info)
 	}
 
 	//!按钮状态
-	m_isNetActive = ZcloudComFun::isNetActiveByToken(m_userinfo.m_strToken);
+	bool m_isNetActive = ZcloudComFun::isNetActiveByToken(m_userinfo->m_strToken);
 	if (!m_isNetActive)
 	{
 		ui.ServiceFeeButton->setEnabled(false); 
@@ -203,18 +205,6 @@ bool EntCenterMainWidget::eventFilter(QObject *target, QEvent *e)
 }
 
 
-void EntCenterMainWidget::setUserInfo(QString strUid, QString strToken, QString strTrueName, QString strJob, int isLoginByTax, QString strMobile, QString strCompId,QString strUserName)
-{
-	m_strUid		= strUid;
-	m_strToken		= strToken;
-	m_strTrueName	= strTrueName;
-	m_strJob		= strJob;
-	m_isLoginByTax	= isLoginByTax;
-	m_strMobile		= strMobile;
-	m_strCompId		= strCompId;
-	m_strUserName = strUserName;
-}
-
 
 
 QString EntCenterMainWidget::checkLogoExist(QString strUrl)
@@ -225,11 +215,11 @@ QString EntCenterMainWidget::checkLogoExist(QString strUrl)
 void EntCenterMainWidget::onServiceFeeBtnClick()
 {
 	ZcloudBigDataInterface::GetInstance()->produceData("M00", "OP001", "BBC004");
-	if (ZcloudComFun::winHttpSSO(m_strToken, m_strUid))
+	if (ZcloudComFun::winHttpSSO(m_pInfo->_strToken, m_pInfo->_strUid))
 	{
 		if (!this->findChild <EntComWidget*>("ServiceFee"))
 		{
-			QString strEntInfoUrl = ZcloudComFun::getWvUrl(m_strUid, m_strToken, "wv/service-charge-payment/index");
+			QString strEntInfoUrl = ZcloudComFun::getWvUrl(m_pInfo->_strUid, m_pInfo->_strToken, "wv/service-charge-payment/index");
 			EntComWidget*	pWidget = new EntComWidget(QString::fromLocal8Bit("服务费续费"), strEntInfoUrl, false, this);
 			pWidget->setObjectName("ServiceFee");
 			pWidget->setAttribute(Qt::WA_DeleteOnClose);

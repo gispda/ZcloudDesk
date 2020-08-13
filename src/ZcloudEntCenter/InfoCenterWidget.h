@@ -15,10 +15,15 @@ class InfoCenterWidget : public QWidget
 	Q_OBJECT
 
 public:
-	InfoCenterWidget(UserInfoStruct _userInfo, QWidget *parent = 0);
+	InfoCenterWidget(UserInfoStruct* _userInfo, QWidget *parent = 0);
 	~InfoCenterWidget();
 	//!设置用户数据
 	void setUserInfo(QString strUid, QString strToken, QString strTrueName, QString strJob, int isLoginByTax, QString strMobile, QString strCompId, QString strUserName);
+
+	bool winHttpGetEntInfo(QString strTaxno, QString strToken, QString& strRet);
+
+	bool loadEntInfo();
+
 
 	void init();
 
@@ -30,6 +35,7 @@ protected:
 	//bool eventFilter(QObject *target, QEvent *e);
 	void mousePressEvent(QMouseEvent *event);
 	void mouseMoveEvent(QMouseEvent *event);
+
 
 private slots:
 void showEntCenter();
@@ -51,8 +57,10 @@ private:
 	QPoint dPos;
 
 
-	EntCenterInfo m_pInfo;
-	UserInfoStruct m_userInfo;
+	EntCenterInfo m_stEntInfo;
+	UserInfoStruct* m_userInfo;
+
+
 	QString m_strUserName;
 	QString m_strUid;
 	QString m_strToken;

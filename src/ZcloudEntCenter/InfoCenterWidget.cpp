@@ -16,9 +16,10 @@
 #include "FinanMemberWidget.h"
 #include "AccSettingWidget.h"
 
-InfoCenterWidget::InfoCenterWidget(UserInfoStruct _userInfo, QWidget *parent /*= 0*/) :QWidget( parent)
+InfoCenterWidget::InfoCenterWidget(UserInfoStruct* _userInfo, QWidget *parent /*= 0*/) :QWidget( parent)
 {
 	ui.setupUi(this);
+
 	//resize(1002, 620);
 	//setWindowTitle(QString::fromLocal8Bit("企业中心"));
 
@@ -33,7 +34,10 @@ InfoCenterWidget::InfoCenterWidget(UserInfoStruct _userInfo, QWidget *parent /*=
 	
 	m_userInfo = _userInfo;
 
-	m_pEntCenter = new EntCenterNewWidget(_userInfo,ui.widgetCenter);
+	//查询企业信息
+	loadEntInfo();
+
+	m_pEntCenter = new EntCenterNewWidget(&m_stEntInfo, m_userInfo, ui.widgetCenter);
 
 
 	m_pUserCenter = new UserCenterWidget(_userInfo,ui.widgetCenter);
@@ -103,27 +107,27 @@ void InfoCenterWidget::init(){
 
 
 	
-	if (!winHttpGetCompanyInfo(m_userInfo.m_strTaxNumber,m_userInfo.m_strToken,strRet))
+	if (!winHttpGetCompanyInfo(m_userInfo->m_strTaxNumber,m_userInfo->m_strToken,strRet))
 	{
 		//!失败 从数据库读出
-		EntDataBase::GetInstance()->queryEntCenterInfo(m_strUid,m_pInfo);
+		EntDataBase::GetInstance()->queryEntCenterInfo(m_strUid, m_stEntInfo);
 	}
 	else
 	{
 		//!接口解析并replace数据库
-		if (analysisJson(strRet, m_pInfo))
+		if (analysisJson(strRet, m_stEntInfo))
 		{
 			/*m_pInfo._strBankname = QString("234242342");
 			m_pInfo._strlegalboss = QString("234242342");*/
-			EntDataBase::GetInstance()->insertEntCenterInfo(m_pInfo);
+			EntDataBase::GetInstance()->insertEntCenterInfo(m_stEntInfo);
 		}
 		else
 		{
-			EntDataBase::GetInstance()->queryEntCenterInfo(m_strUid, m_pInfo);
+			EntDataBase::GetInstance()->queryEntCenterInfo(m_strUid, m_stEntInfo);
 		}	
 	}	
-	m_pEntCenter->init(&m_pInfo);
-	m_pUserCenter->init(&m_pInfo);
+	m_pEntCenter->init(&m_stEntInfo);
+	m_pUserCenter->init(&m_stEntInfo);
 	
 }
 InfoCenterWidget::~InfoCenterWidget()
@@ -190,7 +194,7 @@ bool InfoCenterWidget::analysisJson(const QString& strJson, EntCenterInfo& info)
 	
 
 	info._strId = data.take("id").toString();
-	info._strToken = m_userInfo.m_strToken;
+	info._strToken = m_userInfo->m_strToken;
 	info._strCompId = data.take("company_id").toString();
 	info._strCompName = data.take("company_name").toString();
 	info._strTaxNo = data.take("tax_number").toString();
@@ -291,4 +295,111 @@ QString InfoCenterWidget::checkLogoExist(QString strUrl)
 void InfoCenterWidget::onSwitchAcc(int bLoginByTax, bool bOther, QString strTaxNo_userName, QString strPwd)
 {
 	emit sigSwitchAcc(bLoginByTax, bOther, strTaxNo_userName, strPwd);
+}
+
+
+bool InfoCenterWidget::winHttpGetEntInfo(QString strTaxno, QString strToken, QString& strRet)
+{
+	QString strUrl = QString("/ucenter/company/info");
+	QString strPost;
+
+	strPost = QString("tax=%1").arg(strTaxno);
+	return ZcloudComFun::httpPost(strUrl, strPost, 5000, strRet, false, 1);
+}
+
+bool InfoCenterWidget::loadEntInfo()
+{
+	QString strRet;
+	if (!winHttpGetEntInfo(m_userInfo->m_strTaxNumber, m_userInfo->m_strToken, strRet))
+	{
+		return false;
+	}
+	QByteArray byte_array = strRet.toUtf8();
+	QJsonParseError json_error;
+	QJsonDocument parse_doucment = QJsonDocument::fromJson(byte_array, &json_error);
+	if (json_error.error != QJsonParseError::NoError)
+	{
+		return false;
+	}
+	if (!parse_doucment.isObject())
+	{
+		return false;
+	}
+	QJsonObject obj = parse_doucment.object();
+	int status = obj.take("code").toInt();
+	if (0 != status)
+	{
+		return false;
+	}
+
+	QJsonObject data = obj.take("data").toObject();
+
+	m_stEntInfo._strCompId = data.take("company_id").toString();
+
+	//!公司名称
+	m_stEntInfo._strCompName = data.take("company_name").toString();
+	QString	strCompName = m_stEntInfo._strCompName;
+	if (strCompName.isEmpty())
+	{
+		strCompName = QString::fromLocal8Bit("暂未查询到您的企业");
+	}
+
+
+	//!税号
+	m_stEntInfo._strTaxNo = data.take("tax_number").toString();
+
+
+	//!行政区域
+	
+	m_stEntInfo._nProvinceid = data.take("province_id").toInt();
+	m_stEntInfo._nCityid = data.take("city_id").toInt();
+	m_stEntInfo._nAreaid = data.take("area_id").toInt();
+	//m_stEntInfo.m_registerAddress._strPro = data.take("province_name").toString();
+	m_stEntInfo._strAddress = data.take("address").toString();
+
+	m_stEntInfo._nOfficeProvinceid = data.take("office_province_id").toInt();
+	m_stEntInfo._nOfficeCityid = data.take("office_city_id").toInt();
+	m_stEntInfo._nOfficeAreaid = data.take("office_area_id").toInt();
+	m_stEntInfo._strOfficeaddress = data.take("office_address").toString();
+
+
+
+
+	//!财税负责人
+	m_stEntInfo._strlegalboss = data.take("legal_person_name").toString();
+	QString strOfficerName = m_stEntInfo._strlegalboss;
+	if (strOfficerName.isEmpty())
+	{
+		strOfficerName = QString::fromLocal8Bit("——");
+	}
+
+	//!负责人手机号
+	m_stEntInfo._strlegalbossmobile = data.take("legal_person_phone").toString();
+	QString strPhone = m_stEntInfo._strlegalbossmobile;
+	if (strPhone.isEmpty())
+	{
+		strPhone = QString::fromLocal8Bit("——");
+	}
+
+	//!开户账号
+	m_stEntInfo._strBankaccount = data.take("bank_account").toString();
+	QString strBankAccount = m_stEntInfo._strBankaccount;
+	if (strBankAccount.isEmpty())
+	{
+		strBankAccount = QString::fromLocal8Bit("——");
+	}
+
+	//!开户银行
+	m_stEntInfo._strBankname = data.take("bank_name").toString();
+	QString strBankName = m_stEntInfo._strBankname;
+	if (strBankName.isEmpty())
+	{
+		strBankName = QString::fromLocal8Bit("——");
+	}
+
+
+	QJsonObject userdata = data.take("user").toObject();
+	m_stEntInfo.nAdmin = userdata.take("role_type").toInt();
+
+	return true;
 }

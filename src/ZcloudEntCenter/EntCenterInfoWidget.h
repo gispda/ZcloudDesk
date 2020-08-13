@@ -13,12 +13,11 @@ class EntCenterInfoWidget : public AppCommWidget
 	Q_OBJECT
 
 public:
-	EntCenterInfoWidget(UserInfoStruct _userinfo,QWidget *parent = 0);
+	EntCenterInfoWidget(EntCenterInfo*	info, QWidget *parent = 0);
 	~EntCenterInfoWidget();
 
 	//!初始化用户信息 
-	void init(EntCenterInfo*	info);
-	bool showEntInfo();
+	void init(EntCenterInfo* info);
 
 	private slots:
 	void onEntEditBtnClick();
@@ -34,10 +33,10 @@ private:
 	bool winHttpGetEntInfo(QString strUid, QString strToken, QString& strRet);
 
 
-	UserInfoStruct m_userinfo;
-	stEntInfo		m_stEntInfo;
-	stInvoiceInfo	m_stInvoiceInfo;
-	QString			m_strUid;
-	QString			m_strToken;
+	EntCenterInfo*	m_pInfo;
+	//stEntInfo		m_stEntInfo;
+	//stInvoiceInfo	m_stInvoiceInfo;
+	//QString			m_strUid;
+	//QString			m_strToken;
 	Ui::EntCenterInfoWidget ui;
 };

@@ -17,7 +17,7 @@
 #include "ModifyMemberWidget.h"
 #include "ZcloudBigData.h"
 
-EntCenterMemberWidget::EntCenterMemberWidget(UserInfoStruct _userInfo,QWidget *parent)
+EntCenterMemberWidget::EntCenterMemberWidget(EntCenterInfo* pEntInfo, QWidget *parent)
 	: AppCommWidget("", true, parent)
 {
 
@@ -28,10 +28,10 @@ EntCenterMemberWidget::EntCenterMemberWidget(UserInfoStruct _userInfo,QWidget *p
 
 
 
-	m_userInfo = _userInfo;
+	m_pInfo = pEntInfo;
 
 	///ÓÎ¿ÍµÇÂ½
-	//if (m_userInfo.m_bLoginByTax != -8)
+	//if (m_userinfo->m_bLoginByTax != -8)
 	//{
 		if (!showMemberInfo())
 		{
@@ -46,17 +46,7 @@ EntCenterMemberWidget::EntCenterMemberWidget(UserInfoStruct _userInfo,QWidget *p
 	ui.listWidget->verticalScrollBar()->setStyleSheet(SCROLLBARSTYESHEET);
 }
 
-void EntCenterMemberWidget::setUserInfo(QString strUid, QString strToken, QString strTrueName, QString strJob, int isLoginByTax, QString strMobile, QString strCompId, QString strUserName)
-{
-	m_strUid = strUid;
-	m_strToken = strToken;
-	m_strTrueName = strTrueName;
-	m_strJob = strJob;
-	m_isLoginByTax = isLoginByTax;
-	m_strMobile = strMobile;
-	m_strCompId = strCompId;
-	m_strUserName = strUserName;
-}
+
 
 EntCenterMemberWidget::~EntCenterMemberWidget()
 {
@@ -78,8 +68,8 @@ bool EntCenterMemberWidget::winHttpGetMemberInfo(QString strUid, QString strToke
 
 bool EntCenterMemberWidget::showMemberInfo()
 {
-	QString  strRet;
-	if (!winHttpGetMemberInfo(m_userInfo.m_strTaxNumber,m_userInfo.m_strToken, strRet))
+	QString  strRet; 
+	if (!winHttpGetMemberInfo(m_pInfo->_strTaxNo, m_pInfo->_strToken, strRet))
 	{
 		return false;
 	}
@@ -155,8 +145,10 @@ bool EntCenterMemberWidget::showMemberInfo()
 
 void EntCenterMemberWidget::onAddMember()
 {
+	
+
 	ZcloudBigDataInterface::GetInstance()->produceData("M00", "OP001", "BFM007");
-	AddMemberWidget*	pWidget = new AddMemberWidget(m_strUid, m_strToken, this);
+	AddMemberWidget*	pWidget = new AddMemberWidget(m_pInfo->_strUid, m_pInfo->_strToken, this);
 	connect(pWidget, &AddMemberWidget::sigAddMember, this, &EntCenterMemberWidget::onAddMemberSucess);
 	pWidget->show();
 }
@@ -168,7 +160,7 @@ bool EntCenterMemberWidget::eventFilter(QObject *target, QEvent *e)
 		if (e->type() == QEvent::MouseButtonRelease) //
 		{
 			ZcloudBigDataInterface::GetInstance()->produceData("M00", "OP001", "BFM001");
-			AuditMemberWidget*	pWidget = new AuditMemberWidget(m_strUid, m_strToken, this);
+			AuditMemberWidget*	pWidget = new AuditMemberWidget(m_pInfo->_strUid, m_pInfo->_strToken, this);
 			connect(pWidget, &AuditMemberWidget::sigRefreshFinanMember, this, &EntCenterMemberWidget::onFreshFinanMember);
 			pWidget->show();
 		}
@@ -208,7 +200,7 @@ void EntCenterMemberWidget::onRemoveMember(QString strUserId)
 	}
 	ZcloudBigDataInterface::GetInstance()->produceData("M00", "OP001", "BDM002", strUserId);
 	QString strRet;
-	if (!winHttpRemoveMember(m_strUid, m_strToken, strUserId, strRet))
+	if (!winHttpRemoveMember(m_pInfo->_strUid, m_pInfo->_strToken, strUserId, strRet))
 	{
 		ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_TIP, QString::fromLocal8Bit("²Ù×÷Ê§°Ü"), QString::fromLocal8Bit("\r\nÒÆ³ýÓÃ»§Ê§°Ü£¬ÇëÉÔºóÔÙÊÔ£¡"));
 		return;
@@ -252,7 +244,7 @@ void EntCenterMemberWidget::onRemoveMember(QString strUserId)
 void EntCenterMemberWidget::onModifyMember(QString strTrueName, QString strJob, QString strUserId)
 {
 	ZcloudBigDataInterface::GetInstance()->produceData("M00", "OP001", "BFM003");
-	ModifyMemberWidget*	pWidget = new ModifyMemberWidget(strTrueName, strJob, m_strUid, m_strToken, strUserId, this);
+	ModifyMemberWidget*	pWidget = new ModifyMemberWidget(strTrueName, strJob, m_pInfo->_strUid, m_pInfo->_strToken, strUserId, this);
 	connect(pWidget, &ModifyMemberWidget::sigModifyMember, this, &EntCenterMemberWidget::onModifyMemberSucess);
 	pWidget->show();
 }
@@ -268,7 +260,7 @@ void EntCenterMemberWidget::onHandOver(QString strUserId)
 	}
 	ZcloudBigDataInterface::GetInstance()->produceData("M00", "OP001", "BTS001", strUserId);
 	QString strRet;
-	if (!winHttpHandOver(m_strUid, m_strToken, strUserId, strRet))
+	if (!winHttpHandOver(m_pInfo->_strUid, m_pInfo->_strToken, strUserId, strRet))
 	{
 		ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_TIP, QString::fromLocal8Bit("²Ù×÷Ê§°Ü"), QString::fromLocal8Bit("\r\nÒÆ½»È¨ÏÞÊ§°Ü£¬ÇëÉÔºóÔÙÊÔ£¡"));
 		return;
@@ -315,14 +307,14 @@ void EntCenterMemberWidget::onHandOver(QString strUserId)
 
 bool EntCenterMemberWidget::winHttpHandOver(QString strUid, QString strToken, QString strUserId, QString& strRet)
 {
-	QString strUrl = QString("/v2/company/change-management-authority?user_id=%1&token=%2").arg(m_strUid).arg(m_strToken);
+	QString strUrl = QString("/v2/company/change-management-authority?user_id=%1&token=%2").arg(m_pInfo->_strUid).arg(m_pInfo->_strToken);
 	QString strPost = QString("u_id=%1").arg(strUserId);
 	return ZcloudComFun::httpPost(strUrl, strPost, 5000, strRet);
 }
 
 bool EntCenterMemberWidget::winHttpRemoveMember(QString strUid, QString strToken, QString strUserId, QString& strRet)
 {
-	QString strUrl = QString("/v2/company/remove-member?user_id=%1&token=%2").arg(m_strUid).arg(m_strToken);
+	QString strUrl = QString("/v2/company/remove-member?user_id=%1&token=%2").arg(m_pInfo->_strUid).arg(m_pInfo->_strToken);
 	QString strPost = QString("u_id=%1").arg(strUserId);
 	return ZcloudComFun::httpPost(strUrl, strPost, 5000, strRet);
 }
@@ -345,7 +337,7 @@ void EntCenterMemberWidget::onModifyMemberSucess(QString strTrueName, QString st
 		pWidget->close();
 	}
 	onFreshFinanMember();
-	if (strCurUserId == m_strUid)
+	if (strCurUserId == m_pInfo->_strUid)
 	{
 		emit sigEditMemberSucessed(strTrueName, strJob);
 	}

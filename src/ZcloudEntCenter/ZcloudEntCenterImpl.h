@@ -33,7 +33,7 @@ public:
 	{
 		if (NULL == m_pInfoCenterWidget)
 		{
-			m_pInfoCenterWidget = new InfoCenterWidget(m_userInfo);
+			m_pInfoCenterWidget = new InfoCenterWidget(&m_userInfo);
 
 			connect(m_pInfoCenterWidget, SIGNAL(sigSwitchAcc(int, bool, QString, QString)), this, SLOT(onSwitchAcc(int, bool, QString, QString)));
 			//connect(this, SIGNAL(sigSwitchAcc(int, bool, QString, QString)), this, SLOT(onSwitchAcc(int, bool, QString, QString)));

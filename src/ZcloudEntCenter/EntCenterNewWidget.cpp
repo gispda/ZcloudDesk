@@ -17,8 +17,8 @@
 #include "AccSettingWidget.h"
 
 
-EntCenterNewWidget::EntCenterNewWidget(UserInfoStruct _userInfo,QWidget *parent)
-	:QWidget(parent)
+EntCenterNewWidget::EntCenterNewWidget(EntCenterInfo* pEntInfo, UserInfoStruct* userInfo, QWidget *parent)
+	:m_pEntInfo(pEntInfo), m_userInfo(userInfo), QWidget(parent)
 {
 	ui.setupUi(this);
 	/*resize(1002, 620);
@@ -27,13 +27,9 @@ EntCenterNewWidget::EntCenterNewWidget(UserInfoStruct _userInfo,QWidget *parent)
 	//setAttribute(Qt::WA_TranslucentBackground, true);
 	//setStyleSheet("outline: none");
 
-
-
-	m_userInfo = _userInfo;
-	m_bjoin = false;
-	mp_EntCenterMember = new EntCenterMemberWidget(_userInfo,ui.EntRightWidget);
-	mp_EntCenterInfo = new EntCenterInfoWidget(_userInfo,ui.EntRightWidget);
-	mp_EntCenterMain = new EntCenterMainWidget(_userInfo,ui.EntRightWidget);
+	mp_EntCenterMember = new EntCenterMemberWidget(pEntInfo, ui.EntRightWidget);
+	mp_EntCenterInfo = new EntCenterInfoWidget(pEntInfo, ui.EntRightWidget);
+	mp_EntCenterMain = new EntCenterMainWidget(pEntInfo, userInfo, ui.EntRightWidget);
 	mp_EntCenterMember->hide();
 	mp_EntCenterInfo->hide();
 
@@ -63,35 +59,23 @@ EntCenterNewWidget::EntCenterNewWidget(UserInfoStruct _userInfo,QWidget *parent)
 	
 }
 
-void EntCenterNewWidget::setUserInfo(QString strUid, QString strToken, QString strTrueName, QString strJob, int isLoginByTax, QString strMobile, QString strCompId, QString strUserName)
-{
-	m_strUid = strUid;
-	m_strToken = strToken;
-	m_strTrueName = strTrueName;
-	m_strJob = strJob;
-	m_isLoginByTax = isLoginByTax;
-	m_strMobile = strMobile;
-	m_strCompId = strCompId;
-	m_strUserName = strUserName;
-}
+
 
 void EntCenterNewWidget::init(EntCenterInfo*	info){
+	m_pEntInfo = info;
 	mp_EntCenterInfo->init(info);
-	mp_EntCenterInfo->showEntInfo();
 
-	mp_EntCenterMain->setUserInfo(m_userInfo.m_strUserId, m_userInfo.m_strToken, m_userInfo.m_strTruename, m_userInfo.m_strJob, m_userInfo.m_bLoginByTax, m_userInfo.m_strMobile, m_userInfo.m_strCompanyId, m_userInfo.m_strUsername);
 	mp_EntCenterMain->init(info);
 	
-	mp_EntCenterMember->setUserInfo(m_userInfo.m_strUserId, m_userInfo.m_strToken, m_userInfo.m_strTruename, m_userInfo.m_strJob, m_userInfo.m_bLoginByTax, m_userInfo.m_strMobile, m_userInfo.m_strCompanyId, m_userInfo.m_strUsername);
 	mp_EntCenterMember->init(info);
 
 }
 void EntCenterNewWidget::onShowInfo(){
-
-	if (m_bjoin == false)
+	
+	if (m_pEntInfo->_nisjoin == false)
 	{
 
-		int nReturn = ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_OKCANCEL, QString::fromLocal8Bit("温馨提示"), QString::fromLocal8Bit("抱歉，您还没有正式加入\"%1\",您先加入企业后再继续操作！").arg(m_strCompany), this);
+		int nReturn = ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_OKCANCEL, QString::fromLocal8Bit("温馨提示"), QString::fromLocal8Bit("抱歉，您还没有正式加入\"%1\",您先加入企业后再继续操作！").arg(m_pEntInfo->_strCompName), this);
 		if (nReturn == QDialog::Accepted)
 		{
 			//	ZcloudBigDataInterface::GetInstance()->produceData("M00", "OP001", "TAU008", "", true);
@@ -99,10 +83,10 @@ void EntCenterNewWidget::onShowInfo(){
 			//emit sigLogout();
 			//立即加入
 		/*	if (m_pJoinEntWidget == NULL)
-				m_pJoinEntWidget = new JoinEntWidget(m_userInfo.m_strUserId, m_userInfo.m_strToken, this);
+				m_pJoinEntWidget = new JoinEntWidget(m_userInfo->m_strUserId, m_userInfo->m_strToken, this);
 			m_pJoinEntWidget->show();*/
 			QString strRet;
-			if (!winHttpJoinEnt(m_userInfo.m_strToken, m_strCompId, strRet))
+			if (!winHttpJoinEnt(m_pEntInfo->_strToken, m_pEntInfo->_strCompId, strRet))
 			{
 				ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_TIP, QString::fromLocal8Bit("加入企业"), QString::fromLocal8Bit("加入失败"));
 				return;
@@ -212,8 +196,9 @@ EntCenterNewWidget ::~EntCenterNewWidget(){
 
 bool EntCenterNewWidget::winHttpJoinEnt(QString strToken, QString strComId, QString& strRet)
 {
+	
 	QString strUrl = QString("/ucenter/company/apply-join");
-	QString strPost = QString("company_id=%1&token=%2").arg(strComId).arg(m_strToken);
+	QString strPost = QString("company_id=%1&token=%2").arg(strComId).arg(m_pEntInfo->_strToken);
 	return ZcloudComFun::httpPost(strUrl, strPost, 5000, strRet, false, 1);
 }
 
@@ -241,7 +226,7 @@ bool EntCenterNewWidget ::eventFilter(QObject *target, QEvent *e)
 		if (e->type() == QEvent::MouseButtonRelease) //
 		{
 			ZcloudBigDataInterface::GetInstance()->produceData("M00", "OP001", "BBC003");
-			if (ZcloudComFun::winHttpSSO(m_userInfo.m_strToken, m_userInfo.m_strUserId))
+			if (ZcloudComFun::winHttpSSO(m_pEntInfo->_strToken, m_pEntInfo->_strUid))
 			{
 
 				
@@ -249,7 +234,7 @@ bool EntCenterNewWidget ::eventFilter(QObject *target, QEvent *e)
 				if (!this->findChild <JoinEntWidget*>("addEntEnter"))
 				{
 					if (m_pJoinEntWidget==NULL)
-					m_pJoinEntWidget = new JoinEntWidget(m_userInfo.m_strUserId, m_userInfo.m_strToken, this);
+						m_pJoinEntWidget = new JoinEntWidget(m_pEntInfo->_strUid, m_pEntInfo->_strToken, this);
 					m_pJoinEntWidget->show();
 				}
 			}
@@ -280,7 +265,7 @@ void EntCenterNewWidget ::onSwitchBtnClick()
 {
 	if (pWidget == NULL)
 	{
-		pWidget = new SwitchAccWidget(m_userInfo.m_strUserId, m_userInfo.m_strToken, m_userInfo.m_strUsername, m_userInfo.m_strMobile, m_userInfo.m_strCompanyId, this);
+		pWidget = new SwitchAccWidget(m_pEntInfo->_strUid, m_pEntInfo->_strToken, m_pEntInfo->_strUsername, m_pEntInfo->_strCompId, this);
 		connect(pWidget, SIGNAL(sigSwitchAcc(int, bool, QString, QString)), this, SLOT(onSwitchAcc(int, bool, QString, QString)));
 		//connect(this, SIGNAL(sigSwitchAcc(int, bool, QString, QString)), this, SLOT(onSwitchAcc(int, bool, QString, QString)));
 
@@ -305,8 +290,9 @@ void EntCenterNewWidget::showUserCompanyInfoTitle()
 	int nroletype = -1;
 	m_strLocalTaxno = "210624197305200017";
 
-	QString strtaxno, struser, strrole, straddcompany;
-	if (m_userInfo.m_strCompanyName.isEmpty())
+	QString strtaxno, struser, strrole, straddcompany, m_strCompany,m_bjoin;
+
+	if (m_pEntInfo->_strCompName.isEmpty())
 	{
 		m_strCompany = QString::fromLocal8Bit("暂未查询到您的企业");
 
@@ -316,10 +302,10 @@ void EntCenterNewWidget::showUserCompanyInfoTitle()
 			
 
 
-			bret = ZcloudComFun::winHttpQueryCompanyInfoLocalTax(m_strLocalTaxno, m_userInfo.m_strToken, bisjoin, m_strCompany, nroletype, m_strCompId);
+			bret = ZcloudComFun::winHttpQueryCompanyInfoLocalTax(m_strLocalTaxno, m_pEntInfo->_strToken, bisjoin, m_strCompany, nroletype, m_pEntInfo->_strCompId);
 			//ui.labelAddComp->setText("");
 			//ui.labelComName->setText(strCompany);
-			struser = m_userInfo.m_strUsername;
+			struser = m_pEntInfo->_strUsername;
 			//ui.labelCopy->show();
 			if (nroletype == 1)
 			{
@@ -358,7 +344,7 @@ void EntCenterNewWidget::showUserCompanyInfoTitle()
 	{
 
 
-		bret = ZcloudComFun::winHttpQueryCompanyInfoLocalTax(m_userInfo.m_strTaxNumber, m_userInfo.m_strToken, bisjoin, m_strCompany, nroletype, m_strCompId);
+		bret = ZcloudComFun::winHttpQueryCompanyInfoLocalTax(m_pEntInfo->_strTaxNo, m_pEntInfo->_strToken, bisjoin, m_strCompany, nroletype, m_pEntInfo->_strCompId);
 
 
 		if (bisjoin)
@@ -380,12 +366,12 @@ void EntCenterNewWidget::showUserCompanyInfoTitle()
 			strrole = QString::fromLocal8Bit("财务人员");
 
 		if (bisjoin)
-			showaddCompanyInfoTitle(m_strCompany, m_userInfo.m_strTaxNumber, m_userInfo.m_strUsername, strrole);
+			showaddCompanyInfoTitle(m_strCompany, m_pEntInfo->_strTaxNo, m_pEntInfo->_strUsername, strrole);
 		else if (bisjoin == false)
 		{
 			struser = QString::fromLocal8Bit("您还没加入该企业，");
 			straddcompany = QString::fromLocal8Bit("立即加入，");
-			showUnaddCompanyInfoTitle(m_strCompany, m_userInfo.m_strTaxNumber, m_userInfo.m_strUsername, straddcompany);
+			showUnaddCompanyInfoTitle(m_strCompany, m_pEntInfo->_strTaxNo, m_pEntInfo->_strUsername, straddcompany);
 		}
 	}
 }

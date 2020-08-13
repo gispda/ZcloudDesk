@@ -13,12 +13,10 @@ class EntCenterMemberWidget : public AppCommWidget
 	Q_OBJECT
 
 public:
-	EntCenterMemberWidget(UserInfoStruct _userInfo,QWidget *parent = 0);
+	EntCenterMemberWidget(EntCenterInfo* pEntInfo, QWidget *parent = 0);
 	~EntCenterMemberWidget();
 	void init(EntCenterInfo*	info);
 
-	//!设置用户数据
-	void setUserInfo(QString strUid, QString strToken, QString strTrueName, QString strJob, int isLoginByTax, QString strMobile, QString strCompId,QString strUserName);
 signals:
 	void sigEditMemberSucessed(const QString&, const QString&);
 protected:
@@ -60,8 +58,8 @@ private:
 
 
 
-	UserInfoStruct m_userInfo;
-	QString m_strUserName;
+	//UserInfoStruct* m_userInfo;
+	/*QString m_strUserName;
 	QString m_strUid;
 	QString m_strToken;
 	QString m_strTrueName;
@@ -69,12 +67,12 @@ private:
 	QString m_strMobile;
 	int		m_isLoginByTax;
 	QString m_strCompId;
-	bool	m_isNetActive	= true;
+	bool	m_isNetActive	= true;*/
 
 	Ui::EntCenterMemberWidget ui;
 	
-	bool	m_bJoinEnt = true;
-	bool	m_bHasMember = true;
+	/*bool	m_bJoinEnt = true;
+	bool	m_bHasMember = true;*/
 	//QWidget* m_pUserDefult = NULL;
 	EntCenterInfo*	m_pInfo;
 };

@@ -6,18 +6,18 @@
 #include "ui_UserCenterMainWidget.h"
 #include "EntDataBase.h"
 #include "AppCommWidget.h"
+#include "Database.h"
 
 class UserCenterMainWidget : public AppCommWidget
 {
 	Q_OBJECT
 
 public:
-	UserCenterMainWidget(QWidget *parent = 0);
+	UserCenterMainWidget(UserInfoStruct* m_userInfo,QWidget *parent = 0);
 	~UserCenterMainWidget();
 
 	void init(EntCenterInfo*	info);
 	//!设置用户数据
-	void setUserInfo(QString strUid, QString strToken, QString strTrueName, QString strJob, int isLoginByTax, QString strMobile, QString strCompId,QString strUserName);
 	void modifyCoinCount(int nCount);
 signals:
 	//!打开签到中心
@@ -52,8 +52,9 @@ private:
 	//!检测用户头像是否存在 存在返回路径 不存在下载之后返回路径
 	QString checkLogoExist(QString strUrl);
 
+	UserInfoStruct* m_userInfo;
 
-	QString m_strUserName;
+	/*QString m_strUserName;
 	QString m_strUid;
 	QString m_strToken;
 	QString m_strTrueName;
@@ -61,11 +62,11 @@ private:
 	QString m_strMobile;
 	int		m_isLoginByTax;
 	QString m_strCompId;
-	bool	m_isNetActive	= true;
+	bool	m_isNetActive	= true;*/
 	Ui::UserCenterMainWidget ui;
 	QPoint dPos;
-	bool	m_bJoinEnt = true;
-	bool	m_bHasMember = true;
+	//bool	m_bJoinEnt = true;
+	//bool	m_bHasMember = true;
 	QWidget* m_pUserDefult = NULL;
 
 };

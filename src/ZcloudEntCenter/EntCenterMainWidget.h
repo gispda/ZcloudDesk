@@ -12,12 +12,10 @@ class EntCenterMainWidget : public AppCommWidget
 	Q_OBJECT
 
 public:
-	EntCenterMainWidget(UserInfoStruct _userinfo,QWidget *parent = 0);
+	EntCenterMainWidget(EntCenterInfo* pEntInfo, UserInfoStruct* m_userinfo, QWidget *parent = 0);
 	~EntCenterMainWidget();
 
-	//!设置用户数据
-	void setUserInfo(QString strUid, QString strToken, QString strTrueName, QString strJob, int isLoginByTax, QString strMobile, QString strCompId,QString strUserName);
-
+	
 	//!初始化用户信息 
 	void init(EntCenterInfo*	info);
 	
@@ -52,21 +50,23 @@ private:
 	//!检测用户头像是否存在 存在返回路径 不存在下载之后返回路径
 	QString checkLogoExist(QString strUrl);
 
-	UserInfoStruct m_userinfo;
-	QString m_strUserName;
-	QString m_strUid;
-	QString m_strToken;
-	QString m_strTrueName;
-	QString m_strJob;
-	QString m_strMobile;
-	int		m_isLoginByTax;
-	QString m_strCompId;
-	bool	m_isNetActive	= true;
+
+	//QString m_strUserName;
+	//QString m_strUid;
+	//QString m_strToken;
+	//QString m_strTrueName;
+	//QString m_strJob;
+	//QString m_strMobile;
+	//int		m_isLoginByTax;
+	//QString m_strCompId;
+	//bool	m_isNetActive	= true;
 	Ui::EntCenterMainWidget ui;
 	
-	bool	m_bJoinEnt = true;
-	bool	m_bHasMember = true;
+	//bool	m_bJoinEnt = true;
+	//bool	m_bHasMember = true;
 	//QWidget* m_pUserDefult = NULL;
+
+	UserInfoStruct* m_userinfo;
 	EntCenterInfo*	m_pInfo;
 
 };

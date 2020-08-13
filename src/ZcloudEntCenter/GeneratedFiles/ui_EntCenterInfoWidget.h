@@ -213,7 +213,7 @@ public:
 "border-bottom:0px;"));
         labelArea = new QLabel(entWidget);
         labelArea->setObjectName(QStringLiteral("labelArea"));
-        labelArea->setGeometry(QRect(80, 10, 300, 16));
+        labelArea->setGeometry(QRect(80, 10, 500, 16));
         sizePolicy1.setHeightForWidth(labelArea->sizePolicy().hasHeightForWidth());
         labelArea->setSizePolicy(sizePolicy1);
         labelArea->setMinimumSize(QSize(300, 16));
@@ -300,7 +300,7 @@ public:
 "border-bottom:0px;"));
         label_7 = new QLabel(invoiceWidget);
         label_7->setObjectName(QStringLiteral("label_7"));
-        label_7->setGeometry(QRect(10, 45, 68, 16));
+        label_7->setGeometry(QRect(10, 80, 68, 16));
         sizePolicy.setHeightForWidth(label_7->sizePolicy().hasHeightForWidth());
         label_7->setSizePolicy(sizePolicy);
         label_7->setMinimumSize(QSize(68, 16));
@@ -310,7 +310,7 @@ public:
 "border-bottom:0px;"));
         labelPhone = new QLabel(invoiceWidget);
         labelPhone->setObjectName(QStringLiteral("labelPhone"));
-        labelPhone->setGeometry(QRect(80, 45, 300, 16));
+        labelPhone->setGeometry(QRect(80, 80, 300, 16));
         sizePolicy1.setHeightForWidth(labelPhone->sizePolicy().hasHeightForWidth());
         labelPhone->setSizePolicy(sizePolicy1);
         labelPhone->setMinimumSize(QSize(300, 16));
@@ -320,7 +320,7 @@ public:
 "border-bottom:0px;"));
         labelAddr = new QLabel(invoiceWidget);
         labelAddr->setObjectName(QStringLiteral("labelAddr"));
-        labelAddr->setGeometry(QRect(80, 80, 221, 16));
+        labelAddr->setGeometry(QRect(80, 45, 500, 16));
         sizePolicy1.setHeightForWidth(labelAddr->sizePolicy().hasHeightForWidth());
         labelAddr->setSizePolicy(sizePolicy1);
         labelAddr->setMinimumSize(QSize(220, 16));
@@ -330,7 +330,7 @@ public:
 "border-bottom:0px;"));
         label_8 = new QLabel(invoiceWidget);
         label_8->setObjectName(QStringLiteral("label_8"));
-        label_8->setGeometry(QRect(10, 80, 68, 16));
+        label_8->setGeometry(QRect(10, 45, 68, 16));
         sizePolicy.setHeightForWidth(label_8->sizePolicy().hasHeightForWidth());
         label_8->setSizePolicy(sizePolicy);
         label_8->setMinimumSize(QSize(68, 16));
@@ -379,7 +379,7 @@ public:
         label_16->setText(QApplication::translate("EntCenterInfoWidget", "\347\274\226\350\276\221", 0));
         label_11->setText(QString());
         label_13->setText(QString());
-        label_3->setText(QApplication::translate("EntCenterInfoWidget", "\350\241\214\346\224\277\345\214\272\345\237\237\357\274\232", 0));
+        label_3->setText(QApplication::translate("EntCenterInfoWidget", "\346\263\250\345\206\214\345\234\260\345\235\200\357\274\232", 0));
         labelArea->setText(QString());
         labelName->setText(QString());
         label_4->setText(QApplication::translate("EntCenterInfoWidget", "\350\264\242\347\250\216\350\264\237\350\264\243\344\272\272\357\274\232", 0));
@@ -388,10 +388,10 @@ public:
         label_14->setText(QApplication::translate("EntCenterInfoWidget", "\345\274\200\347\245\250\344\277\241\346\201\257", 0));
         label_6->setText(QApplication::translate("EntCenterInfoWidget", "\345\274\200\346\210\267\350\264\246\345\217\267\357\274\232", 0));
         labelAcc->setText(QString());
-        label_7->setText(QApplication::translate("EntCenterInfoWidget", "\345\233\272\345\256\232\347\224\265\350\257\235\357\274\232", 0));
+        label_7->setText(QString());
         labelPhone->setText(QString());
         labelAddr->setText(QString());
-        label_8->setText(QApplication::translate("EntCenterInfoWidget", "\350\257\246\347\273\206\345\234\260\345\235\200\357\274\232", 0));
+        label_8->setText(QApplication::translate("EntCenterInfoWidget", "\345\212\236\345\205\254\345\234\260\345\235\200\357\274\232", 0));
         label_10->setText(QApplication::translate("EntCenterInfoWidget", "\345\274\200\346\210\267\351\223\266\350\241\214\357\274\232", 0));
         labelBank->setText(QString());
     } // retranslateUi

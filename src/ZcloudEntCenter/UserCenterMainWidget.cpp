@@ -16,8 +16,8 @@
 #include "FinanMemberWidget.h"
 #include "AccSettingWidget.h"
 
-UserCenterMainWidget::UserCenterMainWidget(QWidget *parent)
-	: AppCommWidget("", true, parent)
+UserCenterMainWidget::UserCenterMainWidget(UserInfoStruct* info,QWidget *parent)
+	: m_userInfo(info),AppCommWidget("", true, parent)
 {
 	ui.setupUi(m_widget);
 	setWindowFlags(Qt::FramelessWindowHint);
@@ -35,6 +35,9 @@ UserCenterMainWidget::UserCenterMainWidget(QWidget *parent)
 	m_pUserDefult->setStyleSheet("border-image:url(:/UserCenterMainWidget/image/userVipDefualt.png);");
 	m_pUserDefult->setAttribute(Qt::WA_DeleteOnClose);
 	m_pUserDefult->hide();
+
+	ui.CompeteDataWidget->hide();
+	ui.SignInWidget->hide();
 }
 
 UserCenterMainWidget::~UserCenterMainWidget()
@@ -97,43 +100,52 @@ bool UserCenterMainWidget::eventFilter(QObject *target, QEvent *e)
 	return QWidget::eventFilter(target, e);
 }
 
-void UserCenterMainWidget::init(EntCenterInfo*	info)
+void UserCenterMainWidget::init(EntCenterInfo*	info11)
 {
 	QString strRet;
 	
 
 	//!完善资料
-	if (!info->_bIsManualFulled)
-	{
-		if (m_isNetActive)
-		{
-			ui.CompeteDataButton->setEnabled(true);
-		}
-		else
-		{
-			ui.CompeteDataButton->setEnabled(false);
-		}
-		ui.CompeteDataButton->setText(QString::fromLocal8Bit("去完成"));
-	}
-	else
-	{
-		ui.CompeteDataButton->setEnabled(false);
-		ui.CompeteDataButton->setText(QString::fromLocal8Bit("已完成"));
-	}
+	//if (!info->_bIsManualFulled)
+	//{
+	//	
+	//	
+	//	//if (m_isNetActive)
+	//	//{
+	//	//	ui.CompeteDataButton->setEnabled(true);
+	//	//}
+	//	//else
+	//	//{
+	//	//	ui.CompeteDataButton->setEnabled(false);
+	//	//}
+	//	ui.CompeteDataButton->setText(QString::fromLocal8Bit("去完成"));
+	//}
+	//else
+	//{
+	//	ui.CompeteDataButton->setEnabled(false);
+	//	ui.CompeteDataButton->setText(QString::fromLocal8Bit("已完成"));
+	//}
 
 
-	m_bHasMember = info->_bHasMember;
-	QString strCompName = info->_strCompName;
-	QString strTaxNo = info->_strTaxNo;
+	
+	QString strCompName = m_userInfo->m_strCompanyName;
+	QString strTaxNo = m_userInfo->m_strTaxNumber;
+	QString m_strTrueName = m_userInfo->m_strTruename;
+	QString strUserName = m_userInfo->m_strUsername;
+	QString m_strMobile = m_userInfo->m_strMobile;
+	QString m_strJob = m_userInfo->m_strJob;
+
+	
+	bool m_bJoinEnt = false;
+	
 	if (strCompName.isEmpty())
 	{
-		if (1	==	m_isLoginByTax)
+			if (1 == m_userInfo->m_bLoginByTax)
 		{
 			strCompName = QString::fromLocal8Bit("暂未查询到您的企业");
 		}
 		else
 		{
-			QString strUserName = m_strUserName;
 			if (strUserName.isEmpty() || strUserName.contains("wechat_") || strUserName.contains("nick_") || strUserName.contains("user_"))
 			{
 				if (m_strMobile.isEmpty())
@@ -189,8 +201,8 @@ void UserCenterMainWidget::init(EntCenterInfo*	info)
 		ui.labelUserJob->hide();
 	}
 
-
-	QDateTime timeNow = info->_dtServerTime;
+	
+	/*QDateTime timeNow = m_userInfo->m_timeChargeExpire;
 	uint	aa = timeNow.toTime_t();
 	QDate	  dateNow = timeNow.date();
 
@@ -206,21 +218,11 @@ void UserCenterMainWidget::init(EntCenterInfo*	info)
 	{
 		ui.SignInButton->setEnabled(false);
 		ui.SignInButton->setText(QString::fromLocal8Bit("已完成"));
-	}
+	}*/
 
 }
 
-void UserCenterMainWidget::setUserInfo(QString strUid, QString strToken, QString strTrueName, QString strJob, int isLoginByTax, QString strMobile, QString strCompId,QString strUserName)
-{
-	m_strUid		= strUid;
-	m_strToken		= strToken;
-	m_strTrueName	= strTrueName;
-	m_strJob		= strJob;
-	m_isLoginByTax	= isLoginByTax;
-	m_strMobile		= strMobile;
-	m_strCompId		= strCompId;
-	m_strUserName = strUserName;
-}
+
 
 
 
@@ -240,18 +242,19 @@ void UserCenterMainWidget::onSignInBtnClick()
 
 void UserCenterMainWidget::onCompeteDataBtnClick()
 {
-	ZcloudBigDataInterface::GetInstance()->produceData("M00", "OP001", "BBC019");
-	if (ZcloudComFun::winHttpSSO(m_strToken, m_strUid))
-	{
-		if (!this->findChild <AccSettingWidget*>("accSetting"))
-		{
-			AccSettingWidget*	pWidget = new AccSettingWidget(m_strUid, m_strToken, QString::fromLocal8Bit("完善资料"), this);
-			connect(pWidget, &AccSettingWidget::sigChangeCoin, this, &UserCenterMainWidget::onChangeCoin);
-			//connect(pWidget, &AccSettingWidget::sigEditUserInfoSucessed, this, &UserCenterMainWidget::onEditUserInfoSucessed);
-			connect(pWidget, &AccSettingWidget::sigBindMobileSucessed, this, &UserCenterMainWidget::sigSignBindingSucceeded);
-			pWidget->show();
-		}
-	}
+	//ZcloudBigDataInterface::GetInstance()->produceData("M00", "OP001", "BBC019");
+
+	//if (ZcloudComFun::winHttpSSO(m_strToken, m_strUid))
+	//{
+	//	if (!this->findChild <AccSettingWidget*>("accSetting"))
+	//	{
+	//		AccSettingWidget*	pWidget = new AccSettingWidget(m_strUid, m_strToken, QString::fromLocal8Bit("完善资料"), this);
+	//		connect(pWidget, &AccSettingWidget::sigChangeCoin, this, &UserCenterMainWidget::onChangeCoin);
+	//		//connect(pWidget, &AccSettingWidget::sigEditUserInfoSucessed, this, &UserCenterMainWidget::onEditUserInfoSucessed);
+	//		connect(pWidget, &AccSettingWidget::sigBindMobileSucessed, this, &UserCenterMainWidget::sigSignBindingSucceeded);
+	//		pWidget->show();
+	//	}
+	//}
 }
 void UserCenterMainWidget::onChangeCoin(int nCoin)
 {

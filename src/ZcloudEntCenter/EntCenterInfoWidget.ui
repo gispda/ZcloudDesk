@@ -576,7 +576,7 @@ color: rgb(102,102,102);
 border-bottom:0px;</string>
     </property>
     <property name="text">
-     <string>行政区域：</string>
+     <string>注册地址：</string>
     </property>
    </widget>
    <widget class="QLabel" name="labelArea">
@@ -584,7 +584,7 @@ border-bottom:0px;</string>
      <rect>
       <x>80</x>
       <y>10</y>
-      <width>300</width>
+      <width>500</width>
       <height>16</height>
      </rect>
     </property>
@@ -899,7 +899,7 @@ border-bottom:0px;</string>
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>45</y>
+      <y>80</y>
       <width>68</width>
       <height>16</height>
      </rect>
@@ -928,14 +928,14 @@ color: rgb(102,102,102);
 border-bottom:0px;</string>
     </property>
     <property name="text">
-     <string>固定电话：</string>
+     <string/>
     </property>
    </widget>
    <widget class="QLabel" name="labelPhone">
     <property name="geometry">
      <rect>
       <x>80</x>
-      <y>45</y>
+      <y>80</y>
       <width>300</width>
       <height>16</height>
      </rect>
@@ -971,8 +971,8 @@ border-bottom:0px;</string>
     <property name="geometry">
      <rect>
       <x>80</x>
-      <y>80</y>
-      <width>221</width>
+      <y>45</y>
+      <width>500</width>
       <height>16</height>
      </rect>
     </property>
@@ -1007,7 +1007,7 @@ border-bottom:0px;</string>
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>80</y>
+      <y>45</y>
       <width>68</width>
       <height>16</height>
      </rect>
@@ -1036,7 +1036,7 @@ color: rgb(102,102,102);
 border-bottom:0px;</string>
     </property>
     <property name="text">
-     <string>详细地址：</string>
+     <string>办公地址：</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_10">

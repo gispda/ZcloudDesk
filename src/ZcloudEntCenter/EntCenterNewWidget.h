@@ -18,13 +18,10 @@ class EntCenterNewWidget : public QWidget
 	Q_OBJECT
 
 public:
-	EntCenterNewWidget(UserInfoStruct _userInfo,QWidget *parent = 0);
+	EntCenterNewWidget(EntCenterInfo* pEntInfo, UserInfoStruct* userInfo, QWidget *parent = 0);
 	~EntCenterNewWidget();
 
 	void init(EntCenterInfo*	info);
-	//!设置用户数据
-	void setUserInfo(QString strUid, QString strToken, QString strTrueName, QString strJob, int isLoginByTax, QString strMobile, QString strCompId, QString strUserName);
-
 
 
 protected:
@@ -66,8 +63,8 @@ private:
 	bool winHttpJoinEnt(QString strToken, QString strComId, QString& strRet);
 private:
 
-	UserInfoStruct m_userInfo;
-	QString m_strUserName;
+
+	/*QString m_strUserName;
 	QString m_strUid;
 	QString m_strToken;
 	QString m_strTrueName;
@@ -79,15 +76,15 @@ private:
 	QString m_strCompId;
 	bool	m_isNetActive	= true;
 
-	bool m_bjoin;
+	bool m_bjoin;*/
 
 
 	QString m_strLocalTaxno;
 	Ui::EntCenterNewWidget ui;
 
-	bool	m_bJoinEnt = true;
-	bool	m_bHasMember = true;
-	QWidget* m_pUserDefult = NULL;
+	//bool	m_bJoinEnt = true;
+	//bool	m_bHasMember = true;
+	//QWidget* m_pUserDefult = NULL;
 
 	JoinEntWidget*	m_pJoinEntWidget;
 	EntCenterMemberWidget* mp_EntCenterMember;
@@ -95,6 +92,10 @@ private:
 	EntCenterMainWidget* mp_EntCenterMain;
 
 	SwitchAccWidget*	pWidget;
+
+
+	UserInfoStruct* m_userInfo;
+	EntCenterInfo* m_pEntInfo;
 };
 
 #endif // EntCenterNewWidget_H

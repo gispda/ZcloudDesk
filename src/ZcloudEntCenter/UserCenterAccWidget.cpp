@@ -16,8 +16,8 @@
 #include "FinanMemberWidget.h"
 #include "AccSettingWidget.h"
 
-UserCenterAccWidget::UserCenterAccWidget(QWidget *parent)
-	: AppCommWidget("", true, parent)
+UserCenterAccWidget::UserCenterAccWidget(UserInfoStruct* info,QWidget *parent)
+	: m_userInfo(info), AppCommWidget("", true, parent)
 {
 	ui.setupUi(m_widget);
 
@@ -88,31 +88,31 @@ bool UserCenterAccWidget::eventFilter(QObject *target, QEvent *e)
 	return QWidget::eventFilter(target, e);
 }
 
-void UserCenterAccWidget::init(EntCenterInfo*	info)
+void UserCenterAccWidget::init(EntCenterInfo*	info111)
 {
 	QString strRet;
 
-	m_bHasMember = info->_bHasMember;
-	QString strCompName = info->_strCompName;
-	QString strTaxNo = info->_strTaxNo;
+	QString m_bHasMember = m_userInfo->m_bHasMember;
+	QString strCompName = m_userInfo->m_strCompanyName;
+	QString strTaxNo = m_userInfo->m_strTaxNumber;
 	if (strCompName.isEmpty())
 	{
-		if (1	==	m_isLoginByTax)
+		if (1 == m_userInfo->m_bLoginByTax)
 		{
 			strCompName = QString::fromLocal8Bit("暂未查询到您的企业");
 		}
 		else
 		{
-			QString strUserName = m_strUserName;
+			QString strUserName = m_userInfo->m_strUsername;
 			if (strUserName.isEmpty() || strUserName.contains("wechat_") || strUserName.contains("nick_") || strUserName.contains("user_"))
 			{
-				if (m_strMobile.isEmpty())
+				if (m_userInfo->m_strMobile.isEmpty())
 				{
 					strCompName = QString::fromLocal8Bit("——");
 				}
 				else
 				{
-					strCompName = m_strMobile;
+					strCompName = m_userInfo->m_strMobile;
 				}
 			}
 			else
@@ -120,7 +120,7 @@ void UserCenterAccWidget::init(EntCenterInfo*	info)
 				strCompName = strUserName;
 			}
 
-			m_bJoinEnt = false;
+			//m_bJoinEnt = false;
 		}
 	}
 	
@@ -128,7 +128,7 @@ void UserCenterAccWidget::init(EntCenterInfo*	info)
 
 	
 	//!姓名与职务
-	if (m_strTrueName.isEmpty())
+	if (m_userInfo->m_strTruename.isEmpty())
 	{
 		ui.labelFirstName->setText("");
 		ui.labelFirstName->setStyleSheet("background:rgba(222,222,222,1);border-radius:15px;");
@@ -136,9 +136,10 @@ void UserCenterAccWidget::init(EntCenterInfo*	info)
 	}
 	else
 	{
+		QString  name = m_userInfo->m_strTruename;
 		ui.labelFirstName->setStyleSheet("background:rgba(95,217,153,1);border-radius:15px;font:14px \"微软雅黑\";color:#FDFDFD;");
-		ui.labelFirstName->setText(m_strTrueName.left(1));
-		ui.labelUserName->setText(m_strTrueName);
+		ui.labelFirstName->setText(name.left(1));
+		ui.labelUserName->setText(name);
 		ui.labelUserName->adjustSize();
 	}
 
@@ -148,27 +149,7 @@ void UserCenterAccWidget::init(EntCenterInfo*	info)
 
 }
 
-void UserCenterAccWidget::setUserInfo(QString strUid, QString strToken, QString strTrueName, QString strJob, int isLoginByTax, QString strMobile, QString strCompId,QString strUserName)
-{
-	m_strUid		= strUid;
-	m_strToken		= strToken;
-	m_strTrueName	= strTrueName;
-	m_strJob		= strJob;
-	m_isLoginByTax	= isLoginByTax;
-	m_strMobile		= strMobile;
-	m_strCompId		= strCompId;
-	m_strUserName = strUserName;
-}
 
-void UserCenterAccWidget::setMobile(QString strMobile)
-{
-	m_strMobile = strMobile;
-}
-
-void UserCenterAccWidget::setToken(QString strToken)
-{
-	m_strToken = strToken;
-}
 
 
 QString UserCenterAccWidget::checkLogoExist(QString strUrl)
@@ -181,11 +162,11 @@ QString UserCenterAccWidget::checkLogoExist(QString strUrl)
 void UserCenterAccWidget::onEntInfoBtnClick()
 {
 	ZcloudBigDataInterface::GetInstance()->produceData("M00", "OP001", "BBC008");
-	if (ZcloudComFun::winHttpSSO(m_strToken, m_strUid))
+	if (ZcloudComFun::winHttpSSO(m_userInfo->m_strToken, m_userInfo->m_strUserId))
 	{
 		if (!this->findChild <EntInfoWidget*>("entInfo"))
 		{
-			EntInfoWidget*	pEntInfoWidget = new EntInfoWidget(m_strUid, m_strToken, this);
+			EntInfoWidget*	pEntInfoWidget = new EntInfoWidget(m_userInfo->m_strUserId, m_userInfo->m_strToken, this);
 			pEntInfoWidget->show();
 		}
 	}	

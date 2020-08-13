@@ -9,13 +9,13 @@
 #include <QJsonObject>
 #include <QJsonArray>
 
-SwitchAccWidget::SwitchAccWidget(QString strUid, QString strToken, QString strUserName, QString strMobile, QString strCompId, QWidget *parent)
+SwitchAccWidget::SwitchAccWidget(QString strUid, QString strToken, QString strUserName, QString strCompId, QWidget *parent)
 	: QWidget(parent)
 	, m_strUid(strUid)
 	, m_strToken(strToken)
 	, m_strCompId(strCompId)
 	, m_strUserName(strUserName)
-	, m_strMobile(strMobile)
+	
 {
 	ui.setupUi(this);
 	setWindowTitle(QString::fromLocal8Bit("ÕËºÅÇÐ»»"));
@@ -348,7 +348,7 @@ void SwitchAccWidget::getCompanyList()
 			pSwitchInfo->strTaxNo		= strTaxNo;
 			pSwitchInfo->bLoginByTax	= 1;
 			pSwitchInfo->strUserName	= m_strUserName;
-			pSwitchInfo->strMobliePhone = m_strMobile;
+			//pSwitchInfo->strMobliePhone = m_strMobile;
 			pSwitchInfo->strLogoPath	= strLogoPath;
 			pSwitchInfo->strCompName	= strCompName;
 			pSwitchInfo->strUid			= m_strUid;

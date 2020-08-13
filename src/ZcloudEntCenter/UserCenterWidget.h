@@ -16,7 +16,7 @@ class UserCenterWidget : public QWidget
 	Q_OBJECT
 
 public:
-	UserCenterWidget(UserInfoStruct _userInfo,QWidget *parent = 0);
+	UserCenterWidget(UserInfoStruct* _userInfo,QWidget *parent = 0);
 	~UserCenterWidget();
 	void init(EntCenterInfo*	info);
 
@@ -87,7 +87,7 @@ private:
 	//!查询企业信息
 	bool winHttpGetCompanyInfo(QString strUid, QString strToken, QString& strRet);
 	//!解析企业信息
-	bool analysisJson(const QString& strJson, EntCenterInfo& info);
+	//bool analysisJson(const QString& strJson, EntCenterInfo& info);
 	//!检测用户头像是否存在 存在返回路径 不存在下载之后返回路径
 	QString checkLogoExist(QString strUrl);
 //	//!设置文字超出以...结束显示
@@ -108,15 +108,15 @@ private:
 //
 //	//!显示头像及VIP标识
 //	void showAvatar(QString strAvatarPath, bool bVip);
-	UserInfoStruct m_userInfo;
-	QString m_strUserName;
+	UserInfoStruct* m_userInfo;
+	/*QString m_strUserName;
 	QString m_strUid;
 	QString m_strToken;
 	QString m_strTrueName;
 	QString m_strJob;
 	QString m_strMobile;
 	int		m_isLoginByTax;
-	QString m_strCompId;
+	QString m_strCompId;*/
 	bool	m_isNetActive	= true;
 	Ui::UserCenterWidget ui;
 
