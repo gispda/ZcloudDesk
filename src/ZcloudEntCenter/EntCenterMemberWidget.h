@@ -13,7 +13,7 @@ class EntCenterMemberWidget : public AppCommWidget
 	Q_OBJECT
 
 public:
-	EntCenterMemberWidget(EntCenterInfo* pEntInfo, QWidget *parent = 0);
+	EntCenterMemberWidget(EntCenterInfo* pEntInfo, UserInfoStruct* userInfo, QWidget *parent = 0);
 	~EntCenterMemberWidget();
 	void init(EntCenterInfo*	info);
 
@@ -58,7 +58,7 @@ private:
 
 
 
-	//UserInfoStruct* m_userInfo;
+	UserInfoStruct* m_userInfo;
 	/*QString m_strUserName;
 	QString m_strUid;
 	QString m_strToken;

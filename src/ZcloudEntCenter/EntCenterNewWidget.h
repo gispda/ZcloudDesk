@@ -12,6 +12,7 @@
 #include "Database.h"
 #include "SwitchAccWidget.h"
 #include "JoinEntWidget.h"
+#include "ZcloudCommon.h"
 
 class EntCenterNewWidget : public QWidget
 {
@@ -78,6 +79,8 @@ private:
 
 	bool m_bjoin;*/
 
+	ZcloudComFun::dbEntInfo m_info;
+	
 
 	QString m_strLocalTaxno;
 	Ui::EntCenterNewWidget ui;

@@ -13,7 +13,7 @@ class EntCenterInfoWidget : public AppCommWidget
 	Q_OBJECT
 
 public:
-	EntCenterInfoWidget(EntCenterInfo*	info, QWidget *parent = 0);
+	EntCenterInfoWidget(EntCenterInfo*	info, UserInfoStruct* userInfo, QWidget *parent = 0);
 	~EntCenterInfoWidget();
 
 	//!初始化用户信息 
@@ -32,7 +32,7 @@ private:
 	//!获取企业资料
 	bool winHttpGetEntInfo(QString strUid, QString strToken, QString& strRet);
 
-
+	UserInfoStruct* m_userInfo;
 	EntCenterInfo*	m_pInfo;
 	//stEntInfo		m_stEntInfo;
 	//stInvoiceInfo	m_stInvoiceInfo;

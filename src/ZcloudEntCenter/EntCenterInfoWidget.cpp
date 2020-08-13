@@ -8,11 +8,11 @@
 #include "EditInvoiceInfoWidget.h"
 #include "ZcloudBigData.h"
 
-EntCenterInfoWidget::EntCenterInfoWidget(EntCenterInfo*	info, QWidget *parent)
+EntCenterInfoWidget::EntCenterInfoWidget(EntCenterInfo*	info, UserInfoStruct* userInfo, QWidget *parent)
 	:AppCommWidget("", true, parent)
 {
 	ui.setupUi(m_widget);
-
+	m_userInfo = userInfo;
 	m_pInfo = info;
 	ui.entEditWidget->installEventFilter(this);
 	ui.invoiceEditWidget->installEventFilter(this);

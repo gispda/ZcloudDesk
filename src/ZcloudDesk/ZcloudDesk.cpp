@@ -2007,26 +2007,27 @@ QString ZcloudDesk::queryTaxInfo()
 
 	//strTaxno = "210624197305200017";
 	bool bret = false;
-	bool bisjoin = false;
+	int  nisjoin = 0;
 	int nroletype = -1;
 	QString strcompanyid;
+	ZcloudComFun::dbEntInfo info;
 	////游客登陆
 	if (m_stUserInfo.m_bLoginByTax == -8)
 	{
-	///	m_stUserInfo.m_strTaxNumber = strTaxno;
+		///	m_stUserInfo.m_strTaxNumber = strTaxno;
 
 		QString strRet, strCompany, strServerUserid;
 		bool bret;
 		if (!strTaxno.isEmpty())
 		{
-			bret = ZcloudComFun::winHttpQueryCompanyInfoLocalTax(strTaxno, m_stUserInfo.m_strToken, bisjoin, strCompany, nroletype, strcompanyid);
+			bret = ZcloudComFun::winHttpQueryCompanyInfoLocalTax(strTaxno, m_stUserInfo.m_strToken, info);
 
-			return strCompany;
+			return info.strCompany;
 		}
 		else
 		{
-			strCompany = QString::fromLocal8Bit("暂未查询到您的企业");
-			return strCompany;
+			info.strCompany = QString::fromLocal8Bit("暂未查询到您的企业");
+			return info.strCompany;
 		}
 
 	}

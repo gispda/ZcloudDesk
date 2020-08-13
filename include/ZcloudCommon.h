@@ -9,6 +9,17 @@
 
 namespace ZcloudComFun
 {
+
+	typedef struct  dbEntInfo
+	{
+		int nIsjoin;
+		int nIsbind;
+		QString strCompany;
+		int nroletype; 
+		QString strcompanyid;
+		bool isbindEnt; ////是否绑定企业
+	};
+
 	enum EN_BTN_TYPE
 	{
 		EN_CLOSE = 0,		//!只一个关闭按钮
@@ -101,7 +112,7 @@ namespace ZcloudComFun
 
 
 	 ////查询是否加入企业，也可以用于注册表税号查询后台公司是否匹配
-	 __declspec(dllexport) bool winHttpQueryCompanyInfoLocalTax(QString strTaxno, QString strToken, bool& bIsjoin, QString& strCompany, int& nroletype,QString& strcompanyid);
+	 __declspec(dllexport) bool winHttpQueryCompanyInfoLocalTax(QString strTaxno, QString strToken, dbEntInfo& info);
 };
 #endif // ZCLOUDCOMMON_H
 

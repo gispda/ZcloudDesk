@@ -959,7 +959,7 @@ bool ZcloudComFun::isNetActiveByToken(QString strToken)
 
 
 ////查询是否加入企业，也可以用于注册表税号查询后台公司是否匹配
-bool ZcloudComFun::winHttpQueryCompanyInfoLocalTax(QString strTaxno, QString strToken, bool& bIsjoin, QString& strCompany,int& nroletype,QString& strcompanyid)
+bool ZcloudComFun::winHttpQueryCompanyInfoLocalTax(QString strTaxno, QString strToken, dbEntInfo& info)
 {
 
 	QString strUrl = QString("/ucenter/user/company-list");
@@ -1026,7 +1026,7 @@ bool ZcloudComFun::winHttpQueryCompanyInfoLocalTax(QString strTaxno, QString str
 		//}
 
 
-		strCompany = QString::fromLocal8Bit("暂未查询到您的企业");
+		info.strCompany = QString::fromLocal8Bit("暂未查询到您的企业");
 
 		return false;
 	}
@@ -1041,29 +1041,32 @@ bool ZcloudComFun::winHttpQueryCompanyInfoLocalTax(QString strTaxno, QString str
 	QJsonArray listArray = list.toArray();
 	int nSize = listArray.size();
 
-	QString _strtaxno,_;
-
+	QString _strtaxno;
+	int has_admin;
 
 	for (int nIndex = 0; nIndex < nSize; ++nIndex)
 	{
 		QJsonObject dataList = listArray.at(nIndex).toObject();
 
-		bIsjoin = dataList.take("is_join").toBool();
-		nroletype = dataList.take("role_type").toInt();
-		strCompany = dataList.take("company_name").toString();
+		info.nIsjoin = dataList.take("is_join").toInt();
+		info.nroletype = dataList.take("role_type").toInt();
+		info.strCompany = dataList.take("company_name").toString();
 		_strtaxno = dataList.take("tax_number").toString();
-		strcompanyid = dataList.take("company_id").toString();
-		if (_strtaxno == strTaxno && strTaxno.isEmpty()==false)
+		info.strcompanyid = dataList.take("company_id").toString();
+		info.nIsbind = dataList.take("is_bind_s").toInt();
+		has_admin = dataList.take("has_admin").toInt();
+		info.isbindEnt = has_admin == 1 ? true : false;
+		if (_strtaxno == strTaxno && strTaxno.isEmpty() == false)
 		{
 			return true;
 		}
 	}
-	bIsjoin = false;
-	nroletype = -1;
-	strCompany = QString::fromLocal8Bit("暂未查询到您的企业");
+	info.nIsjoin = 0;
+	info.nroletype = -1;
+	info.nIsbind = 0;
+	info.strCompany = QString::fromLocal8Bit("暂未查询到您的企业");
 	return false;
 }
-
 
 //QString ZcloudComFun::getTaxnumber()
 //{
