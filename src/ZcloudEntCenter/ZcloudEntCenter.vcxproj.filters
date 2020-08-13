@@ -366,9 +366,6 @@
     <ClInclude Include="GeneratedFiles\ui_EntCenterMemberWidget.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
-    <ClInclude Include="GeneratedFiles\ui_EntCenterNewWidget.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_EntInfoWidget.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
@@ -409,6 +406,9 @@
       <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_WorkerItemWidget.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_EntCenterNewWidget.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
   </ItemGroup>

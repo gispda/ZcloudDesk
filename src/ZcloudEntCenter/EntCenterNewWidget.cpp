@@ -30,11 +30,18 @@ EntCenterNewWidget::EntCenterNewWidget(EntCenterInfo* pEntInfo, UserInfoStruct* 
 	mp_EntCenterMember = new EntCenterMemberWidget(pEntInfo, userInfo,ui.EntRightWidget);
 	mp_EntCenterInfo = new EntCenterInfoWidget(pEntInfo,userInfo, ui.EntRightWidget);
 	mp_EntCenterMain = new EntCenterMainWidget(pEntInfo, userInfo, ui.EntRightWidget);
+	mp_EntCenterMember->setGeometry(0, 0, 750, 620);
+	mp_EntCenterInfo->setGeometry(0, 0, 750, 620);
+	mp_EntCenterMain->setGeometry(0, 0, 750, 620);
+
+
+
 	mp_EntCenterMember->hide();
 	mp_EntCenterInfo->hide();
 
 	m_userInfo = userInfo;
 	//connect(ui.entInfoButton, &QPushButton::clicked, this, &EntCenterNewWidget::onEntInfoBtnClick);
+	connect(ui.mainButton, SIGNAL(clicked()), this, SLOT(onShowMain()));
 	connect(ui.entInfoButton, SIGNAL(clicked()), this, SLOT(onShowInfo()));
 	connect(ui.memberButton, SIGNAL(clicked()), this, SLOT(onShowMember()));
 	connect(ui.copyTaxButton, SIGNAL(clicked()), this, SLOT(onCopyBtnClick()));
@@ -65,7 +72,7 @@ void EntCenterNewWidget::init(EntCenterInfo*	info){
 	m_pEntInfo = info;
 	mp_EntCenterInfo->init(info);
 
-	mp_EntCenterMain->init(info);
+	mp_EntCenterMain->init(info,m_userInfo);
 	
 	mp_EntCenterMember->init(info);
 
@@ -163,8 +170,8 @@ void EntCenterNewWidget::onShowInfo(){
 		}
 	}
 
-	mp_EntCenterInfo->show();
 	mp_EntCenterMain->hide();
+	mp_EntCenterInfo->show();
 	mp_EntCenterMember->hide();
 }
 void EntCenterNewWidget::onShowMember(){
@@ -407,7 +414,7 @@ void EntCenterNewWidget::showUnaddCompanyInfoTitle(QString _strcompany, QString 
 	ui.labeluser->setText(QString::fromLocal8Bit("<html><head/><body><p><span style=\"font-size:14px;font-family:SourceHanSansCN - Normal, SourceHanSansCN;font-weight:400;color:rgba(102, 102, 102, 1);line-height:21px;\"> %1</span></p></body></html>").arg(_strUser));
 	//ui.labeluser->setStyleSheet("font-size:14px;font - family:SourceHanSansCN - Normal, SourceHanSansCN;font-weight:400;color:rgba(102, 102, 102, 1);line-height:21px; ");
 	ui.labeluser->show();
-	ui.labelTaxNo->setGeometry(64, 163, 122, 12);
+	ui.labelTaxNo->setGeometry(44, 163, 122, 12);
 
 
 
@@ -427,7 +434,7 @@ void EntCenterNewWidget::showUnaddCompanyInfoTitle(QString _strcompany, QString 
 	//	ui.switchButton->setStyleSheet("background:linear - gradient(90deg, rgba(2, 164, 253, 1) 0 % , rgba(31, 139, 237, 1) 100 % );box - shadow:0px 3px 8px - 2px rgba(2, 165, 253, 0.85), 0px 6px 11px - 2px rgba(2, 165, 253, 0.64);border - radius:4px; ");
 
 
-	ui.copyTaxButton->setGeometry(191, 162, 16, 16);
+	ui.copyTaxButton->setGeometry(200, 162, 16, 16);
 	ui.copyTaxButton->setStyleSheet("QPushButton{border-image: url(:/EntCenterWidget/image/copy.png);}\nQPushButton:hover,pressed{border-image: url(:/EntCenterWidget/image/copy_sel.png);}");
 	ui.copyTaxButton->show();
 

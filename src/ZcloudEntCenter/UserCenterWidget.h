@@ -16,9 +16,9 @@ class UserCenterWidget : public QWidget
 	Q_OBJECT
 
 public:
-	UserCenterWidget(UserInfoStruct* _userInfo,QWidget *parent = 0);
+	UserCenterWidget(EntCenterInfo*	entinfo,UserInfoStruct* _userInfo, QWidget *parent = 0);
 	~UserCenterWidget();
-	void init(EntCenterInfo*	info);
+	void init(EntCenterInfo*	entinfo,UserInfoStruct* info);
 
 	void modifyCoinCount(int nCount);
 signals:
@@ -108,7 +108,6 @@ private:
 //
 //	//!显示头像及VIP标识
 //	void showAvatar(QString strAvatarPath, bool bVip);
-	UserInfoStruct* m_userInfo;
 	/*QString m_strUserName;
 	QString m_strUid;
 	QString m_strToken;
@@ -120,13 +119,16 @@ private:
 	bool	m_isNetActive	= true;
 	Ui::UserCenterWidget ui;
 
-	bool	m_bJoinEnt = true;
-	bool	m_bHasMember = true;
+	//bool	m_bJoinEnt = true;
+	//bool	m_bHasMember = true;
 	QWidget* m_pUserDefult = NULL;
 	//首页
 	UserCenterMainWidget* mp_UserCenterMain = NULL;
 	//账户信息
 	UserCenterAccWidget* mp_UserCenterAcc = NULL;
+
+	EntCenterInfo*	m_pEntinfo;
+	UserInfoStruct* m_userInfo;
 };
 
 #endif // UserCenterWidget_H

@@ -16,7 +16,7 @@
 #include "FinanMemberWidget.h"
 #include "AccSettingWidget.h"
 
-UserCenterMainWidget::UserCenterMainWidget(UserInfoStruct* info,QWidget *parent)
+UserCenterMainWidget::UserCenterMainWidget(EntCenterInfo*	entinfo, UserInfoStruct* info, QWidget *parent)
 	: m_userInfo(info),AppCommWidget("", true, parent)
 {
 	ui.setupUi(m_widget);
@@ -97,10 +97,11 @@ bool UserCenterMainWidget::eventFilter(QObject *target, QEvent *e)
 	//		}
 	//	}
 	//}
-	return QWidget::eventFilter(target, e);
+	//return QWidget::eventFilter(target, e);
+	return NULL;
 }
 
-void UserCenterMainWidget::init(EntCenterInfo*	info11)
+void UserCenterMainWidget::init(EntCenterInfo*	entinfo, UserInfoStruct*	info11)
 {
 	QString strRet;
 	

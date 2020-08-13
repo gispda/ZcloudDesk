@@ -12,15 +12,20 @@ class UserCenterAccWidget : public AppCommWidget
 	Q_OBJECT
 
 public:
-	UserCenterAccWidget(UserInfoStruct* info,QWidget *parent = 0);
+	UserCenterAccWidget(EntCenterInfo*	entinfo, UserInfoStruct* info, QWidget *parent = 0);
 	~UserCenterAccWidget();
+	void onSetPwdSucessed(int nCoin, bool bPerfect);
+	void onBindMobileSucessed(int nCoin, bool bPerfect);
+	void onModifyUserInfoSucessed(int nCoin, bool bPerfect);
 
 	
-	void init(EntCenterInfo*	info);
+	void init(EntCenterInfo*	entinfo, UserInfoStruct* info);
 
 	void modifyCoinCount(int nCount);
 signals:
-	
+	void sigChangeCoin(int);
+	void sigEditUserInfoSucessed(const QString&, const QString&);
+	void sigBindMobileSucessed(const QString&);
 
 	//°ó¶¨ÊÖ»úºÅ
 	void bingdingPhoneSignal();

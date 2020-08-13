@@ -36,9 +36,10 @@ EntCenterMainWidget::EntCenterMainWidget(EntCenterInfo* pEntInfo, UserInfoStruct
 	}
 }
 
-void EntCenterMainWidget::init(EntCenterInfo*	info)
+void EntCenterMainWidget::init(EntCenterInfo*	info, UserInfoStruct* userinfo)
 {
 	m_pInfo = info;
+	this->m_userinfo = userinfo;
 
 	QString m_bHasMember = m_pInfo->_bHasMember;
 	QString strCompName =m_pInfo->_strCompName;
@@ -74,24 +75,29 @@ void EntCenterMainWidget::init(EntCenterInfo*	info)
 
 
 
-	//!姓名与职务
-	if (m_userinfo->m_strTruename.isEmpty())
+	//绑定经理
+	if (m_pInfo->_nisbinds)
 	{
-		//ui.labelFirstName->setText("");
-		//ui.labelFirstName->setStyleSheet("background:rgba(222,222,222,1);border-radius:15px;");
-		//ui.labelUserName->setText(QString::fromLocal8Bit("——"));
+		//显示头像
+		//m_pInfo->_oservice.m_avatarurl
+		ui.widgetUserInfo_2->show();
+		ui.widgetNotBinding_2->hide();
+		ui.labelName_2->setText(m_pInfo->_oservice.m_strTruename);
+		ui.labelPhone_2->setText(m_pInfo->_oservice.m_strPhone);
+		ui.labelWeChat_2->setText(m_pInfo->_oservice.m_wechat);
+		ui.labelName_5->setText(m_pInfo->_oservice.m_qq);
+
 	}
 	else
 	{
-		//ui.labelFirstName->setStyleSheet("background:rgba(95,217,153,1);border-radius:15px;font:14px \"微软雅黑\";color:#FDFDFD;");
-		//ui.labelFirstName->setText(m_strTrueName.left(1));
-		//ui.labelUserName->setText(m_strTrueName);
-		//ui.labelUserName->adjustSize();
+		//显示二维码
+		ui.widgetUserInfo_2->hide();
+		ui.widgetNotBinding_2->show();
 	}
 
 	
 
-	if (m_bJoinEnt)
+	if (m_pInfo->_nisjoin)
 	{
 		//!服务费
 		if (m_pInfo->_strCompName.isEmpty() || 0 == m_pInfo->_nChargeExpire)
@@ -104,6 +110,7 @@ void EntCenterMainWidget::init(EntCenterInfo*	info)
 			ui.labelFeeTime->hide();
 			ui.labelFeeTime_4->hide();
 			ui.labelDays->hide();
+			ui.ServiceFeeButton->hide();
 		}
 		else
 		{
@@ -114,6 +121,7 @@ void EntCenterMainWidget::init(EntCenterInfo*	info)
 			ui.labelFeeTime->show();
 			ui.labelFeeTime_4->show();
 			ui.labelDays->show();
+			ui.ServiceFeeButton->show();
 
 			if (m_pInfo->_nEndDays >= 0)
 			{

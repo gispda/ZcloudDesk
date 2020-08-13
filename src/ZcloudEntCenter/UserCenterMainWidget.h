@@ -13,10 +13,10 @@ class UserCenterMainWidget : public AppCommWidget
 	Q_OBJECT
 
 public:
-	UserCenterMainWidget(UserInfoStruct* m_userInfo,QWidget *parent = 0);
+	UserCenterMainWidget(EntCenterInfo*	entinfo, UserInfoStruct* m_userInfo, QWidget *parent = 0);
 	~UserCenterMainWidget();
 
-	void init(EntCenterInfo*	info);
+	void init(EntCenterInfo*	entinfo, UserInfoStruct*	info);
 	//!设置用户数据
 	void modifyCoinCount(int nCount);
 signals:

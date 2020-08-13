@@ -16,13 +16,17 @@
 #include "FinanMemberWidget.h"
 #include "AccSettingWidget.h"
 
-UserCenterWidget::UserCenterWidget(UserInfoStruct* _userInfo,QWidget *parent)
-	:QWidget(parent), m_userInfo(_userInfo)
+UserCenterWidget::UserCenterWidget(EntCenterInfo*	info,UserInfoStruct* _userInfo, QWidget *parent)
+	:QWidget(parent), m_userInfo(_userInfo), m_pEntinfo(info)
 {
 	ui.setupUi(this);
-	mp_UserCenterMain = new UserCenterMainWidget(_userInfo,ui.RightWidget);
+	mp_UserCenterMain = new UserCenterMainWidget(info,_userInfo, ui.RightWidget);
 
-	mp_UserCenterAcc = new UserCenterAccWidget(_userInfo, ui.RightWidget);
+	mp_UserCenterAcc = new UserCenterAccWidget(info,_userInfo, ui.RightWidget);
+	mp_UserCenterMain->setGeometry(0, 0, 750, 620);
+	mp_UserCenterAcc->setGeometry(0, 0, 750, 620);
+
+
 	mp_UserCenterAcc->hide();
 
 
@@ -62,10 +66,25 @@ UserCenterWidget::UserCenterWidget(UserInfoStruct* _userInfo,QWidget *parent)
 	m_pUserDefult->hide();*/
 	
 }
-void UserCenterWidget::init(EntCenterInfo*	info){
-	m_bHasMember = info->_bHasMember;
-	mp_UserCenterMain->init(info);
-	mp_UserCenterAcc->init(info);
+void UserCenterWidget::init(EntCenterInfo*	entinfo,UserInfoStruct*	info){
+	this->m_userInfo = info;
+	
+	mp_UserCenterMain->init(entinfo,info);
+	mp_UserCenterAcc->init(entinfo,info);
+
+	if (!m_userInfo->m_strUsername.isEmpty()){
+		ui.label->hide();
+		ui.labelUserName->show();
+		ui.pushButtonLogin->hide();
+		ui.labelUserName->setText(m_userInfo->m_strUsername);
+	}
+	else{
+		ui.label->show();
+		ui.pushButtonLogin->show();
+		ui.labelUserName->hide();
+	}
+
+
 }
 
 UserCenterWidget ::~UserCenterWidget(){

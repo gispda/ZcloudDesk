@@ -154,6 +154,9 @@ public:
         label_22->setStyleSheet(QLatin1String("background-color: rgb(252, 252, 252);border:1px solid rgba(235,235,235,1);\n"
 "border-radius:10px;"));
         label_22->setAlignment(Qt::AlignCenter);
+        labelPic_4->raise();
+        label_22->raise();
+        widgetNotBinding_2->raise();
         label = new QLabel(EntCenterMainWidget);
         label->setObjectName(QStringLiteral("label"));
         label->setGeometry(QRect(20, 210, 64, 17));
@@ -262,7 +265,7 @@ public:
         progressBar->setTextDirection(QProgressBar::TopToBottom);
         labelNoServerFee_2 = new QLabel(ServiceFeeWidget);
         labelNoServerFee_2->setObjectName(QStringLiteral("labelNoServerFee_2"));
-        labelNoServerFee_2->setGeometry(QRect(45, 48, 251, 16));
+        labelNoServerFee_2->setGeometry(QRect(45, 48, 260, 16));
         labelNoServerFee_2->setStyleSheet(QString::fromUtf8("font: 14px \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
 "color:#333333;"));
         label_2 = new QLabel(EntCenterMainWidget);
@@ -274,6 +277,12 @@ public:
         label_2->setMaximumSize(QSize(64, 17));
         label_2->setStyleSheet(QString::fromUtf8("font: 16px \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
 "color:#333333;"));
+        ServiceFeeWidget_2->raise();
+        ServiceFeeWidget_3->raise();
+        label->raise();
+        ServiceFeeWidget->raise();
+        label_2->raise();
+        widgetNotBinding_2->raise();
 
         retranslateUi(EntCenterMainWidget);
 

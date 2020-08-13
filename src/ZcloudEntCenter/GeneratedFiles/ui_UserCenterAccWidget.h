@@ -70,9 +70,9 @@ public:
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(UserCenterAccWidget->sizePolicy().hasHeightForWidth());
         UserCenterAccWidget->setSizePolicy(sizePolicy);
-        UserCenterAccWidget->setMinimumSize(QSize(750, 500));
-        UserCenterAccWidget->setMaximumSize(QSize(800, 620));
-        UserCenterAccWidget->setStyleSheet(QStringLiteral("QWidget#AccSettingWidget{background-color: rgb(255, 255, 255);border-radius:8px;}"));
+        UserCenterAccWidget->setMinimumSize(QSize(750, 620));
+        UserCenterAccWidget->setMaximumSize(QSize(750, 620));
+        UserCenterAccWidget->setStyleSheet(QStringLiteral("background-color: rgb(255, 255, 255);border-radius:8px;"));
         labelFirstName = new QLabel(UserCenterAccWidget);
         labelFirstName->setObjectName(QStringLiteral("labelFirstName"));
         labelFirstName->setGeometry(QRect(15, 23, 60, 60));

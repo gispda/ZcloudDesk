@@ -40,7 +40,7 @@ InfoCenterWidget::InfoCenterWidget(UserInfoStruct* _userInfo, QWidget *parent /*
 	m_pEntCenter = new EntCenterNewWidget(&m_stEntInfo, m_userInfo, ui.widgetCenter);
 
 
-	m_pUserCenter = new UserCenterWidget(_userInfo,ui.widgetCenter);
+	m_pUserCenter = new UserCenterWidget(&m_stEntInfo,_userInfo, ui.widgetCenter);
 	m_pUserCenter->hide();
 
 	connect(ui.closeButton, &QPushButton::clicked, [this](){
@@ -127,7 +127,7 @@ void InfoCenterWidget::init(){
 		}	
 	}	
 	m_pEntCenter->init(&m_stEntInfo);
-	m_pUserCenter->init(&m_stEntInfo);
+	m_pUserCenter->init(&m_stEntInfo, m_userInfo);
 	
 }
 InfoCenterWidget::~InfoCenterWidget()
@@ -236,6 +236,7 @@ bool InfoCenterWidget::analysisJson(const QString& strJson, EntCenterInfo& info)
 	info._strOfficeFulladdress = data.take("office_full_address").toString();  //
 
 	info._nisjoin = data.take("is_join").toInt();  //
+	//QJsonValue t = data.take("is_bind_s");
 	info._nisbinds = data.take("is_bind_s").toInt();  //
 	info._nhasadmin = data.take("has_admin").toInt();  //
 
@@ -270,7 +271,7 @@ bool InfoCenterWidget::analysisJson(const QString& strJson, EntCenterInfo& info)
 	info._strUsername = objValue.take("user_name").toString();  //
 	info._strTruename = objValue.take("true_name").toString();  //
 	info._strJob = objValue.take("job").toString();  //
-	info._nrole_type = objValue.take("role_type").toInt();  //
+	info._nrole_type = objValue.take("role_type").toString().toInt();  //
 
 	////-------------------------------------------------------------------
 
@@ -399,7 +400,9 @@ bool InfoCenterWidget::loadEntInfo()
 
 
 	QJsonObject userdata = data.take("user").toObject();
-	m_stEntInfo.nAdmin = userdata.take("role_type").toInt();
+	//m_stEntInfo.nAdmin = userdata.take("is_admin").toInt();
+	//m_stEntInfo.nAdmin = userdata.take("role_type").toInt();
 
+	
 	return true;
 }

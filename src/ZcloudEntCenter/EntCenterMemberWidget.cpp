@@ -119,6 +119,8 @@ bool EntCenterMemberWidget::showMemberInfo()
 		connect(pItem, &MemberItemWidget::sigModifyMember, this, &EntCenterMemberWidget::onModifyMember);
 		connect(pItem, &MemberItemWidget::sigHandOver, this, &EntCenterMemberWidget::onHandOver);
 
+		
+
 		if (1 == nRoleType)
 		{
 			ui.listWidget->insertItem(0, pListWidgetItem);
@@ -137,7 +139,7 @@ bool EntCenterMemberWidget::showMemberInfo()
 		ui.labelAudit->setText(QString::fromLocal8Bit("³ÉÔ±ÉóºË(%1)").arg(nAuditCount));
 		ui.labelAudit->adjustSize();
 	}
-	if (1 != nAdmin)
+	if (1 != m_pInfo->_nrole_type)
 	{
 		ui.addMemberButton->hide();
 		ui.labelAudit->hide();

@@ -343,6 +343,9 @@ border-radius:10px;</string>
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
+   <zorder>labelPic_4</zorder>
+   <zorder>label_22</zorder>
+   <zorder>widgetNotBinding_2</zorder>
   </widget>
   <widget class="QLabel" name="label">
    <property name="geometry">
@@ -739,7 +742,7 @@ QProgressBar {border:0px;border-radius:5px;text-align: center;}</string>
      <rect>
       <x>45</x>
       <y>48</y>
-      <width>251</width>
+      <width>260</width>
       <height>16</height>
      </rect>
     </property>
@@ -787,6 +790,12 @@ color:#333333;</string>
     <string>基础服务</string>
    </property>
   </widget>
+  <zorder>ServiceFeeWidget_2</zorder>
+  <zorder>ServiceFeeWidget_3</zorder>
+  <zorder>label</zorder>
+  <zorder>ServiceFeeWidget</zorder>
+  <zorder>label_2</zorder>
+  <zorder>widgetNotBinding_2</zorder>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>

@@ -38,7 +38,7 @@ public:
     QLabel *labelMore;
     QLabel *labelEntInfo;
     QLabel *labelMember;
-    QPushButton *entInfoButton;
+    QPushButton *mainButton;
     QPushButton *memberButton;
     QLabel *labelAddComp;
     QLabel *labelVip;
@@ -46,6 +46,8 @@ public:
     QLabel *labeluser;
     QLabel *labelroletype;
     QLabel *labelline;
+    QLabel *labelEntInfo_2;
+    QPushButton *entInfoButton;
     QWidget *EntRightWidget;
 
     void setupUi(QWidget *EntCenterNewWidget)
@@ -105,7 +107,7 @@ public:
         labelAvatar->setStyleSheet(QStringLiteral("border-image: url(:/EntCenterWidget/image/img_tx_d.png);"));
         copyTaxButton = new QPushButton(EntLeftWidget);
         copyTaxButton->setObjectName(QStringLiteral("copyTaxButton"));
-        copyTaxButton->setGeometry(QRect(191, 162, 16, 16));
+        copyTaxButton->setGeometry(QRect(200, 162, 16, 16));
         sizePolicy1.setHeightForWidth(copyTaxButton->sizePolicy().hasHeightForWidth());
         copyTaxButton->setSizePolicy(sizePolicy1);
         copyTaxButton->setMinimumSize(QSize(16, 16));
@@ -128,7 +130,7 @@ public:
         labeltaxno->setWordWrap(true);
         labelTaxNo = new QLabel(EntLeftWidget);
         labelTaxNo->setObjectName(QStringLiteral("labelTaxNo"));
-        labelTaxNo->setGeometry(QRect(64, 163, 150, 12));
+        labelTaxNo->setGeometry(QRect(44, 163, 150, 12));
         sizePolicy1.setHeightForWidth(labelTaxNo->sizePolicy().hasHeightForWidth());
         labelTaxNo->setSizePolicy(sizePolicy1);
         labelTaxNo->setMinimumSize(QSize(150, 12));
@@ -172,18 +174,18 @@ public:
         labelMember->setMaximumSize(QSize(10, 10));
         labelMember->setStyleSheet(QLatin1String("border:2px solid rgba(90,168,255,1);\n"
 "border-radius:5px;"));
-        entInfoButton = new QPushButton(EntLeftWidget);
-        entInfoButton->setObjectName(QStringLiteral("entInfoButton"));
-        entInfoButton->setGeometry(QRect(80, 360, 80, 30));
+        mainButton = new QPushButton(EntLeftWidget);
+        mainButton->setObjectName(QStringLiteral("mainButton"));
+        mainButton->setGeometry(QRect(80, 360, 80, 30));
         QSizePolicy sizePolicy2(QSizePolicy::Preferred, QSizePolicy::Fixed);
         sizePolicy2.setHorizontalStretch(0);
         sizePolicy2.setVerticalStretch(0);
-        sizePolicy2.setHeightForWidth(entInfoButton->sizePolicy().hasHeightForWidth());
-        entInfoButton->setSizePolicy(sizePolicy2);
-        entInfoButton->setMinimumSize(QSize(57, 30));
-        entInfoButton->setMaximumSize(QSize(570, 30));
-        entInfoButton->setLayoutDirection(Qt::LeftToRight);
-        entInfoButton->setStyleSheet(QString::fromUtf8("QPushButton{background-color:rgba(255,255,255,0);font: 14px \"\345\276\256\350\275\257\351\233\205\351\273\221\";color:rgba(51, 51, 51, 1);padding-left:-20px;}\n"
+        sizePolicy2.setHeightForWidth(mainButton->sizePolicy().hasHeightForWidth());
+        mainButton->setSizePolicy(sizePolicy2);
+        mainButton->setMinimumSize(QSize(57, 30));
+        mainButton->setMaximumSize(QSize(570, 30));
+        mainButton->setLayoutDirection(Qt::LeftToRight);
+        mainButton->setStyleSheet(QString::fromUtf8("QPushButton{background-color:rgba(255,255,255,0);font: 14px \"\345\276\256\350\275\257\351\233\205\351\273\221\";color:rgba(51, 51, 51, 1);padding-left:-20px;}\n"
 "QPushButton:hover,pressed{ background-color:rgba(255,255,255,0);font: 14px \"\345\276\256\350\275\257\351\233\205\351\273\221\";color:rgba(31,139,237,1);}"));
         memberButton = new QPushButton(EntLeftWidget);
         memberButton->setObjectName(QStringLiteral("memberButton"));
@@ -213,11 +215,11 @@ public:
         labelVip->setStyleSheet(QStringLiteral("border-image: url(:/EntCenterWidget/image/qyzx_icon_vip_wjr.png);"));
         labelComName = new QLabel(EntLeftWidget);
         labelComName->setObjectName(QStringLiteral("labelComName"));
-        labelComName->setGeometry(QRect(55, 139, 140, 14));
+        labelComName->setGeometry(QRect(55, 139, 140, 16));
         sizePolicy1.setHeightForWidth(labelComName->sizePolicy().hasHeightForWidth());
         labelComName->setSizePolicy(sizePolicy1);
-        labelComName->setMinimumSize(QSize(140, 14));
-        labelComName->setMaximumSize(QSize(140, 14));
+        labelComName->setMinimumSize(QSize(140, 16));
+        labelComName->setMaximumSize(QSize(140, 16));
         labelComName->setStyleSheet(QLatin1String("font-size:14px;\n"
 "font-family:SourceHanSansCN-Normal,SourceHanSansCN;\n"
 "font-weight:400;\n"
@@ -227,7 +229,7 @@ public:
         labelComName->setWordWrap(true);
         labeluser = new QLabel(EntLeftWidget);
         labeluser->setObjectName(QStringLiteral("labeluser"));
-        labeluser->setGeometry(QRect(79, 195, 60, 14));
+        labeluser->setGeometry(QRect(79, 195, 126, 14));
         labeluser->setMaximumSize(QSize(126, 14));
         labeluser->setStyleSheet(QLatin1String("font-size:14px;\n"
 "font-family:SourceHanSansCN-Normal,SourceHanSansCN;\n"
@@ -245,10 +247,30 @@ public:
 "line-height:21px;"));
         labelline = new QLabel(EntLeftWidget);
         labelline->setObjectName(QStringLiteral("labelline"));
-        labelline->setGeometry(QRect(110, 140, 1, 14));
-        labelline->setMaximumSize(QSize(126, 14));
+        labelline->setGeometry(QRect(110, 140, 1, 16));
+        labelline->setMinimumSize(QSize(1, 16));
+        labelline->setMaximumSize(QSize(1, 16));
         labelline->setStyleSheet(QLatin1String("background:rgba(51,51,51,1);\n"
 "opacity:0.3;"));
+        labelEntInfo_2 = new QLabel(EntLeftWidget);
+        labelEntInfo_2->setObjectName(QStringLiteral("labelEntInfo_2"));
+        labelEntInfo_2->setGeometry(QRect(60, 457, 10, 10));
+        sizePolicy1.setHeightForWidth(labelEntInfo_2->sizePolicy().hasHeightForWidth());
+        labelEntInfo_2->setSizePolicy(sizePolicy1);
+        labelEntInfo_2->setMinimumSize(QSize(10, 10));
+        labelEntInfo_2->setMaximumSize(QSize(10, 10));
+        labelEntInfo_2->setStyleSheet(QLatin1String("border:2px solid rgba(223,70,100,1);\n"
+"border-radius:5px;"));
+        entInfoButton = new QPushButton(EntLeftWidget);
+        entInfoButton->setObjectName(QStringLiteral("entInfoButton"));
+        entInfoButton->setGeometry(QRect(80, 446, 80, 30));
+        sizePolicy2.setHeightForWidth(entInfoButton->sizePolicy().hasHeightForWidth());
+        entInfoButton->setSizePolicy(sizePolicy2);
+        entInfoButton->setMinimumSize(QSize(57, 30));
+        entInfoButton->setMaximumSize(QSize(570, 30));
+        entInfoButton->setLayoutDirection(Qt::LeftToRight);
+        entInfoButton->setStyleSheet(QString::fromUtf8("QPushButton{background-color:rgba(255,255,255,0);font: 14px \"\345\276\256\350\275\257\351\233\205\351\273\221\";color:rgba(51, 51, 51, 1);padding-left:-20px;}\n"
+"QPushButton:hover,pressed{ background-color:rgba(255,255,255,0);font: 14px \"\345\276\256\350\275\257\351\233\205\351\273\221\";color:rgba(31,139,237,1);}"));
 
         horizontalLayout->addWidget(EntLeftWidget);
 
@@ -286,7 +308,7 @@ public:
         labelMore->setText(QApplication::translate("EntCenterNewWidget", "\346\233\264\345\244\232\344\277\241\346\201\257", 0));
         labelEntInfo->setText(QString());
         labelMember->setText(QString());
-        entInfoButton->setText(QApplication::translate("EntCenterNewWidget", "\344\274\201\344\270\232\350\265\204\346\226\231", 0));
+        mainButton->setText(QApplication::translate("EntCenterNewWidget", "\351\246\226        \351\241\265", 0));
         memberButton->setText(QApplication::translate("EntCenterNewWidget", "\350\264\242\345\212\241\346\210\220\345\221\230", 0));
         labelAddComp->setText(QApplication::translate("EntCenterNewWidget", "\345\212\240\345\205\245\344\274\201\344\270\232", 0));
         labelVip->setText(QString());
@@ -294,6 +316,8 @@ public:
         labeluser->setText(QString());
         labelroletype->setText(QApplication::translate("EntCenterNewWidget", "\347\256\241\347\220\206\345\221\230", 0));
         labelline->setText(QString());
+        labelEntInfo_2->setText(QString());
+        entInfoButton->setText(QApplication::translate("EntCenterNewWidget", "\344\274\201\344\270\232\350\265\204\346\226\231", 0));
     } // retranslateUi
 
 };

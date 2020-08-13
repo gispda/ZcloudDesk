@@ -72,7 +72,7 @@ public:
 	QString _strCreateCompanyUrl;	//!创建公司url
 	QDateTime	_dtServerTime = QDateTime::currentDateTime();		//!服务器当前时间
 
-	int	nAdmin = 0;
+	//int	nAdmin = 0;
 };
 class EntDataBase : public QObject
 {

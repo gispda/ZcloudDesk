@@ -43,7 +43,7 @@ void EntCenterInfoWidget::init(EntCenterInfo* info){
 
 
 
-	if (m_pInfo->nAdmin == 1)
+	if (m_pInfo->_nrole_type == 1)
 	{
 		ui.entEditWidget->show();
 		ui.invoiceEditWidget->show();

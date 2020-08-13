@@ -17,7 +17,7 @@ public:
 
 	
 	//!初始化用户信息 
-	void init(EntCenterInfo*	info);
+	void init(EntCenterInfo*	info, UserInfoStruct* userinfo);
 	
 signals:
 	
