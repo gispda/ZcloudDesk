@@ -35,26 +35,24 @@ public:
     QLabel *labeltaxno;
     QLabel *labelTaxNo;
     QLabel *labelSpaceLeft;
-    QPushButton *scoreButton;
-    QPushButton *couponButton;
     QLabel *labelMore;
     QLabel *labelEntInfo;
     QLabel *labelMember;
     QPushButton *entInfoButton;
     QPushButton *memberButton;
-    QLabel *labelScore;
-    QLabel *labelCoupon;
-    QLabel *labelCopy;
     QLabel *labelAddComp;
     QLabel *labelVip;
     QLabel *labelComName;
+    QLabel *labeluser;
+    QLabel *labelroletype;
+    QLabel *labelline;
     QWidget *EntRightWidget;
 
     void setupUi(QWidget *EntCenterNewWidget)
     {
         if (EntCenterNewWidget->objectName().isEmpty())
             EntCenterNewWidget->setObjectName(QStringLiteral("EntCenterNewWidget"));
-        EntCenterNewWidget->resize(1002, 620);
+        EntCenterNewWidget->resize(1002, 696);
         QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Preferred);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -78,12 +76,12 @@ public:
         sizePolicy1.setVerticalStretch(0);
         sizePolicy1.setHeightForWidth(EntLeftWidget->sizePolicy().hasHeightForWidth());
         EntLeftWidget->setSizePolicy(sizePolicy1);
-        EntLeftWidget->setMinimumSize(QSize(250, 618));
-        EntLeftWidget->setMaximumSize(QSize(250, 618));
+        EntLeftWidget->setMinimumSize(QSize(250, 680));
+        EntLeftWidget->setMaximumSize(QSize(250, 680));
         EntLeftWidget->setStyleSheet(QStringLiteral("QWidget#EntLeftWidget{background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 #EDF4FF, stop:1 #FAFCFF);border-top-left-radius:8px;border-bottom-left-radius:8px;border-right:1px solid #EBEBEB;}"));
         switchButton = new QToolButton(EntLeftWidget);
         switchButton->setObjectName(QStringLiteral("switchButton"));
-        switchButton->setGeometry(QRect(75, 168, 100, 38));
+        switchButton->setGeometry(QRect(75, 229, 100, 38));
         sizePolicy1.setHeightForWidth(switchButton->sizePolicy().hasHeightForWidth());
         switchButton->setSizePolicy(sizePolicy1);
         switchButton->setMinimumSize(QSize(100, 38));
@@ -99,7 +97,7 @@ public:
         switchButton->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
         labelAvatar = new AvatarLabel(EntLeftWidget);
         labelAvatar->setObjectName(QStringLiteral("labelAvatar"));
-        labelAvatar->setGeometry(QRect(95, 30, 60, 60));
+        labelAvatar->setGeometry(QRect(95, 59, 60, 60));
         sizePolicy1.setHeightForWidth(labelAvatar->sizePolicy().hasHeightForWidth());
         labelAvatar->setSizePolicy(sizePolicy1);
         labelAvatar->setMinimumSize(QSize(60, 60));
@@ -107,16 +105,16 @@ public:
         labelAvatar->setStyleSheet(QStringLiteral("border-image: url(:/EntCenterWidget/image/img_tx_d.png);"));
         copyTaxButton = new QPushButton(EntLeftWidget);
         copyTaxButton->setObjectName(QStringLiteral("copyTaxButton"));
-        copyTaxButton->setGeometry(QRect(212, 143, 14, 14));
+        copyTaxButton->setGeometry(QRect(191, 162, 16, 16));
         sizePolicy1.setHeightForWidth(copyTaxButton->sizePolicy().hasHeightForWidth());
         copyTaxButton->setSizePolicy(sizePolicy1);
-        copyTaxButton->setMinimumSize(QSize(14, 14));
-        copyTaxButton->setMaximumSize(QSize(14, 14));
+        copyTaxButton->setMinimumSize(QSize(16, 16));
+        copyTaxButton->setMaximumSize(QSize(16, 16));
         copyTaxButton->setStyleSheet(QLatin1String("QPushButton{border-image: url(:/EntCenterWidget/image/copy.png);}\n"
 "QPushButton:hover,pressed{border-image: url(:/EntCenterWidget/image/copy_sel.png);}"));
         labeltaxno = new QLabel(EntLeftWidget);
         labeltaxno->setObjectName(QStringLiteral("labeltaxno"));
-        labeltaxno->setGeometry(QRect(50, 110, 122, 12));
+        labeltaxno->setGeometry(QRect(50, 100, 122, 12));
         sizePolicy1.setHeightForWidth(labeltaxno->sizePolicy().hasHeightForWidth());
         labeltaxno->setSizePolicy(sizePolicy1);
         labeltaxno->setMinimumSize(QSize(122, 12));
@@ -130,7 +128,7 @@ public:
         labeltaxno->setWordWrap(true);
         labelTaxNo = new QLabel(EntLeftWidget);
         labelTaxNo->setObjectName(QStringLiteral("labelTaxNo"));
-        labelTaxNo->setGeometry(QRect(52, 144, 150, 12));
+        labelTaxNo->setGeometry(QRect(64, 163, 150, 12));
         sizePolicy1.setHeightForWidth(labelTaxNo->sizePolicy().hasHeightForWidth());
         labelTaxNo->setSizePolicy(sizePolicy1);
         labelTaxNo->setMinimumSize(QSize(150, 12));
@@ -140,28 +138,12 @@ public:
         labelTaxNo->setAlignment(Qt::AlignCenter);
         labelSpaceLeft = new QLabel(EntLeftWidget);
         labelSpaceLeft->setObjectName(QStringLiteral("labelSpaceLeft"));
-        labelSpaceLeft->setGeometry(QRect(0, 221, 250, 1));
+        labelSpaceLeft->setGeometry(QRect(0, 287, 250, 1));
         sizePolicy1.setHeightForWidth(labelSpaceLeft->sizePolicy().hasHeightForWidth());
         labelSpaceLeft->setSizePolicy(sizePolicy1);
         labelSpaceLeft->setMinimumSize(QSize(250, 1));
         labelSpaceLeft->setMaximumSize(QSize(250, 1));
         labelSpaceLeft->setStyleSheet(QStringLiteral("background-color: rgb(222, 222, 222);"));
-        scoreButton = new QPushButton(EntLeftWidget);
-        scoreButton->setObjectName(QStringLiteral("scoreButton"));
-        scoreButton->setGeometry(QRect(60, 251, 20, 20));
-        sizePolicy1.setHeightForWidth(scoreButton->sizePolicy().hasHeightForWidth());
-        scoreButton->setSizePolicy(sizePolicy1);
-        scoreButton->setMinimumSize(QSize(20, 20));
-        scoreButton->setMaximumSize(QSize(20, 20));
-        scoreButton->setStyleSheet(QStringLiteral("QPushButton{border-image: url(:/EntCenterWidget/image/score.png);}"));
-        couponButton = new QPushButton(EntLeftWidget);
-        couponButton->setObjectName(QStringLiteral("couponButton"));
-        couponButton->setGeometry(QRect(170, 251, 20, 20));
-        sizePolicy1.setHeightForWidth(couponButton->sizePolicy().hasHeightForWidth());
-        couponButton->setSizePolicy(sizePolicy1);
-        couponButton->setMinimumSize(QSize(20, 20));
-        couponButton->setMaximumSize(QSize(20, 20));
-        couponButton->setStyleSheet(QStringLiteral("QPushButton{border-image: url(:/EntCenterWidget/image/coupon.png);}"));
         labelMore = new QLabel(EntLeftWidget);
         labelMore->setObjectName(QStringLiteral("labelMore"));
         labelMore->setGeometry(QRect(29, 332, 57, 15));
@@ -212,49 +194,18 @@ public:
         memberButton->setMaximumSize(QSize(570, 30));
         memberButton->setStyleSheet(QString::fromUtf8("QPushButton{background-color:rgba(255,255,255,0);font: 14px \"\345\276\256\350\275\257\351\233\205\351\273\221\";color:rgba(51, 51, 51, 1);padding-left:-20px;}\n"
 "QPushButton:hover,pressed{ background-color:rgba(255,255,255,0);font: 14px \"\345\276\256\350\275\257\351\233\205\351\273\221\";color:rgba(31,139,237,1);}"));
-        labelScore = new QLabel(EntLeftWidget);
-        labelScore->setObjectName(QStringLiteral("labelScore"));
-        labelScore->setGeometry(QRect(45, 281, 50, 13));
-        sizePolicy1.setHeightForWidth(labelScore->sizePolicy().hasHeightForWidth());
-        labelScore->setSizePolicy(sizePolicy1);
-        labelScore->setMinimumSize(QSize(50, 13));
-        labelScore->setMaximumSize(QSize(50, 13));
-        labelScore->setStyleSheet(QString::fromUtf8("font: 16px \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
-"color:#666666;"));
-        labelScore->setAlignment(Qt::AlignCenter);
-        labelCoupon = new QLabel(EntLeftWidget);
-        labelCoupon->setObjectName(QStringLiteral("labelCoupon"));
-        labelCoupon->setGeometry(QRect(155, 280, 50, 13));
-        sizePolicy1.setHeightForWidth(labelCoupon->sizePolicy().hasHeightForWidth());
-        labelCoupon->setSizePolicy(sizePolicy1);
-        labelCoupon->setMinimumSize(QSize(50, 13));
-        labelCoupon->setMaximumSize(QSize(50, 13));
-        labelCoupon->setStyleSheet(QString::fromUtf8("font: 16px \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
-"color:#666666;"));
-        labelCoupon->setAlignment(Qt::AlignCenter);
-        labelCopy = new QLabel(EntLeftWidget);
-        labelCopy->setObjectName(QStringLiteral("labelCopy"));
-        labelCopy->setGeometry(QRect(200, 114, 42, 20));
-        sizePolicy1.setHeightForWidth(labelCopy->sizePolicy().hasHeightForWidth());
-        labelCopy->setSizePolicy(sizePolicy1);
-        labelCopy->setMinimumSize(QSize(42, 20));
-        labelCopy->setMaximumSize(QSize(42, 20));
-        labelCopy->setStyleSheet(QString::fromUtf8("background-color: rgb(25, 169, 255);\n"
-"font: 12px \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
-"color:#FFFFFF;"));
-        labelCopy->setAlignment(Qt::AlignCenter);
         labelAddComp = new QLabel(EntLeftWidget);
         labelAddComp->setObjectName(QStringLiteral("labelAddComp"));
-        labelAddComp->setGeometry(QRect(50, 140, 126, 14));
+        labelAddComp->setGeometry(QRect(180, 195, 81, 14));
         labelAddComp->setMaximumSize(QSize(126, 14));
         labelAddComp->setStyleSheet(QLatin1String("font-size:14px;\n"
 "font-family:SourceHanSansCN-Normal,SourceHanSansCN;\n"
 "font-weight:400;\n"
-"color:rgba(102,102,102,1);\n"
+"color:rgba(30,139,237,1);\n"
 "line-height:21px;"));
         labelVip = new QLabel(EntLeftWidget);
         labelVip->setObjectName(QStringLiteral("labelVip"));
-        labelVip->setGeometry(QRect(95, 30, 60, 60));
+        labelVip->setGeometry(QRect(95, 59, 60, 60));
         sizePolicy1.setHeightForWidth(labelVip->sizePolicy().hasHeightForWidth());
         labelVip->setSizePolicy(sizePolicy1);
         labelVip->setMinimumSize(QSize(60, 60));
@@ -262,7 +213,7 @@ public:
         labelVip->setStyleSheet(QStringLiteral("border-image: url(:/EntCenterWidget/image/qyzx_icon_vip_wjr.png);"));
         labelComName = new QLabel(EntLeftWidget);
         labelComName->setObjectName(QStringLiteral("labelComName"));
-        labelComName->setGeometry(QRect(50, 90, 140, 14));
+        labelComName->setGeometry(QRect(55, 139, 140, 14));
         sizePolicy1.setHeightForWidth(labelComName->sizePolicy().hasHeightForWidth());
         labelComName->setSizePolicy(sizePolicy1);
         labelComName->setMinimumSize(QSize(140, 14));
@@ -274,6 +225,30 @@ public:
 "line-height:21px;"));
         labelComName->setAlignment(Qt::AlignCenter);
         labelComName->setWordWrap(true);
+        labeluser = new QLabel(EntLeftWidget);
+        labeluser->setObjectName(QStringLiteral("labeluser"));
+        labeluser->setGeometry(QRect(79, 195, 60, 14));
+        labeluser->setMaximumSize(QSize(126, 14));
+        labeluser->setStyleSheet(QLatin1String("font-size:14px;\n"
+"font-family:SourceHanSansCN-Normal,SourceHanSansCN;\n"
+"font-weight:400;\n"
+"color:rgba(102,102,102,1);\n"
+"line-height:21px;"));
+        labelroletype = new QLabel(EntLeftWidget);
+        labelroletype->setObjectName(QStringLiteral("labelroletype"));
+        labelroletype->setGeometry(QRect(128, 195, 60, 14));
+        labelroletype->setMaximumSize(QSize(126, 14));
+        labelroletype->setStyleSheet(QLatin1String("font-size:14px;\n"
+"font-family:SourceHanSansCN-Normal,SourceHanSansCN;\n"
+"font-weight:400;\n"
+"color:rgba(102,102,102,1);\n"
+"line-height:21px;"));
+        labelline = new QLabel(EntLeftWidget);
+        labelline->setObjectName(QStringLiteral("labelline"));
+        labelline->setGeometry(QRect(110, 140, 1, 14));
+        labelline->setMaximumSize(QSize(126, 14));
+        labelline->setStyleSheet(QLatin1String("background:rgba(51,51,51,1);\n"
+"opacity:0.3;"));
 
         horizontalLayout->addWidget(EntLeftWidget);
 
@@ -281,8 +256,8 @@ public:
         EntRightWidget->setObjectName(QStringLiteral("EntRightWidget"));
         sizePolicy1.setHeightForWidth(EntRightWidget->sizePolicy().hasHeightForWidth());
         EntRightWidget->setSizePolicy(sizePolicy1);
-        EntRightWidget->setMinimumSize(QSize(750, 618));
-        EntRightWidget->setMaximumSize(QSize(750, 618));
+        EntRightWidget->setMinimumSize(QSize(750, 680));
+        EntRightWidget->setMaximumSize(QSize(750, 680));
         EntRightWidget->setStyleSheet(QStringLiteral("QWidget#EntRightWidget{background-color: rgb(252, 252, 252);border-top-right-radius:8px;border-bottom-right-radius:8px;}"));
 
         horizontalLayout->addWidget(EntRightWidget);
@@ -299,7 +274,7 @@ public:
     void retranslateUi(QWidget *EntCenterNewWidget)
     {
         EntCenterNewWidget->setWindowTitle(QApplication::translate("EntCenterNewWidget", "EntCenterWidget", 0));
-        switchButton->setText(QApplication::translate("EntCenterNewWidget", "\350\264\246\345\217\267\345\210\207\346\215\242", 0));
+        switchButton->setText(QApplication::translate("EntCenterNewWidget", "\345\210\207\346\215\242\344\274\201\344\270\232", 0));
         labelAvatar->setText(QString());
 #ifndef QT_NO_TOOLTIP
         copyTaxButton->setToolTip(QString());
@@ -308,25 +283,17 @@ public:
         labeltaxno->setText(QString());
         labelTaxNo->setText(QString());
         labelSpaceLeft->setText(QString());
-#ifndef QT_NO_TOOLTIP
-        scoreButton->setToolTip(QApplication::translate("EntCenterNewWidget", "\344\272\221\345\270\201", 0));
-#endif // QT_NO_TOOLTIP
-        scoreButton->setText(QString());
-#ifndef QT_NO_TOOLTIP
-        couponButton->setToolTip(QApplication::translate("EntCenterNewWidget", "\344\274\230\346\203\240\345\212\265", 0));
-#endif // QT_NO_TOOLTIP
-        couponButton->setText(QString());
         labelMore->setText(QApplication::translate("EntCenterNewWidget", "\346\233\264\345\244\232\344\277\241\346\201\257", 0));
         labelEntInfo->setText(QString());
         labelMember->setText(QString());
         entInfoButton->setText(QApplication::translate("EntCenterNewWidget", "\344\274\201\344\270\232\350\265\204\346\226\231", 0));
         memberButton->setText(QApplication::translate("EntCenterNewWidget", "\350\264\242\345\212\241\346\210\220\345\221\230", 0));
-        labelScore->setText(QApplication::translate("EntCenterNewWidget", "0", 0));
-        labelCoupon->setText(QApplication::translate("EntCenterNewWidget", "0", 0));
-        labelCopy->setText(QApplication::translate("EntCenterNewWidget", "\345\244\215\345\210\266", 0));
         labelAddComp->setText(QApplication::translate("EntCenterNewWidget", "\345\212\240\345\205\245\344\274\201\344\270\232", 0));
         labelVip->setText(QString());
         labelComName->setText(QString());
+        labeluser->setText(QString());
+        labelroletype->setText(QApplication::translate("EntCenterNewWidget", "\347\256\241\347\220\206\345\221\230", 0));
+        labelline->setText(QString());
     } // retranslateUi
 
 };

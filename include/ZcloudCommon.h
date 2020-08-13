@@ -100,8 +100,8 @@ namespace ZcloudComFun
 	 __declspec(dllexport) void setElideText(int nPixSize, QLabel* pLabel, const QString& strText);
 
 
-
-	 __declspec(dllexport) bool winHttpQueryCompanyInfoLocalTax(QString strTaxno, QString strToken, QString& strServerUserid, QString& strRet, QString& strMsg);
+	 ////查询是否加入企业，也可以用于注册表税号查询后台公司是否匹配
+	 __declspec(dllexport) bool winHttpQueryCompanyInfoLocalTax(QString strTaxno, QString strToken, bool& bIsjoin, QString& strCompany, int& nroletype,QString& strcompanyid);
 };
 #endif // ZCLOUDCOMMON_H
 

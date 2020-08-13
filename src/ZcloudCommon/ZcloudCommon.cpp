@@ -958,12 +958,13 @@ bool ZcloudComFun::isNetActiveByToken(QString strToken)
 }
 
 
-
-bool ZcloudComFun::winHttpQueryCompanyInfoLocalTax(QString strTaxno, QString strToken, QString& strServerUserid, QString& strRet, QString& strCompany)
+////查询是否加入企业，也可以用于注册表税号查询后台公司是否匹配
+bool ZcloudComFun::winHttpQueryCompanyInfoLocalTax(QString strTaxno, QString strToken, bool& bIsjoin, QString& strCompany,int& nroletype,QString& strcompanyid)
 {
 
-	QString strUrl = QString("/ucenter/company/info");
+	QString strUrl = QString("/ucenter/user/company-list");
 	QString strPost;
+	QString strRet;
 
 	if (strTaxno.isEmpty())
 		strPost = QString("token=%1").arg(strToken);
@@ -1030,22 +1031,37 @@ bool ZcloudComFun::winHttpQueryCompanyInfoLocalTax(QString strTaxno, QString str
 		return false;
 	}
 
-	QJsonObject jdata = obj.take("data").toObject();
+	QJsonValue list = obj.take("data").toArray();
 
-	strCompany = jdata.take("company_name").toString();
 
-	QJsonObject userdata = jdata.take("user").toObject();
-
-	strServerUserid = userdata.take("user_id").toString();
-
-	bool jmsg = false;
-	if (!strCompany.isEmpty())
+	if (!list.isArray())
 	{
-		jmsg = true;
+		return false;
 	}
-	else
-		strCompany = QString::fromLocal8Bit("暂未查询到您的企业");
-	return jmsg;
+	QJsonArray listArray = list.toArray();
+	int nSize = listArray.size();
+
+	QString _strtaxno,_;
+
+
+	for (int nIndex = 0; nIndex < nSize; ++nIndex)
+	{
+		QJsonObject dataList = listArray.at(nIndex).toObject();
+
+		bIsjoin = dataList.take("is_join").toBool();
+		nroletype = dataList.take("role_type").toInt();
+		strCompany = dataList.take("company_name").toString();
+		_strtaxno = dataList.take("tax_number").toString();
+		strcompanyid = dataList.take("company_id").toString();
+		if (_strtaxno == strTaxno && strTaxno.isEmpty()==false)
+		{
+			return true;
+		}
+	}
+	bIsjoin = false;
+	nroletype = -1;
+	strCompany = QString::fromLocal8Bit("暂未查询到您的企业");
+	return false;
 }
 
 

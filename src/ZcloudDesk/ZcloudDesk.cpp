@@ -2006,7 +2006,10 @@ QString ZcloudDesk::queryTaxInfo()
 	QString strTaxno = ZcloudComFun::getTaxnumber();
 
 	//strTaxno = "210624197305200017";
-
+	bool bret = false;
+	bool bisjoin = false;
+	int nroletype = -1;
+	QString strcompanyid;
 	////ÓÎ¿ÍµÇÂ½
 	if (m_stUserInfo.m_bLoginByTax == -8)
 	{
@@ -2016,7 +2019,7 @@ QString ZcloudDesk::queryTaxInfo()
 		bool bret;
 		if (!strTaxno.isEmpty())
 		{
-			bret = ZcloudComFun::winHttpQueryCompanyInfoLocalTax(strTaxno, m_stUserInfo.m_strToken, strServerUserid, strRet, strCompany);
+			bret = ZcloudComFun::winHttpQueryCompanyInfoLocalTax(strTaxno, m_stUserInfo.m_strToken, bisjoin, strCompany, nroletype, strcompanyid);
 
 			return strCompany;
 		}
