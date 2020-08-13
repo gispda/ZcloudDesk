@@ -288,7 +288,7 @@ void EntCenterNewWidget::showUserCompanyInfoTitle()
 	bool bret = false;
 	int nsjoin = 0;
 	int nroletype = -1;
-	m_strLocalTaxno = "210624197305200017";
+	//m_strLocalTaxno = "210624197305200017";
 
 	QString strtaxno, struser, strrole, straddcompany;
 
@@ -356,7 +356,7 @@ void EntCenterNewWidget::showUserCompanyInfoTitle()
 			ui.labelAddComp->setText("");
 			ui.labelAddComp->hide();
 
-			m_info.nIsjoin = nsjoin;
+			
 		}
 
 		if (m_info.nroletype == 1)
@@ -469,14 +469,14 @@ void EntCenterNewWidget::showaddCompanyInfoTitle(QString _strcompany, QString _s
 	ui.labelAvatar->setGeometry(95, 59, 60, 60);
 	//ui.labelAvatar->setStyleSheet("background:rgba(216,216,216,1);	border:1px solid rgba(151, 151, 151, 1); ");
 
-	ui.labelComName->setGeometry(55, 100, 140, 14);
+	ui.labelComName->setGeometry(55, 139, 140, 14);
 
-	ui.labelComName->setText(QString::fromLocal8Bit("<html><head/><body><p><span style=\" background:rgba(216,216,216,1);	border:1px solid rgba(151, 151, 151, 1); \"> %1</span></p></body></html>").arg(_strcompany));
+	ui.labelComName->setText(QString::fromLocal8Bit("<html><head/><body><p><span style=\"font-size:14px;font - family:SourceHanSansCN - Normal, SourceHanSansCN;font-weight:400;color:rgba(51, 51, 51, 1);line-height:21px; \"> %1</span></p></body></html>").arg(_strcompany));
 
 
-	ui.labeluser->setGeometry(79, 195, 126, 14);
+	ui.labeluser->setGeometry(59, 195, 126, 14);
 
-	ui.labeluser->setText(QString::fromLocal8Bit("<html><head/><body><p><span style=\"background:linear-gradient(180deg,rgba(237,244,255,1) 0%,rgba(250,252,255,1) 100%);border - radius:8px 0px 0px 8px;\"> %1</span></p></body></html>").arg(_strUser));
+	ui.labeluser->setText(QString::fromLocal8Bit("<html><head/><body><p><span style=\"font-size:12px;font - family:SourceHanSansCN - Normal, SourceHanSansCN;font-weight:400;color:rgba(51, 51, 51, 1);	line-height:18px; \"> %1</span></p></body></html>").arg(_strUser));
 
 	ui.labeluser->show();
 

@@ -1043,13 +1043,14 @@ bool ZcloudComFun::winHttpQueryCompanyInfoLocalTax(QString strTaxno, QString str
 
 	QString _strtaxno;
 	int has_admin;
-
+	QString roletype;
 	for (int nIndex = 0; nIndex < nSize; ++nIndex)
 	{
 		QJsonObject dataList = listArray.at(nIndex).toObject();
 
 		info.nIsjoin = dataList.take("is_join").toInt();
-		info.nroletype = dataList.take("role_type").toInt();
+		roletype = dataList.take("role_type").toString();
+		info.nroletype = roletype.toInt();
 		info.strCompany = dataList.take("company_name").toString();
 		_strtaxno = dataList.take("tax_number").toString();
 		info.strcompanyid = dataList.take("company_id").toString();

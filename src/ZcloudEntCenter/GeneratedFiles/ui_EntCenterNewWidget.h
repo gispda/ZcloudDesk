@@ -52,14 +52,14 @@ public:
     {
         if (EntCenterNewWidget->objectName().isEmpty())
             EntCenterNewWidget->setObjectName(QStringLiteral("EntCenterNewWidget"));
-        EntCenterNewWidget->resize(1002, 696);
+        EntCenterNewWidget->resize(1016, 696);
         QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Preferred);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(EntCenterNewWidget->sizePolicy().hasHeightForWidth());
         EntCenterNewWidget->setSizePolicy(sizePolicy);
-        EntCenterNewWidget->setMinimumSize(QSize(1002, 620));
-        EntCenterNewWidget->setMaximumSize(QSize(1002, 6200));
+        EntCenterNewWidget->setMinimumSize(QSize(1016, 620));
+        EntCenterNewWidget->setMaximumSize(QSize(1016, 6200));
         EntCenterNewWidget->setStyleSheet(QStringLiteral("QWidget#EntCenterWidget{background-color: rgb(255, 255, 255);};"));
         horizontalLayout_2 = new QHBoxLayout(EntCenterNewWidget);
         horizontalLayout_2->setSpacing(0);
