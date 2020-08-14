@@ -330,20 +330,62 @@ bool ZcloudComFun::qtReadsoft(QString &verSion, QString taxNumber)
 	return false;
 }
 
-QString ZcloudComFun::getTaxnumber()
+QStringList ZcloudComFun::getTaxnumberList()
 {
 	QSettings settings("HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App Paths\\fwkp.exe", QSettings::NativeFormat);
 	QStringList groupsList = settings.childGroups();
 	
 	QString strCode;
+	QStringList strTaxnols;
 	foreach(QString group, groupsList)
 	{
 		settings.beginGroup(group);
 		strCode = settings.value("code", QVariant()).toString();			//£¡ÆóÒµË°ºÅ
-	
+	    
+
+		strTaxnols.append(strCode);
+
 		settings.endGroup();
 	}
-	return strCode;
+	return strTaxnols;
+
+}
+
+
+QString ZcloudComFun::getFirstTaxnumbers()
+{
+
+	QString strtaxls = "";
+	QStringList strLocalTaxnoLs = ZcloudComFun::getTaxnumberList();
+	int nsize = strLocalTaxnoLs.count();
+
+	if (nsize > 0)
+	{
+
+		return strLocalTaxnoLs.at(0);
+	}
+	else
+		return "";
+}
+
+QString ZcloudComFun::getTaxnumbers()
+{
+
+	QString strtaxls="";
+	QStringList strLocalTaxnoLs = ZcloudComFun::getTaxnumberList();
+	int nsize = strLocalTaxnoLs.count();
+	
+	for (int index = 0; index < nsize; index++)
+	{
+
+		strtaxls.append(strLocalTaxnoLs.at(index));
+		if (index < (nsize - 1))
+		{
+			strLocalTaxnoLs.append(",");
+		}
+	}
+
+	return strtaxls;
 
 }
 

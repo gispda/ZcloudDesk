@@ -48,7 +48,6 @@ EntCenterNewWidget::EntCenterNewWidget(EntCenterInfo* pEntInfo, UserInfoStruct* 
 	
 	ui.labelJoin2->installEventFilter(this);
 
-	m_strLocalTaxno = ZcloudComFun::getTaxnumber();
 
 	//ui.labelline->setGeometry(117, 195, 1, 14);
 	
@@ -290,7 +289,7 @@ void EntCenterNewWidget::showUserCompanyInfoTitle()
 	bool bret = false;
 	int nsjoin = 0;
 	int nroletype = -1;
-	//m_strLocalTaxno = "210624197305200017";
+	m_strLocalTaxno = "210624197305200017";
 
 	//QString strtaxno, struser, strrole, straddcompany;
 

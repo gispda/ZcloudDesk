@@ -296,7 +296,7 @@ bool SwitchAccWidget::winHttpGetCompanyList(QString strTaxno, QString strToken, 
 void SwitchAccWidget::getCompanyList()
 {
 
-	QString strTaxno = ZcloudComFun::getTaxnumber();
+	QString strTaxno = ZcloudComFun::getTaxnumbers();
 
 
 	QString strRet;

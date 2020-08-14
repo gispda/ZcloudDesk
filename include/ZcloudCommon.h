@@ -104,7 +104,15 @@ namespace ZcloudComFun
 	 bool readSoftV(QString &verSion, QString tax_number);
 
 	 //获取税号
-	 __declspec(dllexport) QString getTaxnumber();
+	 __declspec(dllexport) QStringList getTaxnumberList();
+
+
+	 //获取税号
+	 __declspec(dllexport) QString getTaxnumbers();
+
+	 //获取第一个本地税号
+	 __declspec(dllexport) QString getFirstTaxnumbers();
+
 
 	 bool getPublicIp(QString& ip);
 

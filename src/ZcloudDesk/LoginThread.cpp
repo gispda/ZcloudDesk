@@ -516,7 +516,7 @@ bool LoginThread::analySucessJsonSign(QString strRet,QString &strSign)
 int LoginThread::visitorLogin(UserInfoStruct &userInfoStruct)
 {
 
-	QString strtax = ZcloudComFun::getTaxnumber();
+	QString strtax = ZcloudComFun::getFirstTaxnumbers();
 
 	HttpInterface	sInter;
 	QString			strRet;

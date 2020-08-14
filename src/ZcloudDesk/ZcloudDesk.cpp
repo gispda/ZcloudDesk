@@ -2007,7 +2007,7 @@ void ZcloudDesk::onModifyCoinCount(int nCount)
 
 QString ZcloudDesk::queryTaxInfo()
 {
-	QString strTaxno = ZcloudComFun::getTaxnumber();
+	QString strTaxno = ZcloudComFun::getTaxnumbers();
 
 	//strTaxno = "210624197305200017";
 	bool bret = false;

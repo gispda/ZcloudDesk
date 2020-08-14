@@ -311,6 +311,9 @@ bool InfoCenterWidget::winHttpGetEntInfo(QString strTaxno, QString strToken, QSt
 bool InfoCenterWidget::loadEntInfo()
 {
 	QString strRet;
+
+
+	m_stEntInfo._strLocalTaxnoLs = ZcloudComFun::getTaxnumberList();
 	if (!winHttpGetEntInfo(m_userInfo->m_strTaxNumber, m_userInfo->m_strToken, strRet))
 	{
 		return false;

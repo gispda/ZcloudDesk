@@ -89,6 +89,10 @@ public:
 
 	int	nAdmin = 0;
 
+
+	////本地注册表中读出的税号，用于后台比对的。
+	QStringList _strLocalTaxnoLs;
+
 	EntCenterInfo()
 	{
 		_strId= "";
@@ -169,6 +173,9 @@ public:
 		_dtServerTime = QDateTime::currentDateTime();		//!服务器当前时间
 
 		nAdmin = 0;
+
+
+		_strLocalTaxnoLs.clear();
 	
 	}
 
