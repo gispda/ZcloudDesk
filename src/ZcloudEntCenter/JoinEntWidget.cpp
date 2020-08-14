@@ -6,11 +6,12 @@
 #include "ZcloudBigData.h"
 
 JoinEntWidget::JoinEntWidget(QString strUid, QString strToken, QWidget *parent)
-	: ZcloudCommonWidget(parent)
+	: QDialog(parent)
 	, m_strUid(strUid)
 	, m_strToken(strToken)
 {
-	ui.setupUi(getContentWidget());
+	//ui.setupUi(getContentWidget());
+	ui.setupUi(this);
 	resize(800,500);
 	setWindowTitle(QString::fromLocal8Bit("加入企业"));
 	setAttribute(Qt::WA_DeleteOnClose);

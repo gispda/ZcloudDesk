@@ -254,37 +254,6 @@
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(QTDIR)\include;.\..\..\include;$(QTDIR)\include\QtWebKit;$(QTDIR)\include\QtWebkitWidgets;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtSql;$(QTDIR)\include\QtWidgets</IncludePath>
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(QTDIR)\include;.\..\..\include;$(QTDIR)\include\QtWebKit;$(QTDIR)\include\QtWebkitWidgets;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtSql;$(QTDIR)\include\QtWidgets</IncludePath>
     </QtMoc>
-    <ClInclude Include="GeneratedFiles\ui_AcceptAddressWidget.h" />
-    <ClInclude Include="GeneratedFiles\ui_AccSettingWidget.h" />
-    <ClInclude Include="GeneratedFiles\ui_AddMemberWidget.h" />
-    <ClInclude Include="GeneratedFiles\ui_AuditMemberWidget.h" />
-    <ClInclude Include="GeneratedFiles\ui_BindEmailWidget.h" />
-    <ClInclude Include="GeneratedFiles\ui_BindMobileWidget.h" />
-    <ClInclude Include="GeneratedFiles\ui_DefaultVipWidget.h" />
-    <ClInclude Include="GeneratedFiles\ui_EditEntInfoWidget.h" />
-    <ClInclude Include="GeneratedFiles\ui_EditInvoiceInfoWidget.h" />
-    <ClInclude Include="GeneratedFiles\ui_EntCenterInfoWidget.h" />
-    <ClInclude Include="GeneratedFiles\ui_EntCenterMainWidget.h" />
-    <ClInclude Include="GeneratedFiles\ui_EntCenterMemberWidget.h" />
-    <ClInclude Include="GeneratedFiles\ui_EntCenterNewWidget.h" />
-    <ClInclude Include="GeneratedFiles\ui_EntInfoWidget.h" />
-    <ClInclude Include="GeneratedFiles\ui_FinanMemberWidget.h" />
-    <ClInclude Include="GeneratedFiles\ui_InfoCenterWidget.h" />
-    <ClInclude Include="GeneratedFiles\ui_JoinEntWidget.h" />
-    <ClInclude Include="GeneratedFiles\ui_ModifyMemberWidget.h" />
-    <ClInclude Include="GeneratedFiles\ui_ModifyPwdWidget.h" />
-    <ClInclude Include="GeneratedFiles\ui_ModifyUserInfoWidget.h" />
-    <ClInclude Include="GeneratedFiles\ui_SetPwdWidget.h" />
-    <ClInclude Include="GeneratedFiles\ui_UploadLicenseDlg.h" />
-    <ClInclude Include="GeneratedFiles\ui_UserCenterAccWidget.h" />
-    <ClInclude Include="GeneratedFiles\ui_UserCenterMainWidget.h" />
-    <ClInclude Include="GeneratedFiles\ui_UserCenterWidget.h" />
-    <ClInclude Include="GeneratedFiles\ui_VipInfoWidget.h" />
-    <ClInclude Include="GeneratedFiles\ui_WorkerCommentWidget.h" />
-    <ClInclude Include="GeneratedFiles\ui_WorkerDetailWidget.h" />
-    <ClInclude Include="GeneratedFiles\ui_WorkerItemWidget.h" />
-    <ClInclude Include="GeneratedFiles\ui_WorkersWidget.h" />
-    <ClInclude Include="GeneratedFiles\ui_WorkertemWidget.h" />
     <QtMoc Include="UploadLicenseDlg.h">
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(QTDIR)\include;.\..\..\include;$(QTDIR)\include\QtWebKit;$(QTDIR)\include\QtWebkitWidgets;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtSql;$(QTDIR)\include\QtWidgets</IncludePath>
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(QTDIR)\include;.\..\..\include;$(QTDIR)\include\QtWebKit;$(QTDIR)\include\QtWebkitWidgets;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtSql;$(QTDIR)\include\QtWidgets</IncludePath>
@@ -305,6 +274,42 @@
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(QTDIR)\include;.\..\..\include;$(QTDIR)\include\QtWebKit;$(QTDIR)\include\QtWebkitWidgets;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtSql;$(QTDIR)\include\QtWidgets</IncludePath>
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(QTDIR)\include;.\..\..\include;$(QTDIR)\include\QtWebKit;$(QTDIR)\include\QtWebkitWidgets;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtSql;$(QTDIR)\include\QtWidgets</IncludePath>
     </QtMoc>
+    <ClInclude Include="GeneratedFiles\ui_AcceptAddressWidget.h" />
+    <ClInclude Include="GeneratedFiles\ui_AccItemWidget.h" />
+    <ClInclude Include="GeneratedFiles\ui_AccSettingWidget.h" />
+    <ClInclude Include="GeneratedFiles\ui_AddMemberWidget.h" />
+    <ClInclude Include="GeneratedFiles\ui_AuditMemberWidget.h" />
+    <ClInclude Include="GeneratedFiles\ui_BindEmailWidget.h" />
+    <ClInclude Include="GeneratedFiles\ui_BindMobileWidget.h" />
+    <ClInclude Include="GeneratedFiles\ui_CreateEntInfoWidget.h" />
+    <ClInclude Include="GeneratedFiles\ui_DefaultVipWidget.h" />
+    <ClInclude Include="GeneratedFiles\ui_EditEntInfoWidget.h" />
+    <ClInclude Include="GeneratedFiles\ui_EditInvoiceInfoWidget.h" />
+    <ClInclude Include="GeneratedFiles\ui_EntCenterInfoWidget.h" />
+    <ClInclude Include="GeneratedFiles\ui_EntCenterMainWidget.h" />
+    <ClInclude Include="GeneratedFiles\ui_EntCenterMemberWidget.h" />
+    <ClInclude Include="GeneratedFiles\ui_EntCenterNewWidget.h" />
+    <ClInclude Include="GeneratedFiles\ui_EntCenterWidget.h" />
+    <ClInclude Include="GeneratedFiles\ui_EntComWidget.h" />
+    <ClInclude Include="GeneratedFiles\ui_EntInfoWidget.h" />
+    <ClInclude Include="GeneratedFiles\ui_FinanMemberWidget.h" />
+    <ClInclude Include="GeneratedFiles\ui_InfoCenterWidget.h" />
+    <ClInclude Include="GeneratedFiles\ui_JoinEntWidget.h" />
+    <ClInclude Include="GeneratedFiles\ui_MemberItemWidget.h" />
+    <ClInclude Include="GeneratedFiles\ui_ModifyMemberWidget.h" />
+    <ClInclude Include="GeneratedFiles\ui_ModifyPwdWidget.h" />
+    <ClInclude Include="GeneratedFiles\ui_ModifyUserInfoWidget.h" />
+    <ClInclude Include="GeneratedFiles\ui_SetPwdWidget.h" />
+    <ClInclude Include="GeneratedFiles\ui_SwitchAccWidget.h" />
+    <ClInclude Include="GeneratedFiles\ui_UploadLicenseDlg.h" />
+    <ClInclude Include="GeneratedFiles\ui_UserCenterAccWidget.h" />
+    <ClInclude Include="GeneratedFiles\ui_UserCenterMainWidget.h" />
+    <ClInclude Include="GeneratedFiles\ui_UserCenterWidget.h" />
+    <ClInclude Include="GeneratedFiles\ui_VipInfoWidget.h" />
+    <ClInclude Include="GeneratedFiles\ui_WorkerCommentWidget.h" />
+    <ClInclude Include="GeneratedFiles\ui_WorkerDetailWidget.h" />
+    <ClInclude Include="GeneratedFiles\ui_WorkerItemWidget.h" />
+    <ClInclude Include="GeneratedFiles\ui_WorkersWidget.h" />
     <ClInclude Include="WorkerDataBase.h">
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(QTDIR)\include;.\..\..\include;$(QTDIR)\include\QtWebKit;$(QTDIR)\include\QtWebkitWidgets;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtSql;$(QTDIR)\include\QtWidgets</IncludePath>
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(QTDIR)\include;.\..\..\include;$(QTDIR)\include\QtWebKit;$(QTDIR)\include\QtWebkitWidgets;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtSql;$(QTDIR)\include\QtWidgets</IncludePath>
@@ -402,16 +407,10 @@
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(QTDIR)\include;.\..\..\include;$(QTDIR)\include\QtWebKit;$(QTDIR)\include\QtWebkitWidgets;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtSql;$(QTDIR)\include\QtWidgets</IncludePath>
     </QtMoc>
     <ClInclude Include="EntInfoDataDefine.h" />
-    <ClInclude Include="GeneratedFiles\ui_AccItemWidget.h" />
-    <ClInclude Include="GeneratedFiles\ui_CreateEntInfoWidget.h" />
-    <ClInclude Include="GeneratedFiles\ui_EntComWidget.h" />
-    <ClInclude Include="GeneratedFiles\ui_MemberItemWidget.h" />
-    <ClInclude Include="GeneratedFiles\ui_SwitchAccWidget.h" />
     <QtMoc Include="SwitchAccWidget.h">
     </QtMoc>
     <QtMoc Include="AvatarLabel.h">
     </QtMoc>
-    <ClInclude Include="GeneratedFiles\ui_EntCenterWidget.h" />
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="EntCenterWidget.qrc">

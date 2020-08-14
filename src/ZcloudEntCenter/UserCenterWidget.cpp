@@ -23,18 +23,41 @@ UserCenterWidget::UserCenterWidget(EntCenterInfo*	info,UserInfoStruct* _userInfo
 	mp_UserCenterMain = new UserCenterMainWidget(info,_userInfo, ui.RightWidget);
 
 	mp_UserCenterAcc = new UserCenterAccWidget(info, _userInfo, ui.RightWidget);
-	ui.rightLayout->addWidget(mp_UserCenterMain);
-	ui.rightLayout->addWidget(mp_UserCenterAcc);
+	//ui.rightLayout->addWidget(mp_UserCenterMain);
+	//ui.rightLayout->addWidget(mp_UserCenterAcc);
 
-	mp_UserCenterMain->setGeometry(0, 0, 750, 620);
-	mp_UserCenterAcc->setGeometry(0, 0, 750, 620);
 
 
 	mp_UserCenterAcc->hide();
 
+	connect(ui.pushButtonLogin, SIGNAL(clicked()), this, SLOT(onShowAcc()));
 
 	connect(ui.pushButtonAcc, SIGNAL(clicked()), this, SLOT(onShowAcc()));
 	connect(ui.mainButton, SIGNAL(clicked()), this, SLOT(onShowMain()));
+
+	ui.labelUser->hide();
+
+	//Í·Ïñ
+	if (m_userInfo->m_logoUrl.isEmpty()){
+		ZcloudComFun::LoadAvatar(m_userInfo->m_logoUrl.toStdString(), ui.labelAvatar);
+	}
+	else{
+		ui.labelAvatar->setStyleSheet("border-image: url(:/EntCenterWidget/image/img_tx_d.png);");
+	}
+
+	if (m_userInfo->m_bLoginByTax != 0){
+		ui.widgetUnLogin->hide();
+		ui.widgetLogin->show();
+		ui.labelName->setText(m_userInfo->m_strUsername);
+
+	}
+	else{
+		ui.labelName->setText(m_userInfo->m_strCompanyName);
+		ui.labelID->setText(m_userInfo->m_strUserId);
+
+		ui.widgetUnLogin->show();
+		ui.widgetLogin->hide();
+	}
 
 
 	/*connect(ui.copyTaxButton, SIGNAL(clicked()), this, SLOT(onCopyBtnClick()));
@@ -153,13 +176,13 @@ bool UserCenterWidget ::eventFilter(QObject *target, QEvent *e)
 
 void UserCenterWidget::modifyCoinCount(int nCount)
 {
-	ui.labelScore->setText(QString("%1").arg(nCount));
+	//ui.labelScore->setText(QString("%1").arg(nCount));
 }
 
 
 void UserCenterWidget::onChangeCoin(int nCoin)
 {
-	ui.labelScore->setText(QString("%1").arg(nCoin));
+	//ui.labelScore->setText(QString("%1").arg(nCoin));
 }
 
 

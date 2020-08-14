@@ -33,7 +33,6 @@ public:
     QToolButton *switchButton;
     AvatarLabel *labelAvatar;
     QPushButton *copyTaxButton;
-    QLabel *labeltaxno;
     QLabel *labelTaxNo;
     QLabel *labelSpaceLeft;
     QLabel *labelMore;
@@ -118,20 +117,6 @@ public:
         copyTaxButton->setMaximumSize(QSize(16, 16));
         copyTaxButton->setStyleSheet(QLatin1String("QPushButton{border-image: url(:/EntCenterWidget/image/copy.png);}\n"
 "QPushButton:hover,pressed{border-image: url(:/EntCenterWidget/image/copy_sel.png);}"));
-        labeltaxno = new QLabel(EntLeftWidget);
-        labeltaxno->setObjectName(QStringLiteral("labeltaxno"));
-        labeltaxno->setGeometry(QRect(50, 100, 122, 12));
-        sizePolicy1.setHeightForWidth(labeltaxno->sizePolicy().hasHeightForWidth());
-        labeltaxno->setSizePolicy(sizePolicy1);
-        labeltaxno->setMinimumSize(QSize(122, 12));
-        labeltaxno->setMaximumSize(QSize(122, 12));
-        labeltaxno->setStyleSheet(QLatin1String("font-size:12px;\n"
-"font-family:SourceHanSansCN-Normal,SourceHanSansCN;\n"
-"font-weight:400;\n"
-"color:rgba(51,51,51,1);\n"
-"line-height:18px;"));
-        labeltaxno->setAlignment(Qt::AlignCenter);
-        labeltaxno->setWordWrap(true);
         labelTaxNo = new QLabel(EntLeftWidget);
         labelTaxNo->setObjectName(QStringLiteral("labelTaxNo"));
         labelTaxNo->setGeometry(QRect(44, 163, 150, 12));
@@ -158,7 +143,6 @@ public:
         labelMore->setMinimumSize(QSize(57, 15));
         labelMore->setMaximumSize(QSize(57, 15));
         labelMore->setStyleSheet(QString::fromUtf8("font:14px \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
-"font-weight:bold;\n"
 "color:#333333;"));
         labelEntInfo = new QLabel(EntLeftWidget);
         labelEntInfo->setObjectName(QStringLiteral("labelEntInfo"));
@@ -301,7 +285,7 @@ public:
         rightLayout->setObjectName(QStringLiteral("rightLayout"));
         rightLayout->setContentsMargins(0, 0, 0, 0);
         layout = new QVBoxLayout();
-        layout->setSpacing(6);
+        layout->setSpacing(0);
         layout->setObjectName(QStringLiteral("layout"));
 
         rightLayout->addLayout(layout);
@@ -327,10 +311,9 @@ public:
         copyTaxButton->setToolTip(QString());
 #endif // QT_NO_TOOLTIP
         copyTaxButton->setText(QString());
-        labeltaxno->setText(QString());
         labelTaxNo->setText(QString());
         labelSpaceLeft->setText(QString());
-        labelMore->setText(QApplication::translate("EntCenterNewWidget", "\346\233\264\345\244\232\344\277\241\346\201\257", 0));
+        labelMore->setText(QApplication::translate("EntCenterNewWidget", "\346\233\264\345\244\232", 0));
         labelEntInfo->setText(QString());
         labelMember->setText(QString());
         mainButton->setText(QApplication::translate("EntCenterNewWidget", "\351\246\226        \351\241\265", 0));

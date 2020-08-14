@@ -781,7 +781,7 @@ border-bottom:0px;</string>
     <property name="geometry">
      <rect>
       <x>15</x>
-      <y>25</y>
+      <y>30</y>
       <width>100</width>
       <height>100</height>
      </rect>
@@ -794,13 +794,6 @@ border-bottom:0px;</string>
     </property>
    </widget>
   </widget>
-  <zorder>ServiceBaseWidget</zorder>
-  <zorder>ServiceFeeWidget_3</zorder>
-  <zorder>label</zorder>
-  <zorder>ServiceFeeWidget</zorder>
-  <zorder>label_2</zorder>
-  <zorder>widgetNotBinding</zorder>
-  <zorder>widgetNotBinding</zorder>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>

@@ -20,24 +20,24 @@ UserCenterMainWidget::UserCenterMainWidget(EntCenterInfo*	entinfo, UserInfoStruc
 	: m_userInfo(info), QWidget( parent)
 {
 	ui.setupUi(this);
-	setWindowFlags(Qt::FramelessWindowHint);
-	setAttribute(Qt::WA_TranslucentBackground, true);
-	setStyleSheet("outline: none");
+	//setWindowFlags(Qt::FramelessWindowHint);
+	//setAttribute(Qt::WA_TranslucentBackground, true);
+	//setStyleSheet("outline: none");
 
 
-	connect(ui.SignInButton, &QPushButton::clicked, this, &UserCenterMainWidget::onSignInBtnClick);
-	connect(ui.CompeteDataButton, &QPushButton::clicked, this, &UserCenterMainWidget::onCompeteDataBtnClick);
+	//connect(ui.SignInButton, &QPushButton::clicked, this, &UserCenterMainWidget::onSignInBtnClick);
+	//connect(ui.CompeteDataButton, &QPushButton::clicked, this, &UserCenterMainWidget::onCompeteDataBtnClick);
 
 
 
-	m_pUserDefult = new QWidget(ui.EntRightWidget);
-	m_pUserDefult->setGeometry(20, 140, 711, 181);
-	m_pUserDefult->setStyleSheet("border-image:url(:/UserCenterMainWidget/image/userVipDefualt.png);");
-	m_pUserDefult->setAttribute(Qt::WA_DeleteOnClose);
-	m_pUserDefult->hide();
+	//m_pUserDefult = new QWidget(ui.EntRightWidget);
+	//m_pUserDefult->setGeometry(20, 140, 711, 181);
+	//m_pUserDefult->setStyleSheet("border-image:url(:/UserCenterMainWidget/image/userVipDefualt.png);");
+	//m_pUserDefult->setAttribute(Qt::WA_DeleteOnClose);
+	//m_pUserDefult->hide();
 
-	ui.CompeteDataWidget->hide();
-	ui.SignInWidget->hide();
+	//ui.CompeteDataWidget->hide();
+	//ui.SignInWidget->hide();
 }
 
 UserCenterMainWidget::~UserCenterMainWidget()
@@ -170,37 +170,37 @@ void UserCenterMainWidget::init(EntCenterInfo*	entinfo, UserInfoStruct*	info11)
 
 
 
-	//!姓名与职务
-	if (m_strTrueName.isEmpty())
-	{
-		ui.labelFirstName->setText("");
-		ui.labelFirstName->setStyleSheet("background:rgba(222,222,222,1);border-radius:15px;");
-		ui.labelUserName->setText(QString::fromLocal8Bit("——"));
-	}
-	else
-	{
-		ui.labelFirstName->setStyleSheet("background:rgba(95,217,153,1);border-radius:15px;font:14px \"微软雅黑\";color:#FDFDFD;");
-		ui.labelFirstName->setText(m_strTrueName.left(1));
-		ui.labelUserName->setText(m_strTrueName);
-		ui.labelUserName->adjustSize();
-	}
+	////!姓名与职务
+	//if (m_strTrueName.isEmpty())
+	//{
+	//	ui.labelFirstName->setText("");
+	//	ui.labelFirstName->setStyleSheet("background:rgba(222,222,222,1);border-radius:15px;");
+	//	ui.labelUserName->setText(QString::fromLocal8Bit("——"));
+	//}
+	//else
+	//{
+	//	ui.labelFirstName->setStyleSheet("background:rgba(95,217,153,1);border-radius:15px;font:14px \"微软雅黑\";color:#FDFDFD;");
+	//	ui.labelFirstName->setText(m_strTrueName.left(1));
+	//	ui.labelUserName->setText(m_strTrueName);
+	//	ui.labelUserName->adjustSize();
+	//}
 
-	if (m_bJoinEnt)
-	{
-		if (m_strJob.isEmpty())
-		{
-			ui.labelUserJob->setText(QString::fromLocal8Bit("——"));
-		}
-		else
-		{
-			ui.labelUserJob->setText(m_strJob);
-			ui.labelUserJob->adjustSize();
-		}
-	}
-	else
-	{
-		ui.labelUserJob->hide();
-	}
+	//if (m_bJoinEnt)
+	//{
+	//	if (m_strJob.isEmpty())
+	//	{
+	//		ui.labelUserJob->setText(QString::fromLocal8Bit("——"));
+	//	}
+	//	else
+	//	{
+	//		ui.labelUserJob->setText(m_strJob);
+	//		ui.labelUserJob->adjustSize();
+	//	}
+	//}
+	//else
+	//{
+	//	ui.labelUserJob->hide();
+	//}
 
 	
 	/*QDateTime timeNow = m_userInfo->m_timeChargeExpire;
@@ -259,8 +259,8 @@ void UserCenterMainWidget::onCompeteDataBtnClick()
 }
 void UserCenterMainWidget::onChangeCoin(int nCoin)
 {
-	ui.CompeteDataButton->setEnabled(false);
-	ui.CompeteDataButton->setText(QString::fromLocal8Bit("已完成"));
+	//ui.CompeteDataButton->setEnabled(false);
+	//ui.CompeteDataButton->setText(QString::fromLocal8Bit("已完成"));
 }
 
 

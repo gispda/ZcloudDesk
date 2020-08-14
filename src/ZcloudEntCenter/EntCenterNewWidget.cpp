@@ -96,15 +96,20 @@ void EntCenterNewWidget::onShowInfo(){
 			//this->hide();
 			//emit sigLogout();
 			//立即加入
-			/*	if (m_pJoinEntWidget == NULL)
-			m_pJoinEntWidget = new JoinEntWidget(m_userInfo.m_strUserId, m_userInfo.m_strToken, this);
-			m_pJoinEntWidget->show();*/
+			//JoinEntWidget  父类修改为QDialog  使用exec方法才能阻断当前线程
+			if (m_pJoinEntWidget == NULL)
+			m_pJoinEntWidget = new JoinEntWidget(m_userInfo->m_strUserId, m_userInfo->m_strToken, this);
+			
+
+
+			//m_pJoinEntWidget->show();
+			m_pJoinEntWidget->exec();
 
 			/////----------------------------加入企业ok
 
 
-			/*QString strRet;
-			if (!winHttpJoinEnt(m_userInfo.m_strToken, m_info.strcompanyid, strRet))
+			QString strRet;
+			if (!winHttpJoinEnt(m_userInfo->m_strToken, m_userInfo->m_strCompanyId, strRet))
 			{
 			ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_TIP, QString::fromLocal8Bit("加入企业"), QString::fromLocal8Bit("加入失败"));
 			return;
@@ -154,7 +159,7 @@ void EntCenterNewWidget::onShowInfo(){
 			{
 			ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_TIP, QString::fromLocal8Bit("操作失败"), QString::fromLocal8Bit("\r\n加入申请失败，请稍后再试！"));
 			}
-			return;*/
+			return;
 		}
 		else
 		{
@@ -289,44 +294,101 @@ void EntCenterNewWidget::showUserCompanyInfoTitle()
 	bool bret = false;
 	int nsjoin = 0;
 	int nroletype = -1;
-	m_strLocalTaxno = "210624197305200017";
+	//m_strLocalTaxno = "210624197305200017";
 
-	//QString strtaxno, struser, strrole, straddcompany;
+	//用代码设置了样式  看起来很奇怪
+	QString strtaxno, struser, strrole, straddcompany;
+	//未查询到企业名字
+	if (m_userInfo->m_strCompanyName.isEmpty())
+	{
+		ui.labelComName->setText(QString::fromLocal8Bit("暂未查询到企业名称"));
+	}
+	else
+	{
+		bret = ZcloudComFun::winHttpQueryCompanyInfoLocalTax(m_userInfo->m_strTaxNumber, m_userInfo->m_strToken, m_info);
+		//已加入企业
+		if (m_info.nIsjoin == 1)
+		{
+			showaddCompanyInfoTitle(m_info.strCompany, m_userInfo->m_strTaxNumber, m_userInfo->m_strUsername, strrole);
+
+			////隐藏加入按钮
+			//ui.labeJoin1->hide();
+			//ui.labelJoin2->hide();	
+			////显示人名 职务
+			//
+			//ui.labeluser->show();
+			//ui.labeluserline->show();
+			//ui.labeluserroletype->show();
+
+			//ui.labeluser->setText(m_pEntInfo->_strUsername);
+			////if (m_info.nroletype == 1)
+			//if (m_pEntInfo->_nrole_type == 1){
+			//	ui.labeluserroletype->setText(QString::fromLocal8Bit("管理员"));
+			//}
+			//else{
+			//	ui.labeluserroletype->setText(QString::fromLocal8Bit("财务人员"));
+			//}
+		}
+		else{
+			//ui.labeJoin1->show();
+			//ui.labelJoin2->show();
+
+			//ui.labeluser->hide();
+			//ui.labeluserline->hide();
+			//ui.labeluserroletype->hide();
+
+			//struser = QString::fromLocal8Bit("您还没加入该企业，");
+			//straddcompany = QString::fromLocal8Bit("立即加入，");
+
+			showUnaddCompanyInfoTitle(m_info.strCompany, m_userInfo->m_strTaxNumber, m_userInfo->m_strUsername, straddcompany);
+		}
+
+
+		//if (m_info.nIsjoin == 1)
+		//	showaddCompanyInfoTitle(m_info.strCompany, m_userInfo->m_strTaxNumber, m_userInfo->m_strUsername, strrole);
+		//else if (m_info.nIsjoin != 0)
+		//{
+		//	struser = QString::fromLocal8Bit("您还没加入该企业，");
+		//	straddcompany = QString::fromLocal8Bit("立即加入，");
+		//	showUnaddCompanyInfoTitle(m_info.strCompany, m_userInfo->m_strTaxNumber, m_userInfo->m_strUsername, straddcompany);
+		//}
+	}
+
 
 	//Logo
 	if (m_userInfo->m_logoUrl.isEmpty()){
 		ui.labelAvatar->setStyleSheet("border-image: url(:/EntCenterWidget/image/img_tx_d.png);");
 	}
 	else{
-		
+
 		ZcloudComFun::LoadAvatar(m_userInfo->m_logoUrl.toStdString(), ui.labelAvatar);
 	}
-	
+
 
 	//公司名
 	if (m_userInfo->m_strCompanyName.isEmpty())
-		{
-			ui.labelComName->setText(QString::fromLocal8Bit("暂未查询到企业名称"));			
-		}
-		else
-		{
-			ui.labelComName->setText(m_userInfo->m_strCompanyName);
-		}
+	{
+		ui.labelComName->setText(QString::fromLocal8Bit("暂未查询到企业名称"));
+	}
+	else
+	{
+		ui.labelComName->setText(m_userInfo->m_strCompanyName);
+	}
 
 	//税号
 	if (!m_pEntInfo->_strTaxNo.isEmpty())
 	{
 		//bret = ZcloudComFun::winHttpQueryCompanyInfoLocalTax(m_strLocalTaxno, m_userInfo->m_strToken, m_info);
-		ui.labeltaxno->show();
-		ui.labeltaxno->setText(m_pEntInfo->_strTaxNo);
+		ui.labelTaxNo->show();
+		ui.labelTaxNo->setText(m_pEntInfo->_strTaxNo);
 		ui.copyTaxButton->show();
 
 	}
 	else
 	{
 		ui.copyTaxButton->hide();
-		ui.labeltaxno->hide();
-		ui.labeltaxno->setText("");
+		ui.copyTaxButton->hide();
+		ui.copyTaxButton->setText("");
 	}
 
 	//已经加入企业
@@ -340,13 +402,7 @@ void EntCenterNewWidget::showUserCompanyInfoTitle()
 		ui.labeluserline->show();
 		ui.labeluserroletype->show();
 
-		ui.labeluser->setText(m_pEntInfo->_strUsername);
-		if (m_pEntInfo->_nrole_type == 1){
-			ui.labeluserroletype->setText(QString::fromLocal8Bit("管理员"));
-		}
-		else{
-			ui.labeluserroletype->setText(QString::fromLocal8Bit("财务人员"));
-		}
+
 
 
 		m_info.nIsjoin = nsjoin;
@@ -363,49 +419,6 @@ void EntCenterNewWidget::showUserCompanyInfoTitle()
 		ui.labeluserroletype->hide();
 
 	}
-
-
-
-	//if (m_userInfo->m_strCompanyName.isEmpty())
-	//{
-	//	ui.labelComName->setText(QString::fromLocal8Bit("暂未查询到企业名称"));
-
-	//	
-	//}
-	//else
-	//{
-
-
-	//	bret = ZcloudComFun::winHttpQueryCompanyInfoLocalTax(m_userInfo->m_strTaxNumber, m_userInfo->m_strToken, m_info);
-
-
-	//	if (m_info.nIsjoin == 1)
-	//	{
-
-	//		ui.labelAddComp->setText("");
-	//		ui.labelAddComp->hide();
-
-	//		
-	//	}
-
-	//	if (m_info.nroletype == 1)
-	//	{
-	//		//ui.labelline->show();
-	//		//ui.labelroletype->setText(QString::fromLocal8Bit("管理员"));
-	//		strrole = QString::fromLocal8Bit("管理员");
-	//	}
-	//	else
-	//		strrole = QString::fromLocal8Bit("财务人员");
-
-	//	if (m_info.nIsjoin == 1)
-	//		showaddCompanyInfoTitle(m_info.strCompany, m_userInfo->m_strTaxNumber, m_userInfo->m_strUsername, strrole);
-	//	else if (m_info.nIsjoin != 0)
-	//	{
-	//		struser = QString::fromLocal8Bit("您还没加入该企业，");
-	//		straddcompany = QString::fromLocal8Bit("立即加入，");
-	//		showUnaddCompanyInfoTitle(m_info.strCompany, m_userInfo->m_strTaxNumber, m_userInfo->m_strUsername, straddcompany);
-	//	}
-	//}
 }
 
 void EntCenterNewWidget::clearUserCompanyInfoTitle()
@@ -492,56 +505,45 @@ void EntCenterNewWidget::showUnqueryCompanyInfoTitle()
 void EntCenterNewWidget::showaddCompanyInfoTitle(QString _strcompany, QString _strtaxno, QString _strUser, QString _straroletype)
 {
 
-
-
-
-
 	////ui.labelAvatar->setGeometry(95, 59, 60, 60);
-	////ui.labelAvatar->setStyleSheet("background:rgba(216,216,216,1);	border:1px solid rgba(151, 151, 151, 1); ");
+	ui.labelAvatar->setStyleSheet("background:rgba(216,216,216,1);	border:1px solid rgba(151, 151, 151, 1); ");
 
 	////ui.labelComName->setGeometry(55, 139, 140, 14);
 
-	//ui.labelComName->setText(QString::fromLocal8Bit("<html><head/><body><p><span style=\"font-size:14px;font - family:SourceHanSansCN - Normal, SourceHanSansCN;font-weight:400;color:rgba(51, 51, 51, 1);line-height:21px; \"> %1</span></p></body></html>").arg(_strcompany));
+	ui.labelComName->setText(QString::fromLocal8Bit("<html><head/><body><p><span style=\"font-size:14px;font - family:SourceHanSansCN - Normal, SourceHanSansCN;font-weight:400;color:rgba(51, 51, 51, 1);line-height:21px; \"> %1</span></p></body></html>").arg(_strcompany));
 
 
 	////ui.labeluser->setGeometry(59, 195, 126, 14);
 
-	//ui.labeluser->setText(QString::fromLocal8Bit("<html><head/><body><p><span style=\"font-size:14px;font - family:SourceHanSansCN - Normal, SourceHanSansCN;font-weight:400;color:rgba(51, 51, 51, 1);	line-height:21px; \"> %1</span></p></body></html>").arg(_strUser));
+	ui.labeluser->setText(QString::fromLocal8Bit("<html><head/><body><p><span style=\"font-size:14px;font - family:SourceHanSansCN - Normal, SourceHanSansCN;font-weight:400;color:rgba(51, 51, 51, 1);	line-height:21px; \"> %1</span></p></body></html>").arg(_strUser));
 
-	//ui.labeluser->show();
 
 	////ui.labelTaxNo->setGeometry(64, 163, 122, 12);
 
-	//ui.labelTaxNo->setText(QString::fromLocal8Bit("<html><head/><body><p><span style=\"font-size:12px;font - family:SourceHanSansCN - Normal, SourceHanSansCN;font-weight:400;color:rgba(51, 51, 51, 1);line-height:18px;\"> %1</span></p></body></html>").arg(_strtaxno));
+	ui.labelTaxNo->setText(QString::fromLocal8Bit("<html><head/><body><p><span style=\"font-size:12px;font - family:SourceHanSansCN - Normal, SourceHanSansCN;font-weight:400;color:rgba(51, 51, 51, 1);line-height:18px;\"> %1</span></p></body></html>").arg(_strtaxno));
 
-	//ui.labelTaxNo->show();
+	ui.labelTaxNo->show();
 
-	//ui.labelAddComp->hide();
-	//ui.labelroletype->show();
-	//ui.labelline->show();
+	ui.labeJoin1->hide();
+	ui.labelJoin2->hide();
+
+	ui.labeluser->show();
+	ui.labeluserroletype->show();
+	ui.labeluserline->show();
 	////ui.labelroletype->setGeometry(128, 195, 42, 14);
 
-	//ui.labelroletype->setText(QString::fromLocal8Bit("<html><head/><body><p><span style=\"font-size:14px;font-family:SourceHanSansCN - Normal, SourceHanSansCN;font-weight:400;color:rgba(102, 102, 102, 1);line-height:21px;\"> %1</span></p></body></html>").arg(_straroletype));
+	ui.labeluserroletype->setText(QString::fromLocal8Bit("<html><head/><body><p><span style=\"font-size:14px;font-family:SourceHanSansCN - Normal, SourceHanSansCN;font-weight:400;color:rgba(102, 102, 102, 1);line-height:21px;\"> %1</span></p></body></html>").arg(_straroletype));
 
 
 	////ui.switchButton->setGeometry(75, 229, 100, 38);
-	////	ui.switchButton->setStyleSheet("background:linear - gradient(90deg, rgba(2, 164, 253, 1) 0 % , rgba(31, 139, 237, 1) 100 % );box - shadow:0px 3px 8px - 2px rgba(2, 165, 253, 0.85), 0px 6px 11px - 2px rgba(2, 165, 253, 0.64);border - radius:4px; ");
+		ui.switchButton->setStyleSheet("background:linear - gradient(90deg, rgba(2, 164, 253, 1) 0 % , rgba(31, 139, 237, 1) 100 % );box - shadow:0px 3px 8px - 2px rgba(2, 165, 253, 0.85), 0px 6px 11px - 2px rgba(2, 165, 253, 0.64);border - radius:4px; ");
 
 
 	////ui.copyTaxButton->setGeometry(191, 162, 16, 16);
-	//ui.copyTaxButton->setStyleSheet("QPushButton{border-image: url(:/EntCenterWidget/image/copy.png);}\nQPushButton:hover,pressed{border-image: url(:/EntCenterWidget/image/copy_sel.png);}");
-	//ui.copyTaxButton->show();
-
-
-
-
-
-
-
-
-
-
-	////ui.labelAddComp->setStyleSheet("font-size:14px;	font-family:SourceHanSansCN - Normal, SourceHanSansCN;font-weight:400;color:rgba(30, 139, 237, 1);line-height:21px; ");
+	ui.copyTaxButton->setStyleSheet("QPushButton{border-image: url(:/EntCenterWidget/image/copy.png);}\nQPushButton:hover,pressed{border-image: url(:/EntCenterWidget/image/copy_sel.png);}");
+	ui.copyTaxButton->show();
+	
+	ui.labelJoin2->setStyleSheet("font-size:14px;	font-family:SourceHanSansCN - Normal, SourceHanSansCN;font-weight:400;color:rgba(30, 139, 237, 1);line-height:21px; ");
 
 
 }

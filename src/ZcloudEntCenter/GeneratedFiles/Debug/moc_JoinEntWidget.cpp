@@ -83,7 +83,7 @@ void JoinEntWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
 }
 
 const QMetaObject JoinEntWidget::staticMetaObject = {
-    { &ZcloudCommonWidget::staticMetaObject, qt_meta_stringdata_JoinEntWidget.data,
+    { &QDialog::staticMetaObject, qt_meta_stringdata_JoinEntWidget.data,
       qt_meta_data_JoinEntWidget,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
 };
 
@@ -98,12 +98,12 @@ void *JoinEntWidget::qt_metacast(const char *_clname)
     if (!_clname) return Q_NULLPTR;
     if (!strcmp(_clname, qt_meta_stringdata_JoinEntWidget.stringdata0))
         return static_cast<void*>(const_cast< JoinEntWidget*>(this));
-    return ZcloudCommonWidget::qt_metacast(_clname);
+    return QDialog::qt_metacast(_clname);
 }
 
 int JoinEntWidget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
-    _id = ZcloudCommonWidget::qt_metacall(_c, _id, _a);
+    _id = QDialog::qt_metacall(_c, _id, _a);
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {

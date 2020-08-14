@@ -168,6 +168,18 @@ void UserCenterAccWidget::init(EntCenterInfo*	info111,  UserInfoStruct* info)
 				strCompName = strUserName;
 			}
 
+			if (!m_userInfo->m_strUsername.isEmpty()){
+				ui.labelTrueName->setText(m_userInfo->m_strUsername);
+			}
+
+			if (!m_userInfo->m_strJob.isEmpty()){
+				ui.labelJob->setText(m_userInfo->m_strJob);
+			}
+			else{
+				ui.labelJob->setText(QString::fromLocal8Bit("财务人员"));
+			}
+
+
 			//m_bJoinEnt = false;
 		}
 	}

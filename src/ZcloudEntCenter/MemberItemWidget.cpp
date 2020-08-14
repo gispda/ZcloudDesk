@@ -50,7 +50,7 @@ MemberItemWidget::MemberItemWidget(int nAdmin,int nIndex, QString strUid, QStrin
 	default:
 		break;
 	}
-	ui.labelFirstName->setStyleSheet(QString::fromLocal8Bit("background:%1;border-radius:20px;font:18px \"Î¢ÈíÑÅºÚ\";color:#FDFDFD;").arg(strColor));
+	ui.labelFirstName->setStyleSheet(QString::fromLocal8Bit("background:%1;border-radius:20px;font:24px \"Î¢ÈíÑÅºÚ\";color:#FDFDFD;").arg(strColor));
 	ui.labelFirstName->setText(strFirstName);
 
 	//!ĞÕÃû

@@ -202,50 +202,6 @@ QPushButton:hover,pressed{border-image: url(:/EntCenterWidget/image/copy_sel.png
          <string/>
         </property>
        </widget>
-       <widget class="QLabel" name="labeltaxno">
-        <property name="geometry">
-         <rect>
-          <x>50</x>
-          <y>100</y>
-          <width>122</width>
-          <height>12</height>
-         </rect>
-        </property>
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>122</width>
-          <height>12</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>122</width>
-          <height>12</height>
-         </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">font-size:12px;
-font-family:SourceHanSansCN-Normal,SourceHanSansCN;
-font-weight:400;
-color:rgba(51,51,51,1);
-line-height:18px;</string>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-        <property name="wordWrap">
-         <bool>true</bool>
-        </property>
-       </widget>
        <widget class="QLabel" name="labelTaxNo">
         <property name="geometry">
          <rect>
@@ -347,11 +303,10 @@ color:#333333;</string>
         </property>
         <property name="styleSheet">
          <string notr="true">font:14px &quot;微软雅黑&quot;;
-font-weight:bold;
 color:#333333;</string>
         </property>
         <property name="text">
-         <string>更多信息</string>
+         <string>更多</string>
         </property>
        </widget>
        <widget class="QLabel" name="labelEntInfo">
@@ -826,7 +781,11 @@ line-height:21px;</string>
          <number>0</number>
         </property>
         <item>
-         <layout class="QVBoxLayout" name="layout"/>
+         <layout class="QVBoxLayout" name="layout">
+          <property name="spacing">
+           <number>0</number>
+          </property>
+         </layout>
         </item>
        </layout>
       </widget>

@@ -32,7 +32,7 @@
    <string>AccSettingWidget</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">QWidget#EntRightWidget{background-color: rgb(252, 252, 252);border-top-right-radius:8px;border-bottom-right-radius:8px;}</string>
+   <string notr="true">background-color: rgb(252, 252, 252);border-top-right-radius:8px;border-bottom-right-radius:8px;</string>
   </property>
   <widget class="QLabel" name="labelFirstName">
    <property name="geometry">
@@ -62,10 +62,10 @@
     </size>
    </property>
    <property name="styleSheet">
-    <string notr="true">background:#5FD999;border-radius:30px;font:33px &quot;微软雅黑&quot;;color:#FDFDFD;</string>
+    <string notr="true">background:#5FD999;border-radius:30px;font:43px &quot;微软雅黑&quot;;color:#FDFDFD;</string>
    </property>
    <property name="text">
-    <string/>
+    <string>1</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>

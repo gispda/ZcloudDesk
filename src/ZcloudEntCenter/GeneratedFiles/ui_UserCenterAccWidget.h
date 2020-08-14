@@ -72,7 +72,7 @@ public:
         UserCenterAccWidget->setSizePolicy(sizePolicy);
         UserCenterAccWidget->setMinimumSize(QSize(750, 620));
         UserCenterAccWidget->setMaximumSize(QSize(750, 620));
-        UserCenterAccWidget->setStyleSheet(QStringLiteral("QWidget#EntRightWidget{background-color: rgb(252, 252, 252);border-top-right-radius:8px;border-bottom-right-radius:8px;}"));
+        UserCenterAccWidget->setStyleSheet(QStringLiteral("background-color: rgb(252, 252, 252);border-top-right-radius:8px;border-bottom-right-radius:8px;"));
         labelFirstName = new QLabel(UserCenterAccWidget);
         labelFirstName->setObjectName(QStringLiteral("labelFirstName"));
         labelFirstName->setGeometry(QRect(15, 23, 60, 60));
@@ -80,7 +80,7 @@ public:
         labelFirstName->setSizePolicy(sizePolicy);
         labelFirstName->setMinimumSize(QSize(60, 60));
         labelFirstName->setMaximumSize(QSize(60, 60));
-        labelFirstName->setStyleSheet(QString::fromUtf8("background:#5FD999;border-radius:30px;font:33px \"\345\276\256\350\275\257\351\233\205\351\273\221\";color:#FDFDFD;"));
+        labelFirstName->setStyleSheet(QString::fromUtf8("background:#5FD999;border-radius:30px;font:43px \"\345\276\256\350\275\257\351\233\205\351\273\221\";color:#FDFDFD;"));
         labelFirstName->setAlignment(Qt::AlignCenter);
         label = new QLabel(UserCenterAccWidget);
         label->setObjectName(QStringLiteral("label"));
@@ -433,7 +433,7 @@ public:
     void retranslateUi(QWidget *UserCenterAccWidget)
     {
         UserCenterAccWidget->setWindowTitle(QApplication::translate("UserCenterAccWidget", "AccSettingWidget", 0));
-        labelFirstName->setText(QString());
+        labelFirstName->setText(QApplication::translate("UserCenterAccWidget", "1", 0));
         label->setText(QApplication::translate("UserCenterAccWidget", "\347\231\273\345\275\225\350\264\246\345\217\267\357\274\232", 0));
         labelUserName->setText(QString());
         label_2->setText(QApplication::translate("UserCenterAccWidget", "\345\247\223\345\220\215\357\274\232", 0));

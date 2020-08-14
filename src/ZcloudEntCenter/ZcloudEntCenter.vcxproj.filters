@@ -294,43 +294,16 @@
     </QtMoc>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="GeneratedFiles\ui_EntCenterWidget.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GeneratedFiles\ui_SwitchAccWidget.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GeneratedFiles\ui_AccItemWidget.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GeneratedFiles\ui_EntComWidget.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
     <ClInclude Include="EntInfoDataDefine.h">
       <Filter>EntInfo</Filter>
-    </ClInclude>
-    <ClInclude Include="GeneratedFiles\ui_MemberItemWidget.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GeneratedFiles\ui_CreateEntInfoWidget.h">
-      <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="WorkerDataBase.h">
       <Filter>Worker</Filter>
     </ClInclude>
-    <ClInclude Include="GeneratedFiles\ui_WorkerDetailWidget.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GeneratedFiles\ui_WorkersWidget.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GeneratedFiles\ui_WorkerCommentWidget.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GeneratedFiles\ui_WorkertemWidget.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_AcceptAddressWidget.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_AccItemWidget.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_AccSettingWidget.h">
@@ -348,6 +321,9 @@
     <ClInclude Include="GeneratedFiles\ui_BindMobileWidget.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_CreateEntInfoWidget.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_DefaultVipWidget.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
@@ -360,7 +336,19 @@
     <ClInclude Include="GeneratedFiles\ui_EntCenterInfoWidget.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_EntCenterMainWidget.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_EntCenterMemberWidget.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_EntCenterNewWidget.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_EntCenterWidget.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_EntComWidget.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_EntInfoWidget.h">
@@ -372,7 +360,7 @@
     <ClInclude Include="GeneratedFiles\ui_InfoCenterWidget.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
-    <ClInclude Include="GeneratedFiles\ui_JoinEntWidget.h">
+    <ClInclude Include="GeneratedFiles\ui_MemberItemWidget.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_ModifyMemberWidget.h">
@@ -387,28 +375,37 @@
     <ClInclude Include="GeneratedFiles\ui_SetPwdWidget.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_SwitchAccWidget.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_UploadLicenseDlg.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_UserCenterAccWidget.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
-    <ClInclude Include="GeneratedFiles\ui_UserCenterMainWidget.h">
+    <ClInclude Include="GeneratedFiles\ui_UserCenterWidget.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_VipInfoWidget.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_WorkerCommentWidget.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_WorkerDetailWidget.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_WorkerItemWidget.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
-    <ClInclude Include="GeneratedFiles\ui_UserCenterWidget.h">
+    <ClInclude Include="GeneratedFiles\ui_WorkersWidget.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
-    <ClInclude Include="GeneratedFiles\ui_EntCenterMainWidget.h">
+    <ClInclude Include="GeneratedFiles\ui_UserCenterMainWidget.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
-    <ClInclude Include="GeneratedFiles\ui_EntCenterNewWidget.h">
+    <ClInclude Include="GeneratedFiles\ui_JoinEntWidget.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
   </ItemGroup>

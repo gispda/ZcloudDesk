@@ -133,7 +133,7 @@ struct UserInfoStruct
 	QStringList m_strListAppVipList;		//vip等级链表
 	QStringList m_strListAppVipNameList;//vip等级名字链表
 	QStringList m_vipDateTimeList;			//vip 到期时间链表
-	int  m_bLoginByTax;			//!是否是税号登录   -2:手机验证码登录 -1:微信登录  0：账号登录  1:税号登录   目前没有税号登陆说法，只是切换当前企业
+	int  m_bLoginByTax;			//!是否是税号登录   -8:游客登陆 -2:手机验证码登录 -1:微信登录  0：账号登录  1:税号登录   目前没有税号登陆说法，只是切换当前企业
 	QString m_strMobile;			//手机号
 	bool isHideNR = false;		//是否隐藏开票软件和重装开票
 

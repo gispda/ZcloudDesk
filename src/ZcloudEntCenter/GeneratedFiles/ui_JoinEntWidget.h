@@ -59,7 +59,7 @@ public:
         JoinEntWidget->setSizePolicy(sizePolicy);
         JoinEntWidget->setMinimumSize(QSize(800, 500));
         JoinEntWidget->setMaximumSize(QSize(800, 500));
-        JoinEntWidget->setStyleSheet(QStringLiteral("QWidget#JoinEntWidget{background-color: rgb(255, 255, 255);border-radius:8px;}"));
+        JoinEntWidget->setStyleSheet(QStringLiteral("QDialog#JoinEntWidget{background-color: rgb(252, 252, 252);border-top-right-radius:8px;border-radius:8px;}"));
         lineEdit = new QLineEdit(JoinEntWidget);
         lineEdit->setObjectName(QStringLiteral("lineEdit"));
         lineEdit->setGeometry(QRect(30, 71, 640, 36));

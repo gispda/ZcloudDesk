@@ -274,15 +274,8 @@ public:
         label_21->setGeometry(QRect(150, 110, 160, 15));
         labelTwoBarCode = new QLabel(widgetNotBinding);
         labelTwoBarCode->setObjectName(QStringLiteral("labelTwoBarCode"));
-        labelTwoBarCode->setGeometry(QRect(15, 25, 100, 100));
+        labelTwoBarCode->setGeometry(QRect(15, 30, 100, 100));
         labelTwoBarCode->setStyleSheet(QStringLiteral("border-bottom:0px;"));
-        ServiceBaseWidget->raise();
-        ServiceFeeWidget_3->raise();
-        label->raise();
-        ServiceFeeWidget->raise();
-        label_2->raise();
-        widgetNotBinding->raise();
-        widgetNotBinding->raise();
 
         retranslateUi(EntCenterMainWidget);
 

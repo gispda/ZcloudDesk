@@ -32,7 +32,7 @@
    <string>JoinEntWidget</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">QWidget#JoinEntWidget{background-color: rgb(255, 255, 255);border-radius:8px;}</string>
+   <string notr="true">QDialog#JoinEntWidget{background-color: rgb(252, 252, 252);border-top-right-radius:8px;border-radius:8px;}</string>
   </property>
   <widget class="QLineEdit" name="lineEdit">
    <property name="geometry">

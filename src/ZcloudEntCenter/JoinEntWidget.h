@@ -3,8 +3,9 @@
 #include <QWidget>
 #include "ui_JoinEntWidget.h"
 #include "ZcloudCommonWidget.h"
+#include <QDialog>
 
-class JoinEntWidget : public ZcloudCommonWidget
+class JoinEntWidget : public QDialog
 {
 	Q_OBJECT
 

@@ -33,18 +33,19 @@ public:
     QLabel *labelUserName;
     QLabel *labelUserID;
     QLabel *labelSpaceLeft;
-    QPushButton *scoreButton;
-    QPushButton *couponButton;
     QLabel *labelMore;
     QLabel *labelEntInfo;
     QPushButton *mainButton;
-    QLabel *labelScore;
-    QLabel *labelCoupon;
     QLabel *labelUser;
-    QPushButton *pushButtonLogin;
-    QLabel *label;
     QLabel *labelEntInfo_2;
     QPushButton *pushButtonAcc;
+    QWidget *widgetUnLogin;
+    QLabel *label;
+    QPushButton *pushButtonLogin;
+    QWidget *widgetLogin;
+    QLabel *labelName;
+    QLabel *labelID;
+    QLabel *label_2;
     QWidget *RightWidget;
     QHBoxLayout *rightLayout;
     QVBoxLayout *layout;
@@ -112,28 +113,12 @@ public:
         labelUserID->setAlignment(Qt::AlignCenter);
         labelSpaceLeft = new QLabel(EntLeftWidget);
         labelSpaceLeft->setObjectName(QStringLiteral("labelSpaceLeft"));
-        labelSpaceLeft->setGeometry(QRect(0, 221, 250, 1));
+        labelSpaceLeft->setGeometry(QRect(0, 287, 250, 1));
         sizePolicy1.setHeightForWidth(labelSpaceLeft->sizePolicy().hasHeightForWidth());
         labelSpaceLeft->setSizePolicy(sizePolicy1);
         labelSpaceLeft->setMinimumSize(QSize(250, 1));
         labelSpaceLeft->setMaximumSize(QSize(250, 1));
         labelSpaceLeft->setStyleSheet(QStringLiteral("background-color: rgb(222, 222, 222);"));
-        scoreButton = new QPushButton(EntLeftWidget);
-        scoreButton->setObjectName(QStringLiteral("scoreButton"));
-        scoreButton->setGeometry(QRect(60, 251, 20, 20));
-        sizePolicy1.setHeightForWidth(scoreButton->sizePolicy().hasHeightForWidth());
-        scoreButton->setSizePolicy(sizePolicy1);
-        scoreButton->setMinimumSize(QSize(20, 20));
-        scoreButton->setMaximumSize(QSize(20, 20));
-        scoreButton->setStyleSheet(QStringLiteral("QPushButton{border-image: url(:/EntCenterWidget/image/score.png);}"));
-        couponButton = new QPushButton(EntLeftWidget);
-        couponButton->setObjectName(QStringLiteral("couponButton"));
-        couponButton->setGeometry(QRect(170, 251, 20, 20));
-        sizePolicy1.setHeightForWidth(couponButton->sizePolicy().hasHeightForWidth());
-        couponButton->setSizePolicy(sizePolicy1);
-        couponButton->setMinimumSize(QSize(20, 20));
-        couponButton->setMaximumSize(QSize(20, 20));
-        couponButton->setStyleSheet(QStringLiteral("QPushButton{border-image: url(:/EntCenterWidget/image/coupon.png);}"));
         labelMore = new QLabel(EntLeftWidget);
         labelMore->setObjectName(QStringLiteral("labelMore"));
         labelMore->setGeometry(QRect(29, 332, 57, 15));
@@ -142,7 +127,6 @@ public:
         labelMore->setMinimumSize(QSize(57, 15));
         labelMore->setMaximumSize(QSize(57, 15));
         labelMore->setStyleSheet(QString::fromUtf8("font:14px \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
-"font-weight:bold;\n"
 "color:#333333;"));
         labelEntInfo = new QLabel(EntLeftWidget);
         labelEntInfo->setObjectName(QStringLiteral("labelEntInfo"));
@@ -166,51 +150,14 @@ public:
         mainButton->setLayoutDirection(Qt::LeftToRight);
         mainButton->setStyleSheet(QString::fromUtf8("QPushButton{background-color:rgba(255,255,255,0);font: 14px \"\345\276\256\350\275\257\351\233\205\351\273\221\";color:rgba(51, 51, 51, 1);padding-left:-20px;}\n"
 "QPushButton:hover,pressed{ background-color:rgba(255,255,255,0);font: 14px \"\345\276\256\350\275\257\351\233\205\351\273\221\";color:rgba(31,139,237,1);}"));
-        labelScore = new QLabel(EntLeftWidget);
-        labelScore->setObjectName(QStringLiteral("labelScore"));
-        labelScore->setGeometry(QRect(45, 281, 50, 13));
-        sizePolicy1.setHeightForWidth(labelScore->sizePolicy().hasHeightForWidth());
-        labelScore->setSizePolicy(sizePolicy1);
-        labelScore->setMinimumSize(QSize(50, 13));
-        labelScore->setMaximumSize(QSize(50, 13));
-        labelScore->setStyleSheet(QString::fromUtf8("font: 16px \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
-"color:#666666;"));
-        labelScore->setAlignment(Qt::AlignCenter);
-        labelCoupon = new QLabel(EntLeftWidget);
-        labelCoupon->setObjectName(QStringLiteral("labelCoupon"));
-        labelCoupon->setGeometry(QRect(155, 280, 50, 13));
-        sizePolicy1.setHeightForWidth(labelCoupon->sizePolicy().hasHeightForWidth());
-        labelCoupon->setSizePolicy(sizePolicy1);
-        labelCoupon->setMinimumSize(QSize(50, 13));
-        labelCoupon->setMaximumSize(QSize(50, 13));
-        labelCoupon->setStyleSheet(QString::fromUtf8("font: 16px \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
-"color:#666666;"));
-        labelCoupon->setAlignment(Qt::AlignCenter);
         labelUser = new QLabel(EntLeftWidget);
         labelUser->setObjectName(QStringLiteral("labelUser"));
-        labelUser->setGeometry(QRect(95, 30, 60, 60));
+        labelUser->setGeometry(QRect(10, 20, 60, 60));
         sizePolicy1.setHeightForWidth(labelUser->sizePolicy().hasHeightForWidth());
         labelUser->setSizePolicy(sizePolicy1);
         labelUser->setMinimumSize(QSize(60, 60));
         labelUser->setMaximumSize(QSize(60, 60));
         labelUser->setStyleSheet(QStringLiteral("border-image: url(:/EntCenterWidget/image/qyzx_icon_vip_wjr.png);"));
-        pushButtonLogin = new QPushButton(EntLeftWidget);
-        pushButtonLogin->setObjectName(QStringLiteral("pushButtonLogin"));
-        pushButtonLogin->setGeometry(QRect(85, 130, 80, 30));
-        pushButtonLogin->setStyleSheet(QString::fromUtf8("font: 14px \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
-"color:#1E8BED;"));
-        pushButtonLogin->setFlat(true);
-        label = new QLabel(EntLeftWidget);
-        label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(20, 160, 210, 35));
-        sizePolicy1.setHeightForWidth(label->sizePolicy().hasHeightForWidth());
-        label->setSizePolicy(sizePolicy1);
-        label->setMinimumSize(QSize(210, 35));
-        label->setMaximumSize(QSize(210, 35));
-        label->setStyleSheet(QString::fromUtf8("font:14px \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
-"color:#333333;"));
-        label->setAlignment(Qt::AlignCenter);
-        label->setWordWrap(true);
         labelEntInfo_2 = new QLabel(EntLeftWidget);
         labelEntInfo_2->setObjectName(QStringLiteral("labelEntInfo_2"));
         labelEntInfo_2->setGeometry(QRect(60, 422, 10, 10));
@@ -230,6 +177,45 @@ public:
         pushButtonAcc->setLayoutDirection(Qt::LeftToRight);
         pushButtonAcc->setStyleSheet(QString::fromUtf8("QPushButton{background-color:rgba(255,255,255,0);font: 14px \"\345\276\256\350\275\257\351\233\205\351\273\221\";color:rgba(51, 51, 51, 1);padding-left:-20px;}\n"
 "QPushButton:hover,pressed{ background-color:rgba(255,255,255,0);font: 14px \"\345\276\256\350\275\257\351\233\205\351\273\221\";color:rgba(31,139,237,1);}"));
+        widgetUnLogin = new QWidget(EntLeftWidget);
+        widgetUnLogin->setObjectName(QStringLiteral("widgetUnLogin"));
+        widgetUnLogin->setGeometry(QRect(0, 120, 250, 100));
+        label = new QLabel(widgetUnLogin);
+        label->setObjectName(QStringLiteral("label"));
+        label->setGeometry(QRect(0, 40, 250, 35));
+        sizePolicy1.setHeightForWidth(label->sizePolicy().hasHeightForWidth());
+        label->setSizePolicy(sizePolicy1);
+        label->setMinimumSize(QSize(250, 35));
+        label->setMaximumSize(QSize(250, 35));
+        label->setStyleSheet(QString::fromUtf8("font:14px \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
+"color:#333333;"));
+        label->setAlignment(Qt::AlignCenter);
+        label->setWordWrap(true);
+        pushButtonLogin = new QPushButton(widgetUnLogin);
+        pushButtonLogin->setObjectName(QStringLiteral("pushButtonLogin"));
+        pushButtonLogin->setGeometry(QRect(85, 10, 80, 30));
+        pushButtonLogin->setStyleSheet(QString::fromUtf8("font: 14px \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
+"color:#1E8BED;"));
+        pushButtonLogin->setFlat(true);
+        widgetLogin = new QWidget(EntLeftWidget);
+        widgetLogin->setObjectName(QStringLiteral("widgetLogin"));
+        widgetLogin->setGeometry(QRect(0, 220, 250, 100));
+        labelName = new QLabel(widgetLogin);
+        labelName->setObjectName(QStringLiteral("labelName"));
+        labelName->setGeometry(QRect(90, 10, 70, 20));
+        labelName->setStyleSheet(QString::fromUtf8("font:14px \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
+"color:#333333;"));
+        labelName->setAlignment(Qt::AlignCenter);
+        labelID = new QLabel(widgetLogin);
+        labelID->setObjectName(QStringLiteral("labelID"));
+        labelID->setGeometry(QRect(50, 60, 150, 12));
+        labelID->setStyleSheet(QString::fromUtf8("font:14px \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
+"color:#333333;"));
+        labelID->setAlignment(Qt::AlignCenter);
+        label_2 = new QLabel(widgetLogin);
+        label_2->setObjectName(QStringLiteral("label_2"));
+        label_2->setGeometry(QRect(170, 10, 20, 20));
+        label_2->setPixmap(QPixmap(QString::fromUtf8(":/EntCenterWidget/image/notExpired.png")));
 
         horizontalLayout->addWidget(EntLeftWidget);
 
@@ -239,14 +225,14 @@ public:
         RightWidget->setSizePolicy(sizePolicy1);
         RightWidget->setMinimumSize(QSize(750, 618));
         RightWidget->setMaximumSize(QSize(750, 618));
-        RightWidget->setStyleSheet(QStringLiteral("QWidget#EntRightWidget{background-color: rgb(252, 252, 252);border-top-right-radius:8px;border-bottom-right-radius:8px;}"));
+        RightWidget->setStyleSheet(QStringLiteral("QWidget#RightWidget{background-color: rgb(252, 252, 252);border-top-right-radius:8px;border-bottom-right-radius:8px;}"));
         rightLayout = new QHBoxLayout(RightWidget);
         rightLayout->setSpacing(0);
         rightLayout->setContentsMargins(11, 11, 11, 11);
         rightLayout->setObjectName(QStringLiteral("rightLayout"));
         rightLayout->setContentsMargins(0, 0, 0, 0);
         layout = new QVBoxLayout();
-        layout->setSpacing(6);
+        layout->setSpacing(0);
         layout->setObjectName(QStringLiteral("layout"));
 
         rightLayout->addLayout(layout);
@@ -270,26 +256,19 @@ public:
         labelUserName->setText(QString());
         labelUserID->setText(QString());
         labelSpaceLeft->setText(QString());
-#ifndef QT_NO_TOOLTIP
-        scoreButton->setToolTip(QApplication::translate("UserCenterWidget", "\344\272\221\345\270\201", 0));
-#endif // QT_NO_TOOLTIP
-        scoreButton->setText(QString());
-#ifndef QT_NO_TOOLTIP
-        couponButton->setToolTip(QApplication::translate("UserCenterWidget", "\344\274\230\346\203\240\345\212\265", 0));
-#endif // QT_NO_TOOLTIP
-        couponButton->setText(QString());
-        labelMore->setText(QApplication::translate("UserCenterWidget", "\346\233\264\345\244\232\344\277\241\346\201\257", 0));
+        labelMore->setText(QApplication::translate("UserCenterWidget", "\346\233\264\345\244\232", 0));
         labelEntInfo->setText(QString());
         mainButton->setText(QApplication::translate("UserCenterWidget", "\351\246\226        \351\241\265", 0));
         mainButton->setShortcut(QApplication::translate("UserCenterWidget", "Ctrl+S, Esc", 0));
-        labelScore->setText(QApplication::translate("UserCenterWidget", "0", 0));
-        labelCoupon->setText(QApplication::translate("UserCenterWidget", "0", 0));
         labelUser->setText(QString());
-        pushButtonLogin->setText(QApplication::translate("UserCenterWidget", "\347\253\213\345\215\263\347\231\273\345\275\225", 0));
-        label->setText(QApplication::translate("UserCenterWidget", "\347\231\273\345\275\225\345\220\216\345\217\257\344\275\223\351\252\214\346\233\264\345\244\232\345\212\237\350\203\275", 0));
         labelEntInfo_2->setText(QString());
         pushButtonAcc->setText(QApplication::translate("UserCenterWidget", "\350\264\246\345\217\267\350\256\276\347\275\256", 0));
         pushButtonAcc->setShortcut(QApplication::translate("UserCenterWidget", "Ctrl+S, Esc", 0));
+        label->setText(QApplication::translate("UserCenterWidget", "\347\231\273\345\275\225\345\220\216\345\217\257\344\275\223\351\252\214\346\233\264\345\244\232\345\212\237\350\203\275", 0));
+        pushButtonLogin->setText(QApplication::translate("UserCenterWidget", "\347\253\213\345\215\263\347\231\273\345\275\225", 0));
+        labelName->setText(QApplication::translate("UserCenterWidget", "TextLabel", 0));
+        labelID->setText(QApplication::translate("UserCenterWidget", "TextLabel", 0));
+        label_2->setText(QString());
     } // retranslateUi
 
 };

@@ -34,5 +34,6 @@
         <file>image/min_sel.png</file>
         <file>image/fafull.png</file>
         <file>image/faspace.png</file>
+        <file>image/ycs_logo.png</file>
     </qresource>
 </RCC>

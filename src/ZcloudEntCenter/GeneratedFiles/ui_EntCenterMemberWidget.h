@@ -44,9 +44,9 @@ public:
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(EntCenterMemberWidget->sizePolicy().hasHeightForWidth());
         EntCenterMemberWidget->setSizePolicy(sizePolicy);
-        EntCenterMemberWidget->setMinimumSize(QSize(700, 620));
-        EntCenterMemberWidget->setMaximumSize(QSize(800, 620));
-        EntCenterMemberWidget->setStyleSheet(QStringLiteral("QWidget#FinanMemberWidget{background-color: rgb(255, 255, 255);border-radius:8px;}"));
+        EntCenterMemberWidget->setMinimumSize(QSize(750, 620));
+        EntCenterMemberWidget->setMaximumSize(QSize(750, 620));
+        EntCenterMemberWidget->setStyleSheet(QStringLiteral("QWidget#EntCenterMemberWidget{background-color: rgb(255, 255, 255);border-radius:8px;}"));
         addMemberButton = new QPushButton(EntCenterMemberWidget);
         addMemberButton->setObjectName(QStringLiteral("addMemberButton"));
         addMemberButton->setGeometry(QRect(37, 13, 88, 32));

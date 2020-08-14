@@ -65,8 +65,8 @@ public:
         sizePolicy.setHeightForWidth(EntCenterInfoWidget->sizePolicy().hasHeightForWidth());
         EntCenterInfoWidget->setSizePolicy(sizePolicy);
         EntCenterInfoWidget->setMinimumSize(QSize(750, 620));
-        EntCenterInfoWidget->setMaximumSize(QSize(1000, 500));
-        EntCenterInfoWidget->setStyleSheet(QStringLiteral("QWidget#EntInfoWidget{background-color: rgb(255, 255, 255);border-radius:8px;}"));
+        EntCenterInfoWidget->setMaximumSize(QSize(750, 620));
+        EntCenterInfoWidget->setStyleSheet(QStringLiteral("QWidget#EntCenterInfoWidget{background-color: rgb(255, 255, 255);border-radius:8px;}"));
         label = new QLabel(EntCenterInfoWidget);
         label->setObjectName(QStringLiteral("label"));
         label->setGeometry(QRect(140, 70, 121, 14));
