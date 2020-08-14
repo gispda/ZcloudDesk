@@ -167,7 +167,7 @@ QToolButton:hover,pressed{ background-color: qlineargradient(spread:pad, x1:0, y
        <widget class="QPushButton" name="copyTaxButton">
         <property name="geometry">
          <rect>
-          <x>200</x>
+          <x>210</x>
           <y>162</y>
           <width>16</width>
           <height>16</height>
@@ -497,12 +497,12 @@ QPushButton:hover,pressed{ background-color:rgba(255,255,255,0);font: 14px &quot
          <string>财务成员</string>
         </property>
        </widget>
-       <widget class="QLabel" name="labelAddComp">
+       <widget class="QLabel" name="labelJoin2">
         <property name="geometry">
          <rect>
           <x>180</x>
           <y>195</y>
-          <width>81</width>
+          <width>60</width>
           <height>14</height>
          </rect>
         </property>
@@ -561,7 +561,7 @@ line-height:21px;</string>
         <property name="geometry">
          <rect>
           <x>55</x>
-          <y>139</y>
+          <y>135</y>
           <width>140</width>
           <height>16</height>
          </rect>
@@ -604,9 +604,9 @@ line-height:21px;</string>
        <widget class="QLabel" name="labeluser">
         <property name="geometry">
          <rect>
-          <x>79</x>
+          <x>20</x>
           <y>195</y>
-          <width>126</width>
+          <width>90</width>
           <height>14</height>
          </rect>
         </property>
@@ -626,13 +626,16 @@ line-height:21px;</string>
         <property name="text">
          <string/>
         </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
        </widget>
-       <widget class="QLabel" name="labelroletype">
+       <widget class="QLabel" name="labeluserroletype">
         <property name="geometry">
          <rect>
           <x>128</x>
           <y>195</y>
-          <width>60</width>
+          <width>100</width>
           <height>14</height>
          </rect>
         </property>
@@ -653,11 +656,11 @@ line-height:21px;</string>
          <string>管理员</string>
         </property>
        </widget>
-       <widget class="QLabel" name="labelline">
+       <widget class="QLabel" name="labeluserline">
         <property name="geometry">
          <rect>
-          <x>110</x>
-          <y>140</y>
+          <x>120</x>
+          <y>195</y>
           <width>1</width>
           <height>16</height>
          </rect>
@@ -755,6 +758,32 @@ QPushButton:hover,pressed{ background-color:rgba(255,255,255,0);font: 14px &quot
          <string>企业资料</string>
         </property>
        </widget>
+       <widget class="QLabel" name="labeJoin1">
+        <property name="geometry">
+         <rect>
+          <x>50</x>
+          <y>195</y>
+          <width>120</width>
+          <height>14</height>
+         </rect>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>126</width>
+          <height>14</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font-size:14px;
+font-family:SourceHanSansCN-Normal,SourceHanSansCN;
+font-weight:400;
+color:rgba(102,102,102,1);
+line-height:21px;</string>
+        </property>
+        <property name="text">
+         <string>您还未加入该企业，</string>
+        </property>
+       </widget>
       </widget>
      </item>
      <item>
@@ -780,6 +809,26 @@ QPushButton:hover,pressed{ background-color:rgba(255,255,255,0);font: 14px &quot
        <property name="styleSheet">
         <string notr="true">QWidget#EntRightWidget{background-color: rgb(252, 252, 252);border-top-right-radius:8px;border-bottom-right-radius:8px;}</string>
        </property>
+       <layout class="QHBoxLayout" name="rightLayout">
+        <property name="spacing">
+         <number>0</number>
+        </property>
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+        <item>
+         <layout class="QVBoxLayout" name="layout"/>
+        </item>
+       </layout>
       </widget>
      </item>
     </layout>

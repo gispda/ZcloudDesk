@@ -7,7 +7,7 @@
 #include "EntDataBase.h"
 #include "AppCommWidget.h"
 
-class UserCenterAccWidget : public AppCommWidget
+class UserCenterAccWidget : public QWidget
 {
 	Q_OBJECT
 

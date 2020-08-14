@@ -19,6 +19,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QToolButton>
+#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -40,15 +41,18 @@ public:
     QLabel *labelMember;
     QPushButton *mainButton;
     QPushButton *memberButton;
-    QLabel *labelAddComp;
+    QLabel *labelJoin2;
     QLabel *labelVip;
     QLabel *labelComName;
     QLabel *labeluser;
-    QLabel *labelroletype;
-    QLabel *labelline;
+    QLabel *labeluserroletype;
+    QLabel *labeluserline;
     QLabel *labelEntInfo_2;
     QPushButton *entInfoButton;
+    QLabel *labeJoin1;
     QWidget *EntRightWidget;
+    QHBoxLayout *rightLayout;
+    QVBoxLayout *layout;
 
     void setupUi(QWidget *EntCenterNewWidget)
     {
@@ -107,7 +111,7 @@ public:
         labelAvatar->setStyleSheet(QStringLiteral("border-image: url(:/EntCenterWidget/image/img_tx_d.png);"));
         copyTaxButton = new QPushButton(EntLeftWidget);
         copyTaxButton->setObjectName(QStringLiteral("copyTaxButton"));
-        copyTaxButton->setGeometry(QRect(200, 162, 16, 16));
+        copyTaxButton->setGeometry(QRect(210, 162, 16, 16));
         sizePolicy1.setHeightForWidth(copyTaxButton->sizePolicy().hasHeightForWidth());
         copyTaxButton->setSizePolicy(sizePolicy1);
         copyTaxButton->setMinimumSize(QSize(16, 16));
@@ -196,11 +200,11 @@ public:
         memberButton->setMaximumSize(QSize(570, 30));
         memberButton->setStyleSheet(QString::fromUtf8("QPushButton{background-color:rgba(255,255,255,0);font: 14px \"\345\276\256\350\275\257\351\233\205\351\273\221\";color:rgba(51, 51, 51, 1);padding-left:-20px;}\n"
 "QPushButton:hover,pressed{ background-color:rgba(255,255,255,0);font: 14px \"\345\276\256\350\275\257\351\233\205\351\273\221\";color:rgba(31,139,237,1);}"));
-        labelAddComp = new QLabel(EntLeftWidget);
-        labelAddComp->setObjectName(QStringLiteral("labelAddComp"));
-        labelAddComp->setGeometry(QRect(180, 195, 81, 14));
-        labelAddComp->setMaximumSize(QSize(126, 14));
-        labelAddComp->setStyleSheet(QLatin1String("font-size:14px;\n"
+        labelJoin2 = new QLabel(EntLeftWidget);
+        labelJoin2->setObjectName(QStringLiteral("labelJoin2"));
+        labelJoin2->setGeometry(QRect(180, 195, 60, 14));
+        labelJoin2->setMaximumSize(QSize(126, 14));
+        labelJoin2->setStyleSheet(QLatin1String("font-size:14px;\n"
 "font-family:SourceHanSansCN-Normal,SourceHanSansCN;\n"
 "font-weight:400;\n"
 "color:rgba(30,139,237,1);\n"
@@ -215,7 +219,7 @@ public:
         labelVip->setStyleSheet(QStringLiteral("border-image: url(:/EntCenterWidget/image/qyzx_icon_vip_wjr.png);"));
         labelComName = new QLabel(EntLeftWidget);
         labelComName->setObjectName(QStringLiteral("labelComName"));
-        labelComName->setGeometry(QRect(55, 139, 140, 16));
+        labelComName->setGeometry(QRect(55, 135, 140, 16));
         sizePolicy1.setHeightForWidth(labelComName->sizePolicy().hasHeightForWidth());
         labelComName->setSizePolicy(sizePolicy1);
         labelComName->setMinimumSize(QSize(140, 16));
@@ -229,28 +233,29 @@ public:
         labelComName->setWordWrap(true);
         labeluser = new QLabel(EntLeftWidget);
         labeluser->setObjectName(QStringLiteral("labeluser"));
-        labeluser->setGeometry(QRect(79, 195, 126, 14));
+        labeluser->setGeometry(QRect(20, 195, 90, 14));
         labeluser->setMaximumSize(QSize(126, 14));
         labeluser->setStyleSheet(QLatin1String("font-size:14px;\n"
 "font-family:SourceHanSansCN-Normal,SourceHanSansCN;\n"
 "font-weight:400;\n"
 "color:rgba(102,102,102,1);\n"
 "line-height:21px;"));
-        labelroletype = new QLabel(EntLeftWidget);
-        labelroletype->setObjectName(QStringLiteral("labelroletype"));
-        labelroletype->setGeometry(QRect(128, 195, 60, 14));
-        labelroletype->setMaximumSize(QSize(126, 14));
-        labelroletype->setStyleSheet(QLatin1String("font-size:14px;\n"
+        labeluser->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
+        labeluserroletype = new QLabel(EntLeftWidget);
+        labeluserroletype->setObjectName(QStringLiteral("labeluserroletype"));
+        labeluserroletype->setGeometry(QRect(128, 195, 100, 14));
+        labeluserroletype->setMaximumSize(QSize(126, 14));
+        labeluserroletype->setStyleSheet(QLatin1String("font-size:14px;\n"
 "font-family:SourceHanSansCN-Normal,SourceHanSansCN;\n"
 "font-weight:400;\n"
 "color:rgba(102,102,102,1);\n"
 "line-height:21px;"));
-        labelline = new QLabel(EntLeftWidget);
-        labelline->setObjectName(QStringLiteral("labelline"));
-        labelline->setGeometry(QRect(110, 140, 1, 16));
-        labelline->setMinimumSize(QSize(1, 16));
-        labelline->setMaximumSize(QSize(1, 16));
-        labelline->setStyleSheet(QLatin1String("background:rgba(51,51,51,1);\n"
+        labeluserline = new QLabel(EntLeftWidget);
+        labeluserline->setObjectName(QStringLiteral("labeluserline"));
+        labeluserline->setGeometry(QRect(120, 195, 1, 16));
+        labeluserline->setMinimumSize(QSize(1, 16));
+        labeluserline->setMaximumSize(QSize(1, 16));
+        labeluserline->setStyleSheet(QLatin1String("background:rgba(51,51,51,1);\n"
 "opacity:0.3;"));
         labelEntInfo_2 = new QLabel(EntLeftWidget);
         labelEntInfo_2->setObjectName(QStringLiteral("labelEntInfo_2"));
@@ -271,6 +276,15 @@ public:
         entInfoButton->setLayoutDirection(Qt::LeftToRight);
         entInfoButton->setStyleSheet(QString::fromUtf8("QPushButton{background-color:rgba(255,255,255,0);font: 14px \"\345\276\256\350\275\257\351\233\205\351\273\221\";color:rgba(51, 51, 51, 1);padding-left:-20px;}\n"
 "QPushButton:hover,pressed{ background-color:rgba(255,255,255,0);font: 14px \"\345\276\256\350\275\257\351\233\205\351\273\221\";color:rgba(31,139,237,1);}"));
+        labeJoin1 = new QLabel(EntLeftWidget);
+        labeJoin1->setObjectName(QStringLiteral("labeJoin1"));
+        labeJoin1->setGeometry(QRect(50, 195, 120, 14));
+        labeJoin1->setMaximumSize(QSize(126, 14));
+        labeJoin1->setStyleSheet(QLatin1String("font-size:14px;\n"
+"font-family:SourceHanSansCN-Normal,SourceHanSansCN;\n"
+"font-weight:400;\n"
+"color:rgba(102,102,102,1);\n"
+"line-height:21px;"));
 
         horizontalLayout->addWidget(EntLeftWidget);
 
@@ -281,6 +295,17 @@ public:
         EntRightWidget->setMinimumSize(QSize(750, 680));
         EntRightWidget->setMaximumSize(QSize(750, 680));
         EntRightWidget->setStyleSheet(QStringLiteral("QWidget#EntRightWidget{background-color: rgb(252, 252, 252);border-top-right-radius:8px;border-bottom-right-radius:8px;}"));
+        rightLayout = new QHBoxLayout(EntRightWidget);
+        rightLayout->setSpacing(0);
+        rightLayout->setContentsMargins(11, 11, 11, 11);
+        rightLayout->setObjectName(QStringLiteral("rightLayout"));
+        rightLayout->setContentsMargins(0, 0, 0, 0);
+        layout = new QVBoxLayout();
+        layout->setSpacing(6);
+        layout->setObjectName(QStringLiteral("layout"));
+
+        rightLayout->addLayout(layout);
+
 
         horizontalLayout->addWidget(EntRightWidget);
 
@@ -310,14 +335,15 @@ public:
         labelMember->setText(QString());
         mainButton->setText(QApplication::translate("EntCenterNewWidget", "\351\246\226        \351\241\265", 0));
         memberButton->setText(QApplication::translate("EntCenterNewWidget", "\350\264\242\345\212\241\346\210\220\345\221\230", 0));
-        labelAddComp->setText(QApplication::translate("EntCenterNewWidget", "\345\212\240\345\205\245\344\274\201\344\270\232", 0));
+        labelJoin2->setText(QApplication::translate("EntCenterNewWidget", "\345\212\240\345\205\245\344\274\201\344\270\232", 0));
         labelVip->setText(QString());
         labelComName->setText(QString());
         labeluser->setText(QString());
-        labelroletype->setText(QApplication::translate("EntCenterNewWidget", "\347\256\241\347\220\206\345\221\230", 0));
-        labelline->setText(QString());
+        labeluserroletype->setText(QApplication::translate("EntCenterNewWidget", "\347\256\241\347\220\206\345\221\230", 0));
+        labeluserline->setText(QString());
         labelEntInfo_2->setText(QString());
         entInfoButton->setText(QApplication::translate("EntCenterNewWidget", "\344\274\201\344\270\232\350\265\204\346\226\231", 0));
+        labeJoin1->setText(QApplication::translate("EntCenterNewWidget", "\346\202\250\350\277\230\346\234\252\345\212\240\345\205\245\350\257\245\344\274\201\344\270\232\357\274\214", 0));
     } // retranslateUi
 
 };

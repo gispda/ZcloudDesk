@@ -32,7 +32,7 @@
    <string>AccSettingWidget</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(255, 255, 255);border-radius:8px;</string>
+   <string notr="true">QWidget#EntRightWidget{background-color: rgb(252, 252, 252);border-top-right-radius:8px;border-bottom-right-radius:8px;}</string>
   </property>
   <widget class="QLabel" name="labelFirstName">
    <property name="geometry">

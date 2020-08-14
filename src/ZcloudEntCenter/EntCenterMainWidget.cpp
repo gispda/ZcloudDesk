@@ -17,7 +17,7 @@
 #include "AccSettingWidget.h"
 
 EntCenterMainWidget::EntCenterMainWidget(EntCenterInfo* pEntInfo, UserInfoStruct* userinfo, QWidget *parent)
-	: AppCommWidget("", true, parent)
+	: QWidget( parent)
 {
 	ui.setupUi(this);
 
@@ -80,8 +80,11 @@ void EntCenterMainWidget::init(EntCenterInfo*	info, UserInfoStruct* userinfo)
 	{
 		//显示头像
 		//m_pInfo->_oservice.m_avatarurl
-		ui.widgetUserInfo_2->show();
-		ui.widgetNotBinding_2->hide();
+
+		ZcloudComFun::LoadAvatar(m_pInfo->_oservice.m_avatarurl.toStdString(), ui.labelPic_3);
+
+		ui.ServiceBaseWidget->show();
+		ui.widgetNotBinding->hide();
 		ui.labelName_2->setText(m_pInfo->_oservice.m_strTruename);
 		ui.labelPhone_2->setText(m_pInfo->_oservice.m_strPhone);
 		ui.labelWeChat_2->setText(m_pInfo->_oservice.m_wechat);
@@ -91,8 +94,9 @@ void EntCenterMainWidget::init(EntCenterInfo*	info, UserInfoStruct* userinfo)
 	else
 	{
 		//显示二维码
-		ui.widgetUserInfo_2->hide();
-		ui.widgetNotBinding_2->show();
+		getCodeImg();
+		ui.ServiceBaseWidget->hide();
+		ui.widgetNotBinding->show();
 	}
 
 	
@@ -238,3 +242,50 @@ void EntCenterMainWidget::onServiceFeeBtnClick()
 
 
 
+void EntCenterMainWidget::getCodeImg()
+{
+	QString strRet;
+	if (!winHttpGetTwoCodeInfo(m_pInfo->_strCompId, m_pInfo->_strToken, strRet))
+	{
+		ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_TIP, QString::fromLocal8Bit("操作失败"), QString::fromLocal8Bit("\r\n更新企业资料失败，请稍后再试！"));
+		return;
+	}
+
+
+
+
+	QByteArray byte_array = strRet.toUtf8();
+	QJsonParseError json_error;
+	QJsonDocument parse_doucment = QJsonDocument::fromJson(byte_array, &json_error);
+	if (json_error.error != QJsonParseError::NoError)
+	{
+		return;
+	}
+	if (!parse_doucment.isObject())
+	{
+		return;
+	}
+	QJsonObject obj = parse_doucment.object();
+	int status = obj.take("code").toInt();
+	if (0 != status)
+	{
+		return;
+	}
+
+	QJsonObject data = obj.take("data").toObject();
+
+
+	QString m_tburl = data.take("qrimg").toString();
+
+
+	ZcloudComFun::LoadAvatar(m_tburl.toStdString(), ui.labelTwoBarCode);
+
+}
+
+bool EntCenterMainWidget::winHttpGetTwoCodeInfo(QString strCompanyid, QString strToken, QString& strRet)
+{
+	QString strUrl = QString("/ucenter/qr/min-qrcode");
+	QString strPost = QString("token=%1&company_id=%2")
+		.arg(strToken).arg(strCompanyid);
+	return ZcloudComFun::httpPost(strUrl, strPost, 5000, strRet, false, 1);
+}

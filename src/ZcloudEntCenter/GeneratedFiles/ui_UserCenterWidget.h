@@ -18,6 +18,7 @@
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -45,6 +46,8 @@ public:
     QLabel *labelEntInfo_2;
     QPushButton *pushButtonAcc;
     QWidget *RightWidget;
+    QHBoxLayout *rightLayout;
+    QVBoxLayout *layout;
 
     void setupUi(QWidget *UserCenterWidget)
     {
@@ -237,6 +240,17 @@ public:
         RightWidget->setMinimumSize(QSize(750, 618));
         RightWidget->setMaximumSize(QSize(750, 618));
         RightWidget->setStyleSheet(QStringLiteral("QWidget#EntRightWidget{background-color: rgb(252, 252, 252);border-top-right-radius:8px;border-bottom-right-radius:8px;}"));
+        rightLayout = new QHBoxLayout(RightWidget);
+        rightLayout->setSpacing(0);
+        rightLayout->setContentsMargins(11, 11, 11, 11);
+        rightLayout->setObjectName(QStringLiteral("rightLayout"));
+        rightLayout->setContentsMargins(0, 0, 0, 0);
+        layout = new QVBoxLayout();
+        layout->setSpacing(6);
+        layout->setObjectName(QStringLiteral("layout"));
+
+        rightLayout->addLayout(layout);
+
 
         horizontalLayout->addWidget(RightWidget);
 

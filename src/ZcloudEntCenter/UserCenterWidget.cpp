@@ -22,7 +22,10 @@ UserCenterWidget::UserCenterWidget(EntCenterInfo*	info,UserInfoStruct* _userInfo
 	ui.setupUi(this);
 	mp_UserCenterMain = new UserCenterMainWidget(info,_userInfo, ui.RightWidget);
 
-	mp_UserCenterAcc = new UserCenterAccWidget(info,_userInfo, ui.RightWidget);
+	mp_UserCenterAcc = new UserCenterAccWidget(info, _userInfo, ui.RightWidget);
+	ui.rightLayout->addWidget(mp_UserCenterMain);
+	ui.rightLayout->addWidget(mp_UserCenterAcc);
+
 	mp_UserCenterMain->setGeometry(0, 0, 750, 620);
 	mp_UserCenterAcc->setGeometry(0, 0, 750, 620);
 
@@ -31,6 +34,7 @@ UserCenterWidget::UserCenterWidget(EntCenterInfo*	info,UserInfoStruct* _userInfo
 
 
 	connect(ui.pushButtonAcc, SIGNAL(clicked()), this, SLOT(onShowAcc()));
+	connect(ui.mainButton, SIGNAL(clicked()), this, SLOT(onShowMain()));
 
 
 	/*connect(ui.copyTaxButton, SIGNAL(clicked()), this, SLOT(onCopyBtnClick()));

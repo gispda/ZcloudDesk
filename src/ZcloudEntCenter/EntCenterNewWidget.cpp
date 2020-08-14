@@ -30,9 +30,7 @@ EntCenterNewWidget::EntCenterNewWidget(EntCenterInfo* pEntInfo, UserInfoStruct* 
 	mp_EntCenterMember = new EntCenterMemberWidget(pEntInfo, userInfo,ui.EntRightWidget);
 	mp_EntCenterInfo = new EntCenterInfoWidget(pEntInfo,userInfo, ui.EntRightWidget);
 	mp_EntCenterMain = new EntCenterMainWidget(pEntInfo, userInfo, ui.EntRightWidget);
-	mp_EntCenterMember->setGeometry(0, 0, 750, 620);
-	mp_EntCenterInfo->setGeometry(0, 0, 750, 620);
-	mp_EntCenterMain->setGeometry(0, 0, 750, 620);
+
 
 
 
@@ -48,13 +46,13 @@ EntCenterNewWidget::EntCenterNewWidget(EntCenterInfo* pEntInfo, UserInfoStruct* 
 	connect(ui.switchButton, SIGNAL(clicked()), this, SLOT(onSwitchBtnClick()));
 
 	
-	ui.labelAddComp->installEventFilter(this);
+	ui.labelJoin2->installEventFilter(this);
 
 	m_strLocalTaxno = ZcloudComFun::getTaxnumber();
 
-	ui.labelline->setGeometry(117, 195, 1, 14);
+	//ui.labelline->setGeometry(117, 195, 1, 14);
 	
-	ui.labelline->hide();
+	//ui.labeluserline->hide();
 
 	showUserCompanyInfoTitle();
 
@@ -225,7 +223,7 @@ bool EntCenterNewWidget ::eventFilter(QObject *target, QEvent *e)
 	//	}
 	//}
 	//else 
-	if (target == ui.labelAddComp)
+	if (target == ui.labelJoin2)
 	{
 		if (e->type() == QEvent::MouseButtonRelease) //
 		{
@@ -294,105 +292,133 @@ void EntCenterNewWidget::showUserCompanyInfoTitle()
 	int nroletype = -1;
 	//m_strLocalTaxno = "210624197305200017";
 
-	QString strtaxno, struser, strrole, straddcompany;
+	//QString strtaxno, struser, strrole, straddcompany;
 
+	//Logo
+	if (m_userInfo->m_logoUrl.isEmpty()){
+		ui.labelAvatar->setStyleSheet("border-image: url(:/EntCenterWidget/image/img_tx_d.png);");
+	}
+	else{
+		
+		ZcloudComFun::LoadAvatar(m_userInfo->m_logoUrl.toStdString(), ui.labelAvatar);
+	}
+	
+
+	//公司名
 	if (m_userInfo->m_strCompanyName.isEmpty())
-	{
-		m_info.strCompany = QString::fromLocal8Bit("暂未查询到您的企业");
-
-
-		if (!m_strLocalTaxno.isEmpty())
 		{
-
-
-
-			bret = ZcloudComFun::winHttpQueryCompanyInfoLocalTax(m_strLocalTaxno, m_userInfo->m_strToken, m_info);
-			//ui.labelAddComp->setText("");
-			//ui.labelComName->setText(strCompany);
-			struser = m_userInfo->m_strUsername;
-			//ui.labelCopy->show();
-			if (m_info.nroletype == 1)
-			{
-				//ui.labelline->show();
-				//ui.labelroletype->setText(QString::fromLocal8Bit("管理员"));
-				strrole = QString::fromLocal8Bit("管理员");
-			}
-			if (m_info.nIsjoin == 1)
-			{
-
-				ui.labelAddComp->setText("");
-				ui.labelAddComp->hide();
-
-				m_info.nIsjoin = nsjoin;
-			}
-			else
-			{
-
-				struser = QString::fromLocal8Bit("您还没加入该企业，");
-				straddcompany = QString::fromLocal8Bit("立即加入，");
-
-
-				showUnaddCompanyInfoTitle(m_info.strCompany, m_strLocalTaxno, struser, straddcompany);
-				//ui.labelAddComp->show();
-
-			}
+			ui.labelComName->setText(QString::fromLocal8Bit("暂未查询到企业名称"));			
 		}
 		else
 		{
-			ui.labelTaxNo->setText("");
-			ui.labelAddComp->setText("");
-			ui.labelAddComp->hide();
-
-			m_info.strCompany = QString::fromLocal8Bit("暂未查询到您的企业");
-			showUnqueryCompanyInfoTitle();
+			ui.labelComName->setText(m_userInfo->m_strCompanyName);
 		}
+
+	//税号
+	if (!m_pEntInfo->_strTaxNo.isEmpty())
+	{
+		//bret = ZcloudComFun::winHttpQueryCompanyInfoLocalTax(m_strLocalTaxno, m_userInfo->m_strToken, m_info);
+		ui.labeltaxno->show();
+		ui.labeltaxno->setText(m_pEntInfo->_strTaxNo);
+		ui.copyTaxButton->show();
+
 	}
 	else
 	{
-
-
-		bret = ZcloudComFun::winHttpQueryCompanyInfoLocalTax(m_userInfo->m_strTaxNumber, m_userInfo->m_strToken, m_info);
-
-
-		if (m_info.nIsjoin == 1)
-		{
-
-			ui.labelAddComp->setText("");
-			ui.labelAddComp->hide();
-
-			
-		}
-
-		if (m_info.nroletype == 1)
-		{
-			//ui.labelline->show();
-			//ui.labelroletype->setText(QString::fromLocal8Bit("管理员"));
-			strrole = QString::fromLocal8Bit("管理员");
-		}
-		else
-			strrole = QString::fromLocal8Bit("财务人员");
-
-		if (m_info.nIsjoin == 1)
-			showaddCompanyInfoTitle(m_info.strCompany, m_userInfo->m_strTaxNumber, m_userInfo->m_strUsername, strrole);
-		else if (m_info.nIsjoin != 0)
-		{
-			struser = QString::fromLocal8Bit("您还没加入该企业，");
-			straddcompany = QString::fromLocal8Bit("立即加入，");
-			showUnaddCompanyInfoTitle(m_info.strCompany, m_userInfo->m_strTaxNumber, m_userInfo->m_strUsername, straddcompany);
-		}
+		ui.copyTaxButton->hide();
+		ui.labeltaxno->hide();
+		ui.labeltaxno->setText("");
 	}
+
+	//已经加入企业
+	if (m_info.nIsjoin == 1)
+	{
+		//加入按钮
+		ui.labeJoin1->hide();
+		ui.labelJoin2->hide();
+		//个人信息
+		ui.labeluser->show();
+		ui.labeluserline->show();
+		ui.labeluserroletype->show();
+
+		ui.labeluser->setText(m_pEntInfo->_strUsername);
+		if (m_pEntInfo->_nrole_type == 1){
+			ui.labeluserroletype->setText(QString::fromLocal8Bit("管理员"));
+		}
+		else{
+			ui.labeluserroletype->setText(QString::fromLocal8Bit("财务人员"));
+		}
+
+
+		m_info.nIsjoin = nsjoin;
+	}
+	else
+	{
+		//未加入企业
+
+		ui.labeJoin1->show();
+		ui.labelJoin2->show();
+
+		ui.labeluser->hide();
+		ui.labeluserline->hide();
+		ui.labeluserroletype->hide();
+
+	}
+
+
+
+	//if (m_userInfo->m_strCompanyName.isEmpty())
+	//{
+	//	ui.labelComName->setText(QString::fromLocal8Bit("暂未查询到企业名称"));
+
+	//	
+	//}
+	//else
+	//{
+
+
+	//	bret = ZcloudComFun::winHttpQueryCompanyInfoLocalTax(m_userInfo->m_strTaxNumber, m_userInfo->m_strToken, m_info);
+
+
+	//	if (m_info.nIsjoin == 1)
+	//	{
+
+	//		ui.labelAddComp->setText("");
+	//		ui.labelAddComp->hide();
+
+	//		
+	//	}
+
+	//	if (m_info.nroletype == 1)
+	//	{
+	//		//ui.labelline->show();
+	//		//ui.labelroletype->setText(QString::fromLocal8Bit("管理员"));
+	//		strrole = QString::fromLocal8Bit("管理员");
+	//	}
+	//	else
+	//		strrole = QString::fromLocal8Bit("财务人员");
+
+	//	if (m_info.nIsjoin == 1)
+	//		showaddCompanyInfoTitle(m_info.strCompany, m_userInfo->m_strTaxNumber, m_userInfo->m_strUsername, strrole);
+	//	else if (m_info.nIsjoin != 0)
+	//	{
+	//		struser = QString::fromLocal8Bit("您还没加入该企业，");
+	//		straddcompany = QString::fromLocal8Bit("立即加入，");
+	//		showUnaddCompanyInfoTitle(m_info.strCompany, m_userInfo->m_strTaxNumber, m_userInfo->m_strUsername, straddcompany);
+	//	}
+	//}
 }
 
 void EntCenterNewWidget::clearUserCompanyInfoTitle()
 {
-	ui.labelComName->setText("");
-	ui.labelTaxNo->setText("");
-	ui.labelAddComp->setText("");
+	//ui.labelComName->setText("");
+	//ui.labelTaxNo->setText("");
+	//ui.labelAddComp->setText("");
 
-	ui.labeluser->setText("");
-	ui.labelroletype->setText("");
-	ui.labelAddComp->hide();
-	ui.labelline->hide();
+	//ui.labeluser->setText("");
+	//ui.labelroletype->setText("");
+	//ui.labelAddComp->hide();
+	//ui.labelline->hide();
 	//	ui.labelCopy->hide();
 }
 
@@ -400,68 +426,68 @@ void EntCenterNewWidget::clearUserCompanyInfoTitle()
 void EntCenterNewWidget::showUnaddCompanyInfoTitle(QString _strcompany, QString _strtaxno, QString _strUser, QString _straddcompany)
 {
 
-	ui.labelAvatar->setGeometry(95, 59, 60, 60);
-	//ui.labelAvatar->setStyleSheet("background:rgba(216,216,216,1);	border:1px solid rgba(151, 151, 151, 1); ");
+	////ui.labelAvatar->setGeometry(95, 59, 60, 60);
+	////ui.labelAvatar->setStyleSheet("background:rgba(216,216,216,1);	border:1px solid rgba(151, 151, 151, 1); ");
 
-	ui.labelComName->setGeometry(55, 139, 140, 14);
-	ui.labelComName->setText(QString::fromLocal8Bit("<html><head/><body><p><span style=\"font-size:14px;font-family:SourceHanSansCN - Normal, SourceHanSansCN;	font-weight:400;color:rgba(51, 51, 51, 1);line-height:21px; \"> %1</span></p></body></html>").arg(_strcompany));
+	////ui.labelComName->setGeometry(55, 139, 140, 14);
+	//ui.labelComName->setText(QString::fromLocal8Bit("<html><head/><body><p><span style=\"font-size:14px;font-family:SourceHanSansCN - Normal, SourceHanSansCN;	font-weight:400;color:rgba(51, 51, 51, 1);line-height:21px; \"> %1</span></p></body></html>").arg(_strcompany));
 
-	ui.labeluser->setGeometry(35, 195, 126, 14);
-
-
-	ui.labeluser->setText(QString::fromLocal8Bit("<html><head/><body><p><span style=\"font-size:14px;font-family:SourceHanSansCN - Normal, SourceHanSansCN;font-weight:400;color:rgba(102, 102, 102, 1);line-height:21px;\"> %1</span></p></body></html>").arg(_strUser));
-	//ui.labeluser->setStyleSheet("font-size:14px;font - family:SourceHanSansCN - Normal, SourceHanSansCN;font-weight:400;color:rgba(102, 102, 102, 1);line-height:21px; ");
-	ui.labeluser->show();
-	ui.labelTaxNo->setGeometry(64, 163, 122, 12);
+	////ui.labeluser->setGeometry(35, 195, 126, 14);
 
 
-
-	ui.labelTaxNo->setText(QString::fromLocal8Bit("<html><head/><body><p><span style=\"font-size:12px;font-family:SourceHanSansCN - Normal, SourceHanSansCN;font-weight:400;color:rgba(51, 51, 51, 1);line-height:18px;\"> %1</span></p></body></html>").arg(_strtaxno));
-	ui.labelTaxNo->show();
-	ui.labelAddComp->show();
-	ui.labelroletype->hide();
-	ui.labelline->hide();
-
-	ui.labelAddComp->setGeometry(161, 195, 56, 14);
-
-	ui.labelAddComp->setText(QString::fromLocal8Bit("<html><head/><body><p><span style=\"font-size:14px;font-family:SourceHanSansCN - Normal, SourceHanSansCN;font-weight:400;color:rgba(30, 139, 237, 1);line-height:21px;\"> %1</span></p></body></html>").arg(_straddcompany));
-
-	//ui.labelAddComp->setStyleSheet("font-size:14px;	font-family:SourceHanSansCN - Normal, SourceHanSansCN;font-weight:400;color:rgba(30, 139, 237, 1);line-height:21px; ");
-
-	ui.switchButton->setGeometry(75, 229, 100, 38);
-	//	ui.switchButton->setStyleSheet("background:linear - gradient(90deg, rgba(2, 164, 253, 1) 0 % , rgba(31, 139, 237, 1) 100 % );box - shadow:0px 3px 8px - 2px rgba(2, 165, 253, 0.85), 0px 6px 11px - 2px rgba(2, 165, 253, 0.64);border - radius:4px; ");
+	//ui.labeluser->setText(QString::fromLocal8Bit("<html><head/><body><p><span style=\"font-size:14px;font-family:SourceHanSansCN - Normal, SourceHanSansCN;font-weight:400;color:rgba(102, 102, 102, 1);line-height:21px;\"> %1</span></p></body></html>").arg(_strUser));
+	////ui.labeluser->setStyleSheet("font-size:14px;font - family:SourceHanSansCN - Normal, SourceHanSansCN;font-weight:400;color:rgba(102, 102, 102, 1);line-height:21px; ");
+	//ui.labeluser->show();
+	////ui.labelTaxNo->setGeometry(64, 163, 122, 12);
 
 
-	ui.copyTaxButton->setGeometry(191, 162, 16, 16);
-	ui.copyTaxButton->setStyleSheet("QPushButton{border-image: url(:/EntCenterWidget/image/copy.png);}\nQPushButton:hover,pressed{border-image: url(:/EntCenterWidget/image/copy_sel.png);}");
-	ui.copyTaxButton->show();
+
+	//ui.labelTaxNo->setText(QString::fromLocal8Bit("<html><head/><body><p><span style=\"font-size:12px;font-family:SourceHanSansCN - Normal, SourceHanSansCN;font-weight:400;color:rgba(51, 51, 51, 1);line-height:18px;\"> %1</span></p></body></html>").arg(_strtaxno));
+	//ui.labelTaxNo->show();
+	//ui.labelAddComp->show();
+	//ui.labelroletype->hide();
+	//ui.labelline->hide();
+
+	////ui.labelAddComp->setGeometry(161, 195, 56, 14);
+
+	//ui.labelAddComp->setText(QString::fromLocal8Bit("<html><head/><body><p><span style=\"font-size:14px;font-family:SourceHanSansCN - Normal, SourceHanSansCN;font-weight:400;color:rgba(30, 139, 237, 1);line-height:21px;\"> %1</span></p></body></html>").arg(_straddcompany));
+
+	////ui.labelAddComp->setStyleSheet("font-size:14px;	font-family:SourceHanSansCN - Normal, SourceHanSansCN;font-weight:400;color:rgba(30, 139, 237, 1);line-height:21px; ");
+
+	////ui.switchButton->setGeometry(75, 229, 100, 38);
+	////	ui.switchButton->setStyleSheet("background:linear - gradient(90deg, rgba(2, 164, 253, 1) 0 % , rgba(31, 139, 237, 1) 100 % );box - shadow:0px 3px 8px - 2px rgba(2, 165, 253, 0.85), 0px 6px 11px - 2px rgba(2, 165, 253, 0.64);border - radius:4px; ");
 
 
-	//ui.labelline->show();
-	//	ui.labelroletype->setText(QString::fromLocal8Bit("管理员"));
+	////ui.copyTaxButton->setGeometry(191, 162, 16, 16);
+	//ui.copyTaxButton->setStyleSheet("QPushButton{border-image: url(:/EntCenterWidget/image/copy.png);}\nQPushButton:hover,pressed{border-image: url(:/EntCenterWidget/image/copy_sel.png);}");
+	//ui.copyTaxButton->show();
 
 
-	//	ui.labelAddComp->setText("");
-	//ui.labelAddComp->hide();
+	////ui.labelline->show();
+	////	ui.labelroletype->setText(QString::fromLocal8Bit("管理员"));
+
+
+	////	ui.labelAddComp->setText("");
+	////ui.labelAddComp->hide();
 
 }
 
 void EntCenterNewWidget::showUnqueryCompanyInfoTitle()
 {
-	ui.labelAvatar->setGeometry(95, 59, 60, 60);
-	//ui.labelAvatar->setStyleSheet("background:rgba(216,216,216,1);	border:1px solid rgba(151, 151, 151, 1); ");
+	////ui.labelAvatar->setGeometry(95, 59, 60, 60);
+	////ui.labelAvatar->setStyleSheet("background:rgba(216,216,216,1);	border:1px solid rgba(151, 151, 151, 1); ");
 
-	ui.labelComName->setGeometry(62, 139, 126, 14);
+	////ui.labelComName->setGeometry(62, 139, 126, 14);
 
-	ui.labelComName->setText(QString::fromLocal8Bit("<html><head/><body><p><span style=\" font-size:14px;font-family:SourceHanSansCN - Normal, SourceHanSansCN;	font-weight:400;color:rgba(51, 51, 51, 1);line-height:21px; \"> %1</span></p></body></html>").arg(m_info.strCompany));
-	ui.labelAddComp->hide();
-	ui.labelroletype->hide();
-	ui.labelline->hide();
+	//ui.labelComName->setText(QString::fromLocal8Bit("<html><head/><body><p><span style=\" font-size:14px;font-family:SourceHanSansCN - Normal, SourceHanSansCN;	font-weight:400;color:rgba(51, 51, 51, 1);line-height:21px; \"> %1</span></p></body></html>").arg(m_info.strCompany));
+	//ui.labelAddComp->hide();
+	//ui.labelroletype->hide();
+	//ui.labelline->hide();
 
-	ui.labeluser->hide();
+	//ui.labeluser->hide();
 
-	ui.labelTaxNo->hide();
-	ui.copyTaxButton->hide();
+	//ui.labelTaxNo->hide();
+	//ui.copyTaxButton->hide();
 }
 
 void EntCenterNewWidget::showaddCompanyInfoTitle(QString _strcompany, QString _strtaxno, QString _strUser, QString _straroletype)
@@ -471,43 +497,41 @@ void EntCenterNewWidget::showaddCompanyInfoTitle(QString _strcompany, QString _s
 
 
 
-	ui.labelAvatar->setGeometry(95, 59, 60, 60);
-	//ui.labelAvatar->setStyleSheet("background:rgba(216,216,216,1);	border:1px solid rgba(151, 151, 151, 1); ");
+	////ui.labelAvatar->setGeometry(95, 59, 60, 60);
+	////ui.labelAvatar->setStyleSheet("background:rgba(216,216,216,1);	border:1px solid rgba(151, 151, 151, 1); ");
 
-	ui.labelComName->setGeometry(55, 139, 140, 14);
+	////ui.labelComName->setGeometry(55, 139, 140, 14);
 
-	ui.labelComName->setText(QString::fromLocal8Bit("<html><head/><body><p><span style=\"font-size:14px;font - family:SourceHanSansCN - Normal, SourceHanSansCN;font-weight:400;color:rgba(51, 51, 51, 1);line-height:21px; \"> %1</span></p></body></html>").arg(_strcompany));
-
-
-	ui.labeluser->setGeometry(59, 195, 126, 14);
-
-	ui.labeluser->setText(QString::fromLocal8Bit("<html><head/><body><p><span style=\"font-size:14px;font - family:SourceHanSansCN - Normal, SourceHanSansCN;font-weight:400;color:rgba(51, 51, 51, 1);	line-height:21px; \"> %1</span></p></body></html>").arg(_strUser));
-
-	ui.labeluser->show();
-
-	ui.labelTaxNo->setGeometry(64, 163, 122, 12);
-
-	ui.labelTaxNo->setText(QString::fromLocal8Bit("<html><head/><body><p><span style=\"font-size:12px;font - family:SourceHanSansCN - Normal, SourceHanSansCN;font-weight:400;color:rgba(51, 51, 51, 1);line-height:18px;\"> %1</span></p></body></html>").arg(_strtaxno));
-
-	ui.labelTaxNo->show();
-
-	ui.labelAddComp->hide();
-	ui.labelroletype->show();
-	ui.labelline->show();
-	ui.labelroletype->setGeometry(128, 195, 42, 14);
-
-	ui.labelroletype->setText(QString::fromLocal8Bit("<html><head/><body><p><span style=\"font-size:14px;font-family:SourceHanSansCN - Normal, SourceHanSansCN;font-weight:400;color:rgba(102, 102, 102, 1);line-height:21px;\"> %1</span></p></body></html>").arg(_straroletype));
+	//ui.labelComName->setText(QString::fromLocal8Bit("<html><head/><body><p><span style=\"font-size:14px;font - family:SourceHanSansCN - Normal, SourceHanSansCN;font-weight:400;color:rgba(51, 51, 51, 1);line-height:21px; \"> %1</span></p></body></html>").arg(_strcompany));
 
 
-	ui.switchButton->setGeometry(75, 229, 100, 38);
-	//	ui.switchButton->setStyleSheet("background:linear - gradient(90deg, rgba(2, 164, 253, 1) 0 % , rgba(31, 139, 237, 1) 100 % );box - shadow:0px 3px 8px - 2px rgba(2, 165, 253, 0.85), 0px 6px 11px - 2px rgba(2, 165, 253, 0.64);border - radius:4px; ");
+	////ui.labeluser->setGeometry(59, 195, 126, 14);
+
+	//ui.labeluser->setText(QString::fromLocal8Bit("<html><head/><body><p><span style=\"font-size:14px;font - family:SourceHanSansCN - Normal, SourceHanSansCN;font-weight:400;color:rgba(51, 51, 51, 1);	line-height:21px; \"> %1</span></p></body></html>").arg(_strUser));
+
+	//ui.labeluser->show();
+
+	////ui.labelTaxNo->setGeometry(64, 163, 122, 12);
+
+	//ui.labelTaxNo->setText(QString::fromLocal8Bit("<html><head/><body><p><span style=\"font-size:12px;font - family:SourceHanSansCN - Normal, SourceHanSansCN;font-weight:400;color:rgba(51, 51, 51, 1);line-height:18px;\"> %1</span></p></body></html>").arg(_strtaxno));
+
+	//ui.labelTaxNo->show();
+
+	//ui.labelAddComp->hide();
+	//ui.labelroletype->show();
+	//ui.labelline->show();
+	////ui.labelroletype->setGeometry(128, 195, 42, 14);
+
+	//ui.labelroletype->setText(QString::fromLocal8Bit("<html><head/><body><p><span style=\"font-size:14px;font-family:SourceHanSansCN - Normal, SourceHanSansCN;font-weight:400;color:rgba(102, 102, 102, 1);line-height:21px;\"> %1</span></p></body></html>").arg(_straroletype));
 
 
-	ui.copyTaxButton->setGeometry(191, 162, 16, 16);
-	ui.copyTaxButton->setStyleSheet("QPushButton{border-image: url(:/EntCenterWidget/image/copy.png);}\nQPushButton:hover,pressed{border-image: url(:/EntCenterWidget/image/copy_sel.png);}");
-	ui.copyTaxButton->show();
+	////ui.switchButton->setGeometry(75, 229, 100, 38);
+	////	ui.switchButton->setStyleSheet("background:linear - gradient(90deg, rgba(2, 164, 253, 1) 0 % , rgba(31, 139, 237, 1) 100 % );box - shadow:0px 3px 8px - 2px rgba(2, 165, 253, 0.85), 0px 6px 11px - 2px rgba(2, 165, 253, 0.64);border - radius:4px; ");
 
 
+	////ui.copyTaxButton->setGeometry(191, 162, 16, 16);
+	//ui.copyTaxButton->setStyleSheet("QPushButton{border-image: url(:/EntCenterWidget/image/copy.png);}\nQPushButton:hover,pressed{border-image: url(:/EntCenterWidget/image/copy_sel.png);}");
+	//ui.copyTaxButton->show();
 
 
 
@@ -516,7 +540,9 @@ void EntCenterNewWidget::showaddCompanyInfoTitle(QString _strcompany, QString _s
 
 
 
-	//ui.labelAddComp->setStyleSheet("font-size:14px;	font-family:SourceHanSansCN - Normal, SourceHanSansCN;font-weight:400;color:rgba(30, 139, 237, 1);line-height:21px; ");
+
+
+	////ui.labelAddComp->setStyleSheet("font-size:14px;	font-family:SourceHanSansCN - Normal, SourceHanSansCN;font-weight:400;color:rgba(30, 139, 237, 1);line-height:21px; ");
 
 
 }

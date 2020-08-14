@@ -23,9 +23,9 @@
 #include "ZcloudBigData.h"
 
 UserCenterAccWidget::UserCenterAccWidget(EntCenterInfo*	entinfo, UserInfoStruct* info, QWidget *parent)
-	: m_userInfo(info), AppCommWidget("", true, parent)
+	: m_userInfo(info), QWidget( parent)
 {
-	ui.setupUi(m_widget);
+	ui.setupUi(this);
 
 	setWindowFlags(Qt::FramelessWindowHint);
 	setAttribute(Qt::WA_TranslucentBackground, true);

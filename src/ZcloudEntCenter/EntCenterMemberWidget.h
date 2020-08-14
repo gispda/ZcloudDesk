@@ -8,7 +8,7 @@
 #include "AppCommWidget.h"
 #include "Database.h"
 
-class EntCenterMemberWidget : public AppCommWidget
+class EntCenterMemberWidget : public QWidget
 {
 	Q_OBJECT
 

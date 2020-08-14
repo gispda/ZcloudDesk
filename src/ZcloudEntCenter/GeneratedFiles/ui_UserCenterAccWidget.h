@@ -72,7 +72,7 @@ public:
         UserCenterAccWidget->setSizePolicy(sizePolicy);
         UserCenterAccWidget->setMinimumSize(QSize(750, 620));
         UserCenterAccWidget->setMaximumSize(QSize(750, 620));
-        UserCenterAccWidget->setStyleSheet(QStringLiteral("background-color: rgb(255, 255, 255);border-radius:8px;"));
+        UserCenterAccWidget->setStyleSheet(QStringLiteral("QWidget#EntRightWidget{background-color: rgb(252, 252, 252);border-top-right-radius:8px;border-bottom-right-radius:8px;}"));
         labelFirstName = new QLabel(UserCenterAccWidget);
         labelFirstName->setObjectName(QStringLiteral("labelFirstName"));
         labelFirstName->setGeometry(QRect(15, 23, 60, 60));

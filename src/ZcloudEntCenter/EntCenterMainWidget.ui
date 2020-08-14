@@ -35,7 +35,7 @@
    <string notr="true">background-color: rgb(252, 252, 252);border:1px solid rgba(235,235,235,1);
 border-radius:10px;</string>
   </property>
-  <widget class="QWidget" name="ServiceFeeWidget_2" native="true">
+  <widget class="QWidget" name="ServiceBaseWidget" native="true">
    <property name="geometry">
     <rect>
      <x>15</x>
@@ -85,7 +85,7 @@ border-radius:10px;</string>
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QLabel" name="labelJob_2">
+   <widget class="QLabel" name="labelJob">
     <property name="geometry">
      <rect>
       <x>20</x>
@@ -101,173 +101,114 @@ border-radius:10px;</string>
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QWidget" name="widgetUserInfo_2" native="true">
+   <widget class="QLabel" name="labelName_5">
     <property name="geometry">
      <rect>
-      <x>120</x>
-      <y>20</y>
-      <width>190</width>
-      <height>110</height>
+      <x>160</x>
+      <y>100</y>
+      <width>150</width>
+      <height>15</height>
      </rect>
     </property>
-    <widget class="QLabel" name="labelName_2">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>10</y>
-       <width>160</width>
-       <height>15</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>张三</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_16">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>35</y>
-       <width>15</width>
-       <height>15</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-     <property name="pixmap">
-      <pixmap resource="EntCenterWidget.qrc">:/EntCenterWidget/image/copy.png</pixmap>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_17">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>60</y>
-       <width>15</width>
-       <height>15</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-     <property name="pixmap">
-      <pixmap resource="EntCenterWidget.qrc">:/EntCenterWidget/image/copy_sel.png</pixmap>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_18">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>85</y>
-       <width>15</width>
-       <height>15</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-     <property name="pixmap">
-      <pixmap resource="EntCenterWidget.qrc">:/EntCenterWidget/image/edit.png</pixmap>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
-    </widget>
-    <widget class="QLabel" name="labelPhone_2">
-     <property name="geometry">
-      <rect>
-       <x>35</x>
-       <y>35</y>
-       <width>150</width>
-       <height>15</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>18000000000</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="labelWeChat_2">
-     <property name="geometry">
-      <rect>
-       <x>35</x>
-       <y>60</y>
-       <width>150</width>
-       <height>15</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>sadfsarewr</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="labelName_5">
-     <property name="geometry">
-      <rect>
-       <x>35</x>
-       <y>85</y>
-       <width>150</width>
-       <height>15</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>990880</string>
-     </property>
-    </widget>
+    <property name="text">
+     <string>990880</string>
+    </property>
    </widget>
-   <widget class="QWidget" name="widgetNotBinding_2" native="true">
+   <widget class="QLabel" name="label_17">
     <property name="geometry">
      <rect>
-      <x>120</x>
-      <y>20</y>
-      <width>190</width>
-      <height>110</height>
+      <x>135</x>
+      <y>75</y>
+      <width>15</width>
+      <height>15</height>
      </rect>
     </property>
-    <widget class="QLabel" name="label_19">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>20</y>
-       <width>160</width>
-       <height>15</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>您的企业还未绑定客户经理</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_20">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>50</y>
-       <width>160</width>
-       <height>15</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>客户经理扫描此二维码可快速</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_21">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>70</y>
-       <width>160</width>
-       <height>15</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>绑定企业</string>
-     </property>
-    </widget>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="EntCenterWidget.qrc">:/EntCenterWidget/image/copy_sel.png</pixmap>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelPhone_2">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>50</y>
+      <width>150</width>
+      <height>15</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>18000000000</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_18">
+    <property name="geometry">
+     <rect>
+      <x>135</x>
+      <y>100</y>
+      <width>15</width>
+      <height>15</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="EntCenterWidget.qrc">:/EntCenterWidget/image/edit.png</pixmap>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelName_2">
+    <property name="geometry">
+     <rect>
+      <x>135</x>
+      <y>25</y>
+      <width>160</width>
+      <height>15</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>张三</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_16">
+    <property name="geometry">
+     <rect>
+      <x>135</x>
+      <y>50</y>
+      <width>15</width>
+      <height>15</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="EntCenterWidget.qrc">:/EntCenterWidget/image/copy.png</pixmap>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelWeChat_2">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>75</y>
+      <width>150</width>
+      <height>15</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>sadfsarewr</string>
+    </property>
    </widget>
   </widget>
   <widget class="QWidget" name="ServiceFeeWidget_3" native="true">
@@ -343,9 +284,6 @@ border-radius:10px;</string>
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <zorder>labelPic_4</zorder>
-   <zorder>label_22</zorder>
-   <zorder>widgetNotBinding_2</zorder>
   </widget>
   <widget class="QLabel" name="label">
    <property name="geometry">
@@ -784,18 +722,85 @@ color:#333333;</string>
    </property>
    <property name="styleSheet">
     <string notr="true">font: 16px &quot;微软雅黑&quot;;
-color:#333333;</string>
+color:#333333;
+border-bottom:0px;</string>
    </property>
    <property name="text">
-    <string>基础服务</string>
+    <string>客户服务</string>
    </property>
   </widget>
-  <zorder>ServiceFeeWidget_2</zorder>
+  <widget class="QWidget" name="widgetNotBinding" native="true">
+   <property name="geometry">
+    <rect>
+     <x>15</x>
+     <y>50</y>
+     <width>330</width>
+     <height>150</height>
+    </rect>
+   </property>
+   <widget class="QLabel" name="label_19">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>40</y>
+      <width>160</width>
+      <height>15</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>您的企业还未绑定客户经理</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_20">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>90</y>
+      <width>160</width>
+      <height>15</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>客户经理扫描此二维码可快速</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_21">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>110</y>
+      <width>160</width>
+      <height>15</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>绑定企业</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelTwoBarCode">
+    <property name="geometry">
+     <rect>
+      <x>15</x>
+      <y>25</y>
+      <width>100</width>
+      <height>100</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-bottom:0px;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+  </widget>
+  <zorder>ServiceBaseWidget</zorder>
   <zorder>ServiceFeeWidget_3</zorder>
   <zorder>label</zorder>
   <zorder>ServiceFeeWidget</zorder>
   <zorder>label_2</zorder>
-  <zorder>widgetNotBinding_2</zorder>
+  <zorder>widgetNotBinding</zorder>
+  <zorder>widgetNotBinding</zorder>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>

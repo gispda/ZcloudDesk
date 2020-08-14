@@ -7,14 +7,15 @@
 #include "EntDataBase.h"
 #include "AppCommWidget.h"
 
-class EntCenterMainWidget : public AppCommWidget
+class EntCenterMainWidget : public QWidget
 {
 	Q_OBJECT
 
 public:
 	EntCenterMainWidget(EntCenterInfo* pEntInfo, UserInfoStruct* m_userinfo, QWidget *parent = 0);
 	~EntCenterMainWidget();
-
+	void getCodeImg();
+	bool winHttpGetTwoCodeInfo(QString strCompanyid, QString strToken, QString& strRet);
 	
 	//!初始化用户信息 
 	void init(EntCenterInfo*	info, UserInfoStruct* userinfo);

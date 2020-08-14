@@ -18,7 +18,7 @@
 #include "ZcloudBigData.h"
 
 EntCenterMemberWidget::EntCenterMemberWidget(EntCenterInfo* pEntInfo, UserInfoStruct* userInfo,QWidget *parent)
-	: AppCommWidget("", true, parent)
+	: QWidget(  parent)
 {
 
 	ui.setupUi(this);

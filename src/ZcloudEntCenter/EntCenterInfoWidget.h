@@ -8,7 +8,7 @@
 #include "EntInfoDataDefine.h"
 #include "Database.h"
 
-class EntCenterInfoWidget : public AppCommWidget
+class EntCenterInfoWidget : public QWidget
 {
 	Q_OBJECT
 

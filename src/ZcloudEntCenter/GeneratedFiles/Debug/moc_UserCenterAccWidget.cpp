@@ -157,7 +157,7 @@ void UserCenterAccWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, 
 }
 
 const QMetaObject UserCenterAccWidget::staticMetaObject = {
-    { &AppCommWidget::staticMetaObject, qt_meta_stringdata_UserCenterAccWidget.data,
+    { &QWidget::staticMetaObject, qt_meta_stringdata_UserCenterAccWidget.data,
       qt_meta_data_UserCenterAccWidget,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
 };
 
@@ -172,12 +172,12 @@ void *UserCenterAccWidget::qt_metacast(const char *_clname)
     if (!_clname) return Q_NULLPTR;
     if (!strcmp(_clname, qt_meta_stringdata_UserCenterAccWidget.stringdata0))
         return static_cast<void*>(const_cast< UserCenterAccWidget*>(this));
-    return AppCommWidget::qt_metacast(_clname);
+    return QWidget::qt_metacast(_clname);
 }
 
 int UserCenterAccWidget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
-    _id = AppCommWidget::qt_metacall(_c, _id, _a);
+    _id = QWidget::qt_metacall(_c, _id, _a);
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {

@@ -24,21 +24,16 @@ QT_BEGIN_NAMESPACE
 class Ui_EntCenterMainWidget
 {
 public:
-    QWidget *ServiceFeeWidget_2;
+    QWidget *ServiceBaseWidget;
     QLabel *labelPic_3;
-    QLabel *labelJob_2;
-    QWidget *widgetUserInfo_2;
+    QLabel *labelJob;
+    QLabel *labelName_5;
+    QLabel *label_17;
+    QLabel *labelPhone_2;
+    QLabel *label_18;
     QLabel *labelName_2;
     QLabel *label_16;
-    QLabel *label_17;
-    QLabel *label_18;
-    QLabel *labelPhone_2;
     QLabel *labelWeChat_2;
-    QLabel *labelName_5;
-    QWidget *widgetNotBinding_2;
-    QLabel *label_19;
-    QLabel *label_20;
-    QLabel *label_21;
     QWidget *ServiceFeeWidget_3;
     QLabel *labelPic_4;
     QLabel *label_22;
@@ -55,6 +50,11 @@ public:
     QProgressBar *progressBar;
     QLabel *labelNoServerFee_2;
     QLabel *label_2;
+    QWidget *widgetNotBinding;
+    QLabel *label_19;
+    QLabel *label_20;
+    QLabel *label_21;
+    QLabel *labelTwoBarCode;
 
     void setupUi(QWidget *EntCenterMainWidget)
     {
@@ -70,69 +70,54 @@ public:
         EntCenterMainWidget->setMaximumSize(QSize(750, 620));
         EntCenterMainWidget->setStyleSheet(QLatin1String("background-color: rgb(252, 252, 252);border:1px solid rgba(235,235,235,1);\n"
 "border-radius:10px;"));
-        ServiceFeeWidget_2 = new QWidget(EntCenterMainWidget);
-        ServiceFeeWidget_2->setObjectName(QStringLiteral("ServiceFeeWidget_2"));
-        ServiceFeeWidget_2->setGeometry(QRect(15, 50, 330, 150));
+        ServiceBaseWidget = new QWidget(EntCenterMainWidget);
+        ServiceBaseWidget->setObjectName(QStringLiteral("ServiceBaseWidget"));
+        ServiceBaseWidget->setGeometry(QRect(15, 50, 330, 150));
         QSizePolicy sizePolicy1(QSizePolicy::Fixed, QSizePolicy::Fixed);
         sizePolicy1.setHorizontalStretch(0);
         sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(ServiceFeeWidget_2->sizePolicy().hasHeightForWidth());
-        ServiceFeeWidget_2->setSizePolicy(sizePolicy1);
-        ServiceFeeWidget_2->setMinimumSize(QSize(330, 120));
-        ServiceFeeWidget_2->setMaximumSize(QSize(330, 150));
-        ServiceFeeWidget_2->setStyleSheet(QLatin1String("background-color: rgb(252, 252, 252);border:1px solid rgba(235,235,235,1);\n"
+        sizePolicy1.setHeightForWidth(ServiceBaseWidget->sizePolicy().hasHeightForWidth());
+        ServiceBaseWidget->setSizePolicy(sizePolicy1);
+        ServiceBaseWidget->setMinimumSize(QSize(330, 120));
+        ServiceBaseWidget->setMaximumSize(QSize(330, 150));
+        ServiceBaseWidget->setStyleSheet(QLatin1String("background-color: rgb(252, 252, 252);border:1px solid rgba(235,235,235,1);\n"
 "border-radius:10px;"));
-        labelPic_3 = new QLabel(ServiceFeeWidget_2);
+        labelPic_3 = new QLabel(ServiceBaseWidget);
         labelPic_3->setObjectName(QStringLiteral("labelPic_3"));
         labelPic_3->setGeometry(QRect(20, 10, 80, 80));
         labelPic_3->setPixmap(QPixmap(QString::fromUtf8(":/EntCenterWidget/image/completeInfo.png")));
         labelPic_3->setAlignment(Qt::AlignCenter);
-        labelJob_2 = new QLabel(ServiceFeeWidget_2);
-        labelJob_2->setObjectName(QStringLiteral("labelJob_2"));
-        labelJob_2->setGeometry(QRect(20, 110, 80, 16));
-        labelJob_2->setAlignment(Qt::AlignCenter);
-        widgetUserInfo_2 = new QWidget(ServiceFeeWidget_2);
-        widgetUserInfo_2->setObjectName(QStringLiteral("widgetUserInfo_2"));
-        widgetUserInfo_2->setGeometry(QRect(120, 20, 190, 110));
-        labelName_2 = new QLabel(widgetUserInfo_2);
-        labelName_2->setObjectName(QStringLiteral("labelName_2"));
-        labelName_2->setGeometry(QRect(10, 10, 160, 15));
-        label_16 = new QLabel(widgetUserInfo_2);
-        label_16->setObjectName(QStringLiteral("label_16"));
-        label_16->setGeometry(QRect(10, 35, 15, 15));
-        label_16->setPixmap(QPixmap(QString::fromUtf8(":/EntCenterWidget/image/copy.png")));
-        label_16->setAlignment(Qt::AlignCenter);
-        label_17 = new QLabel(widgetUserInfo_2);
+        labelJob = new QLabel(ServiceBaseWidget);
+        labelJob->setObjectName(QStringLiteral("labelJob"));
+        labelJob->setGeometry(QRect(20, 110, 80, 16));
+        labelJob->setAlignment(Qt::AlignCenter);
+        labelName_5 = new QLabel(ServiceBaseWidget);
+        labelName_5->setObjectName(QStringLiteral("labelName_5"));
+        labelName_5->setGeometry(QRect(160, 100, 150, 15));
+        label_17 = new QLabel(ServiceBaseWidget);
         label_17->setObjectName(QStringLiteral("label_17"));
-        label_17->setGeometry(QRect(10, 60, 15, 15));
+        label_17->setGeometry(QRect(135, 75, 15, 15));
         label_17->setPixmap(QPixmap(QString::fromUtf8(":/EntCenterWidget/image/copy_sel.png")));
         label_17->setAlignment(Qt::AlignCenter);
-        label_18 = new QLabel(widgetUserInfo_2);
+        labelPhone_2 = new QLabel(ServiceBaseWidget);
+        labelPhone_2->setObjectName(QStringLiteral("labelPhone_2"));
+        labelPhone_2->setGeometry(QRect(160, 50, 150, 15));
+        label_18 = new QLabel(ServiceBaseWidget);
         label_18->setObjectName(QStringLiteral("label_18"));
-        label_18->setGeometry(QRect(10, 85, 15, 15));
+        label_18->setGeometry(QRect(135, 100, 15, 15));
         label_18->setPixmap(QPixmap(QString::fromUtf8(":/EntCenterWidget/image/edit.png")));
         label_18->setAlignment(Qt::AlignCenter);
-        labelPhone_2 = new QLabel(widgetUserInfo_2);
-        labelPhone_2->setObjectName(QStringLiteral("labelPhone_2"));
-        labelPhone_2->setGeometry(QRect(35, 35, 150, 15));
-        labelWeChat_2 = new QLabel(widgetUserInfo_2);
+        labelName_2 = new QLabel(ServiceBaseWidget);
+        labelName_2->setObjectName(QStringLiteral("labelName_2"));
+        labelName_2->setGeometry(QRect(135, 25, 160, 15));
+        label_16 = new QLabel(ServiceBaseWidget);
+        label_16->setObjectName(QStringLiteral("label_16"));
+        label_16->setGeometry(QRect(135, 50, 15, 15));
+        label_16->setPixmap(QPixmap(QString::fromUtf8(":/EntCenterWidget/image/copy.png")));
+        label_16->setAlignment(Qt::AlignCenter);
+        labelWeChat_2 = new QLabel(ServiceBaseWidget);
         labelWeChat_2->setObjectName(QStringLiteral("labelWeChat_2"));
-        labelWeChat_2->setGeometry(QRect(35, 60, 150, 15));
-        labelName_5 = new QLabel(widgetUserInfo_2);
-        labelName_5->setObjectName(QStringLiteral("labelName_5"));
-        labelName_5->setGeometry(QRect(35, 85, 150, 15));
-        widgetNotBinding_2 = new QWidget(ServiceFeeWidget_2);
-        widgetNotBinding_2->setObjectName(QStringLiteral("widgetNotBinding_2"));
-        widgetNotBinding_2->setGeometry(QRect(120, 20, 190, 110));
-        label_19 = new QLabel(widgetNotBinding_2);
-        label_19->setObjectName(QStringLiteral("label_19"));
-        label_19->setGeometry(QRect(10, 20, 160, 15));
-        label_20 = new QLabel(widgetNotBinding_2);
-        label_20->setObjectName(QStringLiteral("label_20"));
-        label_20->setGeometry(QRect(10, 50, 160, 15));
-        label_21 = new QLabel(widgetNotBinding_2);
-        label_21->setObjectName(QStringLiteral("label_21"));
-        label_21->setGeometry(QRect(10, 70, 160, 15));
+        labelWeChat_2->setGeometry(QRect(160, 75, 150, 15));
         ServiceFeeWidget_3 = new QWidget(EntCenterMainWidget);
         ServiceFeeWidget_3->setObjectName(QStringLiteral("ServiceFeeWidget_3"));
         ServiceFeeWidget_3->setGeometry(QRect(395, 50, 330, 150));
@@ -154,9 +139,6 @@ public:
         label_22->setStyleSheet(QLatin1String("background-color: rgb(252, 252, 252);border:1px solid rgba(235,235,235,1);\n"
 "border-radius:10px;"));
         label_22->setAlignment(Qt::AlignCenter);
-        labelPic_4->raise();
-        label_22->raise();
-        widgetNotBinding_2->raise();
         label = new QLabel(EntCenterMainWidget);
         label->setObjectName(QStringLiteral("label"));
         label->setGeometry(QRect(20, 210, 64, 17));
@@ -276,13 +258,31 @@ public:
         label_2->setMinimumSize(QSize(64, 17));
         label_2->setMaximumSize(QSize(64, 17));
         label_2->setStyleSheet(QString::fromUtf8("font: 16px \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
-"color:#333333;"));
-        ServiceFeeWidget_2->raise();
+"color:#333333;\n"
+"border-bottom:0px;"));
+        widgetNotBinding = new QWidget(EntCenterMainWidget);
+        widgetNotBinding->setObjectName(QStringLiteral("widgetNotBinding"));
+        widgetNotBinding->setGeometry(QRect(15, 50, 330, 150));
+        label_19 = new QLabel(widgetNotBinding);
+        label_19->setObjectName(QStringLiteral("label_19"));
+        label_19->setGeometry(QRect(150, 40, 160, 15));
+        label_20 = new QLabel(widgetNotBinding);
+        label_20->setObjectName(QStringLiteral("label_20"));
+        label_20->setGeometry(QRect(150, 90, 160, 15));
+        label_21 = new QLabel(widgetNotBinding);
+        label_21->setObjectName(QStringLiteral("label_21"));
+        label_21->setGeometry(QRect(150, 110, 160, 15));
+        labelTwoBarCode = new QLabel(widgetNotBinding);
+        labelTwoBarCode->setObjectName(QStringLiteral("labelTwoBarCode"));
+        labelTwoBarCode->setGeometry(QRect(15, 25, 100, 100));
+        labelTwoBarCode->setStyleSheet(QStringLiteral("border-bottom:0px;"));
+        ServiceBaseWidget->raise();
         ServiceFeeWidget_3->raise();
         label->raise();
         ServiceFeeWidget->raise();
         label_2->raise();
-        widgetNotBinding_2->raise();
+        widgetNotBinding->raise();
+        widgetNotBinding->raise();
 
         retranslateUi(EntCenterMainWidget);
 
@@ -293,17 +293,14 @@ public:
     {
         EntCenterMainWidget->setWindowTitle(QApplication::translate("EntCenterMainWidget", "EntCenterWidget", 0));
         labelPic_3->setText(QString());
-        labelJob_2->setText(QString());
+        labelJob->setText(QString());
+        labelName_5->setText(QApplication::translate("EntCenterMainWidget", "990880", 0));
+        label_17->setText(QString());
+        labelPhone_2->setText(QApplication::translate("EntCenterMainWidget", "18000000000", 0));
+        label_18->setText(QString());
         labelName_2->setText(QApplication::translate("EntCenterMainWidget", "\345\274\240\344\270\211", 0));
         label_16->setText(QString());
-        label_17->setText(QString());
-        label_18->setText(QString());
-        labelPhone_2->setText(QApplication::translate("EntCenterMainWidget", "18000000000", 0));
         labelWeChat_2->setText(QApplication::translate("EntCenterMainWidget", "sadfsarewr", 0));
-        labelName_5->setText(QApplication::translate("EntCenterMainWidget", "990880", 0));
-        label_19->setText(QApplication::translate("EntCenterMainWidget", "\346\202\250\347\232\204\344\274\201\344\270\232\350\277\230\346\234\252\347\273\221\345\256\232\345\256\242\346\210\267\347\273\217\347\220\206", 0));
-        label_20->setText(QApplication::translate("EntCenterMainWidget", "\345\256\242\346\210\267\347\273\217\347\220\206\346\211\253\346\217\217\346\255\244\344\272\214\347\273\264\347\240\201\345\217\257\345\277\253\351\200\237", 0));
-        label_21->setText(QApplication::translate("EntCenterMainWidget", "\347\273\221\345\256\232\344\274\201\344\270\232", 0));
         labelPic_4->setText(QString());
         label_22->setText(QApplication::translate("EntCenterMainWidget", "\346\210\221\347\232\204\345\267\245\345\215\225", 0));
         label->setText(QApplication::translate("EntCenterMainWidget", "\345\237\272\347\241\200\346\234\215\345\212\241", 0));
@@ -316,7 +313,11 @@ public:
         label_8->setText(QString());
         labelDays->setText(QString());
         labelNoServerFee_2->setText(QApplication::translate("EntCenterMainWidget", "\346\232\202\346\227\266\346\234\252\350\216\267\345\217\226\346\202\250\347\232\204\344\274\201\344\270\232\351\230\262\344\274\252\347\250\216\346\216\247\346\234\215\345\212\241\350\264\271\344\277\241\346\201\257", 0));
-        label_2->setText(QApplication::translate("EntCenterMainWidget", "\345\237\272\347\241\200\346\234\215\345\212\241", 0));
+        label_2->setText(QApplication::translate("EntCenterMainWidget", "\345\256\242\346\210\267\346\234\215\345\212\241", 0));
+        label_19->setText(QApplication::translate("EntCenterMainWidget", "\346\202\250\347\232\204\344\274\201\344\270\232\350\277\230\346\234\252\347\273\221\345\256\232\345\256\242\346\210\267\347\273\217\347\220\206", 0));
+        label_20->setText(QApplication::translate("EntCenterMainWidget", "\345\256\242\346\210\267\347\273\217\347\220\206\346\211\253\346\217\217\346\255\244\344\272\214\347\273\264\347\240\201\345\217\257\345\277\253\351\200\237", 0));
+        label_21->setText(QApplication::translate("EntCenterMainWidget", "\347\273\221\345\256\232\344\274\201\344\270\232", 0));
+        labelTwoBarCode->setText(QString());
     } // retranslateUi
 
 };

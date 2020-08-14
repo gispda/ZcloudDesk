@@ -103,7 +103,7 @@ void EntCenterMainWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, 
 }
 
 const QMetaObject EntCenterMainWidget::staticMetaObject = {
-    { &AppCommWidget::staticMetaObject, qt_meta_stringdata_EntCenterMainWidget.data,
+    { &QWidget::staticMetaObject, qt_meta_stringdata_EntCenterMainWidget.data,
       qt_meta_data_EntCenterMainWidget,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
 };
 
@@ -118,12 +118,12 @@ void *EntCenterMainWidget::qt_metacast(const char *_clname)
     if (!_clname) return Q_NULLPTR;
     if (!strcmp(_clname, qt_meta_stringdata_EntCenterMainWidget.stringdata0))
         return static_cast<void*>(const_cast< EntCenterMainWidget*>(this));
-    return AppCommWidget::qt_metacast(_clname);
+    return QWidget::qt_metacast(_clname);
 }
 
 int EntCenterMainWidget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
-    _id = AppCommWidget::qt_metacall(_c, _id, _a);
+    _id = QWidget::qt_metacall(_c, _id, _a);
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {

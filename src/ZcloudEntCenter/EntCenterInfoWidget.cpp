@@ -9,9 +9,9 @@
 #include "ZcloudBigData.h"
 
 EntCenterInfoWidget::EntCenterInfoWidget(EntCenterInfo*	info, UserInfoStruct* userInfo, QWidget *parent)
-	:AppCommWidget("", true, parent)
+	:QWidget( parent)
 {
-	ui.setupUi(m_widget);
+	ui.setupUi(this);
 	m_userInfo = userInfo;
 	m_pInfo = info;
 	ui.entEditWidget->installEventFilter(this);

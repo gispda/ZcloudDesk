@@ -8,7 +8,7 @@
 #include "AppCommWidget.h"
 #include "Database.h"
 
-class UserCenterMainWidget : public AppCommWidget
+class UserCenterMainWidget : public QWidget
 {
 	Q_OBJECT
 
