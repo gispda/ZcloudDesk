@@ -78,25 +78,39 @@ void EntCenterNewWidget::init(EntCenterInfo*	info){
 
 }
 void EntCenterNewWidget::onShowInfo(){
-	
-	if (m_pEntInfo->_nisjoin == false)
+
+	if (m_info.nIsjoin == 0)
 	{
 
-		int nReturn = ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_OKCANCEL, QString::fromLocal8Bit("温馨提示"), QString::fromLocal8Bit("抱歉，您还没有正式加入\"%1\",您先加入企业后再继续操作！").arg(m_pEntInfo->_strCompName), this);
+		int nReturn = ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_OKCANCEL, QString::fromLocal8Bit("温馨提示"), QString::fromLocal8Bit("抱歉，您还没有正式加入\"%1\",您先加入企业后再继续操作！").arg(m_info.strCompany), this);
 		if (nReturn == QDialog::Accepted)
 		{
+
+
+			if (m_info.isbindEnt == false)
+			{
+				if (m_pEditEntinfo == NULL)
+					m_pEditEntinfo = new EditEntInfoWidget(m_userInfo, m_pEntInfo);
+
+				m_pEditEntinfo->show();
+			}
+
 			//	ZcloudBigDataInterface::GetInstance()->produceData("M00", "OP001", "TAU008", "", true);
 			//this->hide();
 			//emit sigLogout();
 			//立即加入
-		/*	if (m_pJoinEntWidget == NULL)
-				m_pJoinEntWidget = new JoinEntWidget(m_userInfo->m_strUserId, m_userInfo->m_strToken, this);
+			/*	if (m_pJoinEntWidget == NULL)
+			m_pJoinEntWidget = new JoinEntWidget(m_userInfo.m_strUserId, m_userInfo.m_strToken, this);
 			m_pJoinEntWidget->show();*/
-			QString strRet;
-			if (!winHttpJoinEnt(m_pEntInfo->_strToken, m_pEntInfo->_strCompId, strRet))
+
+			/////----------------------------加入企业ok
+
+
+			/*QString strRet;
+			if (!winHttpJoinEnt(m_userInfo.m_strToken, m_info.strcompanyid, strRet))
 			{
-				ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_TIP, QString::fromLocal8Bit("加入企业"), QString::fromLocal8Bit("加入失败"));
-				return;
+			ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_TIP, QString::fromLocal8Bit("加入企业"), QString::fromLocal8Bit("加入失败"));
+			return;
 			}
 
 
@@ -106,62 +120,44 @@ void EntCenterNewWidget::onShowInfo(){
 			QJsonDocument parse_doucment = QJsonDocument::fromJson(byte_array, &json_error);
 			if (json_error.error != QJsonParseError::NoError)
 			{
-				return;
+			return;
 			}
 			if (!parse_doucment.isObject())
 			{
-				return;
+			return;
 			}
 			obj = parse_doucment.object();
 			int status = obj.take("code").toInt();
-			if (0 != status)
+			if (0 == status)
 			{
-				/*	switch (status)
-					{
-					case 20012:
-					strMsg = QString::fromLocal8Bit("企业地址不能为空");
-					break;
-					case 20013:
-					strMsg = QString::fromLocal8Bit("企业地址输入不正确");
-					break;
-					case 20027:
-					strMsg = QString::fromLocal8Bit("开户帐号不能为空");
-					break;
-					case 20028:
-					strMsg = QString::fromLocal8Bit("开户帐号输入类型不正确");
-					break;
-					case 20029:
-					strMsg = QString::fromLocal8Bit("开户帐号输入长度不正确");
-					break;
-					case 20030:
-					strMsg = QString::fromLocal8Bit("开户银行不能为空");
-					break;
-					case 20031:
-					strMsg = QString::fromLocal8Bit("开户银行输入类型不正确");
-					break;
-					case 20032:
-					strMsg = QString::fromLocal8Bit("电话不能为空");
-					break;
-					case 20033:
-					strMsg = QString::fromLocal8Bit("电话长度不正确");
-					break;
-					default:
-					break;
-					}*/
+			ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_CLOSE, QString::fromLocal8Bit("操作成功"), QString::fromLocal8Bit("已成功提交加入申请，\r\n请等待对方管理员审核通过！"));
 
-
-
-
-				return;
 			}
-
-			int nmsg = obj.take("data").toInt();
-
-			if (nmsg==1)
-				ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_TIP, QString::fromLocal8Bit("加入企业"), QString::fromLocal8Bit("加入成功"));
+			else if (20034 == status)
+			{
+			ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_TIP, QString::fromLocal8Bit("操作失败"), QString::fromLocal8Bit("\r\n加入申请失败，系统不存在此企业信息，请确认你的操作！"));
+			}
+			else if (60001 == status)
+			{
+			ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_TIP, QString::fromLocal8Bit("操作失败"), QString::fromLocal8Bit("\r\n加入申请失败，申请的企业不能为空！"));
+			}
+			else if (60002 == status)
+			{
+			ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_TIP, QString::fromLocal8Bit("操作失败"), QString::fromLocal8Bit("\r\n加入申请失败，申请的企业id类型不正确！"));
+			}
+			else if (60003 == status)
+			{
+			ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_TIP, QString::fromLocal8Bit("操作提示"), QString::fromLocal8Bit("\r\n加入申请失败，你已提交过此申请了，请等待企业管理员审核！"));
+			}
+			else if (60004 == status)
+			{
+			ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_TIP, QString::fromLocal8Bit("操作提示"), QString::fromLocal8Bit("\r\n加入申请失败，你已经是企业的成员了，请不要重复加入！"));
+			}
 			else
-				ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_TIP, QString::fromLocal8Bit("加入企业"), QString::fromLocal8Bit("加入失败"));
-			return;
+			{
+			ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_TIP, QString::fromLocal8Bit("操作失败"), QString::fromLocal8Bit("\r\n加入申请失败，请稍后再试！"));
+			}
+			return;*/
 		}
 		else
 		{
@@ -170,10 +166,11 @@ void EntCenterNewWidget::onShowInfo(){
 		}
 	}
 
-	mp_EntCenterMain->hide();
 	mp_EntCenterInfo->show();
+	mp_EntCenterMain->hide();
 	mp_EntCenterMember->hide();
 }
+
 void EntCenterNewWidget::onShowMember(){
 	mp_EntCenterInfo->hide();
 	mp_EntCenterMain->hide();
@@ -399,6 +396,7 @@ void EntCenterNewWidget::clearUserCompanyInfoTitle()
 	//	ui.labelCopy->hide();
 }
 
+
 void EntCenterNewWidget::showUnaddCompanyInfoTitle(QString _strcompany, QString _strtaxno, QString _strUser, QString _straddcompany)
 {
 
@@ -414,7 +412,7 @@ void EntCenterNewWidget::showUnaddCompanyInfoTitle(QString _strcompany, QString 
 	ui.labeluser->setText(QString::fromLocal8Bit("<html><head/><body><p><span style=\"font-size:14px;font-family:SourceHanSansCN - Normal, SourceHanSansCN;font-weight:400;color:rgba(102, 102, 102, 1);line-height:21px;\"> %1</span></p></body></html>").arg(_strUser));
 	//ui.labeluser->setStyleSheet("font-size:14px;font - family:SourceHanSansCN - Normal, SourceHanSansCN;font-weight:400;color:rgba(102, 102, 102, 1);line-height:21px; ");
 	ui.labeluser->show();
-	ui.labelTaxNo->setGeometry(44, 163, 122, 12);
+	ui.labelTaxNo->setGeometry(64, 163, 122, 12);
 
 
 
@@ -434,7 +432,7 @@ void EntCenterNewWidget::showUnaddCompanyInfoTitle(QString _strcompany, QString 
 	//	ui.switchButton->setStyleSheet("background:linear - gradient(90deg, rgba(2, 164, 253, 1) 0 % , rgba(31, 139, 237, 1) 100 % );box - shadow:0px 3px 8px - 2px rgba(2, 165, 253, 0.85), 0px 6px 11px - 2px rgba(2, 165, 253, 0.64);border - radius:4px; ");
 
 
-	ui.copyTaxButton->setGeometry(200, 162, 16, 16);
+	ui.copyTaxButton->setGeometry(191, 162, 16, 16);
 	ui.copyTaxButton->setStyleSheet("QPushButton{border-image: url(:/EntCenterWidget/image/copy.png);}\nQPushButton:hover,pressed{border-image: url(:/EntCenterWidget/image/copy_sel.png);}");
 	ui.copyTaxButton->show();
 
@@ -483,7 +481,7 @@ void EntCenterNewWidget::showaddCompanyInfoTitle(QString _strcompany, QString _s
 
 	ui.labeluser->setGeometry(59, 195, 126, 14);
 
-	ui.labeluser->setText(QString::fromLocal8Bit("<html><head/><body><p><span style=\"font-size:12px;font - family:SourceHanSansCN - Normal, SourceHanSansCN;font-weight:400;color:rgba(51, 51, 51, 1);	line-height:18px; \"> %1</span></p></body></html>").arg(_strUser));
+	ui.labeluser->setText(QString::fromLocal8Bit("<html><head/><body><p><span style=\"font-size:14px;font - family:SourceHanSansCN - Normal, SourceHanSansCN;font-weight:400;color:rgba(51, 51, 51, 1);	line-height:21px; \"> %1</span></p></body></html>").arg(_strUser));
 
 	ui.labeluser->show();
 

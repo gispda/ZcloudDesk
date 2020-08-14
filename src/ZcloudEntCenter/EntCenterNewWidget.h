@@ -13,6 +13,8 @@
 #include "SwitchAccWidget.h"
 #include "JoinEntWidget.h"
 #include "ZcloudCommon.h"
+#include "EditEntInfoWidget.h"
+
 
 class EntCenterNewWidget : public QWidget
 {
@@ -89,6 +91,9 @@ private:
 	//bool	m_bHasMember = true;
 	//QWidget* m_pUserDefult = NULL;
 
+
+
+	EditEntInfoWidget* m_pEditEntinfo;
 	JoinEntWidget*	m_pJoinEntWidget;
 	EntCenterMemberWidget* mp_EntCenterMember;
 	EntCenterInfoWidget* mp_EntCenterInfo;

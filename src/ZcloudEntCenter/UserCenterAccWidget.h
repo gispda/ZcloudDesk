@@ -76,6 +76,9 @@ private:
 
 	Ui::UserCenterAccWidget ui;
 	UserInfoStruct* m_userInfo;
+
+	
+	EntCenterInfo* m_pentinfo;
 };
 
 #endif // UserCenterAccWidget_H

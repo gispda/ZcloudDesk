@@ -307,7 +307,7 @@ void UserCenterAccWidget::onEntInfoBtnClick()
 	{
 		if (!this->findChild <EntInfoWidget*>("entInfo"))
 		{
-			EntInfoWidget*	pEntInfoWidget = new EntInfoWidget(m_userInfo->m_strUserId, m_userInfo->m_strToken, this);
+			EntInfoWidget*	pEntInfoWidget = new EntInfoWidget(m_userInfo,m_pentinfo, this);
 			pEntInfoWidget->show();
 		}
 	}	

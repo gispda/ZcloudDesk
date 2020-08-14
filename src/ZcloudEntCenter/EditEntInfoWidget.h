@@ -5,13 +5,14 @@
 #include "ui_EditEntInfoWidget.h"
 #include "ZcloudCommonWidget.h"
 #include "EntInfoDataDefine.h"
+#include "EntDataBase.h"
 
 class EditEntInfoWidget : public ZcloudCommonWidget
 {
 	Q_OBJECT
 
 public:
-	EditEntInfoWidget(QString strUid,QString strToken,stEntInfo entInfo,QWidget *parent = Q_NULLPTR);
+	EditEntInfoWidget(UserInfoStruct* _userinfo, EntCenterInfo* _pentinfo, QWidget *parent = Q_NULLPTR);
 	~EditEntInfoWidget();
 
 signals:
@@ -40,6 +41,11 @@ private:
 	bool winHttpUpdateCompanyInfo(QString strUid,QString strToken,QString& strRet);
 
 	Ui::EditEntInfoWidget ui;
+
+
+	EntCenterInfo* m_pentinfo;
+	UserInfoStruct* m_userinfo;
+
 	stEntInfo m_stEntInfo;
 	QString	m_strUid;
 	QString	m_strToken;

@@ -8,17 +8,16 @@
 #include "EditInvoiceInfoWidget.h"
 #include "ZcloudBigData.h"
 
-EntInfoWidget::EntInfoWidget(QString strUid, QString strToken ,QWidget *parent)
+EntInfoWidget::EntInfoWidget(UserInfoStruct* _userinfo, EntCenterInfo* _pentinfo, QWidget *parent)
 	:ZcloudCommonWidget(parent)
-	, m_strUid(strUid)
-	, m_strToken(strToken)
 {
 	ui.setupUi(getContentWidget());
 	resize(800, 500);
 	setWindowTitle(QString::fromLocal8Bit("企业资料"));
 	setAttribute(Qt::WA_DeleteOnClose);
 	setObjectName("entInfo");
-
+	m_userinfo = _userinfo;
+	m_pentinfo = _pentinfo;
 	connect(ui.closeButton, &QPushButton::clicked, [this](){
 		ZcloudBigDataInterface::GetInstance()->produceData("M00", "OP001", "BBD009");
 		close();
@@ -41,7 +40,7 @@ EntInfoWidget::~EntInfoWidget()
 void EntInfoWidget::onEntEditBtnClick()
 {
 	ZcloudBigDataInterface::GetInstance()->produceData("M00", "OP001", "BBD001");
-	EditEntInfoWidget*	pWidget = new EditEntInfoWidget(m_strUid,m_strToken,m_stEntInfo,this);
+	EditEntInfoWidget*	pWidget = new EditEntInfoWidget(m_userinfo, m_pentinfo, this);
 	connect(pWidget, &EditEntInfoWidget::sigUpdateSucessed, this, &EntInfoWidget::onUpdateEntSucessed);
 	pWidget->show();
 }
@@ -63,7 +62,7 @@ bool EntInfoWidget::winHttpGetEntInfo(QString strUid, QString strToken, QString&
 bool EntInfoWidget::showEntInfo()
 {
 	QString strRet;
-	if (!winHttpGetEntInfo(m_strUid, m_strToken, strRet))
+	if (!winHttpGetEntInfo(m_userinfo->m_strUserId, m_userinfo->m_strToken, strRet))
 	{
 		return false;
 	}

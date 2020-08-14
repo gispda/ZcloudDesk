@@ -5,12 +5,15 @@
 #include <QJsonArray>
 #include "ZcloudBigData.h"
 
-EditEntInfoWidget::EditEntInfoWidget(QString strUid, QString strToken, stEntInfo entInfo, QWidget *parent)
+EditEntInfoWidget::EditEntInfoWidget(UserInfoStruct* _userinfo, EntCenterInfo* _pentinfo, QWidget *parent)
 	: ZcloudCommonWidget(parent)
-	, m_stEntInfo(entInfo)
-	, m_strUid(strUid)
-	, m_strToken(strToken)
 {
+	m_strUid = _userinfo->m_strUserId;
+	m_strToken = _userinfo->m_strToken;
+
+	m_userinfo = _userinfo;
+
+	m_pentinfo = _pentinfo;
 	ui.setupUi(getContentWidget());
 	resize(454, 382);
 	setWindowTitle(QString::fromLocal8Bit("编辑企业资料"));

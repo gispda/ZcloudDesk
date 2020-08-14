@@ -5,6 +5,8 @@
 #include <QSqlDatabase>
 #include <QDateTime>
 #include "Database.h"
+#include "EntDataBase.h"
+#include "EntInfoDataDefine.h" 
 class EntCenterInfo
 {
 public:
@@ -19,14 +21,27 @@ public:
 	QString _strEmail;          ///企业邮箱
 	int _nCompanytype;     /////企业类型
 	int  _nTradeid;        /////
+
+	LocAddress m_registerAddress;  //企业注册地址
+	LocAddress m_officeAddress;   //企业办公地址
+
 	int     _nProvinceid;      ///企业注册地省份id
 	int     _nCityid;          ////企业注册地市id
 	int     _nAreaid;          ////企业注册地区id
+	QString     _strProvince;      ///企业注册地省份id
+	QString     _strCity;          ////企业注册地市id
+	QString     _strArea;          ////企业注册地区id
+
 	QString _strAddress;        ///地址
 	int     _nOfficeProvinceid;      ///企业办公地省份id
 	int     _nOfficeCityid;          ////企业办公地市id
 	int     _nOfficeAreaid;          ////企业办公地区id
+	QString     _strOfficeProvince;      ///企业注册地省份id
+	QString     _strOfficeCity;          ////企业注册地市id
+	QString     _strOfficeArea;          ////企业注册地区id
+
 	QString _strOfficeaddress;
+
 
 	int _nisjoin;     ///用户有无绑定企业信息
 
@@ -72,7 +87,92 @@ public:
 	QString _strCreateCompanyUrl;	//!创建公司url
 	QDateTime	_dtServerTime = QDateTime::currentDateTime();		//!服务器当前时间
 
-	//int	nAdmin = 0;
+	int	nAdmin = 0;
+
+	EntCenterInfo()
+	{
+		_strId= "";
+		_strToken ="";
+		_strCompId="";		//!公司编号
+
+		_strCompName="";	//!公司名称
+		_strTaxNo = "";		//!税号
+		/////-------------------------新增加
+		_strHzsid = "";           ///合作商id
+		_strEmail = "";          ///企业邮箱
+		_nCompanytype=0;     /////企业类型
+		_nTradeid=0;        /////
+		_nProvinceid=-999;      ///企业注册地省份id
+		_nCityid = -999;          ////企业注册地市id
+		_nAreaid = -999;          ////企业注册地区id
+		_strAddress = "";        ///地址
+		_nOfficeProvinceid = -999;      ///企业办公地省份id
+		_nOfficeCityid = -999;          ////企业办公地市id
+		_nOfficeAreaid = -999;          ////企业办公地区id
+		_strOfficeaddress = "";
+
+		_nisjoin = 0;     ///用户有无绑定企业信息
+
+		_nisbinds = 0;     //用户有无绑定客户经理
+		_nhasadmin = 0;    ///企业有无管理员
+
+		_strUid = "";
+		_strUsername = "";
+		_strTruename = "";
+		_nrole_type;   //身份id
+		_strJob = "";//用户在这个企业的身份，管理员，财务等
+
+		_strRegisterFulladdress = "";
+		_strOfficeFulladdress = "";
+
+		_strlegalboss = "";   ///法人
+		_strlegalbossmobile = "";   //法人电话
+		_strBankname = "";    ///开户行
+		_strBankaccount = ""; //开户行账号
+
+
+		_oservice.m_businessid = "";    ///客户经理
+		_oservice.m_nAreaId = -999;    ///客户经理
+		_oservice.m_avatarurl = "";    ///客户经理
+		_oservice.m_nCityId = -999;    ///客户经理
+		_oservice.m_nickname = "";    ///客户经理
+		_oservice.m_nProvinceId = -999;    ///客户经理
+		_oservice.m_qq = "";    ///客户经理
+		_oservice.m_wechat = "";    ///客户经理
+		_oservice.m_sex = "";    ///客户经理
+		_oservice.m_strAddress = "";    ///客户经理
+		_oservice.m_strHzsId = "";    ///客户经理
+		_oservice.m_strPhone = "";    ///客户经理
+		_oservice.m_strTruename = "";    ///客户经理
+		_oservice.m_strUsername = "";    ///客户经理
+		
+		////-----------------------------
+		_strLogo = "";		//!头像图标
+		_strLogoPath = "";	//!头像图标本地地址
+		_bIsHxMember = false;		//!是否是航信会员
+		_nChargeExpire = 0;			//!服务费到期时间
+		_nEndDays = 0;			//!航信服务费剩余天数
+		_bIsManualFulled = true;			//!是否已经手动完善资料
+		_bHasMember = true;			//!当前合作商是否上架会员功能
+		_memberList = QByteArray();	//!会员列表
+		_nLastSignTime = 0;			//!最后一次签到时间	
+		_nCoin = 0;			//!云币
+		_nCoupon = 0;			//!优惠券
+		_strCompanyInfoUrl = "";		//!企业资料url
+		_strTradeInfoUrl = "";		//!交易信息url
+		_strFinancialMemberUrl = "";	//!财务成员url
+		_strAccountSettingUrl = "";	//!账号设置url
+		_strRenewUrl = "";			//!服务费续费url
+		_strMemberInfoUrl = "";		//!会员详情url
+		_strSignUrl = "";			//!签到Url
+		_strCreateCompanyUrl = "";	//!创建公司url
+		_dtServerTime = QDateTime::currentDateTime();		//!服务器当前时间
+
+		nAdmin = 0;
+	
+	}
+
+
 };
 class EntDataBase : public QObject
 {

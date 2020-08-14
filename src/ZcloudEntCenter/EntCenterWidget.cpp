@@ -601,8 +601,8 @@ void EntCenterWidget::onEntInfoBtnClick()
 	{
 		if (!this->findChild <EntInfoWidget*>("entInfo"))
 		{
-			EntInfoWidget*	pEntInfoWidget = new EntInfoWidget(m_strUid, m_strToken, this);
-			pEntInfoWidget->show();
+		//	EntInfoWidget*	pEntInfoWidget = new EntInfoWidget(m_strUid, m_strToken, this);
+			//pEntInfoWidget->show();
 		}
 	}	
 }
