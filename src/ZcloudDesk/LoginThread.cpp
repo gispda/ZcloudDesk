@@ -524,6 +524,8 @@ int LoginThread::visitorLogin(UserInfoStruct &userInfoStruct)
 		//游客登陆取临时token
 	if (!sInter.winHttpLogin(strtax, strRet))
 	{
+
+		
 		return -1;
 	}
 

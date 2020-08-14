@@ -20,6 +20,7 @@
 #include "LoginDialog.h"
 #include "SettingWidget.h"
 #include "ActivityWidget.h"
+
 #include "CheckUpdater.h"
 #include "dlgwait.h"
 #include "CalculatorWidget.h"
@@ -473,7 +474,7 @@ void ZcloudDesk::onTopToolClick()
 		//QString strRet;
 		//ZcloudClient::winHttpUpdatebankInfo(bankinfo, m_stUserInfo.m_strToken, strRet);
 
-		//lockScreen();
+		lockScreen();
 	}
 	else if (strToolName == QString::fromLocal8Bit("ËÑË÷"))
 	{
@@ -503,6 +504,7 @@ void ZcloudDesk::onTopToolClick()
 		//	}
 		//}
 		//TopToolWidget*	pTopToolWidget = new TopToolWidget(pInfo,this);
+		showLoginTip();
 
 		m_pBigDataInterface->produceData("M01", "OP001", "TTA005");
 		openApp(pInfo);
@@ -695,6 +697,8 @@ void ZcloudDesk::showWindow(){
 
 void ZcloudDesk::openAppCenterWidget()
 {
+
+	showLoginTip();
 	m_zhicloudApp->openAppCenterDlg();
 	m_pBigDataInterface->produceData("M01", "OP001", "TTA010");
 }

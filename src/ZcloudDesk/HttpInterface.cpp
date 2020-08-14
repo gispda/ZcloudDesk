@@ -72,6 +72,10 @@ bool HttpInterface::winHttpLogin(QString strTaxNo, QString& strRet)
 	//{
 	//	strPost.append("&user_id=").append(strUserId);
 	//}
+	//ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_TIP, QString::fromLocal8Bit("游客登陆1"), strUrl);
+
+	//ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_TIP, QString::fromLocal8Bit("游客登陆2"), strPost);
+
 	return ZcloudComFun::httpPost(strUrl, strPost, 5000, strRet,false,1);
 }
 

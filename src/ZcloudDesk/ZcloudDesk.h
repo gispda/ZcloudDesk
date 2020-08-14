@@ -11,7 +11,7 @@
 #include "Database.h"
 #include "zappmenubutton.h"
 #include "CheckServiceThread.h"
-
+#include "LoginTip.h"
 #include <QWidget>
 #include <QtGui>
 
@@ -103,6 +103,18 @@ void on_activatedSysTrayIcon(QSystemTrayIcon::ActivationReason reason);
 
 	//!顶栏工具按钮点击
 	void onTopToolClick();
+
+	void showLoginTip()
+	{
+		if (m_stUserInfo.m_bLoginByTax == -8)
+		{
+			if (m_pLoginTip == NULL)
+				m_pLoginTip = new LoginTip();
+
+			m_pLoginTip->show();
+
+		}
+	}
 
 	//!刷新消息红点提示未读条数
 	void onReduceUnreadNum(int);
@@ -221,6 +233,9 @@ private:
 	//!设置文字超出以...结束显示
 	void setElideText(int nPixSize, QLabel* pLabel, const QString& strText);
 
+
+
+	LoginTip*               m_pLoginTip = NULL;
 	ZhicloudApp *			m_zhicloudApp		= NULL;
 	ZcloudMsgCenter*		m_pMsgCenter		= NULL;
 	ZcloudEntCenter*		m_pEntCenter		= NULL;

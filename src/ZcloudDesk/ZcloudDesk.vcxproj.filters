@@ -110,6 +110,9 @@
     <ClCompile Include="ZcloudClient.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="LoginTip.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="ZcloudDesk.h">
@@ -170,6 +173,9 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtMoc Include="ZcloudClient.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="LoginTip.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
@@ -249,6 +255,9 @@
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="ZcloudDesk.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="LoginTip.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>
