@@ -89,6 +89,12 @@ public:
 
 	int	nAdmin = 0;
 
+	int disk_type;   ////税控盘类型 1黑盘，2白盘
+	QString strDisk_type;///税控盘类型文本
+
+	QString strUse_address;///是否直接使用企业注册地址，1：使用，2：使用新地址
+
+	QString strLicenseUrl;////营业执照的url
 
 	////本地注册表中读出的税号，用于后台比对的。
 	QStringList _strLocalTaxnoLs;
@@ -174,7 +180,12 @@ public:
 
 		nAdmin = 0;
 
+		disk_type = -1;
+		strDisk_type = "";
 
+		strLicenseUrl = "";
+
+		strUse_address = "";
 		_strLocalTaxnoLs.clear();
 	
 	}

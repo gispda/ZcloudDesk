@@ -21,7 +21,7 @@ MessageTipDlg::MessageTipDlg(ZcloudComFun::EN_BTN_TYPE enBtnType, QString strTit
 	shadow->setBlurRadius(8);
 	//¸øÇ¶Ì×QWidgetÉèÖÃÒõÓ°
 	this->setGraphicsEffect(shadow);
-
+	
 	init();
 }
 
@@ -121,6 +121,9 @@ void MessageTipDlg::init()
 		ui.BtnWidget3->setGeometry(rect);
 		ui.BtnWidget3->show();
 		ui.BtnWidget4->hide();
+
+		ui.okButton->setText(m_buttonStr_1);
+		ui.cancelButton->setText(m_buttonStr_2);
 		break;
 	}
 	case ZcloudComFun::EN_BINDING:

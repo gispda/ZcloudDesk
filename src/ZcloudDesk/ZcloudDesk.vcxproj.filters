@@ -107,9 +107,6 @@
     <ClCompile Include="TwobarCodeWidget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ZcloudClient.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="LoginTip.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -172,9 +169,6 @@
     <QtUic Include="TwobarCodeWidget.ui">
       <Filter>Form Files</Filter>
     </QtUic>
-    <QtMoc Include="ZcloudClient.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
     <QtMoc Include="LoginTip.h">
       <Filter>Header Files</Filter>
     </QtMoc>

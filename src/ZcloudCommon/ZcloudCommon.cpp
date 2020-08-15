@@ -20,6 +20,7 @@
 int ZcloudComFun::openMessageTipDlg(EN_BTN_TYPE enBtnType, QString strTitle, QString strMsg, QWidget *parent /*= 0*/)
 {
 	MessageTipDlg	dlg(enBtnType, strTitle, strMsg, parent);
+	
 	return dlg.exec();
 }
 
@@ -1093,13 +1094,17 @@ bool ZcloudComFun::winHttpQueryCompanyInfoLocalTax(QString strTaxno, QString str
 		info.nIsjoin = dataList.take("is_join").toInt();
 		roletype = dataList.take("role_type").toString();
 		info.nroletype = roletype.toInt();
+		info.strRoletype = info.nroletype == 1 ? QString::fromLocal8Bit("管理员") : QString::fromLocal8Bit("其他财务人员");
 		info.strCompany = dataList.take("company_name").toString();
 		_strtaxno = dataList.take("tax_number").toString();
+		info.strTaxno = _strtaxno;
 		info.strcompanyid = dataList.take("company_id").toString();
 		info.nIsbind = dataList.take("is_bind_s").toInt();
 		has_admin = dataList.take("has_admin").toInt();
+		info.niscurrent = dataList.take("is_current").toInt();
 		info.isbindEnt = has_admin == 1 ? true : false;
-		if (_strtaxno == strTaxno && strTaxno.isEmpty() == false)
+		////多个税号中包含一个就直接返回
+		if (strTaxno.contains(_strtaxno) && strTaxno.isEmpty() == false)
 		{
 			return true;
 		}

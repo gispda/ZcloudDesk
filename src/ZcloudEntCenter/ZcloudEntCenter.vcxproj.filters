@@ -167,6 +167,9 @@
     <ClCompile Include="EntCenterNewWidget.cpp">
       <Filter>EntInfo</Filter>
     </ClCompile>
+    <ClCompile Include="ZcloudClient.cpp">
+      <Filter>EntInfo</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="EntCenterWidget.h">
@@ -290,6 +293,9 @@
       <Filter>EntInfo</Filter>
     </QtMoc>
     <QtMoc Include="EntCenterNewWidget.h">
+      <Filter>EntInfo</Filter>
+    </QtMoc>
+    <QtMoc Include="ZcloudClient.h">
       <Filter>EntInfo</Filter>
     </QtMoc>
   </ItemGroup>

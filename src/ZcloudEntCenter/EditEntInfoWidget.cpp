@@ -14,6 +14,9 @@ EditEntInfoWidget::EditEntInfoWidget(UserInfoStruct* _userinfo, EntCenterInfo* _
 	m_userinfo = _userinfo;
 
 	m_pentinfo = _pentinfo;
+
+
+	m_pFinishentinfo = NULL;
 	ui.setupUi(getContentWidget());
 	resize(454, 382);
 	setWindowTitle(QString::fromLocal8Bit("编辑企业资料"));
@@ -147,6 +150,9 @@ void EditEntInfoWidget::onRadioBtnAddressNewClick(){
 
 EditEntInfoWidget::~EditEntInfoWidget()
 {
+	if (m_pFinishentinfo = NULL)
+		delete m_pFinishentinfo;
+	m_pFinishentinfo = NULL;
 }
 
 bool EditEntInfoWidget::winHttpGetTradeList(QString& strRet)
@@ -435,4 +441,9 @@ bool EditEntInfoWidget::winHttpUpdateCompanyInfo(QString strUid, QString strToke
 		.arg(m_stEntInfo.m_officeAddress._nCityId).arg(m_stEntInfo.m_officeAddress._nAreaId).arg(m_stEntInfo.m_officeAddress._address);
 
 	return ZcloudComFun::httpPost(strUrl, strPost, 5000, strRet, false, 1);
+}
+///返回完善的企业信息资料
+EntCenterInfo* EditEntInfoWidget::getFinishEnterInfo()
+{
+	return m_pFinishentinfo;
 }

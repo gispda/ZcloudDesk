@@ -15,6 +15,9 @@ public:
 	EditEntInfoWidget(UserInfoStruct* _userinfo, EntCenterInfo* _pentinfo, QWidget *parent = Q_NULLPTR);
 	~EditEntInfoWidget();
 
+
+
+	EntCenterInfo* getFinishEnterInfo();
 signals:
 	void sigUpdateSucessed();
 private slots:
@@ -44,6 +47,7 @@ private:
 
 
 	EntCenterInfo* m_pentinfo;
+	EntCenterInfo* m_pFinishentinfo;
 	UserInfoStruct* m_userinfo;
 
 	stEntInfo m_stEntInfo;

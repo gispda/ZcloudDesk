@@ -119,11 +119,11 @@ public:
 "QPushButton:hover,pressed{border-image: url(:/EntCenterWidget/image/copy_sel.png);}"));
         labelTaxNo = new QLabel(EntLeftWidget);
         labelTaxNo->setObjectName(QStringLiteral("labelTaxNo"));
-        labelTaxNo->setGeometry(QRect(44, 163, 150, 12));
+        labelTaxNo->setGeometry(QRect(44, 163, 150, 16));
         sizePolicy1.setHeightForWidth(labelTaxNo->sizePolicy().hasHeightForWidth());
         labelTaxNo->setSizePolicy(sizePolicy1);
-        labelTaxNo->setMinimumSize(QSize(150, 12));
-        labelTaxNo->setMaximumSize(QSize(150, 12));
+        labelTaxNo->setMinimumSize(QSize(150, 16));
+        labelTaxNo->setMaximumSize(QSize(150, 16));
         labelTaxNo->setStyleSheet(QString::fromUtf8("font: 12px \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
 "color:#333333;"));
         labelTaxNo->setAlignment(Qt::AlignCenter);
@@ -186,8 +186,8 @@ public:
 "QPushButton:hover,pressed{ background-color:rgba(255,255,255,0);font: 14px \"\345\276\256\350\275\257\351\233\205\351\273\221\";color:rgba(31,139,237,1);}"));
         labelJoin2 = new QLabel(EntLeftWidget);
         labelJoin2->setObjectName(QStringLiteral("labelJoin2"));
-        labelJoin2->setGeometry(QRect(180, 195, 60, 14));
-        labelJoin2->setMaximumSize(QSize(126, 14));
+        labelJoin2->setGeometry(QRect(180, 195, 60, 18));
+        labelJoin2->setMaximumSize(QSize(126, 18));
         labelJoin2->setStyleSheet(QLatin1String("font-size:14px;\n"
 "font-family:SourceHanSansCN-Normal,SourceHanSansCN;\n"
 "font-weight:400;\n"
@@ -203,11 +203,11 @@ public:
         labelVip->setStyleSheet(QStringLiteral("border-image: url(:/EntCenterWidget/image/qyzx_icon_vip_wjr.png);"));
         labelComName = new QLabel(EntLeftWidget);
         labelComName->setObjectName(QStringLiteral("labelComName"));
-        labelComName->setGeometry(QRect(55, 135, 140, 16));
+        labelComName->setGeometry(QRect(55, 135, 140, 18));
         sizePolicy1.setHeightForWidth(labelComName->sizePolicy().hasHeightForWidth());
         labelComName->setSizePolicy(sizePolicy1);
-        labelComName->setMinimumSize(QSize(140, 16));
-        labelComName->setMaximumSize(QSize(140, 16));
+        labelComName->setMinimumSize(QSize(140, 18));
+        labelComName->setMaximumSize(QSize(140, 18));
         labelComName->setStyleSheet(QLatin1String("font-size:14px;\n"
 "font-family:SourceHanSansCN-Normal,SourceHanSansCN;\n"
 "font-weight:400;\n"
@@ -217,8 +217,8 @@ public:
         labelComName->setWordWrap(true);
         labeluser = new QLabel(EntLeftWidget);
         labeluser->setObjectName(QStringLiteral("labeluser"));
-        labeluser->setGeometry(QRect(20, 195, 90, 14));
-        labeluser->setMaximumSize(QSize(126, 14));
+        labeluser->setGeometry(QRect(20, 195, 90, 18));
+        labeluser->setMaximumSize(QSize(126, 18));
         labeluser->setStyleSheet(QLatin1String("font-size:14px;\n"
 "font-family:SourceHanSansCN-Normal,SourceHanSansCN;\n"
 "font-weight:400;\n"
@@ -227,8 +227,8 @@ public:
         labeluser->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
         labeluserroletype = new QLabel(EntLeftWidget);
         labeluserroletype->setObjectName(QStringLiteral("labeluserroletype"));
-        labeluserroletype->setGeometry(QRect(128, 195, 100, 14));
-        labeluserroletype->setMaximumSize(QSize(126, 14));
+        labeluserroletype->setGeometry(QRect(128, 195, 100, 18));
+        labeluserroletype->setMaximumSize(QSize(126, 18));
         labeluserroletype->setStyleSheet(QLatin1String("font-size:14px;\n"
 "font-family:SourceHanSansCN-Normal,SourceHanSansCN;\n"
 "font-weight:400;\n"
@@ -262,8 +262,8 @@ public:
 "QPushButton:hover,pressed{ background-color:rgba(255,255,255,0);font: 14px \"\345\276\256\350\275\257\351\233\205\351\273\221\";color:rgba(31,139,237,1);}"));
         labeJoin1 = new QLabel(EntLeftWidget);
         labeJoin1->setObjectName(QStringLiteral("labeJoin1"));
-        labeJoin1->setGeometry(QRect(50, 195, 120, 14));
-        labeJoin1->setMaximumSize(QSize(126, 14));
+        labeJoin1->setGeometry(QRect(50, 195, 120, 18));
+        labeJoin1->setMaximumSize(QSize(126, 18));
         labeJoin1->setStyleSheet(QLatin1String("font-size:14px;\n"
 "font-family:SourceHanSansCN-Normal,SourceHanSansCN;\n"
 "font-weight:400;\n"

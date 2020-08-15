@@ -208,7 +208,7 @@ QPushButton:hover,pressed{border-image: url(:/EntCenterWidget/image/copy_sel.png
           <x>44</x>
           <y>163</y>
           <width>150</width>
-          <height>12</height>
+          <height>16</height>
          </rect>
         </property>
         <property name="sizePolicy">
@@ -220,13 +220,13 @@ QPushButton:hover,pressed{border-image: url(:/EntCenterWidget/image/copy_sel.png
         <property name="minimumSize">
          <size>
           <width>150</width>
-          <height>12</height>
+          <height>16</height>
          </size>
         </property>
         <property name="maximumSize">
          <size>
           <width>150</width>
-          <height>12</height>
+          <height>16</height>
          </size>
         </property>
         <property name="styleSheet">
@@ -458,13 +458,13 @@ QPushButton:hover,pressed{ background-color:rgba(255,255,255,0);font: 14px &quot
           <x>180</x>
           <y>195</y>
           <width>60</width>
-          <height>14</height>
+          <height>18</height>
          </rect>
         </property>
         <property name="maximumSize">
          <size>
           <width>126</width>
-          <height>14</height>
+          <height>18</height>
          </size>
         </property>
         <property name="styleSheet">
@@ -518,7 +518,7 @@ line-height:21px;</string>
           <x>55</x>
           <y>135</y>
           <width>140</width>
-          <height>16</height>
+          <height>18</height>
          </rect>
         </property>
         <property name="sizePolicy">
@@ -530,13 +530,13 @@ line-height:21px;</string>
         <property name="minimumSize">
          <size>
           <width>140</width>
-          <height>16</height>
+          <height>18</height>
          </size>
         </property>
         <property name="maximumSize">
          <size>
           <width>140</width>
-          <height>16</height>
+          <height>18</height>
          </size>
         </property>
         <property name="styleSheet">
@@ -562,13 +562,13 @@ line-height:21px;</string>
           <x>20</x>
           <y>195</y>
           <width>90</width>
-          <height>14</height>
+          <height>18</height>
          </rect>
         </property>
         <property name="maximumSize">
          <size>
           <width>126</width>
-          <height>14</height>
+          <height>18</height>
          </size>
         </property>
         <property name="styleSheet">
@@ -591,13 +591,13 @@ line-height:21px;</string>
           <x>128</x>
           <y>195</y>
           <width>100</width>
-          <height>14</height>
+          <height>18</height>
          </rect>
         </property>
         <property name="maximumSize">
          <size>
           <width>126</width>
-          <height>14</height>
+          <height>18</height>
          </size>
         </property>
         <property name="styleSheet">
@@ -719,13 +719,13 @@ QPushButton:hover,pressed{ background-color:rgba(255,255,255,0);font: 14px &quot
           <x>50</x>
           <y>195</y>
           <width>120</width>
-          <height>14</height>
+          <height>18</height>
          </rect>
         </property>
         <property name="maximumSize">
          <size>
           <width>126</width>
-          <height>14</height>
+          <height>18</height>
          </size>
         </property>
         <property name="styleSheet">

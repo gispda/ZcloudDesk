@@ -6,12 +6,14 @@
 #include <QFileDialog>
 #include <QStandardPaths>
 #include "ZcloudBigData.h"
+#include "ZcloudClient.h"
 
-UploadLicenseDlg::UploadLicenseDlg(QWidget *parent)
-	: QDialog(parent)
+UploadLicenseDlg::UploadLicenseDlg(UserInfoStruct* _userinfo,QWidget *parent)
+	: QDialog(parent)	
 {
 
 	ui.setupUi(this);
+	m_userinfo = _userinfo;
 	//setAttribute(Qt::WA_DeleteOnClose);
 	setWindowTitle(QString::fromLocal8Bit("提示"));
 	setWindowFlags(Qt::FramelessWindowHint | Qt::Tool | Qt::WindowStaysOnTopHint);
@@ -32,6 +34,8 @@ UploadLicenseDlg::UploadLicenseDlg(QWidget *parent)
 	connect(ui.labelUpload, SIGNAL(clicked()), this, SLOT(onOpenFile()));
 	connect(ui.buttonOK, &QPushButton::clicked, this, &UploadLicenseDlg::upload);
 
+	m_strUrl = "";
+
 }
 
 UploadLicenseDlg::~UploadLicenseDlg()
@@ -45,6 +49,12 @@ bool UploadLicenseDlg::upload()
 		//提交数据
 		//QString strUrl = QString("/param/trade-list");
 		//return ZcloudComFun::httpPost(strUrl, "", 5000, strRet);
+		QString strRet,stUrl;
+		if (ZcloudClient::winHttpUploadImage(m_strFileName, m_userinfo->m_strToken, strRet, stUrl))
+		{
+			m_strUrl = stUrl;
+		}
+		this->accept();
 	}
 
 

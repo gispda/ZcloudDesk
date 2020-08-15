@@ -31,7 +31,7 @@
 #include <QMenu>
 #include <TwobarCodeWidget.h>
 #include "ZcloudEntCenter.h"
-#include "ZcloudClient.h"
+//#include "ZcloudClient.h"
 
 QString zhicloudStrToken;
 QString zhicloudStrUserId;

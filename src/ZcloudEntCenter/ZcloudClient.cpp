@@ -100,13 +100,13 @@ bool ZcloudClient::winHttpUpdatebankInfo(CompanyBankInfo _bankinfo, QString strT
 
 }
 
-bool ZcloudClient::winHttpUploadImage(QString strFile, QString strToken, QString& strRet, QString& strMsg)
+bool ZcloudClient::winHttpUploadImage(QString strFile, QString strToken, QString& strRet, QString& strLicenseUrl)
 {
 	///strFile = "D:\\111.png";
 
 
 
-	QFileInfo fileInfo(strMsg);
+	QFileInfo fileInfo(strFile);
 
 
 
@@ -191,17 +191,17 @@ bool ZcloudClient::winHttpUploadImage(QString strFile, QString strToken, QString
 
 	QJsonObject jdata = obj.take("data").toObject();
 
-	QString url = jdata.take("url").toString();
+	strLicenseUrl = jdata.take("url").toString();
 
 	bool jmsg = false;
-	if (!url.isEmpty())
+	if (!strLicenseUrl.isEmpty())
 	{
 	
-	strMsg = QString::fromLocal8Bit("上传营业执照成功");
+	//strUrl = QString::fromLocal8Bit("上传营业执照成功");
 	jmsg = true;
     }
-	else
-		strMsg = QString::fromLocal8Bit("上传营业执照失败");
+	
+	//	strUrl = QString::fromLocal8Bit("上传营业执照失败");
 	return jmsg;
 }
 

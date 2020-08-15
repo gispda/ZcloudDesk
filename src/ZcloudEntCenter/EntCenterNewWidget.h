@@ -52,6 +52,13 @@ protected:
 
 	private slots:
 	void onShowInfo();
+
+	void JoinStep1();
+
+	bool JoinStep2FinishEntinfo();
+
+	bool DoapplyJoinEnt();
+
 	void onShowMember();
 	void onShowMain();
 	//!¸´ÖÆË°ºÅ
@@ -64,6 +71,7 @@ protected:
 
 private:
 	bool winHttpJoinEnt(QString strToken, QString strComId, QString& strRet);
+	bool winHttpAppealJoinEnt(QString strToken, QString& strRet, QString& strMsg, int& stateCode);
 private:
 
 
@@ -104,6 +112,8 @@ private:
 
 	UserInfoStruct* m_userInfo;
 	EntCenterInfo* m_pEntInfo;
+
+	EntCenterInfo* m_pFinishEntInfo;
 };
 
 #endif // EntCenterNewWidget_H

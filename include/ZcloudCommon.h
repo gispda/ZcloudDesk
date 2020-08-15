@@ -16,8 +16,11 @@ namespace ZcloudComFun
 		int nIsbind;
 		QString strCompany;
 		int nroletype; 
+		QString strRoletype; ///管理员等等
 		QString strcompanyid;
+		QString strTaxno;  
 		bool isbindEnt; ////是否绑定企业
+		int niscurrent;///是否当前
 	};
 
 	enum EN_BTN_TYPE
