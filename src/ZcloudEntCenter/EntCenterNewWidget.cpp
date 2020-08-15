@@ -78,7 +78,7 @@ void EntCenterNewWidget::init(EntCenterInfo*	info){
 }
 void EntCenterNewWidget::onShowInfo(){
 
-	JoinStep1();
+	JoinEntMoreStep();
 
 	mp_EntCenterInfo->show();
 	mp_EntCenterMain->hide();
@@ -649,10 +649,10 @@ void EntCenterNewWidget::showaddCompanyInfoTitle(QString _strcompany, QString _s
 
 
 }
-
+////加入企业，用于正常用户登陆后，无对应企业，或者游客登陆，从注册表中读出税号对应的公司的加入企业操作等等
 ////正常用户打开企业中心后显示的企业并非对应公司的情况下（可能是从注册表税号中比对的信息），对成员管理，企业资料，我的工单等进行操作时候，
 ////首先弹出加入企业温馨提示，
-void EntCenterNewWidget::JoinStep1()
+void EntCenterNewWidget::JoinEntMoreStep()
 {
 	if (m_info.nIsjoin == 0)
 	{
@@ -675,6 +675,7 @@ void EntCenterNewWidget::JoinStep1()
 					if (DoapplyJoinEnt())
 					{
 						////成功递交加入企业申请
+						//ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_TIP, QString::fromLocal8Bit("操作失败"), QString::fromLocal8Bit("\r\n财务负责人姓名不正确！"));
 					}
 					else
 					{

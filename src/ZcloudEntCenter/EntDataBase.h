@@ -129,7 +129,7 @@ public:
 		_strUid = "";
 		_strUsername = "";
 		_strTruename = "";
-		_nrole_type;   //身份id
+		_nrole_type = -1;   //身份id
 		_strJob = "";//用户在这个企业的身份，管理员，财务等
 
 		_strRegisterFulladdress = "";
@@ -188,6 +188,99 @@ public:
 		strUse_address = "";
 		_strLocalTaxnoLs.clear();
 	
+	}
+
+
+	EntCenterInfo operator = (const EntCenterInfo that)
+	{
+		this->_strId = that._strId;
+		this->_strToken = that._strToken;
+		this->_strCompId = that._strCompId;		//!公司编号
+
+		this->_strCompName = that._strCompName;	//!公司名称
+		this->_strTaxNo = that._strTaxNo;		//!税号
+		/////-------------------------新增加
+		this->_strHzsid = that._strHzsid;           ///合作商id
+		this->_strEmail = that._strEmail;          ///企业邮箱
+		this->_nCompanytype = that._nCompanytype;     /////企业类型
+		this->_nTradeid = that._nTradeid;        /////
+		this->_nProvinceid = that._nProvinceid;      ///企业注册地省份id
+		this->_nCityid = that._nCityid;          ////企业注册地市id
+		this->_nAreaid = that._nAreaid;          ////企业注册地区id
+		this->_strAddress = that._strAddress;        ///地址
+		this->_nOfficeProvinceid = that._nOfficeProvinceid;      ///企业办公地省份id
+		this->_nOfficeCityid = that._nOfficeCityid;          ////企业办公地市id
+		this->_nOfficeAreaid = that._nOfficeAreaid;          ////企业办公地区id
+		this->_strOfficeaddress = that._strOfficeaddress;
+
+		this->_nisjoin = that._nisjoin;     ///用户有无绑定企业信息
+
+		this->_nisbinds = that._nisbinds;     //用户有无绑定客户经理
+		this->_nhasadmin = that._nhasadmin;    ///企业有无管理员
+
+		this->_strUid = that._strUid;
+		this->_strUsername = that._strUsername;
+		this->_strTruename = that._strTruename;
+		this->_nrole_type = that._nrole_type;   //身份id
+		this->_strJob = that._strJob;//用户在这个企业的身份，管理员，财务等
+
+		this->_strRegisterFulladdress = that._strRegisterFulladdress;
+		this->_strOfficeFulladdress = that._strOfficeFulladdress;
+
+		this->_strlegalboss = that._strlegalboss;   ///法人
+		this->_strlegalbossmobile = that._strlegalbossmobile;   //法人电话
+		this->_strBankname = that._strBankname;    ///开户行
+		this->_strBankaccount = that._strBankaccount; //开户行账号
+
+
+		this->_oservice.m_businessid = that._oservice.m_businessid;    ///客户经理
+		this->_oservice.m_nAreaId = that._oservice.m_nAreaId;    ///客户经理
+		this->_oservice.m_avatarurl = that._oservice.m_avatarurl;    ///客户经理
+		this->_oservice.m_nCityId = that._oservice.m_nCityId;    ///客户经理
+		this->_oservice.m_nickname = that._oservice.m_nickname;    ///客户经理
+		this->_oservice.m_nProvinceId = that._oservice.m_nProvinceId;    ///客户经理
+		this->_oservice.m_qq = that._oservice.m_qq;    ///客户经理
+		this->_oservice.m_wechat = that._oservice.m_wechat;    ///客户经理
+		this->_oservice.m_sex = that._oservice.m_sex;    ///客户经理
+		this->_oservice.m_strAddress = that._oservice.m_strAddress;    ///客户经理
+		this->_oservice.m_strHzsId = that._oservice.m_strHzsId;    ///客户经理
+		this->_oservice.m_strPhone = that._oservice.m_strPhone;    ///客户经理
+		this->_oservice.m_strTruename = that._oservice.m_strTruename;    ///客户经理
+		this->_oservice.m_strUsername = that._oservice.m_strUsername;    ///客户经理
+
+		////-----------------------------
+		this->_strLogo = that._strLogo;		//!头像图标
+		this->_strLogoPath = that._strLogoPath;	//!头像图标本地地址
+		this->_bIsHxMember = that._bIsHxMember;		//!是否是航信会员
+		this->_nChargeExpire = that._nChargeExpire;			//!服务费到期时间
+		this->_nEndDays = that._nEndDays;			//!航信服务费剩余天数
+		this->_bIsManualFulled = that._bIsManualFulled;			//!是否已经手动完善资料
+		this->_bHasMember = that._bHasMember;			//!当前合作商是否上架会员功能
+		this->_memberList = that._memberList;	//!会员列表
+		this->_nLastSignTime = that._nLastSignTime;			//!最后一次签到时间	
+		this->_nCoin = that._nCoin;			//!云币
+		this->_nCoupon = that._nCoupon;			//!优惠券
+		this->_strCompanyInfoUrl = that._strCompanyInfoUrl;		//!企业资料url
+		this->_strTradeInfoUrl = that._strTradeInfoUrl;		//!交易信息url
+		this->_strFinancialMemberUrl = that._strFinancialMemberUrl;	//!财务成员url
+		this->_strAccountSettingUrl = that._strAccountSettingUrl;	//!账号设置url
+		this->_strRenewUrl = that._strRenewUrl;			//!服务费续费url
+		this->_strMemberInfoUrl = that._strMemberInfoUrl;		//!会员详情url
+		this->_strSignUrl = that._strSignUrl;			//!签到Url
+		this->_strCreateCompanyUrl = that._strCreateCompanyUrl;	//!创建公司url
+		this->_dtServerTime = that._dtServerTime;		//!服务器当前时间
+
+		this->nAdmin = that.nAdmin;
+
+		this->disk_type = that.disk_type;
+		this->strDisk_type = that.strDisk_type;
+
+		this->strLicenseUrl = that.strLicenseUrl;
+
+		this->strUse_address = that.strUse_address;
+		this->_strLocalTaxnoLs = that._strLocalTaxnoLs;
+
+		return *this;
 	}
 
 

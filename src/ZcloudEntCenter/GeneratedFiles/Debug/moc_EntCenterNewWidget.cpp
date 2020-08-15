@@ -20,7 +20,7 @@
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_EntCenterNewWidget_t {
     QByteArrayData data[16];
-    char stringdata0[204];
+    char stringdata0[210];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -33,26 +33,26 @@ QT_MOC_LITERAL(0, 0, 18), // "EntCenterNewWidget"
 QT_MOC_LITERAL(1, 19, 12), // "sigSwitchAcc"
 QT_MOC_LITERAL(2, 32, 0), // ""
 QT_MOC_LITERAL(3, 33, 10), // "onShowInfo"
-QT_MOC_LITERAL(4, 44, 9), // "JoinStep1"
-QT_MOC_LITERAL(5, 54, 22), // "JoinStep2FinishEntinfo"
-QT_MOC_LITERAL(6, 77, 14), // "DoapplyJoinEnt"
-QT_MOC_LITERAL(7, 92, 12), // "onShowMember"
-QT_MOC_LITERAL(8, 105, 10), // "onShowMain"
-QT_MOC_LITERAL(9, 116, 14), // "onCopyBtnClick"
-QT_MOC_LITERAL(10, 131, 16), // "onSwitchBtnClick"
-QT_MOC_LITERAL(11, 148, 11), // "onSwitchAcc"
-QT_MOC_LITERAL(12, 160, 11), // "bLoginByTax"
-QT_MOC_LITERAL(13, 172, 6), // "bOther"
-QT_MOC_LITERAL(14, 179, 17), // "strTaxNo_userName"
-QT_MOC_LITERAL(15, 197, 6) // "strPwd"
+QT_MOC_LITERAL(4, 44, 15), // "JoinEntMoreStep"
+QT_MOC_LITERAL(5, 60, 22), // "JoinStep2FinishEntinfo"
+QT_MOC_LITERAL(6, 83, 14), // "DoapplyJoinEnt"
+QT_MOC_LITERAL(7, 98, 12), // "onShowMember"
+QT_MOC_LITERAL(8, 111, 10), // "onShowMain"
+QT_MOC_LITERAL(9, 122, 14), // "onCopyBtnClick"
+QT_MOC_LITERAL(10, 137, 16), // "onSwitchBtnClick"
+QT_MOC_LITERAL(11, 154, 11), // "onSwitchAcc"
+QT_MOC_LITERAL(12, 166, 11), // "bLoginByTax"
+QT_MOC_LITERAL(13, 178, 6), // "bOther"
+QT_MOC_LITERAL(14, 185, 17), // "strTaxNo_userName"
+QT_MOC_LITERAL(15, 203, 6) // "strPwd"
 
     },
     "EntCenterNewWidget\0sigSwitchAcc\0\0"
-    "onShowInfo\0JoinStep1\0JoinStep2FinishEntinfo\0"
-    "DoapplyJoinEnt\0onShowMember\0onShowMain\0"
-    "onCopyBtnClick\0onSwitchBtnClick\0"
-    "onSwitchAcc\0bLoginByTax\0bOther\0"
-    "strTaxNo_userName\0strPwd"
+    "onShowInfo\0JoinEntMoreStep\0"
+    "JoinStep2FinishEntinfo\0DoapplyJoinEnt\0"
+    "onShowMember\0onShowMain\0onCopyBtnClick\0"
+    "onSwitchBtnClick\0onSwitchAcc\0bLoginByTax\0"
+    "bOther\0strTaxNo_userName\0strPwd"
 };
 #undef QT_MOC_LITERAL
 
@@ -108,7 +108,7 @@ void EntCenterNewWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, i
         switch (_id) {
         case 0: _t->sigSwitchAcc((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< bool(*)>(_a[2])),(*reinterpret_cast< QString(*)>(_a[3])),(*reinterpret_cast< QString(*)>(_a[4]))); break;
         case 1: _t->onShowInfo(); break;
-        case 2: _t->JoinStep1(); break;
+        case 2: _t->JoinEntMoreStep(); break;
         case 3: { bool _r = _t->JoinStep2FinishEntinfo();
             if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = _r; }  break;
         case 4: { bool _r = _t->DoapplyJoinEnt();

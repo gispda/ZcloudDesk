@@ -53,7 +53,7 @@ protected:
 	private slots:
 	void onShowInfo();
 
-	void JoinStep1();
+	void JoinEntMoreStep();
 
 	bool JoinStep2FinishEntinfo();
 
