@@ -14,6 +14,8 @@
 #include "JoinEntWidget.h"
 #include "ZcloudCommon.h"
 #include "EditEntInfoWidget.h"
+#include "SwitchAccNewWidget.h"
+
 
 
 class EntCenterNewWidget : public QWidget
@@ -107,8 +109,9 @@ private:
 	EntCenterInfoWidget* mp_EntCenterInfo;
 	EntCenterMainWidget* mp_EntCenterMain;
 
-	SwitchAccWidget*	pWidget;
+	//SwitchAccWidget*	pWidget;
 
+	SwitchAccNewWidget* pSwitchWidget;
 
 	UserInfoStruct* m_userInfo;
 	EntCenterInfo* m_pEntInfo;

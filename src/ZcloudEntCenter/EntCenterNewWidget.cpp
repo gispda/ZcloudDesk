@@ -59,7 +59,7 @@ EntCenterNewWidget::EntCenterNewWidget(EntCenterInfo* pEntInfo, UserInfoStruct* 
 
 
 
-	pWidget = NULL;
+	pSwitchWidget = NULL;
 
 	m_pJoinEntWidget = NULL;
 	m_pFinishEntInfo = NULL;
@@ -344,16 +344,25 @@ void EntCenterNewWidget ::onCopyBtnClick()
 
 void EntCenterNewWidget ::onSwitchBtnClick()
 {
-	if (pWidget == NULL)
-	{
-		pWidget = new SwitchAccWidget(m_userInfo->m_strUserId, m_userInfo->m_strToken, m_userInfo->m_strUsername, m_userInfo->m_strCompanyId, this);
-		connect(pWidget, SIGNAL(sigSwitchAcc(int, bool, QString, QString)), this, SLOT(onSwitchAcc(int, bool, QString, QString)));
+	//if (pSwitchWidget == NULL)
+	//{
+		//pWidget = new SwitchAccWidget(m_userInfo->m_strUserId, m_userInfo->m_strToken, m_userInfo->m_strUsername, m_userInfo->m_strCompanyId, this);
+		
+		pSwitchWidget = new SwitchAccNewWidget(m_userInfo, m_pEntInfo,this);
+			pSwitchWidget->setAttribute(Qt::WA_DeleteOnClose);
+		
+		connect(pSwitchWidget, SIGNAL(sigSwitchAcc(int, bool, QString, QString)), this, SLOT(onSwitchAcc(int, bool, QString, QString)));
 		//connect(this, SIGNAL(sigSwitchAcc(int, bool, QString, QString)), this, SLOT(onSwitchAcc(int, bool, QString, QString)));
 
-		pWidget->setAttribute(Qt::WA_DeleteOnClose);
-	}
-	pWidget->show();
-	ZcloudBigDataInterface::GetInstance()->produceData("M00", "OP001", "BBC010");
+		pSwitchWidget->setAttribute(Qt::WA_DeleteOnClose);
+
+
+
+	//}
+	pSwitchWidget->show();
+
+
+	//ZcloudBigDataInterface::GetInstance()->produceData("M00", "OP001", "BBC010");
 }
 
 void EntCenterNewWidget::onSwitchAcc(int bLoginByTax, bool bOther, QString strTaxNo_userName, QString strPwd)

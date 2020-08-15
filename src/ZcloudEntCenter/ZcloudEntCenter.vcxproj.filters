@@ -170,6 +170,12 @@
     <ClCompile Include="ZcloudClient.cpp">
       <Filter>EntInfo</Filter>
     </ClCompile>
+    <ClCompile Include="SwitchAccNewWidget.cpp">
+      <Filter>SwitchAcc</Filter>
+    </ClCompile>
+    <ClCompile Include="TwobarCodeWidget.cpp">
+      <Filter>SwitchAcc</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="EntCenterWidget.h">
@@ -298,6 +304,12 @@
     <QtMoc Include="ZcloudClient.h">
       <Filter>EntInfo</Filter>
     </QtMoc>
+    <QtMoc Include="SwitchAccNewWidget.h">
+      <Filter>SwitchAcc</Filter>
+    </QtMoc>
+    <QtMoc Include="TwobarCodeWidget.h">
+      <Filter>SwitchAcc</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="EntInfoDataDefine.h">
@@ -414,6 +426,9 @@
     <ClInclude Include="GeneratedFiles\ui_JoinEntWidget.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_SwitchAccNewWidget.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="ZcloudEntCenterImpl.h">
@@ -525,6 +540,12 @@
     </QtUic>
     <QtUic Include="InfoCenterWidget.ui">
       <Filter>EntInfo</Filter>
+    </QtUic>
+    <QtUic Include="SwitchAccNewWidget.ui">
+      <Filter>SwitchAcc</Filter>
+    </QtUic>
+    <QtUic Include="TwobarCodeWidget.ui">
+      <Filter>SwitchAcc</Filter>
     </QtUic>
   </ItemGroup>
 </Project>

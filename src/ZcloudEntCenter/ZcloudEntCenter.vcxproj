@@ -168,6 +168,8 @@
     <ClCompile Include="ModifyMemberWidget.cpp" />
     <ClCompile Include="ModifyPwdWidget.cpp" />
     <ClCompile Include="ModifyUserInfoWidget.cpp" />
+    <ClCompile Include="SwitchAccNewWidget.cpp" />
+    <ClCompile Include="TwobarCodeWidget.cpp" />
     <ClCompile Include="UploadLicense.cpp" />
     <ClCompile Include="UserCenterAccWidget.cpp" />
     <ClCompile Include="UserCenterMainWidget.cpp" />
@@ -227,6 +229,8 @@
     <QtUic Include="ModifyMemberWidget.ui" />
     <QtUic Include="ModifyPwdWidget.ui" />
     <QtUic Include="ModifyUserInfoWidget.ui" />
+    <QtUic Include="SwitchAccNewWidget.ui" />
+    <QtUic Include="TwobarCodeWidget.ui" />
     <QtUic Include="UploadLicenseDlg.ui" />
     <QtUic Include="UserCenterAccWidget.ui" />
     <QtUic Include="UserCenterMainWidget.ui" />
@@ -305,6 +309,7 @@
     <ClInclude Include="GeneratedFiles\ui_ModifyPwdWidget.h" />
     <ClInclude Include="GeneratedFiles\ui_ModifyUserInfoWidget.h" />
     <ClInclude Include="GeneratedFiles\ui_SetPwdWidget.h" />
+    <ClInclude Include="GeneratedFiles\ui_SwitchAccNewWidget.h" />
     <ClInclude Include="GeneratedFiles\ui_SwitchAccWidget.h" />
     <ClInclude Include="GeneratedFiles\ui_UploadLicenseDlg.h" />
     <ClInclude Include="GeneratedFiles\ui_UserCenterAccWidget.h" />
@@ -315,6 +320,14 @@
     <ClInclude Include="GeneratedFiles\ui_WorkerDetailWidget.h" />
     <ClInclude Include="GeneratedFiles\ui_WorkerItemWidget.h" />
     <ClInclude Include="GeneratedFiles\ui_WorkersWidget.h" />
+    <QtMoc Include="SwitchAccNewWidget.h">
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(QTDIR)\include;.\..\..\include;$(QTDIR)\include\QtWebKit;$(QTDIR)\include\QtWebkitWidgets;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtSql;$(QTDIR)\include\QtWidgets</IncludePath>
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(QTDIR)\include;.\..\..\include;$(QTDIR)\include\QtWebKit;$(QTDIR)\include\QtWebkitWidgets;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtSql;$(QTDIR)\include\QtWidgets</IncludePath>
+    </QtMoc>
+    <QtMoc Include="TwobarCodeWidget.h">
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(QTDIR)\include;.\..\..\include;$(QTDIR)\include\QtWebKit;$(QTDIR)\include\QtWebkitWidgets;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtSql;$(QTDIR)\include\QtWidgets</IncludePath>
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(QTDIR)\include;.\..\..\include;$(QTDIR)\include\QtWebKit;$(QTDIR)\include\QtWebkitWidgets;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtSql;$(QTDIR)\include\QtWidgets</IncludePath>
+    </QtMoc>
     <ClInclude Include="WorkerDataBase.h">
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(QTDIR)\include;.\..\..\include;$(QTDIR)\include\QtWebKit;$(QTDIR)\include\QtWebkitWidgets;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtSql;$(QTDIR)\include\QtWidgets</IncludePath>
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(QTDIR)\include;.\..\..\include;$(QTDIR)\include\QtWebKit;$(QTDIR)\include\QtWebkitWidgets;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtSql;$(QTDIR)\include\QtWidgets</IncludePath>
