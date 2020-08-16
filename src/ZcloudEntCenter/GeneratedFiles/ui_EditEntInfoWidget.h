@@ -30,7 +30,6 @@ public:
     QWidget *verticalLayoutWidget;
     QVBoxLayout *verticalLayout;
     QWidget *widget;
-	QPushButton *nextbutton;
     QComboBox *comboBoxArea;
     QLineEdit *lineEditAddress;
     QLabel *label_10;
@@ -59,7 +58,7 @@ public:
     QLineEdit *lineEditPhone;
     QLabel *label_4;
     QLabel *labelPhoneError;
-    
+    QPushButton *nextbutton;
 
     void setupUi(QWidget *EditEntInfoWidget)
     {

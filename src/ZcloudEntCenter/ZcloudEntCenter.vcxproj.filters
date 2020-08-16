@@ -176,6 +176,9 @@
     <ClCompile Include="TwobarCodeWidget.cpp">
       <Filter>SwitchAcc</Filter>
     </ClCompile>
+    <ClCompile Include="EntAppealDlg.cpp">
+      <Filter>EntInfo</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="EntCenterWidget.h">
@@ -309,6 +312,9 @@
     </QtMoc>
     <QtMoc Include="TwobarCodeWidget.h">
       <Filter>SwitchAcc</Filter>
+    </QtMoc>
+    <QtMoc Include="EntAppealDlg.h">
+      <Filter>EntInfo</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>
@@ -546,6 +552,9 @@
     </QtUic>
     <QtUic Include="TwobarCodeWidget.ui">
       <Filter>SwitchAcc</Filter>
+    </QtUic>
+    <QtUic Include="EntAppealDlg.ui">
+      <Filter>EntInfo</Filter>
     </QtUic>
   </ItemGroup>
 </Project>

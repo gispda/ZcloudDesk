@@ -5,12 +5,12 @@
 #include "EntInfoDataDefine.h"
 #include "Database.h"
 
-class CreateEntInfoWidget : public QDialog
+class CreateEntInfoWidget : public QWidget
 {
 	Q_OBJECT
 
 public:
-	CreateEntInfoWidget(QString strUid, QString strToken, QWidget *parent = 0);
+	CreateEntInfoWidget(UserInfoStruct* _userinfo, QString strUid, QString strToken, QWidget *parent = 0);
 	~CreateEntInfoWidget();
 
 signals:
@@ -22,11 +22,20 @@ private slots:
 	void onProOfficeIndexChanged(int index);
 	void onCityOfficeIndexChanged(int index);
 	void onAreaOfficeIndexChanged(int index);
-	void onAddressEditingFinished();
-	void onAddressOfficeEditingFinished();
-	void onLegalPeasonEditingFinished();
-	void onPhoneEditingFinished();
-	void onEditOkBtnClick();
+
+
+	bool onCheckEntName();
+	bool onCheckEntCode();
+
+	bool onCheckAddress();
+	bool onCheckAddressOffice();
+
+	bool onCheckArea();
+	bool onCheckAreaOffice();
+
+	bool onCheckLegalPeason();
+	bool onCheckPhone();
+
 	void onSearchkBtnClick();
 	void onRadioBtnAddressRegClick();
 	void onRadioBtnAddressNewClick();
@@ -44,18 +53,16 @@ private:
 	bool showAreaData(QComboBox* pComBoBox,int nCode);
 	//!获取省市区
 	bool winHttpGetAreaList(int code,QString& strRet);
+	bool initProData();
 	//!更新企业资料
-	bool winHttpCreateCompanyInfo(QString strUid,QString strToken,QString& strRet);
+	bool winHttpCreateCompanyInfo(QString strUid, QString strToken, stEntInfo* m_stEntInfo, QString& strRet);
 	Ui::CreateEntInfoWidget ui;
-	stEntInfo m_stEntInfo;
+	
+	UserInfoStruct* m_userinfo;
 	//QString	m_strUid;
 	//QString	m_strToken;
 
-	bool	m_bCompany = true;
-	bool	m_bArea = true;
-	bool	m_bAddress = true;
-	bool	m_bLegalPeason = true;
-	bool	m_bPhone = true;
+
 
 
 

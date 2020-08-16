@@ -830,6 +830,8 @@ bool EntCenterNewWidget::JoinStep2FinishEntinfo()
 		else
 			return false;
 	}
+	else
+		return false;
 }
 
 bool EntCenterNewWidget::JoinStep2AppealGetEntInfo()
@@ -850,6 +852,8 @@ bool EntCenterNewWidget::JoinStep2AppealGetEntInfo()
 		else
 			return false;
 	}
+	else
+		return false;
 }
 
 void EntCenterNewWidget::DoAppealEnt()

@@ -5,7 +5,6 @@
 #include "DefaultVipWidget.h"
 #include "JoinEntWidget.h"
 #include "CreateEntInfoWidget.h"
-#include "UploadLicenseDlg.h"
 #include "WorkersWidget.h"
 
 ZcloudEntCenterImpl::ZcloudEntCenterImpl()
@@ -18,10 +17,10 @@ ZcloudEntCenterImpl::~ZcloudEntCenterImpl()
 }
 
 void ZcloudEntCenterImpl::createEntCenter(QString strUid, QString strToken){
-	CreateEntInfoWidget* pEntComWidget = new CreateEntInfoWidget(strUid,  strToken);
+	CreateEntInfoWidget* pEntComWidget = new CreateEntInfoWidget(&this->m_userInfo,strUid,  strToken);
 	pEntComWidget->setAttribute(Qt::WA_DeleteOnClose);
 	//pEntComWidget->show();
-	pEntComWidget->exec();
+	pEntComWidget->show();
 	
 
 	//int result = ZcloudComFun::openMessageTipDlg_2(ZcloudComFun::EN_BINDING, QString::fromLocal8Bit("创建失败"), QString::fromLocal8Bit("该企业已绑定管理员，您可以联系企业管理员将您\r\n添加到企业成员，或申述成为该企业管理员"), QString::fromLocal8Bit("申述"), QString::fromLocal8Bit("取消"));

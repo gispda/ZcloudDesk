@@ -4,33 +4,46 @@
 #include <QJsonObject>
 #include <QJsonArray>
 #include "ZcloudBigData.h"
+#include <QGraphicsDropShadowEffect>
+#include "EntAppealDlg.h"
 
-CreateEntInfoWidget::CreateEntInfoWidget(QString strUid, QString strToken, QWidget *parent)
-	: m_strUid(strUid), m_strToken(strToken), QDialog(parent)
+CreateEntInfoWidget::CreateEntInfoWidget(UserInfoStruct* _userinfo,QString strUid, QString strToken, QWidget *parent)
+	:m_userinfo(_userinfo), m_strUid(strUid), m_strToken(strToken), QWidget(parent)
 {
 	ui.setupUi(this);
 
 
+
+	ui.setupUi(this);
 	setWindowTitle(QString::fromLocal8Bit("创建新企业"));
-	setAttribute(Qt::WA_DeleteOnClose);
-	setObjectName("createtEntInfo");
-	setAttribute(Qt::WA_ShowModal, true);
-
-
 	setWindowFlags(Qt::FramelessWindowHint | Qt::Tool);
-	setAttribute(Qt::WA_TranslucentBackground, false);
-	setWindowModality(Qt::WindowModal);
+	setAttribute(Qt::WA_TranslucentBackground, true);
+	setAttribute(Qt::WA_ShowModal, true);
 	setStyleSheet("outline: none");
 
+	QGraphicsDropShadowEffect *shadow = new QGraphicsDropShadowEffect(this);			//阴影模糊度
+	//设置阴影距离
+	shadow->setOffset(0, 0);
+	//设置阴影颜色
+	shadow->setColor(QColor("#666666"));
+	//设置阴影圆角
+	shadow->setBlurRadius(8);
+	//给嵌套QWidget设置阴影
+	this->setGraphicsEffect(shadow);
+
+	ui.widget_4->resize(540,390);
+	this->resize(542, 392);
+	//this->setGeometry(rect.x(), rect.y(), 540, 420);
+	ui.widgetAddressOffice->hide();
 
 	connect(ui.closeButton, &QPushButton::clicked, [this](){
 		close();
 	});
 
 	
-
-	showAreaData(ui.comboBoxPro, 0);
-	showAreaData(ui.comboBoxProOffice, 0);
+	initProData();
+	//showAreaData(ui.comboBoxPro, 0);
+	//showAreaData(ui.comboBoxProOffice, 0);
 
 	
 
@@ -56,7 +69,8 @@ CreateEntInfoWidget::CreateEntInfoWidget(QString strUid, QString strToken, QWidg
 	//ui.comboBoxAreaOffice->setDisabled(true);
 	//ui.lineEditAddressOffice->setDisabled(true);
 
-	ui.labelCompanyNotFound->hide();
+	ui.labelCompNameErr->hide();
+	ui.labelCompCodeErr->hide();
 	ui.labelAreaError->hide();
 	ui.labelAddressError->hide();
 	ui.labelAreaOfficeError->hide();
@@ -75,11 +89,18 @@ CreateEntInfoWidget::CreateEntInfoWidget(QString strUid, QString strToken, QWidg
 	connect(ui.radioButtonAddressReg, SIGNAL(clicked()), this, SLOT(onRadioBtnAddressRegClick()));
 	connect(ui.radioButtonAddressNew, SIGNAL(clicked()), this, SLOT(onRadioBtnAddressNewClick()));
 
-	connect(ui.lineEditAddress, &QLineEdit::editingFinished, this, &CreateEntInfoWidget::onAddressEditingFinished);
-	connect(ui.lineEditAddressOffice, &QLineEdit::editingFinished, this, &CreateEntInfoWidget::onAddressOfficeEditingFinished);
-	connect(ui.lineEditLegalPeasonName, &QLineEdit::editingFinished, this, &CreateEntInfoWidget::onLegalPeasonEditingFinished);
-	connect(ui.lineEditPhone, &QLineEdit::editingFinished, this, &CreateEntInfoWidget::onPhoneEditingFinished);
-	connect(ui.buttonOK, &QPushButton::clicked, this, &CreateEntInfoWidget::onEditOkBtnClick);
+
+	connect(ui.lineEditCompanyName, &QLineEdit::editingFinished, this, &CreateEntInfoWidget::onCheckEntName);
+	connect(ui.lineEditSocietyCode, &QLineEdit::editingFinished, this, &CreateEntInfoWidget::onCheckEntCode);
+
+	connect(ui.lineEditAddress, &QLineEdit::editingFinished, this, &CreateEntInfoWidget::onCheckAddress);
+	connect(ui.lineEditAddressOffice, &QLineEdit::editingFinished, this, &CreateEntInfoWidget::onCheckAddressOffice);
+
+	connect(ui.lineEditLegalPeasonName, &QLineEdit::editingFinished, this, &CreateEntInfoWidget::onCheckLegalPeason);
+	connect(ui.lineEditPhone, &QLineEdit::editingFinished, this, &CreateEntInfoWidget::onCheckPhone);
+	connect(ui.buttonOK, &QPushButton::clicked, this, &CreateEntInfoWidget::onOkBtnClick);
+	connect(ui.buttonCancel, &QPushButton::clicked, this, &CreateEntInfoWidget::close);
+
 }
 
 CreateEntInfoWidget::~CreateEntInfoWidget()
@@ -95,330 +116,38 @@ void CreateEntInfoWidget::onSearchkBtnClick(){
 
 void CreateEntInfoWidget::onOkBtnClick()
 {
-	
-	QString strRet;
-	//根据新接口修改上传内容
-	//if (!winHttpUpdateCompanyInfo(m_strUid, m_strToken, m_stEntInfo._nTradeId, m_stEntInfo._nProId, m_stEntInfo._nCityId, m_stEntInfo._nAreaId, ui.lineEditLegalPeason->text(), ui.lineEditPhone->text(), strRet))
-	//{
-	//	ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_TIP, QString::fromLocal8Bit("操作失败"), QString::fromLocal8Bit("\r\n更新企业资料失败，请稍后再试！"));
-	//	return;
-	//}
-	
-}
 
-
-void CreateEntInfoWidget::onRadioBtnAddressRegClick(){
-	ui.widgetAddressOffice->hide();
-	adjustSize();
-}
-void CreateEntInfoWidget::onRadioBtnAddressNewClick(){
-	 ui.widgetAddressOffice->show();
-	adjustSize();
-}
-
-
-bool CreateEntInfoWidget::winHttpGetAreaList(int code, QString& strRet)
-{
-	QString strUrl = QString("/param/get-region-by-code?code=%1").arg(code);
-	return ZcloudComFun::httpPost(strUrl, "", 5000, strRet);
-}
-
-void CreateEntInfoWidget::onProIndexChanged(int index)
-{
-	if (index == -1)
-	{
+	if (!this->onCheckEntName()){
+		ui.labelCompNameErr->show();
 		return;
 	}
-	ui.comboBoxCity->clear();
-	ui.comboBoxArea->clear();
-	int nCode = ui.comboBoxPro->itemData(index).toInt();
-	m_stEntInfo.m_registerAddress._nProId = nCode;
-	m_stEntInfo.m_registerAddress._strPro = ui.comboBoxPro->currentText();
-	showAreaData(ui.comboBoxCity, nCode);
-	if (m_stEntInfo.m_registerAddress._nProId == -999)
-	{
-		ui.labelAreaError->show();
-	}
-	else
-	{
-		ui.labelAreaError->hide();
-	}
-}
-
-void CreateEntInfoWidget::onProOfficeIndexChanged(int index)
-{
-	if (index == -1)
-	{
+	if (!this->onCheckEntCode()){
+		ui.labelCompCodeErr->show();
 		return;
 	}
-	ui.comboBoxCityOffice->clear();
-	ui.comboBoxAreaOffice->clear();
-	int nCode = ui.comboBoxProOffice->itemData(index).toInt();
-	m_stEntInfo.m_officeAddress._nProId = nCode;
-	m_stEntInfo.m_officeAddress._strPro = ui.comboBoxProOffice->currentText();
-	showAreaData(ui.comboBoxCityOffice, nCode);
-	if (m_stEntInfo.m_officeAddress._nProId == -999)
-	{
-		ui.labelAreaOfficeError->show();
-	}
-	else
-	{
-		ui.labelAreaOfficeError->hide();
-	}
-}
-
-void CreateEntInfoWidget::onCityIndexChanged(int index)
-{
-	if (index == -1)
-	{
-		return;
-	}
-	ui.comboBoxArea->clear();
-	int nCode = ui.comboBoxCity->itemData(index).toInt();
-	m_stEntInfo.m_registerAddress._nCityId = nCode;
-	m_stEntInfo.m_registerAddress._strCity = ui.comboBoxCity->currentText();
-	showAreaData(ui.comboBoxArea, nCode);
-	if (m_stEntInfo.m_registerAddress._nCityId == -999)
-	{
-		ui.labelAreaError->show();
-	}
-	else
-	{
-		ui.labelAreaError->hide();
-	}
-}
-
-
-void CreateEntInfoWidget::onCityOfficeIndexChanged(int index)
-{
-	if (index == -1)
-	{
-		return;
-	}
-	ui.comboBoxAreaOffice->clear();
-	int nCode = ui.comboBoxCityOffice->itemData(index).toInt();
-	m_stEntInfo.m_officeAddress._nCityId = nCode;
-	m_stEntInfo.m_officeAddress._strCity = ui.comboBoxCityOffice->currentText();
-	showAreaData(ui.comboBoxAreaOffice, nCode);
-	if (m_stEntInfo.m_officeAddress._nCityId == -999)
-	{
-		ui.labelAreaOfficeError->show();
-	}
-	else
-	{
-		ui.labelAreaOfficeError->hide();
-	}
-}
-
-
-
-
-
-void CreateEntInfoWidget::onLegalPeasonEditingFinished()
-{
-	QRegExp	reg(".{2,15}");
-	QString strText = ui.lineEditLegalPeasonName->text();
-	if (strText.isEmpty())
-	{
-		m_bLegalPeason = true;
-		ui.labelLegalPeasonError->hide();
-		return;
-	}
-	if (!reg.exactMatch(strText))
-	{
-		m_bLegalPeason = false;
-		ui.labelLegalPeasonError->show();
-	}
-	else
-	{
-		m_bLegalPeason = true;
-		ui.labelLegalPeasonError->hide();
-	}
-}
-
-void CreateEntInfoWidget::onAddressEditingFinished()
-{
-	QRegExp	reg(".{5,100}");
-	QString strText = ui.lineEditAddress->text();
-	if (strText.isEmpty())
-	{
-		m_bAddress = true;
-		ui.labelAddressError->hide();
-		return;
-	}
-	if (!reg.exactMatch(strText))
-	{
-		m_bAddress = false;
+	if (!this->onCheckArea()){
 		ui.labelAddressError->show();
-	}
-	else
-	{
-		m_bAddress = true;
-		ui.labelAddressError->hide();
-	}
-}
-
-
-void CreateEntInfoWidget::onAddressOfficeEditingFinished()
-{
-	QRegExp	reg(".{5,100}");
-	QString strText = ui.lineEditAddressOffice->text();
-	if (strText.isEmpty())
-	{
-		m_bAddress = true;
-		ui.labelAddressOfficeError->hide();
 		return;
 	}
-	if (!reg.exactMatch(strText))
-	{
-		m_bAddress = false;
+	if (!this->onCheckAddress()){
+		ui.labelAddressError->show();
+		return;
+	}
+	if (!this->onCheckAreaOffice()){
 		ui.labelAddressOfficeError->show();
-	}
-	else
-	{
-		m_bAddress = true;
-		ui.labelAddressOfficeError->hide();
-	}
-}
-
-
-void CreateEntInfoWidget::onPhoneEditingFinished()
-{
-	QRegExp reg("^1\\d{10}$");
-	QString strText = ui.lineEditPhone->text();
-	if (strText.isEmpty())
-	{
-		m_bPhone = true;
-		ui.labelPhoneError->hide();
-		return;
-	}
-	if (!reg.exactMatch(strText))
-	{
-		m_bPhone = false;
-		ui.labelPhoneError->show();
-	}
-	else
-	{
-		m_bPhone = true;
-		ui.labelPhoneError->hide();
-	}
-}
-
-bool CreateEntInfoWidget::showAreaData(QComboBox* pComBoBox, int nCode)
-{
-	pComBoBox->insertItem(0,QString::fromLocal8Bit("不限"));
-	pComBoBox->setItemData(0,-999);
-	QString strRet;
-	if (!winHttpGetAreaList(nCode, strRet))
-	{
-		return false;
-	}
-	QByteArray byte_array = strRet.toUtf8();
-	QJsonParseError json_error;
-	QJsonDocument parse_doucment = QJsonDocument::fromJson(byte_array, &json_error);
-	if (json_error.error != QJsonParseError::NoError)
-	{
-		return false;
-	}
-	if (!parse_doucment.isObject())
-	{
-		return false;
-	}
-	QJsonObject obj = parse_doucment.object();
-	int status = obj.take("status").toInt();
-	if (0 != status)
-	{
-		return false;
-	}
-	QJsonValue list = obj.take("data");
-	if (!list.isArray())
-	{
-		return false;
-	}
-
-	QJsonArray listArray = list.toArray();
-	int nSize = listArray.size();
-	for (int nIndex = 0; nIndex < nSize; ++nIndex)
-	{
-		QJsonObject dataList = listArray.at(nIndex).toObject();
-		int nId = dataList.take("id").toInt();
-		QString strName = dataList.take("region_name").toString();
-		pComBoBox->insertItem(nIndex + 1, strName);
-		pComBoBox->setItemData(nIndex+1, nId);
-	}
-	return true;
-}
-
-void CreateEntInfoWidget::onAreaIndexChanged(int index)
-{
-	int nCode = ui.comboBoxArea->itemData(index).toInt();
-	
-	m_stEntInfo.m_registerAddress._nAreaId = nCode;
-
-	if (m_stEntInfo.m_registerAddress._nAreaId == -999)
-	{
-		ui.labelAreaError->show();
-	}
-	else
-	{
-		ui.labelAreaError->hide();
-	}
-	m_stEntInfo.m_registerAddress._strArea = ui.comboBoxArea->currentText();
-}
-
-
-void CreateEntInfoWidget::onAreaOfficeIndexChanged(int index)
-{
-	int nCode = ui.comboBoxAreaOffice->itemData(index).toInt();
-	m_stEntInfo.m_officeAddress._nAreaId = nCode;
-	if (m_stEntInfo.m_officeAddress._nAreaId == -999)
-	{
-		ui.labelAreaOfficeError->show();
-	}
-	else
-	{
-		ui.labelAreaOfficeError->hide();
-	}
-	m_stEntInfo.m_officeAddress._strArea = ui.comboBoxAreaOffice->currentText();
-}
-
-void CreateEntInfoWidget::onEditOkBtnClick()
-{
-	if (ui.lineEditCompanyName->text().isEmpty()){
-		ui.labelCompanyNotFound->show();
-		return;
-	}
-	if (ui.lineEditSocietyCode->text().isEmpty()){
-		ui.labelCompanyNotFound->show();
 		return;
 	}
 
-	if (!m_bAddress)
-	{
-		ui.labelAddressError->show();
-	}	
-	if (!m_bLegalPeason)
-	{
+	if (!this->onCheckAddressOffice()){
+		ui.labelAddressOfficeError->show();
+		return;
+	}
+	if (!this->onCheckLegalPeason()){
 		ui.labelLegalPeasonError->show();
+		return;
 	}
-	if (!m_bPhone)
-	{
+	if (!this->onCheckPhone()){
 		ui.labelPhoneError->show();
-	}
-	if (!m_bAddress || !m_bPhone || !m_bLegalPeason)
-	{
-		return;
-	}
-
-	if (m_stEntInfo.m_registerAddress._nProId == -999 || m_stEntInfo.m_registerAddress._nCityId == -999 || m_stEntInfo.m_registerAddress._nAreaId == -999)
-	{
-		ui.labelAreaError->show();
-		return;
-	}
-
-	if (m_stEntInfo.m_officeAddress._nProId == -999 || m_stEntInfo.m_officeAddress._nCityId == -999 || m_stEntInfo.m_officeAddress._nAreaId == -999)
-	{
-		ui.labelAreaOfficeError->show();
 		return;
 	}
 
@@ -468,16 +197,394 @@ void CreateEntInfoWidget::onEditOkBtnClick()
 			ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_TIP, QString::fromLocal8Bit("操作失败"), QString::fromLocal8Bit("\r\n更新企业资料失败，请稍后再试！"));
 		}
 	}
+	
 }
 
-bool CreateEntInfoWidget::winHttpCreateCompanyInfo(QString strUid, QString strToken, QString& strRet)
+
+void CreateEntInfoWidget::onRadioBtnAddressRegClick(){
+
+	QRect rect = this->geometry();
+	ui.widgetAddressOffice->hide();
+	ui.widget_4->resize(540, 390);
+	this->resize(542, 402);
+	//adjustSize();
+}
+void CreateEntInfoWidget::onRadioBtnAddressNewClick(){
+	QRect rect = this->geometry();
+	//this->setGeometry(rect.x(), rect.y(), 540, 480);
+
+	ui.widgetAddressOffice->show();
+	ui.widget_4->resize(540, 480);
+	this->resize(542, 482);
+
+	//adjustSize();
+}
+
+
+bool CreateEntInfoWidget::winHttpGetAreaList(int code, QString& strRet)
+{
+	QString strUrl = QString("/param/get-region-by-code?code=%1").arg(code);
+	return ZcloudComFun::httpPost(strUrl, "", 5000, strRet);
+}
+
+void CreateEntInfoWidget::onProIndexChanged(int index)
+{
+	if (index == -1)
+	{
+		return;
+	}
+	ui.comboBoxCity->clear();
+	ui.comboBoxArea->clear();
+	int nCode = ui.comboBoxPro->itemData(index).toInt();
+	showAreaData(ui.comboBoxCity, nCode);
+
+}
+
+void CreateEntInfoWidget::onProOfficeIndexChanged(int index)
+{
+	if (index == -1)
+	{
+		return;
+	}
+	ui.comboBoxCityOffice->clear();
+	ui.comboBoxAreaOffice->clear();
+	int nCode = ui.comboBoxProOffice->itemData(index).toInt();
+
+	showAreaData(ui.comboBoxCityOffice, nCode);
+
+}
+
+void CreateEntInfoWidget::onCityIndexChanged(int index)
+{
+	if (index == -1)
+	{
+		return;
+	}
+	ui.comboBoxArea->clear();
+	int nCode = ui.comboBoxCity->itemData(index).toInt();
+	showAreaData(ui.comboBoxArea, nCode);
+
+}
+
+
+void CreateEntInfoWidget::onCityOfficeIndexChanged(int index)
+{
+	if (index == -1)
+	{
+		return;
+	}
+	ui.comboBoxAreaOffice->clear();
+	int nCode = ui.comboBoxCityOffice->itemData(index).toInt();
+	showAreaData(ui.comboBoxAreaOffice, nCode);
+}
+
+
+
+
+
+bool CreateEntInfoWidget::onCheckLegalPeason()
+{
+	QRegExp	reg(".{2,15}");
+	QString strText = ui.lineEditLegalPeasonName->text().trimmed();
+	if (strText.isEmpty())
+	{
+		ui.labelLegalPeasonError->hide();
+		return false;
+	}
+	if (!reg.exactMatch(strText))
+	{
+		ui.labelLegalPeasonError->show();
+		return false;
+	}
+	else
+	{
+		ui.labelLegalPeasonError->hide();
+		return true;
+	}
+}
+
+bool CreateEntInfoWidget::onCheckArea()
+{
+
+	QString strArea = ui.comboBoxArea->currentText();
+	if (strArea.isEmpty() || strArea == QString::fromLocal8Bit("不限"))
+	{
+		ui.labelAreaError->show();
+		return false;
+	}
+	else
+	{
+		ui.labelAreaError->hide();
+		return true;
+	}
+}
+
+bool CreateEntInfoWidget::onCheckAreaOffice()
+{
+	if (!ui.radioButtonAddressNew->isChecked()){
+		ui.labelAreaOfficeError->hide();
+		return true;
+	}
+	QString strArea = ui.comboBoxAreaOffice->currentText();
+	if (strArea.isEmpty() || strArea==QString::fromLocal8Bit("不限"))
+	{
+		ui.labelAreaOfficeError->show();
+		return false;
+	}
+	else
+	{
+		ui.labelAreaOfficeError->hide();
+		return true;
+	}
+}
+
+
+bool CreateEntInfoWidget::onCheckAddressOffice()
+{
+	if (!ui.radioButtonAddressNew->isChecked()){
+		ui.labelAddressOfficeError->hide();
+		return true;
+	}
+	QRegExp	reg(".{5,100}");
+	QString strText = ui.lineEditAddressOffice->text().trimmed();
+	if (strText.isEmpty())
+	{
+		ui.labelAddressOfficeError->hide();
+		return false;
+	}
+	if (!reg.exactMatch(strText))
+	{
+		ui.labelAddressOfficeError->show();
+		return false;
+	}
+	else
+	{
+		ui.labelAddressOfficeError->hide();
+		return true;
+	}
+}
+
+
+bool CreateEntInfoWidget::onCheckAddress()
+{
+	QRegExp	reg(".{5,100}");
+	QString strText = ui.lineEditAddress->text().trimmed();
+	if (strText.isEmpty())
+	{
+		ui.labelAddressError->hide();
+		return false;
+	}
+	if (!reg.exactMatch(strText))
+	{
+		ui.labelAddressError->show();
+		return false;
+	}
+	else
+	{
+		ui.labelAddressError->hide();
+		return true;
+	}
+}
+bool CreateEntInfoWidget::onCheckEntName(){
+	QRegExp reg(".{2,50}");
+	QString strText = ui.lineEditCompanyName->text().trimmed();
+	if (strText.isEmpty())
+	{
+		ui.labelCompNameErr->hide();
+		return false;
+	}
+	if (!reg.exactMatch(strText))
+	{
+		ui.labelCompNameErr->show();
+		return false;
+	}
+	else
+	{
+		ui.labelCompNameErr->hide();
+		return true;
+	}
+}
+bool CreateEntInfoWidget::onCheckEntCode(){
+
+	QRegExp reg("^[A-Za-z0-9]{18}$");
+	QString strText = ui.lineEditSocietyCode->text().trimmed();
+	if (strText.isEmpty())
+	{
+		ui.labelCompCodeErr->hide();
+		return false;
+	}
+	if (!reg.exactMatch(strText))
+	{
+		ui.labelCompCodeErr->show();
+		return false;
+	}
+	else
+	{
+		strText = strText.toUpper();
+		ui.lineEditSocietyCode->setText(strText);
+		ui.labelCompCodeErr->hide();
+		return true;
+	}
+}
+
+bool CreateEntInfoWidget::onCheckPhone()
+{
+	QRegExp reg("^(13|14|15|17|18)\\d{9}$");
+	QString strText = ui.lineEditPhone->text().trimmed();
+	if (strText.isEmpty())
+	{
+		ui.labelPhoneError->hide();
+		return false;
+	}
+	if (!reg.exactMatch(strText))
+	{
+		ui.labelPhoneError->show();
+		return false;
+	}
+	else
+	{		
+		ui.labelPhoneError->hide(); 
+		return true;
+	}
+}
+
+
+bool CreateEntInfoWidget::initProData()
+{
+	ui.comboBoxPro->insertItem(0, QString::fromLocal8Bit("不限"));
+	ui.comboBoxPro->setItemData(0, -999);
+	ui.comboBoxProOffice->insertItem(0, QString::fromLocal8Bit("不限"));
+	ui.comboBoxProOffice->setItemData(0, -999);
+	QString strRet;
+	if (!winHttpGetAreaList(0, strRet))
+	{
+		return false;
+	}
+	QByteArray byte_array = strRet.toUtf8();
+	QJsonParseError json_error;
+	QJsonDocument parse_doucment = QJsonDocument::fromJson(byte_array, &json_error);
+	if (json_error.error != QJsonParseError::NoError)
+	{
+		return false;
+	}
+	if (!parse_doucment.isObject())
+	{
+		return false;
+	}
+	QJsonObject obj = parse_doucment.object();
+	int status = obj.take("status").toInt();
+	if (0 != status)
+	{
+		return false;
+	}
+	QJsonValue list = obj.take("data");
+	if (!list.isArray())
+	{
+		return false;
+	}
+
+	QJsonArray listArray = list.toArray();
+	int nSize = listArray.size();
+	for (int nIndex = 0; nIndex < nSize; ++nIndex)
+	{
+		QJsonObject dataList = listArray.at(nIndex).toObject();
+		int nId = dataList.take("id").toInt();
+		QString strName = dataList.take("region_name").toString();
+		ui.comboBoxPro->insertItem(nIndex + 1, strName);
+		ui.comboBoxPro->setItemData(nIndex + 1, nId);
+		ui.comboBoxProOffice->insertItem(nIndex + 1, strName);
+		ui.comboBoxProOffice->setItemData(nIndex + 1, nId);
+
+	}
+	return true;
+}
+
+bool CreateEntInfoWidget::showAreaData(QComboBox* pComBoBox, int nCode)
+{
+	pComBoBox->insertItem(0,QString::fromLocal8Bit("不限"));
+	pComBoBox->setItemData(0,-999);
+	QString strRet;
+	if (!winHttpGetAreaList(nCode, strRet))
+	{
+		return false;
+	}
+	QByteArray byte_array = strRet.toUtf8();
+	QJsonParseError json_error;
+	QJsonDocument parse_doucment = QJsonDocument::fromJson(byte_array, &json_error);
+	if (json_error.error != QJsonParseError::NoError)
+	{
+		return false;
+	}
+	if (!parse_doucment.isObject())
+	{
+		return false;
+	}
+	QJsonObject obj = parse_doucment.object();
+	int status = obj.take("status").toInt();
+	if (0 != status)
+	{
+		return false;
+	}
+	QJsonValue list = obj.take("data");
+	if (!list.isArray())
+	{
+		return false;
+	}
+
+	QJsonArray listArray = list.toArray();
+	int nSize = listArray.size();
+	for (int nIndex = 0; nIndex < nSize; ++nIndex)
+	{
+		QJsonObject dataList = listArray.at(nIndex).toObject();
+		int nId = dataList.take("id").toInt();
+		QString strName = dataList.take("region_name").toString();
+		pComBoBox->insertItem(nIndex + 1, strName);
+		pComBoBox->setItemData(nIndex+1, nId);
+	}
+	return true;
+}
+
+void CreateEntInfoWidget::onAreaIndexChanged(int index)
+{
+	//int nCode = ui.comboBoxArea->itemData(index).toInt();
+	//
+
+	//if (m_stEntInfo.m_registerAddress._nAreaId == -999)
+	//{
+	//	ui.labelAreaError->show();
+	//}
+	//else
+	//{
+	//	ui.labelAreaError->hide();
+	//}
+	//m_stEntInfo.m_registerAddress._strArea = ui.comboBoxArea->currentText();
+}
+
+
+void CreateEntInfoWidget::onAreaOfficeIndexChanged(int index)
+{
+	//int nCode = ui.comboBoxAreaOffice->itemData(index).toInt();
+	//m_stEntInfo.m_officeAddress._nAreaId = nCode;
+	//if (m_stEntInfo.m_officeAddress._nAreaId == -999)
+	//{
+	//	ui.labelAreaOfficeError->show();
+	//}
+	//else
+	//{
+	//	ui.labelAreaOfficeError->hide();
+	//}
+	//m_stEntInfo.m_officeAddress._strArea = ui.comboBoxAreaOffice->currentText();
+}
+
+
+bool CreateEntInfoWidget::winHttpCreateCompanyInfo(QString strUid, QString strToken, stEntInfo* m_stEntInfo, QString& strRet)
 {
 	QString strUrl = QString("/ucenter/company/update");
 	QString strPost = QString("token=%1&company_name=%2&tax=%3&province_id=%4&city_id=%5&area_id=%6&address=%7&legal_person_phone=%8&legal_person_name=%9&office_province_id=%10&office_city_id=%11&office_area_id=%12&office_address=%13")
-		             .arg(strToken).arg(m_stEntInfo._strCompName).arg(m_stEntInfo._strTaxNo).arg(m_stEntInfo.m_registerAddress._nProId)
-					 .arg(m_stEntInfo.m_registerAddress._nCityId).arg(m_stEntInfo.m_registerAddress._nAreaId).arg(m_stEntInfo.m_registerAddress._address)
-					 .arg(m_stEntInfo._strOfficeMobile).arg(m_stEntInfo._strOfficeName).arg(m_stEntInfo.m_officeAddress._nProId)
-					 .arg(m_stEntInfo.m_officeAddress._nCityId).arg(m_stEntInfo.m_officeAddress._nAreaId).arg(m_stEntInfo.m_officeAddress._address);
+		             .arg(strToken).arg(m_stEntInfo->_strCompName).arg(m_stEntInfo->_strTaxNo).arg(m_stEntInfo->m_registerAddress._nProId)
+					 .arg(m_stEntInfo->m_registerAddress._nCityId).arg(m_stEntInfo->m_registerAddress._nAreaId).arg(m_stEntInfo->m_registerAddress._address)
+					 .arg(m_stEntInfo->_strOfficeMobile).arg(m_stEntInfo->_strOfficeName).arg(m_stEntInfo->m_officeAddress._nProId)
+					 .arg(m_stEntInfo->m_officeAddress._nCityId).arg(m_stEntInfo->m_officeAddress._nAreaId).arg(m_stEntInfo->m_officeAddress._address);
 	return ZcloudComFun::httpPost(strUrl, strPost, 5000, strRet,false,1);
 }
 
@@ -508,28 +615,61 @@ void CreateEntInfoWidget::mouseMoveEvent(QMouseEvent *event)
 
 void CreateEntInfoWidget::submitCompany()
 {
-	m_stEntInfo.m_officeAddress._address = ui.lineEditAddressOffice->text();
-	//m_stEntInfo.m_officeAddress._nAreaId = ui.comboBoxArea;
+	stEntInfo* m_stEntInfo = new stEntInfo();
+
+	m_stEntInfo->_strCompName = ui.lineEditCompanyName->text();
+	m_stEntInfo->_strTaxNo = ui.lineEditSocietyCode->text();
+
+	m_stEntInfo->m_registerAddress._address = ui.lineEditAddress->text();
+	
+	//省
+	int index = ui.comboBoxPro->currentIndex();
+	int nCode = ui.comboBoxPro->itemData(index).toInt();
+	m_stEntInfo->m_registerAddress._nProId = nCode;
+	//市
+	index = ui.comboBoxCity->currentIndex();
+	nCode = ui.comboBoxCity->itemData(index).toInt();
+	m_stEntInfo->m_registerAddress._nCityId = nCode;
+	//区
+	index = ui.comboBoxArea->currentIndex();
+	nCode = ui.comboBoxArea->itemData(index).toInt();
+	m_stEntInfo->m_registerAddress._nAreaId = nCode;
 
 
-	m_stEntInfo.m_registerAddress._address = ui.lineEditAddress->text();
-	m_stEntInfo._strCompName = ui.lineEditCompanyName->text();
+	if (ui.radioButtonAddressNew->isChecked()){
+		m_stEntInfo->m_officeAddress._address = ui.lineEditAddressOffice->text();
+		//省
+		index = ui.comboBoxProOffice->currentIndex();
+		 nCode = ui.comboBoxProOffice->itemData(index).toInt();
+		m_stEntInfo->m_officeAddress._nProId = nCode;
+		//市
+		index = ui.comboBoxCityOffice->currentIndex();
+		 nCode = ui.comboBoxCityOffice->itemData(index).toInt();
+		m_stEntInfo->m_officeAddress._nCityId = nCode;
+		//区
+		index = ui.comboBoxAreaOffice->currentIndex();
+		nCode = ui.comboBoxAreaOffice->itemData(index).toInt();
+		m_stEntInfo->m_officeAddress._nAreaId = nCode;
+		//use_address
+		
+	}
+	else{
+		m_stEntInfo->m_officeAddress._address = m_stEntInfo->m_registerAddress._address;
+		m_stEntInfo->m_officeAddress._nProId = m_stEntInfo->m_registerAddress._nProId;
+		m_stEntInfo->m_officeAddress._nCityId = m_stEntInfo->m_registerAddress._nCityId;
+		m_stEntInfo->m_officeAddress._nAreaId = m_stEntInfo->m_registerAddress._nAreaId;
+	}
+	
 
-	m_stEntInfo._strOfficeMobile = ui.lineEditPhone->text();
-	m_stEntInfo._strOfficeName = ui.lineEditLegalPeasonName->text();
-	m_stEntInfo._strTaxNo = ui.lineEditSocietyCode->text();
+
+	m_stEntInfo->_strOfficeMobile = ui.lineEditPhone->text();
+	m_stEntInfo->_strOfficeName = ui.lineEditLegalPeasonName->text();
 	
 	QString strRet;
-	if (!winHttpCreateCompanyInfo(m_strUid, m_strToken, strRet))
-	{
-		
-
-
-
-	
+	if (!winHttpCreateCompanyInfo(m_strUid, m_strToken, m_stEntInfo,strRet))
+	{	delete m_stEntInfo;
 		return;
-	   }
-
+	}
 		
 		QByteArray byte_array = strRet.toUtf8();
 		QJsonParseError json_error;
@@ -563,7 +703,7 @@ void CreateEntInfoWidget::submitCompany()
 
 			QString strMsg;
 
-
+			
 			switch (statecode)
 			{
 			case 20001:
@@ -676,39 +816,32 @@ void CreateEntInfoWidget::submitCompany()
 				break;
 			}
 
+			if (20042 == statecode || 20038 == statecode){
+				//申诉流程
+				int result = ZcloudComFun::openMessageTipDlg_2(ZcloudComFun::EN_BINDING, QString::fromLocal8Bit("创建失败"), QString::fromLocal8Bit("该企业已绑定管理员，您可以联系企业管理员将您\r\n添加到企业成员，或申述成为该企业管理员"), QString::fromLocal8Bit("申述"), QString::fromLocal8Bit("取消"));
+				if (result == 1){
+					//上传图片
+					
+					EntAppealDlg* dlg = new EntAppealDlg(m_stEntInfo, this->m_userinfo, this);
+					int rst=dlg->exec();
 
-			ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_TIP, QString::fromLocal8Bit("操作失败"), strMsg);
 
+					
+				}
+			}
+			else{
+
+
+				ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_TIP, QString::fromLocal8Bit("操作失败"), strMsg);
+			}
 		}
 
+		delete m_stEntInfo;
 
 }
 
 void CreateEntInfoWidget::clear()
 {
-	m_stEntInfo.m_officeAddress._address = "";
-	m_stEntInfo.m_officeAddress._nAreaId = 0;
-	m_stEntInfo.m_officeAddress._nCityId = 0;
-	m_stEntInfo.m_officeAddress._nProId = 0;
-	m_stEntInfo.m_officeAddress._strArea = "";
-	m_stEntInfo.m_officeAddress._strCity = "";
-	m_stEntInfo.m_officeAddress._strPro = "";
-
-	m_stEntInfo.m_registerAddress._address = "";
-	m_stEntInfo.m_registerAddress._nAreaId = 0;
-	m_stEntInfo.m_registerAddress._nCityId = 0;
-	m_stEntInfo.m_registerAddress._nProId = 0;
-	m_stEntInfo.m_registerAddress._strArea = "";
-	m_stEntInfo.m_registerAddress._strCity = "";
-	m_stEntInfo.m_registerAddress._strPro = "";
-
-	m_stEntInfo._nTradeId = 0;
-	m_stEntInfo._strCompId = "";
-	m_stEntInfo._strCompName = "";
-	m_stEntInfo._strLogoPath = "";
-	m_stEntInfo._strOfficeMobile = "";
-	m_stEntInfo._strOfficeName = "";
-	m_stEntInfo._strTaxNo = "";
-	m_stEntInfo._strTradeName = "";
+	
 
 }

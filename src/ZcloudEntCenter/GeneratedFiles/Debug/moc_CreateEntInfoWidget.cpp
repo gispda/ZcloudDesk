@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_CreateEntInfoWidget_t {
-    QByteArrayData data[19];
-    char stringdata0[383];
+    QByteArrayData data[22];
+    char stringdata0[386];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -39,27 +39,30 @@ QT_MOC_LITERAL(6, 82, 18), // "onAreaIndexChanged"
 QT_MOC_LITERAL(7, 101, 23), // "onProOfficeIndexChanged"
 QT_MOC_LITERAL(8, 125, 24), // "onCityOfficeIndexChanged"
 QT_MOC_LITERAL(9, 150, 24), // "onAreaOfficeIndexChanged"
-QT_MOC_LITERAL(10, 175, 24), // "onAddressEditingFinished"
-QT_MOC_LITERAL(11, 200, 30), // "onAddressOfficeEditingFinished"
-QT_MOC_LITERAL(12, 231, 28), // "onLegalPeasonEditingFinished"
-QT_MOC_LITERAL(13, 260, 22), // "onPhoneEditingFinished"
-QT_MOC_LITERAL(14, 283, 16), // "onEditOkBtnClick"
-QT_MOC_LITERAL(15, 300, 17), // "onSearchkBtnClick"
-QT_MOC_LITERAL(16, 318, 25), // "onRadioBtnAddressRegClick"
-QT_MOC_LITERAL(17, 344, 25), // "onRadioBtnAddressNewClick"
-QT_MOC_LITERAL(18, 370, 12) // "onOkBtnClick"
+QT_MOC_LITERAL(10, 175, 14), // "onCheckEntName"
+QT_MOC_LITERAL(11, 190, 14), // "onCheckEntCode"
+QT_MOC_LITERAL(12, 205, 14), // "onCheckAddress"
+QT_MOC_LITERAL(13, 220, 20), // "onCheckAddressOffice"
+QT_MOC_LITERAL(14, 241, 11), // "onCheckArea"
+QT_MOC_LITERAL(15, 253, 17), // "onCheckAreaOffice"
+QT_MOC_LITERAL(16, 271, 18), // "onCheckLegalPeason"
+QT_MOC_LITERAL(17, 290, 12), // "onCheckPhone"
+QT_MOC_LITERAL(18, 303, 17), // "onSearchkBtnClick"
+QT_MOC_LITERAL(19, 321, 25), // "onRadioBtnAddressRegClick"
+QT_MOC_LITERAL(20, 347, 25), // "onRadioBtnAddressNewClick"
+QT_MOC_LITERAL(21, 373, 12) // "onOkBtnClick"
 
     },
     "CreateEntInfoWidget\0sigUpdateSucessed\0"
     "\0onProIndexChanged\0index\0onCityIndexChanged\0"
     "onAreaIndexChanged\0onProOfficeIndexChanged\0"
     "onCityOfficeIndexChanged\0"
-    "onAreaOfficeIndexChanged\0"
-    "onAddressEditingFinished\0"
-    "onAddressOfficeEditingFinished\0"
-    "onLegalPeasonEditingFinished\0"
-    "onPhoneEditingFinished\0onEditOkBtnClick\0"
-    "onSearchkBtnClick\0onRadioBtnAddressRegClick\0"
+    "onAreaOfficeIndexChanged\0onCheckEntName\0"
+    "onCheckEntCode\0onCheckAddress\0"
+    "onCheckAddressOffice\0onCheckArea\0"
+    "onCheckAreaOffice\0onCheckLegalPeason\0"
+    "onCheckPhone\0onSearchkBtnClick\0"
+    "onRadioBtnAddressRegClick\0"
     "onRadioBtnAddressNewClick\0onOkBtnClick"
 };
 #undef QT_MOC_LITERAL
@@ -70,7 +73,7 @@ static const uint qt_meta_data_CreateEntInfoWidget[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-      16,   14, // methods
+      19,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -78,24 +81,27 @@ static const uint qt_meta_data_CreateEntInfoWidget[] = {
        1,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    0,   94,    2, 0x06 /* Public */,
+       1,    0,  109,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       3,    1,   95,    2, 0x08 /* Private */,
-       5,    1,   98,    2, 0x08 /* Private */,
-       6,    1,  101,    2, 0x08 /* Private */,
-       7,    1,  104,    2, 0x08 /* Private */,
-       8,    1,  107,    2, 0x08 /* Private */,
-       9,    1,  110,    2, 0x08 /* Private */,
-      10,    0,  113,    2, 0x08 /* Private */,
-      11,    0,  114,    2, 0x08 /* Private */,
-      12,    0,  115,    2, 0x08 /* Private */,
-      13,    0,  116,    2, 0x08 /* Private */,
-      14,    0,  117,    2, 0x08 /* Private */,
-      15,    0,  118,    2, 0x08 /* Private */,
-      16,    0,  119,    2, 0x08 /* Private */,
-      17,    0,  120,    2, 0x08 /* Private */,
-      18,    0,  121,    2, 0x08 /* Private */,
+       3,    1,  110,    2, 0x08 /* Private */,
+       5,    1,  113,    2, 0x08 /* Private */,
+       6,    1,  116,    2, 0x08 /* Private */,
+       7,    1,  119,    2, 0x08 /* Private */,
+       8,    1,  122,    2, 0x08 /* Private */,
+       9,    1,  125,    2, 0x08 /* Private */,
+      10,    0,  128,    2, 0x08 /* Private */,
+      11,    0,  129,    2, 0x08 /* Private */,
+      12,    0,  130,    2, 0x08 /* Private */,
+      13,    0,  131,    2, 0x08 /* Private */,
+      14,    0,  132,    2, 0x08 /* Private */,
+      15,    0,  133,    2, 0x08 /* Private */,
+      16,    0,  134,    2, 0x08 /* Private */,
+      17,    0,  135,    2, 0x08 /* Private */,
+      18,    0,  136,    2, 0x08 /* Private */,
+      19,    0,  137,    2, 0x08 /* Private */,
+      20,    0,  138,    2, 0x08 /* Private */,
+      21,    0,  139,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void,
@@ -107,11 +113,14 @@ static const uint qt_meta_data_CreateEntInfoWidget[] = {
     QMetaType::Void, QMetaType::Int,    4,
     QMetaType::Void, QMetaType::Int,    4,
     QMetaType::Void, QMetaType::Int,    4,
-    QMetaType::Void,
-    QMetaType::Void,
-    QMetaType::Void,
-    QMetaType::Void,
-    QMetaType::Void,
+    QMetaType::Bool,
+    QMetaType::Bool,
+    QMetaType::Bool,
+    QMetaType::Bool,
+    QMetaType::Bool,
+    QMetaType::Bool,
+    QMetaType::Bool,
+    QMetaType::Bool,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -133,15 +142,26 @@ void CreateEntInfoWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, 
         case 4: _t->onProOfficeIndexChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 5: _t->onCityOfficeIndexChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 6: _t->onAreaOfficeIndexChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 7: _t->onAddressEditingFinished(); break;
-        case 8: _t->onAddressOfficeEditingFinished(); break;
-        case 9: _t->onLegalPeasonEditingFinished(); break;
-        case 10: _t->onPhoneEditingFinished(); break;
-        case 11: _t->onEditOkBtnClick(); break;
-        case 12: _t->onSearchkBtnClick(); break;
-        case 13: _t->onRadioBtnAddressRegClick(); break;
-        case 14: _t->onRadioBtnAddressNewClick(); break;
-        case 15: _t->onOkBtnClick(); break;
+        case 7: { bool _r = _t->onCheckEntName();
+            if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = _r; }  break;
+        case 8: { bool _r = _t->onCheckEntCode();
+            if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = _r; }  break;
+        case 9: { bool _r = _t->onCheckAddress();
+            if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = _r; }  break;
+        case 10: { bool _r = _t->onCheckAddressOffice();
+            if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = _r; }  break;
+        case 11: { bool _r = _t->onCheckArea();
+            if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = _r; }  break;
+        case 12: { bool _r = _t->onCheckAreaOffice();
+            if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = _r; }  break;
+        case 13: { bool _r = _t->onCheckLegalPeason();
+            if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = _r; }  break;
+        case 14: { bool _r = _t->onCheckPhone();
+            if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = _r; }  break;
+        case 15: _t->onSearchkBtnClick(); break;
+        case 16: _t->onRadioBtnAddressRegClick(); break;
+        case 17: _t->onRadioBtnAddressNewClick(); break;
+        case 18: _t->onOkBtnClick(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -157,7 +177,7 @@ void CreateEntInfoWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, 
 }
 
 const QMetaObject CreateEntInfoWidget::staticMetaObject = {
-    { &QDialog::staticMetaObject, qt_meta_stringdata_CreateEntInfoWidget.data,
+    { &QWidget::staticMetaObject, qt_meta_stringdata_CreateEntInfoWidget.data,
       qt_meta_data_CreateEntInfoWidget,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
 };
 
@@ -172,22 +192,22 @@ void *CreateEntInfoWidget::qt_metacast(const char *_clname)
     if (!_clname) return Q_NULLPTR;
     if (!strcmp(_clname, qt_meta_stringdata_CreateEntInfoWidget.stringdata0))
         return static_cast<void*>(const_cast< CreateEntInfoWidget*>(this));
-    return QDialog::qt_metacast(_clname);
+    return QWidget::qt_metacast(_clname);
 }
 
 int CreateEntInfoWidget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
-    _id = QDialog::qt_metacall(_c, _id, _a);
+    _id = QWidget::qt_metacall(_c, _id, _a);
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 16)
+        if (_id < 19)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 16;
+        _id -= 19;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 16)
+        if (_id < 19)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 16;
+        _id -= 19;
     }
     return _id;
 }

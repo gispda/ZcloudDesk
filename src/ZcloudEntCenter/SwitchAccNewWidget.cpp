@@ -418,18 +418,18 @@ bool SwitchAccNewWidget::isTaxExistInterface(QString strUid, QString strCompId)
 void SwitchAccNewWidget::openCreateEntDlg()
 {
 	
-	CreateEntInfoWidget* pEntComWidget = new CreateEntInfoWidget(m_userInfo->m_strUserId, m_userInfo->m_strToken);
+	CreateEntInfoWidget* pEntComWidget = new CreateEntInfoWidget(m_userInfo,m_userInfo->m_strUserId, m_userInfo->m_strToken, this);
 	pEntComWidget->setAttribute(Qt::WA_DeleteOnClose);
-	//pEntComWidget->show();
+	pEntComWidget->show();
 	
 	
 	
 	
-	if (pEntComWidget->exec() == QDialog::Accepted)
-	{
+	//if (pEntComWidget->exec() == QDialog::Accepted)
+	//{
 
-		pEntComWidget->accept();
-	}
+	//	pEntComWidget->accept();
+	//}
 
 
 	//int result = ZcloudComFun::openMessageTipDlg_2(ZcloudComFun::EN_BINDING, QString::fromLocal8Bit("创建失败"), QString::fromLocal8Bit("该企业已绑定管理员，您可以联系企业管理员将您\r\n添加到企业成员，或申述成为该企业管理员"), QString::fromLocal8Bit("申述"), QString::fromLocal8Bit("取消"));
