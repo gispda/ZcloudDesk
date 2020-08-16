@@ -9,7 +9,7 @@ BindEmailWidget::BindEmailWidget(QString strUid, QString strToken, QWidget *pare
 	, m_strUid(strUid)
 	, m_strToken(strToken)
 {
-	ui.setupUi(getContentWidget());
+	ui.setupUi(this);
 	resize(454, 254);
 	setWindowTitle(QString::fromLocal8Bit("” œ‰∞Û∂®"));
 	setAttribute(Qt::WA_DeleteOnClose);

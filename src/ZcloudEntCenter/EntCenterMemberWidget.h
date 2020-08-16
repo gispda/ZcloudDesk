@@ -14,6 +14,9 @@ class EntCenterMemberWidget : public QWidget
 
 public:
 	EntCenterMemberWidget(EntCenterInfo* pEntInfo, UserInfoStruct* userInfo, QWidget *parent = 0);
+
+	void LoadEntInfo();
+
 	~EntCenterMemberWidget();
 	void init(EntCenterInfo*	info);
 
@@ -75,6 +78,11 @@ private:
 	bool	m_bHasMember = true;*/
 	//QWidget* m_pUserDefult = NULL;
 	EntCenterInfo*	m_pInfo;
+
+
+	////是否从后台拉回数据
+	bool m_bIsloadDb;
+
 };
 
 #endif // EntCenterMemberWidget_H

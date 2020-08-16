@@ -59,7 +59,7 @@ UserCenterWidget::UserCenterWidget(EntCenterInfo*	info,UserInfoStruct* _userInfo
 		ui.widgetLogin->hide();
 	}
 
-
+	m_bIsloadDb = false;
 	/*connect(ui.copyTaxButton, SIGNAL(clicked()), this, SLOT(onCopyBtnClick()));
 	connect(ui.switchButton, SIGNAL(clicked()), this, SLOT(onSwitchBtnClick()));
 	connect(ui.memberButton, SIGNAL(clicked()), this, SLOT(onMemberBtnClick()));

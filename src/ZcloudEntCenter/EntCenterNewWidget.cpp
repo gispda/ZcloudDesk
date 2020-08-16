@@ -28,7 +28,7 @@ EntCenterNewWidget::EntCenterNewWidget(EntCenterInfo* pEntInfo, UserInfoStruct* 
 	//setWindowFlags(Qt::FramelessWindowHint);
 	//setAttribute(Qt::WA_TranslucentBackground, true);
 	//setStyleSheet("outline: none");
-
+	m_bIsloadDb = false;
 	mp_EntCenterMember = new EntCenterMemberWidget(pEntInfo, userInfo,ui.EntRightWidget);
 	mp_EntCenterInfo = new EntCenterInfoWidget(pEntInfo,userInfo, ui.EntRightWidget);
 	mp_EntCenterMain = new EntCenterMainWidget(pEntInfo, userInfo, ui.EntRightWidget);
@@ -39,7 +39,7 @@ EntCenterNewWidget::EntCenterNewWidget(EntCenterInfo* pEntInfo, UserInfoStruct* 
 	mp_EntCenterMember->hide();
 	mp_EntCenterInfo->hide();
 
-	m_userInfo = userInfo;
+	///m_userInfo = userInfo;
 	//connect(ui.entInfoButton, &QPushButton::clicked, this, &EntCenterNewWidget::onEntInfoBtnClick);
 	connect(ui.mainButton, SIGNAL(clicked()), this, SLOT(onShowMain()));
 	connect(ui.entInfoButton, SIGNAL(clicked()), this, SLOT(onShowInfo()));
@@ -63,6 +63,9 @@ EntCenterNewWidget::EntCenterNewWidget(EntCenterInfo* pEntInfo, UserInfoStruct* 
 
 	m_pJoinEntWidget = NULL;
 	m_pFinishEntInfo = NULL;
+
+	m_pEditEntinfo = NULL;
+
 }
 
 
@@ -816,12 +819,14 @@ bool EntCenterNewWidget::JoinStep2FinishEntinfo()
 	if (m_pEditEntinfo == NULL)
 		m_pEditEntinfo = new EditEntInfoWidget(m_userInfo, m_pEntInfo);
 
-	m_pEditEntinfo->show();
-	m_pFinishEntInfo = m_pEditEntinfo->getFinishEnterInfo();
+	if (m_pEditEntinfo->exec() == QDialog::Accepted)
+	{
+		m_pFinishEntInfo = m_pEditEntinfo->getFinishEnterInfo();
 
-	if (m_pFinishEntInfo != NULL)
-		return true;
-	else
-		return false;
+		if (m_pFinishEntInfo != NULL)
+			return true;
+		else
+			return false;
+	}
 }
 

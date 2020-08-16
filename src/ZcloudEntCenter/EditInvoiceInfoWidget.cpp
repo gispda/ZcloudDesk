@@ -183,6 +183,7 @@ void EditInvoiceInfoWidget::onEditOkBtnClick()
 	{
 		ZcloudBigDataInterface::GetInstance()->produceData("M00", "OP000", "BBD007");
 		ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_CLOSE, QString::fromLocal8Bit("操作成功"), QString::fromLocal8Bit("\r\n更新开票信息成功！"));
+		
 		emit sigUpdateSucessed();
 	}
 	else

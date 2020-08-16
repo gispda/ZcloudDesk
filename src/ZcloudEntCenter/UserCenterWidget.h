@@ -116,6 +116,11 @@ private:
 	QString m_strMobile;
 	int		m_isLoginByTax;
 	QString m_strCompId;*/
+
+
+	////是否从后台拉回数据
+	bool m_bIsloadDb;
+
 	bool	m_isNetActive	= true;
 	Ui::UserCenterWidget ui;
 

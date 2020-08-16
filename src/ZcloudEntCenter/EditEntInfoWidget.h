@@ -7,7 +7,7 @@
 #include "EntInfoDataDefine.h"
 #include "EntDataBase.h"
 
-class EditEntInfoWidget : public ZcloudCommonWidget
+class EditEntInfoWidget : public QDialog
 {
 	Q_OBJECT
 
@@ -24,6 +24,12 @@ private slots:
 	void onProIndexChanged(int index);
 	void onCityIndexChanged(int index);
 	void onAreaIndexChanged(int index);
+
+	void onOfficeProIndexChanged(int index);
+	void onOfficeCityIndexChanged(int index);
+	void onOfficeAreaIndexChanged(int index);
+
+
 	void onTradeIndexChanged(int index);
 	void onLegalPeasonEditingFinished();
 	void onPhoneEditingFinished();
@@ -46,11 +52,14 @@ private:
 	Ui::EditEntInfoWidget ui;
 
 
+	////是否从后台拉回数据
+	bool m_bIsloadDb;
+
 	EntCenterInfo* m_pentinfo;
 	EntCenterInfo* m_pFinishentinfo;
 	UserInfoStruct* m_userinfo;
 
-	stEntInfo m_stEntInfo;
+	//stEntInfo m_stEntInfo;
 	QString	m_strUid;
 	QString	m_strToken;
 	bool	m_bLegalPeason = true;

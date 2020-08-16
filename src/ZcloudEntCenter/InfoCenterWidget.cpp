@@ -33,7 +33,7 @@ InfoCenterWidget::InfoCenterWidget(UserInfoStruct* _userInfo, QWidget *parent /*
 	connect(ui.pushButtonUserCenter, SIGNAL(clicked()), this, SLOT(showUserCenter()));
 	
 	m_userInfo = _userInfo;
-
+	m_bIsloadDb = false;
 	//查询企业信息
 	loadEntInfo();
 
@@ -314,7 +314,21 @@ bool InfoCenterWidget::loadEntInfo()
 
 
 	m_stEntInfo._strLocalTaxnoLs = ZcloudComFun::getTaxnumberList();
-	if (!winHttpGetEntInfo(m_userInfo->m_strTaxNumber, m_userInfo->m_strToken, strRet))
+    
+	QString strlocaltax="";
+	if (m_stEntInfo._strLocalTaxnoLs.count()>0)
+	strlocaltax = m_stEntInfo._strLocalTaxnoLs.at(0);
+	strlocaltax = "210624197305200017";
+
+	QString strtax = m_userInfo->m_strTaxNumber.isEmpty() != true ? m_userInfo->m_strTaxNumber : strlocaltax;
+
+	if (strtax.isEmpty())
+	{
+
+		m_bIsloadDb = false;
+		return false;
+	}
+	if (!winHttpGetEntInfo(strtax, m_userInfo->m_strToken, strRet))
 	{
 		return false;
 	}
@@ -335,6 +349,7 @@ bool InfoCenterWidget::loadEntInfo()
 	{
 		return false;
 	}
+	m_bIsloadDb = true;
 
 	QJsonObject data = obj.take("data").toObject();
 

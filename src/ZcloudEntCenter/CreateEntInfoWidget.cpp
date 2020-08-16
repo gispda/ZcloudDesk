@@ -522,9 +522,164 @@ void CreateEntInfoWidget::submitCompany()
 	QString strRet;
 	if (!winHttpCreateCompanyInfo(m_strUid, m_strToken, strRet))
 	{
-		ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_TIP, QString::fromLocal8Bit("操作失败"), QString::fromLocal8Bit("\r\n更新企业资料失败，请稍后再试！"));
+		
+
+
+
+	
 		return;
-	}
+	   }
+
+		
+		QByteArray byte_array = strRet.toUtf8();
+		QJsonParseError json_error;
+		QJsonDocument parse_doucment = QJsonDocument::fromJson(byte_array, &json_error);
+		if (json_error.error != QJsonParseError::NoError)
+		{
+			return;
+		}
+		if (!parse_doucment.isObject())
+		{
+			return;
+		}
+		QJsonObject obj = parse_doucment.object();
+		int statecode = obj.take("code").toInt();
+		if (0 == statecode)
+		{
+			ZcloudBigDataInterface::GetInstance()->produceData("M00", "OP001", "BBD003");
+			ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_CLOSE, QString::fromLocal8Bit("操作成功"), QString::fromLocal8Bit("\r\n创建企业资料成功！"));
+
+
+			//if (m_pFinishentinfo == NULL)
+			//	m_pFinishentinfo = new EntCenterInfo();
+			//*m_pFinishentinfo = *m_pentinfo;
+			emit sigUpdateSucessed();
+		}
+		else
+
+		{
+			ZcloudBigDataInterface::GetInstance()->produceData("M10", "OP000", "BBD002", QString("%1").arg(statecode));
+
+
+			QString strMsg;
+
+
+			switch (statecode)
+			{
+			case 20001:
+				strMsg = QString::fromLocal8Bit("企业名称不能为空");
+				break;
+			case 20002:
+				strMsg = QString::fromLocal8Bit("企业名称长度输入不正确（4-50）");
+				break;
+			case 20003:
+				strMsg = QString::fromLocal8Bit("税号不能为空");
+				break;
+			case 20004:
+				strMsg = QString::fromLocal8Bit("税号输入不正确");
+				break;
+			case 20005:
+				strMsg = QString::fromLocal8Bit("税号长度输入不正确（至少15个字符）");
+				break;
+			case 20006:
+				strMsg = QString::fromLocal8Bit("所属区域省份不能为空");
+				break;
+			case 20007:
+				strMsg = QString::fromLocal8Bit("所属区域省份输入不正确，纯数字");
+				break;
+			case 20008:
+				strMsg = QString::fromLocal8Bit("所属区域城市不能为空");
+				break;
+			case 20009:
+				strMsg = QString::fromLocal8Bit("所属区域城市输入不正确，纯数字");
+				break;
+			case 20010:
+				strMsg = QString::fromLocal8Bit("所属区域地区不能为空");
+				break;
+			case 20011:
+				strMsg = QString::fromLocal8Bit("所属区域地区输入不正确 ，纯数字");
+				break;
+			case 20012:
+				strMsg = QString::fromLocal8Bit("企业地址不能为空");
+				break;
+			case 20013:
+				strMsg = QString::fromLocal8Bit("企业地址输入不正确（5-50个字符）");
+				break;
+			case 20014:
+				strMsg = QString::fromLocal8Bit("企业法人不能为空");
+				break;
+			case 20015:
+				strMsg = QString::fromLocal8Bit("企业法人输入不正确");
+				break;
+			case 20016:
+				strMsg = QString::fromLocal8Bit("企业法人电话不能为空");
+				break;
+			case 20017:
+				strMsg = QString::fromLocal8Bit("企业法人电话输入类型不正确");
+				break;
+			case 20018:
+				strMsg = QString::fromLocal8Bit("企业法人电话输入长度不正确（11位数字）");
+				break;
+			case 20019:
+				strMsg = QString::fromLocal8Bit("所属区域不正确");
+				break;
+			case 20034:
+				strMsg = QString::fromLocal8Bit("系统不存在此企业信息，请确认你的操作");
+				break;
+			case 20035:
+				strMsg = QString::fromLocal8Bit("企业信息操作失败");
+				break;
+			case 20038:
+				strMsg = QString::fromLocal8Bit("当前企业已经绑定过管理员了");
+			case 20040:
+				strMsg = QString::fromLocal8Bit("税控盘类型不能为空");
+				break;
+			case 20041:
+				strMsg = QString::fromLocal8Bit("税控盘类型不正确");
+				break;
+			case 20042:
+				strMsg = QString::fromLocal8Bit("系统已存在此名称的企业信息");
+				break;
+			case 20043:
+				strMsg = QString::fromLocal8Bit("所属办公区域省份不能为空");
+				break;
+			case 20044:
+				strMsg = QString::fromLocal8Bit("所属办公区域省份输入不正确");
+				break;
+			case 20045:
+				strMsg = QString::fromLocal8Bit("所属办公区域城市不能为空");
+				break;
+			case 20046:
+				strMsg = QString::fromLocal8Bit("所属办公区域城市输入不正确");
+				break;
+			case 20047:
+				strMsg = QString::fromLocal8Bit("所属办公区域地区不能为空");
+				break;
+			case 20048:
+				strMsg = QString::fromLocal8Bit("所属办公区域地区输入不正确");
+				break;
+			case 20049:
+				strMsg = QString::fromLocal8Bit("企业办公地址不能为空");
+				break;
+			case 20050:
+				strMsg = QString::fromLocal8Bit("企业办公地址输入不正确");
+				break;
+			case 20051:
+				strMsg = QString::fromLocal8Bit("所属办公区域不正确");
+				break;
+				break;
+			case 20052:
+				strMsg = QString::fromLocal8Bit("请上传您的营业执照");
+				break;
+			default:
+				strMsg = QString::fromLocal8Bit("其他异常");
+				break;
+			}
+
+
+			ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_TIP, QString::fromLocal8Bit("操作失败"), strMsg);
+
+		}
 
 
 }

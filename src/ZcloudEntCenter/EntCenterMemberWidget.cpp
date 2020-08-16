@@ -32,14 +32,13 @@ EntCenterMemberWidget::EntCenterMemberWidget(EntCenterInfo* pEntInfo, UserInfoSt
 
 	m_userInfo = userInfo;
 
+
+	m_bIsloadDb = false;
 	///游客登陆
 	if (m_userInfo->m_bLoginByTax != -8)
 	{
-		if (!showMemberInfo())
-		{
-			ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_TIP, QString::fromLocal8Bit("操作失败"), QString::fromLocal8Bit("\r\n打开财务成员失败，请稍后再试！"));
-			close();
-		}
+		LoadEntInfo();
+
 	}
 
 	ui.labelAudit->installEventFilter(this);
@@ -345,5 +344,16 @@ void EntCenterMemberWidget::onModifyMemberSucess(QString strTrueName, QString st
 	{
 		emit sigEditMemberSucessed(strTrueName, strJob);
 	}
+}
+
+void EntCenterMemberWidget::LoadEntInfo()
+{
+	if (!showMemberInfo())
+	{
+		ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_TIP, QString::fromLocal8Bit("操作失败"), QString::fromLocal8Bit("\r\n打开财务成员失败，请稍后再试！"));
+		close();
+	}
+	else
+		m_bIsloadDb = true;
 }
 

@@ -60,6 +60,8 @@ private:
 	EntCenterInfo m_stEntInfo;
 	UserInfoStruct* m_userInfo;
 
+	////是否从后台拉回数据
+	bool m_bIsloadDb;
 
 	QString m_strUserName;
 	QString m_strUid;

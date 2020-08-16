@@ -101,6 +101,8 @@ private:
 	//bool	m_bHasMember = true;
 	//QWidget* m_pUserDefult = NULL;
 
+	////是否从后台拉回数据
+	bool m_bIsloadDb;
 
 
 	EditEntInfoWidget* m_pEditEntinfo;
