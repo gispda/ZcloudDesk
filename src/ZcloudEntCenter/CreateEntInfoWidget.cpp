@@ -694,6 +694,7 @@ void CreateEntInfoWidget::submitCompany()
 			//	m_pFinishentinfo = new EntCenterInfo();
 			//*m_pFinishentinfo = *m_pentinfo;
 			emit sigUpdateSucessed();
+			//this->close();
 		}
 		else
 

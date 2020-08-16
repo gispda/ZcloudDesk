@@ -36,6 +36,7 @@ void EntCenterInfoWidget::init(EntCenterInfo* info){
 	ui.labelArea->setText(m_pInfo->_strAddress);
 	ui.labelName->setText(m_pInfo->_strlegalboss);
 	ui.labelMobile->setText(m_pInfo->_strlegalbossmobile);
+
 	ui.labelAcc->setText(m_pInfo->_strBankaccount);
 	ui.labelBank->setText(m_pInfo->_strBankname);
 	ui.labelAddr->setText(m_pInfo->_strOfficeaddress);
@@ -56,18 +57,27 @@ void EntCenterInfoWidget::init(EntCenterInfo* info){
 
 void EntCenterInfoWidget::onEntEditBtnClick()
 {
-	//ZcloudBigDataInterface::GetInstance()->produceData("M00", "OP001", "BBD001");
-	//EditEntInfoWidget*	pWidget = new EditEntInfoWidget(m_pInfo->_strId, m_pInfo->_strToken, m_pInfo, this);
-	//connect(pWidget, &EditEntInfoWidget::sigUpdateSucessed, this, &EntCenterInfoWidget::onUpdateEntSucessed);
-	//pWidget->show();
+	ZcloudBigDataInterface::GetInstance()->produceData("M00", "OP001", "BBD001");
+	EditEntInfoWidget*	pWidget = new EditEntInfoWidget(this->m_userInfo, m_pInfo, true, this);
+	connect(pWidget, &EditEntInfoWidget::sigUpdateSucessed, this, &EntCenterInfoWidget::onUpdateEntSucessed);
+	pWidget->show();
 }
 
 void EntCenterInfoWidget::onInvoiceEditBtnClick()
 {
-	//ZcloudBigDataInterface::GetInstance()->produceData("M00", "OP001", "BBD005");
-	//EditInvoiceInfoWidget*	pWidget = new EditInvoiceInfoWidget(m_pInfo->_strId, m_pInfo->_strToken, m_stInvoiceInfo, this);
-	//connect(pWidget, &EditInvoiceInfoWidget::sigUpdateSucessed, this, &EntCenterInfoWidget::onUpdateinvoiceSucessed);
-	//pWidget->show();
+	ZcloudBigDataInterface::GetInstance()->produceData("M00", "OP001", "BBD005");
+	
+	/*ui.labelAcc->setText(m_pInfo->_strBankaccount);
+	ui.labelBank->setText(m_pInfo->_strBankname);
+	ui.labelAddr->setText(m_pInfo->_strOfficeaddress);*/
+
+	stInvoiceInfo m_stInvoiceInfo ;
+	m_stInvoiceInfo._strAddr = m_pInfo->_strOfficeaddress;
+	m_stInvoiceInfo._strBankAccount = m_pInfo->_strBankaccount;
+	m_stInvoiceInfo._strBankName = m_pInfo->_strBankname;
+	EditInvoiceInfoWidget*	pWidget = new EditInvoiceInfoWidget(m_pInfo->_strId, m_pInfo->_strToken, m_stInvoiceInfo, this);
+	connect(pWidget, &EditInvoiceInfoWidget::sigUpdateSucessed, this, &EntCenterInfoWidget::onUpdateinvoiceSucessed);
+	pWidget->show();
 }
 
 bool EntCenterInfoWidget::winHttpGetEntInfo(QString strTaxno, QString strToken, QString& strRet)
