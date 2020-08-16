@@ -172,8 +172,8 @@ void EditEntInfoWidget::onNextBtnClick()
 		if (m_pFinishentinfo == NULL)
 			m_pFinishentinfo = new EntCenterInfo();
 		*m_pFinishentinfo = *m_pentinfo;
-
-	close();
+		accept();
+	   close();
 }
 void EditEntInfoWidget::onRadioBtnAddressRegClick(){
 	ui.widgetAddressOffice->hide();

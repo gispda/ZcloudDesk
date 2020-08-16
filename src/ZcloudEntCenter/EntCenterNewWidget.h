@@ -57,11 +57,13 @@ protected:
 
 	void JoinEntMoreStep();
 
+	void DoAppealEnt();
+
 	bool JoinStep2AppealGetEntInfo();
 
 	bool JoinStep2FinishEntinfo();
 
-	bool DoapplyJoinEnt();
+	bool DoapplyJoinEnt(int& stcode);
 
 	////判断是否加入企业
 	bool decideJoinEnt();

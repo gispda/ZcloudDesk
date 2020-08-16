@@ -123,20 +123,20 @@ bool EntCenterNewWidget::winHttpJoinEnt(QString strToken, QString strComId, QStr
 {
 
 	QString strUrl = QString("/ucenter/company/apply-join");
-	QString strPost = QString("company_id=%1&token=%2").arg(strComId).arg(m_pEntInfo->_strToken);
+	QString strPost = QString("company_id=%1&token=%2").arg(strComId).arg(strToken);
 	return ZcloudComFun::httpPost(strUrl, strPost, 5000, strRet, false, 1);
 }
 
 bool EntCenterNewWidget::winHttpAppealJoinEnt(QString strToken, QString& strRet, QString& strMsg, int& stateCode)
 {
 
-	QString strUrl = QString("/ucenter/company/appeal");
+	QString strUrl = QString("/ucenter/user/appeal");
 	QString strPost = QString("token=%1&company_name=%2&tax=%3&province_id=%4&city_id=%5&area_id=%6&address=%7&legal_person_phone=%8&legal_person_name=%9&office_province_id=%10&office_city_id=%11&office_area_id=%12&office_address=%13&license=%14")
-		.arg(strToken).arg(m_pFinishEntInfo->_strCompName).arg(m_pFinishEntInfo->_nProvinceid)
-		.arg(m_pFinishEntInfo->_nCityid).arg(m_pFinishEntInfo->_nAreaid).arg(m_pFinishEntInfo->_strRegisterFulladdress)
+		.arg(strToken).arg(m_pFinishEntInfo->_strCompName).arg(m_pFinishEntInfo->_strTaxNo).arg(m_pFinishEntInfo->_nProvinceid)
+		.arg(m_pFinishEntInfo->_nCityid).arg(m_pFinishEntInfo->_nAreaid).arg(m_pFinishEntInfo->_strAddress)
 		.arg(m_pFinishEntInfo->_strlegalbossmobile).arg(m_pFinishEntInfo->_strlegalboss)
 		.arg(m_pFinishEntInfo->_nOfficeProvinceid).arg(m_pFinishEntInfo->_nOfficeCityid).arg(m_pFinishEntInfo->_nOfficeAreaid)
-		.arg(m_pFinishEntInfo->_strOfficeFulladdress).arg(m_pFinishEntInfo->strLicenseUrl);
+		.arg(m_pFinishEntInfo->_strOfficeaddress).arg(m_pFinishEntInfo->strLicenseUrl);
 	bool bret = ZcloudComFun::httpPost(strUrl, strPost, 5000, strRet, false, 1);
 
 
@@ -266,10 +266,10 @@ bool EntCenterNewWidget::winHttpAppealJoinEnt(QString strToken, QString& strRet,
 		case 20052:
 			strMsg = QString::fromLocal8Bit("请上传您的营业执照");
 			break;
-		case 40001:
+		case 40000:
 			strMsg = QString::fromLocal8Bit("你已经提交过此信息了，系统正在处理中，请不要重复提交");
 			break;
-		case 40002:
+		case 40001:
 			strMsg = QString::fromLocal8Bit("当前企业未绑定管理员，无法申诉");
 			break;
 		default:
@@ -282,8 +282,8 @@ bool EntCenterNewWidget::winHttpAppealJoinEnt(QString strToken, QString& strRet,
 		return false;
 	}
 
-	bool jmsg = obj.take("data").toBool();
-	if (jmsg)
+	int jmsg = obj.take("data").toInt();
+	if (jmsg==1)
 		strMsg = QString::fromLocal8Bit("更新成功");
 	else
 		strMsg = QString::fromLocal8Bit("更新失败");
@@ -686,9 +686,9 @@ void EntCenterNewWidget::JoinEntMoreStep()
 		}
 		else   ////绑定了，就只递交申请
 		{
-
+			int stcode = -1;
 			////递交加入企业申请
-			if (DoapplyJoinEnt())
+			if (DoapplyJoinEnt(stcode))
 			{
 				////成功递交加入企业申请
 				//ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_TIP, QString::fromLocal8Bit("操作失败"), QString::fromLocal8Bit("\r\n财务负责人姓名不正确！"));
@@ -699,41 +699,8 @@ void EntCenterNewWidget::JoinEntMoreStep()
 				{
 
 
-					if (JoinStep2AppealGetEntInfo())
-					{
-
-
-						UploadLicenseDlg updlg(m_userInfo);
-						if (updlg.exec() == QDialog::Accepted)
-						{
-							////成功的完善企业的信息和上传的营业执照都在这个企业数据结构的指针里
-							m_pFinishEntInfo->strLicenseUrl = updlg.getLicenseUrl();
-							////申诉
-							QString strRet, strMsg;
-							int statecode;
-							if (!winHttpAppealJoinEnt(m_pFinishEntInfo->_strToken, strRet, strMsg, statecode))
-							{
-								ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_TIP, QString::fromLocal8Bit("温馨提示"), QString::fromLocal8Bit("系统错误"), this);
-								return;
-							}
-							if (statecode == 0)
-							{
-
-								ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_TIP, QString::fromLocal8Bit("温馨提示"), QString::fromLocal8Bit("已经成功递交申诉申请"), this);
-								return;
-							}
-							else
-							{
-								ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_TIP, QString::fromLocal8Bit("温馨提示"), strMsg, this);
-								return;
-							}
-
-						}
-					}
-					else
-					{
-						return;
-					}
+					DoAppealEnt();
+					return;
 
 				}
 				else
@@ -745,6 +712,29 @@ void EntCenterNewWidget::JoinEntMoreStep()
 			else
 			{
 				///递交加入企业申请失败
+				if (stcode == 60003)
+				{
+
+					////申诉
+					int nReturn1 = ZcloudComFun::openMessageTipDlg_2(ZcloudComFun::EN_OKCANCEL, QString::fromLocal8Bit("温馨提示"), QString::fromLocal8Bit("您的申请信息已提交，请等待企业管理员审核。如果您对当前企业管理员身份存在疑问，请点击申诉"), QString::fromLocal8Bit("申诉"), QString::fromLocal8Bit("取消"), this);
+					if (nReturn1 == QDialog::Accepted)
+					{
+
+
+						DoAppealEnt();
+						return;
+
+					}
+					else
+					{
+						return;
+					}
+
+					
+
+				}
+
+
 				return;
 			}
 
@@ -765,7 +755,7 @@ bool EntCenterNewWidget::decideJoinEnt()
 }
 
 ////实际操作加入企业
-bool EntCenterNewWidget::DoapplyJoinEnt()
+bool EntCenterNewWidget::DoapplyJoinEnt(int& stcode)
 {
 	QString strRet;
 	if (!winHttpJoinEnt(m_userInfo->m_strToken, m_info.strcompanyid, strRet))
@@ -788,29 +778,29 @@ bool EntCenterNewWidget::DoapplyJoinEnt()
 		return false;
 	}
 	obj = parse_doucment.object();
-	int status = obj.take("code").toInt();
-	if (0 == status)
+	stcode = obj.take("code").toInt();
+	if (0 == stcode)
 	{
 		ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_CLOSE, QString::fromLocal8Bit("操作成功"), QString::fromLocal8Bit("已成功提交加入申请，\r\n请等待对方管理员审核通过！"));
 		return true;
 	}
-	else if (20034 == status)
+	else if (20034 == stcode)
 	{
 		ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_TIP, QString::fromLocal8Bit("操作失败"), QString::fromLocal8Bit("\r\n加入申请失败，系统不存在此企业信息，请确认你的操作！"));
 	}
-	else if (60001 == status)
+	else if (60001 == stcode)
 	{
 		ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_TIP, QString::fromLocal8Bit("操作失败"), QString::fromLocal8Bit("\r\n加入申请失败，申请的企业不能为空！"));
 	}
-	else if (60002 == status)
+	else if (60002 == stcode)
 	{
 		ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_TIP, QString::fromLocal8Bit("操作失败"), QString::fromLocal8Bit("\r\n加入申请失败，申请的企业id类型不正确！"));
 	}
-	else if (60003 == status)
+	else if (60003 == stcode)
 	{
 		ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_TIP, QString::fromLocal8Bit("操作提示"), QString::fromLocal8Bit("\r\n加入申请失败，你已提交过此申请了，请等待企业管理员审核！"));
 	}
-	else if (60004 == status)
+	else if (60004 == stcode)
 	{
 		ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_TIP, QString::fromLocal8Bit("操作提示"), QString::fromLocal8Bit("\r\n加入申请失败，你已经是企业的成员了，请不要重复加入！"));
 	}
@@ -859,6 +849,45 @@ bool EntCenterNewWidget::JoinStep2AppealGetEntInfo()
 			return true;
 		else
 			return false;
+	}
+}
+
+void EntCenterNewWidget::DoAppealEnt()
+{
+	if (JoinStep2AppealGetEntInfo())
+	{
+
+
+		UploadLicenseDlg updlg(m_userInfo);
+		if (updlg.exec() == QDialog::Accepted)
+		{
+			////成功的完善企业的信息和上传的营业执照都在这个企业数据结构的指针里
+			m_pFinishEntInfo->strLicenseUrl = updlg.getLicenseUrl();
+			////申诉
+			QString strRet, strMsg;
+			int statecode;
+			if (!winHttpAppealJoinEnt(m_userInfo->m_strToken, strRet, strMsg, statecode))
+			{
+				ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_TIP, QString::fromLocal8Bit("温馨提示"), QString::fromLocal8Bit("系统错误"), this);
+				return;
+			}
+			if (statecode == 0)
+			{
+
+				ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_TIP, QString::fromLocal8Bit("温馨提示"), QString::fromLocal8Bit("已经成功递交申诉申请"), this);
+				return;
+			}
+			else
+			{
+				ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_TIP, QString::fromLocal8Bit("温馨提示"), strMsg, this);
+				return;
+			}
+
+		}
+	}
+	else
+	{
+		return;
 	}
 }
 
