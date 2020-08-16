@@ -57,10 +57,14 @@ protected:
 
 	void JoinEntMoreStep();
 
+	bool JoinStep2AppealGetEntInfo();
+
 	bool JoinStep2FinishEntinfo();
 
 	bool DoapplyJoinEnt();
 
+	////判断是否加入企业
+	bool decideJoinEnt();
 	void onShowMember();
 	void onShowMain();
 	//!复制税号

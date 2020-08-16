@@ -29,8 +29,10 @@ EntCenterNewWidget::EntCenterNewWidget(EntCenterInfo* pEntInfo, UserInfoStruct* 
 	//setAttribute(Qt::WA_TranslucentBackground, true);
 	//setStyleSheet("outline: none");
 	m_bIsloadDb = false;
-	mp_EntCenterMember = new EntCenterMemberWidget(pEntInfo, userInfo,ui.EntRightWidget);
-	mp_EntCenterInfo = new EntCenterInfoWidget(pEntInfo,userInfo, ui.EntRightWidget);
+
+	
+	mp_EntCenterMember = new EntCenterMemberWidget(pEntInfo, userInfo, ui.EntRightWidget);
+	mp_EntCenterInfo = new EntCenterInfoWidget(pEntInfo, userInfo, ui.EntRightWidget);
 	mp_EntCenterMain = new EntCenterMainWidget(pEntInfo, userInfo, ui.EntRightWidget);
 
 
@@ -47,12 +49,12 @@ EntCenterNewWidget::EntCenterNewWidget(EntCenterInfo* pEntInfo, UserInfoStruct* 
 	connect(ui.copyTaxButton, SIGNAL(clicked()), this, SLOT(onCopyBtnClick()));
 	connect(ui.switchButton, SIGNAL(clicked()), this, SLOT(onSwitchBtnClick()));
 
-	
+
 	ui.labelJoin2->installEventFilter(this);
 
 
 	//ui.labelline->setGeometry(117, 195, 1, 14);
-	
+
 	//ui.labeluserline->hide();
 
 	showUserCompanyInfoTitle();
@@ -74,13 +76,15 @@ void EntCenterNewWidget::init(EntCenterInfo*	info){
 	m_pEntInfo = info;
 	mp_EntCenterInfo->init(info);
 
-	mp_EntCenterMain->init(info,m_userInfo);
-	
+	mp_EntCenterMain->init(info, m_userInfo);
+
 	mp_EntCenterMember->init(info);
 
 }
 void EntCenterNewWidget::onShowInfo(){
 
+
+	if (decideJoinEnt())
 	JoinEntMoreStep();
 
 	mp_EntCenterInfo->show();
@@ -117,13 +121,13 @@ EntCenterNewWidget ::~EntCenterNewWidget(){
 
 bool EntCenterNewWidget::winHttpJoinEnt(QString strToken, QString strComId, QString& strRet)
 {
-	
+
 	QString strUrl = QString("/ucenter/company/apply-join");
 	QString strPost = QString("company_id=%1&token=%2").arg(strComId).arg(m_pEntInfo->_strToken);
 	return ZcloudComFun::httpPost(strUrl, strPost, 5000, strRet, false, 1);
 }
 
-bool EntCenterNewWidget::winHttpAppealJoinEnt(QString strToken, QString& strRet,QString& strMsg,int& stateCode)
+bool EntCenterNewWidget::winHttpAppealJoinEnt(QString strToken, QString& strRet, QString& strMsg, int& stateCode)
 {
 
 	QString strUrl = QString("/ucenter/company/appeal");
@@ -159,10 +163,10 @@ bool EntCenterNewWidget::winHttpAppealJoinEnt(QString strToken, QString& strRet,
 			break;
 		case 20001:
 			strMsg = QString::fromLocal8Bit("企业名称不能为空");
-			break; 
+			break;
 		case 20002:
-				strMsg = QString::fromLocal8Bit("企业名称长度输入不正确（4-50）");
-				break;
+			strMsg = QString::fromLocal8Bit("企业名称长度输入不正确（4-50）");
+			break;
 		case 20003:
 			strMsg = QString::fromLocal8Bit("税号不能为空");
 			break;
@@ -286,7 +290,7 @@ bool EntCenterNewWidget::winHttpAppealJoinEnt(QString strToken, QString& strRet,
 	return jmsg;
 }
 
-bool EntCenterNewWidget ::eventFilter(QObject *target, QEvent *e)
+bool EntCenterNewWidget::eventFilter(QObject *target, QEvent *e)
 {
 	//if (target == ui.copyTaxButton)
 	//{
@@ -313,11 +317,11 @@ bool EntCenterNewWidget ::eventFilter(QObject *target, QEvent *e)
 			if (ZcloudComFun::winHttpSSO(m_pEntInfo->_strToken, m_pEntInfo->_strUid))
 			{
 
-				
+
 
 				if (!this->findChild <JoinEntWidget*>("addEntEnter"))
 				{
-					if (m_pJoinEntWidget==NULL)
+					if (m_pJoinEntWidget == NULL)
 						m_pJoinEntWidget = new JoinEntWidget(m_pEntInfo->_strUid, m_pEntInfo->_strToken, this);
 					m_pJoinEntWidget->show();
 				}
@@ -327,7 +331,7 @@ bool EntCenterNewWidget ::eventFilter(QObject *target, QEvent *e)
 	return QWidget::eventFilter(target, e);
 }
 
-void EntCenterNewWidget ::onCopyBtnClick()
+void EntCenterNewWidget::onCopyBtnClick()
 {
 	ui.copyTaxButton->setEnabled(false);
 	ZcloudBigDataInterface::GetInstance()->produceData("M00", "OP001", "BBC002");
@@ -335,29 +339,29 @@ void EntCenterNewWidget ::onCopyBtnClick()
 	QClipboard *clipboard = QApplication::clipboard();   //获取系统剪贴板指针  
 	if (NULL == clipboard)
 	{
-//		ui.labelCopy->setText(QString::fromLocal8Bit("复制失败"));
-	//	ui.copyTaxButton->setEnabled(true);
+		//		ui.labelCopy->setText(QString::fromLocal8Bit("复制失败"));
+		//	ui.copyTaxButton->setEnabled(true);
 		return;
 	}
 	QString originalText = clipboard->text();         //获取剪贴板上文本信息  
 	clipboard->setText(strTaxNo);
-//	ui.labelCopy->setText(QString::fromLocal8Bit("已复制"));
-	ui.copyTaxButton->setEnabled(true);	
+	//	ui.labelCopy->setText(QString::fromLocal8Bit("已复制"));
+	ui.copyTaxButton->setEnabled(true);
 }
 
-void EntCenterNewWidget ::onSwitchBtnClick()
+void EntCenterNewWidget::onSwitchBtnClick()
 {
 	//if (pSwitchWidget == NULL)
 	//{
-		//pWidget = new SwitchAccWidget(m_userInfo->m_strUserId, m_userInfo->m_strToken, m_userInfo->m_strUsername, m_userInfo->m_strCompanyId, this);
-		
-		pSwitchWidget = new SwitchAccNewWidget(m_userInfo, m_pEntInfo,this);
-			pSwitchWidget->setAttribute(Qt::WA_DeleteOnClose);
-		
-		connect(pSwitchWidget, SIGNAL(sigSwitchAcc(int, bool, QString, QString)), this, SLOT(onSwitchAcc(int, bool, QString, QString)));
-		//connect(this, SIGNAL(sigSwitchAcc(int, bool, QString, QString)), this, SLOT(onSwitchAcc(int, bool, QString, QString)));
+	//pWidget = new SwitchAccWidget(m_userInfo->m_strUserId, m_userInfo->m_strToken, m_userInfo->m_strUsername, m_userInfo->m_strCompanyId, this);
 
-		pSwitchWidget->setAttribute(Qt::WA_DeleteOnClose);
+	pSwitchWidget = new SwitchAccNewWidget(m_userInfo, m_pEntInfo, this);
+	pSwitchWidget->setAttribute(Qt::WA_DeleteOnClose);
+
+	connect(pSwitchWidget, SIGNAL(sigSwitchAcc(int, bool, QString, QString)), this, SLOT(onSwitchAcc(int, bool, QString, QString)));
+	//connect(this, SIGNAL(sigSwitchAcc(int, bool, QString, QString)), this, SLOT(onSwitchAcc(int, bool, QString, QString)));
+
+	pSwitchWidget->setAttribute(Qt::WA_DeleteOnClose);
 
 
 
@@ -392,7 +396,7 @@ void EntCenterNewWidget::showUserCompanyInfoTitle()
 		ui.labelComName->setText(QString::fromLocal8Bit("暂未查询到企业名称"));
 
 		///取出多个注册表，以,分割，然后传到后台
-		m_strLocalTaxno = ZcloudComFun::getTaxnumbers(); 
+		m_strLocalTaxno = ZcloudComFun::getTaxnumbers();
 
 		/////注册表查询不到，临时赋值，用189账号登陆
 		m_strLocalTaxno = "210624197305200017,91458732MA5UYRPW7R";
@@ -588,14 +592,14 @@ void EntCenterNewWidget::showUnaddCompanyInfoTitle(QString _strcompany, QString 
 	//ui.labelAddComp->setStyleSheet("font-size:14px;	font-family:SourceHanSansCN - Normal, SourceHanSansCN;font-weight:400;color:rgba(30, 139, 237, 1);line-height:21px; ");
 
 	//ui.switchButton->setGeometry(75, 229, 100, 38);
-	
+
 
 	//ui.copyTaxButton->setGeometry(191, 162, 16, 16);
 	ui.copyTaxButton->setStyleSheet("QPushButton{border-image: url(:/EntCenterWidget/image/copy.png);}\nQPushButton:hover,pressed{border-image: url(:/EntCenterWidget/image/copy_sel.png);}");
 	ui.copyTaxButton->show();
 
 
-	
+
 }
 
 void EntCenterNewWidget::showUnqueryCompanyInfoTitle()
@@ -650,13 +654,13 @@ void EntCenterNewWidget::showaddCompanyInfoTitle(QString _strcompany, QString _s
 
 
 	////ui.switchButton->setGeometry(75, 229, 100, 38);
-		ui.switchButton->setStyleSheet("background:linear - gradient(90deg, rgba(2, 164, 253, 1) 0 % , rgba(31, 139, 237, 1) 100 % );box - shadow:0px 3px 8px - 2px rgba(2, 165, 253, 0.85), 0px 6px 11px - 2px rgba(2, 165, 253, 0.64);border - radius:4px; ");
+	ui.switchButton->setStyleSheet("background:linear - gradient(90deg, rgba(2, 164, 253, 1) 0 % , rgba(31, 139, 237, 1) 100 % );box - shadow:0px 3px 8px - 2px rgba(2, 165, 253, 0.85), 0px 6px 11px - 2px rgba(2, 165, 253, 0.64);border - radius:4px; ");
 
 
 	////ui.copyTaxButton->setGeometry(191, 162, 16, 16);
 	ui.copyTaxButton->setStyleSheet("QPushButton{border-image: url(:/EntCenterWidget/image/copy.png);}\nQPushButton:hover,pressed{border-image: url(:/EntCenterWidget/image/copy_sel.png);}");
 	ui.copyTaxButton->show();
-	
+
 	ui.labelJoin2->setStyleSheet("font-size:14px;	font-family:SourceHanSansCN - Normal, SourceHanSansCN;font-weight:400;color:rgba(30, 139, 237, 1);line-height:21px; ");
 
 
@@ -666,42 +670,38 @@ void EntCenterNewWidget::showaddCompanyInfoTitle(QString _strcompany, QString _s
 ////首先弹出加入企业温馨提示，
 void EntCenterNewWidget::JoinEntMoreStep()
 {
-	if (m_info.nIsjoin == 0)
-	{
 
-		int nReturn = ZcloudComFun::openMessageTipDlg_2(ZcloudComFun::EN_OKCANCEL, QString::fromLocal8Bit("温馨提示"), QString::fromLocal8Bit("抱歉，您还没有正式加入\"%1\",您先加入企业后再继续操作！").arg(m_info.strCompany), QString::fromLocal8Bit("立即加入"), QString::fromLocal8Bit("暂不加入"), this);
-		if (nReturn == QDialog::Accepted)
+	int nReturn = ZcloudComFun::openMessageTipDlg_2(ZcloudComFun::EN_OKCANCEL, QString::fromLocal8Bit("温馨提示"), QString::fromLocal8Bit("抱歉，您还没有正式加入\"%1\",您先加入企业后再继续操作！").arg(m_info.strCompany), QString::fromLocal8Bit("立即加入"), QString::fromLocal8Bit("暂不加入"), this);
+	if (nReturn == QDialog::Accepted)
+	{
+		////点击加入后，首先判断这个企业是否绑定企业管理员，然后完善资料
+		if (m_info.isbindEnt == false)
 		{
 
-
-			////完善企业资料，绑丁不绑定，都需要完善企业资料
+			////完善企业资料，	对于没有绑定的企业，用户就直接加入企业了
 			if (JoinStep2FinishEntinfo())
 			{
-				////完善企业资料成功
-				////点击加入后，首先判断这个企业是否绑定企业管理员，然后完善资料
+				ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_TIP, QString::fromLocal8Bit("温馨提示"), QString::fromLocal8Bit("已经加入企业"), this);
+			}
+		}
+		else   ////绑定了，就只递交申请
+		{
 
-				
-				if (m_info.isbindEnt == false)
-				{
-					////递交加入企业申请
-					if (DoapplyJoinEnt())
-					{
-						////成功递交加入企业申请
-						//ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_TIP, QString::fromLocal8Bit("操作失败"), QString::fromLocal8Bit("\r\n财务负责人姓名不正确！"));
-					}
-					else
-					{
-						///递交加入企业申请失败
-						return;
-					}
+			////递交加入企业申请
+			if (DoapplyJoinEnt())
+			{
+				////成功递交加入企业申请
+				//ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_TIP, QString::fromLocal8Bit("操作失败"), QString::fromLocal8Bit("\r\n财务负责人姓名不正确！"));
 
-				}
-				else  ////如果绑定企业管理员，完善企业资料后，下一步就点击申诉
+				////申诉
+				int nReturn1 = ZcloudComFun::openMessageTipDlg_2(ZcloudComFun::EN_OKCANCEL, QString::fromLocal8Bit("温馨提示"), QString::fromLocal8Bit("您的申请信息已提交，请等待企业管理员审核。如果您对当前企业管理员身份存在疑问，请点击申诉"), QString::fromLocal8Bit("申诉"), QString::fromLocal8Bit("取消"), this);
+				if (nReturn1 == QDialog::Accepted)
 				{
-					////申诉
-					int nReturn1 = ZcloudComFun::openMessageTipDlg_2(ZcloudComFun::EN_OKCANCEL, QString::fromLocal8Bit("温馨提示"), QString::fromLocal8Bit("抱歉，您还没有正式加入\"%1\",您先加入企业后再继续操作！").arg(m_info.strCompany), QString::fromLocal8Bit("申诉"), QString::fromLocal8Bit("取消"), this);
-					if (nReturn1 == QDialog::Accepted)
+
+
+					if (JoinStep2AppealGetEntInfo())
 					{
+
 
 						UploadLicenseDlg updlg(m_userInfo);
 						if (updlg.exec() == QDialog::Accepted)
@@ -709,51 +709,60 @@ void EntCenterNewWidget::JoinEntMoreStep()
 							////成功的完善企业的信息和上传的营业执照都在这个企业数据结构的指针里
 							m_pFinishEntInfo->strLicenseUrl = updlg.getLicenseUrl();
 							////申诉
+							QString strRet, strMsg;
+							int statecode;
+							if (!winHttpAppealJoinEnt(m_pFinishEntInfo->_strToken, strRet, strMsg, statecode))
+							{
+								ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_TIP, QString::fromLocal8Bit("温馨提示"), QString::fromLocal8Bit("系统错误"), this);
+								return;
+							}
+							if (statecode == 0)
+							{
 
+								ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_TIP, QString::fromLocal8Bit("温馨提示"), QString::fromLocal8Bit("已经成功递交申诉申请"), this);
+								return;
+							}
+							else
+							{
+								ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_TIP, QString::fromLocal8Bit("温馨提示"), strMsg, this);
+								return;
+							}
 
 						}
-
 					}
 					else
 					{
 						return;
 					}
+
+				}
+				else
+				{
+					return;
 				}
 
 			}
-			else   ////返回相当于不加入
+			else
 			{
+				///递交加入企业申请失败
 				return;
 			}
 
-		
-
-	
-			//立即加入
-			//JoinEntWidget  父类修改为QDialog  使用exec方法才能阻断当前线程
-			//if (m_pJoinEntWidget == NULL)
-			//	m_pJoinEntWidget = new JoinEntWidget(m_userInfo->m_strUserId, m_userInfo->m_strToken, this);
-
-
-
-			////m_pJoinEntWidget->show();
-			//m_pJoinEntWidget->exec();
-
-			/////----------------------------加入企业ok
-
-
-
-		
-			return;
 		}
-		else
-		{
-			///ZcloudBigDataInterface::GetInstance()->produceData("M00", "OP001", "TAU009");
-			return;
-		}
+
 	}
-}
 
+}
+bool EntCenterNewWidget::decideJoinEnt()
+{
+	if (m_userInfo->m_strCompanyName.isEmpty() && m_info.nIsjoin == 0)
+	{
+		return true;
+	}
+	else
+		return false;
+		
+}
 
 ////实际操作加入企业
 bool EntCenterNewWidget::DoapplyJoinEnt()
@@ -814,15 +823,38 @@ bool EntCenterNewWidget::DoapplyJoinEnt()
 ////完善企业资料，绑丁不绑定，都需要完善企业资料
 bool EntCenterNewWidget::JoinStep2FinishEntinfo()
 {
-	
+
 
 	if (m_pEditEntinfo == NULL)
 		m_pEditEntinfo = new EditEntInfoWidget(m_userInfo, m_pEntInfo);
 
 	if (m_pEditEntinfo->exec() == QDialog::Accepted)
 	{
-		m_pFinishEntInfo = m_pEditEntinfo->getFinishEnterInfo();
 
+
+
+		m_pFinishEntInfo = m_pEditEntinfo->getFinishEnterInfo();
+		///m_pEditEntinfo->accept();
+		if (m_pFinishEntInfo != NULL)
+			return true;
+		else
+			return false;
+	}
+}
+
+bool EntCenterNewWidget::JoinStep2AppealGetEntInfo()
+{
+	if (m_pEditEntinfo == NULL)
+		m_pEditEntinfo = new EditEntInfoWidget(m_userInfo, m_pEntInfo);
+
+	m_pEditEntinfo->ChangeShow(false);
+	if (m_pEditEntinfo->exec() == QDialog::Accepted)
+	{
+
+
+
+		m_pFinishEntInfo = m_pEditEntinfo->getFinishEnterInfo();
+		///m_pEditEntinfo->accept();
 		if (m_pFinishEntInfo != NULL)
 			return true;
 		else

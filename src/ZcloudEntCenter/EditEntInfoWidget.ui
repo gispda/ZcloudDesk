@@ -1085,15 +1085,43 @@ border-bottom:0px;</string>
         <string>请输入11位正确的手机号</string>
        </property>
       </widget>
-      <zorder>cancelButton</zorder>
-      <zorder>label_5</zorder>
-      <zorder>lineEditLegalPeason</zorder>
-      <zorder>okButton</zorder>
-      <zorder>labelLegalPeasonError</zorder>
-      <zorder>lineEditPhone</zorder>
-      <zorder>label_4</zorder>
-      <zorder>labelPhoneError</zorder>
-      <zorder>widgetAddressOffice</zorder>
+      <widget class="QPushButton" name="nextbutton">
+       <property name="geometry">
+        <rect>
+         <x>210</x>
+         <y>140</y>
+         <width>72</width>
+         <height>32</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>72</width>
+         <height>32</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>72</width>
+         <height>32</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{background-color:qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(2, 164, 253, 1), stop:1 rgba(31, 139, 237, 1));border-radius:4px;font: 14px &quot;微软雅黑&quot;;color:rgba(255, 255, 255, 1);}
+			QPushButton:hover,pressed{ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(40, 178, 253, 1),stop:1 rgba(64, 156, 240, 1));
+		  border-radius:4px;font: 14px &quot;微软雅黑&quot;;color:rgba(255, 255, 255, 1);}
+QPushButton:disabled{ background-color:rgba(200,200,200,1);border-radius:4px;};</string>
+       </property>
+       <property name="text">
+        <string>下一步</string>
+       </property>
+      </widget>
      </widget>
     </item>
    </layout>

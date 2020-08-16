@@ -5,7 +5,7 @@
 #include <QJsonArray>
 #include "ZcloudBigData.h"
 
-EditEntInfoWidget::EditEntInfoWidget(UserInfoStruct* _userinfo, EntCenterInfo* _pentinfo, QWidget *parent)
+EditEntInfoWidget::EditEntInfoWidget(UserInfoStruct* _userinfo, EntCenterInfo* _pentinfo, bool beditdb, QWidget *parent)
 	: QDialog(parent)
 {
 	m_strUid = _userinfo->m_strUserId;
@@ -15,7 +15,7 @@ EditEntInfoWidget::EditEntInfoWidget(UserInfoStruct* _userinfo, EntCenterInfo* _
 
 	m_pentinfo = _pentinfo;
 
-
+	m_beditdb = beditdb;
 	m_pFinishentinfo = NULL;
 	ui.setupUi(this);
 	resize(565, 545);
@@ -137,13 +137,44 @@ EditEntInfoWidget::EditEntInfoWidget(UserInfoStruct* _userinfo, EntCenterInfo* _
 	connect(ui.lineEditLegalPeason, &QLineEdit::editingFinished, this, &EditEntInfoWidget::onLegalPeasonEditingFinished);
 	connect(ui.lineEditPhone, &QLineEdit::editingFinished, this, &EditEntInfoWidget::onPhoneEditingFinished);
 	connect(ui.okButton, &QPushButton::clicked, this, &EditEntInfoWidget::onEditOkBtnClick);
+
+	connect(ui.nextbutton, &QPushButton::clicked, this, &EditEntInfoWidget::onNextBtnClick);
 	connect(ui.cancelButton, &QPushButton::clicked, [this](){
 		ZcloudBigDataInterface::GetInstance()->produceData("M00", "OP001", "BBD004");
 		close();
 	});
+
+
+	ChangeShow();
+
 }
 
+void EditEntInfoWidget::onNextBtnClick()
+{
+	if (!m_bLegalPeason)
+	{
+		ui.labelLegalPeasonError->show();
+	}
+	if (!m_bPhone)
+	{
+		ui.labelPhoneError->show();
+	}
+	if (!m_bLegalPeason || !m_bPhone)
+	{
+		return;
+	}
+	if (m_pentinfo->_nProvinceid == -999 || m_pentinfo->_nCityid == -999 || m_pentinfo->_nAreaid == -999)
+	{
+		ui.labelAreaError->show();
+		return;
+	}
 
+		if (m_pFinishentinfo == NULL)
+			m_pFinishentinfo = new EntCenterInfo();
+		*m_pFinishentinfo = *m_pentinfo;
+
+	close();
+}
 void EditEntInfoWidget::onRadioBtnAddressRegClick(){
 	ui.widgetAddressOffice->hide();
 	adjustSize();
@@ -560,7 +591,7 @@ void EditEntInfoWidget::onEditOkBtnClick()
 		ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_TIP, QString::fromLocal8Bit("²Ù×÷Ê§°Ü"), strMsg);
 
 
-
+		this->close();
 	}
 }
 
@@ -636,5 +667,22 @@ void EditEntInfoWidget::onOfficeProIndexChanged(int index)
 	else
 	{
 		ui.labelAreaError->hide();
+	}
+}
+
+void EditEntInfoWidget::ChangeShow(bool beditdb)
+{
+
+	m_beditdb = beditdb;
+	if (m_beditdb)
+	{
+		ui.okButton->show();
+		ui.nextbutton->hide();
+	}
+	else
+	{
+		ui.okButton->hide();
+		ui.nextbutton->show();
+	   
 	}
 }

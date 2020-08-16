@@ -30,6 +30,7 @@ public:
     QWidget *verticalLayoutWidget;
     QVBoxLayout *verticalLayout;
     QWidget *widget;
+	QPushButton *nextbutton;
     QComboBox *comboBoxArea;
     QLineEdit *lineEditAddress;
     QLabel *label_10;
@@ -58,6 +59,7 @@ public:
     QLineEdit *lineEditPhone;
     QLabel *label_4;
     QLabel *labelPhoneError;
+    
 
     void setupUi(QWidget *EditEntInfoWidget)
     {
@@ -453,15 +455,17 @@ public:
         labelPhoneError->setStyleSheet(QString::fromUtf8("font: 12px \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
 "color: #ff0000;\n"
 "border-bottom:0px;"));
-        cancelButton->raise();
-        label_5->raise();
-        lineEditLegalPeason->raise();
-        okButton->raise();
-        labelLegalPeasonError->raise();
-        lineEditPhone->raise();
-        label_4->raise();
-        labelPhoneError->raise();
-        widgetAddressOffice->raise();
+        nextbutton = new QPushButton(widget_3);
+        nextbutton->setObjectName(QStringLiteral("nextbutton"));
+        nextbutton->setGeometry(QRect(210, 140, 72, 32));
+        sizePolicy.setHeightForWidth(nextbutton->sizePolicy().hasHeightForWidth());
+        nextbutton->setSizePolicy(sizePolicy);
+        nextbutton->setMinimumSize(QSize(72, 32));
+        nextbutton->setMaximumSize(QSize(72, 32));
+        nextbutton->setStyleSheet(QString::fromUtf8("QPushButton{background-color:qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(2, 164, 253, 1), stop:1 rgba(31, 139, 237, 1));border-radius:4px;font: 14px \"\345\276\256\350\275\257\351\233\205\351\273\221\";color:rgba(255, 255, 255, 1);}\n"
+"			QPushButton:hover,pressed{ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(40, 178, 253, 1),stop:1 rgba(64, 156, 240, 1));\n"
+"		  border-radius:4px;font: 14px \"\345\276\256\350\275\257\351\233\205\351\273\221\";color:rgba(255, 255, 255, 1);}\n"
+"QPushButton:disabled{ background-color:rgba(200,200,200,1);border-radius:4px;};"));
 
         verticalLayout->addWidget(widget_3);
 
@@ -498,6 +502,7 @@ public:
         lineEditPhone->setPlaceholderText(QApplication::translate("EditEntInfoWidget", "\350\257\267\350\276\223\345\205\245\350\264\237\350\264\243\344\272\272\346\211\213\346\234\272\345\217\267", 0));
         label_4->setText(QApplication::translate("EditEntInfoWidget", "\344\274\201\344\270\232\350\264\237\350\264\243\344\272\272", 0));
         labelPhoneError->setText(QApplication::translate("EditEntInfoWidget", "\350\257\267\350\276\223\345\205\24511\344\275\215\346\255\243\347\241\256\347\232\204\346\211\213\346\234\272\345\217\267", 0));
+        nextbutton->setText(QApplication::translate("EditEntInfoWidget", "\344\270\213\344\270\200\346\255\245", 0));
     } // retranslateUi
 
 };

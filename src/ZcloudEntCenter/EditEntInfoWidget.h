@@ -12,7 +12,10 @@ class EditEntInfoWidget : public QDialog
 	Q_OBJECT
 
 public:
-	EditEntInfoWidget(UserInfoStruct* _userinfo, EntCenterInfo* _pentinfo, QWidget *parent = Q_NULLPTR);
+	EditEntInfoWidget(UserInfoStruct* _userinfo, EntCenterInfo* _pentinfo, bool beditdb = true, QWidget *parent = Q_NULLPTR);
+
+	void ChangeShow(bool beditdb = true);
+
 	~EditEntInfoWidget();
 
 
@@ -34,6 +37,7 @@ private slots:
 	void onLegalPeasonEditingFinished();
 	void onPhoneEditingFinished();
 	void onEditOkBtnClick();
+	void onNextBtnClick();
 	void onRadioBtnAddressRegClick();
 	void onRadioBtnAddressNewClick();
 private:
@@ -55,6 +59,9 @@ private:
 	////是否从后台拉回数据
 	bool m_bIsloadDb;
 
+
+	///是否编辑数据,默认编辑企业信息，false为下一步用于申诉
+	bool m_beditdb;
 	EntCenterInfo* m_pentinfo;
 	EntCenterInfo* m_pFinishentinfo;
 	UserInfoStruct* m_userinfo;
@@ -64,4 +71,6 @@ private:
 	QString	m_strToken;
 	bool	m_bLegalPeason = true;
 	bool	m_bPhone	= true;
+
+
 };
