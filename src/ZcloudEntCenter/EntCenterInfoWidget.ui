@@ -453,7 +453,7 @@ border-bottom:0px;</string>
     <rect>
      <x>214</x>
      <y>119</y>
-     <width>526</width>
+     <width>500</width>
      <height>1</height>
     </rect>
    </property>
@@ -465,7 +465,7 @@ border-bottom:0px;</string>
    </property>
    <property name="minimumSize">
     <size>
-     <width>456</width>
+     <width>500</width>
      <height>1</height>
     </size>
    </property>
@@ -487,7 +487,7 @@ border-bottom:0px;</string>
     <rect>
      <x>214</x>
      <y>275</y>
-     <width>526</width>
+     <width>500</width>
      <height>1</height>
     </rect>
    </property>
@@ -499,7 +499,7 @@ border-bottom:0px;</string>
    </property>
    <property name="minimumSize">
     <size>
-     <width>526</width>
+     <width>500</width>
      <height>1</height>
     </size>
    </property>
@@ -1080,7 +1080,7 @@ border-bottom:0px;</string>
      <rect>
       <x>385</x>
       <y>10</y>
-      <width>225</width>
+      <width>220</width>
       <height>16</height>
      </rect>
     </property>
@@ -1092,7 +1092,7 @@ border-bottom:0px;</string>
     </property>
     <property name="minimumSize">
      <size>
-      <width>225</width>
+      <width>220</width>
       <height>16</height>
      </size>
     </property>

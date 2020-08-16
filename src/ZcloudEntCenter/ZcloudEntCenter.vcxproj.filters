@@ -357,7 +357,7 @@
     <ClInclude Include="GeneratedFiles\ui_EditInvoiceInfoWidget.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
-    <ClInclude Include="GeneratedFiles\ui_EntCenterInfoWidget.h">
+    <ClInclude Include="GeneratedFiles\ui_EntAppealDlg.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_EntCenterMainWidget.h">
@@ -384,6 +384,9 @@
     <ClInclude Include="GeneratedFiles\ui_InfoCenterWidget.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_JoinEntWidget.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_MemberItemWidget.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
@@ -399,13 +402,22 @@
     <ClInclude Include="GeneratedFiles\ui_SetPwdWidget.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_SwitchAccNewWidget.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_SwitchAccWidget.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_TwobarCodeWidget.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_UploadLicenseDlg.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_UserCenterAccWidget.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_UserCenterMainWidget.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_UserCenterWidget.h">
@@ -426,13 +438,7 @@
     <ClInclude Include="GeneratedFiles\ui_WorkersWidget.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
-    <ClInclude Include="GeneratedFiles\ui_UserCenterMainWidget.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GeneratedFiles\ui_JoinEntWidget.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GeneratedFiles\ui_SwitchAccNewWidget.h">
+    <ClInclude Include="GeneratedFiles\ui_EntCenterInfoWidget.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
   </ItemGroup>

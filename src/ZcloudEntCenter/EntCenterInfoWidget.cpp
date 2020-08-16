@@ -30,8 +30,7 @@ EntCenterInfoWidget::~EntCenterInfoWidget()
 
 void EntCenterInfoWidget::init(EntCenterInfo* info){
 	m_pInfo = info;
-	ui.entEditWidget->hide();
-	ui.invoiceEditWidget->hide();
+
 
 	
 	ui.labelArea->setText(m_pInfo->_strAddress);
@@ -41,13 +40,14 @@ void EntCenterInfoWidget::init(EntCenterInfo* info){
 	ui.labelBank->setText(m_pInfo->_strBankname);
 	ui.labelAddr->setText(m_pInfo->_strOfficeaddress);
 
-
-
-	if (m_pInfo->_nrole_type == 1)
-	{
-		ui.entEditWidget->show();
-		ui.invoiceEditWidget->show();
-	}
+	////管理员权限 显示编辑
+	//ui.entEditWidget->hide();
+	//ui.invoiceEditWidget->hide();
+	//if (m_pInfo->_nrole_type == 1)
+	//{
+	//	ui.entEditWidget->show();
+	//	ui.invoiceEditWidget->show();
+	//}
 
 }
 

@@ -232,6 +232,9 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="GeneratedFiles\ui_AppCenterHomeWidget.h" />
+    <ClInclude Include="GeneratedFiles\ui_AppCenterWidget.h" />
+    <ClInclude Include="GeneratedFiles\ui_dlgwait.h" />
     <ClInclude Include="GetClassAppThread.h" />
     <QtMoc Include="AppCenter\AppCenterAtegoryWidget.h" />
     <QtMoc Include="AppCenter\AppCenterComponent.h" />

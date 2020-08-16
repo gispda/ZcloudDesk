@@ -180,18 +180,18 @@ public:
 "border-bottom:0px;"));
         label_11 = new QLabel(EntCenterInfoWidget);
         label_11->setObjectName(QStringLiteral("label_11"));
-        label_11->setGeometry(QRect(214, 119, 526, 1));
+        label_11->setGeometry(QRect(214, 119, 500, 1));
         sizePolicy.setHeightForWidth(label_11->sizePolicy().hasHeightForWidth());
         label_11->setSizePolicy(sizePolicy);
-        label_11->setMinimumSize(QSize(456, 1));
+        label_11->setMinimumSize(QSize(500, 1));
         label_11->setMaximumSize(QSize(600, 1));
         label_11->setStyleSheet(QStringLiteral("border:2px dashed rgba(222,222,222,1);"));
         label_13 = new QLabel(EntCenterInfoWidget);
         label_13->setObjectName(QStringLiteral("label_13"));
-        label_13->setGeometry(QRect(214, 275, 526, 1));
+        label_13->setGeometry(QRect(214, 275, 500, 1));
         sizePolicy.setHeightForWidth(label_13->sizePolicy().hasHeightForWidth());
         label_13->setSizePolicy(sizePolicy);
-        label_13->setMinimumSize(QSize(526, 1));
+        label_13->setMinimumSize(QSize(500, 1));
         label_13->setMaximumSize(QSize(556, 1));
         label_13->setStyleSheet(QStringLiteral("border:2px dashed rgba(222,222,222,1);"));
         entWidget = new QWidget(EntCenterInfoWidget);
@@ -350,10 +350,10 @@ public:
 "border-bottom:0px;"));
         labelBank = new QLabel(invoiceWidget);
         labelBank->setObjectName(QStringLiteral("labelBank"));
-        labelBank->setGeometry(QRect(385, 10, 225, 16));
+        labelBank->setGeometry(QRect(385, 10, 220, 16));
         sizePolicy.setHeightForWidth(labelBank->sizePolicy().hasHeightForWidth());
         labelBank->setSizePolicy(sizePolicy);
-        labelBank->setMinimumSize(QSize(225, 16));
+        labelBank->setMinimumSize(QSize(220, 16));
         labelBank->setMaximumSize(QSize(225, 16));
         labelBank->setStyleSheet(QString::fromUtf8("font: 14px \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
 "color: rgb(102,102,102);\n"
