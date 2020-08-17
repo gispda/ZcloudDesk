@@ -111,7 +111,7 @@ void on_activatedSysTrayIcon(QSystemTrayIcon::ActivationReason reason);
 			if (m_pLoginTip == NULL)
 				m_pLoginTip = new LoginTip();
 
-			m_pLoginTip->show();
+			m_pLoginTip->exec();
 
 		}
 	}

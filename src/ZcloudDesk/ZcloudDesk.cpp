@@ -473,6 +473,7 @@ void ZcloudDesk::onTopToolClick()
 		//bankinfo.m_strTelno = "028 82909982";
 		//QString strRet;
 		//ZcloudClient::winHttpUpdatebankInfo(bankinfo, m_stUserInfo.m_strToken, strRet);
+		showLoginTip();
 
 		lockScreen();
 	}

@@ -5,14 +5,14 @@
 #include "JsInterface.h"
 #include <QWebFrame>
 LoginTip::LoginTip(QWidget *parent)
-	:AppCommWidget("", true, parent)
+	:QDialog(parent)
 {
-	ui.setupUi(m_widget);
+	ui.setupUi(this);
 	resize(370, 386);
 	setObjectName("ZcloudLoginTip");
 	setWindowTitle(QString::fromLocal8Bit("»î¶¯"));
 	setWindowFlags(Qt::FramelessWindowHint);
-	setAttribute(Qt::WA_TranslucentBackground, true);
+	setAttribute(Qt::WA_TranslucentBackground, false);
 	setAttribute(Qt::WA_DeleteOnClose);
 	setStyleSheet("outline: none");
 	

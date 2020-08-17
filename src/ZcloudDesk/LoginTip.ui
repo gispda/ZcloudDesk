@@ -51,7 +51,7 @@ QToolButton:hover,pressed{ background-color: qlineargradient(spread:pad, x1:0, y
 border:1px solid rgba(222,222,222,1);}</string>
    </property>
    <property name="text">
-    <string>立刻登陆</string>
+    <string>暂不登陆</string>
    </property>
   </widget>
   <widget class="QLabel" name="label">

@@ -7,7 +7,7 @@
 #include "CommWidget.h"
 #include "WebView.h"
 #include "AppCommWidget.h"
-class LoginTip : public AppCommWidget
+class LoginTip : public QDialog
 {
 	Q_OBJECT
 
