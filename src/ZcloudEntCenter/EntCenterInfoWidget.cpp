@@ -42,13 +42,13 @@ void EntCenterInfoWidget::init(EntCenterInfo* info){
 	ui.labelAddr->setText(m_pInfo->_strOfficeaddress);
 
 	////管理员权限 显示编辑
-	//ui.entEditWidget->hide();
-	//ui.invoiceEditWidget->hide();
-	//if (m_pInfo->_nrole_type == 1)
-	//{
-	//	ui.entEditWidget->show();
-	//	ui.invoiceEditWidget->show();
-	//}
+	ui.entEditWidget->hide();
+	ui.invoiceEditWidget->hide();
+	if (m_pInfo->_nrole_type == 1)
+	{
+		ui.entEditWidget->show();
+		ui.invoiceEditWidget->show();
+	}
 
 }
 

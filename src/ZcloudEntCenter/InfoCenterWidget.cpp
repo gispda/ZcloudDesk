@@ -318,7 +318,7 @@ bool InfoCenterWidget::loadEntInfo()
 	QString strlocaltax="";
 	if (m_stEntInfo._strLocalTaxnoLs.count()>0)
 	strlocaltax = m_stEntInfo._strLocalTaxnoLs.at(0);
-	strlocaltax = "210624197305200017";
+	//strlocaltax = "210624197305200017";
 
 	QString strtax = m_userInfo->m_strTaxNumber.isEmpty() != true ? m_userInfo->m_strTaxNumber : strlocaltax;
 
@@ -419,8 +419,8 @@ bool InfoCenterWidget::loadEntInfo()
 
 	QJsonObject userdata = data.take("user").toObject();
 	//m_stEntInfo.nAdmin = userdata.take("is_admin").toInt();
-	//m_stEntInfo.nAdmin = userdata.take("role_type").toInt();
-
+	m_stEntInfo.nAdmin = userdata.take("role_type").toInt();
+	m_stEntInfo._nrole_type = userdata.take("role_type").toInt();
 	
 	return true;
 }

@@ -399,7 +399,7 @@ void EntCenterNewWidget::showUserCompanyInfoTitle()
 		m_strLocalTaxno = ZcloudComFun::getTaxnumbers();
 
 		/////注册表查询不到，临时赋值，用189账号登陆
-		m_strLocalTaxno = "210624197305200017,91458732MA5UYRPW7R";
+		///m_strLocalTaxno = "210624197305200017,91458732MA5UYRPW7R";
 		bret = ZcloudComFun::winHttpQueryCompanyInfoLocalTax(m_strLocalTaxno, m_userInfo->m_strToken, m_info);
 		//已加入企业
 		if (m_info.nIsjoin == 1)

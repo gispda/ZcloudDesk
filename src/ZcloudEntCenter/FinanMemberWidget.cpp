@@ -98,7 +98,6 @@ bool FinanMemberWidget::showMemberInfo()
 
 		QListWidgetItem* pListWidgetItem = new QListWidgetItem;
 
-
 		MemberItemWidget* pItem = new MemberItemWidget(nAdmin, nIndex % 6, strUid, strUserName, strTrueName, strJob, strMobile, nRoleType, ui.listWidget);
 		connect(pItem, &MemberItemWidget::sigRemoveMember, this, &FinanMemberWidget::onRemoveMember);
 		connect(pItem, &MemberItemWidget::sigModifyMember, this, &FinanMemberWidget::onModifyMember);

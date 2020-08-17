@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_EditEntInfoWidget_t {
-    QByteArrayData data[13];
-    char stringdata0[240];
+    QByteArrayData data[17];
+    char stringdata0[329];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -36,20 +36,26 @@ QT_MOC_LITERAL(3, 37, 17), // "onProIndexChanged"
 QT_MOC_LITERAL(4, 55, 5), // "index"
 QT_MOC_LITERAL(5, 61, 18), // "onCityIndexChanged"
 QT_MOC_LITERAL(6, 80, 18), // "onAreaIndexChanged"
-QT_MOC_LITERAL(7, 99, 19), // "onTradeIndexChanged"
-QT_MOC_LITERAL(8, 119, 28), // "onLegalPeasonEditingFinished"
-QT_MOC_LITERAL(9, 148, 22), // "onPhoneEditingFinished"
-QT_MOC_LITERAL(10, 171, 16), // "onEditOkBtnClick"
-QT_MOC_LITERAL(11, 188, 25), // "onRadioBtnAddressRegClick"
-QT_MOC_LITERAL(12, 214, 25) // "onRadioBtnAddressNewClick"
+QT_MOC_LITERAL(7, 99, 23), // "onOfficeProIndexChanged"
+QT_MOC_LITERAL(8, 123, 24), // "onOfficeCityIndexChanged"
+QT_MOC_LITERAL(9, 148, 24), // "onOfficeAreaIndexChanged"
+QT_MOC_LITERAL(10, 173, 19), // "onTradeIndexChanged"
+QT_MOC_LITERAL(11, 193, 28), // "onLegalPeasonEditingFinished"
+QT_MOC_LITERAL(12, 222, 22), // "onPhoneEditingFinished"
+QT_MOC_LITERAL(13, 245, 16), // "onEditOkBtnClick"
+QT_MOC_LITERAL(14, 262, 14), // "onNextBtnClick"
+QT_MOC_LITERAL(15, 277, 25), // "onRadioBtnAddressRegClick"
+QT_MOC_LITERAL(16, 303, 25) // "onRadioBtnAddressNewClick"
 
     },
     "EditEntInfoWidget\0sigUpdateSucessed\0"
     "\0onProIndexChanged\0index\0onCityIndexChanged\0"
-    "onAreaIndexChanged\0onTradeIndexChanged\0"
+    "onAreaIndexChanged\0onOfficeProIndexChanged\0"
+    "onOfficeCityIndexChanged\0"
+    "onOfficeAreaIndexChanged\0onTradeIndexChanged\0"
     "onLegalPeasonEditingFinished\0"
     "onPhoneEditingFinished\0onEditOkBtnClick\0"
-    "onRadioBtnAddressRegClick\0"
+    "onNextBtnClick\0onRadioBtnAddressRegClick\0"
     "onRadioBtnAddressNewClick"
 };
 #undef QT_MOC_LITERAL
@@ -60,7 +66,7 @@ static const uint qt_meta_data_EditEntInfoWidget[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-      10,   14, // methods
+      14,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -68,18 +74,22 @@ static const uint qt_meta_data_EditEntInfoWidget[] = {
        1,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    0,   64,    2, 0x06 /* Public */,
+       1,    0,   84,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       3,    1,   65,    2, 0x08 /* Private */,
-       5,    1,   68,    2, 0x08 /* Private */,
-       6,    1,   71,    2, 0x08 /* Private */,
-       7,    1,   74,    2, 0x08 /* Private */,
-       8,    0,   77,    2, 0x08 /* Private */,
-       9,    0,   78,    2, 0x08 /* Private */,
-      10,    0,   79,    2, 0x08 /* Private */,
-      11,    0,   80,    2, 0x08 /* Private */,
-      12,    0,   81,    2, 0x08 /* Private */,
+       3,    1,   85,    2, 0x08 /* Private */,
+       5,    1,   88,    2, 0x08 /* Private */,
+       6,    1,   91,    2, 0x08 /* Private */,
+       7,    1,   94,    2, 0x08 /* Private */,
+       8,    1,   97,    2, 0x08 /* Private */,
+       9,    1,  100,    2, 0x08 /* Private */,
+      10,    1,  103,    2, 0x08 /* Private */,
+      11,    0,  106,    2, 0x08 /* Private */,
+      12,    0,  107,    2, 0x08 /* Private */,
+      13,    0,  108,    2, 0x08 /* Private */,
+      14,    0,  109,    2, 0x08 /* Private */,
+      15,    0,  110,    2, 0x08 /* Private */,
+      16,    0,  111,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void,
@@ -89,6 +99,10 @@ static const uint qt_meta_data_EditEntInfoWidget[] = {
     QMetaType::Void, QMetaType::Int,    4,
     QMetaType::Void, QMetaType::Int,    4,
     QMetaType::Void, QMetaType::Int,    4,
+    QMetaType::Void, QMetaType::Int,    4,
+    QMetaType::Void, QMetaType::Int,    4,
+    QMetaType::Void, QMetaType::Int,    4,
+    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -108,12 +122,16 @@ void EditEntInfoWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, in
         case 1: _t->onProIndexChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 2: _t->onCityIndexChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 3: _t->onAreaIndexChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 4: _t->onTradeIndexChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 5: _t->onLegalPeasonEditingFinished(); break;
-        case 6: _t->onPhoneEditingFinished(); break;
-        case 7: _t->onEditOkBtnClick(); break;
-        case 8: _t->onRadioBtnAddressRegClick(); break;
-        case 9: _t->onRadioBtnAddressNewClick(); break;
+        case 4: _t->onOfficeProIndexChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 5: _t->onOfficeCityIndexChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 6: _t->onOfficeAreaIndexChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 7: _t->onTradeIndexChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 8: _t->onLegalPeasonEditingFinished(); break;
+        case 9: _t->onPhoneEditingFinished(); break;
+        case 10: _t->onEditOkBtnClick(); break;
+        case 11: _t->onNextBtnClick(); break;
+        case 12: _t->onRadioBtnAddressRegClick(); break;
+        case 13: _t->onRadioBtnAddressNewClick(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -129,7 +147,7 @@ void EditEntInfoWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, in
 }
 
 const QMetaObject EditEntInfoWidget::staticMetaObject = {
-    { &ZcloudCommonWidget::staticMetaObject, qt_meta_stringdata_EditEntInfoWidget.data,
+    { &QDialog::staticMetaObject, qt_meta_stringdata_EditEntInfoWidget.data,
       qt_meta_data_EditEntInfoWidget,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
 };
 
@@ -144,22 +162,22 @@ void *EditEntInfoWidget::qt_metacast(const char *_clname)
     if (!_clname) return Q_NULLPTR;
     if (!strcmp(_clname, qt_meta_stringdata_EditEntInfoWidget.stringdata0))
         return static_cast<void*>(const_cast< EditEntInfoWidget*>(this));
-    return ZcloudCommonWidget::qt_metacast(_clname);
+    return QDialog::qt_metacast(_clname);
 }
 
 int EditEntInfoWidget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
-    _id = ZcloudCommonWidget::qt_metacall(_c, _id, _a);
+    _id = QDialog::qt_metacall(_c, _id, _a);
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 10)
+        if (_id < 14)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 10;
+        _id -= 14;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 10)
+        if (_id < 14)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 10;
+        _id -= 14;
     }
     return _id;
 }
