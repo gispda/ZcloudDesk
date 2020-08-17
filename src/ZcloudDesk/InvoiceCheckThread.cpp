@@ -24,7 +24,7 @@ void InvoiceCheckThread::run()
 	QString strDownloadUrl, strMd5;
 	CheckUpdater updater;
 	checkedClient = updater.checkUpdater(m_stUserInfo->m_strUserId, m_stUserInfo->m_strToken);
-	checkedClient = true;
+	//checkedClient = true;
 
 	//¼ì²â¿ªÆ±Èí¼þ°æ±¾
 	QString softUrl;
@@ -41,7 +41,7 @@ void InvoiceCheckThread::run()
 
 		}
 	}
-	checkedInvoice = true;
+	//checkedInvoice = true;
 	QString url;
 	CheckUpdater* updateObj=NULL;
 	if (checkedClient){

@@ -376,7 +376,7 @@ void SettingWidget::onCheckUpdateBtnClick()
 	QString strDownloadUrl, strMd5;
 	CheckUpdater obj;
 	bool checked =obj.checkUpdater(m_strUid, m_strToken);
-	checked = true;
+	//checked = true;
 	QString s = QApplication::applicationDirPath();
 	if (checked)
 	{
