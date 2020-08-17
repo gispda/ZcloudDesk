@@ -50,6 +50,7 @@ ZcloudDesk::ZcloudDesk(UserInfoStruct userInfoStruct, QWidget *parent)
 	system_tray->setToolTip(QString::fromLocal8Bit("云财税"));
 
 	connect(system_tray, SIGNAL(activated(QSystemTrayIcon::ActivationReason)), this, SLOT(on_activatedSysTrayIcon(QSystemTrayIcon::ActivationReason)));
+
 	//显示托盘
 	system_tray->show();
 
@@ -105,6 +106,8 @@ ZcloudDesk::ZcloudDesk(UserInfoStruct userInfoStruct, QWidget *parent)
 	connect(ui.billListButton, SIGNAL(clicked()), this, SLOT(openWorkers()));
 
 
+	connect(this, SIGNAL(applyLogin()), this, SLOT(doLogin()));
+	
 	//connect(ui.msgButton, SIGNAL(clicked()), this, SLOT(openMsgCenterWidget()));
 	//ui.msgButton->setNumber(0);
 	//ui.msgButton->installEventFilter(this);
@@ -139,7 +142,11 @@ void ZcloudDesk::on_activatedSysTrayIcon(QSystemTrayIcon::ActivationReason reaso
 
 ZcloudDesk::~ZcloudDesk()
 {
-
+	if (m_pLoginTip != NULL)
+	{
+		m_pLoginTip->deleteLater();
+		m_pLoginTip = NULL;
+	}
 	release();
 }
 void ZcloudDesk::startInitSlot(int flag)
@@ -397,21 +404,48 @@ void ZcloudDesk::showTopTool(const vtrAppDataInfos& topToolInfos)
 
 void ZcloudDesk::openSettingCenterWidget()
 {
-	SettingWidget*	pSettingWidget = findChild<SettingWidget*>(QString::fromLocal8Bit("SettingWidget"));
-	if (NULL != pSettingWidget)
+
+
+	if (!showLoginTip())
 	{
 		return;
 	}
-	SettingWidget*	pWidget = new SettingWidget(m_stUserInfo.m_strUserId, m_stUserInfo.m_strToken, m_stUserInfo.m_strProvinceId,this);
-	connect(pWidget, SIGNAL(sigTopCheckChanged(bool)), this, SLOT(onTopCheckChanged(bool)));
-	connect(pWidget, SIGNAL(showNoviceDlgSignal(bool)), this, SLOT(noviceSlot(bool)));
-	connect(pWidget, SIGNAL(sigRightCheckChanged(bool)), this, SLOT(onRightCheckChanged(bool)));
-	connect(pWidget, SIGNAL(sigToolCheckChanged(QString, bool)), this, SLOT(onToolCheckChanged(QString, bool))); 
-	connect(pWidget, SIGNAL(sigLogout()), this, SLOT(onLogout()));
-	pWidget->show();
-	m_pBigDataInterface->produceData("M01", "OP001", "TTA006");
+		SettingWidget*	pSettingWidget = findChild<SettingWidget*>(QString::fromLocal8Bit("SettingWidget"));
+		if (NULL != pSettingWidget)
+		{
+			return;
+		}
+		SettingWidget*	pWidget = new SettingWidget(m_stUserInfo.m_strUserId, m_stUserInfo.m_strToken, m_stUserInfo.m_strProvinceId, this);
+		connect(pWidget, SIGNAL(sigTopCheckChanged(bool)), this, SLOT(onTopCheckChanged(bool)));
+		connect(pWidget, SIGNAL(showNoviceDlgSignal(bool)), this, SLOT(noviceSlot(bool)));
+		connect(pWidget, SIGNAL(sigRightCheckChanged(bool)), this, SLOT(onRightCheckChanged(bool)));
+		connect(pWidget, SIGNAL(sigToolCheckChanged(QString, bool)), this, SLOT(onToolCheckChanged(QString, bool)));
+		connect(pWidget, SIGNAL(sigLogout()), this, SLOT(onLogout()));
+		pWidget->show();
+		m_pBigDataInterface->produceData("M01", "OP001", "TTA006");
+
 }
 
+
+bool ZcloudDesk::showLoginTip()
+{
+	if (m_stUserInfo.m_bLoginByTax == -8)
+	{
+		if (m_pLoginTip == NULL)
+			m_pLoginTip = new LoginTip();
+
+		if (m_pLoginTip->exec() == QDialog::Accepted)
+		{
+			emit applyLogin();
+			return false;
+		}
+		else
+			return false;
+
+	}
+	else
+		return true;
+}
 void ZcloudDesk::onTopToolClick()
 {
 	QObject*	pObj = sender();
@@ -473,7 +507,7 @@ void ZcloudDesk::onTopToolClick()
 		//bankinfo.m_strTelno = "028 82909982";
 		//QString strRet;
 		//ZcloudClient::winHttpUpdatebankInfo(bankinfo, m_stUserInfo.m_strToken, strRet);
-		showLoginTip();
+		
 
 		lockScreen();
 	}
@@ -505,115 +539,80 @@ void ZcloudDesk::onTopToolClick()
 		//	}
 		//}
 		//TopToolWidget*	pTopToolWidget = new TopToolWidget(pInfo,this);
-		showLoginTip();
+		if(showLoginTip())
+		{
 
 		m_pBigDataInterface->produceData("M01", "OP001", "TTA005");
 		openApp(pInfo);
+		}
 	}
 }
 
 void ZcloudDesk::openEntCenterWidget()
 {
-	if (m_stUserInfo.m_strUsername.isEmpty()){
-		LoginDialog loginDialog;
-		QString strTip;
-		int logingInt;
-		loginDialog.isUserNameLogin();
-		//logingInt = loginDialog.checkLogin(strTip);
-		loginDialog.initWeChartWidget(logingInt);
-			if (loginDialog.exec() == QDialog::Accepted)
-			{
-				UserInfoStruct userInfo = loginDialog.getUserInfoStruct();
-				if (!userInfo.m_strUsername.isEmpty()){
-					/*m_stUserInfo = userInfo;
-					startInitWork();*/
-					//showDlgWait(true);
-					m_stUserInfo = userInfo;
-					m_nUnreadCount = 0;
-					QFuture<void>	funIr = QtConcurrent::run(this, &ZcloudDesk::exitThread, 0);
-				}
-				else
-				{
-					////设置用户名称
-					loginDialog.initModifyUserNameWidget();
-					if (loginDialog.exec() == QDialog::Accepted)
-					{
-						userInfo = loginDialog.getUserInfoStruct();
-						//	userInfo.m_strUsername = "";
-						if (!userInfo.m_strUsername.isEmpty()){
-							/*m_stUserInfo = userInfo;
-							startInitWork();*/
+	//doLogin();
 
-							showDlgWait(true);
-							m_stUserInfo = userInfo;
-							m_nUnreadCount = 0;
-							QFuture<void>	funIr = QtConcurrent::run(this, &ZcloudDesk::exitThread, 0);
-						}
-
-					}
-
-				}
-			}
-		return;
-	}
 
 
 	
-
+	if (!showLoginTip())
+	{
+		return;
+	}
 
 	createEnterCenterMgr();
 
 	InitEntCenter();
 
 
-	if ((m_stUserInfo.m_strCompanyName.isEmpty())){
+	//if ((m_stUserInfo.m_strCompanyName.isEmpty())){
 
-		QMenu* m_pMenu = new QMenu();
-		QAction* m_pActionCustomerManager = new QAction(m_pMenu);
-		QAction* m_pActionEnterpriseManager = new QAction(m_pMenu);
-		QAction* m_pActionCreateEntCompany = new QAction(m_pMenu);
-		m_pActionCustomerManager->setText(QString::fromLocal8Bit("由客户经理邀请加入"));
-		m_pActionEnterpriseManager->setText(QString::fromLocal8Bit("由企业管理员邀请加入"));
-		m_pActionCreateEntCompany->setText(QString::fromLocal8Bit("创建新企业"));
+	//	QMenu* m_pMenu = new QMenu();
+	//	QAction* m_pActionCustomerManager = new QAction(m_pMenu);
+	//	QAction* m_pActionEnterpriseManager = new QAction(m_pMenu);
+	//	QAction* m_pActionCreateEntCompany = new QAction(m_pMenu);
+	//	m_pActionCustomerManager->setText(QString::fromLocal8Bit("由客户经理邀请加入"));
+	//	m_pActionEnterpriseManager->setText(QString::fromLocal8Bit("由企业管理员邀请加入"));
+	//	m_pActionCreateEntCompany->setText(QString::fromLocal8Bit("创建新企业"));
 
-		m_pMenu->addAction(m_pActionCustomerManager);
-		m_pMenu->addAction(m_pActionEnterpriseManager);
-		m_pMenu->addAction(m_pActionCreateEntCompany);
+	//	m_pMenu->addAction(m_pActionCustomerManager);
+	//	m_pMenu->addAction(m_pActionEnterpriseManager);
+	//	m_pMenu->addAction(m_pActionCreateEntCompany);
 
-		ui.twobarcodebtn->setMenu(m_pMenu);
-		
+	//	///ui.twobarcodebtn->setMenu(m_pMenu);
+	//	
 
-		connect(m_pActionCustomerManager, &QAction::triggered, this, &ZcloudDesk::CustomerManagerinvite);
-		connect(m_pActionEnterpriseManager, &QAction::triggered, this, &ZcloudDesk::EnterpriseManagerinvite);
+	//	connect(m_pActionCustomerManager, &QAction::triggered, this, &ZcloudDesk::CustomerManagerinvite);
+	//	connect(m_pActionEnterpriseManager, &QAction::triggered, this, &ZcloudDesk::EnterpriseManagerinvite);
 
-		connect(m_pActionCreateEntCompany, &QAction::triggered, this, &ZcloudDesk::openCreateEntDlg);
+	//	connect(m_pActionCreateEntCompany, &QAction::triggered, this, &ZcloudDesk::openCreateEntDlg);
 
 
-		m_pMenu->setAttribute(Qt::WA_TranslucentBackground);
-		m_pMenu->setStyleSheet(QString::fromLocal8Bit(
-			"QMenu{background-color:rgba(255, 255, 255, 1);"//整个背景
-			"border:1px solid rgba(222, 222, 222,1);"//整个菜单边缘
-			"font-size:12px 'Microsoft Yahei';"
-			"text-align:center;"
-			"color:rgb(51, 51, 51);}"
-			"QMenu::item{"//字体颜色
-			"height:30px;"
-			"background-color:rgb(255, 255, 255);"
-			"margin:0px 0px;"//设置菜单项的外边距
-			"padding:1px 20px;}"//设置菜单项文字上下和左右的内边距，效果就是菜单中的条目左右上下有了间隔
-			"QMenu::item:pressed{"
-			"background-color:rgb(242,242,242);"//选中的样式
-			"font-size: 12px 'Microsoft Yahei';color:rgb(51,51,51);}"//字体颜色
-			"QMenu::item:selected{"//菜单项按下效果
-			"font-size: 12px 'Microsoft Yahei';color:rgb(51,51,51);"//字体颜色
-			"background-color:rgb(242, 242, 242);}"));
+	//	m_pMenu->setAttribute(Qt::WA_TranslucentBackground);
+	//	m_pMenu->setStyleSheet(QString::fromLocal8Bit(
+	//		"QMenu{background-color:rgba(255, 255, 255, 1);"//整个背景
+	//		"border:1px solid rgba(222, 222, 222,1);"//整个菜单边缘
+	//		"font-size:12px 'Microsoft Yahei';"
+	//		"text-align:center;"
+	//		"color:rgb(51, 51, 51);}"
+	//		"QMenu::item{"//字体颜色
+	//		"height:30px;"
+	//		"background-color:rgb(255, 255, 255);"
+	//		"margin:0px 0px;"//设置菜单项的外边距
+	//		"padding:1px 20px;}"//设置菜单项文字上下和左右的内边距，效果就是菜单中的条目左右上下有了间隔
+	//		"QMenu::item:pressed{"
+	//		"background-color:rgb(242,242,242);"//选中的样式
+	//		"font-size: 12px 'Microsoft Yahei';color:rgb(51,51,51);}"//字体颜色
+	//		"QMenu::item:selected{"//菜单项按下效果
+	//		"font-size: 12px 'Microsoft Yahei';color:rgb(51,51,51);"//字体颜色
+	//		"background-color:rgb(242, 242, 242);}"));
 
-		
+	//	
 
-		//m_pEntCenter->createEntCenter();
+	//	//m_pEntCenter->createEntCenter();
 
-		//	return;
-	}
+	//	//	return;
+	//}
 
 
 	m_pEntCenter->openEntCenter(m_stUserInfo.m_strUserId, m_stUserInfo.m_strToken, m_stUserInfo.m_strTruename, m_stUserInfo.m_strJob, m_stUserInfo.m_bLoginByTax, m_stUserInfo.m_strMobile, m_stUserInfo.m_strCompanyId, m_stUserInfo.m_strUsername);
@@ -654,6 +653,11 @@ void ZcloudDesk::openCreateEntDlg()
 	pEntCenter->createEntCenter(m_stUserInfo.m_strUserId, m_stUserInfo.m_strToken);
 }
 void  ZcloudDesk::openWorkers(){
+
+	if (!showLoginTip())
+	{
+		return;
+	}
 	ZcloudEntCenter* pEntCenter=getEntCenter();
 	pEntCenter->openWorkers(m_stUserInfo.m_strUserId, m_stUserInfo.m_strToken);
 
@@ -1133,8 +1137,8 @@ void ZcloudDesk::showCompInfo()
 	}
 	else{
 		ui.spaceButtonName->setVisible(true);
-		ui.usernameButton->setVisible(true);
-		ui.usernameButton->setText(m_stUserInfo.m_strUsername);
+		//ui.usernameButton->setVisible(true);
+		//ui.usernameButton->setText(m_stUserInfo.m_strUsername);
 	}
 
 
@@ -2069,5 +2073,51 @@ void ZcloudDesk::InitEntCenter()
 		m_stUserInfo.m_strJob = strJob;
 
 	});
+}
+
+void ZcloudDesk::doLogin()
+{
+	if (m_stUserInfo.m_strUsername.isEmpty()){
+		LoginDialog loginDialog;
+		QString strTip;
+		int logingInt;
+		loginDialog.isUserNameLogin();
+		//logingInt = loginDialog.checkLogin(strTip);
+		loginDialog.initWeChartWidget(logingInt);
+		if (loginDialog.exec() == QDialog::Accepted)
+		{
+			UserInfoStruct userInfo = loginDialog.getUserInfoStruct();
+			if (!userInfo.m_strUsername.isEmpty()){
+				/*m_stUserInfo = userInfo;
+				startInitWork();*/
+				//showDlgWait(true);
+				m_stUserInfo = userInfo;
+				m_nUnreadCount = 0;
+				QFuture<void>	funIr = QtConcurrent::run(this, &ZcloudDesk::exitThread, 0);
+			}
+			else
+			{
+				////设置用户名称
+				loginDialog.initModifyUserNameWidget();
+				if (loginDialog.exec() == QDialog::Accepted)
+				{
+					userInfo = loginDialog.getUserInfoStruct();
+					//	userInfo.m_strUsername = "";
+					if (!userInfo.m_strUsername.isEmpty()){
+						/*m_stUserInfo = userInfo;
+						startInitWork();*/
+
+						showDlgWait(true);
+						m_stUserInfo = userInfo;
+						m_nUnreadCount = 0;
+						QFuture<void>	funIr = QtConcurrent::run(this, &ZcloudDesk::exitThread, 0);
+					}
+
+				}
+
+			}
+		}
+		return;
+	}
 }
 

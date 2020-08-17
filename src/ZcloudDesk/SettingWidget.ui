@@ -1367,6 +1367,9 @@ QPushButton:hover,pressed{ background-color: qlineargradient(spread:pad, x1:0, y
       </property>
      </widget>
      <widget class="QLabel" name="label_19">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>403</x>
@@ -1398,10 +1401,13 @@ QPushButton:hover,pressed{ background-color: qlineargradient(spread:pad, x1:0, y
 color:#666666;</string>
       </property>
       <property name="text">
-       <string>航天信息客服热线</string>
+       <string/>
       </property>
      </widget>
      <widget class="QLabel" name="label_20">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>523</x>
@@ -1433,7 +1439,7 @@ color:#666666;</string>
 color:#1F8BED;</string>
       </property>
       <property name="text">
-       <string>95113</string>
+       <string/>
       </property>
      </widget>
      <widget class="QWidget" name="HelperWidget" native="true">

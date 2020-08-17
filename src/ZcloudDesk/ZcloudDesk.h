@@ -20,7 +20,7 @@ class ZcloudDesk : public QMainWindow
 	Q_OBJECT
 
 public:
-	
+
 	ZcloudDesk(UserInfoStruct userInfoStruct, QWidget *parent = 0);
 	~ZcloudDesk();
 
@@ -44,18 +44,25 @@ protected:
 	void keyPressEvent(QKeyEvent * e);
 	void closeEvent(QCloseEvent *event);
 	bool nativeEvent(const QByteArray &eventType, void *message, long *result);
+
+	bool showLoginTip();
 signals:
 	void startInitSignal(int);
-private slots:
+	void applyLogin();
+	private slots:
 
-void openCreateEntDlg();
-void openWorkers();
-//隐藏按钮
-void hideWindow();
-//显示按钮
-void showWindow();
-//托盘操作函数
-void on_activatedSysTrayIcon(QSystemTrayIcon::ActivationReason reason);
+
+
+	///登陆的实际操作函数入口
+	void doLogin();
+	void openCreateEntDlg();
+	void openWorkers();
+	//隐藏按钮
+	void hideWindow();
+	//显示按钮
+	void showWindow();
+	//托盘操作函数
+	void on_activatedSysTrayIcon(QSystemTrayIcon::ActivationReason reason);
 
 	//!签到修改云币数量
 	void onModifyCoinCount(int nCount);
@@ -85,9 +92,9 @@ void on_activatedSysTrayIcon(QSystemTrayIcon::ActivationReason reason);
 	void exitThread(int flag = 0);
 
 	//显示等待框
-	void showDlgWait(bool isShow,bool bBind=false);
+	void showDlgWait(bool isShow, bool bBind = false);
 
-	void onlyExitThread(UserInfoStruct& userInfo,QString strOldUserId, QString strNewUserId,QString strNewToken);
+	void onlyExitThread(UserInfoStruct& userInfo, QString strOldUserId, QString strNewUserId, QString strNewToken);
 
 	//!启动初始化工作
 	void startInitWork();
@@ -99,22 +106,13 @@ void on_activatedSysTrayIcon(QSystemTrayIcon::ActivationReason reason);
 	void resizeAllWidget();
 
 	//!接收消息，改变未读消息条数
-	void onChangeUnreadMsgNum(int nNum,bool bAdd);
+	void onChangeUnreadMsgNum(int nNum, bool bAdd);
 
 	//!顶栏工具按钮点击
 	void onTopToolClick();
 
-	void showLoginTip()
-	{
-		if (m_stUserInfo.m_bLoginByTax == -8)
-		{
-			if (m_pLoginTip == NULL)
-				m_pLoginTip = new LoginTip();
 
-			m_pLoginTip->exec();
 
-		}
-	}
 
 	//!刷新消息红点提示未读条数
 	void onReduceUnreadNum(int);
@@ -144,13 +142,13 @@ void on_activatedSysTrayIcon(QSystemTrayIcon::ActivationReason reason);
 	void onLogout();
 
 	//!重装开票切换税号
-	void onChangeTax(QString strTaxNo,QString strMachine);
+	void onChangeTax(QString strTaxNo, QString strMachine);
 
 	//绑定手机号
 	void bingdingPhoneSlot();
 
 	//绑定成功
-	void slotBindingSucceeded(UserInfoStruct& userInfo,const QString &strUserId, const QString &strMobile, const QString &strToken);
+	void slotBindingSucceeded(UserInfoStruct& userInfo, const QString &strUserId, const QString &strMobile, const QString &strToken);
 
 	//修改手机号
 	void slotChangeMobile(const QString &strMobile);
@@ -179,12 +177,15 @@ private:
 	//!打开企业中心
 	void openEntCenterWidget();
 
+
+
+
 	void createEnterCenterMgr();
 
 	QString queryTaxInfo();
-	
+
 	void InitEntCenter();
-	
+
 
 
 
@@ -236,9 +237,9 @@ private:
 
 
 	LoginTip*               m_pLoginTip = NULL;
-	ZhicloudApp *			m_zhicloudApp		= NULL;
-	ZcloudMsgCenter*		m_pMsgCenter		= NULL;
-	ZcloudEntCenter*		m_pEntCenter		= NULL;
+	ZhicloudApp *			m_zhicloudApp = NULL;
+	ZcloudMsgCenter*		m_pMsgCenter = NULL;
+	ZcloudEntCenter*		m_pEntCenter = NULL;
 	ZcloudBigDataInterface*	m_pBigDataInterface = NULL;
 	PipeServerThread*		m_pPipeServerThread = NULL;
 	CheckServiceThread*		m_pCheckServiceThread = NULL;
@@ -248,9 +249,9 @@ private:
 	bool switchAcc = false;
 
 	//!当前分辨率可用宽度
-	int						m_nAvailableWidth	= 0;
+	int						m_nAvailableWidth = 0;
 	//!当前分辨率可用高度
-	int						m_nAvailableHeight	= 0;
+	int						m_nAvailableHeight = 0;
 
 	//!登录信息结构体
 	UserInfoStruct			m_stUserInfo;

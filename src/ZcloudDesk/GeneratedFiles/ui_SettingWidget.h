@@ -482,6 +482,7 @@ public:
         label_18->setStyleSheet(QStringLiteral("border-image: url(:/ZcloudDesk/image/icon_service.png);"));
         label_19 = new QLabel(FilletWidget);
         label_19->setObjectName(QStringLiteral("label_19"));
+        label_19->setEnabled(false);
         label_19->setGeometry(QRect(403, 573, 112, 15));
         sizePolicy.setHeightForWidth(label_19->sizePolicy().hasHeightForWidth());
         label_19->setSizePolicy(sizePolicy);
@@ -491,6 +492,7 @@ public:
 "color:#666666;"));
         label_20 = new QLabel(FilletWidget);
         label_20->setObjectName(QStringLiteral("label_20"));
+        label_20->setEnabled(false);
         label_20->setGeometry(QRect(523, 573, 49, 15));
         sizePolicy.setHeightForWidth(label_20->sizePolicy().hasHeightForWidth());
         label_20->setSizePolicy(sizePolicy);
@@ -654,8 +656,8 @@ public:
         deskAppButton->setText(QApplication::translate("SettingWidget", "\346\241\214\351\235\242\345\272\224\347\224\250", 0));
         majorButton->setText(QApplication::translate("SettingWidget", "\345\212\237\350\203\275\344\274\230\345\214\226", 0));
         label_18->setText(QString());
-        label_19->setText(QApplication::translate("SettingWidget", "\350\210\252\345\244\251\344\277\241\346\201\257\345\256\242\346\234\215\347\203\255\347\272\277", 0));
-        label_20->setText(QApplication::translate("SettingWidget", "95113", 0));
+        label_19->setText(QString());
+        label_20->setText(QString());
         helpButton->setText(QString());
         demoButton->setText(QString());
         questionButton->setText(QString());

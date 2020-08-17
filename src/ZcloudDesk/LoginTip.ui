@@ -19,7 +19,7 @@ box-shadow:0px 2px 15px 0px rgba(0,0,0,0.15);
 border-radius:4px;
 border:1px solid rgba(226,226,226,1);</string>
   </property>
-  <widget class="QToolButton" name="toolButton">
+  <widget class="QToolButton" name="okButton">
    <property name="geometry">
     <rect>
      <x>193</x>

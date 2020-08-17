@@ -13,7 +13,7 @@ LoginTip::LoginTip(QWidget *parent)
 	setWindowTitle(QString::fromLocal8Bit("»î¶¯"));
 	setWindowFlags(Qt::FramelessWindowHint);
 	setAttribute(Qt::WA_TranslucentBackground, false);
-	setAttribute(Qt::WA_DeleteOnClose);
+	//setAttribute(Qt::WA_DeleteOnClose);
 	setStyleSheet("outline: none");
 	
 	connect(ui.closeButton, &QPushButton::clicked, [this]()
@@ -27,6 +27,9 @@ LoginTip::LoginTip(QWidget *parent)
 //	m_pWebView->load(QUrl::fromUserInput(strUrl));
 	connect(m_pWebView, SIGNAL(loadFinished(bool)), this, SLOT(onLoadFinished(bool)));
 	connect(m_pWebView, SIGNAL(linkClicked(const QUrl &)), this, SLOT(onLinkClicked(const QUrl&)));
+
+
+	connect(ui.okButton, SIGNAL(clicked()), this, SLOT(accept()));
 	QDesktopWidget* desktop = QApplication::desktop();
 	move((desktop->width() - this->width()) / 2, (desktop->height() - this->height()) / 2);
 }
