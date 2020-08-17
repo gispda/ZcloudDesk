@@ -402,23 +402,31 @@ void EntCenterNewWidget::showUserCompanyInfoTitle()
 		///m_strLocalTaxno = "210624197305200017,91458732MA5UYRPW7R";
 		bret = ZcloudComFun::winHttpQueryCompanyInfoLocalTax(m_strLocalTaxno, m_userInfo->m_strToken, m_info);
 		//已加入企业
-		if (m_info.nIsjoin == 1)
+		if (bret)
 		{
-			////正常用户的对应公司名未空情况下说明没有加入企业，所以一般不会返回有加入的企业，所以这样情况也不会发生。
-			showaddCompanyInfoTitle(m_info.strCompany, m_userInfo->m_strTaxNumber, m_userInfo->m_strUsername, m_info.strRoletype);
+			if (m_info.nIsjoin == 1)
+			{
+				////正常用户的对应公司名未空情况下说明没有加入企业，所以一般不会返回有加入的企业，所以这样情况也不会发生。
+				showaddCompanyInfoTitle(m_info.strCompany, m_userInfo->m_strTaxNumber, m_userInfo->m_strUsername, m_info.strRoletype);
+			}
+			else
+			{
+				////正常用户（18980084535）登陆后没有对应公司，然后返回本地多个税号查询到的用户关联的企业列表中匹配的第一个企业税号及相关信息，并显示
+				////加入信息要显示  您还没加入该企业 立即加入，
+				/////也包括游客登陆
+
+				struserorjoin1 = QString::fromLocal8Bit("您还没加入该企业，");
+				strjoinaction = QString::fromLocal8Bit("立即加入，");
+				showUnaddCompanyInfoTitle(m_info.strCompany, m_info.strTaxno, struserorjoin1, strjoinaction);
+
+			}
 		}
 		else
 		{
-			////正常用户（18980084535）登陆后没有对应公司，然后返回本地多个税号查询到的用户关联的企业列表中匹配的第一个企业税号及相关信息，并显示
-			////加入信息要显示  您还没加入该企业 立即加入，
-			/////也包括游客登陆
+			showUnaddCompanyInfoTitle(m_info.strCompany, "", "", "");
 
-			struserorjoin1 = QString::fromLocal8Bit("您还没加入该企业，");
-			strjoinaction = QString::fromLocal8Bit("立即加入，");
-			showUnaddCompanyInfoTitle(m_info.strCompany, m_info.strTaxno, struserorjoin1, strjoinaction);
 
 		}
-
 	}
 	else  /////正常用户有当前关联企业情况下显示
 	{
@@ -568,27 +576,41 @@ void EntCenterNewWidget::showUnaddCompanyInfoTitle(QString _strcompany, QString 
 	ui.labelComName->setGeometry(55, 139, 140, 14);
 	ui.labelComName->setText(QString::fromLocal8Bit("<html><head/><body><p><span style=\"font-size:14px;font-family:SourceHanSansCN - Normal, SourceHanSansCN;	font-weight:400;color:rgba(51, 51, 51, 1);line-height:21px; \"> %1</span></p></body></html>").arg(_strcompany));
 	ui.labelComName->show();
-	ui.labeJoin1->setGeometry(35, 195, 126, 18);
+
+	if (!_strUserorjoin1.isEmpty())
+	{
+		ui.labeJoin1->setGeometry(35, 195, 126, 18);
+		ui.labeJoin1->setText(QString::fromLocal8Bit("<html><head/><body><p><span style=\"font-size:14px;font-family:SourceHanSansCN - Normal, SourceHanSansCN;font-weight:400;color:rgba(102, 102, 102, 1);line-height:21px;\"> %1</span></p></body></html>").arg(_strUserorjoin1));
+		//ui.labeluser->setStyleSheet("font-size:14px;font - family:SourceHanSansCN - Normal, SourceHanSansCN;font-weight:400;color:rgba(102, 102, 102, 1);line-height:21px; ");
+		ui.labeJoin1->show();
+	}
+	else
+		ui.labeJoin1->hide();
 
 
-	ui.labeJoin1->setText(QString::fromLocal8Bit("<html><head/><body><p><span style=\"font-size:14px;font-family:SourceHanSansCN - Normal, SourceHanSansCN;font-weight:400;color:rgba(102, 102, 102, 1);line-height:21px;\"> %1</span></p></body></html>").arg(_strUserorjoin1));
-	//ui.labeluser->setStyleSheet("font-size:14px;font - family:SourceHanSansCN - Normal, SourceHanSansCN;font-weight:400;color:rgba(102, 102, 102, 1);line-height:21px; ");
-	ui.labeJoin1->show();
-	ui.labelTaxNo->setGeometry(64, 163, 122, 16);
 
+	if (!_strtaxno.isEmpty())
+	{
+		ui.labelTaxNo->setGeometry(64, 163, 122, 16);
+		ui.labelTaxNo->setText(QString::fromLocal8Bit("<html><head/><body><p><span style=\"font-size:12px;font-family:SourceHanSansCN - Normal, SourceHanSansCN;font-weight:400;color:rgba(51, 51, 51, 1);line-height:18px;\"> %1</span></p></body></html>").arg(_strtaxno));
+		ui.labelTaxNo->show();
+	}
+	else
+		ui.labelTaxNo->hide();
 
-
-	ui.labelTaxNo->setText(QString::fromLocal8Bit("<html><head/><body><p><span style=\"font-size:12px;font-family:SourceHanSansCN - Normal, SourceHanSansCN;font-weight:400;color:rgba(51, 51, 51, 1);line-height:18px;\"> %1</span></p></body></html>").arg(_strtaxno));
-	ui.labelTaxNo->show();
-	ui.labelJoin2->show();
+	if (!_strjoinaction.isEmpty())
+	{
+		ui.labelJoin2->setGeometry(161, 195, 56, 18);
+		ui.labelJoin2->setText(QString::fromLocal8Bit("<html><head/><body><p><span style=\"font-size:14px;font-family:SourceHanSansCN - Normal, SourceHanSansCN;font-weight:400;color:rgba(30, 139, 237, 1);line-height:21px;\"> %1</span></p></body></html>").arg(_strjoinaction));
+		ui.labelJoin2->show();
+	}
+	else
+		ui.labelJoin2->hide();
 	ui.labeluserroletype->hide();
 	ui.labeluserline->hide();
 	ui.labeluser->hide();
 
-	ui.labelJoin2->setGeometry(161, 195, 56, 18);
-
-	ui.labelJoin2->setText(QString::fromLocal8Bit("<html><head/><body><p><span style=\"font-size:14px;font-family:SourceHanSansCN - Normal, SourceHanSansCN;font-weight:400;color:rgba(30, 139, 237, 1);line-height:21px;\"> %1</span></p></body></html>").arg(_strjoinaction));
-
+	
 	//ui.labelAddComp->setStyleSheet("font-size:14px;	font-family:SourceHanSansCN - Normal, SourceHanSansCN;font-weight:400;color:rgba(30, 139, 237, 1);line-height:21px; ");
 
 	//ui.switchButton->setGeometry(75, 229, 100, 38);
@@ -596,7 +618,7 @@ void EntCenterNewWidget::showUnaddCompanyInfoTitle(QString _strcompany, QString 
 
 	//ui.copyTaxButton->setGeometry(191, 162, 16, 16);
 	ui.copyTaxButton->setStyleSheet("QPushButton{border-image: url(:/EntCenterWidget/image/copy.png);}\nQPushButton:hover,pressed{border-image: url(:/EntCenterWidget/image/copy_sel.png);}");
-	ui.copyTaxButton->show();
+	ui.copyTaxButton->hide();
 
 
 
