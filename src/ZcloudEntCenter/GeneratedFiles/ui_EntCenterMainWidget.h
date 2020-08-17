@@ -35,7 +35,7 @@ public:
     QLabel *label_16;
     QLabel *labelWeChat_2;
     QWidget *ServiceFeeWidget_3;
-    QLabel *labelPic_4;
+    QLabel *labelworkers;
     QLabel *label_22;
     QLabel *label;
     QWidget *ServiceFeeWidget;
@@ -127,12 +127,12 @@ public:
         ServiceFeeWidget_3->setMaximumSize(QSize(330, 150));
         ServiceFeeWidget_3->setStyleSheet(QLatin1String("background-color: rgb(252, 252, 252);border:1px solid rgba(235,235,235,1);\n"
 "border-radius:10px;"));
-        labelPic_4 = new QLabel(ServiceFeeWidget_3);
-        labelPic_4->setObjectName(QStringLiteral("labelPic_4"));
-        labelPic_4->setGeometry(QRect(125, 10, 80, 80));
-        labelPic_4->setStyleSheet(QStringLiteral("background-color: rgb(252, 252, 252);"));
-        labelPic_4->setPixmap(QPixmap(QString::fromUtf8(":/EntCenterWidget/image/completeInfo.png")));
-        labelPic_4->setAlignment(Qt::AlignCenter);
+        labelworkers = new QLabel(ServiceFeeWidget_3);
+        labelworkers->setObjectName(QStringLiteral("labelworkers"));
+        labelworkers->setGeometry(QRect(125, 10, 80, 80));
+        labelworkers->setStyleSheet(QStringLiteral("background-color: rgb(252, 252, 252);"));
+        labelworkers->setPixmap(QPixmap(QString::fromUtf8(":/EntCenterWidget/image/completeInfo.png")));
+        labelworkers->setAlignment(Qt::AlignCenter);
         label_22 = new QLabel(ServiceFeeWidget_3);
         label_22->setObjectName(QStringLiteral("label_22"));
         label_22->setGeometry(QRect(0, 110, 330, 15));
@@ -294,7 +294,7 @@ public:
         labelName_2->setText(QApplication::translate("EntCenterMainWidget", "\345\274\240\344\270\211", 0));
         label_16->setText(QString());
         labelWeChat_2->setText(QApplication::translate("EntCenterMainWidget", "sadfsarewr", 0));
-        labelPic_4->setText(QString());
+        labelworkers->setText(QString());
         label_22->setText(QApplication::translate("EntCenterMainWidget", "\346\210\221\347\232\204\345\267\245\345\215\225", 0));
         label->setText(QApplication::translate("EntCenterMainWidget", "\345\237\272\347\241\200\346\234\215\345\212\241", 0));
         ServiceFeeButton->setText(QApplication::translate("EntCenterMainWidget", "\347\273\255\350\264\271", 0));

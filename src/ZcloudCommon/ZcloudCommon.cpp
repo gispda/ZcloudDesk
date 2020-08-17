@@ -1070,7 +1070,7 @@ bool ZcloudComFun::winHttpQueryCompanyInfoLocalTax(QString strTaxno, QString str
 
 
 		info.strCompany = QString::fromLocal8Bit("暂未查询到您的企业");
-
+		info.bloadDb = false;
 		return false;
 	}
 
@@ -1103,6 +1103,7 @@ bool ZcloudComFun::winHttpQueryCompanyInfoLocalTax(QString strTaxno, QString str
 		has_admin = dataList.take("has_admin").toInt();
 		info.niscurrent = dataList.take("is_current").toInt();
 		info.isbindEnt = has_admin == 1 ? true : false;
+		info.bloadDb = true;
 		////多个税号中包含一个就直接返回
 		if (strTaxno.contains(_strtaxno) && strTaxno.isEmpty() == false)
 		{
@@ -1112,6 +1113,7 @@ bool ZcloudComFun::winHttpQueryCompanyInfoLocalTax(QString strTaxno, QString str
 	info.nIsjoin = 0;
 	info.nroletype = -1;
 	info.nIsbind = 0;
+	info.bloadDb = false;
 	info.strCompany = QString::fromLocal8Bit("暂未查询到您的企业");
 	return false;
 }

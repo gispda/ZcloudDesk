@@ -242,7 +242,7 @@ border-radius:10px;</string>
     <string notr="true">background-color: rgb(252, 252, 252);border:1px solid rgba(235,235,235,1);
 border-radius:10px;</string>
    </property>
-   <widget class="QLabel" name="labelPic_4">
+   <widget class="QLabel" name="labelworkers">
     <property name="geometry">
      <rect>
       <x>125</x>

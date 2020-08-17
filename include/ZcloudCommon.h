@@ -12,6 +12,8 @@ namespace ZcloudComFun
 
 	typedef struct  dbEntInfo
 	{
+
+		bool bloadDb;   ///是否取回数据，用于企业中心判断
 		int nIsjoin;
 		int nIsbind;
 		QString strCompany;

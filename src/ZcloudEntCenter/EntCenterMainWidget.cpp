@@ -15,6 +15,7 @@
 #include "EntInfoWidget.h"
 #include "FinanMemberWidget.h"
 #include "AccSettingWidget.h"
+#include "WorkersWidget.h"
 
 EntCenterMainWidget::EntCenterMainWidget(EntCenterInfo* pEntInfo, UserInfoStruct* userinfo, QWidget *parent)
 	: QWidget( parent)
@@ -25,6 +26,11 @@ EntCenterMainWidget::EntCenterMainWidget(EntCenterInfo* pEntInfo, UserInfoStruct
 	m_userinfo = userinfo;
 	connect(ui.ServiceFeeButton, &QPushButton::clicked, this, &EntCenterMainWidget::onServiceFeeBtnClick);
 
+
+
+	//ui.labelJoin2->installEventFilter(this);
+
+	ui.labelworkers->installEventFilter(this);
 	bool m_isNetActive = ZcloudComFun::isNetActive();
 	if (!m_isNetActive)
 	{
@@ -213,6 +219,21 @@ bool EntCenterMainWidget::eventFilter(QObject *target, QEvent *e)
 	//		}
 	//	}
 	//}
+
+
+	if (target == ui.labelworkers)
+	{
+		if (e->type() == QEvent::MouseButtonRelease) //
+		{
+
+			if (m_userinfo->m_bLoginByTax != -8)
+			{			
+			WorkersWidget* pEntComWidget = new WorkersWidget(m_userinfo->m_strUserId, m_userinfo->m_strToken);
+			pEntComWidget->setAttribute(Qt::WA_DeleteOnClose);
+			pEntComWidget->show();
+		    }
+		}
+	}
 	return QWidget::eventFilter(target, e);
 }
 

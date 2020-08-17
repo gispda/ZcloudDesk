@@ -323,7 +323,11 @@ bool EntCenterNewWidget::eventFilter(QObject *target, QEvent *e)
 		if (e->type() == QEvent::MouseButtonRelease) //
 		{
 			ZcloudBigDataInterface::GetInstance()->produceData("M00", "OP001", "BBC003");
-			if (ZcloudComFun::winHttpSSO(m_pEntInfo->_strToken, m_pEntInfo->_strUid))
+
+
+			if (decideJoinEnt())
+			DoJoinEntMoreStep();
+		/*	if (ZcloudComFun::winHttpSSO(m_pEntInfo->_strToken, m_pEntInfo->_strUid))
 			{
 
 
@@ -334,7 +338,7 @@ bool EntCenterNewWidget::eventFilter(QObject *target, QEvent *e)
 						m_pJoinEntWidget = new JoinEntWidget(m_pEntInfo->_strUid, m_pEntInfo->_strToken, this);
 					m_pJoinEntWidget->show();
 				}
-			}
+			}*/
 		}
 	}
 	return QWidget::eventFilter(target, e);
@@ -702,74 +706,18 @@ void EntCenterNewWidget::showaddCompanyInfoTitle(QString _strcompany, QString _s
 void EntCenterNewWidget::JoinEntMoreStep()
 {
 
+	if (m_info.bloadDb == false && m_userInfo->m_strCompanyName.isEmpty())
+	{
+
+		ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_TIP, QString::fromLocal8Bit("操作失败"), QString::fromLocal8Bit("\r\n没有企业，请确认您的操作！"));
+		return;
+	}
+
 	int nReturn = ZcloudComFun::openMessageTipDlg_2(ZcloudComFun::EN_OKCANCEL, QString::fromLocal8Bit("温馨提示"), QString::fromLocal8Bit("抱歉，您还没有正式加入\"%1\",您先加入企业后再继续操作！").arg(m_info.strCompany), QString::fromLocal8Bit("立即加入"), QString::fromLocal8Bit("暂不加入"), this);
 	if (nReturn == QDialog::Accepted)
 	{
-		////点击加入后，首先判断这个企业是否绑定企业管理员，然后完善资料
-		if (m_info.isbindEnt == false)
-		{
-
-			////完善企业资料，	对于没有绑定的企业，用户就直接加入企业了
-			if (JoinStep2FinishEntinfo())
-			{
-				ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_TIP, QString::fromLocal8Bit("温馨提示"), QString::fromLocal8Bit("已经加入企业"), this);
-			}
-		}
-		else   ////绑定了，就只递交申请
-		{
-			int stcode = -1;
-			////递交加入企业申请
-			if (DoapplyJoinEnt(stcode))
-			{
-				////成功递交加入企业申请
-				//ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_TIP, QString::fromLocal8Bit("操作失败"), QString::fromLocal8Bit("\r\n财务负责人姓名不正确！"));
-
-				////申诉
-				int nReturn1 = ZcloudComFun::openMessageTipDlg_2(ZcloudComFun::EN_OKCANCEL, QString::fromLocal8Bit("温馨提示"), QString::fromLocal8Bit("您的申请信息已提交，请等待企业管理员审核。如果您对当前企业管理员身份存在疑问，请点击申诉"), QString::fromLocal8Bit("申诉"), QString::fromLocal8Bit("取消"), this);
-				if (nReturn1 == QDialog::Accepted)
-				{
-
-
-					DoAppealEnt();
-					return;
-
-				}
-				else
-				{
-					return;
-				}
-
-			}
-			else
-			{
-				///递交加入企业申请失败
-				if (stcode == 60003)
-				{
-
-					////申诉
-					int nReturn1 = ZcloudComFun::openMessageTipDlg_2(ZcloudComFun::EN_OKCANCEL, QString::fromLocal8Bit("温馨提示"), QString::fromLocal8Bit("您的申请信息已提交，请等待企业管理员审核。如果您对当前企业管理员身份存在疑问，请点击申诉"), QString::fromLocal8Bit("申诉"), QString::fromLocal8Bit("取消"), this);
-					if (nReturn1 == QDialog::Accepted)
-					{
-
-
-						DoAppealEnt();
-						return;
-
-					}
-					else
-					{
-						return;
-					}
-
-					
-
-				}
-
-
-				return;
-			}
-
-		}
+		DoJoinEntMoreStep();
+		return;
 
 	}
 
@@ -923,6 +871,83 @@ void EntCenterNewWidget::DoAppealEnt()
 	else
 	{
 		return;
+	}
+}
+
+void EntCenterNewWidget::DoJoinEntMoreStep()
+{
+
+	if (m_info.bloadDb == false && m_userInfo->m_strCompanyName.isEmpty())
+	{
+
+		ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_TIP, QString::fromLocal8Bit("操作失败"), QString::fromLocal8Bit("\r\n没有企业，请确认您的操作！"));
+		return;
+	}
+
+	////点击加入后，首先判断这个企业是否绑定企业管理员，然后完善资料
+	if (m_info.isbindEnt == false)
+	{
+
+		////完善企业资料，	对于没有绑定的企业，用户就直接加入企业了
+		if (JoinStep2FinishEntinfo())
+		{
+			ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_TIP, QString::fromLocal8Bit("温馨提示"), QString::fromLocal8Bit("已经加入企业"), this);
+		}
+	}
+	else   ////绑定了，就只递交申请
+	{
+		int stcode = -1;
+		////递交加入企业申请
+		if (DoapplyJoinEnt(stcode))
+		{
+			////成功递交加入企业申请
+			//ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_TIP, QString::fromLocal8Bit("操作失败"), QString::fromLocal8Bit("\r\n财务负责人姓名不正确！"));
+
+			////申诉
+			int nReturn1 = ZcloudComFun::openMessageTipDlg_2(ZcloudComFun::EN_OKCANCEL, QString::fromLocal8Bit("温馨提示"), QString::fromLocal8Bit("您的申请信息已提交，请等待企业管理员审核。如果您对当前企业管理员身份存在疑问，请点击申诉"), QString::fromLocal8Bit("申诉"), QString::fromLocal8Bit("取消"), this);
+			if (nReturn1 == QDialog::Accepted)
+			{
+
+
+				DoAppealEnt();
+				return;
+
+			}
+			else
+			{
+				return;
+			}
+
+		}
+		else
+		{
+			///递交加入企业申请失败
+			if (stcode == 60003)
+			{
+
+				////申诉
+				int nReturn1 = ZcloudComFun::openMessageTipDlg_2(ZcloudComFun::EN_OKCANCEL, QString::fromLocal8Bit("温馨提示"), QString::fromLocal8Bit("您的申请信息已提交，请等待企业管理员审核。如果您对当前企业管理员身份存在疑问，请点击申诉"), QString::fromLocal8Bit("申诉"), QString::fromLocal8Bit("取消"), this);
+				if (nReturn1 == QDialog::Accepted)
+				{
+
+
+					DoAppealEnt();
+					return;
+
+				}
+				else
+				{
+					return;
+				}
+
+
+
+			}
+
+
+			return;
+		}
+
 	}
 }
 

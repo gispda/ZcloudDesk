@@ -57,6 +57,8 @@ protected:
 
 	void JoinEntMoreStep();
 
+	void DoJoinEntMoreStep();
+
 	void DoAppealEnt();
 
 	bool JoinStep2AppealGetEntInfo();
