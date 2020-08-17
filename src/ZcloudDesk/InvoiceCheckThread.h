@@ -7,6 +7,7 @@
 #include <QLocalSocket>
 #include "Database.h"
 
+#include "CheckUpdater.h"
 class InvoiceCheckThread : public QThread
 {
 	Q_OBJECT
@@ -17,7 +18,7 @@ public:
 	bool isrunning;
 
 signals:
-	void sendDownAndUpdate(QString url);
+	void sendDownAndUpdate(QString url, CheckUpdater* obj);
 	
 protected:
 	void run();

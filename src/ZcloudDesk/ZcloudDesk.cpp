@@ -21,7 +21,6 @@
 #include "SettingWidget.h"
 #include "ActivityWidget.h"
 
-#include "CheckUpdater.h"
 #include "dlgwait.h"
 #include "CalculatorWidget.h"
 #include "Database.h"
@@ -2138,17 +2137,38 @@ void ZcloudDesk::doLogin()
 	}
 }
 
-void ZcloudDesk::startDownAndUpdate(QString softUrl){
-	//让用户确认是否安装开票软件
-	if (ZcloudComFun::openMessageTipDlg_2(ZcloudComFun::EN_OKCANCEL, QString::fromLocal8Bit("提示"), QString::fromLocal8Bit("检测到新的开票软件，是否更新？"), QString::fromLocal8Bit("确定"), QString::fromLocal8Bit("取消")) == QDialog::Accepted)
-	{
-		//安装开票软件
-		if (ZhicloudApp::openDownloadSoftware(0, softUrl) == QDialog::Accepted)
+void ZcloudDesk::startDownAndUpdate(QString softUrl, CheckUpdater* obj){
+	//升级客户端
+	if (obj != NULL){
+		QString s = QApplication::applicationDirPath();
+		//替换升级提示对话框
+		int nRet = ZcloudComFun::openMessageTipDlg(ZcloudComFun::ZEN_UPDATE, QString::fromLocal8Bit("检测到新版本"), QString::fromLocal8Bit("升级到最新版，享受更专业的财税办公服务"));
+		
+		if (nRet == QDialog::Accepted)
 		{
-			//安装成功重启软件
-			//a.appDisConnect();
-			QProcess::startDetached(qApp->applicationFilePath(), QStringList());
-			//return 0;
+			//ZcloudBigDataInterface::GetInstance()->produceData("M00", "OP001", "TAU002");
+			obj->startUpdaterProcess(true);
+		}
+		else
+		{
+			//ZcloudBigDataInterface::GetInstance()->produceData("M00", "OP001", "TAU006");
+		}
+	}
+
+	//升级开票软件
+	if (!softUrl.isEmpty()){
+		//让用户确认是否安装开票软件
+		int code=ZcloudComFun::openMessageTipDlg_2(ZcloudComFun::EN_OKCANCEL, QString::fromLocal8Bit("提示"), QString::fromLocal8Bit("检测到新的开票软件，是否更新？"), QString::fromLocal8Bit("确定"), QString::fromLocal8Bit("取消"));
+		if (code == QDialog::Accepted)
+		{
+			//安装开票软件
+			if (ZhicloudApp::openDownloadSoftware(0, softUrl) == QDialog::Accepted)
+			{
+				//安装成功重启软件
+				//a.appDisConnect();
+				QProcess::startDetached(qApp->applicationFilePath(), QStringList());
+				//return 0;
+			}
 		}
 	}
 }

@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_ZcloudDesk_t {
-    QByteArrayData data[75];
-    char stringdata0[985];
+    QByteArrayData data[77];
+    char stringdata0[1003];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -35,81 +35,83 @@ QT_MOC_LITERAL(2, 27, 0), // ""
 QT_MOC_LITERAL(3, 28, 10), // "applyLogin"
 QT_MOC_LITERAL(4, 39, 18), // "startDownAndUpdate"
 QT_MOC_LITERAL(5, 58, 7), // "softUrl"
-QT_MOC_LITERAL(6, 66, 7), // "doLogin"
-QT_MOC_LITERAL(7, 74, 16), // "openCreateEntDlg"
-QT_MOC_LITERAL(8, 91, 11), // "openWorkers"
-QT_MOC_LITERAL(9, 103, 10), // "hideWindow"
-QT_MOC_LITERAL(10, 114, 10), // "showWindow"
-QT_MOC_LITERAL(11, 125, 23), // "on_activatedSysTrayIcon"
-QT_MOC_LITERAL(12, 149, 33), // "QSystemTrayIcon::ActivationRe..."
-QT_MOC_LITERAL(13, 183, 6), // "reason"
-QT_MOC_LITERAL(14, 190, 17), // "onModifyCoinCount"
-QT_MOC_LITERAL(15, 208, 6), // "nCount"
-QT_MOC_LITERAL(16, 215, 11), // "onSwitchTip"
-QT_MOC_LITERAL(17, 227, 4), // "flag"
-QT_MOC_LITERAL(18, 232, 16), // "openSignInWidegt"
-QT_MOC_LITERAL(19, 249, 8), // "QWidget*"
-QT_MOC_LITERAL(20, 258, 13), // "pParentWidget"
-QT_MOC_LITERAL(21, 272, 14), // "registerDevice"
-QT_MOC_LITERAL(22, 287, 18), // "onAdvertisingClick"
-QT_MOC_LITERAL(23, 306, 5), // "nType"
-QT_MOC_LITERAL(24, 312, 9), // "strTarget"
-QT_MOC_LITERAL(25, 322, 16), // "onReciveMsgPopUp"
-QT_MOC_LITERAL(26, 339, 13), // "startInitSlot"
-QT_MOC_LITERAL(27, 353, 18), // "onCheckTokenFailed"
-QT_MOC_LITERAL(28, 372, 6), // "status"
-QT_MOC_LITERAL(29, 379, 10), // "exitThread"
-QT_MOC_LITERAL(30, 390, 11), // "showDlgWait"
-QT_MOC_LITERAL(31, 402, 6), // "isShow"
-QT_MOC_LITERAL(32, 409, 5), // "bBind"
-QT_MOC_LITERAL(33, 415, 14), // "onlyExitThread"
-QT_MOC_LITERAL(34, 430, 15), // "UserInfoStruct&"
-QT_MOC_LITERAL(35, 446, 8), // "userInfo"
-QT_MOC_LITERAL(36, 455, 12), // "strOldUserId"
-QT_MOC_LITERAL(37, 468, 12), // "strNewUserId"
-QT_MOC_LITERAL(38, 481, 11), // "strNewToken"
-QT_MOC_LITERAL(39, 493, 13), // "startInitWork"
-QT_MOC_LITERAL(40, 507, 15), // "closeAllWindows"
-QT_MOC_LITERAL(41, 523, 15), // "resizeAllWidget"
-QT_MOC_LITERAL(42, 539, 20), // "onChangeUnreadMsgNum"
-QT_MOC_LITERAL(43, 560, 4), // "nNum"
-QT_MOC_LITERAL(44, 565, 4), // "bAdd"
-QT_MOC_LITERAL(45, 570, 14), // "onTopToolClick"
-QT_MOC_LITERAL(46, 585, 17), // "onReduceUnreadNum"
-QT_MOC_LITERAL(47, 603, 19), // "openAppCenterWidget"
-QT_MOC_LITERAL(48, 623, 19), // "openMsgCenterWidget"
-QT_MOC_LITERAL(49, 643, 23), // "openSettingCenterWidget"
-QT_MOC_LITERAL(50, 667, 11), // "onSwitchAcc"
-QT_MOC_LITERAL(51, 679, 11), // "bLoginByTax"
-QT_MOC_LITERAL(52, 691, 6), // "bOther"
-QT_MOC_LITERAL(53, 698, 17), // "strTaxNo_userName"
-QT_MOC_LITERAL(54, 716, 6), // "strPwd"
-QT_MOC_LITERAL(55, 723, 17), // "onTopCheckChanged"
-QT_MOC_LITERAL(56, 741, 5), // "bShow"
-QT_MOC_LITERAL(57, 747, 19), // "onRightCheckChanged"
-QT_MOC_LITERAL(58, 767, 18), // "onToolCheckChanged"
-QT_MOC_LITERAL(59, 786, 9), // "strToolId"
-QT_MOC_LITERAL(60, 796, 8), // "onLogout"
-QT_MOC_LITERAL(61, 805, 11), // "onChangeTax"
-QT_MOC_LITERAL(62, 817, 8), // "strTaxNo"
-QT_MOC_LITERAL(63, 826, 10), // "strMachine"
-QT_MOC_LITERAL(64, 837, 17), // "bingdingPhoneSlot"
-QT_MOC_LITERAL(65, 855, 20), // "slotBindingSucceeded"
-QT_MOC_LITERAL(66, 876, 9), // "strUserId"
-QT_MOC_LITERAL(67, 886, 9), // "strMobile"
-QT_MOC_LITERAL(68, 896, 8), // "strToken"
-QT_MOC_LITERAL(69, 905, 16), // "slotChangeMobile"
-QT_MOC_LITERAL(70, 922, 10), // "noviceSlot"
-QT_MOC_LITERAL(71, 933, 17), // "buyMembershipSlot"
-QT_MOC_LITERAL(72, 951, 11), // "vipNameList"
-QT_MOC_LITERAL(73, 963, 9), // "vipIdList"
-QT_MOC_LITERAL(74, 973, 11) // "vipTimeList"
+QT_MOC_LITERAL(6, 66, 13), // "CheckUpdater*"
+QT_MOC_LITERAL(7, 80, 3), // "obj"
+QT_MOC_LITERAL(8, 84, 7), // "doLogin"
+QT_MOC_LITERAL(9, 92, 16), // "openCreateEntDlg"
+QT_MOC_LITERAL(10, 109, 11), // "openWorkers"
+QT_MOC_LITERAL(11, 121, 10), // "hideWindow"
+QT_MOC_LITERAL(12, 132, 10), // "showWindow"
+QT_MOC_LITERAL(13, 143, 23), // "on_activatedSysTrayIcon"
+QT_MOC_LITERAL(14, 167, 33), // "QSystemTrayIcon::ActivationRe..."
+QT_MOC_LITERAL(15, 201, 6), // "reason"
+QT_MOC_LITERAL(16, 208, 17), // "onModifyCoinCount"
+QT_MOC_LITERAL(17, 226, 6), // "nCount"
+QT_MOC_LITERAL(18, 233, 11), // "onSwitchTip"
+QT_MOC_LITERAL(19, 245, 4), // "flag"
+QT_MOC_LITERAL(20, 250, 16), // "openSignInWidegt"
+QT_MOC_LITERAL(21, 267, 8), // "QWidget*"
+QT_MOC_LITERAL(22, 276, 13), // "pParentWidget"
+QT_MOC_LITERAL(23, 290, 14), // "registerDevice"
+QT_MOC_LITERAL(24, 305, 18), // "onAdvertisingClick"
+QT_MOC_LITERAL(25, 324, 5), // "nType"
+QT_MOC_LITERAL(26, 330, 9), // "strTarget"
+QT_MOC_LITERAL(27, 340, 16), // "onReciveMsgPopUp"
+QT_MOC_LITERAL(28, 357, 13), // "startInitSlot"
+QT_MOC_LITERAL(29, 371, 18), // "onCheckTokenFailed"
+QT_MOC_LITERAL(30, 390, 6), // "status"
+QT_MOC_LITERAL(31, 397, 10), // "exitThread"
+QT_MOC_LITERAL(32, 408, 11), // "showDlgWait"
+QT_MOC_LITERAL(33, 420, 6), // "isShow"
+QT_MOC_LITERAL(34, 427, 5), // "bBind"
+QT_MOC_LITERAL(35, 433, 14), // "onlyExitThread"
+QT_MOC_LITERAL(36, 448, 15), // "UserInfoStruct&"
+QT_MOC_LITERAL(37, 464, 8), // "userInfo"
+QT_MOC_LITERAL(38, 473, 12), // "strOldUserId"
+QT_MOC_LITERAL(39, 486, 12), // "strNewUserId"
+QT_MOC_LITERAL(40, 499, 11), // "strNewToken"
+QT_MOC_LITERAL(41, 511, 13), // "startInitWork"
+QT_MOC_LITERAL(42, 525, 15), // "closeAllWindows"
+QT_MOC_LITERAL(43, 541, 15), // "resizeAllWidget"
+QT_MOC_LITERAL(44, 557, 20), // "onChangeUnreadMsgNum"
+QT_MOC_LITERAL(45, 578, 4), // "nNum"
+QT_MOC_LITERAL(46, 583, 4), // "bAdd"
+QT_MOC_LITERAL(47, 588, 14), // "onTopToolClick"
+QT_MOC_LITERAL(48, 603, 17), // "onReduceUnreadNum"
+QT_MOC_LITERAL(49, 621, 19), // "openAppCenterWidget"
+QT_MOC_LITERAL(50, 641, 19), // "openMsgCenterWidget"
+QT_MOC_LITERAL(51, 661, 23), // "openSettingCenterWidget"
+QT_MOC_LITERAL(52, 685, 11), // "onSwitchAcc"
+QT_MOC_LITERAL(53, 697, 11), // "bLoginByTax"
+QT_MOC_LITERAL(54, 709, 6), // "bOther"
+QT_MOC_LITERAL(55, 716, 17), // "strTaxNo_userName"
+QT_MOC_LITERAL(56, 734, 6), // "strPwd"
+QT_MOC_LITERAL(57, 741, 17), // "onTopCheckChanged"
+QT_MOC_LITERAL(58, 759, 5), // "bShow"
+QT_MOC_LITERAL(59, 765, 19), // "onRightCheckChanged"
+QT_MOC_LITERAL(60, 785, 18), // "onToolCheckChanged"
+QT_MOC_LITERAL(61, 804, 9), // "strToolId"
+QT_MOC_LITERAL(62, 814, 8), // "onLogout"
+QT_MOC_LITERAL(63, 823, 11), // "onChangeTax"
+QT_MOC_LITERAL(64, 835, 8), // "strTaxNo"
+QT_MOC_LITERAL(65, 844, 10), // "strMachine"
+QT_MOC_LITERAL(66, 855, 17), // "bingdingPhoneSlot"
+QT_MOC_LITERAL(67, 873, 20), // "slotBindingSucceeded"
+QT_MOC_LITERAL(68, 894, 9), // "strUserId"
+QT_MOC_LITERAL(69, 904, 9), // "strMobile"
+QT_MOC_LITERAL(70, 914, 8), // "strToken"
+QT_MOC_LITERAL(71, 923, 16), // "slotChangeMobile"
+QT_MOC_LITERAL(72, 940, 10), // "noviceSlot"
+QT_MOC_LITERAL(73, 951, 17), // "buyMembershipSlot"
+QT_MOC_LITERAL(74, 969, 11), // "vipNameList"
+QT_MOC_LITERAL(75, 981, 9), // "vipIdList"
+QT_MOC_LITERAL(76, 991, 11) // "vipTimeList"
 
     },
     "ZcloudDesk\0startInitSignal\0\0applyLogin\0"
-    "startDownAndUpdate\0softUrl\0doLogin\0"
-    "openCreateEntDlg\0openWorkers\0hideWindow\0"
-    "showWindow\0on_activatedSysTrayIcon\0"
+    "startDownAndUpdate\0softUrl\0CheckUpdater*\0"
+    "obj\0doLogin\0openCreateEntDlg\0openWorkers\0"
+    "hideWindow\0showWindow\0on_activatedSysTrayIcon\0"
     "QSystemTrayIcon::ActivationReason\0"
     "reason\0onModifyCoinCount\0nCount\0"
     "onSwitchTip\0flag\0openSignInWidegt\0"
@@ -155,96 +157,96 @@ static const uint qt_meta_data_ZcloudDesk[] = {
        3,    0,  237,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       4,    1,  238,    2, 0x08 /* Private */,
-       6,    0,  241,    2, 0x08 /* Private */,
-       7,    0,  242,    2, 0x08 /* Private */,
+       4,    2,  238,    2, 0x08 /* Private */,
        8,    0,  243,    2, 0x08 /* Private */,
        9,    0,  244,    2, 0x08 /* Private */,
       10,    0,  245,    2, 0x08 /* Private */,
-      11,    1,  246,    2, 0x08 /* Private */,
-      14,    1,  249,    2, 0x08 /* Private */,
-      16,    1,  252,    2, 0x08 /* Private */,
-      16,    0,  255,    2, 0x28 /* Private | MethodCloned */,
-      18,    1,  256,    2, 0x08 /* Private */,
-      21,    0,  259,    2, 0x08 /* Private */,
-      22,    2,  260,    2, 0x08 /* Private */,
-      25,    1,  265,    2, 0x08 /* Private */,
-      26,    1,  268,    2, 0x08 /* Private */,
-      27,    1,  271,    2, 0x08 /* Private */,
-      29,    1,  274,    2, 0x08 /* Private */,
-      29,    0,  277,    2, 0x28 /* Private | MethodCloned */,
-      30,    2,  278,    2, 0x08 /* Private */,
-      30,    1,  283,    2, 0x28 /* Private | MethodCloned */,
-      33,    4,  286,    2, 0x08 /* Private */,
-      39,    0,  295,    2, 0x08 /* Private */,
-      40,    1,  296,    2, 0x08 /* Private */,
-      41,    0,  299,    2, 0x08 /* Private */,
-      42,    2,  300,    2, 0x08 /* Private */,
-      45,    0,  305,    2, 0x08 /* Private */,
-      46,    1,  306,    2, 0x08 /* Private */,
-      47,    0,  309,    2, 0x08 /* Private */,
-      48,    0,  310,    2, 0x08 /* Private */,
+      11,    0,  246,    2, 0x08 /* Private */,
+      12,    0,  247,    2, 0x08 /* Private */,
+      13,    1,  248,    2, 0x08 /* Private */,
+      16,    1,  251,    2, 0x08 /* Private */,
+      18,    1,  254,    2, 0x08 /* Private */,
+      18,    0,  257,    2, 0x28 /* Private | MethodCloned */,
+      20,    1,  258,    2, 0x08 /* Private */,
+      23,    0,  261,    2, 0x08 /* Private */,
+      24,    2,  262,    2, 0x08 /* Private */,
+      27,    1,  267,    2, 0x08 /* Private */,
+      28,    1,  270,    2, 0x08 /* Private */,
+      29,    1,  273,    2, 0x08 /* Private */,
+      31,    1,  276,    2, 0x08 /* Private */,
+      31,    0,  279,    2, 0x28 /* Private | MethodCloned */,
+      32,    2,  280,    2, 0x08 /* Private */,
+      32,    1,  285,    2, 0x28 /* Private | MethodCloned */,
+      35,    4,  288,    2, 0x08 /* Private */,
+      41,    0,  297,    2, 0x08 /* Private */,
+      42,    1,  298,    2, 0x08 /* Private */,
+      43,    0,  301,    2, 0x08 /* Private */,
+      44,    2,  302,    2, 0x08 /* Private */,
+      47,    0,  307,    2, 0x08 /* Private */,
+      48,    1,  308,    2, 0x08 /* Private */,
       49,    0,  311,    2, 0x08 /* Private */,
-      50,    4,  312,    2, 0x08 /* Private */,
-      55,    1,  321,    2, 0x08 /* Private */,
-      57,    1,  324,    2, 0x08 /* Private */,
-      58,    2,  327,    2, 0x08 /* Private */,
-      60,    0,  332,    2, 0x08 /* Private */,
-      61,    2,  333,    2, 0x08 /* Private */,
-      64,    0,  338,    2, 0x08 /* Private */,
-      65,    4,  339,    2, 0x08 /* Private */,
-      69,    1,  348,    2, 0x08 /* Private */,
-      70,    1,  351,    2, 0x08 /* Private */,
-      70,    0,  354,    2, 0x28 /* Private | MethodCloned */,
-      71,    3,  355,    2, 0x08 /* Private */,
+      50,    0,  312,    2, 0x08 /* Private */,
+      51,    0,  313,    2, 0x08 /* Private */,
+      52,    4,  314,    2, 0x08 /* Private */,
+      57,    1,  323,    2, 0x08 /* Private */,
+      59,    1,  326,    2, 0x08 /* Private */,
+      60,    2,  329,    2, 0x08 /* Private */,
+      62,    0,  334,    2, 0x08 /* Private */,
+      63,    2,  335,    2, 0x08 /* Private */,
+      66,    0,  340,    2, 0x08 /* Private */,
+      67,    4,  341,    2, 0x08 /* Private */,
+      71,    1,  350,    2, 0x08 /* Private */,
+      72,    1,  353,    2, 0x08 /* Private */,
+      72,    0,  356,    2, 0x28 /* Private | MethodCloned */,
+      73,    3,  357,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::Int,    2,
     QMetaType::Void,
 
  // slots: parameters
-    QMetaType::Void, QMetaType::QString,    5,
+    QMetaType::Void, QMetaType::QString, 0x80000000 | 6,    5,    7,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, 0x80000000 | 12,   13,
-    QMetaType::Void, QMetaType::Int,   15,
-    QMetaType::Void, QMetaType::Bool,   17,
+    QMetaType::Void, 0x80000000 | 14,   15,
+    QMetaType::Void, QMetaType::Int,   17,
+    QMetaType::Void, QMetaType::Bool,   19,
     QMetaType::Void,
-    QMetaType::Void, 0x80000000 | 19,   20,
+    QMetaType::Void, 0x80000000 | 21,   22,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::Int, QMetaType::QString,   23,   24,
+    QMetaType::Void, QMetaType::Int, QMetaType::QString,   25,   26,
     QMetaType::Void, QMetaType::QString,    2,
-    QMetaType::Void, QMetaType::Int,   17,
-    QMetaType::Void, QMetaType::Int,   28,
-    QMetaType::Void, QMetaType::Int,   17,
+    QMetaType::Void, QMetaType::Int,   19,
+    QMetaType::Void, QMetaType::Int,   30,
+    QMetaType::Void, QMetaType::Int,   19,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::Bool, QMetaType::Bool,   31,   32,
-    QMetaType::Void, QMetaType::Bool,   31,
-    QMetaType::Void, 0x80000000 | 34, QMetaType::QString, QMetaType::QString, QMetaType::QString,   35,   36,   37,   38,
+    QMetaType::Void, QMetaType::Bool, QMetaType::Bool,   33,   34,
+    QMetaType::Void, QMetaType::Bool,   33,
+    QMetaType::Void, 0x80000000 | 36, QMetaType::QString, QMetaType::QString, QMetaType::QString,   37,   38,   39,   40,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::Int,   17,
+    QMetaType::Void, QMetaType::Int,   19,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::Int, QMetaType::Bool,   43,   44,
+    QMetaType::Void, QMetaType::Int, QMetaType::Bool,   45,   46,
     QMetaType::Void,
     QMetaType::Void, QMetaType::Int,    2,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::Int, QMetaType::Bool, QMetaType::QString, QMetaType::QString,   51,   52,   53,   54,
-    QMetaType::Void, QMetaType::Bool,   56,
-    QMetaType::Void, QMetaType::Bool,   56,
-    QMetaType::Void, QMetaType::QString, QMetaType::Bool,   59,   56,
+    QMetaType::Void, QMetaType::Int, QMetaType::Bool, QMetaType::QString, QMetaType::QString,   53,   54,   55,   56,
+    QMetaType::Void, QMetaType::Bool,   58,
+    QMetaType::Void, QMetaType::Bool,   58,
+    QMetaType::Void, QMetaType::QString, QMetaType::Bool,   61,   58,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::QString, QMetaType::QString,   62,   63,
+    QMetaType::Void, QMetaType::QString, QMetaType::QString,   64,   65,
     QMetaType::Void,
-    QMetaType::Void, 0x80000000 | 34, QMetaType::QString, QMetaType::QString, QMetaType::QString,   35,   66,   67,   68,
-    QMetaType::Void, QMetaType::QString,   67,
-    QMetaType::Void, QMetaType::Bool,   17,
+    QMetaType::Void, 0x80000000 | 36, QMetaType::QString, QMetaType::QString, QMetaType::QString,   37,   68,   69,   70,
+    QMetaType::Void, QMetaType::QString,   69,
+    QMetaType::Void, QMetaType::Bool,   19,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::QStringList, QMetaType::QStringList, QMetaType::QStringList,   72,   73,   74,
+    QMetaType::Void, QMetaType::QStringList, QMetaType::QStringList, QMetaType::QStringList,   74,   75,   76,
 
        0        // eod
 };
@@ -257,7 +259,7 @@ void ZcloudDesk::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         switch (_id) {
         case 0: _t->startInitSignal((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 1: _t->applyLogin(); break;
-        case 2: _t->startDownAndUpdate((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 2: _t->startDownAndUpdate((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< CheckUpdater*(*)>(_a[2]))); break;
         case 3: _t->doLogin(); break;
         case 4: _t->openCreateEntDlg(); break;
         case 5: _t->openWorkers(); break;
@@ -304,6 +306,13 @@ void ZcloudDesk::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
         switch (_id) {
         default: *reinterpret_cast<int*>(_a[0]) = -1; break;
+        case 2:
+            switch (*reinterpret_cast<int*>(_a[1])) {
+            default: *reinterpret_cast<int*>(_a[0]) = -1; break;
+            case 1:
+                *reinterpret_cast<int*>(_a[0]) = qRegisterMetaType< CheckUpdater* >(); break;
+            }
+            break;
         case 12:
             switch (*reinterpret_cast<int*>(_a[1])) {
             default: *reinterpret_cast<int*>(_a[0]) = -1; break;

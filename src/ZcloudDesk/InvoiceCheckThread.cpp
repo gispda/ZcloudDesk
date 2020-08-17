@@ -2,6 +2,7 @@
 #include <QDataStream>
 #include "ZcloudCommon.h"
 #include "ZcloudDesk.h"
+#include "HttpInterface.h"
 
 InvoiceCheckThread::InvoiceCheckThread(UserInfoStruct*	stUserInfo,QObject *parent)
 	: QThread(parent), m_stUserInfo(stUserInfo)
@@ -17,7 +18,15 @@ void InvoiceCheckThread::run()
 {
 	isrunning = true;
 	sleep(10);
-	//检测开票软件
+	//检查客户端版本
+	bool checkedClient = false;
+	bool checkedInvoice = false;
+	QString strDownloadUrl, strMd5;
+	CheckUpdater updater;
+	checkedClient = updater.checkUpdater(m_stUserInfo->m_strUserId, m_stUserInfo->m_strToken);
+	checkedClient = true;
+
+	//检测开票软件版本
 	QString softUrl;
 	//获得软件ID 8888
 	QString softVersion = this->m_stUserInfo->m_strHzsId;
@@ -28,25 +37,21 @@ void InvoiceCheckThread::run()
 	if (ZcloudDesk::readRegInfo(strVerSion, m_stUserInfo->m_strTaxNumber))
 	{
 		if (!strVerSion.isEmpty() && strVerSion != softVersion){
+			checkedInvoice = true;
 
-			emit sendDownAndUpdate(softUrl);
-
-			//必须在GUI线程操作界面
-			////让用户确认是否安装开票软件
-			//if (ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_OKCANCEL, QString::fromLocal8Bit("提示"), QString::fromLocal8Bit("检测到新的开票软件，是否更新？")) == QDialog::Accepted)
-			//{
-			//	//安装开票软件
-			//	if (ZhicloudApp::openDownloadSoftware(0, softUrl) == QDialog::Accepted)
-			//	{
-			//		//安装成功重启软件
-			//		//a.appDisConnect();
-			//		QProcess::startDetached(qApp->applicationFilePath(), QStringList());
-			//		//return 0;
-			//	}
-			//}
 		}
-
 	}
+	checkedInvoice = true;
+	QString url;
+	CheckUpdater* updateObj=NULL;
+	if (checkedClient){
+		updateObj=&updater;
+	}
+	if (!checkedInvoice){
+		softUrl = "";
+	}
+	emit sendDownAndUpdate(softUrl, updateObj);
+
 	isrunning = false;
 }
 

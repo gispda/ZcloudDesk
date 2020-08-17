@@ -384,7 +384,8 @@ void SettingWidget::onCheckUpdateBtnClick()
 		if (nRet == QDialog::Accepted)
 		{
 			ZcloudBigDataInterface::GetInstance()->produceData("M00", "OP001", "TAU002");
-			obj.startUpdaterProcess(true);
+			obj.startUpdaterProcess(false);
+			//obj.startUpdaterProcess(true);
 		}
 		else
 		{

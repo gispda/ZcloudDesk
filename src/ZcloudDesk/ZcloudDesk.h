@@ -14,6 +14,7 @@
 #include "LoginTip.h"
 #include <QWidget>
 #include <QtGui>
+#include "CheckUpdater.h"
 
 class ZcloudDesk : public QMainWindow
 {
@@ -56,7 +57,7 @@ signals:
 	private slots:
 
 
-	void startDownAndUpdate(QString softUrl);
+	void startDownAndUpdate(QString softUrl , CheckUpdater* obj);
 	///登陆的实际操作函数入口
 	void doLogin();
 	void openCreateEntDlg();
