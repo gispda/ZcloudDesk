@@ -417,10 +417,10 @@ void ZcloudDesk::openSettingCenterWidget()
 {
 
 
-	if (!showLoginTip())
-	{
-		return;
-	}
+	//if (!showLoginTip())
+	//{
+	//	return;
+	//}
 		SettingWidget*	pSettingWidget = findChild<SettingWidget*>(QString::fromLocal8Bit("SettingWidget"));
 		if (NULL != pSettingWidget)
 		{
@@ -476,7 +476,7 @@ void ZcloudDesk::onTopToolClick()
 	{
 		openTaxCalculatorWidget(pInfo->m_strAppDownloadUrl);
 	}
-	else if (strToolName == QString::fromLocal8Bit("财税日历"))
+	else if (strToolName == QString::fromLocal8Bit("办税日历"))
 	{
 		openFiscalCalendarWidget(pInfo->m_strAppDownloadUrl);
 	}
@@ -538,7 +538,7 @@ void ZcloudDesk::onTopToolClick()
 	{
 		openVipCenterWidget();
 	}
-	else 
+	else
 	{
 		//！别的应用分类
 		//TopToolWidget*	pWidget = findChild<TopToolWidget*>(QString::fromLocal8Bit("TopToolWidget"));
@@ -714,7 +714,7 @@ void ZcloudDesk::showWindow(){
 void ZcloudDesk::openAppCenterWidget()
 {
 
-	showLoginTip();
+
 	m_zhicloudApp->openAppCenterDlg();
 	m_pBigDataInterface->produceData("M01", "OP001", "TTA010");
 }
@@ -1752,6 +1752,12 @@ void ZcloudDesk::openFiscalCalendarWidget(QString strUrl)
 
 void ZcloudDesk::openSignInWidegt(QWidget* pParentWidget)
 {
+
+	if (!showLoginTip())
+	{
+		return;
+	}
+
 	m_pBigDataInterface->produceData("M01", "OP001", "TTA014");
 	SignInWidget*	pWidget = findChild<SignInWidget*>(QString::fromLocal8Bit("SignInWidget"));
 	if (NULL != pWidget)
