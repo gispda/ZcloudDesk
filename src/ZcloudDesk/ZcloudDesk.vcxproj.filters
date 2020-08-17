@@ -110,6 +110,9 @@
     <ClCompile Include="LoginTip.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="InvoiceCheckThread.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="ZcloudDesk.h">
@@ -170,6 +173,9 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtMoc Include="LoginTip.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="InvoiceCheckThread.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

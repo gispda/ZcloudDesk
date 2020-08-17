@@ -85,7 +85,10 @@ void EntCenterNewWidget::onShowInfo(){
 
 
 	if (decideJoinEnt())
-	JoinEntMoreStep();
+	{
+		JoinEntMoreStep();
+		return;
+	}
 
 	mp_EntCenterInfo->show();
 	mp_EntCenterMain->hide();
@@ -93,6 +96,12 @@ void EntCenterNewWidget::onShowInfo(){
 }
 
 void EntCenterNewWidget::onShowMember(){
+
+	if (decideJoinEnt())
+	{
+		JoinEntMoreStep();
+		return;
+	}
 	mp_EntCenterInfo->hide();
 	mp_EntCenterMain->hide();
 	mp_EntCenterMember->show();

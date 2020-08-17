@@ -38,6 +38,10 @@ public:
 
 	QString loadJsbTax();
 	ZcloudEntCenter* getEntCenter();
+public:
+
+	//读取注册表软件安装信息
+	static bool readRegInfo(QString &verSion, QString taxNumber);
 
 protected:
 	bool eventFilter(QObject *target, QEvent *e);
@@ -52,7 +56,7 @@ signals:
 	private slots:
 
 
-
+	void startDownAndUpdate(QString softUrl);
 	///登陆的实际操作函数入口
 	void doLogin();
 	void openCreateEntDlg();

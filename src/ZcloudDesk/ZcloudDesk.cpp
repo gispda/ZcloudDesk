@@ -31,6 +31,7 @@
 #include <QMenu>
 #include <TwobarCodeWidget.h>
 #include "ZcloudEntCenter.h"
+#include "InvoiceCheckThread.h"
 //#include "ZcloudClient.h"
 
 QString zhicloudStrToken;
@@ -95,7 +96,17 @@ ZcloudDesk::ZcloudDesk(UserInfoStruct userInfoStruct, QWidget *parent)
 	m_pPipeServerThread = new PipeServerThread(this);
 	connect(m_pPipeServerThread, SIGNAL(sigReciveMsgPopUp(QString)), this, SLOT(onReciveMsgPopUp(QString)));
 	connect(m_pPipeServerThread, &QThread::finished, m_pPipeServerThread, &QObject::deleteLater);
+
+
+
 	m_pPipeServerThread->start();
+
+
+	//检测开票软件版本线程
+	//未安装不做操作	
+	InvoiceCheckThread* checkVersion = new InvoiceCheckThread(&this->m_stUserInfo, NULL);
+	connect(checkVersion, &InvoiceCheckThread::sendDownAndUpdate, this, &ZcloudDesk::startDownAndUpdate);
+	checkVersion->start();
 
 	//!点击响应
 	ui.labelCompName->installEventFilter(this);
@@ -2121,3 +2132,71 @@ void ZcloudDesk::doLogin()
 	}
 }
 
+void ZcloudDesk::startDownAndUpdate(QString softUrl){
+	//让用户确认是否安装开票软件
+	if (ZcloudComFun::openMessageTipDlg_2(ZcloudComFun::EN_OKCANCEL, QString::fromLocal8Bit("提示"), QString::fromLocal8Bit("检测到新的开票软件，是否更新？"), QString::fromLocal8Bit("确定"), QString::fromLocal8Bit("取消")) == QDialog::Accepted)
+	{
+		//安装开票软件
+		if (ZhicloudApp::openDownloadSoftware(0, softUrl) == QDialog::Accepted)
+		{
+			//安装成功重启软件
+			//a.appDisConnect();
+			QProcess::startDetached(qApp->applicationFilePath(), QStringList());
+			//return 0;
+		}
+	}
+}
+
+bool ZcloudDesk::readRegInfo(QString &verSion, QString taxNumber)
+{
+	HKEY RootKey;            // 主键
+	LPCTSTR lpSubKey;        // 子键名称
+	HKEY hkResult;            // 将要打开键的句柄
+	HKEY hkRKey;
+	LONG lReturn;            // 记录读取注册表是否成功
+	QString strBuffer;
+	QString strMidReg;
+	DWORD index = 0;
+
+	wchar_t szKeyName[255] = { 0 };        // 注册表项名称
+	wchar_t szBuffer[1024] = { 0 };
+
+	DWORD dwKeyLen = 255;
+	DWORD dwNameLen = 255;
+	DWORD dwType = REG_BINARY | REG_DWORD | REG_EXPAND_SZ | REG_MULTI_SZ | REG_NONE | REG_SZ;
+	RootKey = HKEY_LOCAL_MACHINE;
+
+	QSettings *settings = new QSettings("HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App Paths\\fwkp.exe", QSettings::NativeFormat);
+	QStringList groupsList = settings->childGroups();
+	foreach(QString group, groupsList)
+	{
+		settings->beginGroup(group);
+		QString strCode = settings->value("code", QVariant()).toString();			//！企业税号
+		strCode = strCode.replace(" ", "");
+		QString machine = settings->value("machine", QVariant()).toString();
+		QString ver = settings->value("Version", QVariant()).toString();
+		settings->endGroup();
+
+		if (taxNumber.isEmpty())
+			break;
+		else
+		{
+			if (strCode == taxNumber)//如果税号相同    查找出版本号
+			{
+				verSion = ver;		//！版本
+				verSion.replace("V", "");
+				verSion.replace("v", "");
+				verSion.replace(" ", "");
+				break;
+			}
+		}
+	}
+	delete settings;
+	if (!verSion.isEmpty()){
+		return true;;
+	}
+	else{
+
+		return false;
+	}
+}

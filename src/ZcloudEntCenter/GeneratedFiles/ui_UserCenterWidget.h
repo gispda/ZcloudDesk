@@ -267,7 +267,7 @@ public:
         label->setText(QApplication::translate("UserCenterWidget", "\347\231\273\345\275\225\345\220\216\345\217\257\344\275\223\351\252\214\346\233\264\345\244\232\345\212\237\350\203\275", 0));
         pushButtonLogin->setText(QApplication::translate("UserCenterWidget", "\347\253\213\345\215\263\347\231\273\345\275\225", 0));
         labelName->setText(QApplication::translate("UserCenterWidget", "TextLabel", 0));
-        labelID->setText(QApplication::translate("UserCenterWidget", "TextLabel", 0));
+        labelID->setText(QString());
         label_2->setText(QString());
     } // retranslateUi
 
