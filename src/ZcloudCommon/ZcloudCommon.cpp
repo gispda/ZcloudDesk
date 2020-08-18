@@ -24,12 +24,24 @@ int ZcloudComFun::openMessageTipDlg(EN_BTN_TYPE enBtnType, QString strTitle, QSt
 	return dlg.exec();
 }
 
+int ZcloudComFun::openUploadTipDlg(QWidget *parent /*= 0*/)
+{
+	UpdateTipDlg  dlg(parent);
+	return dlg.exec();
+}
+
 int ZcloudComFun::openMessageTipDlg_2(EN_BTN_TYPE enBtnType, QString strTitle, QString strMsg, QString buttonStr_1, QString buttonStr_2, QWidget *parent /*= 0*/)
 {
 	MessageTipDlg	dlg(enBtnType, strTitle, strMsg,buttonStr_1, buttonStr_2, parent);
 	return dlg.exec();
 }
 
+int ZcloudComFun::openMessageTipDlg_3(EN_BTN_TYPE enBtnType, QString strTitle, QString strImageUrl, QString buttonStr_1, QString buttonStr_2, QWidget *parent /*= 0*/)
+{
+	MessageTipDlg	dlg(enBtnType, strTitle, "", buttonStr_1, buttonStr_2, parent);
+	dlg.
+	return dlg.exec();
+}
 
 
 int SSO(QString jsonStr)

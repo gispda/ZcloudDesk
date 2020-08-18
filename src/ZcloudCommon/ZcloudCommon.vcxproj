@@ -182,6 +182,7 @@
   <ItemGroup>
     <QtUic Include="MessageTipDlg.ui">
     </QtUic>
+    <QtUic Include="UpdateTipDlg.ui" />
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="ZcloudCommon.qrc">

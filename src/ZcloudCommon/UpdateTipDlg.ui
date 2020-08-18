@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>UpdateTipDlg</class>
+ <widget class="QDialog" name="UpdateTipDlg">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>514</width>
+    <height>458</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>514</width>
+    <height>458</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>514</width>
+    <height>458</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>MessageTipDlg</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="spacing">
+    <number>0</number>
+   </property>
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <item>
+    <widget class="QWidget" name="FilletWidget" native="true">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>350</width>
+       <height>280</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>3500</width>
+       <height>2800</height>
+      </size>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-radius:4px;
+background-color: rgb(255, 255, 255);</string>
+     </property>
+     <widget class="QPushButton" name="updateButton">
+      <property name="geometry">
+       <rect>
+        <x>107</x>
+        <y>380</y>
+        <width>120</width>
+        <height>40</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>120</width>
+        <height>40</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>120</width>
+        <height>40</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(2, 164, 253, 1), stop:1 rgba(31, 139, 237, 1));
+			border-radius:4px;font: 18px &quot;微软雅黑&quot;;color:rgba(255, 255, 255, 1);}
+			QPushButton:hover,pressed{ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(40, 178, 253, 1), stop:1 rgba(64, 156, 240, 1));
+		  border-radius:4px;font: 18px &quot;微软雅黑&quot;;color:rgba(255, 255, 255, 1);}</string>
+      </property>
+      <property name="text">
+       <string>立即升级</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="noUpdateButton">
+      <property name="geometry">
+       <rect>
+        <x>287</x>
+        <y>380</y>
+        <width>120</width>
+        <height>40</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>120</width>
+        <height>40</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>120</width>
+        <height>40</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{ background-color: #FFFFFF;border-radius:4px;font: 18px &quot;微软雅黑&quot;;color:#333333;border:1px solid #DEDEDE}
+QPushButton:hover,pressed{ background-color: #F4F4F4;border-radius:4px;font: 18px &quot;微软雅黑&quot;;color:#333333;}</string>
+      </property>
+      <property name="text">
+       <string>暂不升级</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label">
+      <property name="geometry">
+       <rect>
+        <x>2</x>
+        <y>2</y>
+        <width>510</width>
+        <height>454</height>
+       </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>510</width>
+        <height>454</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>510</width>
+        <height>454</height>
+       </size>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="ZcloudCommon.qrc">:/ZcloudCommon/image/img_update.png</pixmap>
+      </property>
+     </widget>
+     <zorder>label</zorder>
+     <zorder>noUpdateButton</zorder>
+     <zorder>updateButton</zorder>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources>
+  <include location="ZcloudCommon.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>updateButton</sender>
+   <signal>clicked()</signal>
+   <receiver>UpdateTipDlg</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>99</x>
+     <y>319</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>363</x>
+     <y>273</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>noUpdateButton</sender>
+   <signal>clicked()</signal>
+   <receiver>UpdateTipDlg</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>263</x>
+     <y>328</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>364</x>
+     <y>295</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

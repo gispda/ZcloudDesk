@@ -4,5 +4,6 @@
         <file>image/tip.png</file>
         <file>image/browser_close_hov.png</file>
         <file>image/browser_close_nor.png</file>
+        <file>image/img_update.png</file>
     </qresource>
 </RCC>

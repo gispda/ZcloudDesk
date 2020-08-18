@@ -6,6 +6,7 @@
 #include <QLabel>
 
 #include <QHttpMultiPart>
+#include "UpdateTipDlg.h"
 
 namespace ZcloudComFun
 {
@@ -38,12 +39,20 @@ namespace ZcloudComFun
 
 	extern "C" __declspec(dllexport) void LoadAvatar(const std::string &strAvatarUrl, QLabel* lable);
 
+	//!更新提示框
+	extern "C" __declspec(dllexport) int openUploadTipDlg(QWidget *parent = 0);
+
+
 	//!提示框
 	extern "C" __declspec(dllexport) int openMessageTipDlg(EN_BTN_TYPE enBtnType, QString strTitle, QString strMsg, QWidget *parent = 0);
 
 	//!提示框
 	extern "C" __declspec(dllexport) int openMessageTipDlg_2(EN_BTN_TYPE enBtnType, QString strTitle, QString strMsg, QString buttonStr_1, QString tuttonStr_2, QWidget *parent = 0);
 
+	//!提示框
+	extern "C" __declspec(dllexport) int openMessageTipDlg_3(EN_BTN_TYPE enBtnType, QString strTitle, QString strImageUrl, QString buttonStr_1, QString tuttonStr_2, QWidget *parent = 0);
+
+	
 	//!http调用
 	extern "C" __declspec(dllexport) bool httpPost(QString strUrl, QString strPost, int nTimeout, QString& strRet, bool isCheckToken = false,int _type = 0);
 
