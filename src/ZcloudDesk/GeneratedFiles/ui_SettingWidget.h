@@ -546,7 +546,7 @@ public:
 "QPushButton:hover,pressed{border-image: url(:/ZcloudDesk/image/guide_hov.png);};"));
         AboutUsWidget = new QWidget(FilletWidget);
         AboutUsWidget->setObjectName(QStringLiteral("AboutUsWidget"));
-        AboutUsWidget->setGeometry(QRect(800, 610, 650, 530));
+        AboutUsWidget->setGeometry(QRect(0, 610, 650, 530));
         sizePolicy.setHeightForWidth(AboutUsWidget->sizePolicy().hasHeightForWidth());
         AboutUsWidget->setSizePolicy(sizePolicy);
         AboutUsWidget->setMinimumSize(QSize(650, 530));
