@@ -74,6 +74,9 @@
     <ClCompile Include="VerificationCodeLabel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="UpdateTipDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\include\ZcloudCommon.h">
@@ -126,6 +129,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="..\..\include\VerificationCodeLabel.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="UpdateTipDlg.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

@@ -39,7 +39,7 @@ int ZcloudComFun::openMessageTipDlg_2(EN_BTN_TYPE enBtnType, QString strTitle, Q
 int ZcloudComFun::openMessageTipDlg_3(EN_BTN_TYPE enBtnType, QString strTitle, QString strImageUrl, QString buttonStr_1, QString buttonStr_2, QWidget *parent /*= 0*/)
 {
 	MessageTipDlg	dlg(enBtnType, strTitle, "", buttonStr_1, buttonStr_2, parent);
-	dlg.
+	//dlg.
 	return dlg.exec();
 }
 
@@ -1015,11 +1015,11 @@ bool ZcloudComFun::isNetActiveByToken(QString strToken)
 QString ZcloudComFun::getRegditValue(QString key)
 {
 	QString strVer = ZcloudComFun::getFileVertion(QApplication::applicationFilePath());
-	QString strRegPath = QString("HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App Paths\\ZcloudDesk\\NewsTip"));
+	QString strRegPath = QString("HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App Paths\\ZcloudDesk\\NewsTip");
 	QSettings *settings = new QSettings(strRegPath, QSettings::NativeFormat);
 
 
-	QString strvalue = settings->value(key);
+	QString strvalue = settings->value(key).toString();
 	delete settings;
 	settings = NULL;
 	return strvalue;
@@ -1029,7 +1029,7 @@ QString ZcloudComFun::getRegditValue(QString key)
 void ZcloudComFun::writeRegdit(QString key, QString strvalue)
 {
 	QString strVer = ZcloudComFun::getFileVertion(QApplication::applicationFilePath());
-	QString strRegPath = QString("HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App Paths\\ZcloudDesk\\NewsTip"));
+	QString strRegPath = QString("HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App Paths\\ZcloudDesk\\NewsTip");
 	QSettings *settings = new QSettings(strRegPath, QSettings::NativeFormat);
 	settings->setValue(key, strvalue);
 
