@@ -2142,8 +2142,9 @@ void ZcloudDesk::startDownAndUpdate(QString softUrl, CheckUpdater* obj){
 	if (obj != NULL){
 		QString s = QApplication::applicationDirPath();
 		//替换升级提示对话框
-		int nRet = ZcloudComFun::openMessageTipDlg(ZcloudComFun::ZEN_UPDATE, QString::fromLocal8Bit("检测到新版本"), QString::fromLocal8Bit("升级到最新版，享受更专业的财税办公服务"));
-		
+		//int nRet = ZcloudComFun::openMessageTipDlg(ZcloudComFun::ZEN_UPDATE, QString::fromLocal8Bit("检测到新版本"), QString::fromLocal8Bit("升级到最新版，享受更专业的财税办公服务"));
+		int nRet = ZcloudComFun::openUploadTipDlg();		
+
 		if (nRet == QDialog::Accepted)
 		{
 			//ZcloudBigDataInterface::GetInstance()->produceData("M00", "OP001", "TAU002");
