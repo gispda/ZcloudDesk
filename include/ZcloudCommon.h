@@ -127,6 +127,10 @@ namespace ZcloudComFun
 	 //获取第一个本地税号
 	 __declspec(dllexport) QString getFirstTaxnumbers();
 
+	 QString getRegditValue(QString key);
+
+	 ///
+	 void writeRegdit(QString key, QString strvalue);
 
 	 bool getPublicIp(QString& ip);
 

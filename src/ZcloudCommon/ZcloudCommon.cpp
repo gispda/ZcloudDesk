@@ -1012,6 +1012,30 @@ bool ZcloudComFun::isNetActiveByToken(QString strToken)
 	return httpPost(strUrl, strToken, 15000, strRet,false,1);
 }
 
+QString ZcloudComFun::getRegditValue(QString key)
+{
+	QString strVer = ZcloudComFun::getFileVertion(QApplication::applicationFilePath());
+	QString strRegPath = QString("HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App Paths\\ZcloudDesk\\NewsTip"));
+	QSettings *settings = new QSettings(strRegPath, QSettings::NativeFormat);
+
+
+	QString strvalue = settings->value(key);
+	delete settings;
+	settings = NULL;
+	return strvalue;
+}
+
+
+void ZcloudComFun::writeRegdit(QString key, QString strvalue)
+{
+	QString strVer = ZcloudComFun::getFileVertion(QApplication::applicationFilePath());
+	QString strRegPath = QString("HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App Paths\\ZcloudDesk\\NewsTip"));
+	QSettings *settings = new QSettings(strRegPath, QSettings::NativeFormat);
+	settings->setValue(key, strvalue);
+
+	delete settings;
+	settings = NULL;
+}
 
 ////查询是否加入企业，也可以用于注册表税号查询后台公司是否匹配
 bool ZcloudComFun::winHttpQueryCompanyInfoLocalTax(QString strTaxno, QString strToken, dbEntInfo& info)
@@ -1129,6 +1153,7 @@ bool ZcloudComFun::winHttpQueryCompanyInfoLocalTax(QString strTaxno, QString str
 	info.strCompany = QString::fromLocal8Bit("暂未查询到您的企业");
 	return false;
 }
+
 
 //QString ZcloudComFun::getTaxnumber()
 //{
