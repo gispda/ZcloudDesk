@@ -113,6 +113,9 @@
     <ClCompile Include="InvoiceCheckThread.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="UpdateTipDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="ZcloudDesk.h">
@@ -178,6 +181,9 @@
     <QtMoc Include="InvoiceCheckThread.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="UpdateTipDlg.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_ZcloudDesk.h">
@@ -202,6 +208,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_TwobarCodeWidget.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_UpdateTipDlg.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -258,6 +267,9 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="LoginTip.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="UpdateTipDlg.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>

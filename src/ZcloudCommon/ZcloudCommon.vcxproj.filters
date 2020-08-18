@@ -74,9 +74,6 @@
     <ClCompile Include="VerificationCodeLabel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="UpdateTipDlg.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\include\ZcloudCommon.h">
@@ -102,9 +99,6 @@
     <QtRcc Include="ZcloudCommon.qrc">
       <Filter>Resource Files</Filter>
     </QtRcc>
-    <QtUic Include="UpdateTipDlg.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="DownLoadIcon.h">
@@ -129,9 +123,6 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="..\..\include\VerificationCodeLabel.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="UpdateTipDlg.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

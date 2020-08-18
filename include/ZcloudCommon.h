@@ -39,8 +39,7 @@ namespace ZcloudComFun
 
 	extern "C" __declspec(dllexport) void LoadAvatar(const std::string &strAvatarUrl, QLabel* lable);
 
-	//!更新提示框
-	extern "C" __declspec(dllexport) int openUploadTipDlg(QWidget *parent = 0);
+
 
 
 	//!提示框

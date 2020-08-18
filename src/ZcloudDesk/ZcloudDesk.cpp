@@ -31,6 +31,7 @@
 #include <TwobarCodeWidget.h>
 #include "ZcloudEntCenter.h"
 #include "InvoiceCheckThread.h"
+#include "UpdateTipDlg.h"
 //#include "ZcloudClient.h"
 
 QString zhicloudStrToken;
@@ -2152,7 +2153,9 @@ void ZcloudDesk::startDownAndUpdate(QString softUrl, CheckUpdater* obj){
 		QString s = QApplication::applicationDirPath();
 		//替换升级提示对话框
 		//int nRet = ZcloudComFun::openMessageTipDlg(ZcloudComFun::ZEN_UPDATE, QString::fromLocal8Bit("检测到新版本"), QString::fromLocal8Bit("升级到最新版，享受更专业的财税办公服务"));
-		int nRet = ZcloudComFun::openUploadTipDlg();		
+		
+		UpdateTipDlg dlg;
+		int nRet = dlg.exec();
 
 		if (nRet == QDialog::Accepted)
 		{

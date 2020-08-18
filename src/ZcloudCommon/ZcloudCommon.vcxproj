@@ -149,17 +149,12 @@
     <ClCompile Include="JsInterface.cpp" />
     <ClCompile Include="MessageTipDlg.cpp" />
     <ClCompile Include="SrvInterface.cpp" />
-    <ClCompile Include="UpdateTipDlg.cpp" />
     <ClCompile Include="VerificationCodeLabel.cpp" />
     <ClCompile Include="WebView.cpp" />
     <ClCompile Include="ZcloudCommon.cpp" />
     <ClCompile Include="ZcloudCommonWidget.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="UpdateTipDlg.h">
-      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(QTDIR)\include;.\..\..\include;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtSql;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE</IncludePath>
-      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(QTDIR)\include;.\..\..\include;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtSql;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE</IncludePath>
-    </QtMoc>
     <QtMoc Include="..\..\include\Database.h" />
     <QtMoc Include="..\..\include\WebView.h" />
     <QtMoc Include="..\..\include\JsInterface.h" />
@@ -187,7 +182,6 @@
   <ItemGroup>
     <QtUic Include="MessageTipDlg.ui">
     </QtUic>
-    <QtUic Include="UpdateTipDlg.ui" />
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="ZcloudCommon.qrc">
