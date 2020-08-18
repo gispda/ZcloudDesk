@@ -1973,7 +1973,16 @@ void ZcloudDesk::noviceSlot(bool flag)
 	if (flag || Database::GetInstance()->findLoginSet(loginSetingStruct) && loginSetingStruct.bShowGuide)
 	{
 		//if (ui.rightWidget->isInitClass())
-		NoviceDlg* paa = new NoviceDlg(this);
+		QString strvalue = ZcloudComFun::getRegditValue("IsShow");
+
+
+		if (strvalue.isEmpty())
+		{
+			NoviceDlg* paa = new NoviceDlg(this);
+			ZcloudComFun::writeRegdit("IsShow","1");
+		}
+		
+
 		//else
 		//	QTimer::singleShot(2000, this, SLOT(noviceSlot()));
 	}

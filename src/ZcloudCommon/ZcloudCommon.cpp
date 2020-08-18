@@ -13,6 +13,8 @@
 #include <QTimer>
 #include <QNetworkInterface>
 #include <QProcess>
+#include "UpdateTipDlg.h"
+
 #pragma   comment(lib,   "shell32.lib")
 #pragma   comment(lib,   "version.lib")
 #define NTDLL_RTL_GET_VERSION

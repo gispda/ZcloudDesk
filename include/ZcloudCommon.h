@@ -6,7 +6,7 @@
 #include <QLabel>
 
 #include <QHttpMultiPart>
-#include "UpdateTipDlg.h"
+//#include "UpdateTipDlg.h"
 
 namespace ZcloudComFun
 {
@@ -127,10 +127,10 @@ namespace ZcloudComFun
 	 //获取第一个本地税号
 	 __declspec(dllexport) QString getFirstTaxnumbers();
 
-	 QString getRegditValue(QString key);
+	 __declspec(dllexport) QString getRegditValue(QString key);
 
 	 ///
-	 void writeRegdit(QString key, QString strvalue);
+	 __declspec(dllexport) void writeRegdit(QString key, QString strvalue);
 
 	 bool getPublicIp(QString& ip);
 
