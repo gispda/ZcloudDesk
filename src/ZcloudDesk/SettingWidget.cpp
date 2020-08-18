@@ -374,17 +374,17 @@ void SettingWidget::onCheckUpdateBtnClick()
 {
 	ZcloudBigDataInterface::GetInstance()->produceData("M00", "OP001", "TAU001");
 	QString strDownloadUrl, strMd5;
-	CheckUpdater obj;
-	bool checked =obj.checkUpdater(m_strUid, m_strToken);
+	CheckUpdater updater;
+	bool checked = updater.checkUpdater(m_strUid, m_strToken);
 	//checked = true;
 	QString s = QApplication::applicationDirPath();
-	if (checked)
+	if (checked&&!updater.m_strMd5.isEmpty() && !updater.m_strDownloadUrl.isEmpty())
 	{
 		int nRet = ZcloudComFun::openMessageTipDlg(ZcloudComFun::ZEN_UPDATE, QString::fromLocal8Bit("检测到新版本"), QString::fromLocal8Bit("升级到最新版，享受更专业的财税办公服务"), this);
 		if (nRet == QDialog::Accepted)
 		{
 			ZcloudBigDataInterface::GetInstance()->produceData("M00", "OP001", "TAU002");
-			obj.startUpdaterProcess(false);
+			updater.startUpdaterProcess(false);
 			//obj.startUpdaterProcess(true);
 		}
 		else

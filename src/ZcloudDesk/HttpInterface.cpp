@@ -95,8 +95,13 @@ bool HttpInterface::winHttpSendFeedback(QString strUid, QString strToken, QStrin
 bool HttpInterface::winHttpGetYcsSoftware(QString strUid, QString strToken, QString& strRet)
 {
 	
-	QString strUrl = QString("/general/get-ycs-software?user_id=%1&token=%2&os_version=%3").arg(strUid).arg(strToken).arg(ZcloudComFun::getOsVerQt());
-	return ZcloudComFun::httpPost(strUrl, "", 5000, strRet);
+	//QString strUrl = QString("/general/get-ycs-software?user_id=%1&token=%2&os_version=%3").arg(strUid).arg(strToken).arg(ZcloudComFun::getOsVerQt());
+	QString strUrl = QString("/general/get-ycs-software?user_id=E164E4&token=6a0214a07dc5b2e9a9a6127d63e164e4&os_version=3434");
+
+	bool rst = ZcloudComFun::httpPost(strUrl, "", 5000, strRet);
+	
+	
+	return rst;
 }
 
 bool HttpInterface::winHttpTaxResponse(QString strUid, QString strToken, QString strTaxs, QString& strRet)

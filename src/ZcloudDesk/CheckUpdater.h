@@ -15,6 +15,9 @@ public:
 	bool checkUpdater(QString strUid, QString strToken);
 
 	void startUpdaterProcess(bool bSlience);
+
+	QString m_strDownloadUrl;
+	QString m_strMd5;
 private:
 	bool CheckUpdaterVer(QString strVerNum);
 
@@ -22,6 +25,4 @@ private:
 
 	vector<string> split_string(string &szInput, string &szToken);
 
-	QString m_strDownloadUrl;
-	QString m_strMd5;
 };

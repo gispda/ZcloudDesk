@@ -24,6 +24,7 @@ void InvoiceCheckThread::run()
 	QString strDownloadUrl, strMd5;
 	CheckUpdater updater;
 	checkedClient = updater.checkUpdater(m_stUserInfo->m_strUserId, m_stUserInfo->m_strToken);
+	
 	//checkedClient = true;
 
 	//¼ì²â¿ªÆ±Èí¼þ°æ±¾
@@ -47,7 +48,7 @@ void InvoiceCheckThread::run()
 	//checkedInvoice = true;
 	QString url;
 	CheckUpdater* updateObj=NULL;
-	if (checkedClient){
+	if (checkedClient&&!updater.m_strMd5.isEmpty() && !updater.m_strDownloadUrl.isEmpty()){
 		updateObj=&updater;
 	}
 	if (!checkedInvoice){
