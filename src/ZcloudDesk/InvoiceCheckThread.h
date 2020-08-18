@@ -17,6 +17,10 @@ public:
 	~InvoiceCheckThread();
 	bool isrunning;
 
+	int CompareVersion(QString nowVerson, QString newVerson);
+
+	vector<string> split_string(string &szInput, string &szToken);
+
 signals:
 	void sendDownAndUpdate(QString url, CheckUpdater* obj);
 	
