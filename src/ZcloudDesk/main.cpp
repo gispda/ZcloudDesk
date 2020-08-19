@@ -13,6 +13,8 @@
 #include "dlgwait.h"
 #include "QauZIP/JlCompress.h"
 #include "ZcloudBigData.h"
+#include "HttpTest.h"
+
 QString g_strAppName;
 //!从代理配置文件获取网络代理
 void applyNetProxy()
@@ -281,6 +283,9 @@ int main(int argc, char *argv[])
 
 	
 	int code = LoginThread::visitorLogin(userInfo);
+
+	//HttpTest ht;
+	//ht.access();
 
 	if (code != 0)
 	{

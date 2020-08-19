@@ -20,10 +20,12 @@ public:
 	//!设置用户数据
 	void setUserInfo(QString strUid, QString strToken, QString strTrueName, QString strJob, int isLoginByTax, QString strMobile, QString strCompId, QString strUserName);
 
-	bool winHttpGetEntInfo(QString strTaxno, QString strToken, QString& strRet);
+	bool winHttpGetEntInfo( QString strTaxno, QString strToken, QString& strRet);
+	//!查询企业信息
+	bool winHttpGetCompanyInfo( QString strUid, QString strToken, QString& strRet);
+
 
 	bool loadEntInfo();
-
 
 	void init();
 
@@ -44,8 +46,7 @@ void showUserCenter();
 void onSwitchAcc(int bLoginByTax, bool bOther, QString strTaxNo_userName, QString strPwd);
 
 private:
-	//!查询企业信息
-	bool winHttpGetCompanyInfo(QString strUid, QString strToken, QString& strRet);
+
 	//!解析企业信息
 	bool analysisJson(const QString& strJson, EntCenterInfo& info);
 	//!检测用户头像是否存在 存在返回路径 不存在下载之后返回路径

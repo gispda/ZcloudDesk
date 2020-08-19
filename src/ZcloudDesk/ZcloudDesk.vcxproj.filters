@@ -116,6 +116,9 @@
     <ClCompile Include="UpdateTipDlg.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="HttpTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="ZcloudDesk.h">
@@ -212,6 +215,9 @@
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_UpdateTipDlg.h">
       <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HttpTest.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

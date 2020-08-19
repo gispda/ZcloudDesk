@@ -87,7 +87,7 @@ void InfoCenterWidget::setUserInfo(QString strUid, QString strToken, QString str
 	m_strUserName = strUserName;
 }
 
-bool InfoCenterWidget::winHttpGetCompanyInfo(QString strTaxno, QString strToken, QString& strRet)
+bool InfoCenterWidget::winHttpGetCompanyInfo( QString strTaxno, QString strToken, QString& strRet)
 {
 	QString strUrl = QString("/ucenter/company/info");
 	QString strPost;
@@ -107,7 +107,7 @@ void InfoCenterWidget::init(){
 
 
 	
-	if (!winHttpGetCompanyInfo(m_userInfo->m_strTaxNumber,m_userInfo->m_strToken,strRet))
+	if (!winHttpGetCompanyInfo(m_userInfo->m_strTaxNumber, m_userInfo->m_strToken, strRet))
 	{
 		//!失败 从数据库读出
 		EntDataBase::GetInstance()->queryEntCenterInfo(m_strUid, m_stEntInfo);
@@ -304,27 +304,23 @@ bool InfoCenterWidget::winHttpGetEntInfo(QString strTaxno, QString strToken, QSt
 	QString strUrl = QString("/ucenter/company/info");
 	QString strPost;
 
-	strPost = QString("tax=%1").arg(strTaxno);
+	//strPost = QString("tax=%1").arg(strTaxno);
+	strPost = QString("tax=%1&token=%2").arg(strTaxno).arg(strToken);
 	return ZcloudComFun::httpPost(strUrl, strPost, 5000, strRet, false, 1);
 }
 
 bool InfoCenterWidget::loadEntInfo()
 {
 	QString strRet;
-
-
 	m_stEntInfo._strLocalTaxnoLs = ZcloudComFun::getTaxnumberList();
-    
 	QString strlocaltax="";
 	if (m_stEntInfo._strLocalTaxnoLs.count()>0)
 	strlocaltax = m_stEntInfo._strLocalTaxnoLs.at(0);
 	//strlocaltax = "210624197305200017";
-
 	QString strtax = m_userInfo->m_strTaxNumber.isEmpty() != true ? m_userInfo->m_strTaxNumber : strlocaltax;
 
 	if (strtax.isEmpty())
 	{
-
 		m_bIsloadDb = false;
 		return false;
 	}
@@ -332,6 +328,8 @@ bool InfoCenterWidget::loadEntInfo()
 	{
 		return false;
 	}
+	qDebug() << strRet;
+
 	QByteArray byte_array = strRet.toUtf8();
 	QJsonParseError json_error;
 	QJsonDocument parse_doucment = QJsonDocument::fromJson(byte_array, &json_error);
@@ -370,15 +368,15 @@ bool InfoCenterWidget::loadEntInfo()
 
 	//!行政区域
 	
-	m_stEntInfo._nProvinceid = data.take("province_id").toInt();
-	m_stEntInfo._nCityid = data.take("city_id").toInt();
-	m_stEntInfo._nAreaid = data.take("area_id").toInt();
+	m_stEntInfo._nProvinceid = data.take("province_id").toString().toInt();
+	m_stEntInfo._nCityid = data.take("city_id").toString().toInt();
+	m_stEntInfo._nAreaid = data.take("area_id").toString().toInt();
 	//m_stEntInfo.m_registerAddress._strPro = data.take("province_name").toString();
 	m_stEntInfo._strAddress = data.take("address").toString();
 
-	m_stEntInfo._nOfficeProvinceid = data.take("office_province_id").toInt();
-	m_stEntInfo._nOfficeCityid = data.take("office_city_id").toInt();
-	m_stEntInfo._nOfficeAreaid = data.take("office_area_id").toInt();
+	m_stEntInfo._nOfficeProvinceid = data.take("office_province_id").toString().toInt();
+	m_stEntInfo._nOfficeCityid = data.take("office_city_id").toString().toInt();
+	m_stEntInfo._nOfficeAreaid = data.take("office_area_id").toString().toInt();
 	m_stEntInfo._strOfficeaddress = data.take("office_address").toString();
 
 
@@ -422,5 +420,29 @@ bool InfoCenterWidget::loadEntInfo()
 	m_stEntInfo.nAdmin = userdata.take("role_type").toInt();
 	m_stEntInfo._nrole_type = userdata.take("role_type").toInt();
 	
+	m_stEntInfo._strUid = data.take("u_user_id").toString();
+	m_stEntInfo._strUsername = data.take("u_user_name").toString();
+	m_stEntInfo._strTruename = data.take("u_true_name").toString();
+	m_stEntInfo._nrole_type = data.take("u_rule_type").toString().toInt();
+	m_stEntInfo._strJob = data.take("u_job").toString();
+
+	m_stEntInfo._oservice.m_businessid = data.take("srv_business_id").toString();
+	m_stEntInfo._oservice.m_strHzsId = data.take("srv_hzs_id").toString();
+
+	m_stEntInfo._oservice.m_strUsername = data.take("srv_username").toString();
+	m_stEntInfo._oservice.m_strPhone = data.take("srv_phone").toString();
+	m_stEntInfo._oservice.m_strTruename = data.take("srv_truename").toString();
+	m_stEntInfo._oservice.m_sex = data.take("srv_sex").toString();
+	m_stEntInfo._oservice.m_nProvinceId = data.take("srv_province_id").toString().toInt();
+	m_stEntInfo._oservice.m_nCityId = data.take("srv_city_id").toString().toInt();
+	m_stEntInfo._oservice.m_nAreaId = data.take("srv_area_id").toString().toInt();
+	m_stEntInfo._oservice.m_strAddress = data.take("srv_address").toString();
+
+	m_stEntInfo._oservice.m_wechat = data.take("srv_weixin").toString();
+	m_stEntInfo._oservice.m_qq = data.take("srv_qq").toString();
+	m_stEntInfo._oservice.m_nickname = data.take("srv_nickname").toString();
+	m_stEntInfo._oservice.m_avatarurl = data.take("srv_avatarurl").toString();
+
+
 	return true;
 }

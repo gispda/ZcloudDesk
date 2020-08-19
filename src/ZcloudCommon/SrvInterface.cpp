@@ -88,6 +88,12 @@ bool SrvInterface::httpQtPost(QString strUrl, QString strPost, int nTimeout, QSt
 	}
 
 	QByteArray resultContent = login_pNetworkReply->readAll();
+
+	//qDebug() << resultContent;
+	//QString qs = QString(resultContent).toUtf8();
+
+	//qDebug() << qs;
+
 	int nHttpCode = login_pNetworkReply->attribute(QNetworkRequest::HttpStatusCodeAttribute).toInt();//http·µ»ØÂë
 	strRet = "";
 	if (login_pTimer.isActive())
