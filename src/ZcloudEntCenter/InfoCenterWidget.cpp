@@ -34,8 +34,10 @@ InfoCenterWidget::InfoCenterWidget(UserInfoStruct* _userInfo, QWidget *parent /*
 	
 	m_userInfo = _userInfo;
 	m_bIsloadDb = false;
-	//查询企业信息
-	loadEntInfo();
+
+
+	////查询企业信息
+	//loadEntInfo();
 
 	m_pEntCenter = new EntCenterNewWidget(&m_stEntInfo, m_userInfo, ui.widgetCenter);
 
@@ -54,6 +56,8 @@ InfoCenterWidget::InfoCenterWidget(UserInfoStruct* _userInfo, QWidget *parent /*
 	//m_pUserDefult->setStyleSheet("border-image:url(:/InfoCenterWidget/image/userVipDefualt.png);");
 	//m_pUserDefult->setAttribute(Qt::WA_DeleteOnClose);
 	//m_pUserDefult->hide();
+
+	init();
 }
 
 void InfoCenterWidget::showEntCenter(){
@@ -106,7 +110,7 @@ void InfoCenterWidget::init(){
 
 
 
-	
+	//获取企业信息
 	if (!winHttpGetCompanyInfo(m_userInfo->m_strTaxNumber, m_userInfo->m_strToken, strRet))
 	{
 		//!失败 从数据库读出
@@ -171,6 +175,8 @@ void InfoCenterWidget::mouseMoveEvent(QMouseEvent *event)
 
 bool InfoCenterWidget::analysisJson(const QString& strJson, EntCenterInfo& info)
 {
+
+	qDebug() << strJson;
 	QByteArray byte_array = strJson.toUtf8();
 	QJsonParseError json_error;
 	QJsonDocument parse_doucment = QJsonDocument::fromJson(byte_array, &json_error);
@@ -192,6 +198,8 @@ bool InfoCenterWidget::analysisJson(const QString& strJson, EntCenterInfo& info)
 
 	QJsonObject data = obj.take("data").toObject();
 	
+
+	qDebug() << obj.take("data").toString();
 
 	info._strId = data.take("id").toString();
 	info._strToken = m_userInfo->m_strToken;
@@ -224,12 +232,12 @@ bool InfoCenterWidget::analysisJson(const QString& strJson, EntCenterInfo& info)
 	info._strEmail = data.take("email").toString();  //
 	info._nCompanytype = data.take("company_type").toInt();  //
 	info._nTradeid = data.take("trade_id").toInt();  //
-	info._nProvinceid = data.take("province_id").toInt();  //
-	info._nCityid = data.take("city_id").toInt();  //
-	info._nAreaid = data.take("area_id").toInt();  //
-	info._nOfficeProvinceid = data.take("office_province_id").toInt();  //
-	info._nOfficeCityid = data.take("office_city_id").toInt();  //
-	info._nOfficeAreaid = data.take("office_area_id").toInt();  //
+	info._nProvinceid = data.take("province_id").toString().toInt();  //
+	info._nCityid = data.take("city_id").toString().toInt();  //
+	info._nAreaid = data.take("area_id").toString().toInt();  //
+	info._nOfficeProvinceid = data.take("office_province_id").toString().toInt();  //
+	info._nOfficeCityid = data.take("office_city_id").toString().toInt();  //
+	info._nOfficeAreaid = data.take("office_area_id").toString().toInt();  //
 	info._strOfficeaddress = data.take("office_address").toString();  //
 	info._strAddress = data.take("address").toString();  //
 	info._strRegisterFulladdress = data.take("reg_full_address").toString();  //
@@ -247,31 +255,50 @@ bool InfoCenterWidget::analysisJson(const QString& strJson, EntCenterInfo& info)
 	QJsonObject  objValue;
 	if (info._nisbinds == 1)
 	{
-			objValue = data.take("service").toObject();
-			info._oservice.m_nProvinceId = objValue.take("province_id").toInt();		//省Id
-			info._oservice.m_nCityId = objValue.take("city_id").toInt();			//市Id
-			info._oservice.m_nAreaId = objValue.take("area_id").toInt();			//区Id
-			info._oservice.m_strHzsId = QString::number(objValue.take("hzs_id").toInt());				//合作商Id
-			info._oservice.m_businessid = objValue.take("business_id").toString();
-			info._oservice.m_strUsername = objValue.take("username").toString();
-			info._oservice.m_strPhone = objValue.take("phone").toString();
-			info._oservice.m_strTruename = objValue.take("truename").toString();
-			info._oservice.m_sex = objValue.take("sex").toString();
-			info._oservice.m_strAddress = objValue.take("address").toString();
+			//objValue = data.take("service").toObject();
+			//info._oservice.m_nProvinceId = objValue.take("province_id").toString().toInt();		//省Id
+			//info._oservice.m_nCityId = objValue.take("city_id").toString().toInt();			//市Id
+			//info._oservice.m_nAreaId = objValue.take("area_id").toString().toInt();			//区Id
+			//info._oservice.m_strHzsId = QString::number(objValue.take("hzs_id").toInt());				//合作商Id
+			//info._oservice.m_businessid = objValue.take("business_id").toString();
+			//info._oservice.m_strUsername = objValue.take("username").toString();
+			//info._oservice.m_strPhone = objValue.take("phone").toString();
+			//info._oservice.m_strTruename = objValue.take("truename").toString();
+			//info._oservice.m_sex = objValue.take("sex").toString();
+			//info._oservice.m_strAddress = objValue.take("address").toString();
 
-			info._oservice.m_wechat = objValue.take("weixin").toString();
-			info._oservice.m_qq = objValue.take("qq").toString();
-			info._oservice.m_nickname = objValue.take("nickname").toString();
-			info._oservice.m_avatarurl = objValue.take("avatarurl").toString();		
+			//info._oservice.m_wechat = objValue.take("weixin").toString();
+			//info._oservice.m_qq = objValue.take("qq").toString();
+			//info._oservice.m_nickname = objValue.take("nickname").toString();
+			//info._oservice.m_avatarurl = objValue.take("avatarurl").toString();	
+
+			m_stEntInfo._oservice.m_businessid = data.take("srv_business_id").toString();
+			m_stEntInfo._oservice.m_strHzsId = data.take("srv_hzs_id").toString();
+			m_stEntInfo._oservice.m_strUsername = data.take("srv_username").toString();
+			m_stEntInfo._oservice.m_strPhone = data.take("srv_phone").toString();
+			m_stEntInfo._oservice.m_strTruename = data.take("srv_truename").toString();
+			m_stEntInfo._oservice.m_sex = data.take("srv_sex").toString();
+			m_stEntInfo._oservice.m_nProvinceId = data.take("srv_province_id").toString().toInt();
+			m_stEntInfo._oservice.m_nCityId = data.take("srv_city_id").toString().toInt();
+			m_stEntInfo._oservice.m_nAreaId = data.take("srv_area_id").toString().toInt();
+			m_stEntInfo._oservice.m_strAddress = data.take("srv_address").toString();
+
+			m_stEntInfo._oservice.m_wechat = data.take("srv_weixin").toString();
+			m_stEntInfo._oservice.m_qq = data.take("srv_qq").toString();
+			m_stEntInfo._oservice.m_nickname = data.take("srv_nickname").toString();
+			m_stEntInfo._oservice.m_avatarurl = data.take("srv_avatarurl").toString();
 
 	}
-	objValue = data.take("user").toObject();
+	//objValue = data.take("user").toObject();
 
-	info._strUid = objValue.take("user_id").toString();  //
-	info._strUsername = objValue.take("user_name").toString();  //
-	info._strTruename = objValue.take("true_name").toString();  //
-	info._strJob = objValue.take("job").toString();  //
-	info._nrole_type = objValue.take("role_type").toString().toInt();  //
+	info._strUid = data.take("u_user_id").toString();  //
+	info._strUsername = data.take("u_user_name").toString();  //
+	info._strTruename = data.take("u_true_name").toString();  //
+	info._strJob = data.take("u_job").toString();  //
+	QJsonValue ruke_int = data.take("u_rule_type");
+	QString rule = data.take("u_rule_type").toString();
+	info._nrole_type = data.take("u_rule_type").toInt();  //
+	info.nAdmin = info._nrole_type;
 
 	////-------------------------------------------------------------------
 
@@ -328,7 +355,6 @@ bool InfoCenterWidget::loadEntInfo()
 	{
 		return false;
 	}
-	qDebug() << strRet;
 
 	QByteArray byte_array = strRet.toUtf8();
 	QJsonParseError json_error;
@@ -416,19 +442,18 @@ bool InfoCenterWidget::loadEntInfo()
 
 
 	QJsonObject userdata = data.take("user").toObject();
-	//m_stEntInfo.nAdmin = userdata.take("is_admin").toInt();
-	m_stEntInfo.nAdmin = userdata.take("role_type").toInt();
-	m_stEntInfo._nrole_type = userdata.take("role_type").toInt();
+
 	
-	m_stEntInfo._strUid = data.take("u_user_id").toString();
-	m_stEntInfo._strUsername = data.take("u_user_name").toString();
-	m_stEntInfo._strTruename = data.take("u_true_name").toString();
-	m_stEntInfo._nrole_type = data.take("u_rule_type").toString().toInt();
-	m_stEntInfo._strJob = data.take("u_job").toString();
+	m_stEntInfo._strUid = userdata.take("user_id").toString();
+	m_stEntInfo._strUsername = userdata.take("user_name").toString();
+	m_stEntInfo._strTruename = userdata.take("true_name").toString();
+	m_stEntInfo.nAdmin = userdata.take("role_type").toInt();
+	m_stEntInfo._nrole_type = userdata.take("rule_type").toString().toInt();
+	m_stEntInfo._strJob = userdata.take("job").toString();
+
 
 	m_stEntInfo._oservice.m_businessid = data.take("srv_business_id").toString();
 	m_stEntInfo._oservice.m_strHzsId = data.take("srv_hzs_id").toString();
-
 	m_stEntInfo._oservice.m_strUsername = data.take("srv_username").toString();
 	m_stEntInfo._oservice.m_strPhone = data.take("srv_phone").toString();
 	m_stEntInfo._oservice.m_strTruename = data.take("srv_truename").toString();
