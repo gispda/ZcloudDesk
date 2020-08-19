@@ -197,9 +197,17 @@ bool InfoCenterWidget::analysisJson(const QString& strJson, EntCenterInfo& info)
 	}
 
 	QJsonObject data = obj.take("data").toObject();
-	
 
-	qDebug() << obj.take("data").toString();
+	//qDebug() << QString(QJsonDocument(data).toJson());
+	//if (data.contains("u_rule_type")){
+	//	/*QJsonValue rule_int = data.take("u_rule_type");
+	//	QString rule = data.take("u_rule_type").toString();*/
+	//	int intrule = data.take("u_rule_type").toInt();
+	//	int b=10;
+	//}
+
+	//qDebug() << obj.take("data").toString();
+
 
 	info._strId = data.take("id").toString();
 	info._strToken = m_userInfo->m_strToken;
@@ -209,7 +217,7 @@ bool InfoCenterWidget::analysisJson(const QString& strJson, EntCenterInfo& info)
 	info._strLogo = data.take("logo").toString();
 	info._strLogoPath = checkLogoExist(info._strLogo);
 	info._bIsHxMember = data.take("is_hx_member").toInt();  ///没有了 航信会员
-	info._nChargeExpire = data.take("charge_expire").toInt();  
+	info._nChargeExpire = data.take("charge_expire").toInt();
 	info._nEndDays = data.take("end_days").toInt();
 	info._bIsManualFulled = data.take("perfect_user_info").toInt(); ///没有了
 	info._nLastSignTime = data.take("last_sign_time").toInt();  //没有了
@@ -252,52 +260,63 @@ bool InfoCenterWidget::analysisJson(const QString& strJson, EntCenterInfo& info)
 	info._strlegalbossmobile = data.take("legal_person_phone").toString();  //
 	info._strBankname = data.take("bank_name").toString();  //
 	info._strBankaccount = data.take("bank_account").toString();  //
-	QJsonObject  objValue;
+
+
+
+
+
+	//QJsonObject  objValue;
+
+
+
 	if (info._nisbinds == 1)
 	{
-			//objValue = data.take("service").toObject();
-			//info._oservice.m_nProvinceId = objValue.take("province_id").toString().toInt();		//省Id
-			//info._oservice.m_nCityId = objValue.take("city_id").toString().toInt();			//市Id
-			//info._oservice.m_nAreaId = objValue.take("area_id").toString().toInt();			//区Id
-			//info._oservice.m_strHzsId = QString::number(objValue.take("hzs_id").toInt());				//合作商Id
-			//info._oservice.m_businessid = objValue.take("business_id").toString();
-			//info._oservice.m_strUsername = objValue.take("username").toString();
-			//info._oservice.m_strPhone = objValue.take("phone").toString();
-			//info._oservice.m_strTruename = objValue.take("truename").toString();
-			//info._oservice.m_sex = objValue.take("sex").toString();
-			//info._oservice.m_strAddress = objValue.take("address").toString();
+		//objValue = data.take("service").toObject();
+		//info._oservice.m_nProvinceId = objValue.take("province_id").toString().toInt();		//省Id
+		//info._oservice.m_nCityId = objValue.take("city_id").toString().toInt();			//市Id
+		//info._oservice.m_nAreaId = objValue.take("area_id").toString().toInt();			//区Id
+		//info._oservice.m_strHzsId = QString::number(objValue.take("hzs_id").toInt());				//合作商Id
+		//info._oservice.m_businessid = objValue.take("business_id").toString();
+		//info._oservice.m_strUsername = objValue.take("username").toString();
+		//info._oservice.m_strPhone = objValue.take("phone").toString();
+		//info._oservice.m_strTruename = objValue.take("truename").toString();
+		//info._oservice.m_sex = objValue.take("sex").toString();
+		//info._oservice.m_strAddress = objValue.take("address").toString();
 
-			//info._oservice.m_wechat = objValue.take("weixin").toString();
-			//info._oservice.m_qq = objValue.take("qq").toString();
-			//info._oservice.m_nickname = objValue.take("nickname").toString();
-			//info._oservice.m_avatarurl = objValue.take("avatarurl").toString();	
+		//info._oservice.m_wechat = objValue.take("weixin").toString();
+		//info._oservice.m_qq = objValue.take("qq").toString();
+		//info._oservice.m_nickname = objValue.take("nickname").toString();
+		//info._oservice.m_avatarurl = objValue.take("avatarurl").toString();	
 
-			m_stEntInfo._oservice.m_businessid = data.take("srv_business_id").toString();
-			m_stEntInfo._oservice.m_strHzsId = data.take("srv_hzs_id").toString();
-			m_stEntInfo._oservice.m_strUsername = data.take("srv_username").toString();
-			m_stEntInfo._oservice.m_strPhone = data.take("srv_phone").toString();
-			m_stEntInfo._oservice.m_strTruename = data.take("srv_truename").toString();
-			m_stEntInfo._oservice.m_sex = data.take("srv_sex").toString();
-			m_stEntInfo._oservice.m_nProvinceId = data.take("srv_province_id").toString().toInt();
-			m_stEntInfo._oservice.m_nCityId = data.take("srv_city_id").toString().toInt();
-			m_stEntInfo._oservice.m_nAreaId = data.take("srv_area_id").toString().toInt();
-			m_stEntInfo._oservice.m_strAddress = data.take("srv_address").toString();
+		m_stEntInfo._oservice.m_businessid = data.take("srv_business_id").toString();
+		m_stEntInfo._oservice.m_strHzsId = data.take("srv_hzs_id").toString();
+		m_stEntInfo._oservice.m_strUsername = data.take("srv_username").toString();
+		m_stEntInfo._oservice.m_strPhone = data.take("srv_phone").toString();
+		m_stEntInfo._oservice.m_strTruename = data.take("srv_truename").toString();
+		m_stEntInfo._oservice.m_sex = data.take("srv_sex").toString();
+		m_stEntInfo._oservice.m_nProvinceId = data.take("srv_province_id").toString().toInt();
+		m_stEntInfo._oservice.m_nCityId = data.take("srv_city_id").toString().toInt();
+		m_stEntInfo._oservice.m_nAreaId = data.take("srv_area_id").toString().toInt();
+		m_stEntInfo._oservice.m_strAddress = data.take("srv_address").toString();
 
-			m_stEntInfo._oservice.m_wechat = data.take("srv_weixin").toString();
-			m_stEntInfo._oservice.m_qq = data.take("srv_qq").toString();
-			m_stEntInfo._oservice.m_nickname = data.take("srv_nickname").toString();
-			m_stEntInfo._oservice.m_avatarurl = data.take("srv_avatarurl").toString();
+		m_stEntInfo._oservice.m_wechat = data.take("srv_weixin").toString();
+		m_stEntInfo._oservice.m_qq = data.take("srv_qq").toString();
+		m_stEntInfo._oservice.m_nickname = data.take("srv_nickname").toString();
+		m_stEntInfo._oservice.m_avatarurl = data.take("srv_avatarurl").toString();
 
 	}
 	//objValue = data.take("user").toObject();
+
+
+	//必须在这里取值 才能获取正确内容
+	info._nrole_type = data.take("u_rule_type").toInt();  //
+
 
 	info._strUid = data.take("u_user_id").toString();  //
 	info._strUsername = data.take("u_user_name").toString();  //
 	info._strTruename = data.take("u_true_name").toString();  //
 	info._strJob = data.take("u_job").toString();  //
-	QJsonValue ruke_int = data.take("u_rule_type");
-	QString rule = data.take("u_rule_type").toString();
-	info._nrole_type = data.take("u_rule_type").toInt();  //
+
 	info.nAdmin = info._nrole_type;
 
 	////-------------------------------------------------------------------
