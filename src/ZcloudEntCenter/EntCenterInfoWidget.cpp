@@ -73,22 +73,23 @@ void EntCenterInfoWidget::onInvoiceEditBtnClick()
 
 	stInvoiceInfo m_stInvoiceInfo ;
 	m_stInvoiceInfo._strTaxNumber = m_pInfo->_strTaxNo;
+	//m_stInvoiceInfo._strTelNo = m_pInfo->_str
 	m_stInvoiceInfo._strAddr = m_pInfo->_strOfficeaddress;
 	m_stInvoiceInfo._strBankAccount = m_pInfo->_strBankaccount;
 	m_stInvoiceInfo._strBankName = m_pInfo->_strBankname;
-	EditInvoiceInfoWidget*	pWidget = new EditInvoiceInfoWidget(m_pInfo->_strId, m_pInfo->_strToken, m_stInvoiceInfo, this);
+	EditInvoiceInfoWidget*	pWidget = new EditInvoiceInfoWidget(m_pInfo, m_pInfo->_strId, m_pInfo->_strToken, m_stInvoiceInfo, this);
 	connect(pWidget, &EditInvoiceInfoWidget::sigUpdateSucessed, this, &EntCenterInfoWidget::onUpdateinvoiceSucessed);
 	pWidget->show();
 }
 
-bool EntCenterInfoWidget::winHttpGetEntInfo(QString strTaxno, QString strToken, QString& strRet)
-{
-	QString strUrl = QString("/ucenter/company/info");
-	QString strPost;
-
-	strPost = QString("tax=%1").arg(strTaxno);
-	return ZcloudComFun::httpPost(strUrl, strPost, 5000, strRet,false,1);
-}
+//bool EntCenterInfoWidget::winHttpGetEntInfo(QString strTaxno, QString strToken, QString& strRet)
+//{
+//	QString strUrl = QString("/ucenter/company/info");
+//	QString strPost;
+//
+//	strPost = QString("tax=%1").arg(strTaxno);
+//	return ZcloudComFun::httpPost(strUrl, strPost, 5000, strRet,false,1);
+//}
 
 void EntCenterInfoWidget::onUpdateinvoiceSucessed()
 {

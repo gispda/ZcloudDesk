@@ -27,8 +27,8 @@ QT_BEGIN_NAMESPACE
 class Ui_EditEntInfoWidget
 {
 public:
-    QWidget *verticalLayoutWidget;
-    QVBoxLayout *verticalLayout;
+    QWidget *widget_2;
+    QVBoxLayout *verticalLayout_2;
     QWidget *widget;
     QComboBox *comboBoxArea;
     QLineEdit *lineEditAddress;
@@ -64,25 +64,26 @@ public:
     {
         if (EditEntInfoWidget->objectName().isEmpty())
             EditEntInfoWidget->setObjectName(QStringLiteral("EditEntInfoWidget"));
-        EditEntInfoWidget->resize(540, 517);
+        EditEntInfoWidget->resize(540, 510);
         QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(EditEntInfoWidget->sizePolicy().hasHeightForWidth());
         EditEntInfoWidget->setSizePolicy(sizePolicy);
-        EditEntInfoWidget->setMinimumSize(QSize(515, 382));
-        EditEntInfoWidget->setMaximumSize(QSize(900, 900));
+        EditEntInfoWidget->setMinimumSize(QSize(540, 380));
+        EditEntInfoWidget->setMaximumSize(QSize(540, 510));
         EditEntInfoWidget->setStyleSheet(QStringLiteral("QWidget#EditEntInfoWidget{background-color: rgb(255, 255, 255);border-radius:8px;}"));
-        verticalLayoutWidget = new QWidget(EditEntInfoWidget);
-        verticalLayoutWidget->setObjectName(QStringLiteral("verticalLayoutWidget"));
-        verticalLayoutWidget->setGeometry(QRect(0, 0, 541, 521));
-        verticalLayout = new QVBoxLayout(verticalLayoutWidget);
-        verticalLayout->setSpacing(6);
-        verticalLayout->setContentsMargins(11, 11, 11, 11);
-        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
-        verticalLayout->setSizeConstraint(QLayout::SetMaximumSize);
-        verticalLayout->setContentsMargins(0, 0, 0, 0);
-        widget = new QWidget(verticalLayoutWidget);
+        widget_2 = new QWidget(EditEntInfoWidget);
+        widget_2->setObjectName(QStringLiteral("widget_2"));
+        widget_2->setGeometry(QRect(0, 0, 540, 510));
+        widget_2->setMinimumSize(QSize(540, 380));
+        widget_2->setMaximumSize(QSize(540, 510));
+        verticalLayout_2 = new QVBoxLayout(widget_2);
+        verticalLayout_2->setSpacing(0);
+        verticalLayout_2->setContentsMargins(11, 11, 11, 11);
+        verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
+        verticalLayout_2->setContentsMargins(0, 0, 0, 0);
+        widget = new QWidget(widget_2);
         widget->setObjectName(QStringLiteral("widget"));
         widget->setMaximumSize(QSize(540, 200));
         comboBoxArea = new QComboBox(widget);
@@ -252,9 +253,9 @@ public:
 "color:#333333;\n"
 "border-bottom:0px;"));
 
-        verticalLayout->addWidget(widget);
+        verticalLayout_2->addWidget(widget);
 
-        widgetAddressOffice = new QWidget(verticalLayoutWidget);
+        widgetAddressOffice = new QWidget(widget_2);
         widgetAddressOffice->setObjectName(QStringLiteral("widgetAddressOffice"));
         widgetAddressOffice->setMaximumSize(QSize(540, 130));
         labelAddressOfficeError = new QLabel(widgetAddressOffice);
@@ -369,11 +370,13 @@ public:
 "QLineEdit:laceholder{color:rgba(51,51,51,1);}QLineEdit:focus{border:1px solid rgba(30,140,238,1);}\n"
 "QLineEdit:disabled{background-color: rgb(247,248, 250);};"));
 
-        verticalLayout->addWidget(widgetAddressOffice);
+        verticalLayout_2->addWidget(widgetAddressOffice);
 
-        widget_3 = new QWidget(verticalLayoutWidget);
+        widget_3 = new QWidget(widget_2);
         widget_3->setObjectName(QStringLiteral("widget_3"));
         widget_3->setMaximumSize(QSize(540, 180));
+        widget_3->setStyleSheet(QLatin1String("border-radius:8px;\n"
+"background-color: rgb(255, 255, 255);"));
         cancelButton = new QPushButton(widget_3);
         cancelButton->setObjectName(QStringLiteral("cancelButton"));
         cancelButton->setGeometry(QRect(300, 140, 72, 32));
@@ -466,7 +469,7 @@ public:
 "		  border-radius:4px;font: 14px \"\345\276\256\350\275\257\351\233\205\351\273\221\";color:rgba(255, 255, 255, 1);}\n"
 "QPushButton:disabled{ background-color:rgba(200,200,200,1);border-radius:4px;};"));
 
-        verticalLayout->addWidget(widget_3);
+        verticalLayout_2->addWidget(widget_3);
 
 
         retranslateUi(EditEntInfoWidget);

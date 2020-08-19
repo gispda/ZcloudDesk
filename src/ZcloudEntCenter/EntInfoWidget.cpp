@@ -48,7 +48,7 @@ void EntInfoWidget::onEntEditBtnClick()
 void EntInfoWidget::onInvoiceEditBtnClick()
 {
 	ZcloudBigDataInterface::GetInstance()->produceData("M00", "OP001", "BBD005");
-	EditInvoiceInfoWidget*	pWidget = new EditInvoiceInfoWidget(m_strUid,m_strToken,m_stInvoiceInfo,this);
+	EditInvoiceInfoWidget*	pWidget = new EditInvoiceInfoWidget(m_pentinfo,m_strUid, m_strToken, m_stInvoiceInfo, this);
 	connect(pWidget, &EditInvoiceInfoWidget::sigUpdateSucessed, this, &EntInfoWidget::onUpdateinvoiceSucessed);
 	pWidget->show();
 }

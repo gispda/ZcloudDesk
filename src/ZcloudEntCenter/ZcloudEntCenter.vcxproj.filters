@@ -351,9 +351,6 @@
     <ClInclude Include="GeneratedFiles\ui_DefaultVipWidget.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
-    <ClInclude Include="GeneratedFiles\ui_EditEntInfoWidget.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_EditInvoiceInfoWidget.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
@@ -439,6 +436,9 @@
       <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_EntCenterInfoWidget.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_EditEntInfoWidget.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
   </ItemGroup>

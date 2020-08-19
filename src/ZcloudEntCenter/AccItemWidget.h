@@ -9,7 +9,7 @@ class AccItemWidget : public QWidget
 	Q_OBJECT
 
 public:
-	AccItemWidget(bool bLogin, stSwitchAccInfo* pAccInfo, QString strFindText,QWidget *parent = 0);
+	AccItemWidget(bool bLogin, stSwitchAccInfo* pAccInfo, QString strFindText, QWidget *parent = 0);
 	AccItemWidget(QString strComId, QString strTaxNo, QString strComName, QString strLogo, int nState, QWidget *parent = 0);
 	~AccItemWidget();
 

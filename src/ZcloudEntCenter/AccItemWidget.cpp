@@ -4,7 +4,7 @@
 
 AccItemWidget::AccItemWidget(bool bLogin, stSwitchAccInfo* pAccInfo, QString strFindText, QWidget *parent)
 	: QWidget(parent)
-	, m_bLogin(bLogin)
+	,m_bLogin(bLogin)
 	, m_pAccInfo(pAccInfo)
 {
 	ui.setupUi(this);
@@ -12,7 +12,12 @@ AccItemWidget::AccItemWidget(bool bLogin, stSwitchAccInfo* pAccInfo, QString str
 	setAttribute(Qt::WA_TranslucentBackground, true);
 	setStyleSheet("outline: none");
 	ui.loginedButton->setText(QString::fromLocal8Bit("已登录"));
-	ui.switchButton->setText(QString::fromLocal8Bit("切换"));
+	if (1 == pAccInfo->nIsjoin){
+		ui.switchButton->setText(QString::fromLocal8Bit("切换"));
+	}
+	else{
+		ui.switchButton->setText(QString::fromLocal8Bit("加入"));
+	}
 	ui.inReviewWidget->hide();
 	if (bLogin)
 	{
@@ -220,29 +225,37 @@ void AccItemWidget::onSwitchBtnClick()
 {
 	QString strData;
 	QString strPwd;
-	if (1	==	m_pAccInfo->bLoginByTax)
-	{
-		strData = m_pAccInfo->strTaxNo;
-		strPwd = m_pAccInfo->strUid;
+	if (1 == m_pAccInfo->nIsjoin){
+
+		if (1 == m_pAccInfo->bLoginByTax)
+		{
+			strData = m_pAccInfo->strTaxNo;
+			strPwd = m_pAccInfo->strUid;
+		}
+		else if (0 == m_pAccInfo->bLoginByTax)
+		{
+			strData = m_pAccInfo->strUserName.isEmpty() ? m_pAccInfo->strMobliePhone : m_pAccInfo->strUserName;
+			strPwd = m_pAccInfo->strPwd;
+		}
+		else if (-1 == m_pAccInfo->bLoginByTax || -2 == m_pAccInfo->bLoginByTax)
+		{
+			strData = m_pAccInfo->strMobliePhone;
+			strPwd = m_pAccInfo->strToken;
+		}
+
+		if (!m_pAccInfo->strTaxNo.isEmpty() && (-1 == m_pAccInfo->bLoginByTax || -2 == m_pAccInfo->bLoginByTax))
+		{
+			emit sigSwitchAcc(1, false, m_pAccInfo->strTaxNo, m_pAccInfo->strUid);
+			return;
+		}
+		emit sigSwitchAcc(m_pAccInfo->bLoginByTax, false, strData, strPwd);
 	}
-	else if (0 == m_pAccInfo->bLoginByTax)
-	{
-		strData = m_pAccInfo->strUserName.isEmpty() ? m_pAccInfo->strMobliePhone : m_pAccInfo->strUserName;
-		strPwd = m_pAccInfo->strPwd;
-	}
-	else if (-1 == m_pAccInfo->bLoginByTax || -2 == m_pAccInfo->bLoginByTax)
-	{
-		strData = m_pAccInfo->strMobliePhone;
-		strPwd = m_pAccInfo->strToken;
+	else{
+		//加入企业
 	}
 
-	if (!m_pAccInfo->strTaxNo.isEmpty() && (-1 == m_pAccInfo->bLoginByTax || -2 == m_pAccInfo->bLoginByTax))
-	{
-		emit sigSwitchAcc(1, false, m_pAccInfo->strTaxNo, m_pAccInfo->strUid);
-		return;
-	}
 
-	emit sigSwitchAcc(m_pAccInfo->bLoginByTax, false, strData, strPwd);
+	
 }
 
 void AccItemWidget::onJoinEntBtnClick()

@@ -15,7 +15,7 @@
 
 
 
-SwitchAccNewWidget::SwitchAccNewWidget(UserInfoStruct* userInfo, EntCenterInfo* EntInfo,  QWidget *parent)
+SwitchAccNewWidget::SwitchAccNewWidget(UserInfoStruct* userInfo, EntCenterInfo* EntInfo, QWidget *parent)
 	: QWidget(parent)
 
 	
@@ -382,6 +382,7 @@ void SwitchAccNewWidget::getCompanyList()
 		QString	strTaxNo	= dataList.take("tax_number").toString();
 		QString	strLogoPath = ZcloudComFun::downloadPic(dataList.take("logo").toString(), QApplication::applicationDirPath().append("/CacheImage/logoImage"));
 		QString	strCompName = dataList.take("company_name").toString();
+		int	nIsJoin = dataList.take("is_join").toInt();
 		if (!isTaxExistInterface(m_pEntInfo->_strUid, strCompId))
 		{
 			stSwitchAccInfo*	pSwitchInfo = new stSwitchAccInfo;
@@ -393,6 +394,7 @@ void SwitchAccNewWidget::getCompanyList()
 			pSwitchInfo->strCompName	= strCompName;
 			pSwitchInfo->strUid			= m_pEntInfo->_strUid;
 			pSwitchInfo->strCompId		= strCompId;
+			pSwitchInfo->nIsjoin = nIsJoin;
 			m_vtrAccInfos.push_back(pSwitchInfo);
 		}	
 	}

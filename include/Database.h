@@ -162,6 +162,7 @@ struct stSwitchAccInfo
 	QString strToken;
 	QString strMobliePhone;
 	QString strCompId;
+	int nIsjoin = 0;
 };
 typedef QVector<stSwitchAccInfo*>	vtrSwitchAccInfos;
 

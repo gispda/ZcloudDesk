@@ -30,7 +30,7 @@ protected:
 private:
 
 	//!获取企业资料
-	bool winHttpGetEntInfo(QString strUid, QString strToken, QString& strRet);
+	//bool winHttpGetEntInfo(QString strUid, QString strToken, QString& strRet);
 
 	UserInfoStruct* m_userInfo;
 	EntCenterInfo*	m_pInfo;

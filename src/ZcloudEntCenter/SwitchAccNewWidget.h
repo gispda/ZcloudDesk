@@ -13,7 +13,7 @@ class SwitchAccNewWidget : public QWidget
 	Q_OBJECT
 
 public:
-	SwitchAccNewWidget(UserInfoStruct* m_userInfo, EntCenterInfo* m_pEntInfo,QWidget *parent = 0);
+	SwitchAccNewWidget(UserInfoStruct* m_userInfo, EntCenterInfo* m_pEntInfo, QWidget *parent = 0);
 	~SwitchAccNewWidget();
 
 	//!客户经理邀请

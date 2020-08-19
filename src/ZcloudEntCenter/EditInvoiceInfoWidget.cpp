@@ -4,8 +4,9 @@
 #include <QJsonObject>
 #include "ZcloudBigData.h"
 
-EditInvoiceInfoWidget::EditInvoiceInfoWidget(QString strUid, QString strToken, stInvoiceInfo invoiceInfo, QWidget *parent)
+EditInvoiceInfoWidget::EditInvoiceInfoWidget(EntCenterInfo* info,QString strUid, QString strToken, stInvoiceInfo invoiceInfo, QWidget *parent)
 	: ZcloudCommonWidget(parent)
+	, m_info(info)
 	, m_stInvoiceInfo(invoiceInfo)
 	, m_strUid(strUid)
 	, m_strToken(strToken)
@@ -139,27 +140,28 @@ void EditInvoiceInfoWidget::onAddrEditBtnClick()
 
 void EditInvoiceInfoWidget::onEditOkBtnClick()
 {
-	if (!m_bAcc)
+	if (ui.lineEditAcc->text().isEmpty())
 	{
-		ui.label_6->show();
-	}
-	if (!m_bBank)
-	{
-		ui.label_7->show();
-	}
-	if (!m_bTelNo)
-	{
-		ui.label_9->show();
-	}
-	if (!m_bAddr)
-	{
-		ui.label_8->show();
-	}
 
-	if (!m_bAcc || !m_bBank || !m_bTelNo || !m_bAddr)
-	{
+		ui.label_6->show();
 		return;
 	}
+	if (ui.lineEditBank->text().isEmpty())
+	{
+		ui.label_7->show();
+		return;
+	}
+	if (ui.lineEditTelNo->text().isEmpty())
+	{
+		ui.label_9->show();
+		return;
+	}
+	if (ui.textEditAddr->toPlainText().isEmpty())
+	{
+		ui.label_8->show();
+		return;
+	}
+
 	QString strRet;
 	if (!winHttpUpdateCompanyInfo(m_strUid, m_strToken, ui.lineEditAcc->text(), ui.lineEditBank->text(), ui.lineEditTelNo->text(), ui.textEditAddr->toPlainText(), strRet))
 	{
@@ -182,6 +184,13 @@ void EditInvoiceInfoWidget::onEditOkBtnClick()
 	if (0 == status)
 	{
 		ZcloudBigDataInterface::GetInstance()->produceData("M00", "OP000", "BBD007");
+		//if (!winHttpUpdateCompanyInfo(m_strUid, m_strToken, ui.lineEditAcc->text(), ui.lineEditBank->text(), ui.lineEditTelNo->text(), , strRet))
+
+		m_info->_strOfficeaddress = ui.textEditAddr->toPlainText();
+		m_info->_strOfficeaddress = ui.textEditAddr->toPlainText();
+		m_info->_strOfficeaddress = ui.textEditAddr->toPlainText();
+		//m_info-> = ui.textEditAddr->toPlainText();
+
 		ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_CLOSE, QString::fromLocal8Bit("操作成功"), QString::fromLocal8Bit("\r\n更新开票信息成功！"));
 		
 		emit sigUpdateSucessed();

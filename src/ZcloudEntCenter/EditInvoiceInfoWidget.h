@@ -5,13 +5,14 @@
 #include "ZcloudCommonWidget.h"
 #include "EntInfoDataDefine.h"
 #include "ZcloudClient.h"
+#include "EntDataBase.h"
 
 class EditInvoiceInfoWidget : public ZcloudCommonWidget
 {
 	Q_OBJECT
 
 public:
-	EditInvoiceInfoWidget(QString strUid,QString strToken,stInvoiceInfo invoiceInfo,QWidget *parent = Q_NULLPTR);
+	EditInvoiceInfoWidget(EntCenterInfo* info,QString strUid, QString strToken, stInvoiceInfo invoiceInfo, QWidget *parent = Q_NULLPTR);
 	~EditInvoiceInfoWidget();
 signals:
 	void sigUpdateSucessed();
@@ -32,9 +33,11 @@ private:
 	QString		m_strUid;
 	QString		m_strToken;
 
+	EntCenterInfo* m_info;
 
 	bool m_bAcc		= true;
 	bool m_bBank	= true;
 	bool m_bTelNo	= true;
 	bool m_bAddr	= true;
+
 };

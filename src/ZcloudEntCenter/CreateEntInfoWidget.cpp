@@ -211,7 +211,6 @@ void CreateEntInfoWidget::onRadioBtnAddressRegClick(){
 }
 void CreateEntInfoWidget::onRadioBtnAddressNewClick(){
 	QRect rect = this->geometry();
-	//this->setGeometry(rect.x(), rect.y(), 540, 480);
 
 	ui.widgetAddressOffice->show();
 	ui.widget_4->resize(540, 480);

@@ -874,6 +874,8 @@ void EntCenterNewWidget::DoAppealEnt()
 	}
 }
 
+
+
 void EntCenterNewWidget::DoJoinEntMoreStep()
 {
 

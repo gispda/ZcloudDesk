@@ -6,6 +6,7 @@
 #include "ZcloudCommonWidget.h"
 #include "EntInfoDataDefine.h"
 #include "EntDataBase.h"
+#include <qmap.h> 
 
 class EditEntInfoWidget : public QDialog
 {
@@ -72,5 +73,6 @@ private:
 	bool	m_bLegalPeason = true;
 	bool	m_bPhone	= true;
 
+	QMap<int, QString> m_areamap;
 
 };
