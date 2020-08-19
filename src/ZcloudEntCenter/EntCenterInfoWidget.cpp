@@ -72,6 +72,7 @@ void EntCenterInfoWidget::onInvoiceEditBtnClick()
 	ui.labelAddr->setText(m_pInfo->_strOfficeaddress);*/
 
 	stInvoiceInfo m_stInvoiceInfo ;
+	m_stInvoiceInfo._strTaxNumber = m_pInfo->_strTaxNo;
 	m_stInvoiceInfo._strAddr = m_pInfo->_strOfficeaddress;
 	m_stInvoiceInfo._strBankAccount = m_pInfo->_strBankaccount;
 	m_stInvoiceInfo._strBankName = m_pInfo->_strBankname;

@@ -206,7 +206,22 @@ void EditInvoiceInfoWidget::onEditOkBtnClick()
 
 bool EditInvoiceInfoWidget::winHttpUpdateCompanyInfo(QString strUid, QString strToken, QString strAcc, QString strBank, QString strTel, QString strAddr, QString& strRet)
 {
-	QString strUrl = QString("/v2/company/update-company-info?user_id=%1&token=%2").arg(strUid).arg(strToken);
-	QString strPost = QString("action_type=invoice&bank_account=%1&bank_name=%2&tel_number=%3&address=%4").arg(strAcc).arg(strBank).arg(strTel).arg(strAddr);
-	return ZcloudComFun::httpPost(strUrl, strPost, 5000, strRet);
+	//QString strUrl = QString("/v2/company/update-company-info?user_id=%1&token=%2").arg(strUid).arg(strToken);
+	//QString strPost = QString("action_type=invoice&bank_account=%1&bank_name=%2&tel_number=%3&address=%4").arg(strAcc).arg(strBank).arg(strTel).arg(strAddr);
+	//return ZcloudComFun::httpPost(strUrl, strPost, 5000, strRet);
+
+	/*QString strUrl = QString("/company/update-info");
+	
+	QString strPost = QString("action_type=invoice&bank_account=%1&bank_name=%2&tel_number=%3&address=%4&token=%5&tax=%6").arg(strAcc).arg(strBank).arg(strTel).arg(strAddr).arg(strToken).arg(m_stInvoiceInfo._strTaxNumber);
+	return ZcloudComFun::httpPost(strUrl, strPost, 5000, strRet, false, 1);*/
+	CompanyBankInfo bankInfo;
+	bankInfo.m_strAddress = strAddr;
+	bankInfo.m_strBankaccount = strAcc;
+	bankInfo.m_strBankname = strBank;;
+	bankInfo.m_strTaxno = m_stInvoiceInfo._strTaxNumber;
+	bankInfo.m_strTelno = strTel;;
+	QString strErr;
+	bool rst = ZcloudClient::winHttpUpdatebankInfo(bankInfo, m_strToken, strRet, strErr);
+	return rst;
+	
 }

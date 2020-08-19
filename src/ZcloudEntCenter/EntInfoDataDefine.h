@@ -30,6 +30,7 @@ typedef struct ENT_INFO
 
 typedef struct ENT_INVOICE_INFO
 {
+	QString _strTaxNumber;//
 	QString _strBankAccount;//!开户账号
 	QString _strBankName;	//!开户银行
 	QString	_strTelNo;		//!开户电话

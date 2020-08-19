@@ -4,6 +4,7 @@
 #include "ui_EditInvoiceInfoWidget.h"
 #include "ZcloudCommonWidget.h"
 #include "EntInfoDataDefine.h"
+#include "ZcloudClient.h"
 
 class EditInvoiceInfoWidget : public ZcloudCommonWidget
 {
@@ -30,6 +31,8 @@ private:
 	stInvoiceInfo m_stInvoiceInfo;
 	QString		m_strUid;
 	QString		m_strToken;
+
+
 	bool m_bAcc		= true;
 	bool m_bBank	= true;
 	bool m_bTelNo	= true;
