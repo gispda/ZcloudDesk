@@ -74,5 +74,6 @@ private:
 	bool	m_bPhone	= true;
 
 	QMap<int, QString> m_areamap;
+	QMap<QString, int> m_codemap;
 
 };

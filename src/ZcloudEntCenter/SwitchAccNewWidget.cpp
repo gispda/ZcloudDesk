@@ -256,7 +256,7 @@ void SwitchAccNewWidget::showListWidget(QString strText)
 }
 void SwitchAccNewWidget::onJoinEnt(QString companyid){
 	int stcode = -1;
-	emit sigJoinEnt(companyid, stcode);
+	emit sigJoinEnt(companyid);
 }
 void SwitchAccNewWidget::getSwitchInfo()
 {

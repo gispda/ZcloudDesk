@@ -186,7 +186,7 @@ public:
 "QPushButton:hover,pressed{ background-color:rgba(255,255,255,0);font: 14px \"\345\276\256\350\275\257\351\233\205\351\273\221\";color:rgba(31,139,237,1);}"));
         labelJoin2 = new QLabel(EntLeftWidget);
         labelJoin2->setObjectName(QStringLiteral("labelJoin2"));
-        labelJoin2->setGeometry(QRect(180, 195, 60, 18));
+        labelJoin2->setGeometry(QRect(170, 320, 60, 18));
         labelJoin2->setMaximumSize(QSize(126, 18));
         labelJoin2->setStyleSheet(QLatin1String("font-size:14px;\n"
 "font-family:SourceHanSansCN-Normal,SourceHanSansCN;\n"
@@ -227,7 +227,7 @@ public:
         labeluser->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
         labeluserroletype = new QLabel(EntLeftWidget);
         labeluserroletype->setObjectName(QStringLiteral("labeluserroletype"));
-        labeluserroletype->setGeometry(QRect(128, 195, 100, 18));
+        labeluserroletype->setGeometry(QRect(100, 130, 100, 18));
         labeluserroletype->setMaximumSize(QSize(126, 18));
         labeluserroletype->setStyleSheet(QLatin1String("font-size:14px;\n"
 "font-family:SourceHanSansCN-Normal,SourceHanSansCN;\n"

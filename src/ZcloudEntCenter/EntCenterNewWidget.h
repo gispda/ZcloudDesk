@@ -30,7 +30,7 @@ public:
 
 
 protected:
-	void showUserCompanyInfoTitle();
+	void showUserCompanyInfoTitle(EntCenterInfo*	info);
 	void clearUserCompanyInfoTitle();
 
 	///未加入企业的左面显示
@@ -53,17 +53,20 @@ protected:
 
 
 	private slots:
+
+	bool onJoinEnt(QString strCompanyid);
+
 	void onShowInfo();
 
-	void JoinEntMoreStep();
+	void JoinEntMoreStep(EntCenterInfo* m_pEntInfo);
 
-	void DoJoinEntMoreStep();
+	void DoJoinEntMoreStep(EntCenterInfo* m_pEntInfo,bool isbinding);
 
-	void DoAppealEnt();
+	void DoAppealEnt(EntCenterInfo* m_pEntInfo);
 
-	bool JoinStep2AppealGetEntInfo();
+	bool JoinStep2AppealGetEntInfo(EntCenterInfo* m_pEntInfo_old, EntCenterInfo* m_pFinishEntInfo);
 
-	bool JoinStep2FinishEntinfo();
+	bool JoinStep2FinishEntinfo(EntCenterInfo* m_pEntInfo, EntCenterInfo* m_pFinishEntInfo);
 
 	bool DoapplyJoinEnt(QString strCompanyid,int& stcode);
 
@@ -75,13 +78,15 @@ protected:
 	void onCopyBtnClick();
 	//!账号切换
 	void onSwitchBtnClick();
+	//!账号切换
+	void SwitchBtnClick(EntCenterInfo*	info);
 
 
 	void onSwitchAcc(int bLoginByTax, bool bOther, QString strTaxNo_userName, QString strPwd);
 
 private:
 	bool winHttpJoinEnt(QString strToken, QString strComId, QString& strRet);
-	bool winHttpAppealJoinEnt(QString strToken, QString& strRet, QString& strMsg, int& stateCode);
+	bool winHttpAppealJoinEnt(EntCenterInfo* m_pFinishEntInfo, QString strToken, QString& strRet, QString& strMsg, int& stateCode);
 private:
 
 
@@ -99,7 +104,6 @@ private:
 
 	bool m_bjoin;*/
 
-	ZcloudComFun::dbEntInfo m_info;
 	
 
 	QString m_strLocalTaxno;
@@ -124,9 +128,12 @@ private:
 	SwitchAccNewWidget* pSwitchWidget;
 
 	UserInfoStruct* m_userInfo;
-	EntCenterInfo* m_pEntInfo;
 
-	EntCenterInfo* m_pFinishEntInfo;
+	ZcloudComFun::dbEntInfo m_info;
+	EntCenterInfo* m_pEnt;
+	//EntCenterInfo* m_pEntInfo;
+
+	//EntCenterInfo* m_pFinishEntInfo;
 };
 
 #endif // EntCenterNewWidget_H

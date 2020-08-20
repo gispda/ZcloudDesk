@@ -36,7 +36,7 @@ InfoCenterWidget::InfoCenterWidget(UserInfoStruct* _userInfo, QWidget *parent /*
 	m_bIsloadDb = false;
 
 
-	////查询企业信息
+	////查询企业信息   在各自页面查询  这里删除
 	//loadEntInfo();
 
 	m_pEntCenter = new EntCenterNewWidget(&m_stEntInfo, m_userInfo, ui.widgetCenter);

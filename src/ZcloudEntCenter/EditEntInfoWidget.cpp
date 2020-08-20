@@ -20,7 +20,7 @@ EditEntInfoWidget::EditEntInfoWidget(UserInfoStruct* _userinfo, EntCenterInfo* _
 	m_beditdb = beditdb;
 	m_pFinishentinfo = NULL;
 	ui.setupUi(this);
-	resize(565, 545);
+	//resize(565, 545);
 	setWindowTitle(QString::fromLocal8Bit("编辑企业资料"));
 	//setAttribute(Qt::WA_DeleteOnClose);
 	setObjectName("editEntInfo");
@@ -61,11 +61,15 @@ EditEntInfoWidget::EditEntInfoWidget(UserInfoStruct* _userinfo, EntCenterInfo* _
 
 	if (m_pentinfo->_strAddress == m_pentinfo->_strOfficeaddress){
 		ui.widgetAddressOffice->hide();
-		this->resize(540, 387);
+
+		ui.widget_2->resize(540, 380);
+		this->resize(540, 382);
 	}
 	else{
 		ui.widgetAddressOffice->show();
-		this->resize(540, 517);
+
+		ui.widget_2->resize(540, 510);
+		this->resize(540, 512);
 	}
 
 
@@ -93,7 +97,7 @@ EditEntInfoWidget::EditEntInfoWidget(UserInfoStruct* _userinfo, EntCenterInfo* _
 	{
 		QString _strProvince = this->m_areamap.find(m_pentinfo->_nProvinceid).value();
 		ui.comboBoxPro->setCurrentText(_strProvince);
-		showAreaData(NULL, m_pentinfo->_nProvinceid);
+		showAreaData(ui.comboBoxCity, m_pentinfo->_nProvinceid);
 	}
     
 	if (!m_areamap.contains(m_pentinfo->_nOfficeProvinceid))
@@ -105,7 +109,7 @@ EditEntInfoWidget::EditEntInfoWidget(UserInfoStruct* _userinfo, EntCenterInfo* _
 	{
 		QString _strProvince = this->m_areamap.find(m_pentinfo->_nOfficeProvinceid).value();
 		ui.comboBoxProOffice->setCurrentText(_strProvince);
-		showAreaData(NULL, m_pentinfo->_nOfficeProvinceid);
+		showAreaData(ui.comboBoxCityOffice, m_pentinfo->_nOfficeProvinceid);
 	}
 
 
@@ -122,7 +126,8 @@ EditEntInfoWidget::EditEntInfoWidget(UserInfoStruct* _userinfo, EntCenterInfo* _
 	{
 		QString _strCity = this->m_areamap.find(m_pentinfo->_nCityid).value();
 		ui.comboBoxCity->setCurrentText(_strCity);
-		showAreaData(NULL, m_pentinfo->_nCityid);
+
+		showAreaData(ui.comboBoxArea, m_pentinfo->_nCityid);
 	}
 
 	if (!m_areamap.contains(m_pentinfo->_nOfficeCityid))
@@ -134,7 +139,7 @@ EditEntInfoWidget::EditEntInfoWidget(UserInfoStruct* _userinfo, EntCenterInfo* _
 	{
 		QString _strCity = this->m_areamap.find(m_pentinfo->_nOfficeCityid).value();
 		ui.comboBoxCityOffice->setCurrentText(_strCity);
-		showAreaData(NULL, m_pentinfo->_nOfficeCityid);
+		showAreaData(ui.comboBoxAreaOffice, m_pentinfo->_nOfficeCityid);
 	}
 
 
@@ -236,6 +241,7 @@ EditEntInfoWidget::~EditEntInfoWidget()
 	m_pFinishentinfo = NULL;
 
 	 m_areamap.clear();
+	 m_codemap.clear();
 }
 
 bool EditEntInfoWidget::winHttpGetTradeList(QString& strRet)
@@ -434,6 +440,8 @@ bool EditEntInfoWidget::showAreaData(QComboBox* pComBoBox, int nCode)
 			pComBoBox->setItemData(nIndex + 1, nId);
 		}
 		m_areamap.insert(nId, strName);
+		m_codemap.insert(strName, nId);
+
 	}
 	return true;
 }
@@ -660,6 +668,7 @@ void EditEntInfoWidget::onEditOkBtnClick()
 			break;
 		case 20038:
 			strMsg = QString::fromLocal8Bit("当前企业已经绑定过管理员了");
+			break;
 		case 20040:
 			strMsg = QString::fromLocal8Bit("税控盘类型不能为空");
 			break;
@@ -715,12 +724,46 @@ void EditEntInfoWidget::onEditOkBtnClick()
 
 bool EditEntInfoWidget::winHttpUpdateCompanyInfo(QString strUid, QString strToken, QString& strRet)
 {
-	QString strUrl = QString("/ucenter/company/update");
+	int nCodePro = -999;
+	int nCodeCity = -999;
+	int nCodeArea = -999;
+	int nCodeProOffice = -999;
+	int nCodeCityOffice = -999;
+	int nCodeAreaOffice = -999;
+	if (m_codemap.contains(ui.comboBoxPro->currentText())){
+		nCodePro = this->m_codemap.find(ui.comboBoxPro->currentText()).value();
+	}
+	if (m_codemap.contains(ui.comboBoxCity->currentText())){
+		nCodeCity = this->m_codemap.find(ui.comboBoxCity->currentText()).value();
+	}
+	if (m_codemap.contains(ui.comboBoxArea->currentText())){
+		nCodeArea = this->m_codemap.find(ui.comboBoxArea->currentText()).value();
+	}
+
+	if (ui.radioButtonAddressNew->isChecked()){
+		if (m_codemap.contains(ui.comboBoxProOffice->currentText())){
+			nCodeProOffice = this->m_codemap.find(ui.comboBoxProOffice->currentText()).value();
+		}
+		if (m_codemap.contains(ui.comboBoxCityOffice->currentText())){
+			nCodeCityOffice = this->m_codemap.find(ui.comboBoxCityOffice->currentText()).value();
+		}
+		if (m_codemap.contains(ui.comboBoxAreaOffice->currentText())){
+			nCodeAreaOffice = this->m_codemap.find(ui.comboBoxAreaOffice->currentText()).value();
+		}
+	}
+	else{
+		nCodeProOffice = nCodePro;
+		nCodeCityOffice = nCodeCity;
+		nCodeAreaOffice = nCodeArea;
+	}
+
+
+	QString strUrl = QString("/ucenter/company/update-info");
 	QString strPost = QString("token=%1&company_name=%2&tax=%3&province_id=%4&city_id=%5&area_id=%6&address=%7&legal_person_phone=%8&legal_person_name=%9&office_province_id=%10&office_city_id=%11&office_area_id=%12&office_address=%13&disk_type=1")
-		.arg(strToken).arg(m_pentinfo->_strCompName).arg(m_pentinfo->_strTaxNo).arg(m_pentinfo->_nProvinceid)
-		.arg(m_pentinfo->_nCityid).arg(m_pentinfo->_nAreaid).arg(m_pentinfo->_strAddress)
-		.arg(m_pentinfo->_strlegalbossmobile).arg(m_pentinfo->_strlegalboss).arg(m_pentinfo->_nOfficeProvinceid)
-		.arg(m_pentinfo->_nOfficeCityid).arg(m_pentinfo->_nOfficeAreaid).arg(m_pentinfo->_strOfficeaddress);
+		.arg(strToken).arg(m_pentinfo->_strCompName).arg(m_pentinfo->_strTaxNo).arg(nCodePro)
+		.arg(nCodeCity).arg(nCodeArea).arg(m_pentinfo->_strAddress)
+		.arg(m_pentinfo->_strlegalbossmobile).arg(m_pentinfo->_strlegalboss).arg(nCodeProOffice)
+		.arg(nCodeCityOffice).arg(nCodeAreaOffice).arg(m_pentinfo->_strOfficeaddress);
 	qDebug() << strPost;
 
 	return ZcloudComFun::httpPost(strUrl, strPost, 5000, strRet, false, 1);

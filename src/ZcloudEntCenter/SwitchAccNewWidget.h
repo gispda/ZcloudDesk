@@ -23,7 +23,7 @@ public:
 
 signals:
 	void sigSwitchAcc(int, bool, QString, QString);
-	void sigJoinEnt(QString companyid, int& stcode);
+	void sigJoinEnt(QString companyid);
 private slots:
 void onTextChanged(const QString& strText);
 void onSwitchAcc(int nLoginByTax, bool bOther, QString strTaxNo_userName, QString strPwd);
