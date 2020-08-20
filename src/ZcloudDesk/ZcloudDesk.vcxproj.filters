@@ -119,6 +119,9 @@
     <ClCompile Include="HttpTest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Zcloudbrowser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="ZcloudDesk.h">
@@ -185,6 +188,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="UpdateTipDlg.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="Zcloudbrowser.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
@@ -276,6 +282,9 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="UpdateTipDlg.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="Zcloudbrowser.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>

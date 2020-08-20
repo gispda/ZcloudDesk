@@ -58,7 +58,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <PreprocessorDefinitions>UNICODE;WIN32;WIN64;QT_WEBKITWIDGETS_LIB;WCLOGINHIDE;QT_CORE_LIB;QT_GUI_LIB;QT_NETWORK_LIB;QT_SQL_LIB;QT_WIDGETS_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(QTDIR)\include;../../include;$(QTDIR)\include\QtWebKit;$(QTDIR)\include\QtWebkitWidgets;../../include/qiniu/qiniu;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtSql;$(QTDIR)\include\QtWidgets;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(QTDIR)\include;../../include;$(QTDIR)\include\QtWebKit;$(QTDIR)\include\QtWebkitWidgets;../../include/qiniu/qiniu;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtSql;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtWebEngineCore;$(QTDIR)\include\QtWebEngine;$(QTDIR)\include\QtWebEngineWidgets;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Disabled</Optimization>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -70,7 +70,7 @@
       <OutputFile>../../bin/$(Configuration)/$(ProjectName).exe</OutputFile>
       <AdditionalLibraryDirectories>$(QTDIR)\lib;../../lib/$(Configuration);../../lib/$(Configuration)/qiniu;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>qtmaind.lib;ZcloudEntCenter.lib;ZcloudBigData.lib;ZcloudMsgCenter.lib;Qt5WebKitd.lib;Qt5WebkitWidgetsd.lib;ZcloudCommon.lib;ZhicloudApp.lib;quazipd.lib;curllib.lib;libeay32.lib;openldap.lib;qiniu.lib;ssleay32.lib;Qt5Cored.lib;Qt5Guid.lib;Qt5Networkd.lib;Qt5Sqld.lib;Qt5Widgetsd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>qtmaind.lib;ZcloudEntCenter.lib;ZcloudBigData.lib;ZcloudMsgCenter.lib;Qt5WebKitd.lib;Qt5WebkitWidgetsd.lib;ZcloudCommon.lib;ZhicloudApp.lib;quazipd.lib;curllib.lib;libeay32.lib;openldap.lib;qiniu.lib;ssleay32.lib;Qt5Cored.lib;Qt5Guid.lib;Qt5Networkd.lib;Qt5Sqld.lib;Qt5Widgetsd.lib;Qt5WebChannel.lib;Qt5WebSockets.lib;Qt5WebEngine.lib;Qt5WebEngineCore.lib;Qt5WebEngineWidgets.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ImportLibrary>../../bin/$(Configuration)/$(ProjectName).exe</ImportLibrary>
       <UACExecutionLevel>RequireAdministrator</UACExecutionLevel>
     </Link>
@@ -80,7 +80,7 @@
       <OutputFile>.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</OutputFile>
       <ExecutionDescription>Moc'ing %(Identity)...</ExecutionDescription>
       <DynamicSource>output</DynamicSource>
-      <IncludePath>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(QTDIR)\include;../../include;$(QTDIR)\include\QtWebKit;$(QTDIR)\include\QtWebkitWidgets;../../include/qiniu/qiniu;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtSql;$(QTDIR)\include\QtWidgets;%(AdditionalIncludeDirectories)</IncludePath>
+      <IncludePath>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(QTDIR)\include;../../include;$(QTDIR)\include\QtWebKit;$(QTDIR)\include\QtWebkitWidgets;../../include/qiniu/qiniu;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtSql;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtWebEngineCore;$(QTDIR)\include\QtWebEngine;$(QTDIR)\include\QtWebEngineWidgets;%(AdditionalIncludeDirectories)</IncludePath>
       <Define>UNICODE;WIN32;WIN64;QT_WEBKITWIDGETS_LIB;WCLOGINHIDE;QT_CORE_LIB;QT_GUI_LIB;QT_NETWORK_LIB;QT_SQL_LIB;QT_WIDGETS_LIB;%(PreprocessorDefinitions)</Define>
     </QtMoc>
     <QtRcc>
@@ -100,8 +100,8 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <PreprocessorDefinitions>UNICODE;WIN32;WIN64;WCLOGINHIDE;QT_NO_DEBUG;NDEBUG;QT_WEBKITWIDGETS_LIB;QT_CORE_LIB;QT_GUI_LIB;QT_NETWORK_LIB;QT_SQL_LIB;QT_WIDGETS_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(QTDIR)\include;../../include;$(QTDIR)\include\QtWebKit;$(QTDIR)\include\QtWebkitWidgets;../../include/qiniu/qiniu;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtSql;$(QTDIR)\include\QtWidgets;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>UNICODE;WIN32;WIN64;WCLOGINHIDE;QT_NO_DEBUG;NDEBUG;QT_WEBKITWIDGETS_LIB;QT_CORE_LIB;QT_GUI_LIB;QT_NETWORK_LIB;QT_SQL_LIB;QT_WIDGETS_LIB;QT_WEBCHANNEL_LIB;QT_WEBSOCKETS_LIB;QT_WEBENGINE_LIB;QT_WEBENGINECORE_LIB;QT_WEBENGINEWIDGETS_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(QTDIR)\include;../../include;$(QTDIR)\include\QtWebKit;$(QTDIR)\include\QtWebkitWidgets;../../include/qiniu/qiniu;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtSql;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtWebEngineCore;$(QTDIR)\include\QtWebEngine;$(QTDIR)\include\QtWebEngineWidgets;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat />
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
@@ -123,8 +123,8 @@
       <OutputFile>.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</OutputFile>
       <ExecutionDescription>Moc'ing %(Identity)...</ExecutionDescription>
       <DynamicSource>output</DynamicSource>
-      <IncludePath>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(QTDIR)\include;../../include;$(QTDIR)\include\QtWebKit;$(QTDIR)\include\QtWebkitWidgets;../../include/qiniu/qiniu;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtSql;$(QTDIR)\include\QtWidgets;%(AdditionalIncludeDirectories)</IncludePath>
-      <Define>UNICODE;WIN32;WIN64;WCLOGINHIDE;QT_NO_DEBUG;NDEBUG;QT_WEBKITWIDGETS_LIB;QT_CORE_LIB;QT_GUI_LIB;QT_NETWORK_LIB;QT_SQL_LIB;QT_WIDGETS_LIB;%(PreprocessorDefinitions)</Define>
+      <IncludePath>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(QTDIR)\include;../../include;$(QTDIR)\include\QtWebKit;$(QTDIR)\include\QtWebkitWidgets;../../include/qiniu/qiniu;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtSql;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtWebEngineCore;$(QTDIR)\include\QtWebEngine;$(QTDIR)\include\QtWebEngineWidgets;%(AdditionalIncludeDirectories)</IncludePath>
+      <Define>UNICODE;WIN32;WIN64;WCLOGINHIDE;QT_NO_DEBUG;NDEBUG;QT_WEBKITWIDGETS_LIB;QT_CORE_LIB;QT_GUI_LIB;QT_NETWORK_LIB;QT_SQL_LIB;QT_WIDGETS_LIB;QT_WEBCHANNEL_LIB;QT_WEBSOCKETS_LIB;QT_WEBENGINE_LIB;QT_WEBENGINECORE_LIB;QT_WEBENGINEWIDGETS_LIB;%(PreprocessorDefinitions)</Define>
     </QtMoc>
     <QtRcc>
       <QTDIR>$(QTDIR)</QTDIR>
@@ -168,6 +168,7 @@
     <ClCompile Include="VerDesWidget.cpp" />
     <ClCompile Include="WallpaperWidget.cpp" />
     <ClCompile Include="zappmenubutton.cpp" />
+    <ClCompile Include="Zcloudbrowser.cpp" />
     <ClCompile Include="ZcloudDesk.cpp" />
     <ClCompile Include="zdot.cpp" />
   </ItemGroup>
@@ -182,6 +183,7 @@
     <QtUic Include="VerDesWidget.ui">
       <SubType>Designer</SubType>
     </QtUic>
+    <QtUic Include="Zcloudbrowser.ui" />
     <QtUic Include="ZcloudDesk.ui">
     </QtUic>
   </ItemGroup>
@@ -220,6 +222,10 @@
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(QTDIR)\include;.\..\..\include;$(QTDIR)\include\QtWebKit;$(QTDIR)\include\QtWebkitWidgets;.\..\..\include\qiniu\qiniu;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtSql;$(QTDIR)\include\QtWidgets</IncludePath>
     </QtMoc>
     <ClInclude Include="HttpTest.h" />
+    <QtMoc Include="Zcloudbrowser.h">
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(QTDIR)\include;.\..\..\include;$(QTDIR)\include\QtWebKit;$(QTDIR)\include\QtWebkitWidgets;.\..\..\include\qiniu\qiniu;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtSql;$(QTDIR)\include\QtWidgets</IncludePath>
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(QTDIR)\include;.\..\..\include;$(QTDIR)\include\QtWebKit;$(QTDIR)\include\QtWebkitWidgets;.\..\..\include\qiniu\qiniu;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtSql;$(QTDIR)\include\QtWidgets</IncludePath>
+    </QtMoc>
     <ClInclude Include="zdot.h" />
     <QtMoc Include="zappmenubutton.h" />
     <QtMoc Include="ActivityWidget.h" />

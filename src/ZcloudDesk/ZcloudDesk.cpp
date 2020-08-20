@@ -32,6 +32,8 @@
 #include "ZcloudEntCenter.h"
 #include "InvoiceCheckThread.h"
 #include "UpdateTipDlg.h"
+
+#include "Zcloudbrowser.h"
 //#include "ZcloudClient.h"
 
 QString zhicloudStrToken;
@@ -483,6 +485,13 @@ void ZcloudDesk::onTopToolClick()
 	else if (strToolName == QString::fromLocal8Bit("壁纸"))
 	{
 		openWallpaperWidget(pInfo->m_strAppDownloadUrl);
+	}
+	else if (strToolName == QString::fromLocal8Bit("在线客服"))
+	{
+		QString  strurl = QString("https://testwvuk9ht.zhicloud.com/serviceonlinewv/index.html?token=%1&user_id=%2").arg(m_stUserInfo.m_strToken).arg(m_stUserInfo.m_strUserId);
+
+		//QString  strurl = QString("https://testwvuk9ht.zhicloud.com/#/login");
+		this->openCustomServiceWidget(strurl);
 	}
 	else if (strToolName == QString::fromLocal8Bit("活动"))
 	{
@@ -2237,5 +2246,25 @@ bool ZcloudDesk::readRegInfo(QString &verSion, QString taxNumber)
 	else{
 
 		return false;
+	}
+}
+
+void ZcloudDesk::openCustomServiceWidget(QString strUrl)
+{
+	if (ZcloudComFun::winHttpSSO(m_stUserInfo.m_strToken, m_stUserInfo.m_strUserId))
+	{
+		Zcloudbrowser*	pWidget = findChild<Zcloudbrowser*>(QString::fromLocal8Bit("Zcloudbrowser"));
+		if (NULL != pWidget)
+		{
+			if (QString::fromLocal8Bit("在线客服") == pWidget->windowTitle())
+			{
+				return;
+			}
+		}
+		//QString strFiscalCalendarUrl = ZcloudComFun::getTopToolUrl(m_stUserInfo.m_strUserId, m_stUserInfo.m_strToken, strUrl);
+		Zcloudbrowser* pZcloudbrowser = new Zcloudbrowser(QString::fromLocal8Bit("在线客服"), strUrl, this);
+		QDesktopWidget *deskdop = QApplication::desktop();
+		pZcloudbrowser->move((deskdop->width() - this->width()) / 2, (deskdop->height() - this->height()) / 2);
+		pZcloudbrowser->show();
 	}
 }

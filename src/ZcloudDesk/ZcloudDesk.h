@@ -215,6 +215,10 @@ private:
 	//!打开办税日历
 	void openFiscalCalendarWidget(QString strUrl);
 
+
+	//!打开在线客服
+	void openCustomServiceWidget(QString strUrl);
+
 	//!打开会员中心
 	void openVipCenterWidget();
 

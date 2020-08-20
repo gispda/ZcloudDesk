@@ -479,7 +479,6 @@ public:
         label_18->setSizePolicy(sizePolicy);
         label_18->setMinimumSize(QSize(20, 20));
         label_18->setMaximumSize(QSize(20, 20));
-        label_18->setStyleSheet(QStringLiteral("border-image: url(:/ZcloudDesk/image/icon_service.png);"));
         label_19 = new QLabel(FilletWidget);
         label_19->setObjectName(QStringLiteral("label_19"));
         label_19->setEnabled(false);
