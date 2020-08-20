@@ -70,7 +70,7 @@
       <OutputFile>../../bin/$(Configuration)/$(ProjectName).exe</OutputFile>
       <AdditionalLibraryDirectories>$(QTDIR)\lib;../../lib/$(Configuration);../../lib/$(Configuration)/qiniu;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>qtmaind.lib;ZcloudEntCenter.lib;ZcloudBigData.lib;ZcloudMsgCenter.lib;Qt5WebKitd.lib;Qt5WebkitWidgetsd.lib;ZcloudCommon.lib;ZhicloudApp.lib;quazipd.lib;curllib.lib;libeay32.lib;openldap.lib;qiniu.lib;ssleay32.lib;Qt5Cored.lib;Qt5Guid.lib;Qt5Networkd.lib;Qt5Sqld.lib;Qt5Widgetsd.lib;Qt5WebChannel.lib;Qt5WebSockets.lib;Qt5WebEngine.lib;Qt5WebEngineCore.lib;Qt5WebEngineWidgets.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>qtmaind.lib;ZcloudEntCenter.lib;ZcloudBigData.lib;ZcloudMsgCenter.lib;Qt5WebKitd.lib;Qt5WebkitWidgetsd.lib;ZcloudCommon.lib;ZhicloudApp.lib;quazipd.lib;curllib.lib;libeay32.lib;openldap.lib;qiniu.lib;ssleay32.lib;Qt5Cored.lib;Qt5Guid.lib;Qt5Networkd.lib;Qt5Sqld.lib;Qt5Widgetsd.lib;Qt5WebChanneld.lib;Qt5WebSocketsd.lib;Qt5WebEngined.lib;Qt5WebEngineCored.lib;Qt5WebEngineWidgetsd.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ImportLibrary>../../bin/$(Configuration)/$(ProjectName).exe</ImportLibrary>
       <UACExecutionLevel>RequireAdministrator</UACExecutionLevel>
     </Link>
@@ -113,7 +113,7 @@
       <OutputFile>../../bin/$(Configuration)/$(ProjectName).exe</OutputFile>
       <AdditionalLibraryDirectories>$(QTDIR)\lib;../../lib/$(Configuration);../../lib/$(Configuration)/qiniu;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>false</GenerateDebugInformation>
-      <AdditionalDependencies>qtmain.lib;ZcloudEntCenter.lib;ZcloudMsgCenter.lib;ZcloudBigData.lib;Qt5WebKit.lib;Qt5WebkitWidgets.lib;quazip.lib;ZcloudCommon.lib;ZhicloudApp.lib;curllib.lib;libeay32.lib;openldap.lib;qiniu.lib;ssleay32.lib;Qt5Core.lib;Qt5Gui.lib;Qt5Network.lib;Qt5Sql.lib;Qt5Widgets.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>qtmain.lib;ZcloudEntCenter.lib;ZcloudMsgCenter.lib;ZcloudBigData.lib;Qt5WebKit.lib;Qt5WebkitWidgets.lib;quazip.lib;ZcloudCommon.lib;ZhicloudApp.lib;curllib.lib;libeay32.lib;openldap.lib;qiniu.lib;ssleay32.lib;Qt5Core.lib;Qt5Gui.lib;Qt5Network.lib;Qt5Sql.lib;Qt5Widgets.lib;Qt5WebChannel.lib;Qt5WebSockets.lib;Qt5WebEngine.lib;Qt5WebEngineCore.lib;Qt5WebEngineWidgets.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ImportLibrary>../../bin/$(Configuration)/$(ProjectName).exe</ImportLibrary>
       <UACExecutionLevel>RequireAdministrator</UACExecutionLevel>
     </Link>
