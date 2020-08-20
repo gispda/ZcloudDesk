@@ -86,6 +86,8 @@ public:
         widget = new QWidget(widget_2);
         widget->setObjectName(QStringLiteral("widget"));
         widget->setMaximumSize(QSize(540, 200));
+        widget->setStyleSheet(QLatin1String("border-radius:8px;\n"
+"background-color: rgb(255, 255, 255);"));
         comboBoxArea = new QComboBox(widget);
         comboBoxArea->setObjectName(QStringLiteral("comboBoxArea"));
         comboBoxArea->setGeometry(QRect(430, 50, 98, 40));
@@ -258,6 +260,8 @@ public:
         widgetAddressOffice = new QWidget(widget_2);
         widgetAddressOffice->setObjectName(QStringLiteral("widgetAddressOffice"));
         widgetAddressOffice->setMaximumSize(QSize(540, 130));
+        widgetAddressOffice->setStyleSheet(QLatin1String("border-radius:8px;\n"
+"background-color: rgb(255, 255, 255);"));
         labelAddressOfficeError = new QLabel(widgetAddressOffice);
         labelAddressOfficeError->setObjectName(QStringLiteral("labelAddressOfficeError"));
         labelAddressOfficeError->setGeometry(QRect(165, 110, 131, 15));

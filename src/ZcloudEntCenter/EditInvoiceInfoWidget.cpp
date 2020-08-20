@@ -187,12 +187,11 @@ void EditInvoiceInfoWidget::onEditOkBtnClick()
 		//if (!winHttpUpdateCompanyInfo(m_strUid, m_strToken, ui.lineEditAcc->text(), ui.lineEditBank->text(), ui.lineEditTelNo->text(), , strRet))
 
 		m_info->_strOfficeaddress = ui.textEditAddr->toPlainText();
-		m_info->_strOfficeaddress = ui.textEditAddr->toPlainText();
-		m_info->_strOfficeaddress = ui.textEditAddr->toPlainText();
-		//m_info-> = ui.textEditAddr->toPlainText();
+		m_info->_strBankaccount = ui.lineEditAcc->text();
+		m_info->_strBankname = ui.lineEditBank->text();
+		m_info->_strTelNumber = ui.lineEditTelNo->text();
 
 		ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_CLOSE, QString::fromLocal8Bit("操作成功"), QString::fromLocal8Bit("\r\n更新开票信息成功！"));
-		
 		emit sigUpdateSucessed();
 	}
 	else

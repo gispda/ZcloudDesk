@@ -40,6 +40,9 @@ void EntCenterInfoWidget::init(EntCenterInfo* info){
 	ui.labelAcc->setText(m_pInfo->_strBankaccount);
 	ui.labelBank->setText(m_pInfo->_strBankname);
 	ui.labelAddr->setText(m_pInfo->_strOfficeaddress);
+	ui.labelPhone->setText(m_pInfo->_strTelNumber);
+
+	
 
 	////管理员权限 显示编辑
 	ui.entEditWidget->hide();
@@ -73,7 +76,7 @@ void EntCenterInfoWidget::onInvoiceEditBtnClick()
 
 	stInvoiceInfo m_stInvoiceInfo ;
 	m_stInvoiceInfo._strTaxNumber = m_pInfo->_strTaxNo;
-	//m_stInvoiceInfo._strTelNo = m_pInfo->_str
+	m_stInvoiceInfo._strTelNo = m_pInfo->_strTelNumber;
 	m_stInvoiceInfo._strAddr = m_pInfo->_strOfficeaddress;
 	m_stInvoiceInfo._strBankAccount = m_pInfo->_strBankaccount;
 	m_stInvoiceInfo._strBankName = m_pInfo->_strBankname;

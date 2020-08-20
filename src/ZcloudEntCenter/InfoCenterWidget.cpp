@@ -260,7 +260,7 @@ bool InfoCenterWidget::analysisJson(const QString& strJson, EntCenterInfo& info)
 	info._strlegalbossmobile = data.take("legal_person_phone").toString();  //
 	info._strBankname = data.take("bank_name").toString();  //
 	info._strBankaccount = data.take("bank_account").toString();  //
-
+	info._strTelNumber = data.take("tel_number").toString();  
 
 
 

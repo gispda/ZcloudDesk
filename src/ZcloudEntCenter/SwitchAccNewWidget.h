@@ -23,9 +23,11 @@ public:
 
 signals:
 	void sigSwitchAcc(int, bool, QString, QString);
+	void sigJoinEnt(QString companyid, int& stcode);
 private slots:
-	void onTextChanged(const QString& strText);
-	void onSwitchAcc(int nLoginByTax, bool bOther, QString strTaxNo_userName, QString strPwd);
+void onTextChanged(const QString& strText);
+void onSwitchAcc(int nLoginByTax, bool bOther, QString strTaxNo_userName, QString strPwd);
+void onJoinEnt(QString companyid);
 protected:
 	bool eventFilter(QObject *target, QEvent *e);
 	void mousePressEvent(QMouseEvent *event);

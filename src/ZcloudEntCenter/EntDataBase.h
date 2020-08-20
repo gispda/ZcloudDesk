@@ -61,6 +61,7 @@ public:
 	QString _strlegalbossmobile;   //法人电话
 	QString  _strBankname;    ///开户行
 	QString  _strBankaccount; //开户行账号
+	QString  _strTelNumber;		//企业固定电话
 
 
 	UserService _oservice;    ///客户经理

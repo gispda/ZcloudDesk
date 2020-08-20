@@ -53,6 +53,7 @@ public:
     QLabel *label_8;
     QLabel *label_10;
     QLabel *labelBank;
+    QLabel *label_19;
 
     void setupUi(QWidget *EntCenterInfoWidget)
     {
@@ -358,6 +359,16 @@ public:
         labelBank->setStyleSheet(QString::fromUtf8("font: 14px \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
 "color: rgb(102,102,102);\n"
 "border-bottom:0px;"));
+        label_19 = new QLabel(invoiceWidget);
+        label_19->setObjectName(QStringLiteral("label_19"));
+        label_19->setGeometry(QRect(10, 80, 68, 16));
+        sizePolicy.setHeightForWidth(label_19->sizePolicy().hasHeightForWidth());
+        label_19->setSizePolicy(sizePolicy);
+        label_19->setMinimumSize(QSize(68, 16));
+        label_19->setMaximumSize(QSize(68, 16));
+        label_19->setStyleSheet(QString::fromUtf8("font: 14px \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
+"color: rgb(102,102,102);\n"
+"border-bottom:0px;"));
 
         retranslateUi(EntCenterInfoWidget);
 
@@ -394,6 +405,7 @@ public:
         label_8->setText(QApplication::translate("EntCenterInfoWidget", "\345\212\236\345\205\254\345\234\260\345\235\200\357\274\232", 0));
         label_10->setText(QApplication::translate("EntCenterInfoWidget", "\345\274\200\346\210\267\351\223\266\350\241\214\357\274\232", 0));
         labelBank->setText(QString());
+        label_19->setText(QApplication::translate("EntCenterInfoWidget", "\345\233\272\345\256\232\347\224\265\350\257\235\357\274\232", 0));
     } // retranslateUi
 
 };

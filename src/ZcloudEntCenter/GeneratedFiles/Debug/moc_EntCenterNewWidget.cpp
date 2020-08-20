@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_EntCenterNewWidget_t {
-    QByteArrayData data[22];
-    char stringdata0[292];
+    QByteArrayData data[23];
+    char stringdata0[305];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -39,28 +39,29 @@ QT_MOC_LITERAL(6, 78, 11), // "DoAppealEnt"
 QT_MOC_LITERAL(7, 90, 25), // "JoinStep2AppealGetEntInfo"
 QT_MOC_LITERAL(8, 116, 22), // "JoinStep2FinishEntinfo"
 QT_MOC_LITERAL(9, 139, 14), // "DoapplyJoinEnt"
-QT_MOC_LITERAL(10, 154, 4), // "int&"
-QT_MOC_LITERAL(11, 159, 6), // "stcode"
-QT_MOC_LITERAL(12, 166, 13), // "decideJoinEnt"
-QT_MOC_LITERAL(13, 180, 12), // "onShowMember"
-QT_MOC_LITERAL(14, 193, 10), // "onShowMain"
-QT_MOC_LITERAL(15, 204, 14), // "onCopyBtnClick"
-QT_MOC_LITERAL(16, 219, 16), // "onSwitchBtnClick"
-QT_MOC_LITERAL(17, 236, 11), // "onSwitchAcc"
-QT_MOC_LITERAL(18, 248, 11), // "bLoginByTax"
-QT_MOC_LITERAL(19, 260, 6), // "bOther"
-QT_MOC_LITERAL(20, 267, 17), // "strTaxNo_userName"
-QT_MOC_LITERAL(21, 285, 6) // "strPwd"
+QT_MOC_LITERAL(10, 154, 12), // "strCompanyid"
+QT_MOC_LITERAL(11, 167, 4), // "int&"
+QT_MOC_LITERAL(12, 172, 6), // "stcode"
+QT_MOC_LITERAL(13, 179, 13), // "decideJoinEnt"
+QT_MOC_LITERAL(14, 193, 12), // "onShowMember"
+QT_MOC_LITERAL(15, 206, 10), // "onShowMain"
+QT_MOC_LITERAL(16, 217, 14), // "onCopyBtnClick"
+QT_MOC_LITERAL(17, 232, 16), // "onSwitchBtnClick"
+QT_MOC_LITERAL(18, 249, 11), // "onSwitchAcc"
+QT_MOC_LITERAL(19, 261, 11), // "bLoginByTax"
+QT_MOC_LITERAL(20, 273, 6), // "bOther"
+QT_MOC_LITERAL(21, 280, 17), // "strTaxNo_userName"
+QT_MOC_LITERAL(22, 298, 6) // "strPwd"
 
     },
     "EntCenterNewWidget\0sigSwitchAcc\0\0"
     "onShowInfo\0JoinEntMoreStep\0DoJoinEntMoreStep\0"
     "DoAppealEnt\0JoinStep2AppealGetEntInfo\0"
     "JoinStep2FinishEntinfo\0DoapplyJoinEnt\0"
-    "int&\0stcode\0decideJoinEnt\0onShowMember\0"
-    "onShowMain\0onCopyBtnClick\0onSwitchBtnClick\0"
-    "onSwitchAcc\0bLoginByTax\0bOther\0"
-    "strTaxNo_userName\0strPwd"
+    "strCompanyid\0int&\0stcode\0decideJoinEnt\0"
+    "onShowMember\0onShowMain\0onCopyBtnClick\0"
+    "onSwitchBtnClick\0onSwitchAcc\0bLoginByTax\0"
+    "bOther\0strTaxNo_userName\0strPwd"
 };
 #undef QT_MOC_LITERAL
 
@@ -87,13 +88,13 @@ static const uint qt_meta_data_EntCenterNewWidget[] = {
        6,    0,   96,    2, 0x08 /* Private */,
        7,    0,   97,    2, 0x08 /* Private */,
        8,    0,   98,    2, 0x08 /* Private */,
-       9,    1,   99,    2, 0x08 /* Private */,
-      12,    0,  102,    2, 0x08 /* Private */,
-      13,    0,  103,    2, 0x08 /* Private */,
-      14,    0,  104,    2, 0x08 /* Private */,
-      15,    0,  105,    2, 0x08 /* Private */,
-      16,    0,  106,    2, 0x08 /* Private */,
-      17,    4,  107,    2, 0x08 /* Private */,
+       9,    2,   99,    2, 0x08 /* Private */,
+      13,    0,  104,    2, 0x08 /* Private */,
+      14,    0,  105,    2, 0x08 /* Private */,
+      15,    0,  106,    2, 0x08 /* Private */,
+      16,    0,  107,    2, 0x08 /* Private */,
+      17,    0,  108,    2, 0x08 /* Private */,
+      18,    4,  109,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::Int, QMetaType::Bool, QMetaType::QString, QMetaType::QString,    2,    2,    2,    2,
@@ -105,13 +106,13 @@ static const uint qt_meta_data_EntCenterNewWidget[] = {
     QMetaType::Void,
     QMetaType::Bool,
     QMetaType::Bool,
-    QMetaType::Bool, 0x80000000 | 10,   11,
+    QMetaType::Bool, QMetaType::QString, 0x80000000 | 11,   10,   12,
     QMetaType::Bool,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::Int, QMetaType::Bool, QMetaType::QString, QMetaType::QString,   18,   19,   20,   21,
+    QMetaType::Void, QMetaType::Int, QMetaType::Bool, QMetaType::QString, QMetaType::QString,   19,   20,   21,   22,
 
        0        // eod
 };
@@ -131,7 +132,7 @@ void EntCenterNewWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, i
             if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = _r; }  break;
         case 6: { bool _r = _t->JoinStep2FinishEntinfo();
             if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = _r; }  break;
-        case 7: { bool _r = _t->DoapplyJoinEnt((*reinterpret_cast< int(*)>(_a[1])));
+        case 7: { bool _r = _t->DoapplyJoinEnt((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])));
             if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = _r; }  break;
         case 8: { bool _r = _t->decideJoinEnt();
             if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = _r; }  break;

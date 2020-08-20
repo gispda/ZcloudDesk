@@ -372,7 +372,7 @@ void EntCenterNewWidget::onSwitchBtnClick()
 	pSwitchWidget->setAttribute(Qt::WA_DeleteOnClose);
 
 	connect(pSwitchWidget, SIGNAL(sigSwitchAcc(int, bool, QString, QString)), this, SLOT(onSwitchAcc(int, bool, QString, QString)));
-	//connect(this, SIGNAL(sigSwitchAcc(int, bool, QString, QString)), this, SLOT(onSwitchAcc(int, bool, QString, QString)));
+	connect(pSwitchWidget, SIGNAL(sigJoinEnt(QString, int&)), this, SLOT(DoapplyJoinEnt(QString, int&)));
 
 	pSwitchWidget->setAttribute(Qt::WA_DeleteOnClose);
 
@@ -734,10 +734,11 @@ bool EntCenterNewWidget::decideJoinEnt()
 }
 
 ////实际操作加入企业
-bool EntCenterNewWidget::DoapplyJoinEnt(int& stcode)
+bool EntCenterNewWidget::DoapplyJoinEnt(QString strCompanyid,int& stcode)
 {
 	QString strRet;
-	if (!winHttpJoinEnt(m_userInfo->m_strToken, m_info.strcompanyid, strRet))
+	if (!winHttpJoinEnt(m_userInfo->m_strToken, strCompanyid, strRet))
+	//if (!winHttpJoinEnt(m_userInfo->m_strToken, m_info.strcompanyid, strRet))
 	{
 		ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_TIP, QString::fromLocal8Bit("加入企业"), QString::fromLocal8Bit("加入失败"));
 		return false;
@@ -900,7 +901,7 @@ void EntCenterNewWidget::DoJoinEntMoreStep()
 	{
 		int stcode = -1;
 		////递交加入企业申请
-		if (DoapplyJoinEnt(stcode))
+		if (DoapplyJoinEnt(m_info.strcompanyid,stcode))
 		{
 			////成功递交加入企业申请
 			//ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_TIP, QString::fromLocal8Bit("操作失败"), QString::fromLocal8Bit("\r\n财务负责人姓名不正确！"));

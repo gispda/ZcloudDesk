@@ -65,7 +65,7 @@ protected:
 
 	bool JoinStep2FinishEntinfo();
 
-	bool DoapplyJoinEnt(int& stcode);
+	bool DoapplyJoinEnt(QString strCompanyid,int& stcode);
 
 	////判断是否加入企业
 	bool decideJoinEnt();

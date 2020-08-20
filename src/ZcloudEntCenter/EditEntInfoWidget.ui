@@ -79,6 +79,10 @@
         <height>200</height>
        </size>
       </property>
+      <property name="styleSheet">
+       <string notr="true">border-radius:8px;
+background-color: rgb(255, 255, 255);</string>
+      </property>
       <widget class="QComboBox" name="comboBoxArea">
        <property name="geometry">
         <rect>
@@ -537,6 +541,10 @@ border-bottom:0px;</string>
         <width>540</width>
         <height>130</height>
        </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-radius:8px;
+background-color: rgb(255, 255, 255);</string>
       </property>
       <widget class="QLabel" name="labelAddressOfficeError">
        <property name="geometry">

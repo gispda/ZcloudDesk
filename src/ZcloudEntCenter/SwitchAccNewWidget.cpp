@@ -216,6 +216,7 @@ void SwitchAccNewWidget::showListWidget(QString strText)
 				ui.listWidget->addItem(pListWidgetItem);
 			}
 			connect(pItem, SIGNAL(sigSwitchAcc(int, bool, QString, QString)), this, SLOT(onSwitchAcc(int, bool, QString, QString)));
+			connect(pItem, SIGNAL(sigJoinEnt(QString)), this, SLOT(onJoinEnt( QString)));
 			QSize size = pItem->size();
 			pListWidgetItem->setSizeHint(size);
 			ui.listWidget->setItemWidget(pListWidgetItem, pItem);	
@@ -253,7 +254,10 @@ void SwitchAccNewWidget::showListWidget(QString strText)
 		}
 	}
 }
-
+void SwitchAccNewWidget::onJoinEnt(QString companyid){
+	int stcode = -1;
+	emit sigJoinEnt(companyid, stcode);
+}
 void SwitchAccNewWidget::getSwitchInfo()
 {
 	//!查询数据已有账号
@@ -383,6 +387,8 @@ void SwitchAccNewWidget::getCompanyList()
 		QString	strLogoPath = ZcloudComFun::downloadPic(dataList.take("logo").toString(), QApplication::applicationDirPath().append("/CacheImage/logoImage"));
 		QString	strCompName = dataList.take("company_name").toString();
 		int	nIsJoin = dataList.take("is_join").toInt();
+		int	nIsCurrent = dataList.take("is_current").toInt();
+
 		if (!isTaxExistInterface(m_pEntInfo->_strUid, strCompId))
 		{
 			stSwitchAccInfo*	pSwitchInfo = new stSwitchAccInfo;
@@ -394,7 +400,9 @@ void SwitchAccNewWidget::getCompanyList()
 			pSwitchInfo->strCompName	= strCompName;
 			pSwitchInfo->strUid			= m_pEntInfo->_strUid;
 			pSwitchInfo->strCompId		= strCompId;
+			pSwitchInfo->nIsCurrent = nIsCurrent;
 			pSwitchInfo->nIsjoin = nIsJoin;
+
 			m_vtrAccInfos.push_back(pSwitchInfo);
 		}	
 	}

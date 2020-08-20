@@ -77,6 +77,7 @@ AccItemWidget::AccItemWidget(bool bLogin, stSwitchAccInfo* pAccInfo, QString str
 		strTax.replace(strFindText, strColorText);
 	}
 	ui.labelTaxNo->setText(strTax);
+	this->m_strComId = m_pAccInfo->strCompId;
 	
 	QString strAvatarPath = pAccInfo->strLogoPath;
 	QFileInfo fileInfo(strAvatarPath);
@@ -252,6 +253,7 @@ void AccItemWidget::onSwitchBtnClick()
 	}
 	else{
 		//加入企业
+		onJoinEntBtnClick();
 	}
 
 
