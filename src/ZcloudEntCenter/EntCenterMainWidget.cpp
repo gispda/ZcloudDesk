@@ -40,6 +40,7 @@ EntCenterMainWidget::EntCenterMainWidget(EntCenterInfo* pEntInfo, UserInfoStruct
 	{
 		ui.ServiceFeeButton->setEnabled(true);
 	}
+	init(pEntInfo, userinfo);
 }
 
 void EntCenterMainWidget::init(EntCenterInfo*	info, UserInfoStruct* userinfo)
