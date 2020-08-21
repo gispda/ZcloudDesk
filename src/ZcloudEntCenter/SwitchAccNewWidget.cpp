@@ -68,23 +68,23 @@ SwitchAccNewWidget::SwitchAccNewWidget(UserInfoStruct* userInfo, EntCenterInfo* 
 
 	connect(ui.createButton, &QPushButton::clicked, this, &SwitchAccNewWidget::openCreateEntDlg); 
 
-	//m_pMenu->setStyleSheet(QString::fromLocal8Bit(
-	//	"QMenu{background-color:rgba(255, 255, 255, 1);"//整个背景
-	//	"border:1px solid rgba(222, 222, 222,1);"//整个菜单边缘
-	//	"font-size:12px 'Microsoft Yahei';"
-	//	"text-align:center;"
-	//	"color:rgb(51, 51, 51);}"
-	//	"QMenu::item{"//字体颜色
-	//	"height:30px;"
-	//	"background-color:rgb(255, 255, 255);"
-	//	"margin:0px 0px;"//设置菜单项的外边距
-	//	"padding:1px 20px;}"//设置菜单项文字上下和左右的内边距，效果就是菜单中的条目左右上下有了间隔
-	//	"QMenu::item:pressed{"
-	//	"background-color:rgb(242,242,242);"//选中的样式
-	//	"font-size: 12px 'Microsoft Yahei';color:rgb(51,51,51);}"//字体颜色
-	//	"QMenu::item:selected{"//菜单项按下效果
-	//	"font-size: 12px 'Microsoft Yahei';color:rgb(51,51,51);"//字体颜色
-	//	"background-color:rgb(242, 242, 242);}"));
+	m_pMenu->setStyleSheet(QString::fromLocal8Bit(
+		"QMenu{background-color:rgba(255, 255, 255, 1);"//整个背景
+		"border:1px solid rgba(222, 222, 222,1);"//整个菜单边缘
+		"font-size:12px 'Microsoft Yahei';"
+		"text-align:center;"
+		"color:rgb(51, 51, 51);}"
+		"QMenu::item{"//字体颜色
+		"height:30px;"
+		"background-color:rgb(255, 255, 255);"
+		"margin:0px 0px;"//设置菜单项的外边距
+		"padding:1px 20px;}"//设置菜单项文字上下和左右的内边距，效果就是菜单中的条目左右上下有了间隔
+		"QMenu::item:pressed{"
+		"background-color:rgb(242,242,242);"//选中的样式
+		"font-size: 12px 'Microsoft Yahei';color:rgb(51,51,51);}"//字体颜色
+		"QMenu::item:selected{"//菜单项按下效果
+		"font-size: 12px 'Microsoft Yahei';color:rgb(51,51,51);"//字体颜色
+		"background-color:rgb(242, 242, 242);}"));
 
 
 
