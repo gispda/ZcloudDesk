@@ -402,7 +402,7 @@ void SettingWidget::onCheckUpdateBtnClick()
 void SettingWidget::onLogoutClick()
 {
 	ZcloudBigDataInterface::GetInstance()->produceData("M00", "OP001", "TAU007");
-	int nReturn	=	ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_OKCANCEL, QString::fromLocal8Bit("您确定要退出%1吗？").arg(g_strAppName), QString::fromLocal8Bit("退出后，您将不能享受更多财税相关服务哦！"), this);
+	int nReturn = ZcloudComFun::openMessageTipDlg_2(ZcloudComFun::EN_OKCANCEL, QString::fromLocal8Bit("您确定要退出%1吗？").arg(g_strAppName), QString::fromLocal8Bit("退出后，您将不能享受更多财税相关服务哦！"), QString::fromLocal8Bit("确定"), QString::fromLocal8Bit("取消"),this);
 	if (nReturn == QDialog::Accepted)
 	{
 		ZcloudBigDataInterface::GetInstance()->produceData("M00", "OP001", "TAU008","",true);
