@@ -36,7 +36,6 @@ public:
     LabelEx *labelAvatar;
     LabelEx *labelCompName;
     QPushButton *spaceButton_2;
-    QPushButton *customServiceButton;
     QPushButton *billListButton;
     QPushButton *appButton;
     QPushButton *spaceButton;
@@ -143,23 +142,6 @@ public:
 
         horizontalLayout->addWidget(spaceButton_2);
 
-        customServiceButton = new QPushButton(ZcloudTopWidget);
-        customServiceButton->setObjectName(QStringLiteral("customServiceButton"));
-        sizePolicy1.setHeightForWidth(customServiceButton->sizePolicy().hasHeightForWidth());
-        customServiceButton->setSizePolicy(sizePolicy1);
-        customServiceButton->setMinimumSize(QSize(86, 26));
-        customServiceButton->setMaximumSize(QSize(86, 26));
-        customServiceButton->setStyleSheet(QString::fromUtf8("QPushButton{border-image: url(:/ZcloudDesk/image/bg_transparent.png);color: rgb(255, 255, 255);\n"
-"font: 12px \"\345\276\256\350\275\257\351\233\205\351\273\221\";}\n"
-"QPushButton:hover{border-image: url(:/ZcloudDesk/image/bg_transparent_hover.png);color: rgb(255, 255, 255);\n"
-"font: 12px \"\345\276\256\350\275\257\351\233\205\351\273\221\"}\n"
-"QPushButton:pressed{border-image: url(:/ZcloudDesk/image/bg_transparent_pre.png);color: rgb(255, 255, 255);\n"
-"font: 12px \"\345\276\256\350\275\257\351\233\205\351\273\221\"};"));
-        customServiceButton->setIcon(icon);
-        customServiceButton->setIconSize(QSize(14, 26));
-
-        horizontalLayout->addWidget(customServiceButton);
-
         billListButton = new QPushButton(ZcloudTopWidget);
         billListButton->setObjectName(QStringLiteral("billListButton"));
         sizePolicy1.setHeightForWidth(billListButton->sizePolicy().hasHeightForWidth());
@@ -254,7 +236,6 @@ public:
         labelAvatar->setText(QString());
         labelCompName->setText(QString());
         spaceButton_2->setText(QString());
-        customServiceButton->setText(QApplication::translate("ZcloudDesk", "\350\201\224\347\263\273\345\256\242\346\234\215", 0));
         billListButton->setText(QApplication::translate("ZcloudDesk", "\346\210\221\347\232\204\345\267\245\345\215\225", 0));
         appButton->setText(QApplication::translate("ZcloudDesk", "\345\272\224\347\224\250\344\270\255\345\277\203", 0));
         spaceButton->setText(QString());

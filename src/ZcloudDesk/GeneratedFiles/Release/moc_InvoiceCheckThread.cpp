@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_InvoiceCheckThread_t {
-    QByteArrayData data[4];
-    char stringdata0[42];
+    QByteArrayData data[6];
+    char stringdata0[60];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -32,11 +32,13 @@ static const qt_meta_stringdata_InvoiceCheckThread_t qt_meta_stringdata_InvoiceC
 QT_MOC_LITERAL(0, 0, 18), // "InvoiceCheckThread"
 QT_MOC_LITERAL(1, 19, 17), // "sendDownAndUpdate"
 QT_MOC_LITERAL(2, 37, 0), // ""
-QT_MOC_LITERAL(3, 38, 3) // "url"
+QT_MOC_LITERAL(3, 38, 3), // "url"
+QT_MOC_LITERAL(4, 42, 13), // "CheckUpdater*"
+QT_MOC_LITERAL(5, 56, 3) // "obj"
 
     },
     "InvoiceCheckThread\0sendDownAndUpdate\0"
-    "\0url"
+    "\0url\0CheckUpdater*\0obj"
 };
 #undef QT_MOC_LITERAL
 
@@ -54,10 +56,10 @@ static const uint qt_meta_data_InvoiceCheckThread[] = {
        1,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    1,   19,    2, 0x06 /* Public */,
+       1,    2,   19,    2, 0x06 /* Public */,
 
  // signals: parameters
-    QMetaType::Void, QMetaType::QString,    3,
+    QMetaType::Void, QMetaType::QString, 0x80000000 | 4,    3,    5,
 
        0        // eod
 };
@@ -68,14 +70,25 @@ void InvoiceCheckThread::qt_static_metacall(QObject *_o, QMetaObject::Call _c, i
         InvoiceCheckThread *_t = static_cast<InvoiceCheckThread *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
-        case 0: _t->sendDownAndUpdate((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 0: _t->sendDownAndUpdate((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< CheckUpdater*(*)>(_a[2]))); break;
         default: ;
+        }
+    } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
+        switch (_id) {
+        default: *reinterpret_cast<int*>(_a[0]) = -1; break;
+        case 0:
+            switch (*reinterpret_cast<int*>(_a[1])) {
+            default: *reinterpret_cast<int*>(_a[0]) = -1; break;
+            case 1:
+                *reinterpret_cast<int*>(_a[0]) = qRegisterMetaType< CheckUpdater* >(); break;
+            }
+            break;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
         int *result = reinterpret_cast<int *>(_a[0]);
         void **func = reinterpret_cast<void **>(_a[1]);
         {
-            typedef void (InvoiceCheckThread::*_t)(QString );
+            typedef void (InvoiceCheckThread::*_t)(QString , CheckUpdater * );
             if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&InvoiceCheckThread::sendDownAndUpdate)) {
                 *result = 0;
             }
@@ -113,16 +126,16 @@ int InvoiceCheckThread::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         _id -= 1;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
         if (_id < 1)
-            *reinterpret_cast<int*>(_a[0]) = -1;
+            qt_static_metacall(this, _c, _id, _a);
         _id -= 1;
     }
     return _id;
 }
 
 // SIGNAL 0
-void InvoiceCheckThread::sendDownAndUpdate(QString _t1)
+void InvoiceCheckThread::sendDownAndUpdate(QString _t1, CheckUpdater * _t2)
 {
-    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);
 }
 QT_END_MOC_NAMESPACE

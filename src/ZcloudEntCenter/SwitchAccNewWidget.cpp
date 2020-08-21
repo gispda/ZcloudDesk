@@ -254,9 +254,9 @@ void SwitchAccNewWidget::showListWidget(QString strText)
 		}
 	}
 }
-void SwitchAccNewWidget::onJoinEnt(QString companyid){
+void SwitchAccNewWidget::onJoinEnt(QString m_strTaxNum){
 	int stcode = -1;
-	emit sigJoinEnt(companyid);
+	emit sigJoinEnt(m_strTaxNum);
 }
 void SwitchAccNewWidget::getSwitchInfo()
 {

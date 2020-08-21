@@ -248,49 +248,6 @@ font: 12px &quot;微软雅黑&quot;;padding-left:5px;padding-right:5px;};</strin
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="customServiceButton">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>86</width>
-         <height>26</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>86</width>
-         <height>26</height>
-        </size>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QPushButton{border-image: url(:/ZcloudDesk/image/bg_transparent.png);color: rgb(255, 255, 255);
-font: 12px &quot;微软雅黑&quot;;}
-QPushButton:hover{border-image: url(:/ZcloudDesk/image/bg_transparent_hover.png);color: rgb(255, 255, 255);
-font: 12px &quot;微软雅黑&quot;}
-QPushButton:pressed{border-image: url(:/ZcloudDesk/image/bg_transparent_pre.png);color: rgb(255, 255, 255);
-font: 12px &quot;微软雅黑&quot;};</string>
-       </property>
-       <property name="text">
-        <string>联系客服</string>
-       </property>
-       <property name="icon">
-        <iconset resource="ZcloudDesk.qrc">
-         <normaloff>:/ZcloudDesk/image/icon_yyzx.png</normaloff>:/ZcloudDesk/image/icon_yyzx.png</iconset>
-       </property>
-       <property name="iconSize">
-        <size>
-         <width>14</width>
-         <height>26</height>
-        </size>
-       </property>
-      </widget>
-     </item>
-     <item>
       <widget class="QPushButton" name="billListButton">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">

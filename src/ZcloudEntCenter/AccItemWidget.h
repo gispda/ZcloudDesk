@@ -29,6 +29,7 @@ private:
 	Ui::AccItemWidget ui;
 	bool m_bLogin = false;
 	QString			m_strComId;
+	QString			m_strTaxNum;
 	stSwitchAccInfo* m_pAccInfo;
 };
 

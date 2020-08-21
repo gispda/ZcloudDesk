@@ -20,7 +20,7 @@
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_SwitchAccNewWidget_t {
     QByteArrayData data[13];
-    char stringdata0[142];
+    char stringdata0[144];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -33,19 +33,19 @@ QT_MOC_LITERAL(0, 0, 18), // "SwitchAccNewWidget"
 QT_MOC_LITERAL(1, 19, 12), // "sigSwitchAcc"
 QT_MOC_LITERAL(2, 32, 0), // ""
 QT_MOC_LITERAL(3, 33, 10), // "sigJoinEnt"
-QT_MOC_LITERAL(4, 44, 9), // "companyid"
-QT_MOC_LITERAL(5, 54, 13), // "onTextChanged"
-QT_MOC_LITERAL(6, 68, 7), // "strText"
-QT_MOC_LITERAL(7, 76, 11), // "onSwitchAcc"
-QT_MOC_LITERAL(8, 88, 11), // "nLoginByTax"
-QT_MOC_LITERAL(9, 100, 6), // "bOther"
-QT_MOC_LITERAL(10, 107, 17), // "strTaxNo_userName"
-QT_MOC_LITERAL(11, 125, 6), // "strPwd"
-QT_MOC_LITERAL(12, 132, 9) // "onJoinEnt"
+QT_MOC_LITERAL(4, 44, 11), // "m_strTaxNum"
+QT_MOC_LITERAL(5, 56, 13), // "onTextChanged"
+QT_MOC_LITERAL(6, 70, 7), // "strText"
+QT_MOC_LITERAL(7, 78, 11), // "onSwitchAcc"
+QT_MOC_LITERAL(8, 90, 11), // "nLoginByTax"
+QT_MOC_LITERAL(9, 102, 6), // "bOther"
+QT_MOC_LITERAL(10, 109, 17), // "strTaxNo_userName"
+QT_MOC_LITERAL(11, 127, 6), // "strPwd"
+QT_MOC_LITERAL(12, 134, 9) // "onJoinEnt"
 
     },
     "SwitchAccNewWidget\0sigSwitchAcc\0\0"
-    "sigJoinEnt\0companyid\0onTextChanged\0"
+    "sigJoinEnt\0m_strTaxNum\0onTextChanged\0"
     "strText\0onSwitchAcc\0nLoginByTax\0bOther\0"
     "strTaxNo_userName\0strPwd\0onJoinEnt"
 };

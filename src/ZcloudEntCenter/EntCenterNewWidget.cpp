@@ -16,6 +16,7 @@
 #include "FinanMemberWidget.h"
 #include "AccSettingWidget.h"
 #include "UploadLicenseDlg.h"
+#include "InfoCenterWidget.h"
 
 
 
@@ -23,7 +24,7 @@ EntCenterNewWidget::EntCenterNewWidget(EntCenterInfo* pEntInfo, UserInfoStruct* 
 	 :QWidget(parent)
 {
 	m_userInfo = userInfo;
-	EntCenterInfo* m_pEntInfo = pEntInfo;
+	//EntCenterInfo* m_pEntInfo = pEntInfo;
 	m_pEnt = pEntInfo;
 
 
@@ -56,14 +57,15 @@ EntCenterNewWidget::EntCenterNewWidget(EntCenterInfo* pEntInfo, UserInfoStruct* 
 
 
 	ui.labelJoin2->installEventFilter(this);
-
+	ui.labelJoin2->show();
 
 	//ui.labelline->setGeometry(117, 195, 1, 14);
 
 	//ui.labeluserline->hide();
+	m_pEnt;
 
-	showUserCompanyInfoTitle(m_pEntInfo);
-
+	showUserCompanyInfoTitle(m_pEnt);
+	m_pEnt;
 
 
 	pSwitchWidget = NULL;
@@ -374,6 +376,7 @@ void EntCenterNewWidget::onSwitchBtnClick()
 }
 void EntCenterNewWidget::SwitchBtnClick(EntCenterInfo*	m_pEntInfo)
 {
+	m_pEnt;
 	//if (pSwitchWidget == NULL)
 	//{
 	//pWidget = new SwitchAccWidget(m_userInfo->m_strUserId, m_userInfo->m_strToken, m_userInfo->m_strUsername, m_userInfo->m_strCompanyId, this);
@@ -577,7 +580,6 @@ void EntCenterNewWidget::clearUserCompanyInfoTitle()
 {
 	ui.labelComName->setText("");
 	ui.labelTaxNo->setText("");
-	ui.labelJoin2->setText("");
 	ui.labeJoin1->setText("");
 	ui.labeluser->setText("");
 	//ui.labelroletype->setText("");
@@ -913,7 +915,10 @@ void EntCenterNewWidget::DoJoinEntMoreStep(EntCenterInfo* m_pEntInfo,bool isbind
 	{
 		int stcode = -1;
 		////递交加入企业申请
-		if (DoapplyJoinEnt(m_info.strcompanyid,stcode))
+		//if (DoapplyJoinEnt(m_info.strcompanyid,stcode))
+
+		if (DoapplyJoinEnt(m_pEntInfo->_strCompId, stcode))
+			
 		{
 			////成功递交加入企业申请
 			//ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_TIP, QString::fromLocal8Bit("操作失败"), QString::fromLocal8Bit("\r\n财务负责人姓名不正确！"));
@@ -967,9 +972,19 @@ void EntCenterNewWidget::DoJoinEntMoreStep(EntCenterInfo* m_pEntInfo,bool isbind
 }
 
 
-bool EntCenterNewWidget::onJoinEnt(QString strCompanyid) {
-	ZcloudComFun::dbEntInfo pEnt;
-	ZcloudComFun::winHttpQueryCompanyInfoLocalTax(m_strLocalTaxno, m_userInfo->m_strToken, pEnt);
+bool EntCenterNewWidget::onJoinEnt(QString strTaxNum) {
+	/*ZcloudComFun::dbEntInfo pEnt;
+	ZcloudComFun::winHttpQueryCompanyInfoLocalTax(strTaxNum, m_userInfo->m_strToken, pEnt);*/
+
+	EntCenterInfo	info;
+	QString strRet;
+	//获取企业信息
+	if (InfoCenterWidget::getEntInfo(&info, strTaxNum, m_userInfo->m_strToken, strRet))
+	{
+		
+		DoJoinEntMoreStep(&info, info._nisbinds);
+	}
+	
 
 	return true;
 }

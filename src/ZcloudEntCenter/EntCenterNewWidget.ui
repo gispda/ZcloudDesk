@@ -590,13 +590,19 @@ line-height:21px;</string>
          <rect>
           <x>128</x>
           <y>195</y>
-          <width>100</width>
+          <width>50</width>
           <height>18</height>
          </rect>
         </property>
+        <property name="minimumSize">
+         <size>
+          <width>50</width>
+          <height>18</height>
+         </size>
+        </property>
         <property name="maximumSize">
          <size>
-          <width>126</width>
+          <width>50</width>
           <height>18</height>
          </size>
         </property>

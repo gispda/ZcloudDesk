@@ -66,7 +66,7 @@ void ZcloudEntCenterImpl::openEntCenter(QString strUid, QString strToken, QStrin
 	
 
 	m_pInfoCenterWidget->setUserInfo(m_strUid, m_strToken, m_strTrueName, m_strJob, m_isLoginByTax, m_strMobile, m_strCompId, m_strUserName);
-	m_pInfoCenterWidget->init();
+	//m_pInfoCenterWidget->init();
 	m_pInfoCenterWidget->show();
 
 

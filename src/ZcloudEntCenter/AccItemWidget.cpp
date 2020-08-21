@@ -7,6 +7,7 @@ AccItemWidget::AccItemWidget(bool bLogin, stSwitchAccInfo* pAccInfo, QString str
 	,m_bLogin(bLogin)
 	, m_pAccInfo(pAccInfo)
 {
+	m_strTaxNum = pAccInfo->strTaxNo;
 	ui.setupUi(this);
 	setWindowFlags(Qt::FramelessWindowHint | Qt::Widget);
 	setAttribute(Qt::WA_TranslucentBackground, true);
@@ -107,6 +108,7 @@ AccItemWidget::AccItemWidget(QString strComId, QString strTaxNo, QString strComN
 	, m_pAccInfo(NULL)
 	, m_strComId(strComId)
 {
+	m_strTaxNum = strTaxNo;
 	ui.setupUi(this);
 	setWindowFlags(Qt::FramelessWindowHint | Qt::Widget);
 	setAttribute(Qt::WA_TranslucentBackground, true);
@@ -262,7 +264,7 @@ void AccItemWidget::onSwitchBtnClick()
 
 void AccItemWidget::onJoinEntBtnClick()
 {
-	emit sigJoinEnt(m_strComId);
+	emit sigJoinEnt(m_strTaxNum);
 }
 
 void AccItemWidget::setReviewStatue(bool bStatue)

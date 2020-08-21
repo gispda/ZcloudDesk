@@ -20,14 +20,14 @@ public:
 	//!设置用户数据
 	void setUserInfo(QString strUid, QString strToken, QString strTrueName, QString strJob, int isLoginByTax, QString strMobile, QString strCompId, QString strUserName);
 
-	bool winHttpGetEntInfo( QString strTaxno, QString strToken, QString& strRet);
+	//bool winHttpGetEntInfo( QString strTaxno, QString strToken, QString& strRet);
 	//!查询企业信息
-	bool winHttpGetCompanyInfo( QString strUid, QString strToken, QString& strRet);
+	static bool winHttpGetCompanyInfo(QString strTaxno, QString strToken, QString& strRet);
 
 
-	bool loadEntInfo();
+	static bool getEntInfo(EntCenterInfo* info,QString strTaxno, QString strToken, QString& strRet);
+	//static bool loadEntInfo(EntCenterInfo* info);
 
-	void init();
 
 signals:
 
@@ -48,9 +48,9 @@ void onSwitchAcc(int bLoginByTax, bool bOther, QString strTaxNo_userName, QStrin
 private:
 
 	//!解析企业信息
-	bool analysisJson(const QString& strJson, EntCenterInfo& info);
+	static bool analysisJson(const QString& strJson, QString token, EntCenterInfo* info);
 	//!检测用户头像是否存在 存在返回路径 不存在下载之后返回路径
-	QString checkLogoExist(QString strUrl);
+	static QString checkLogoExist(QString strUrl);
 	Ui::InfoCenterWidget ui;
 	QWidget* m_pUserDefault = NULL;
 	EntCenterNewWidget* m_pEntCenter = NULL;
@@ -59,6 +59,7 @@ private:
 
 
 	EntCenterInfo m_stEntInfo;
+	
 	UserInfoStruct* m_userInfo;
 
 	////是否从后台拉回数据

@@ -116,6 +116,8 @@ ZcloudDesk::ZcloudDesk(UserInfoStruct userInfoStruct, QWidget *parent)
 	connect(ui.appButton, SIGNAL(clicked()), this, SLOT(openAppCenterWidget()));
 	connect(ui.hideButton, SIGNAL(clicked()), this, SLOT(hideWindow()));
 
+	//connect(ui.customServiceButton, SIGNAL(clicked()), this, SLOT(openCustomServiceWidget()));
+
 	connect(ui.billListButton, SIGNAL(clicked()), this, SLOT(openWorkers()));
 
 
@@ -1139,7 +1141,7 @@ void ZcloudDesk::showCompInfo()
 	
 	ui.labelAvatar->setVisible(false);
 	ui.billListButton->setVisible(false);
-	ui.customServiceButton->setVisible(false);
+	//ui.customServiceButton->setVisible(false);
 	ui.spaceButtonName->setVisible(false);
 	ui.usernameButton->setVisible(false);
 	QString strText;
@@ -1189,7 +1191,7 @@ void ZcloudDesk::showCompInfo()
 			
 			ui.labelAvatar->setVisible(true);
 			ui.billListButton->setVisible(true);
-			ui.customServiceButton->setVisible(true);
+		//	ui.customServiceButton->setVisible(true);
 		}	
 	}
 	else
@@ -1211,7 +1213,7 @@ void ZcloudDesk::showCompInfo()
 		}
 		ui.labelAvatar->setVisible(true);
 		ui.billListButton->setVisible(true);
-		ui.customServiceButton->setVisible(true);
+//		ui.customServiceButton->setVisible(true);
 
 	}
 	bool bVip = (0 == m_stUserInfo.m_strListAppVipList.size()) ? false : true;
