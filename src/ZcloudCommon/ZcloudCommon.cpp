@@ -390,7 +390,7 @@ QString ZcloudComFun::getTaxnumbers()
 		strtaxls.append(strLocalTaxnoLs.at(index));
 		if (index < (nsize - 1))
 		{
-			strLocalTaxnoLs.append(",");
+			strtaxls.append(",");
 		}
 	}
 
