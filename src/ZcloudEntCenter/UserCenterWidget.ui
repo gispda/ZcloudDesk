@@ -31,9 +31,6 @@
   <property name="windowTitle">
    <string>EntCenterWidget</string>
   </property>
-  <property name="styleSheet">
-   <string notr="true">QWidget#EntCenterWidget{background-color: rgb(255, 255, 255);};</string>
-  </property>
   <layout class="QHBoxLayout" name="horizontalLayout_2">
    <property name="spacing">
     <number>0</number>
@@ -76,7 +73,7 @@
         </size>
        </property>
        <property name="styleSheet">
-        <string notr="true">QWidget#EntLeftWidget{background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 #EDF4FF, stop:1 #FAFCFF);border-top-left-radius:8px;border-bottom-left-radius:8px;border-right:1px solid #EBEBEB;}</string>
+        <string notr="true">QWidget#EntLeftWidget{background-color: rgb(252, 252, 252);}</string>
        </property>
        <widget class="AvatarLabel" name="labelAvatar">
         <property name="geometry">
@@ -340,8 +337,8 @@ QPushButton:hover,pressed{ background-color:rgba(255,255,255,0);font: 14px &quot
        <widget class="QLabel" name="labelUser">
         <property name="geometry">
          <rect>
-          <x>10</x>
-          <y>20</y>
+          <x>95</x>
+          <y>30</y>
           <width>60</width>
           <height>60</height>
          </rect>
@@ -522,7 +519,7 @@ color:#1E8BED;</string>
         <property name="geometry">
          <rect>
           <x>0</x>
-          <y>220</y>
+          <y>120</y>
           <width>250</width>
           <height>100</height>
          </rect>
@@ -607,7 +604,7 @@ color:#333333;</string>
         </size>
        </property>
        <property name="styleSheet">
-        <string notr="true">QWidget#RightWidget{background-color: rgb(252, 252, 252);border-top-right-radius:8px;border-bottom-right-radius:8px;}</string>
+        <string notr="true">QWidget#RightWidget{background-color: rgb(252, 252, 252);}</string>
        </property>
        <layout class="QHBoxLayout" name="rightLayout">
         <property name="spacing">

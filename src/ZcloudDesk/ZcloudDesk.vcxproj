@@ -221,6 +221,7 @@
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(QTDIR)\include;.\..\..\include;$(QTDIR)\include\QtWebKit;$(QTDIR)\include\QtWebkitWidgets;.\..\..\include\qiniu\qiniu;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtSql;$(QTDIR)\include\QtWidgets</IncludePath>
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(QTDIR)\include;.\..\..\include;$(QTDIR)\include\QtWebKit;$(QTDIR)\include\QtWebkitWidgets;.\..\..\include\qiniu\qiniu;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtSql;$(QTDIR)\include\QtWidgets</IncludePath>
     </QtMoc>
+    <ClInclude Include="GeneratedFiles\ui_ZcloudDesk.h" />
     <ClInclude Include="HttpTest.h" />
     <QtMoc Include="Zcloudbrowser.h">
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;$(QTDIR)\include;.\..\..\include;$(QTDIR)\include\QtWebKit;$(QTDIR)\include\QtWebkitWidgets;.\..\..\include\qiniu\qiniu;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtSql;$(QTDIR)\include\QtWidgets</IncludePath>
@@ -235,7 +236,6 @@
     <ClInclude Include="GeneratedFiles\ui_ActivityWidget.h" />
     <ClInclude Include="GeneratedFiles\ui_SettingWidget.h" />
     <ClInclude Include="GeneratedFiles\ui_WallpaperWidget.h" />
-    <ClInclude Include="GeneratedFiles\ui_ZcloudDesk.h" />
     <QtMoc Include="PipeServerThread.h" />
     <QtMoc Include="LoginDialog.h" />
     <QtMoc Include="HttpInterface.h" />

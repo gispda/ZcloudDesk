@@ -57,14 +57,14 @@ public:
     {
         if (EntCenterNewWidget->objectName().isEmpty())
             EntCenterNewWidget->setObjectName(QStringLiteral("EntCenterNewWidget"));
-        EntCenterNewWidget->resize(1016, 639);
+        EntCenterNewWidget->resize(1002, 618);
         QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Preferred);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(EntCenterNewWidget->sizePolicy().hasHeightForWidth());
         EntCenterNewWidget->setSizePolicy(sizePolicy);
-        EntCenterNewWidget->setMinimumSize(QSize(1016, 620));
-        EntCenterNewWidget->setMaximumSize(QSize(1016, 682));
+        EntCenterNewWidget->setMinimumSize(QSize(1002, 618));
+        EntCenterNewWidget->setMaximumSize(QSize(1002, 618));
         EntCenterNewWidget->setStyleSheet(QStringLiteral("QWidget#EntCenterWidget{background-color: rgb(255, 255, 255);};"));
         layoutWidget = new QWidget(EntCenterNewWidget);
         layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
@@ -83,7 +83,7 @@ public:
         EntLeftWidget->setSizePolicy(sizePolicy1);
         EntLeftWidget->setMinimumSize(QSize(250, 618));
         EntLeftWidget->setMaximumSize(QSize(250, 618));
-        EntLeftWidget->setStyleSheet(QStringLiteral("QWidget#EntLeftWidget{background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 #EDF4FF, stop:1 #FAFCFF);border-top-left-radius:8px;border-bottom-left-radius:8px;border-right:1px solid #EBEBEB;}"));
+        EntLeftWidget->setStyleSheet(QStringLiteral("QWidget#EntLeftWidget{background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 #EDF4FF, stop:1 #FAFCFF);}"));
         switchButton = new QToolButton(EntLeftWidget);
         switchButton->setObjectName(QStringLiteral("switchButton"));
         switchButton->setGeometry(QRect(75, 229, 100, 38));
@@ -279,7 +279,7 @@ public:
         EntRightWidget->setSizePolicy(sizePolicy1);
         EntRightWidget->setMinimumSize(QSize(750, 618));
         EntRightWidget->setMaximumSize(QSize(750, 618));
-        EntRightWidget->setStyleSheet(QStringLiteral("QWidget#EntRightWidget{background-color: rgb(252, 252, 252);border-top-right-radius:8px;border-bottom-right-radius:8px;}"));
+        EntRightWidget->setStyleSheet(QStringLiteral("QWidget#EntRightWidget{background-color: rgb(252, 252, 252);}"));
         rightLayout = new QHBoxLayout(EntRightWidget);
         rightLayout->setSpacing(0);
         rightLayout->setContentsMargins(11, 11, 11, 11);

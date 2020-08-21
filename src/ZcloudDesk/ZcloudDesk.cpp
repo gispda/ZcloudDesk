@@ -1199,11 +1199,11 @@ void ZcloudDesk::showCompInfo()
 		if (strText.length() > 12)
 		{
 			ui.labelCompName->setMinimumWidth(150);
-			QFontMetrics fontMetrics(ui.labelCompName->font());
-			int fontSize = fontMetrics.width(strText);//获取之前设置的字符串的像素大小
+			//QFontMetrics fontMetrics(ui.labelCompName->font());
+			//int fontSize = fontMetrics.width(strText);//获取之前设置的字符串的像素大小
 
-			QString strElideText = fontMetrics.elidedText(strText, Qt::ElideRight, ui.labelCompName->width());
-			ui.labelCompName->setText(strElideText);
+			//QString strElideText = fontMetrics.elidedText(strText, Qt::ElideRight, ui.labelCompName->width());
+			ui.labelCompName->setText(strText);
 			//setElideText(12, ui.labelCompName, strText);
 		}
 		else

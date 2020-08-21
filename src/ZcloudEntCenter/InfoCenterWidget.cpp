@@ -46,8 +46,8 @@ InfoCenterWidget::InfoCenterWidget(UserInfoStruct* _userInfo, QWidget *parent /*
 
 	m_pEntCenter = new EntCenterNewWidget(&m_stEntInfo, m_userInfo, ui.widgetCenter);
 	m_pUserCenter = new UserCenterWidget(&m_stEntInfo, _userInfo, ui.widgetCenter);
-	m_pEntCenter->setGeometry(0, 0, 1002, 620);
-	m_pUserCenter->setGeometry(0, 0, 1002, 620);
+	m_pEntCenter->setGeometry(0, -1, 1002, 620);
+	m_pUserCenter->setGeometry(0, -1, 1002, 620);
 
 
 

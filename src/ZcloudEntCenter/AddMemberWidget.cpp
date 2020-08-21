@@ -25,15 +25,19 @@ AddMemberWidget::AddMemberWidget(QString strUid,QString strToken,QWidget *parent
 	connect(ui.cancelButton, &QPushButton::clicked, [this](){
 		close();
 	});
-	ui.label_6->hide();
 	ui.label_7->hide();
 	ui.label_8->hide();
-	ui.label_9->hide();
+
+
+	ui.label_6->hide();
+	ui.labelJobErr->hide();
+	ui.labelPhoneErr->hide();
 
 	connect(ui.lineEditName, &QLineEdit::editingFinished, this, &AddMemberWidget::onNameEditingFinished);
 	connect(ui.lineEditAcc, &QLineEdit::editingFinished, this, &AddMemberWidget::onAccEditingFinished);
 	connect(ui.lineEditPwd, &QLineEdit::editingFinished, this, &AddMemberWidget::onPwdEditingFinished);
-	connect(ui.lineEditJob, &QLineEdit::editingFinished, this, &AddMemberWidget::onJobEditingFinished);	
+	//connect(ui.lineEditJob, &QLineEdit::editingFinished, this, &AddMemberWidget::onJobEditingFinished);
+	connect(ui.lineEditPhone, &QLineEdit::editingFinished, this, &AddMemberWidget::onPhoneEditingFinished);
 }
 
 AddMemberWidget::~AddMemberWidget()
@@ -42,30 +46,22 @@ AddMemberWidget::~AddMemberWidget()
 
 void AddMemberWidget::onAddOkBtnClick()
 {
-	if (!m_bName)
+	if (!onNameEditingFinished()||ui.lineEditName->text().isEmpty())
 	{
 		ui.label_6->show();
-	}
-	if (!m_bAcc)
-	{
-		ui.label_7->show();
-	}
-	if (!m_bPwd)
-	{
-		ui.label_8->show();
-	}
-	if (!m_bJob)
-	{
-		ui.label_9->show();
-	}
-
-	if (!m_bName || !m_bAcc || !m_bPwd || !m_bJob)
-	{
 		return;
 	}
+
+	if (!onPhoneEditingFinished()||ui.lineEditPhone->text().isEmpty())
+	{
+		ui.labelPhoneErr->show();
+		return;
+	}
+
+
 	ZcloudBigDataInterface::GetInstance()->produceData("M00", "OP001", "BAC003");
 	QString strRet;
-	if (!winHttpAddMember(m_strUid, m_strToken, ui.lineEditName->text(), ui.lineEditAcc->text(), ui.lineEditPwd->text(), ui.lineEditJob->text(),strRet))
+	if (!winHttpAddMember(m_strUid, m_strToken, ui.lineEditName->text(), ui.lineEditAcc->text(),  ui.lineEditJob->text(),strRet))
 	{
 		ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_TIP, QString::fromLocal8Bit("操作失败"), QString::fromLocal8Bit("\r\n新增财务成员失败，请稍后再试！"));
 		return;
@@ -127,26 +123,38 @@ void AddMemberWidget::onAddOkBtnClick()
 	}		
 }
 
-bool AddMemberWidget::winHttpAddMember(QString strUid, QString strToken, QString strTrueName, QString strAcc, QString strPwd, QString strJob, QString& strRet)
+bool AddMemberWidget::winHttpAddMember(QString strUid, QString strToken, QString username, QString strAcc, QString strJob, QString& strRet)
 {
-	QString strUrl = QString("/v2/company/set-member-info?user_id=%1&token=%2").arg(strUid).arg(strToken);
-	QString strPost = QString("action_type=add&true_name=%1&account=%2&password=%3&job=%4").arg(strTrueName).arg(strAcc).arg(strPwd).arg(strJob);
+	//QString strUrl = QString("/v2/company/set-member-info?user_id=%1&token=%2").arg(strUid).arg(strToken);
+	//QString strPost = QString("action_type=add&true_name=%1&account=%2&password=%3&job=%4").arg(strTrueName).arg(strAcc).arg(strPwd).arg(strJob);
+	//return ZcloudComFun::httpPost(strUrl, strPost, 5000, strRet);
+
+	QString strUrl = QString("/ucenter/user/bind-member");
+	QString strPost = QString("token=1%&user_id=%2&username=%3&account=%4&job=%5").arg(strToken).arg(strUid).arg(strToken).arg(username).arg(strAcc).arg(strJob);
 	return ZcloudComFun::httpPost(strUrl, strPost, 5000, strRet);
 }
 
-void AddMemberWidget::onNameEditingFinished()
+bool AddMemberWidget::onNameEditingFinished()
 {
 	QRegExp	reg(".{2,20}");
 	QString strText = ui.lineEditName->text();
+	if (strText.isEmpty())
+	{
+		m_bName = true;
+		ui.label_6->hide();
+		return false;
+	}
 	if (!reg.exactMatch(strText))
 	{
 		m_bName = false;
 		ui.label_6->show();
+		return false;
 	}
 	else
 	{
 		m_bName = true;
 		ui.label_6->hide();
+		return true;
 	}
 }
 
@@ -184,24 +192,24 @@ void AddMemberWidget::onPwdEditingFinished()
 	}
 }
 
-void AddMemberWidget::onJobEditingFinished()
-{
-	QRegExp	reg(".{0,10}");
-	QString strText = ui.lineEditJob->text();
+bool AddMemberWidget::onPhoneEditingFinished(){
+	QRegExp reg("^(13|14|15|17|18)\\d{9}$");
+	QString strText = ui.lineEditPhone->text();
 	if (strText.isEmpty())
 	{
-		m_bJob = true;
-		ui.label_9->hide();
-		return;
+		ui.labelPhoneErr->hide();
+		return false;
 	}
 	if (!reg.exactMatch(strText))
 	{
-		m_bJob = false;
-		ui.label_9->show();
+		ui.labelPhoneErr->show();
+		return false;
 	}
 	else
 	{
-		m_bJob = true;
-		ui.label_9->hide();
+		ui.labelPhoneErr->hide();
+		return true;
 	}
 }
+
+

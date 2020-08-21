@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1016</width>
-    <height>639</height>
+    <width>1002</width>
+    <height>618</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -18,14 +18,14 @@
   </property>
   <property name="minimumSize">
    <size>
-    <width>1016</width>
-    <height>620</height>
+    <width>1002</width>
+    <height>618</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>1016</width>
-    <height>682</height>
+    <width>1002</width>
+    <height>618</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -68,7 +68,7 @@
        </size>
       </property>
       <property name="styleSheet">
-       <string notr="true">QWidget#EntLeftWidget{background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 #EDF4FF, stop:1 #FAFCFF);border-top-left-radius:8px;border-bottom-left-radius:8px;border-right:1px solid #EBEBEB;}</string>
+       <string notr="true">QWidget#EntLeftWidget{background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 #EDF4FF, stop:1 #FAFCFF);}</string>
       </property>
       <widget class="QToolButton" name="switchButton">
        <property name="geometry">
@@ -760,7 +760,7 @@ line-height:21px;</string>
        </size>
       </property>
       <property name="styleSheet">
-       <string notr="true">QWidget#EntRightWidget{background-color: rgb(252, 252, 252);border-top-right-radius:8px;border-bottom-right-radius:8px;}</string>
+       <string notr="true">QWidget#EntRightWidget{background-color: rgb(252, 252, 252);}</string>
       </property>
       <layout class="QHBoxLayout" name="rightLayout">
        <property name="spacing">

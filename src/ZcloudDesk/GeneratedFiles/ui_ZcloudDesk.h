@@ -15,6 +15,7 @@
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
@@ -34,7 +35,7 @@ public:
     QPushButton *usernameButton;
     QPushButton *spaceButtonName;
     LabelEx *labelAvatar;
-    LabelEx *labelCompName;
+    QLabel *labelCompName;
     QPushButton *spaceButton_2;
     QPushButton *billListButton;
     QPushButton *appButton;
@@ -111,23 +112,23 @@ public:
         labelAvatar->setSizePolicy(sizePolicy1);
         labelAvatar->setMinimumSize(QSize(26, 26));
         labelAvatar->setMaximumSize(QSize(26, 26));
-        labelAvatar->setStyleSheet(QString::fromUtf8("QLabel{border-image: url(:/ZcloudDesk/image/bg_transparent.png);color: rgb(255, 255, 255);\n"
+        labelAvatar->setStyleSheet(QString::fromUtf8("QLabel{color: rgb(255, 255, 255);\n"
 "font: 12px \"\345\276\256\350\275\257\351\233\205\351\273\221\";padding-left:8px;padding-right:8px;}"));
 
         horizontalLayout->addWidget(labelAvatar);
 
-        labelCompName = new LabelEx(ZcloudTopWidget);
+        labelCompName = new QLabel(ZcloudTopWidget);
         labelCompName->setObjectName(QStringLiteral("labelCompName"));
         sizePolicy.setHeightForWidth(labelCompName->sizePolicy().hasHeightForWidth());
         labelCompName->setSizePolicy(sizePolicy);
         labelCompName->setMinimumSize(QSize(0, 26));
         labelCompName->setMaximumSize(QSize(1000, 26));
         labelCompName->setStyleSheet(QString::fromUtf8("QLabel{border-image: url(:/ZcloudDesk/image/bg_transparent.png);color: rgb(255, 255, 255);\n"
-"font: 12px \"\345\276\256\350\275\257\351\233\205\351\273\221\";padding-left:5px;padding-right:5px;}\n"
-"QLabel:hover{border-image: url(:/ZcloudDesk/image/bg_transparent_hover.png);color: rgb(255, 255, 255);\n"
-"font: 12px \"\345\276\256\350\275\257\351\233\205\351\273\221\";padding-left:5px;padding-right:5px;}\n"
-"QLabel:pressed{border-image: url(:/ZcloudDesk/image/bg_transparent_pre.png);color: rgb(255, 255, 255);\n"
-"font: 12px \"\345\276\256\350\275\257\351\233\205\351\273\221\";padding-left:5px;padding-right:5px;};"));
+"font: 12px \"\345\276\256\350\275\257\351\233\205\351\273\221\";}\n"
+"QPushButton:hover{border-image: url(:/ZcloudDesk/image/bg_transparent_hover.png);color: rgb(255, 255, 255);\n"
+"font: 12px \"\345\276\256\350\275\257\351\233\205\351\273\221\"}\n"
+"QPushButton:pressed{border-image: url(:/ZcloudDesk/image/bg_transparent_pre.png);color: rgb(255, 255, 255);\n"
+"font: 12px \"\345\276\256\350\275\257\351\233\205\351\273\221\"};"));
         labelCompName->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
 
         horizontalLayout->addWidget(labelCompName);

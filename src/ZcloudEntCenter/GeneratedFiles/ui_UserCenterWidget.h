@@ -62,7 +62,6 @@ public:
         UserCenterWidget->setSizePolicy(sizePolicy);
         UserCenterWidget->setMinimumSize(QSize(1002, 620));
         UserCenterWidget->setMaximumSize(QSize(1002, 6200));
-        UserCenterWidget->setStyleSheet(QStringLiteral("QWidget#EntCenterWidget{background-color: rgb(255, 255, 255);};"));
         horizontalLayout_2 = new QHBoxLayout(UserCenterWidget);
         horizontalLayout_2->setSpacing(0);
         horizontalLayout_2->setContentsMargins(11, 11, 11, 11);
@@ -80,7 +79,7 @@ public:
         EntLeftWidget->setSizePolicy(sizePolicy1);
         EntLeftWidget->setMinimumSize(QSize(250, 618));
         EntLeftWidget->setMaximumSize(QSize(250, 618));
-        EntLeftWidget->setStyleSheet(QStringLiteral("QWidget#EntLeftWidget{background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 #EDF4FF, stop:1 #FAFCFF);border-top-left-radius:8px;border-bottom-left-radius:8px;border-right:1px solid #EBEBEB;}"));
+        EntLeftWidget->setStyleSheet(QStringLiteral("QWidget#EntLeftWidget{background-color: rgb(252, 252, 252);}"));
         labelAvatar = new AvatarLabel(EntLeftWidget);
         labelAvatar->setObjectName(QStringLiteral("labelAvatar"));
         labelAvatar->setGeometry(QRect(95, 30, 60, 60));
@@ -152,7 +151,7 @@ public:
 "QPushButton:hover,pressed{ background-color:rgba(255,255,255,0);font: 14px \"\345\276\256\350\275\257\351\233\205\351\273\221\";color:rgba(31,139,237,1);}"));
         labelUser = new QLabel(EntLeftWidget);
         labelUser->setObjectName(QStringLiteral("labelUser"));
-        labelUser->setGeometry(QRect(10, 20, 60, 60));
+        labelUser->setGeometry(QRect(95, 30, 60, 60));
         sizePolicy1.setHeightForWidth(labelUser->sizePolicy().hasHeightForWidth());
         labelUser->setSizePolicy(sizePolicy1);
         labelUser->setMinimumSize(QSize(60, 60));
@@ -199,7 +198,7 @@ public:
         pushButtonLogin->setFlat(true);
         widgetLogin = new QWidget(EntLeftWidget);
         widgetLogin->setObjectName(QStringLiteral("widgetLogin"));
-        widgetLogin->setGeometry(QRect(0, 220, 250, 100));
+        widgetLogin->setGeometry(QRect(0, 120, 250, 100));
         labelName = new QLabel(widgetLogin);
         labelName->setObjectName(QStringLiteral("labelName"));
         labelName->setGeometry(QRect(90, 10, 70, 20));
@@ -225,7 +224,7 @@ public:
         RightWidget->setSizePolicy(sizePolicy1);
         RightWidget->setMinimumSize(QSize(750, 618));
         RightWidget->setMaximumSize(QSize(750, 618));
-        RightWidget->setStyleSheet(QStringLiteral("QWidget#RightWidget{background-color: rgb(252, 252, 252);border-top-right-radius:8px;border-bottom-right-radius:8px;}"));
+        RightWidget->setStyleSheet(QStringLiteral("QWidget#RightWidget{background-color: rgb(252, 252, 252);}"));
         rightLayout = new QHBoxLayout(RightWidget);
         rightLayout->setSpacing(0);
         rightLayout->setContentsMargins(11, 11, 11, 11);

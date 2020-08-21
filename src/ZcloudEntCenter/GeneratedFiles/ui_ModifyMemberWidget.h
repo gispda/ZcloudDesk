@@ -99,6 +99,7 @@ public:
         lineEditJob->setStyleSheet(QLatin1String("QLineEdit{border-radius:4px;color:rgba(51,51,51,1);border:1px solid rgb(222,222,222);font:14px 'Microsoft Yahei';padding-left:10px;}\n"
 "QLineEdit:laceholder{color:rgba(51,51,51,1);}QLineEdit:focus{border:1px solid rgba(30,140,238,1);}\n"
 "QLineEdit:disabled{background-color: rgb(247,248, 250);};"));
+        lineEditJob->setMaxLength(10);
         label_5 = new QLabel(ModifyMemberWidget);
         label_5->setObjectName(QStringLiteral("label_5"));
         label_5->setGeometry(QRect(70, 135, 33, 18));

@@ -218,6 +218,9 @@ QLineEdit:disabled{background-color: rgb(247,248, 250);};</string>
 QLineEdit:laceholder{color:rgba(51,51,51,1);}QLineEdit:focus{border:1px solid rgba(30,140,238,1);}
 QLineEdit:disabled{background-color: rgb(247,248, 250);};</string>
    </property>
+   <property name="maxLength">
+    <number>10</number>
+   </property>
    <property name="placeholderText">
     <string>不超过10个字</string>
    </property>

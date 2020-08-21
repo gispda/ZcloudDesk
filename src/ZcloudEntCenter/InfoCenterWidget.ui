@@ -127,7 +127,7 @@
        <string notr="true">font: 75 16pt &quot;微软雅黑&quot;;</string>
       </property>
       <property name="text">
-       <string>首页</string>
+       <string/>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButtonEntCenter">

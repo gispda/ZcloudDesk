@@ -486,23 +486,23 @@ void EntCenterNewWidget::showUserCompanyInfoTitle(EntCenterInfo*	m_pEntInfo)
 		{
 			showaddCompanyInfoTitle(m_info.strCompany, m_userInfo->m_strTaxNumber, m_userInfo->m_strUsername, m_info.strRoletype);
 
-			////隐藏加入按钮
-			//ui.labeJoin1->hide();
-			////ui.labelJoin2->hide();	
-			////显示人名 职务
-			//
-			//ui.labeluser->show();
-			//ui.labeluserline->show();
-			//ui.labeluserroletype->show();
+			//隐藏加入按钮
+			ui.labeJoin1->hide();
+			ui.labelJoin2->hide();	
+			//显示人名 职务
+			
+			ui.labeluser->show();
+			ui.labeluserline->show();
+			ui.labeluserroletype->show();
 
-			//ui.labeluser->setText(m_pEntInfo->_strUsername);
-			////if (m_info.nroletype == 1)
-			//if (m_pEntInfo->_nrole_type == 1){
-			//	ui.labeluserroletype->setText(QString::fromLocal8Bit("管理员"));
-			//}
-			//else{
-			//	ui.labeluserroletype->setText(QString::fromLocal8Bit("财务人员"));
-			//}
+			ui.labeluser->setText(m_pEntInfo->_strUsername);
+			//if (m_info.nroletype == 1)
+			if (m_pEntInfo->_nrole_type == 1){
+				ui.labeluserroletype->setText(QString::fromLocal8Bit("管理员"));
+			}
+			else{
+				ui.labeluserroletype->setText(QString::fromLocal8Bit("普通用户"));
+			}
 		}
 		else{
 			//ui.labeJoin1->show();
@@ -579,6 +579,7 @@ void EntCenterNewWidget::showUserCompanyInfoTitle(EntCenterInfo*	m_pEntInfo)
 		//个人信息
 		ui.labeluser->show();
 		ui.labeluserline->show();
+
 		ui.labeluserroletype->show();
 
 
@@ -590,8 +591,10 @@ void EntCenterNewWidget::showUserCompanyInfoTitle(EntCenterInfo*	m_pEntInfo)
 	{
 		//未加入企业
 
-		ui.labeJoin1->show();
-		ui.labelJoin2->show();
+		if (this->m_userInfo->m_bLoginByTax != -8){
+			ui.labeJoin1->show();
+			ui.labelJoin2->show();
+		}
 
 		ui.labeluser->hide();
 		ui.labeluserline->hide();
@@ -619,17 +622,17 @@ void EntCenterNewWidget::clearUserCompanyInfoTitle()
 void EntCenterNewWidget::showUnaddCompanyInfoTitle(QString _strcompany, QString _strtaxno, QString _strUserorjoin1, QString _strjoinaction)
 {
 
-	ui.labelAvatar->setGeometry(95, 59, 60, 60);
+	/*ui.labelAvatar->setGeometry(95, 59, 60, 60);
 	ui.labelAvatar->setStyleSheet("background:rgba(216,216,216,1);	border:1px solid rgba(151, 151, 151, 1); ");
 
 	ui.labelComName->setGeometry(55, 139, 140, 14);
-	ui.labelComName->setText(QString::fromLocal8Bit("<html><head/><body><p><span style=\"font-size:14px;font-family:SourceHanSansCN - Normal, SourceHanSansCN;	font-weight:400;color:rgba(51, 51, 51, 1);line-height:21px; \"> %1</span></p></body></html>").arg(_strcompany));
+	ui.labelComName->setText(QString::fromLocal8Bit("<html><head/><body><p><span style=\"font-size:14px;font-family:SourceHanSansCN - Normal, SourceHanSansCN;	font-weight:400;color:rgba(51, 51, 51, 1);line-height:21px; \"> %1</span></p></body></html>").arg(_strcompany));*/
 	ui.labelComName->show();
 
 	if (!_strUserorjoin1.isEmpty())
 	{
-		ui.labeJoin1->setGeometry(35, 195, 126, 18);
-		ui.labeJoin1->setText(QString::fromLocal8Bit("<html><head/><body><p><span style=\"font-size:14px;font-family:SourceHanSansCN - Normal, SourceHanSansCN;font-weight:400;color:rgba(102, 102, 102, 1);line-height:21px;\"> %1</span></p></body></html>").arg(_strUserorjoin1));
+		/*ui.labeJoin1->setGeometry(35, 195, 126, 18);
+		ui.labeJoin1->setText(QString::fromLocal8Bit("<html><head/><body><p><span style=\"font-size:14px;font-family:SourceHanSansCN - Normal, SourceHanSansCN;font-weight:400;color:rgba(102, 102, 102, 1);line-height:21px;\"> %1</span></p></body></html>").arg(_strUserorjoin1));*/
 		//ui.labeluser->setStyleSheet("font-size:14px;font - family:SourceHanSansCN - Normal, SourceHanSansCN;font-weight:400;color:rgba(102, 102, 102, 1);line-height:21px; ");
 		ui.labeJoin1->show();
 	}
@@ -640,8 +643,8 @@ void EntCenterNewWidget::showUnaddCompanyInfoTitle(QString _strcompany, QString 
 
 	if (!_strtaxno.isEmpty())
 	{
-		ui.labelTaxNo->setGeometry(64, 163, 122, 16);
-		ui.labelTaxNo->setText(QString::fromLocal8Bit("<html><head/><body><p><span style=\"font-size:12px;font-family:SourceHanSansCN - Normal, SourceHanSansCN;font-weight:400;color:rgba(51, 51, 51, 1);line-height:18px;\"> %1</span></p></body></html>").arg(_strtaxno));
+		//ui.labelTaxNo->setGeometry(64, 163, 122, 16);
+		//ui.labelTaxNo->setText(QString::fromLocal8Bit("<html><head/><body><p><span style=\"font-size:12px;font-family:SourceHanSansCN - Normal, SourceHanSansCN;font-weight:400;color:rgba(51, 51, 51, 1);line-height:18px;\"> %1</span></p></body></html>").arg(_strtaxno));
 		ui.labelTaxNo->show();
 	}
 	else
@@ -649,12 +652,13 @@ void EntCenterNewWidget::showUnaddCompanyInfoTitle(QString _strcompany, QString 
 
 	if (!_strjoinaction.isEmpty())
 	{
-		ui.labelJoin2->setGeometry(161, 195, 56, 18);
-		ui.labelJoin2->setText(QString::fromLocal8Bit("<html><head/><body><p><span style=\"font-size:14px;font-family:SourceHanSansCN - Normal, SourceHanSansCN;font-weight:400;color:rgba(30, 139, 237, 1);line-height:21px;\"> %1</span></p></body></html>").arg(_strjoinaction));
+		//ui.labelJoin2->setGeometry(161, 195, 56, 18);
+		//ui.labelJoin2->setText(QString::fromLocal8Bit("<html><head/><body><p><span style=\"font-size:14px;font-family:SourceHanSansCN - Normal, SourceHanSansCN;font-weight:400;color:rgba(30, 139, 237, 1);line-height:21px;\"> %1</span></p></body></html>").arg(_strjoinaction));
 		ui.labelJoin2->show();
 	}
-	else
-		//ui.labelJoin2->hide();
+	else{
+		ui.labelJoin2->hide();
+	}
 	ui.labeluserroletype->hide();
 	ui.labeluserline->hide();
 	ui.labeluser->hide();
@@ -666,7 +670,7 @@ void EntCenterNewWidget::showUnaddCompanyInfoTitle(QString _strcompany, QString 
 
 
 	//ui.copyTaxButton->setGeometry(191, 162, 16, 16);
-	ui.copyTaxButton->setStyleSheet("QPushButton{border-image: url(:/EntCenterWidget/image/copy.png);}\nQPushButton:hover,pressed{border-image: url(:/EntCenterWidget/image/copy_sel.png);}");
+	//ui.copyTaxButton->setStyleSheet("QPushButton{border-image: url(:/EntCenterWidget/image/copy.png);}\nQPushButton:hover,pressed{border-image: url(:/EntCenterWidget/image/copy_sel.png);}");
 	ui.copyTaxButton->hide();
 
 
@@ -695,21 +699,21 @@ void EntCenterNewWidget::showaddCompanyInfoTitle(QString _strcompany, QString _s
 {
 
 	////ui.labelAvatar->setGeometry(95, 59, 60, 60);
-	ui.labelAvatar->setStyleSheet("background:rgba(216,216,216,1);	border:1px solid rgba(151, 151, 151, 1); ");
+	//ui.labelAvatar->setStyleSheet("background:rgba(216,216,216,1);	border:1px solid rgba(151, 151, 151, 1); ");
 
 	////ui.labelComName->setGeometry(55, 139, 140, 14);
 
-	ui.labelComName->setText(QString::fromLocal8Bit("<html><head/><body><p><span style=\"font-size:14px;font - family:SourceHanSansCN - Normal, SourceHanSansCN;font-weight:400;color:rgba(51, 51, 51, 1);line-height:21px; \"> %1</span></p></body></html>").arg(_strcompany));
+	//ui.labelComName->setText(QString::fromLocal8Bit("<html><head/><body><p><span style=\"font-size:14px;font - family:SourceHanSansCN - Normal, SourceHanSansCN;font-weight:400;color:rgba(51, 51, 51, 1);line-height:21px; \"> %1</span></p></body></html>").arg(_strcompany));
 
 
 	////ui.labeluser->setGeometry(59, 195, 126, 14);
 
-	ui.labeluser->setText(QString::fromLocal8Bit("<html><head/><body><p><span style=\"font-size:14px;font - family:SourceHanSansCN - Normal, SourceHanSansCN;font-weight:400;color:rgba(51, 51, 51, 1);	line-height:21px; \"> %1</span></p></body></html>").arg(_strUser));
+	//ui.labeluser->setText(QString::fromLocal8Bit("<html><head/><body><p><span style=\"font-size:14px;font - family:SourceHanSansCN - Normal, SourceHanSansCN;font-weight:400;color:rgba(51, 51, 51, 1);	line-height:21px; \"> %1</span></p></body></html>").arg(_strUser));
 
 
 	////ui.labelTaxNo->setGeometry(64, 163, 122, 12);
 
-	ui.labelTaxNo->setText(QString::fromLocal8Bit("<html><head/><body><p><span style=\"font-size:12px;font - family:SourceHanSansCN - Normal, SourceHanSansCN;font-weight:400;color:rgba(51, 51, 51, 1);line-height:18px;\"> %1</span></p></body></html>").arg(_strtaxno));
+	//ui.labelTaxNo->setText(QString::fromLocal8Bit("<html><head/><body><p><span style=\"font-size:12px;font - family:SourceHanSansCN - Normal, SourceHanSansCN;font-weight:400;color:rgba(51, 51, 51, 1);line-height:18px;\"> %1</span></p></body></html>").arg(_strtaxno));
 
 	ui.labelTaxNo->show();
 
@@ -721,18 +725,18 @@ void EntCenterNewWidget::showaddCompanyInfoTitle(QString _strcompany, QString _s
 	ui.labeluserline->show();
 	////ui.labelroletype->setGeometry(128, 195, 42, 14);
 
-	ui.labeluserroletype->setText(QString::fromLocal8Bit("<html><head/><body><p><span style=\"font-size:14px;font-family:SourceHanSansCN - Normal, SourceHanSansCN;font-weight:400;color:rgba(102, 102, 102, 1);line-height:21px;\"> %1</span></p></body></html>").arg(_straroletype));
+	//ui.labeluserroletype->setText(QString::fromLocal8Bit("<html><head/><body><p><span style=\"font-size:14px;font-family:SourceHanSansCN - Normal, SourceHanSansCN;font-weight:400;color:rgba(102, 102, 102, 1);line-height:21px;\"> %1</span></p></body></html>").arg(_straroletype));
 
 
 	////ui.switchButton->setGeometry(75, 229, 100, 38);
-	ui.switchButton->setStyleSheet("background:linear - gradient(90deg, rgba(2, 164, 253, 1) 0 % , rgba(31, 139, 237, 1) 100 % );box - shadow:0px 3px 8px - 2px rgba(2, 165, 253, 0.85), 0px 6px 11px - 2px rgba(2, 165, 253, 0.64);border - radius:4px; ");
+	//ui.switchButton->setStyleSheet("background:linear - gradient(90deg, rgba(2, 164, 253, 1) 0 % , rgba(31, 139, 237, 1) 100 % );box - shadow:0px 3px 8px - 2px rgba(2, 165, 253, 0.85), 0px 6px 11px - 2px rgba(2, 165, 253, 0.64);border - radius:4px; ");
 
 
 	////ui.copyTaxButton->setGeometry(191, 162, 16, 16);
-	ui.copyTaxButton->setStyleSheet("QPushButton{border-image: url(:/EntCenterWidget/image/copy.png);}\nQPushButton:hover,pressed{border-image: url(:/EntCenterWidget/image/copy_sel.png);}");
+	//ui.copyTaxButton->setStyleSheet("QPushButton{border-image: url(:/EntCenterWidget/image/copy.png);}\nQPushButton:hover,pressed{border-image: url(:/EntCenterWidget/image/copy_sel.png);}");
 	ui.copyTaxButton->show();
 
-	ui.labelJoin2->setStyleSheet("font-size:14px;	font-family:SourceHanSansCN - Normal, SourceHanSansCN;font-weight:400;color:rgba(30, 139, 237, 1);line-height:21px; ");
+	//ui.labelJoin2->setStyleSheet("font-size:14px;	font-family:SourceHanSansCN - Normal, SourceHanSansCN;font-weight:400;color:rgba(30, 139, 237, 1);line-height:21px; ");
 
 
 }

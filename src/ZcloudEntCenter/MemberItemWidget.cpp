@@ -115,6 +115,8 @@ MemberItemWidget::MemberItemWidget(int nAdmin,int nIndex, QString strUid, QStrin
 			m_pMenu->addAction(m_pActionHandOver);
 			m_pMenu->addAction(m_pActionRemoveMember);
 			m_pMenu->setFixedSize(96, 96);
+
+			ui.labelRole->setText(QString::fromLocal8Bit("普通用户"));
 		}
 		else
 		{
@@ -147,7 +149,6 @@ MemberItemWidget::MemberItemWidget(int nAdmin,int nIndex, QString strUid, QStrin
 		m_pMenu->addAction(m_pActionRemoveMember);
 
 		ui.operButton->setMenu(m_pMenu);
-		ui.labelRole->setText(QString::fromLocal8Bit("普通用户"));
 	}
 	else
 	{

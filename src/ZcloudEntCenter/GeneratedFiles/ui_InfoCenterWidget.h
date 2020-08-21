@@ -138,7 +138,7 @@ public:
         label->setText(QString());
         pushButtonBack->setText(QString());
         labelSubTitle->setText(QApplication::translate("InfoCenterWidget", "\346\240\207\351\242\230", 0));
-        label_2->setText(QApplication::translate("InfoCenterWidget", "\351\246\226\351\241\265", 0));
+        label_2->setText(QString());
         pushButtonEntCenter->setText(QApplication::translate("InfoCenterWidget", "\344\274\201\344\270\232\344\270\255\345\277\203", 0));
         pushButtonUserCenter->setText(QApplication::translate("InfoCenterWidget", "\344\270\252\344\272\272\344\270\255\345\277\203", 0));
         labelEntCenter->setText(QString());

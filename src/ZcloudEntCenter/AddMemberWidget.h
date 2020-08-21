@@ -15,14 +15,15 @@ signals:
 	void sigAddMember();
 private slots :
 	void onAddOkBtnClick();
-	void onNameEditingFinished();
+	bool onNameEditingFinished();
 	void onAccEditingFinished();
 	void onPwdEditingFinished();
-	void onJobEditingFinished();
+	//void onJobEditingFinished();
+	bool onPhoneEditingFinished();
 private:
 
 	//!ÃÌº”≥…‘±
-	bool winHttpAddMember(QString strUid, QString strToken, QString strTrueName, QString strAcc, QString strPwd, QString strJob, QString& strRet);
+	bool winHttpAddMember(QString strUid, QString strToken, QString strTrueName, QString strAcc,  QString strJob, QString& strRet);
 
 	Ui::AddMemberWidget ui;
 	QString		m_strUid;
