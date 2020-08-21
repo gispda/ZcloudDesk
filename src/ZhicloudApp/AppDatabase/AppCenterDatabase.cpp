@@ -217,7 +217,7 @@ bool AppCenterDatabase::insertClass(AppClassInfo appClassInfo)
 	sqlQuery.bindValue(6, appClassInfo.m_strReserved2);
 	if (!sqlQuery.exec())
 	{
-		qDebug() << "zcd-0x00000009:" << sqlQuery.lastError() << sqlQuery.lastError().driverText().toStdString().c_str();
+		//qDebug() << "zcd-0x00000009:" << sqlQuery.lastError() << sqlQuery.lastError().driverText().toStdString().c_str();
 		return false;
 	}
 	return true;
@@ -238,7 +238,7 @@ bool AppCenterDatabase::removeClassAppInfo(QString strClassId)
 	exestr = QString("delete from ClassAppInfo where userId = '%1' AND classId = '%2' AND compId = '%3';").arg(app_userInfo.m_strUserId).arg(strClassId).arg(app_userInfo.m_strCompanyId);
 	if (!sqlQuery.exec(exestr))
 	{
-		qDebug() << "zcd-0x00000051:" << sqlQuery.lastError() << sqlQuery.lastError().driverText().toStdString().c_str();
+		//qDebug() << "zcd-0x00000051:" << sqlQuery.lastError() << sqlQuery.lastError().driverText().toStdString().c_str();
 		return false;
 	}
 	return true;
@@ -259,7 +259,7 @@ bool AppCenterDatabase::removeClassAppInfo_Class(QString strAppId)
 	exestr = QString("delete from ClassAppInfo where userId = '%1' AND appId = '%2' AND compId = '%3';").arg(app_userInfo.m_strUserId).arg(strAppId).arg(app_userInfo.m_strCompanyId);
 	if (!sqlQuery.exec(exestr))
 	{
-		qDebug() << "zcd-0x00000052:" << sqlQuery.lastError() << sqlQuery.lastError().driverText().toStdString().c_str();
+		//qDebug() << "zcd-0x00000052:" << sqlQuery.lastError() << sqlQuery.lastError().driverText().toStdString().c_str();
 		return false;
 	}
 	return true;
@@ -825,7 +825,7 @@ bool AppCenterDatabase::findClassAppList(QList<AppDataInfo > &appDataInfoList, Q
 	{
 		for (int i = 0; i < 34; i++){
 			QVariant v=sqlQuery.value(i);
-			qDebug() << v;
+			//qDebug() << v;
 		}
 
 		AppDataInfo appDataInfo;

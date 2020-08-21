@@ -646,7 +646,7 @@ void RightClassAppWidget::exitThread()
 			if (m_initDeskThread->isRunning())
 			{
 				int i;
-				qDebug() << "aaaaaaaa";
+				//qDebug() << "aaaaaaaa";
 			}
 		}
 	}

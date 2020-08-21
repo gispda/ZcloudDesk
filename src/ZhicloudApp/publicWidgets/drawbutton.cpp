@@ -34,7 +34,7 @@ void DragButton::setPixmap(QString pixmapPath)
 	m_pixmap.loadFromData(pData);
 	if (m_pixmap.isNull())
 	{
-		qDebug() << "pixmapPath:" << pixmapPath;
+		//qDebug() << "pixmapPath:" << pixmapPath;
 	}
 	file.close();
 }

@@ -86,8 +86,8 @@ bool DownloadAssist::winHttpGetDownloadAssistant(QString& strDownloadUrl, QStrin
 		strLocation = QString("&province=%1&city=%2").arg(strPro).arg(strCity);
 		strBody += strLocation;
 	}
-	qDebug() << "http url:" << strUrl;
-	qDebug() << "http post:" << strBody;
+	//qDebug() << "http url:" << strUrl;
+	//qDebug() << "http post:" << strBody;
 	QString strRet;
 	if (!httpPost(strUrl, strBody, 5000, strRet))
 	{
