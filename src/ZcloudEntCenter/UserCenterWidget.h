@@ -22,29 +22,15 @@ public:
 
 	void modifyCoinCount(int nCount);
 signals:
-	////!切换账号
-	//void sigSwitchAcc(int, bool, QString, QString);
-
-	////购买会员成功
-	//void sendVipListSignals(QStringList, QStringList, QStringList);
-
-	////修改用户名和职务
-	//void trueNameJobChange(QString, QString);
-
-	////绑定手机号
-	//void bingdingPhoneSignal();
-
-	////!绑定手机号成功
-	//void sigSignBindingSucceeded( const QString &strMobile);
-
-	////!打开签到中心
-	//void openSignInWidget(QWidget*);
+	void sigNeedLogin();
+	
 
 protected:
 	bool eventFilter(QObject *target, QEvent *e);
 
 
 private slots:
+	void needLogin();
 //!完善资料修改云币
 void onChangeCoin(int nCoin);
 

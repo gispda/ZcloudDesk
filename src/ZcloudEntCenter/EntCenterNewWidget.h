@@ -47,12 +47,14 @@ protected:
 signals:
 	//!«–ªª’À∫≈
 	void sigSwitchAcc(int, bool, QString, QString);
+	void sigNeedLogin();
 
 protected:
 	bool eventFilter(QObject *target, QEvent *e);
 
 
 	private slots:
+	void needLogin();
 
 	bool onJoinEnt(QString strCompanyid);
 

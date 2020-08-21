@@ -18,6 +18,8 @@ ZcloudEntCenterImpl::~ZcloudEntCenterImpl()
 
 void ZcloudEntCenterImpl::createEntCenter(QString strUid, QString strToken){
 	CreateEntInfoWidget* pEntComWidget = new CreateEntInfoWidget(&this->m_userInfo,strUid,  strToken);
+
+
 	pEntComWidget->setAttribute(Qt::WA_DeleteOnClose);
 	//pEntComWidget->show();
 	pEntComWidget->show();
@@ -52,9 +54,17 @@ void ZcloudEntCenterImpl::setUserInfo(QString strUid, QString strToken, QString 
 	m_strMobile = strMobile;
 	m_strCompId = strCompId;
 	m_strUserName = strUserName;
+
+
+
+
 }
 
 
+
+void ZcloudEntCenterImpl::needLogin(){
+	emit sigNeedLoginMain();
+}
 
 
 void ZcloudEntCenterImpl::openEntCenter(QString strUid, QString strToken, QString strTrueName, QString strJob, int isLoginByTax, QString strMobile, QString strCompId,QString strUserName)
@@ -199,6 +209,14 @@ void ZcloudEntCenterImpl::modifyCoinCount(int nCount)
 void ZcloudEntCenterImpl::setUserInfo(UserInfoStruct _userInfo)
 {
 	m_userInfo = _userInfo;
+	//合并后的企业中心和个人中心   用id查询企业信息和用户信息失败
+	getInfoCenterWidget();
+
+
+	m_pInfoCenterWidget->setUserInfo(&m_userInfo);
+	//m_pInfoCenterWidget->init();
+	m_pInfoCenterWidget->show();
+
 }
 
 void ZcloudEntCenterImpl::onSwitchAcc(int bLoginByTax, bool bOther, QString strTaxNo_userName, QString strPwd)

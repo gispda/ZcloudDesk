@@ -26,7 +26,8 @@ UserCenterWidget::UserCenterWidget(EntCenterInfo*	info,UserInfoStruct* _userInfo
 	//ui.rightLayout->addWidget(mp_UserCenterMain);
 	//ui.rightLayout->addWidget(mp_UserCenterAcc);
 
-
+	connect(mp_UserCenterMain, SIGNAL(sigNeedLogin()), this, SLOT(needLogin()));
+	connect(mp_UserCenterAcc, SIGNAL(sigNeedLogin()), this, SLOT(needLogin()));
 
 	mp_UserCenterAcc->hide();
 
@@ -93,6 +94,9 @@ UserCenterWidget::UserCenterWidget(EntCenterInfo*	info,UserInfoStruct* _userInfo
 	m_pUserDefult->hide();*/
 	
 }
+void UserCenterWidget::needLogin(){
+	emit sigNeedLogin();
+}
 void UserCenterWidget::init(EntCenterInfo*	entinfo,UserInfoStruct*	info){
 	this->m_userInfo = info;
 	
@@ -126,6 +130,11 @@ UserCenterWidget ::~UserCenterWidget(){
 }
 
 void UserCenterWidget::onShowAcc(){
+	if (-8 == m_userInfo->m_bLoginByTax){
+		emit sigNeedLogin();
+		return;
+	}
+
 	mp_UserCenterMain->hide();
 	mp_UserCenterAcc->show();
 }

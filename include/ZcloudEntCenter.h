@@ -55,6 +55,7 @@ public:
 	virtual void setToken(QString strToken) = 0;
 
 signals:
+	void sigNeedLoginMain();
 	void sigSwitchAcc(int, bool, QString, QString);
 	void sendVipListSignals(QStringList, QStringList, QStringList);
 	//修改用户资料

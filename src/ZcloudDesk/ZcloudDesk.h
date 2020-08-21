@@ -50,12 +50,12 @@ protected:
 	void closeEvent(QCloseEvent *event);
 	bool nativeEvent(const QByteArray &eventType, void *message, long *result);
 
-	bool showLoginTip();
 signals:
 	void startInitSignal(int);
 	void applyLogin();
-	private slots:
+private slots:
 
+	bool showLoginTip();
 
 	void startDownAndUpdate(QString softUrl , CheckUpdater* obj);
 	///登陆的实际操作函数入口

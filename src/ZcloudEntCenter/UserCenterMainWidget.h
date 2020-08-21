@@ -20,6 +20,8 @@ public:
 	//!设置用户数据
 	void modifyCoinCount(int nCount);
 signals:
+
+	void sigNeedLogin();
 	//!打开签到中心
 	void openSignInWidget(QWidget*);
 	//!绑定手机号成功
@@ -29,6 +31,7 @@ protected:
 
 
 private slots:
+
 	//!签到
 	void onSignInBtnClick();	
 	//!完善资料修改云币

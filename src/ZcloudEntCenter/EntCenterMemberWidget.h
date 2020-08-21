@@ -21,6 +21,7 @@ public:
 	void init(EntCenterInfo*	info);
 
 signals:
+	void sigNeedLogin();
 	void sigEditMemberSucessed(const QString&, const QString&);
 protected:
 	bool eventFilter(QObject *target, QEvent *e);

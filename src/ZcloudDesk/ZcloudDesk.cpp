@@ -577,10 +577,10 @@ void ZcloudDesk::openEntCenterWidget()
 
 
 	
-	if (!showLoginTip())
-	{
-		return;
-	}
+	//if (!showLoginTip())
+	//{
+	//	return;
+	//}
 
 	createEnterCenterMgr();
 
@@ -2091,6 +2091,7 @@ void ZcloudDesk::createEnterCenterMgr()
 		m_pEntCenter = ZcloudEntCenter::createNew();
 		m_pEntCenter->setUserInfo(m_stUserInfo);
 ///		m_pEntCenter->InitCompanyInfo(m_stUserInfo);
+		connect(m_pEntCenter, SIGNAL(sigNeedlogin()), this, SLOT(showLoginTip()));
 
 	}
 	
@@ -2098,7 +2099,9 @@ void ZcloudDesk::createEnterCenterMgr()
 
 void ZcloudDesk::InitEntCenter()
 {
-
+	connect(m_pEntCenter, SIGNAL(sigNeedLoginMain()), this, SLOT(showLoginTip()));
+	connect(m_pEntCenter, SIGNAL(sigNeedLoginMain()), this, SLOT(doLogin()));
+	
 	connect(m_pEntCenter, SIGNAL(sigSwitchAcc(int, bool, QString, QString)), this, SLOT(onSwitchAcc(int, bool, QString, QString)));
 	connect(m_pEntCenter, SIGNAL(bingdingPhoneSignal()), this, SLOT(bingdingPhoneSlot()));
 	connect(m_pEntCenter, SIGNAL(sigSignBindingSucceeded(const QString&)), this, SLOT(slotChangeMobile(const QString&)));
@@ -2153,6 +2156,12 @@ void ZcloudDesk::doLogin()
 				}
 
 			}
+
+			//µÇÂ¼ºó³õÊ¼»¯
+			if (m_pEntCenter != NULL){
+				m_pEntCenter->setUserInfo(m_stUserInfo);
+			}
+
 		}
 		return;
 	}

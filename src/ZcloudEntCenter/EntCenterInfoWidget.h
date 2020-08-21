@@ -19,6 +19,10 @@ public:
 	//!初始化用户信息 
 	void init(EntCenterInfo* info);
 
+signals:
+
+	void sigNeedLogin();
+
 	private slots:
 	void onEntEditBtnClick();
 	void onInvoiceEditBtnClick();

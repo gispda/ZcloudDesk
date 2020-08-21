@@ -20,6 +20,8 @@ public:
 	//!设置用户数据
 	void setUserInfo(QString strUid, QString strToken, QString strTrueName, QString strJob, int isLoginByTax, QString strMobile, QString strCompId, QString strUserName);
 
+	void setUserInfo(UserInfoStruct* _userInfo);
+
 	//bool winHttpGetEntInfo( QString strTaxno, QString strToken, QString& strRet);
 	//!查询企业信息
 	static bool winHttpGetCompanyInfo(QString strTaxno, QString strToken, QString& strRet);
@@ -30,7 +32,7 @@ public:
 
 
 signals:
-
+	void sigNeedLogin();
 	void sigSwitchAcc(int, bool, QString, QString);
 
 protected:
@@ -40,6 +42,7 @@ protected:
 
 
 private slots:
+void needLogin();
 void showEntCenter();
 void showUserCenter();	
 

@@ -47,7 +47,7 @@ void EntCenterInfoWidget::init(EntCenterInfo* info){
 	////管理员权限 显示编辑
 	ui.entEditWidget->hide();
 	ui.invoiceEditWidget->hide();
-	if (m_pInfo->_nrole_type == 1)
+	if (m_pInfo->_nrole_type == 1&&-8!=this->m_userInfo->m_bLoginByTax)
 	{
 		ui.entEditWidget->show();
 		ui.invoiceEditWidget->show();
@@ -60,6 +60,11 @@ void EntCenterInfoWidget::init(EntCenterInfo* info){
 
 void EntCenterInfoWidget::onEntEditBtnClick()
 {
+	if (-8 == m_userInfo->m_bLoginByTax){
+		emit sigNeedLogin();
+		return;
+	}
+
 	ZcloudBigDataInterface::GetInstance()->produceData("M00", "OP001", "BBD001");
 	EditEntInfoWidget*	pWidget = new EditEntInfoWidget(this->m_userInfo, m_pInfo, true, this);
 	connect(pWidget, &EditEntInfoWidget::sigUpdateSucessed, this, &EntCenterInfoWidget::onUpdateEntSucessed);

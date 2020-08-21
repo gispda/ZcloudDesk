@@ -23,6 +23,7 @@ public:
 signals:
 	
 
+	void sigNeedLogin();
 	//°ó¶¨ÊÖ»úºÅ
 	void bingdingPhoneSignal();
 

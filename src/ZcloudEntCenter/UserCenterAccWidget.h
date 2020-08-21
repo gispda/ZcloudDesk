@@ -23,6 +23,7 @@ public:
 
 	void modifyCoinCount(int nCount);
 signals:
+	void sigNeedLogin();
 	void sigChangeCoin(int);
 	void sigEditUserInfoSucessed(const QString&, const QString&);
 	void sigBindMobileSucessed(const QString&);

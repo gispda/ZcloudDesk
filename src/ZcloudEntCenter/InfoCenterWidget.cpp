@@ -19,28 +19,10 @@
 InfoCenterWidget::InfoCenterWidget(UserInfoStruct* _userInfo, QWidget *parent /*= 0*/) :QWidget( parent)
 {
 	ui.setupUi(this);
-
-	//resize(1002, 620);
-	//setWindowTitle(QString::fromLocal8Bit("企业中心"));
-
-	setWindowFlags(Qt::FramelessWindowHint );
-	setAttribute(Qt::WA_TranslucentBackground, true);
-	setStyleSheet("outline: none");
-
-	ui.labelUserCenter->hide();
-
-	connect(ui.pushButtonEntCenter, SIGNAL(clicked()), this, SLOT(showEntCenter()));
-	connect(ui.pushButtonUserCenter, SIGNAL(clicked()), this, SLOT(showUserCenter()));
-	
 	m_userInfo = _userInfo;
 	m_bIsloadDb = false;
 
-
-	////查询企业信息   在各自页面查询  这里删除
-	//loadEntInfo();
-
 	QString strRet;
-
 	//获取企业信息
 	if (!getEntInfo(&m_stEntInfo, m_userInfo->m_strTaxNumber, m_userInfo->m_strToken, strRet))
 	{
@@ -52,10 +34,26 @@ InfoCenterWidget::InfoCenterWidget(UserInfoStruct* _userInfo, QWidget *parent /*
 		EntDataBase::GetInstance()->insertEntCenterInfo(m_stEntInfo);
 	}
 
+
+	setWindowFlags(Qt::FramelessWindowHint );
+	setAttribute(Qt::WA_TranslucentBackground, true);
+	setStyleSheet("outline: none");
+
+	ui.labelUserCenter->hide();
+
+	connect(ui.pushButtonEntCenter, SIGNAL(clicked()), this, SLOT(showEntCenter()));
+	connect(ui.pushButtonUserCenter, SIGNAL(clicked()), this, SLOT(showUserCenter()));
+
 	m_pEntCenter = new EntCenterNewWidget(&m_stEntInfo, m_userInfo, ui.widgetCenter);
-
-
 	m_pUserCenter = new UserCenterWidget(&m_stEntInfo, _userInfo, ui.widgetCenter);
+	m_pEntCenter->setGeometry(0, 0, 1002, 620);
+	m_pUserCenter->setGeometry(0, 0, 1002, 620);
+
+
+
+	connect(m_pEntCenter, SIGNAL(sigNeedLogin()), this, SLOT(needLogin()));
+	connect(m_pUserCenter, SIGNAL(sigNeedLogin()), this, SLOT(needLogin()));
+
 	m_pUserCenter->hide();
 
 	connect(ui.closeButton, &QPushButton::clicked, [this](){
@@ -63,13 +61,11 @@ InfoCenterWidget::InfoCenterWidget(UserInfoStruct* _userInfo, QWidget *parent /*
 	});
 	
 	connect(m_pEntCenter, SIGNAL(sigSwitchAcc(int, bool, QString, QString)), this, SLOT(onSwitchAcc(int, bool, QString, QString)));
-	//connect(this, SIGNAL(sigSwitchAcc(int, bool, QString, QString)), this, SLOT(onSwitchAcc(int, bool, QString, QString)));
-	//m_pUserDefult = new QWidget(ui.EntRightWidget);
-	//m_pUserDefult->setGeometry(20, 140, 711, 181);
-	//m_pUserDefult->setStyleSheet("border-image:url(:/InfoCenterWidget/image/userVipDefualt.png);");
-	//m_pUserDefult->setAttribute(Qt::WA_DeleteOnClose);
-	//m_pUserDefult->hide();
 
+
+}
+void InfoCenterWidget::needLogin(){
+	emit sigNeedLogin();
 }
 
 void InfoCenterWidget::showEntCenter(){
@@ -91,6 +87,25 @@ void InfoCenterWidget::showUserCenter(){
 	ui.labelUserCenter->show();
 }
 
+void InfoCenterWidget::setUserInfo(UserInfoStruct* _userInfo){
+	m_userInfo = _userInfo;
+	m_bIsloadDb = false;
+
+	QString strRet;
+	//获取企业信息
+	if (!getEntInfo(&m_stEntInfo, m_userInfo->m_strTaxNumber, m_userInfo->m_strToken, strRet))
+	{
+		//!失败 从数据库读出
+		EntDataBase::GetInstance()->queryEntCenterInfo(m_strUid, m_stEntInfo);
+	}
+	else
+	{
+		EntDataBase::GetInstance()->insertEntCenterInfo(m_stEntInfo);
+	}
+	m_pEntCenter->init(&m_stEntInfo);
+	m_pUserCenter->init(&m_stEntInfo, _userInfo);
+
+}
 void InfoCenterWidget::setUserInfo(QString strUid, QString strToken, QString strTrueName, QString strJob, int isLoginByTax, QString strMobile, QString strCompId, QString strUserName)
 {
 	m_strUid = strUid;

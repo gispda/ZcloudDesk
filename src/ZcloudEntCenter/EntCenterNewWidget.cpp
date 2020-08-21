@@ -41,7 +41,9 @@ EntCenterNewWidget::EntCenterNewWidget(EntCenterInfo* pEntInfo, UserInfoStruct* 
 	mp_EntCenterInfo = new EntCenterInfoWidget(pEntInfo, userInfo, ui.EntRightWidget);
 	mp_EntCenterMain = new EntCenterMainWidget(pEntInfo, userInfo, ui.EntRightWidget);
 
-
+	connect(mp_EntCenterMember, SIGNAL(sigNeedLogin()), this, SLOT(needLogin()));
+	connect(mp_EntCenterInfo, SIGNAL(sigNeedLogin()), this, SLOT(needLogin()));
+	connect(mp_EntCenterMain, SIGNAL(sigNeedLogin()), this, SLOT(needLogin()));
 
 
 	mp_EntCenterMember->hide();
@@ -57,15 +59,12 @@ EntCenterNewWidget::EntCenterNewWidget(EntCenterInfo* pEntInfo, UserInfoStruct* 
 
 
 	ui.labelJoin2->installEventFilter(this);
-	ui.labelJoin2->show();
-
+	
 	//ui.labelline->setGeometry(117, 195, 1, 14);
 
 	//ui.labeluserline->hide();
-	m_pEnt;
 
 	showUserCompanyInfoTitle(m_pEnt);
-	m_pEnt;
 
 
 	pSwitchWidget = NULL;
@@ -77,10 +76,15 @@ EntCenterNewWidget::EntCenterNewWidget(EntCenterInfo* pEntInfo, UserInfoStruct* 
 }
 
 
+void EntCenterNewWidget::needLogin(){
+	emit sigNeedLogin();
+
+}
 
 void EntCenterNewWidget::init(EntCenterInfo*	info){
+	this->m_pEnt = info;
 
-
+	showUserCompanyInfoTitle(info);
 	mp_EntCenterInfo->init(info);
 
 	mp_EntCenterMain->init(info, m_userInfo);
@@ -90,7 +94,10 @@ void EntCenterNewWidget::init(EntCenterInfo*	info){
 }
 void EntCenterNewWidget::onShowInfo(){
 
-
+	if (-8 == m_userInfo->m_bLoginByTax){
+		emit sigNeedLogin();
+		return;
+	}
 	if (decideJoinEnt())
 	{
 
@@ -105,6 +112,10 @@ void EntCenterNewWidget::onShowInfo(){
 
 void EntCenterNewWidget::onShowMember(){
 
+	if (-8 == m_userInfo->m_bLoginByTax){
+		emit sigNeedLogin();
+		return;
+	}
 	if (decideJoinEnt())
 	{
 		JoinEntMoreStep(m_pEnt);
@@ -330,6 +341,11 @@ bool EntCenterNewWidget::eventFilter(QObject *target, QEvent *e)
 	{
 		if (e->type() == QEvent::MouseButtonRelease) //
 		{
+
+			if (-8 == m_userInfo->m_bLoginByTax){
+				emit sigNeedLogin();
+				return QWidget::eventFilter(target, e);
+			}
 			ZcloudBigDataInterface::GetInstance()->produceData("M00", "OP001", "BBC003");
 
 
@@ -372,6 +388,10 @@ void EntCenterNewWidget::onCopyBtnClick()
 
 void EntCenterNewWidget::onSwitchBtnClick()
 {
+	if (-8 == m_userInfo->m_bLoginByTax){
+		emit sigNeedLogin();
+		return;
+	}
 	SwitchBtnClick(m_pEnt);
 }
 void EntCenterNewWidget::SwitchBtnClick(EntCenterInfo*	m_pEntInfo)
@@ -400,6 +420,10 @@ void EntCenterNewWidget::SwitchBtnClick(EntCenterInfo*	m_pEntInfo)
 
 void EntCenterNewWidget::onSwitchAcc(int bLoginByTax, bool bOther, QString strTaxNo_userName, QString strPwd)
 {
+	if (-8 == m_userInfo->m_bLoginByTax){
+		emit sigNeedLogin();
+		return;
+	}
 	emit sigSwitchAcc(bLoginByTax, bOther, strTaxNo_userName, strPwd);
 }
 
@@ -973,6 +997,11 @@ void EntCenterNewWidget::DoJoinEntMoreStep(EntCenterInfo* m_pEntInfo,bool isbind
 
 
 bool EntCenterNewWidget::onJoinEnt(QString strTaxNum) {
+	if (-8 == m_userInfo->m_bLoginByTax){
+		emit sigNeedLogin();
+		return false;
+	}
+
 	/*ZcloudComFun::dbEntInfo pEnt;
 	ZcloudComFun::winHttpQueryCompanyInfoLocalTax(strTaxNum, m_userInfo->m_strToken, pEnt);*/
 

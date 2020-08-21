@@ -35,6 +35,8 @@ public:
 		{
 			m_pInfoCenterWidget = new InfoCenterWidget(&m_userInfo);
 
+
+			connect(m_pInfoCenterWidget, SIGNAL(sigNeedLogin()), this, SLOT(needLogin()));
 			connect(m_pInfoCenterWidget, SIGNAL(sigSwitchAcc(int, bool, QString, QString)), this, SLOT(onSwitchAcc(int, bool, QString, QString)));
 			//connect(this, SIGNAL(sigSwitchAcc(int, bool, QString, QString)), this, SLOT(onSwitchAcc(int, bool, QString, QString)));
 		}
@@ -60,11 +62,13 @@ public:
 	virtual void modifyCoinCount(int nCount);
 public:
 signals :
-
+	void sigNeedLogin();
 	void sigSwitchAcc(int, bool, QString, QString);
 public
 slots:
-	void onSwitchAcc(int bLoginByTax, bool bOther, QString strTaxNo_userName, QString strPwd);
+
+void needLogin();
+void onSwitchAcc(int bLoginByTax, bool bOther, QString strTaxNo_userName, QString strPwd);
 
 private:
 	EntCenterWidget*		m_pEntCenterWidget = NULL;
