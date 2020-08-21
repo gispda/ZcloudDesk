@@ -51,7 +51,7 @@ void ZcloudMsgCenterImpl::reviceMsgInfo(QStringList strParamList, int nCount)
 	QString strPopupPath = QApplication::applicationDirPath().append("/ZcloudMsgPopup.exe");
 	if (!QFile::exists(strPopupPath))
 	{
-		qDebug() << "zcd-0x10000012:msg \"ZcloudMsgPopup.exe\" not exist!";
+		//qDebug() << "zcd-0x10000012:msg \"ZcloudMsgPopup.exe\" not exist!";
 		return;
 	}
 	strPopupPath = "\"" + strPopupPath + "\"";
@@ -114,7 +114,7 @@ void ZcloudMsgCenterImpl::reviceActivityInfo(QStringList strParamList)
 		QString strPopupPath = QApplication::applicationDirPath().append("/ZcloudMsgPopup.exe");
 		if (!QFile::exists(strPopupPath))
 		{
-			qDebug() << "zcd-0x10000013:activity \"ZcloudMsgPopup.exe\" not exist!";
+			//qDebug() << "zcd-0x10000013:activity \"ZcloudMsgPopup.exe\" not exist!";
 			return;
 		}
 		strPopupPath = "\"" + strPopupPath + "\"";

@@ -23,12 +23,12 @@ NamePipeClinet::~NamePipeClinet()
 
 void NamePipeClinet::onConnected()
 {
-	qDebug() << "connected sucess";
+	//qDebug() << "connected sucess";
 }
 
 void NamePipeClinet::onDisConnected()
 {
-	qDebug() << "connected failed";
+	//qDebug() << "connected failed";
 	QApplication::exit(0);
 }
 
@@ -42,7 +42,7 @@ bool NamePipeClinet::connectToServer(const QString &strServerName)
 	m_pLocalSocket->connectToServer(strServerName);
 	if (!m_pLocalSocket->waitForConnected(1000))
 	{
-		qDebug() << "waitForConnected return false";
+		//qDebug() << "waitForConnected return false";
 		return false;
 	}
 	return true;

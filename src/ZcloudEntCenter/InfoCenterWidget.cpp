@@ -293,24 +293,27 @@ bool InfoCenterWidget::analysisJson(const QString& strJson,QString token, EntCen
 
 	if (info->_nisbinds == 1)
 	{
-		//objValue = data.take("service").toObject();
-		//info->_oservice.m_nProvinceId = objValue.take("province_id").toString().toInt();		//省Id
-		//info->_oservice.m_nCityId = objValue.take("city_id").toString().toInt();			//市Id
-		//info->_oservice.m_nAreaId = objValue.take("area_id").toString().toInt();			//区Id
-		//info->_oservice.m_strHzsId = QString::number(objValue.take("hzs_id").toInt());				//合作商Id
-		//info->_oservice.m_businessid = objValue.take("business_id").toString();
-		//info->_oservice.m_strUsername = objValue.take("username").toString();
-		//info->_oservice.m_strPhone = objValue.take("phone").toString();
-		//info->_oservice.m_strTruename = objValue.take("truename").toString();
-		//info->_oservice.m_sex = objValue.take("sex").toString();
-		//info->_oservice.m_strAddress = objValue.take("address").toString();
+		QJsonObject objValue = data.take("service").toObject();
 
-		//info->_oservice.m_wechat = objValue.take("weixin").toString();
-		//info->_oservice.m_qq = objValue.take("qq").toString();
-		//info->_oservice.m_nickname = objValue.take("nickname").toString();
-		//info->_oservice.m_avatarurl = objValue.take("avatarurl").toString();	
+		qDebug() << QString(QJsonDocument(objValue).toJson());
 
-		info->_oservice.m_businessid = data.take("srv_business_id").toString();
+		info->_oservice.m_nProvinceId = objValue.take("province_id").toString().toInt();		//省Id
+		info->_oservice.m_nCityId = objValue.take("city_id").toString().toInt();			//市Id
+		info->_oservice.m_nAreaId = objValue.take("area_id").toString().toInt();			//区Id
+		info->_oservice.m_strHzsId = QString::number(objValue.take("hzs_id").toInt());				//合作商Id
+		info->_oservice.m_businessid = objValue.take("business_id").toString();
+		info->_oservice.m_strUsername = objValue.take("username").toString();
+		info->_oservice.m_strPhone = objValue.take("phone").toString();
+		info->_oservice.m_strTruename = objValue.take("truename").toString();
+		info->_oservice.m_sex = objValue.take("sex").toString();
+		info->_oservice.m_strAddress = objValue.take("address").toString();
+
+		info->_oservice.m_wechat = objValue.take("weixin").toString();
+		info->_oservice.m_qq = objValue.take("qq").toString();
+		info->_oservice.m_nickname = objValue.take("nickname").toString();
+		info->_oservice.m_avatarurl = objValue.take("avatarurl").toString();	
+
+		/*info->_oservice.m_businessid = data.take("srv_business_id").toString();
 		info->_oservice.m_strHzsId = data.take("srv_hzs_id").toString();
 		info->_oservice.m_strUsername = data.take("srv_username").toString();
 		info->_oservice.m_strPhone = data.take("srv_phone").toString();
@@ -324,7 +327,7 @@ bool InfoCenterWidget::analysisJson(const QString& strJson,QString token, EntCen
 		info->_oservice.m_wechat = data.take("srv_weixin").toString();
 		info->_oservice.m_qq = data.take("srv_qq").toString();
 		info->_oservice.m_nickname = data.take("srv_nickname").toString();
-		info->_oservice.m_avatarurl = data.take("srv_avatarurl").toString();
+		info->_oservice.m_avatarurl = data.take("srv_avatarurl").toString();*/
 
 	}
 	//objValue = data.take("user").toObject();

@@ -62,10 +62,10 @@ void MsgFormWidget::mouseMoveEvent(QMouseEvent *event)
 
 void MsgFormWidget::handleSslErrors(QNetworkReply* reply, const QList<QSslError> &errors)
 {
-	foreach(QSslError e, errors)
-	{
-		qDebug() << "ssl error: " << e;
-	}
+	//foreach(QSslError e, errors)
+	//{
+	//	qDebug() << "ssl error: " << e;
+	//}
 	reply->ignoreSslErrors();
 }
 void MsgFormWidget::onLoadFinished(bool)

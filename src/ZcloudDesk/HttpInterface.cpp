@@ -21,7 +21,7 @@ bool HttpInterface::winHttpLogin(QString strTaxNo, QString strToken, QString& st
 {
 	if (strTaxNo.isEmpty())
 	{
-		qDebug("zcd-0x10000004:login by tax,tax is empty!");
+		//qDebug("zcd-0x10000004:login by tax,tax is empty!");
 		return false;
 	}
 	QString strUrl = QString("/ucenter/company/switch");
@@ -38,7 +38,7 @@ bool HttpInterface::winHttpTokneLogin(QString strModel, QString strToken, QStrin
 {
 	if (strModel.isEmpty() || strToken.isEmpty())
 	{
-		qDebug(":winHttpTokneLogin by tax,tax is empty!");
+		//qDebug(":winHttpTokneLogin by tax,tax is empty!");
 		return false;
 	}
 	QString strUrl = QString("/user/login");
@@ -50,7 +50,7 @@ bool HttpInterface::winHttpLogin(bool accountPhone, QString strAccount, QString 
 {
 	if (strAccount.isEmpty() || strPwd.isEmpty())
 	{
-		qDebug("zcd-0x10000005:login by account,account or password is empty!");
+		//qDebug("zcd-0x10000005:login by account,account or password is empty!");
 		return false;
 	}
 	QString strUrl = QString("/ucenter/user/login");

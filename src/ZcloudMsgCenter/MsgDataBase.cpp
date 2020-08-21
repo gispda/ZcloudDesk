@@ -57,13 +57,13 @@ bool MsgDataBase::openMsgDatabase()
 	{
 		if (!CreateDB(dbPath))
 		{
-			qDebug("zcd-0x10000006:create zhicloudMsgInfo database failed!");
+			//qDebug("zcd-0x10000006:create zhicloudMsgInfo database failed!");
 			return false;
 		}
 	}
 	else
 	{
-		qDebug("zcd-0x10000007:open zhicloudMsgInfo database failed!");
+		//qDebug("zcd-0x10000007:open zhicloudMsgInfo database failed!");
 		return false;
 	}
 	return true;
@@ -102,7 +102,7 @@ bool MsgDataBase::CreateDB(QString strPath)
 		if (!query.exec(creatStr))
 		{
 			lastError = query.lastError();
-			qDebug() << "zcd-0x10000008:create msgCenterInfo table failed! \r\n error:" << lastError << lastError.driverText().toStdString().c_str();
+			//qDebug() << "zcd-0x10000008:create msgCenterInfo table failed! \r\n error:" << lastError << lastError.driverText().toStdString().c_str();
 			return false;
 		}
 	}
@@ -127,7 +127,7 @@ bool MsgDataBase::queryMsgInfo(vtrMsgInfo& msgInfos,int nPage /*= 0*/, int nType
 	if (!query.exec(strSql))
 	{
 		lastError = query.lastError();
-		qDebug() << "zcd-0x10000009:select msgCenterInfo table failed! \r\n sql:" << strSql <<"\r\n error : " << lastError << lastError.driverText().toStdString().c_str();
+		//qDebug() << "zcd-0x10000009:select msgCenterInfo table failed! \r\n sql:" << strSql <<"\r\n error : " << lastError << lastError.driverText().toStdString().c_str();
 		return false;
 	}
 	else
@@ -170,7 +170,7 @@ bool MsgDataBase::deleteMsg(QString strId)
 	if (!query.exec(strSql))
 	{
 		lastError = query.lastError();
-		qDebug() << "zcd-0x10000010:delete msgCenterInfo table failed! \r\n sql:" << strSql << "\r\n error : " << lastError << lastError.driverText().toStdString().c_str();
+		//qDebug() << "zcd-0x10000010:delete msgCenterInfo table failed! \r\n sql:" << strSql << "\r\n error : " << lastError << lastError.driverText().toStdString().c_str();
 		return false;
 	}
 	return true;
@@ -185,7 +185,7 @@ bool MsgDataBase::changeMsgState(QString strId)
 	if (!query.exec(strSql))
 	{
 		lastError = query.lastError();
-		qDebug() << "zcd-0x10000011:msg update table failed! \r\n sql:" << strSql << "\r\n error : " << lastError << lastError.driverText().toStdString().c_str();
+		//qDebug() << "zcd-0x10000011:msg update table failed! \r\n sql:" << strSql << "\r\n error : " << lastError << lastError.driverText().toStdString().c_str();
 		return false;
 	}
 	return true;
@@ -200,7 +200,7 @@ bool MsgDataBase::changeMsgState(QString strId, QString strUid,QString strCompId
 	if (!query.exec(strSql))
 	{
 		lastError = query.lastError();
-		qDebug() << "zcd-0x10000053:msg update table failed! \r\n sql:" << strSql << "\r\n error : " << lastError << lastError.driverText().toStdString().c_str();
+		//qDebug() << "zcd-0x10000053:msg update table failed! \r\n sql:" << strSql << "\r\n error : " << lastError << lastError.driverText().toStdString().c_str();
 		return false;
 	}
 	return true;
@@ -262,7 +262,7 @@ int MsgDataBase::countUnreadMsg()
 	if (!query.exec(strSql))
 	{
 		lastError = query.lastError();
-		qDebug() << "zcd-0x10000053:count unread msgCenterInfo table failed! \r\n sql:" << strSql << "\r\n error : " << lastError << lastError.driverText().toStdString().c_str();
+		//qDebug() << "zcd-0x10000053:count unread msgCenterInfo table failed! \r\n sql:" << strSql << "\r\n error : " << lastError << lastError.driverText().toStdString().c_str();
 		return 0;
 	}
 	if (!query.first())

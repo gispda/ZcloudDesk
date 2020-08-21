@@ -56,13 +56,13 @@ bool EntDataBase::openEntDatabase()
 	{
 		if (!CreateDB(dbPath))
 		{
-			qDebug() << "zcd-0x10000014:create zhicloudEnt database failed!";
+			//qDebug() << "zcd-0x10000014:create zhicloudEnt database failed!";
 			return false;
 		}
 	}
 	else
 	{
-		qDebug() << "zcd-0x10000015:open zhicloudEnt database failed!";
+		//qDebug() << "zcd-0x10000015:open zhicloudEnt database failed!";
 		return false;
 	}
 	return true;
@@ -232,7 +232,7 @@ bool EntDataBase::CreateDB(QString strPath)
 		if (!query.exec(creatStr))
 		{
 			lastError = query.lastError();
-			qDebug() << "zcd-0x10000016:create entCenterInfo table failed! \r\n error:" << lastError << lastError.driverText().toStdString().c_str();
+			//qDebug() << "zcd-0x10000016:create entCenterInfo table failed! \r\n error:" << lastError << lastError.driverText().toStdString().c_str();
 			return false;
 		}
 	}
@@ -309,7 +309,7 @@ bool EntDataBase::insertEntCenterInfo(const EntCenterInfo& entInfo)
 	{
 		lastError = query.lastError();
 	
-		qDebug() << "zcd-0x10000017:replace entCenterInfo table failed! \r\n error : " << lastError << lastError.driverText().toStdString().c_str();
+		//qDebug() << "zcd-0x10000017:replace entCenterInfo table failed! \r\n error : " << lastError << lastError.driverText().toStdString().c_str();
 		return false;
 	}
 	return true;
@@ -324,7 +324,7 @@ bool EntDataBase::queryEntCenterInfo(QString strUid,EntCenterInfo& entInfo)
 	if (!query.exec(strSql))
 	{
 		lastError = query.lastError();
-		qDebug() << "zcd-0x10000018:select entCenterInfo table failed! \r\n sql:" << strSql << "\r\n error : " << lastError << lastError.driverText().toStdString().c_str();
+		//qDebug() << "zcd-0x10000018:select entCenterInfo table failed! \r\n sql:" << strSql << "\r\n error : " << lastError << lastError.driverText().toStdString().c_str();
 		return false;
 	}
 	else

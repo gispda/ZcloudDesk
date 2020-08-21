@@ -869,7 +869,7 @@ void ZcloudDesk::registerDevice()
 		if (!hDevNotify)
 		{
 			int Err = GetLastError();
-			qDebug() << "RegisterDevice failed" << endl;
+			//qDebug() << "RegisterDevice failed" << endl;
 		}
 	}
 }

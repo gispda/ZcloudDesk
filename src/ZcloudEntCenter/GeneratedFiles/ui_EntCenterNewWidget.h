@@ -27,7 +27,7 @@ QT_BEGIN_NAMESPACE
 class Ui_EntCenterNewWidget
 {
 public:
-    QWidget *widget;
+    QWidget *layoutWidget;
     QHBoxLayout *horizontalLayout;
     QWidget *EntLeftWidget;
     QToolButton *switchButton;
@@ -66,14 +66,15 @@ public:
         EntCenterNewWidget->setMinimumSize(QSize(1016, 620));
         EntCenterNewWidget->setMaximumSize(QSize(1016, 682));
         EntCenterNewWidget->setStyleSheet(QStringLiteral("QWidget#EntCenterWidget{background-color: rgb(255, 255, 255);};"));
-        widget = new QWidget(EntCenterNewWidget);
-        widget->setObjectName(QStringLiteral("widget"));
-        horizontalLayout = new QHBoxLayout(widget);
+        layoutWidget = new QWidget(EntCenterNewWidget);
+        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
+        layoutWidget->setGeometry(QRect(0, 0, 1002, 620));
+        horizontalLayout = new QHBoxLayout(layoutWidget);
         horizontalLayout->setSpacing(0);
         horizontalLayout->setContentsMargins(11, 11, 11, 11);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
-        EntLeftWidget = new QWidget(widget);
+        EntLeftWidget = new QWidget(layoutWidget);
         EntLeftWidget->setObjectName(QStringLiteral("EntLeftWidget"));
         QSizePolicy sizePolicy1(QSizePolicy::Fixed, QSizePolicy::Fixed);
         sizePolicy1.setHorizontalStretch(0);
@@ -109,7 +110,7 @@ public:
         labelAvatar->setStyleSheet(QStringLiteral("border-image: url(:/EntCenterWidget/image/img_tx_d.png);"));
         copyTaxButton = new QPushButton(EntLeftWidget);
         copyTaxButton->setObjectName(QStringLiteral("copyTaxButton"));
-        copyTaxButton->setGeometry(QRect(210, 162, 16, 16));
+        copyTaxButton->setGeometry(QRect(230, 162, 16, 16));
         sizePolicy1.setHeightForWidth(copyTaxButton->sizePolicy().hasHeightForWidth());
         copyTaxButton->setSizePolicy(sizePolicy1);
         copyTaxButton->setMinimumSize(QSize(16, 16));
@@ -118,11 +119,11 @@ public:
 "QPushButton:hover,pressed{border-image: url(:/EntCenterWidget/image/copy_sel.png);}"));
         labelTaxNo = new QLabel(EntLeftWidget);
         labelTaxNo->setObjectName(QStringLiteral("labelTaxNo"));
-        labelTaxNo->setGeometry(QRect(44, 163, 150, 16));
+        labelTaxNo->setGeometry(QRect(20, 160, 210, 20));
         sizePolicy1.setHeightForWidth(labelTaxNo->sizePolicy().hasHeightForWidth());
         labelTaxNo->setSizePolicy(sizePolicy1);
-        labelTaxNo->setMinimumSize(QSize(150, 16));
-        labelTaxNo->setMaximumSize(QSize(150, 16));
+        labelTaxNo->setMinimumSize(QSize(210, 20));
+        labelTaxNo->setMaximumSize(QSize(210, 20));
         labelTaxNo->setStyleSheet(QString::fromUtf8("font: 12px \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
 "color:#333333;"));
         labelTaxNo->setAlignment(Qt::AlignCenter);
@@ -202,11 +203,11 @@ public:
         labelVip->setStyleSheet(QStringLiteral("border-image: url(:/EntCenterWidget/image/qyzx_icon_vip_wjr.png);"));
         labelComName = new QLabel(EntLeftWidget);
         labelComName->setObjectName(QStringLiteral("labelComName"));
-        labelComName->setGeometry(QRect(55, 135, 140, 18));
+        labelComName->setGeometry(QRect(0, 130, 250, 25));
         sizePolicy1.setHeightForWidth(labelComName->sizePolicy().hasHeightForWidth());
         labelComName->setSizePolicy(sizePolicy1);
-        labelComName->setMinimumSize(QSize(140, 18));
-        labelComName->setMaximumSize(QSize(140, 18));
+        labelComName->setMinimumSize(QSize(250, 25));
+        labelComName->setMaximumSize(QSize(240, 25));
         labelComName->setStyleSheet(QLatin1String("font-size:14px;\n"
 "font-family:SourceHanSansCN-Normal,SourceHanSansCN;\n"
 "font-weight:400;\n"
@@ -272,7 +273,7 @@ public:
 
         horizontalLayout->addWidget(EntLeftWidget);
 
-        EntRightWidget = new QWidget(widget);
+        EntRightWidget = new QWidget(layoutWidget);
         EntRightWidget->setObjectName(QStringLiteral("EntRightWidget"));
         sizePolicy1.setHeightForWidth(EntRightWidget->sizePolicy().hasHeightForWidth());
         EntRightWidget->setSizePolicy(sizePolicy1);

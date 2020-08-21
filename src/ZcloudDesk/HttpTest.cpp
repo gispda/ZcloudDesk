@@ -36,12 +36,12 @@ void HttpTest::finishSlot(){
 	if (replay->error() == QNetworkReply::NoError)
 	{
 		QByteArray bytes = replay->readAll();
-		qDebug() << bytes;
+		//qDebug() << bytes;
 	}
 	else
 	{
-		qDebug() << "finishedSlot errors here";
-		qDebug("found error .... code: %d\n", (int)replay->error());
+		//qDebug() << "finishedSlot errors here";
+		//qDebug("found error .... code: %d\n", (int)replay->error());
 		qDebug(qPrintable(replay->errorString()));
 	}
 	replay->deleteLater();
@@ -51,12 +51,12 @@ void HttpTest::finishedSlot(QNetworkReply *rep){
 	if (rep->error() == QNetworkReply::NoError)
 	{
 		QByteArray bytes = rep->readAll();
-		qDebug() << bytes;
+		//qDebug() << bytes;
 	}
 	else
 	{
-		qDebug() << "finishedSlot errors here";
-		qDebug("found error .... code: %d\n", (int)rep->error());
+		//qDebug() << "finishedSlot errors here";
+		//qDebug("found error .... code: %d\n", (int)rep->error());
 		qDebug(qPrintable(rep->errorString()));
 	}
 	rep->deleteLater();

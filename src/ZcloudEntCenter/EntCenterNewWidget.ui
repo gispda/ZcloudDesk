@@ -34,7 +34,15 @@
   <property name="styleSheet">
    <string notr="true">QWidget#EntCenterWidget{background-color: rgb(255, 255, 255);};</string>
   </property>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1002</width>
+     <height>620</height>
+    </rect>
+   </property>
    <layout class="QHBoxLayout" name="horizontalLayout">
     <property name="spacing">
      <number>0</number>
@@ -151,7 +159,7 @@ QToolButton:hover,pressed{ background-color: qlineargradient(spread:pad, x1:0, y
       <widget class="QPushButton" name="copyTaxButton">
        <property name="geometry">
         <rect>
-         <x>210</x>
+         <x>230</x>
          <y>162</y>
          <width>16</width>
          <height>16</height>
@@ -189,10 +197,10 @@ QPushButton:hover,pressed{border-image: url(:/EntCenterWidget/image/copy_sel.png
       <widget class="QLabel" name="labelTaxNo">
        <property name="geometry">
         <rect>
-         <x>44</x>
-         <y>163</y>
-         <width>150</width>
-         <height>16</height>
+         <x>20</x>
+         <y>160</y>
+         <width>210</width>
+         <height>20</height>
         </rect>
        </property>
        <property name="sizePolicy">
@@ -203,14 +211,14 @@ QPushButton:hover,pressed{border-image: url(:/EntCenterWidget/image/copy_sel.png
        </property>
        <property name="minimumSize">
         <size>
-         <width>150</width>
-         <height>16</height>
+         <width>210</width>
+         <height>20</height>
         </size>
        </property>
        <property name="maximumSize">
         <size>
-         <width>150</width>
-         <height>16</height>
+         <width>210</width>
+         <height>20</height>
         </size>
        </property>
        <property name="styleSheet">
@@ -499,10 +507,10 @@ line-height:21px;</string>
       <widget class="QLabel" name="labelComName">
        <property name="geometry">
         <rect>
-         <x>55</x>
-         <y>135</y>
-         <width>140</width>
-         <height>18</height>
+         <x>0</x>
+         <y>130</y>
+         <width>250</width>
+         <height>25</height>
         </rect>
        </property>
        <property name="sizePolicy">
@@ -513,14 +521,14 @@ line-height:21px;</string>
        </property>
        <property name="minimumSize">
         <size>
-         <width>140</width>
-         <height>18</height>
+         <width>250</width>
+         <height>25</height>
         </size>
        </property>
        <property name="maximumSize">
         <size>
-         <width>140</width>
-         <height>18</height>
+         <width>240</width>
+         <height>25</height>
         </size>
        </property>
        <property name="styleSheet">

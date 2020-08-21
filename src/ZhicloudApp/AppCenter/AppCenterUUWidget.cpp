@@ -159,7 +159,7 @@ bool AppCenterUUWidget::AppAnalyAppInfo(AppUserCustomData * pUserData,  bool isC
 	QList<AppDataInfo > deskAppInfoList;
 	if (!AppCenterDatabase::instance()->findClassAppList(deskAppInfoList, pUserData->strCateId, pUserData->nCurPage, "", true))
 	{
-		qDebug() << "zcd-0x00000001: AppCenterUUWidget,findClassAppList Error";
+		//qDebug() << "zcd-0x00000001: AppCenterUUWidget,findClassAppList Error";
 		return false;
 	}
 

@@ -156,7 +156,7 @@ void CheckUpdater::startUpdaterProcess(bool bSlience)
 	QString strPopupPath = QApplication::applicationDirPath().append("/ZcloudDesk Updater.exe");
 	if (!QFile::exists(strPopupPath))
 	{
-		qDebug("zcd-0x10000003:\"ZcloudDesk Updater.exe\" not exist!");
+		//qDebug("zcd-0x10000003:\"ZcloudDesk Updater.exe\" not exist!");
 		return;
 	}
 	strPopupPath = "\"" + strPopupPath + "\"";

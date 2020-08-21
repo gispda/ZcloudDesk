@@ -88,7 +88,7 @@ void updater()
 	QString strUpdaterFile = QApplication::applicationDirPath() + "/Updater";
 	if (!QFile::exists(strUpdaterFile))
 	{
-		qDebug("zcd-0x10000001: config file named \"Updater\" not exist!");
+		//qDebug("zcd-0x10000001: config file named \"Updater\" not exist!");
 		return;
 	}
 	QSettings settings(strUpdaterFile, QSettings::IniFormat);
@@ -155,7 +155,7 @@ int main(int argc, char *argv[])
 
 	//!Æô¶¯ÐÄÌø
 	QString zyServer = argv[1];
-	qDebug() << "argv is:" << zyServer;
+	//qDebug() << "argv is:" << zyServer;
 	if (zyServer == "1")
 	{
 		UserInfoStruct	info;

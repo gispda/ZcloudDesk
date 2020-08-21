@@ -764,7 +764,7 @@ bool EditEntInfoWidget::winHttpUpdateCompanyInfo(QString strUid, QString strToke
 		.arg(nCodeCity).arg(nCodeArea).arg(m_pentinfo->_strAddress)
 		.arg(m_pentinfo->_strlegalbossmobile).arg(m_pentinfo->_strlegalboss).arg(nCodeProOffice)
 		.arg(nCodeCityOffice).arg(nCodeAreaOffice).arg(m_pentinfo->_strOfficeaddress);
-	qDebug() << strPost;
+	//qDebug() << strPost;
 
 	return ZcloudComFun::httpPost(strUrl, strPost, 5000, strRet, false, 1);
 }

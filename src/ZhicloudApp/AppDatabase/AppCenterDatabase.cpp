@@ -41,7 +41,7 @@ bool AppCenterDatabase::creatAppCenterDb()
 	if (!query.exec(creatStr))
 	{
 		lastError = query.lastError();
-		qDebug() << "zcd-0x00000002:" << lastError << lastError.driverText().toStdString().c_str();
+		//	qDebug() << "zcd-0x00000002:" << lastError << lastError.driverText().toStdString().c_str();
 		return false;
 	}
 
@@ -63,7 +63,7 @@ bool AppCenterDatabase::creatAppCenterDb()
 	if (!query.exec(creatStr))
 	{
 		lastError = query.lastError();
-		qDebug() << "zcd-0x00000003:" << lastError << lastError.driverText().toStdString().c_str();
+		//qDebug() << "zcd-0x00000003:" << lastError << lastError.driverText().toStdString().c_str();
 		return false;
 	}
 
@@ -117,7 +117,7 @@ bool AppCenterDatabase::creatAppCenterDb()
 	if (!query.exec(creatStr))
 	{
 		lastError = query.lastError();
-		qDebug() << "zcd-0x00000004:" << lastError << lastError.driverText().toStdString().c_str();
+		//qDebug() << "zcd-0x00000004:" << lastError << lastError.driverText().toStdString().c_str();
 		return false;
 	}
 	//应用和类别的关系表
@@ -132,7 +132,7 @@ bool AppCenterDatabase::creatAppCenterDb()
 	if (!query.exec(creatStr))
 	{
 		lastError = query.lastError();
-		qDebug() << "zcd-0x00000005:" << lastError << lastError.driverText().toStdString().c_str();
+		//	qDebug() << "zcd-0x00000005:" << lastError << lastError.driverText().toStdString().c_str();
 		return false;
 	}
 
@@ -146,7 +146,7 @@ bool AppCenterDatabase::creatAppCenterDb()
 	if (!query.exec(creatStr))
 	{
 		lastError = query.lastError();
-		qDebug()  << lastError << lastError.driverText().toStdString().c_str();
+		//qDebug()  << lastError << lastError.driverText().toStdString().c_str();
 		return false;
 	}
 
@@ -168,18 +168,18 @@ bool AppCenterDatabase::openAppCenterDatabase()
 	{
 		if (!m_appCenterSqlDatabase.open())
 		{
-			qDebug() << "zcd-0x00000006:" << "open db failed";
+			//qDebug() << "zcd-0x00000006:" << "open db failed";
 		}
 	}
 	else
 	{
 		if (!m_appCenterSqlDatabase.open())
 		{
-			qDebug() << "zcd-0x00000007:" << "open db failed";
+			//qDebug() << "zcd-0x00000007:" << "open db failed";
 			return false;
 		}
-		if (!creatAppCenterDb())
-			qDebug() << "zcd-0x00000008:" << "create db file failed";
+		//if (!creatAppCenterDb())
+		//	qDebug() << "zcd-0x00000008:" << "create db file failed";
 	}
 	return true;
 }
