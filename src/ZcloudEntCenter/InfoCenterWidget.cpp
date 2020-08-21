@@ -195,7 +195,7 @@ bool InfoCenterWidget::getEntInfo(EntCenterInfo* info, QString strTaxno, QString
 	return false;
 }
 
-bool InfoCenterWidget::analysisJson(const QString& strJson,QString token, EntCenterInfo* info)
+bool InfoCenterWidget::analysisJson(const QString& strJson, QString token, EntCenterInfo* info)
 {
 
 	//qDebug() << strJson;
@@ -231,58 +231,58 @@ bool InfoCenterWidget::analysisJson(const QString& strJson,QString token, EntCen
 	//qDebug() << obj.take("data").toString();
 
 
-	info->_strId = data.take("id").toString();
+	info->_strId = data.value("id").toString();
 	info->_strToken = token;
-	info->_strCompId = data.take("company_id").toString();
-	info->_strCompName = data.take("company_name").toString();
-	info->_strTaxNo = data.take("tax_number").toString();
-	info->_strLogo = data.take("logo").toString();
+	info->_strCompId = data.value("company_id").toString();
+	info->_strCompName = data.value("company_name").toString();
+	info->_strTaxNo = data.value("tax_number").toString();
+	info->_strLogo = data.value("logo").toString();
 	info->_strLogoPath = checkLogoExist(info->_strLogo);
-	info->_bIsHxMember = data.take("is_hx_member").toInt();  ///没有了 航信会员
-	info->_nChargeExpire = data.take("charge_expire").toInt();
-	info->_nEndDays = data.take("end_days").toInt();
-	info->_bIsManualFulled = data.take("perfect_user_info").toInt(); ///没有了
-	info->_nLastSignTime = data.take("last_sign_time").toInt();  //没有了
-	info->_nCoin = data.take("zc_coin").toInt();      //没有了
-	info->_nCoupon = data.take("coupon_num").toInt();   //没有了
-	info->_strCompanyInfoUrl = data.take("company_info_url").toString();  //没有了
-	info->_strTradeInfoUrl = data.take("trade_info_url").toString();   ///没有额
-	info->_strFinancialMemberUrl = data.take("financial_member_url").toString();  //没有
-	info->_strAccountSettingUrl = data.take("account_setting_url").toString(); //没有
-	info->_strRenewUrl = data.take("renew_url").toString();  //没有
-	info->_strMemberInfoUrl = data.take("member_info_url").toString();   ///没有
-	info->_strSignUrl = data.take("sign_url").toString();  //没有
-	info->_strCreateCompanyUrl = data.take("create_company_url").toString();   ///没有
-	info->_dtServerTime = QDateTime::fromTime_t(data.take("server_time").toInt()); //没有
-	info->_bHasMember = data.take("has_member").toInt();  //没有
+	info->_bIsHxMember = data.value("is_hx_member").toInt();  ///没有了 航信会员
+	info->_nChargeExpire = data.value("charge_expire").toInt();
+	info->_nEndDays = data.value("end_days").toInt();
+	info->_bIsManualFulled = data.value("perfect_user_info").toInt(); ///没有了
+	info->_nLastSignTime = data.value("last_sign_time").toInt();  //没有了
+	info->_nCoin = data.value("zc_coin").toInt();      //没有了
+	info->_nCoupon = data.value("coupon_num").toInt();   //没有了
+	info->_strCompanyInfoUrl = data.value("company_info_url").toString();  //没有了
+	info->_strTradeInfoUrl = data.value("trade_info_url").toString();   ///没有额
+	info->_strFinancialMemberUrl = data.value("financial_member_url").toString();  //没有
+	info->_strAccountSettingUrl = data.value("account_setting_url").toString(); //没有
+	info->_strRenewUrl = data.value("renew_url").toString();  //没有
+	info->_strMemberInfoUrl = data.value("member_info_url").toString();   ///没有
+	info->_strSignUrl = data.value("sign_url").toString();  //没有
+	info->_strCreateCompanyUrl = data.value("create_company_url").toString();   ///没有
+	info->_dtServerTime = QDateTime::fromTime_t(data.value("server_time").toInt()); //没有
+	info->_bHasMember = data.value("has_member").toInt();  //没有
 
 
 	////-------------------------------新增----------------------------
-	info->_strHzsid = data.take("hzs_id").toString();  //
-	info->_strEmail = data.take("email").toString();  //
-	info->_nCompanytype = data.take("company_type").toInt();  //
-	info->_nTradeid = data.take("trade_id").toInt();  //
-	info->_nProvinceid = data.take("province_id").toString().toInt();  //
-	info->_nCityid = data.take("city_id").toString().toInt();  //
-	info->_nAreaid = data.take("area_id").toString().toInt();  //
-	info->_nOfficeProvinceid = data.take("office_province_id").toString().toInt();  //
-	info->_nOfficeCityid = data.take("office_city_id").toString().toInt();  //
-	info->_nOfficeAreaid = data.take("office_area_id").toString().toInt();  //
-	info->_strOfficeaddress = data.take("office_address").toString();  //
-	info->_strAddress = data.take("address").toString();  //
-	info->_strRegisterFulladdress = data.take("reg_full_address").toString();  //
-	info->_strOfficeFulladdress = data.take("office_full_address").toString();  //
+	info->_strHzsid = data.value("hzs_id").toString();  //
+	info->_strEmail = data.value("email").toString();  //
+	info->_nCompanytype = data.value("company_type").toInt();  //
+	info->_nTradeid = data.value("trade_id").toInt();  //
+	info->_nProvinceid = data.value("province_id").toString().toInt();  //
+	info->_nCityid = data.value("city_id").toString().toInt();  //
+	info->_nAreaid = data.value("area_id").toString().toInt();  //
+	info->_nOfficeProvinceid = data.value("office_province_id").toString().toInt();  //
+	info->_nOfficeCityid = data.value("office_city_id").toString().toInt();  //
+	info->_nOfficeAreaid = data.value("office_area_id").toString().toInt();  //
+	info->_strOfficeaddress = data.value("office_address").toString();  //
+	info->_strAddress = data.value("address").toString();  //
+	info->_strRegisterFulladdress = data.value("reg_full_address").toString();  //
+	info->_strOfficeFulladdress = data.value("office_full_address").toString();  //
 
-	info->_nisjoin = data.take("is_join").toInt();  //
-	//QJsonValue t = data.take("is_bind_s");
-	info->_nisbinds = data.take("is_bind_s").toInt();  //
-	info->_nhasadmin = data.take("has_admin").toInt();  //
+	info->_nisjoin = data.value("is_join").toInt();  //
+	//QJsonValue t = data.value("is_bind_s");
+	info->_nisbinds = data.value("is_bind_s").toInt();  //
+	info->_nhasadmin = data.value("has_admin").toInt();  //
 
-	info->_strlegalboss = data.take("legal_person_name").toString();  //
-	info->_strlegalbossmobile = data.take("legal_person_phone").toString();  //
-	info->_strBankname = data.take("bank_name").toString();  //
-	info->_strBankaccount = data.take("bank_account").toString();  //
-	info->_strTelNumber = data.take("tel_number").toString();  
+	info->_strlegalboss = data.value("legal_person_name").toString();  //
+	info->_strlegalbossmobile = data.value("legal_person_phone").toString();  //
+	info->_strBankname = data.value("bank_name").toString();  //
+	info->_strBankaccount = data.value("bank_account").toString();  //
+	info->_strTelNumber = data.value("tel_number").toString();
 
 
 
@@ -293,7 +293,7 @@ bool InfoCenterWidget::analysisJson(const QString& strJson,QString token, EntCen
 
 	if (info->_nisbinds == 1)
 	{
-		QJsonObject objValue = data.take("service").toObject();
+		QJsonObject objValue = data.value("service").toObject();
 
 		qDebug() << QString(QJsonDocument(objValue).toJson());
 
@@ -313,7 +313,7 @@ bool InfoCenterWidget::analysisJson(const QString& strJson,QString token, EntCen
 		info->_oservice.m_wechat = objValue.value("weixin").toString();
 		info->_oservice.m_qq = objValue.value("qq").toString();
 		info->_oservice.m_nickname = objValue.value("nickname").toString();
-		info->_oservice.m_avatarurl = objValue.value("avatarurl").toString();	
+		info->_oservice.m_avatarurl = objValue.value("avatarurl").toString();
 
 
 		QJsonValue phone = objValue.value("phone");
@@ -346,17 +346,20 @@ bool InfoCenterWidget::analysisJson(const QString& strJson,QString token, EntCen
 		info->_oservice.m_avatarurl = data.take("srv_avatarurl").toString();*/
 
 	}
-	//objValue = data.take("user").toObject();
+	{
+		QJsonObject objValue = data.value("user").toObject();
 
 
-	//必须在这里取值 才能获取正确内容
-	info->_nrole_type = data.take("u_rule_type").toInt();  //
+		//必须在这里取值 才能获取正确内容
+		info->_nrole_type = objValue.value("rule_type").toInt();  //
 
 
-	info->_strUid = data.take("u_user_id").toString();  //
-	info->_strUsername = data.take("u_user_name").toString();  //
-	info->_strTruename = data.take("u_true_name").toString();  //
-	info->_strJob = data.take("u_job").toString();  //
+		info->_strUid = objValue.value("user_id").toString();  //
+		info->_strUsername = objValue.value("user_name").toString();  //
+		info->_strTruename = objValue.value("true_name").toString();  //
+		info->_strJob = objValue.value("job").toString();  //
+	}
+	
 
 	info->nAdmin = info->_nrole_type;
 
