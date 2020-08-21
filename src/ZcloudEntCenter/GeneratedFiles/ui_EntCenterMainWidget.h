@@ -85,15 +85,21 @@ public:
         labelPic_3 = new QLabel(ServiceBaseWidget);
         labelPic_3->setObjectName(QStringLiteral("labelPic_3"));
         labelPic_3->setGeometry(QRect(20, 10, 80, 80));
+        labelPic_3->setStyleSheet(QLatin1String("background-color: rgb(252, 252, 252);border:1px solid rgba(252, 252, 252,0);\n"
+"border-radius:10px;"));
         labelPic_3->setPixmap(QPixmap(QString::fromUtf8(":/EntCenterWidget/image/completeInfo.png")));
         labelPic_3->setAlignment(Qt::AlignCenter);
         labelJob = new QLabel(ServiceBaseWidget);
         labelJob->setObjectName(QStringLiteral("labelJob"));
         labelJob->setGeometry(QRect(20, 110, 80, 16));
+        labelJob->setStyleSheet(QLatin1String("background-color: rgb(252, 252, 252);border:1px solid rgba(252, 252, 252,0);\n"
+"border-radius:10px;"));
         labelJob->setAlignment(Qt::AlignCenter);
         labelName_5 = new QLabel(ServiceBaseWidget);
         labelName_5->setObjectName(QStringLiteral("labelName_5"));
         labelName_5->setGeometry(QRect(160, 100, 150, 15));
+        labelName_5->setStyleSheet(QLatin1String("background-color: rgb(252, 252, 252);border:1px solid rgba(252, 252, 252,0);\n"
+"border-radius:10px;"));
         label_17 = new QLabel(ServiceBaseWidget);
         label_17->setObjectName(QStringLiteral("label_17"));
         label_17->setGeometry(QRect(135, 75, 15, 15));
@@ -102,6 +108,8 @@ public:
         labelPhone_2 = new QLabel(ServiceBaseWidget);
         labelPhone_2->setObjectName(QStringLiteral("labelPhone_2"));
         labelPhone_2->setGeometry(QRect(160, 50, 150, 15));
+        labelPhone_2->setStyleSheet(QLatin1String("background-color: rgb(252, 252, 252);border:1px solid rgba(252, 252, 252,0);\n"
+"border-radius:10px;"));
         label_18 = new QLabel(ServiceBaseWidget);
         label_18->setObjectName(QStringLiteral("label_18"));
         label_18->setGeometry(QRect(135, 100, 15, 15));
@@ -110,6 +118,8 @@ public:
         labelName_2 = new QLabel(ServiceBaseWidget);
         labelName_2->setObjectName(QStringLiteral("labelName_2"));
         labelName_2->setGeometry(QRect(135, 25, 160, 15));
+        labelName_2->setStyleSheet(QLatin1String("background-color: rgb(252, 252, 252);border:1px solid rgba(252, 252, 252,0);\n"
+"border-radius:10px;"));
         label_16 = new QLabel(ServiceBaseWidget);
         label_16->setObjectName(QStringLiteral("label_16"));
         label_16->setGeometry(QRect(135, 50, 15, 15));
@@ -118,6 +128,8 @@ public:
         labelWeChat_2 = new QLabel(ServiceBaseWidget);
         labelWeChat_2->setObjectName(QStringLiteral("labelWeChat_2"));
         labelWeChat_2->setGeometry(QRect(160, 75, 150, 15));
+        labelWeChat_2->setStyleSheet(QLatin1String("background-color: rgb(252, 252, 252);border:1px solid rgba(252, 252, 252,0);\n"
+"border-radius:10px;"));
         ServiceFeeWidget_3 = new QWidget(EntCenterMainWidget);
         ServiceFeeWidget_3->setObjectName(QStringLiteral("ServiceFeeWidget_3"));
         ServiceFeeWidget_3->setGeometry(QRect(395, 50, 330, 150));
@@ -130,24 +142,27 @@ public:
         labelworkers = new QLabel(ServiceFeeWidget_3);
         labelworkers->setObjectName(QStringLiteral("labelworkers"));
         labelworkers->setGeometry(QRect(125, 10, 80, 80));
-        labelworkers->setStyleSheet(QStringLiteral("background-color: rgb(252, 252, 252);"));
+        labelworkers->setStyleSheet(QLatin1String("background-color: rgb(252, 252, 252);border:1px solid rgba(252, 252, 252,0);\n"
+"border-radius:10px;"));
         labelworkers->setPixmap(QPixmap(QString::fromUtf8(":/EntCenterWidget/image/completeInfo.png")));
         labelworkers->setAlignment(Qt::AlignCenter);
         label_22 = new QLabel(ServiceFeeWidget_3);
         label_22->setObjectName(QStringLiteral("label_22"));
         label_22->setGeometry(QRect(0, 110, 330, 15));
-        label_22->setStyleSheet(QLatin1String("background-color: rgb(252, 252, 252);border:1px solid rgba(235,235,235,1);\n"
+        label_22->setStyleSheet(QLatin1String("background-color: rgb(252, 252, 252);border:1px solid rgba(252, 252, 252,0);\n"
 "border-radius:10px;"));
         label_22->setAlignment(Qt::AlignCenter);
         label = new QLabel(EntCenterMainWidget);
         label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(20, 210, 64, 17));
+        label->setGeometry(QRect(20, 210, 80, 17));
         sizePolicy1.setHeightForWidth(label->sizePolicy().hasHeightForWidth());
         label->setSizePolicy(sizePolicy1);
-        label->setMinimumSize(QSize(64, 17));
-        label->setMaximumSize(QSize(64, 17));
+        label->setMinimumSize(QSize(80, 17));
+        label->setMaximumSize(QSize(80, 17));
         label->setStyleSheet(QString::fromUtf8("font: 16px \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
-"color:#333333;"));
+"color:#333333;\n"
+"background-color: rgb(252, 252, 252);border:1px solid rgba(252, 252, 252,0);\n"
+"border-radius:10px;"));
         ServiceFeeWidget = new QWidget(EntCenterMainWidget);
         ServiceFeeWidget->setObjectName(QStringLiteral("ServiceFeeWidget"));
         ServiceFeeWidget->setGeometry(QRect(15, 240, 710, 80));
@@ -183,8 +198,8 @@ public:
         label_6->setSizePolicy(sizePolicy1);
         label_6->setMinimumSize(QSize(97, 16));
         label_6->setMaximumSize(QSize(105, 16));
-        label_6->setStyleSheet(QString::fromUtf8("font: 14px \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
-"color:#333333;"));
+        label_6->setStyleSheet(QLatin1String("background-color: rgb(252, 252, 252);border:1px solid rgba(252, 252, 252,0);\n"
+"border-radius:10px;"));
         label_7 = new QLabel(ServiceFeeWidget);
         label_7->setObjectName(QStringLiteral("label_7"));
         label_7->setGeometry(QRect(150, 22, 1, 10));
@@ -201,7 +216,9 @@ public:
         labelFeeTime->setMinimumSize(QSize(77, 14));
         labelFeeTime->setMaximumSize(QSize(77, 14));
         labelFeeTime->setStyleSheet(QString::fromUtf8("font: 14px \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
-"color:#333333;"));
+"color:#333333;\n"
+"background-color: rgb(252, 252, 252);border:1px solid rgba(252, 252, 252,0);\n"
+"border-radius:10px;"));
         labelFeeTime_4 = new QLabel(ServiceFeeWidget);
         labelFeeTime_4->setObjectName(QStringLiteral("labelFeeTime_4"));
         labelFeeTime_4->setGeometry(QRect(239, 19, 35, 14));
@@ -210,7 +227,9 @@ public:
         labelFeeTime_4->setMinimumSize(QSize(30, 14));
         labelFeeTime_4->setMaximumSize(QSize(40, 14));
         labelFeeTime_4->setStyleSheet(QString::fromUtf8("font: 14px \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
-"color:#333333;"));
+"color:#333333;\n"
+"background-color: rgb(252, 252, 252);border:1px solid rgba(252, 252, 252,0);\n"
+"border-radius:10px;"));
         label_8 = new QLabel(ServiceFeeWidget);
         label_8->setObjectName(QStringLiteral("label_8"));
         label_8->setGeometry(QRect(275, 22, 1, 10));
@@ -230,7 +249,9 @@ public:
         labelDays->setMinimumSize(QSize(30, 14));
         labelDays->setMaximumSize(QSize(3000, 140));
         labelDays->setStyleSheet(QString::fromUtf8("font: 14px \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
-"color:#333333;"));
+"color:#333333;\n"
+"background-color: rgb(252, 252, 252);border:1px solid rgba(252, 252, 252,0);\n"
+"border-radius:10px;"));
         progressBar = new QProgressBar(ServiceFeeWidget);
         progressBar->setObjectName(QStringLiteral("progressBar"));
         progressBar->setGeometry(QRect(20, 51, 574, 10));
@@ -249,33 +270,53 @@ public:
         labelNoServerFee_2->setObjectName(QStringLiteral("labelNoServerFee_2"));
         labelNoServerFee_2->setGeometry(QRect(45, 48, 260, 16));
         labelNoServerFee_2->setStyleSheet(QString::fromUtf8("font: 14px \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
-"color:#333333;"));
+"color:#333333;\n"
+"background-color: rgb(252, 252, 252);border:1px solid rgba(252, 252, 252,0);\n"
+"border-radius:10px;"));
         label_2 = new QLabel(EntCenterMainWidget);
         label_2->setObjectName(QStringLiteral("label_2"));
-        label_2->setGeometry(QRect(20, 20, 64, 17));
+        label_2->setGeometry(QRect(20, 20, 80, 17));
         sizePolicy1.setHeightForWidth(label_2->sizePolicy().hasHeightForWidth());
         label_2->setSizePolicy(sizePolicy1);
-        label_2->setMinimumSize(QSize(64, 17));
-        label_2->setMaximumSize(QSize(64, 17));
+        label_2->setMinimumSize(QSize(80, 17));
+        label_2->setMaximumSize(QSize(80, 17));
         label_2->setStyleSheet(QString::fromUtf8("font: 16px \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
 "color:#333333;\n"
-"border-bottom:0px;"));
+"border-bottom:0px;\n"
+"background-color: rgb(252, 252, 252);border:1px solid rgba(252, 252, 252,0);\n"
+"border-radius:10px;"));
         widgetNotBinding = new QWidget(EntCenterMainWidget);
         widgetNotBinding->setObjectName(QStringLiteral("widgetNotBinding"));
         widgetNotBinding->setGeometry(QRect(15, 50, 330, 150));
         label_19 = new QLabel(widgetNotBinding);
         label_19->setObjectName(QStringLiteral("label_19"));
         label_19->setGeometry(QRect(150, 40, 160, 15));
+        label_19->setStyleSheet(QLatin1String("background-color: rgb(252, 252, 252);border:1px solid rgba(252, 252, 252,0);\n"
+"border-radius:10px;"));
         label_20 = new QLabel(widgetNotBinding);
         label_20->setObjectName(QStringLiteral("label_20"));
         label_20->setGeometry(QRect(150, 90, 160, 15));
+        label_20->setStyleSheet(QLatin1String("background-color: rgb(252, 252, 252);border:1px solid rgba(252, 252, 252,0);\n"
+"border-radius:10px;"));
         label_21 = new QLabel(widgetNotBinding);
         label_21->setObjectName(QStringLiteral("label_21"));
         label_21->setGeometry(QRect(150, 110, 160, 15));
+        label_21->setStyleSheet(QLatin1String("background-color: rgb(252, 252, 252);border:1px solid rgba(252, 252, 252,0);\n"
+"border-radius:10px;"));
         labelTwoBarCode = new QLabel(widgetNotBinding);
         labelTwoBarCode->setObjectName(QStringLiteral("labelTwoBarCode"));
         labelTwoBarCode->setGeometry(QRect(15, 30, 100, 100));
-        labelTwoBarCode->setStyleSheet(QStringLiteral("border-bottom:0px;"));
+        labelTwoBarCode->setStyleSheet(QLatin1String("background-color: rgb(252, 252, 252);border:1px solid rgba(252, 252, 252,0);\n"
+"border-radius:10px;\n"
+""));
+        ServiceBaseWidget->raise();
+        ServiceFeeWidget_3->raise();
+        label->raise();
+        ServiceFeeWidget->raise();
+        label_2->raise();
+        widgetNotBinding->raise();
+        labelworkers->raise();
+        labelFeeTime_4->raise();
 
         retranslateUi(EntCenterMainWidget);
 

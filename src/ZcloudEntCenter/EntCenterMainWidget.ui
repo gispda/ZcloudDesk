@@ -75,6 +75,10 @@ border-radius:10px;</string>
       <height>80</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(252, 252, 252);border:1px solid rgba(252, 252, 252,0);
+border-radius:10px;</string>
+    </property>
     <property name="text">
      <string/>
     </property>
@@ -94,6 +98,10 @@ border-radius:10px;</string>
       <height>16</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(252, 252, 252);border:1px solid rgba(252, 252, 252,0);
+border-radius:10px;</string>
+    </property>
     <property name="text">
      <string/>
     </property>
@@ -109,6 +117,10 @@ border-radius:10px;</string>
       <width>150</width>
       <height>15</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(252, 252, 252);border:1px solid rgba(252, 252, 252,0);
+border-radius:10px;</string>
     </property>
     <property name="text">
      <string>990880</string>
@@ -142,6 +154,10 @@ border-radius:10px;</string>
       <height>15</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(252, 252, 252);border:1px solid rgba(252, 252, 252,0);
+border-radius:10px;</string>
+    </property>
     <property name="text">
      <string>18000000000</string>
     </property>
@@ -174,6 +190,10 @@ border-radius:10px;</string>
       <height>15</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(252, 252, 252);border:1px solid rgba(252, 252, 252,0);
+border-radius:10px;</string>
+    </property>
     <property name="text">
      <string>张三</string>
     </property>
@@ -205,6 +225,10 @@ border-radius:10px;</string>
       <width>150</width>
       <height>15</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(252, 252, 252);border:1px solid rgba(252, 252, 252,0);
+border-radius:10px;</string>
     </property>
     <property name="text">
      <string>sadfsarewr</string>
@@ -252,7 +276,8 @@ border-radius:10px;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(252, 252, 252);</string>
+     <string notr="true">background-color: rgb(252, 252, 252);border:1px solid rgba(252, 252, 252,0);
+border-radius:10px;</string>
     </property>
     <property name="text">
      <string/>
@@ -274,7 +299,7 @@ border-radius:10px;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(252, 252, 252);border:1px solid rgba(235,235,235,1);
+     <string notr="true">background-color: rgb(252, 252, 252);border:1px solid rgba(252, 252, 252,0);
 border-radius:10px;</string>
     </property>
     <property name="text">
@@ -290,7 +315,7 @@ border-radius:10px;</string>
     <rect>
      <x>20</x>
      <y>210</y>
-     <width>64</width>
+     <width>80</width>
      <height>17</height>
     </rect>
    </property>
@@ -302,19 +327,21 @@ border-radius:10px;</string>
    </property>
    <property name="minimumSize">
     <size>
-     <width>64</width>
+     <width>80</width>
      <height>17</height>
     </size>
    </property>
    <property name="maximumSize">
     <size>
-     <width>64</width>
+     <width>80</width>
      <height>17</height>
     </size>
    </property>
    <property name="styleSheet">
     <string notr="true">font: 16px &quot;微软雅黑&quot;;
-color:#333333;</string>
+color:#333333;
+background-color: rgb(252, 252, 252);border:1px solid rgba(252, 252, 252,0);
+border-radius:10px;</string>
    </property>
    <property name="text">
     <string>基础服务</string>
@@ -450,8 +477,8 @@ QPushButton:disabled{ background-color:rgba(200,200,200,1);border-radius:4px;};<
      </size>
     </property>
     <property name="styleSheet">
-     <string notr="true">font: 14px &quot;微软雅黑&quot;;
-color:#333333;</string>
+     <string notr="true">background-color: rgb(252, 252, 252);border:1px solid rgba(252, 252, 252,0);
+border-radius:10px;</string>
     </property>
     <property name="text">
      <string>防伪税控服务费</string>
@@ -520,7 +547,9 @@ color:#333333;</string>
     </property>
     <property name="styleSheet">
      <string notr="true">font: 14px &quot;微软雅黑&quot;;
-color:#333333;</string>
+color:#333333;
+background-color: rgb(252, 252, 252);border:1px solid rgba(252, 252, 252,0);
+border-radius:10px;</string>
     </property>
     <property name="text">
      <string/>
@@ -555,7 +584,9 @@ color:#333333;</string>
     </property>
     <property name="styleSheet">
      <string notr="true">font: 14px &quot;微软雅黑&quot;;
-color:#333333;</string>
+color:#333333;
+background-color: rgb(252, 252, 252);border:1px solid rgba(252, 252, 252,0);
+border-radius:10px;</string>
     </property>
     <property name="text">
      <string>到期</string>
@@ -624,7 +655,9 @@ color:#333333;</string>
     </property>
     <property name="styleSheet">
      <string notr="true">font: 14px &quot;微软雅黑&quot;;
-color:#333333;</string>
+color:#333333;
+background-color: rgb(252, 252, 252);border:1px solid rgba(252, 252, 252,0);
+border-radius:10px;</string>
     </property>
     <property name="text">
      <string/>
@@ -686,7 +719,9 @@ QProgressBar {border:0px;border-radius:5px;text-align: center;}</string>
     </property>
     <property name="styleSheet">
      <string notr="true">font: 14px &quot;微软雅黑&quot;;
-color:#333333;</string>
+color:#333333;
+background-color: rgb(252, 252, 252);border:1px solid rgba(252, 252, 252,0);
+border-radius:10px;</string>
     </property>
     <property name="text">
      <string>暂时未获取您的企业防伪税控服务费信息</string>
@@ -698,7 +733,7 @@ color:#333333;</string>
     <rect>
      <x>20</x>
      <y>20</y>
-     <width>64</width>
+     <width>80</width>
      <height>17</height>
     </rect>
    </property>
@@ -710,20 +745,22 @@ color:#333333;</string>
    </property>
    <property name="minimumSize">
     <size>
-     <width>64</width>
+     <width>80</width>
      <height>17</height>
     </size>
    </property>
    <property name="maximumSize">
     <size>
-     <width>64</width>
+     <width>80</width>
      <height>17</height>
     </size>
    </property>
    <property name="styleSheet">
     <string notr="true">font: 16px &quot;微软雅黑&quot;;
 color:#333333;
-border-bottom:0px;</string>
+border-bottom:0px;
+background-color: rgb(252, 252, 252);border:1px solid rgba(252, 252, 252,0);
+border-radius:10px;</string>
    </property>
    <property name="text">
     <string>客户服务</string>
@@ -747,6 +784,10 @@ border-bottom:0px;</string>
       <height>15</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(252, 252, 252);border:1px solid rgba(252, 252, 252,0);
+border-radius:10px;</string>
+    </property>
     <property name="text">
      <string>您的企业还未绑定客户经理</string>
     </property>
@@ -760,6 +801,10 @@ border-bottom:0px;</string>
       <height>15</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(252, 252, 252);border:1px solid rgba(252, 252, 252,0);
+border-radius:10px;</string>
+    </property>
     <property name="text">
      <string>客户经理扫描此二维码可快速</string>
     </property>
@@ -772,6 +817,10 @@ border-bottom:0px;</string>
       <width>160</width>
       <height>15</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(252, 252, 252);border:1px solid rgba(252, 252, 252,0);
+border-radius:10px;</string>
     </property>
     <property name="text">
      <string>绑定企业</string>
@@ -787,13 +836,23 @@ border-bottom:0px;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">border-bottom:0px;</string>
+     <string notr="true">background-color: rgb(252, 252, 252);border:1px solid rgba(252, 252, 252,0);
+border-radius:10px;
+</string>
     </property>
     <property name="text">
      <string/>
     </property>
    </widget>
   </widget>
+  <zorder>ServiceBaseWidget</zorder>
+  <zorder>ServiceFeeWidget_3</zorder>
+  <zorder>label</zorder>
+  <zorder>ServiceFeeWidget</zorder>
+  <zorder>label_2</zorder>
+  <zorder>widgetNotBinding</zorder>
+  <zorder>labelworkers</zorder>
+  <zorder>labelFeeTime_4</zorder>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>

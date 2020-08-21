@@ -61,7 +61,7 @@ public:
         widgetTop->setStyleSheet(QStringLiteral("background-color: rgb(252, 252, 252);"));
         label = new QLabel(widgetTop);
         label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(250, 0, 2, 60));
+        label->setGeometry(QRect(249, 0, 1, 60));
         label->setStyleSheet(QStringLiteral("border:2px solid rgba(222,222,222,1);"));
         pushButtonBack = new QPushButton(widgetTop);
         pushButtonBack->setObjectName(QStringLiteral("pushButtonBack"));
@@ -81,7 +81,7 @@ public:
         label_2->setStyleSheet(QString::fromUtf8("font: 75 16pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";"));
         pushButtonEntCenter = new QPushButton(widgetTop);
         pushButtonEntCenter->setObjectName(QStringLiteral("pushButtonEntCenter"));
-        pushButtonEntCenter->setGeometry(QRect(10, 15, 120, 30));
+        pushButtonEntCenter->setGeometry(QRect(10, 30, 120, 20));
         QFont font;
         font.setFamily(QString::fromUtf8("\345\276\256\350\275\257\351\233\205\351\273\221"));
         font.setPointSize(16);
@@ -92,7 +92,7 @@ public:
         pushButtonEntCenter->setFlat(true);
         pushButtonUserCenter = new QPushButton(widgetTop);
         pushButtonUserCenter->setObjectName(QStringLiteral("pushButtonUserCenter"));
-        pushButtonUserCenter->setGeometry(QRect(125, 15, 120, 30));
+        pushButtonUserCenter->setGeometry(QRect(125, 30, 120, 20));
         pushButtonUserCenter->setFont(font);
         pushButtonUserCenter->setStyleSheet(QStringLiteral("color:#000000;"));
         pushButtonUserCenter->setFlat(true);

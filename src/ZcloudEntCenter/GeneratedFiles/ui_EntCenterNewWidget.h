@@ -27,7 +27,7 @@ QT_BEGIN_NAMESPACE
 class Ui_EntCenterNewWidget
 {
 public:
-    QHBoxLayout *horizontalLayout_2;
+    QWidget *widget;
     QHBoxLayout *horizontalLayout;
     QWidget *EntLeftWidget;
     QToolButton *switchButton;
@@ -57,7 +57,7 @@ public:
     {
         if (EntCenterNewWidget->objectName().isEmpty())
             EntCenterNewWidget->setObjectName(QStringLiteral("EntCenterNewWidget"));
-        EntCenterNewWidget->resize(1016, 620);
+        EntCenterNewWidget->resize(1016, 639);
         QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Preferred);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -66,23 +66,22 @@ public:
         EntCenterNewWidget->setMinimumSize(QSize(1016, 620));
         EntCenterNewWidget->setMaximumSize(QSize(1016, 682));
         EntCenterNewWidget->setStyleSheet(QStringLiteral("QWidget#EntCenterWidget{background-color: rgb(255, 255, 255);};"));
-        horizontalLayout_2 = new QHBoxLayout(EntCenterNewWidget);
-        horizontalLayout_2->setSpacing(0);
-        horizontalLayout_2->setContentsMargins(11, 11, 11, 11);
-        horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
-        horizontalLayout_2->setContentsMargins(0, 0, 0, 0);
-        horizontalLayout = new QHBoxLayout();
+        widget = new QWidget(EntCenterNewWidget);
+        widget->setObjectName(QStringLiteral("widget"));
+        horizontalLayout = new QHBoxLayout(widget);
         horizontalLayout->setSpacing(0);
+        horizontalLayout->setContentsMargins(11, 11, 11, 11);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
-        EntLeftWidget = new QWidget(EntCenterNewWidget);
+        horizontalLayout->setContentsMargins(0, 0, 0, 0);
+        EntLeftWidget = new QWidget(widget);
         EntLeftWidget->setObjectName(QStringLiteral("EntLeftWidget"));
         QSizePolicy sizePolicy1(QSizePolicy::Fixed, QSizePolicy::Fixed);
         sizePolicy1.setHorizontalStretch(0);
         sizePolicy1.setVerticalStretch(0);
         sizePolicy1.setHeightForWidth(EntLeftWidget->sizePolicy().hasHeightForWidth());
         EntLeftWidget->setSizePolicy(sizePolicy1);
-        EntLeftWidget->setMinimumSize(QSize(250, 680));
-        EntLeftWidget->setMaximumSize(QSize(250, 680));
+        EntLeftWidget->setMinimumSize(QSize(250, 618));
+        EntLeftWidget->setMaximumSize(QSize(250, 618));
         EntLeftWidget->setStyleSheet(QStringLiteral("QWidget#EntLeftWidget{background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 #EDF4FF, stop:1 #FAFCFF);border-top-left-radius:8px;border-bottom-left-radius:8px;border-right:1px solid #EBEBEB;}"));
         switchButton = new QToolButton(EntLeftWidget);
         switchButton->setObjectName(QStringLiteral("switchButton"));
@@ -273,12 +272,12 @@ public:
 
         horizontalLayout->addWidget(EntLeftWidget);
 
-        EntRightWidget = new QWidget(EntCenterNewWidget);
+        EntRightWidget = new QWidget(widget);
         EntRightWidget->setObjectName(QStringLiteral("EntRightWidget"));
         sizePolicy1.setHeightForWidth(EntRightWidget->sizePolicy().hasHeightForWidth());
         EntRightWidget->setSizePolicy(sizePolicy1);
-        EntRightWidget->setMinimumSize(QSize(750, 680));
-        EntRightWidget->setMaximumSize(QSize(750, 680));
+        EntRightWidget->setMinimumSize(QSize(750, 618));
+        EntRightWidget->setMaximumSize(QSize(750, 618));
         EntRightWidget->setStyleSheet(QStringLiteral("QWidget#EntRightWidget{background-color: rgb(252, 252, 252);border-top-right-radius:8px;border-bottom-right-radius:8px;}"));
         rightLayout = new QHBoxLayout(EntRightWidget);
         rightLayout->setSpacing(0);
@@ -293,9 +292,6 @@ public:
 
 
         horizontalLayout->addWidget(EntRightWidget);
-
-
-        horizontalLayout_2->addLayout(horizontalLayout);
 
 
         retranslateUi(EntCenterNewWidget);

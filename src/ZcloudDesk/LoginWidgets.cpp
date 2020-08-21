@@ -269,7 +269,7 @@ bool LoginWidget::eventFilter(QObject *target, QEvent *e)
 			//QDesktopServices::openUrl(QUrl::fromUserInput("https://user.zhicloud.com/"));
 			//×¢²á
 			changeLoginMethod(3);
-			statusLoginLabel->text() != QString::fromLocal8Bit("ÊÖ»ú¿ì½ÝµÇÂ¼") ?
+			statusLoginLabel->text() != QString::fromLocal8Bit("µÇÂ¼/×¢²á") ?
 				ZcloudBigDataInterface::GetInstance()->produceData("M00", "OP001", "SLG008")
 				: ZcloudBigDataInterface::GetInstance()->produceData("M00", "OP001", "SLG004");
 
@@ -277,10 +277,10 @@ bool LoginWidget::eventFilter(QObject *target, QEvent *e)
 		else if (target == statusLoginLabel_2)
 		{
 			//ÐÞ¸ÄµÇÂ¼·½Ê½
-			statusLoginLabel->text() != QString::fromLocal8Bit("ÊÖ»ú¿ì½ÝµÇÂ¼") ?
+			statusLoginLabel->text() != QString::fromLocal8Bit("µÇÂ¼/×¢²á") ?
 				ZcloudBigDataInterface::GetInstance()->produceData("M00", "OP001", "SLG039")
 				: ZcloudBigDataInterface::GetInstance()->produceData("M00", "OP001", "SLG021");
-			changeLoginMethod(statusLoginLabel->text() != QString::fromLocal8Bit("ÊÖ»ú¿ì½ÝµÇÂ¼") ? 1 : 2);
+			changeLoginMethod(statusLoginLabel->text() != QString::fromLocal8Bit("µÇÂ¼/×¢²á") ? 1 : 2);
 		}
 		else if (target == forgetPasswordLabel)
 		{
@@ -303,7 +303,7 @@ bool LoginWidget::eventFilter(QObject *target, QEvent *e)
 				if (!timer->isActive())
 				{
 					QString strCodeType;
-					if (statusLoginLabel->text() == QString::fromLocal8Bit("ÊÖ»ú¿ì½ÝµÇÂ¼"))//ÊÖ»úµÇÂ¼
+					if (statusLoginLabel->text() == QString::fromLocal8Bit("µÇÂ¼/×¢²á"))//ÊÖ»úµÇÂ¼
 					{
 						ZcloudBigDataInterface::GetInstance()->produceData("M00", "OP001", "SLG033", accountLineEdit->text());
 						if (zhicloudStrToken.isEmpty())
@@ -382,7 +382,7 @@ void LoginWidget::changeLoginMethod(int statusFlag, bool isClear)
 	case 1:
 	{
 		//ÊÖ»úÑéÖ¤ÂëµÇÂ¼
-		statusLoginLabel->setText(QString::fromLocal8Bit("ÊÖ»ú¿ì½ÝµÇÂ¼"));
+		statusLoginLabel->setText(QString::fromLocal8Bit("µÇÂ¼/×¢²á"));
 		statusLoginLabel_2->setText(QString::fromLocal8Bit("<html><head/><body><p><span style=\" font:14px 'Microsoft YaHei';  font-weight:600;color:#666666;\">ÕËºÅµÇÂ¼</span>"
 			"<span style=\" font:14px 'Microsoft YaHei'; font-weight:600; color:#1f8bed;\">&gt;</span></p></body></html>"));
 		accountLineEdit->setPlaceholderText(QString::fromLocal8Bit("ÇëÊäÈëÊÖ»úºÅ"));
@@ -423,7 +423,7 @@ void LoginWidget::changeLoginMethod(int statusFlag, bool isClear)
 	{
 		//ÕËºÅÃÜÂëµÇÂ¼
 		statusLoginLabel->setText(QString::fromLocal8Bit("ÕËºÅµÇÂ¼"));
-		statusLoginLabel_2->setText(QString::fromLocal8Bit("<html><head/><body><p><span style=\" font:14px 'Microsoft YaHei';  font-weight:600;color:#666666;\">ÊÖ»ú¿ì½ÝµÇÂ¼</span>"
+		statusLoginLabel_2->setText(QString::fromLocal8Bit("<html><head/><body><p><span style=\" font:14px 'Microsoft YaHei';  font-weight:600;color:#666666;\">µÇÂ¼/×¢²á</span>"
 			"<span style=\" font:14px 'Microsoft YaHei'; font-weight:600; color:#1f8bed;\">&gt;</span></p></body></html>"));
 		accountLineEdit->setPlaceholderText(QString::fromLocal8Bit("ÇëÊäÈëÊÖ»úºÅ/ÕËºÅ"));
 		verificationCodeLineEdit->hide();
@@ -601,7 +601,7 @@ void LoginWidget::onLoginButtonClicked()
 	QString passwordStr = passwordLineEdit->text();
 	if (loginButton->text() == QString::fromLocal8Bit("µÇÂ¼"))
 	{
-		if (statusLoginLabel->text() != QString::fromLocal8Bit("ÊÖ»ú¿ì½ÝµÇÂ¼"))
+		if (statusLoginLabel->text() != QString::fromLocal8Bit("µÇÂ¼/×¢²á"))
 		{
 			//ÕËºÅÃÜÂëµÇÂ¼
 			if (accountStr.isEmpty())
@@ -1055,7 +1055,7 @@ void LoginWidget::loginFinish(int status, UserInfoStruct userInfoStruct)
 	QString loginButtonText = loginButton->text();
 	if (loginButtonText == QString::fromLocal8Bit("µÇÂ¼"))
 	{
-		if (statusLoginLabel->text() != QString::fromLocal8Bit("ÊÖ»ú¿ì½ÝµÇÂ¼"))
+		if (statusLoginLabel->text() != QString::fromLocal8Bit("µÇÂ¼/×¢²á"))
 		{
 			if (status == 0)
 			{
