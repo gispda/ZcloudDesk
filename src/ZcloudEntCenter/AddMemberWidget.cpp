@@ -78,7 +78,7 @@ void AddMemberWidget::onAddOkBtnClick()
 		return;
 	}
 	QJsonObject obj = parse_doucment.object();
-	int status = obj.take("status").toInt();
+	int status = obj.take("code").toInt();
 	if (0 == status)
 	{
 		ZcloudBigDataInterface::GetInstance()->produceData("M00", "OP000", "BAC004");
@@ -118,7 +118,9 @@ void AddMemberWidget::onAddOkBtnClick()
 		}
 		else
 		{
-			ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_TIP, QString::fromLocal8Bit("操作失败"), QString::fromLocal8Bit("\r\n新增财务成员失败，请稍后再试！"));
+
+			QString msg = obj.value("msg").toString();
+			ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_TIP, QString::fromLocal8Bit("操作失败"), msg);
 		}
 	}		
 }

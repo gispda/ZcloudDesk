@@ -90,7 +90,19 @@ MemberItemWidget::MemberItemWidget(int nAdmin,int nIndex, QString strUid, QStrin
 	ZcloudComFun::setElideText(14, ui.labelJob, strJob);
 
 
-	if (nAdmin	==	1)
+	if (1 != nRoleType)
+	{
+
+		ui.labelRole->setText(QString::fromLocal8Bit("普通用户"));
+	}
+	else
+	{
+
+		ui.labelRole->setText(QString::fromLocal8Bit("管理员"));
+		//m_pMenu->setFixedSize(96, 32);
+	}
+
+	if (nAdmin == 1)
 	{
 		m_pMenu = new QMenu();
 		m_pActionRemoveMember = new QAction(m_pMenu);
@@ -110,20 +122,7 @@ MemberItemWidget::MemberItemWidget(int nAdmin,int nIndex, QString strUid, QStrin
 		m_pActionHandOver->setText(QString::fromLocal8Bit("移交管理员"));
 
 		
-		if (1 != nRoleType)
-		{
-			m_pMenu->addAction(m_pActionHandOver);
-			m_pMenu->addAction(m_pActionRemoveMember);
-			m_pMenu->setFixedSize(96, 96);
-
-			ui.labelRole->setText(QString::fromLocal8Bit("普通用户"));
-		}
-		else
-		{
-
-			ui.labelRole->setText(QString::fromLocal8Bit("管理员"));
-			//m_pMenu->setFixedSize(96, 32);
-		}
+		
 		m_pMenu->addAction(m_pActionModifyMember);
 		m_pMenu->setAttribute(Qt::WA_TranslucentBackground);
 		m_pMenu->setStyleSheet(QString::fromLocal8Bit(

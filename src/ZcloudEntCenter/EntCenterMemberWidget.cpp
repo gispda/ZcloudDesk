@@ -74,7 +74,7 @@ bool EntCenterMemberWidget::showMemberInfo()
 	{
 		return false;
 	}
-	qDebug() << strRet;
+	//qDebug() << strRet;
 	QByteArray byte_array = strRet.toUtf8();
 	QJsonParseError json_error;
 	QJsonDocument parse_doucment = QJsonDocument::fromJson(byte_array, &json_error);
@@ -94,7 +94,7 @@ bool EntCenterMemberWidget::showMemberInfo()
 	}
 
 	QJsonObject data = obj.take("data").toObject();
-	int		nAdmin = data.take("is_admin").toInt();
+	//int		nAdmin = data.take("is_admin").toInt();
 	int		nAuditCount = data.take("audit_count").toInt();
 	QJsonValue list = data.take("list");
 	if (!list.isArray())
@@ -106,15 +106,16 @@ bool EntCenterMemberWidget::showMemberInfo()
 	for (int nIndex = 0; nIndex < nSize; ++nIndex)
 	{
 		QJsonObject dataList = listArray.at(nIndex).toObject();
+		QString id = dataList.take("id").toString();
 		QString strUid = dataList.take("user_id").toString();
 		QString strUserName = dataList.take("username").toString();
 		QString strTrueName = dataList.take("truename").toString();
 		QString strJob = dataList.take("job").toString();
 		QString strMobile = dataList.take("mobile").toString();
-		int		nRoleType = dataList.take("role_type").toInt();
+		int		nRoleType = dataList.take("role_type").toString().toInt();
 
 		QListWidgetItem* pListWidgetItem = new QListWidgetItem;
-		MemberItemWidget* pItem = new MemberItemWidget(nAdmin, nIndex % 6, strUid, strUserName, strUserName, strJob, strMobile, nRoleType, ui.listWidget);
+		MemberItemWidget* pItem = new MemberItemWidget(m_pInfo->_nrole_type, nIndex % 6, id, strUserName, strUserName, strJob, strMobile, nRoleType, ui.listWidget);
 		connect(pItem, &MemberItemWidget::sigRemoveMember, this, &EntCenterMemberWidget::onRemoveMember);
 		connect(pItem, &MemberItemWidget::sigModifyMember, this, &EntCenterMemberWidget::onModifyMember);
 		connect(pItem, &MemberItemWidget::sigHandOver, this, &EntCenterMemberWidget::onHandOver);
@@ -199,7 +200,7 @@ void EntCenterMemberWidget::onFreshFinanMember()
 void EntCenterMemberWidget::onRemoveMember(QString strUserId)
 {
 	ZcloudBigDataInterface::GetInstance()->produceData("M00", "OP001", "BFM005", strUserId);
-	int nReturn = ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_OKCANCEL, QString::fromLocal8Bit("移除成员"), QString::fromLocal8Bit("移除后，该成员将脱离企业，\r\n是否确认移除？"));
+	int nReturn = ZcloudComFun::openMessageTipDlg_2(ZcloudComFun::EN_OKCANCEL, QString::fromLocal8Bit("移除成员"), QString::fromLocal8Bit("移除后，该成员将脱离企业，\r\n是否确认移除？"), QString::fromLocal8Bit("确定"), QString::fromLocal8Bit("取消"));
 	if (nReturn != QDialog::Accepted)
 	{
 		ZcloudBigDataInterface::GetInstance()->produceData("M00", "OP001", "BDM001", strUserId);
@@ -224,7 +225,7 @@ void EntCenterMemberWidget::onRemoveMember(QString strUserId)
 		return;
 	}
 	QJsonObject obj = parse_doucment.object();
-	int status = obj.take("status").toInt();
+	int status = obj.take("code").toInt();
 	if (0 == status)
 	{
 		ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_CLOSE, QString::fromLocal8Bit("操作成功"), QString::fromLocal8Bit("\r\n移除财务成员成功！"));
@@ -244,7 +245,9 @@ void EntCenterMemberWidget::onRemoveMember(QString strUserId)
 	}
 	else
 	{
-		ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_TIP, QString::fromLocal8Bit("操作失败"), QString::fromLocal8Bit("\r\n移除用户失败，请稍后再试！"));
+
+		QString msg = obj.value("msg").toString();
+		ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_TIP, QString::fromLocal8Bit("操作失败"), msg);
 	}
 }
 
@@ -259,7 +262,7 @@ void EntCenterMemberWidget::onModifyMember(QString strTrueName, QString strJob, 
 void EntCenterMemberWidget::onHandOver(QString strUserId)
 {
 	ZcloudBigDataInterface::GetInstance()->produceData("M00", "OP001", "BFM006", strUserId);
-	int nReturn = ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_OKCANCEL, QString::fromLocal8Bit("移交管理员"), QString::fromLocal8Bit("移交后，您将失去管理员身份，\r\n是否确认移交？"));
+	int nReturn = ZcloudComFun::openMessageTipDlg_2(ZcloudComFun::EN_OKCANCEL, QString::fromLocal8Bit("移交管理员"), QString::fromLocal8Bit("移交后，您将失去管理员身份，\r\n是否确认移交？"), QString::fromLocal8Bit("确认"),  QString::fromLocal8Bit("取消"));
 	if (nReturn != QDialog::Accepted)
 	{
 		ZcloudBigDataInterface::GetInstance()->produceData("M00", "OP001", "BTS002", strUserId);
@@ -284,7 +287,7 @@ void EntCenterMemberWidget::onHandOver(QString strUserId)
 		return;
 	}
 	QJsonObject obj = parse_doucment.object();
-	int status = obj.take("status").toInt();
+	int status = obj.take("code").toInt();
 	if (0 == status)
 	{
 		ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_CLOSE, QString::fromLocal8Bit("操作成功"), QString::fromLocal8Bit("\r\n移交管理员权限成功！"));
@@ -308,22 +311,30 @@ void EntCenterMemberWidget::onHandOver(QString strUserId)
 	}
 	else
 	{
-		ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_TIP, QString::fromLocal8Bit("操作失败"), QString::fromLocal8Bit("\r\n移交权限失败，请稍后再试！"));
+		QString data = obj.value("msg").toString();
+		ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_TIP, QString::fromLocal8Bit("操作失败"), data);
 	}
 }
 
 bool EntCenterMemberWidget::winHttpHandOver(QString strUid, QString strToken, QString strUserId, QString& strRet)
 {
-	QString strUrl = QString("/v2/company/change-management-authority?user_id=%1&token=%2").arg(m_pInfo->_strUid).arg(m_pInfo->_strToken);
-	QString strPost = QString("u_id=%1").arg(strUserId);
-	return ZcloudComFun::httpPost(strUrl, strPost, 5000, strRet);
+	//QString strUrl = QString("/v2/company/change-management-authority?user_id=%1&token=%2").arg(m_pInfo->_strUid).arg(m_pInfo->_strToken);
+	//QString strPost = QString("u_id=%1").arg(strUserId);
+	//return ZcloudComFun::httpPost(strUrl, strPost, 5000, strRet);
+
+	QString strUrl = QString("/ucenter/user/transfer-member");
+	QString strPost = QString("id=%1&token=%2").arg(strUserId).arg(m_pInfo->_strToken);
+	return ZcloudComFun::httpPost(strUrl, strPost, 5000, strRet,0,1);
 }
 
 bool EntCenterMemberWidget::winHttpRemoveMember(QString strUid, QString strToken, QString strUserId, QString& strRet)
 {
-	QString strUrl = QString("/v2/company/remove-member?user_id=%1&token=%2").arg(m_pInfo->_strUid).arg(m_pInfo->_strToken);
-	QString strPost = QString("u_id=%1").arg(strUserId);
-	return ZcloudComFun::httpPost(strUrl, strPost, 5000, strRet);
+	//QString strUrl = QString("/v2/company/remove-member?user_id=%1&token=%2").arg(m_pInfo->_strUid).arg(m_pInfo->_strToken);
+	//QString strPost = QString("u_id=%1").arg(strUserId);
+	//return ZcloudComFun::httpPost(strUrl, strPost, 5000, strRet);
+	QString strUrl = QString("/ucenter/user/remove-member");
+	QString strPost = QString("id=%1&token=%2").arg(strUserId).arg(m_pInfo->_strToken);
+	return ZcloudComFun::httpPost(strUrl, strPost, 5000, strRet,0,1);
 }
 
 void EntCenterMemberWidget::onAddMemberSucess()
