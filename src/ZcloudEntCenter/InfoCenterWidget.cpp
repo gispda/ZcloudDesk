@@ -295,7 +295,7 @@ bool InfoCenterWidget::analysisJson(const QString& strJson, QString token, EntCe
 	{
 		QJsonObject objValue = data.value("service").toObject();
 
-		qDebug() << QString(QJsonDocument(objValue).toJson());
+		//qDebug() << QString(QJsonDocument(objValue).toJson());
 
 
 
@@ -351,7 +351,7 @@ bool InfoCenterWidget::analysisJson(const QString& strJson, QString token, EntCe
 
 
 		//必须在这里取值 才能获取正确内容
-		info->_nrole_type = objValue.value("rule_type").toInt();  //
+		info->_nrole_type = objValue.value("role_type").toString().toInt();  //
 
 
 		info->_strUid = objValue.value("user_id").toString();  //

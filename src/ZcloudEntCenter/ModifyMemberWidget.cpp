@@ -141,7 +141,11 @@ void ModifyMemberWidget::onJobEditingFinished()
 }
 bool ModifyMemberWidget::winHttpModifyMemberInfo(QString strUid, QString strToken, QString strTrueName, QString strJob, QString strUserId,QString& strRet)
 {
-	QString strUrl = QString("/v2/company/set-member-info?user_id=%1&token=%2").arg(strUid).arg(strToken);
-	QString strPost = QString("action_type=update&true_name=%1&job=%2&u_id=%3").arg(strTrueName).arg(strJob).arg(strUserId);
-	return ZcloudComFun::httpPost(strUrl, strPost, 5000, strRet);
+	//QString strUrl = QString("/v2/company/set-member-info?user_id=%1&token=%2").arg(strUid).arg(strToken);
+	//QString strPost = QString("action_type=update&true_name=%1&job=%2&u_id=%3").arg(strTrueName).arg(strJob).arg(strUserId);
+	//return ZcloudComFun::httpPost(strUrl, strPost, 5000, strRet);
+
+	QString strUrl = QString("/ucenter/user/edit-member");
+	QString strPost = QString("username=%1&job=%2&id=%3&token=%4").arg(strTrueName).arg(strJob).arg(strUserId).arg(strToken);
+	return ZcloudComFun::httpPost(strUrl, strPost, 5000, strRet,false,1);
 }

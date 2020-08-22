@@ -37,8 +37,8 @@
   <widget class="QPushButton" name="addMemberButton">
    <property name="geometry">
     <rect>
-     <x>37</x>
-     <y>13</y>
+     <x>640</x>
+     <y>590</y>
      <width>88</width>
      <height>32</height>
     </rect>
@@ -61,6 +61,9 @@
      <height>32</height>
     </size>
    </property>
+   <property name="toolTip">
+    <string>添加成员</string>
+   </property>
    <property name="styleSheet">
     <string notr="true">QPushButton{background-color:#FFFFFF;border-radius:4px;font:14px &quot;微软雅黑&quot;;color:#333333;border:1px solid #DEDEDE;}
 QPushButton:hover,pressed{background-color:#F4F4F4;border-radius:4px;font:14px &quot;微软雅黑&quot;;color:#333333;}</string>
@@ -72,8 +75,8 @@ QPushButton:hover,pressed{background-color:#F4F4F4;border-radius:4px;font:14px &
   <widget class="QLabel" name="labelAudit">
    <property name="geometry">
     <rect>
-     <x>670</x>
-     <y>22</y>
+     <x>540</x>
+     <y>600</y>
      <width>61</width>
      <height>16</height>
     </rect>
@@ -99,6 +102,9 @@ QPushButton:hover,pressed{background-color:#F4F4F4;border-radius:4px;font:14px &
    <property name="cursor">
     <cursorShape>PointingHandCursor</cursorShape>
    </property>
+   <property name="toolTip">
+    <string>成员审核</string>
+   </property>
    <property name="styleSheet">
     <string notr="true">font: 14px &quot;微软雅黑&quot;;
 color: #1E8BED;
@@ -112,7 +118,7 @@ border-bottom:0px;</string>
    <property name="geometry">
     <rect>
      <x>81</x>
-     <y>74</y>
+     <y>20</y>
      <width>27</width>
      <height>15</height>
     </rect>
@@ -148,7 +154,7 @@ border-bottom:0px;</string>
    <property name="geometry">
     <rect>
      <x>195</x>
-     <y>74</y>
+     <y>20</y>
      <width>27</width>
      <height>15</height>
     </rect>
@@ -184,7 +190,7 @@ border-bottom:0px;</string>
    <property name="geometry">
     <rect>
      <x>330</x>
-     <y>74</y>
+     <y>20</y>
      <width>45</width>
      <height>15</height>
     </rect>
@@ -220,7 +226,7 @@ border-bottom:0px;</string>
    <property name="geometry">
     <rect>
      <x>510</x>
-     <y>74</y>
+     <y>20</y>
      <width>27</width>
      <height>15</height>
     </rect>
@@ -256,7 +262,7 @@ border-bottom:0px;</string>
    <property name="geometry">
     <rect>
      <x>700</x>
-     <y>74</y>
+     <y>20</y>
      <width>27</width>
      <height>15</height>
     </rect>
@@ -292,9 +298,9 @@ border-bottom:0px;</string>
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>110</y>
+     <y>50</y>
      <width>730</width>
-     <height>310</height>
+     <height>540</height>
     </rect>
    </property>
    <property name="sizePolicy">
@@ -306,13 +312,13 @@ border-bottom:0px;</string>
    <property name="minimumSize">
     <size>
      <width>730</width>
-     <height>310</height>
+     <height>540</height>
     </size>
    </property>
    <property name="maximumSize">
     <size>
      <width>740</width>
-     <height>310</height>
+     <height>540</height>
     </size>
    </property>
    <property name="styleSheet">
@@ -339,7 +345,7 @@ QListWidget::Item{background:rgb(255,255,255);}</string>
    <property name="geometry">
     <rect>
      <x>610</x>
-     <y>74</y>
+     <y>20</y>
      <width>28</width>
      <height>15</height>
     </rect>

@@ -121,7 +121,7 @@ ZcloudDesk::ZcloudDesk(UserInfoStruct userInfoStruct, QWidget *parent)
 	connect(ui.billListButton, SIGNAL(clicked()), this, SLOT(openWorkers()));
 
 
-	connect(this, SIGNAL(applyLogin()), this, SLOT(doLogin()));
+	 connect(this, SIGNAL(applyLogin()), this, SLOT(doLogin()));
 	
 	//connect(ui.msgButton, SIGNAL(clicked()), this, SLOT(openMsgCenterWidget()));
 	//ui.msgButton->setNumber(0);
@@ -2100,7 +2100,7 @@ void ZcloudDesk::createEnterCenterMgr()
 void ZcloudDesk::InitEntCenter()
 {
 	connect(m_pEntCenter, SIGNAL(sigNeedLoginMain()), this, SLOT(showLoginTip()));
-	connect(m_pEntCenter, SIGNAL(sigNeedLoginMain()), this, SLOT(doLogin()));
+	//connect(m_pEntCenter, SIGNAL(sigNeedLoginMain()), this, SLOT(doLogin()));
 	
 	connect(m_pEntCenter, SIGNAL(sigSwitchAcc(int, bool, QString, QString)), this, SLOT(onSwitchAcc(int, bool, QString, QString)));
 	connect(m_pEntCenter, SIGNAL(bingdingPhoneSignal()), this, SLOT(bingdingPhoneSlot()));

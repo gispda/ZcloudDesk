@@ -74,6 +74,7 @@ bool EntCenterMemberWidget::showMemberInfo()
 	{
 		return false;
 	}
+	qDebug() << strRet;
 	QByteArray byte_array = strRet.toUtf8();
 	QJsonParseError json_error;
 	QJsonDocument parse_doucment = QJsonDocument::fromJson(byte_array, &json_error);
@@ -133,6 +134,9 @@ bool EntCenterMemberWidget::showMemberInfo()
 		pListWidgetItem->setSizeHint(size);
 		ui.listWidget->setItemWidget(pListWidgetItem, pItem);
 	}
+
+
+
 	if (nAuditCount >= 0)
 	{
 		ui.labelAudit->setText(QString::fromLocal8Bit("≥…‘±…Û∫À(%1)").arg(nAuditCount));

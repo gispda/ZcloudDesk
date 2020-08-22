@@ -61,7 +61,7 @@ void AddMemberWidget::onAddOkBtnClick()
 
 	ZcloudBigDataInterface::GetInstance()->produceData("M00", "OP001", "BAC003");
 	QString strRet;
-	if (!winHttpAddMember(m_strUid, m_strToken, ui.lineEditName->text(), ui.lineEditAcc->text(),  ui.lineEditJob->text(),strRet))
+	if (!winHttpAddMember(m_strUid, m_strToken, ui.lineEditName->text(), ui.lineEditPhone->text(),  ui.lineEditJob->text(),strRet))
 	{
 		ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_TIP, QString::fromLocal8Bit("操作失败"), QString::fromLocal8Bit("\r\n新增财务成员失败，请稍后再试！"));
 		return;
@@ -130,8 +130,8 @@ bool AddMemberWidget::winHttpAddMember(QString strUid, QString strToken, QString
 	//return ZcloudComFun::httpPost(strUrl, strPost, 5000, strRet);
 
 	QString strUrl = QString("/ucenter/user/bind-member");
-	QString strPost = QString("token=1%&user_id=%2&username=%3&account=%4&job=%5").arg(strToken).arg(strUid).arg(strToken).arg(username).arg(strAcc).arg(strJob);
-	return ZcloudComFun::httpPost(strUrl, strPost, 5000, strRet);
+	QString strPost = QString("token=%1&username=%2&account=%3&job=%4").arg(strToken).arg(username).arg(strAcc).arg(strJob);
+	return ZcloudComFun::httpPost(strUrl, strPost, 5000, strRet,false,1);
 }
 
 bool AddMemberWidget::onNameEditingFinished()

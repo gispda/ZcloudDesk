@@ -36,14 +36,14 @@ public:
     {
         if (MemberItemWidget->objectName().isEmpty())
             MemberItemWidget->setObjectName(QStringLiteral("MemberItemWidget"));
-        MemberItemWidget->resize(730, 70);
+        MemberItemWidget->resize(730, 90);
         QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(MemberItemWidget->sizePolicy().hasHeightForWidth());
         MemberItemWidget->setSizePolicy(sizePolicy);
-        MemberItemWidget->setMinimumSize(QSize(730, 70));
-        MemberItemWidget->setMaximumSize(QSize(730, 70));
+        MemberItemWidget->setMinimumSize(QSize(730, 90));
+        MemberItemWidget->setMaximumSize(QSize(730, 90));
         MemberItemWidget->setStyleSheet(QStringLiteral("QWidget#MemberItemWidget{background-color: rgb(255, 255, 255);};"));
         FilletWidget = new QWidget(MemberItemWidget);
         FilletWidget->setObjectName(QStringLiteral("FilletWidget"));

@@ -49,7 +49,7 @@ public:
         EntCenterMemberWidget->setStyleSheet(QStringLiteral("QWidget#EntCenterMemberWidget{background-color: rgb(255, 255, 255);border-radius:8px;}"));
         addMemberButton = new QPushButton(EntCenterMemberWidget);
         addMemberButton->setObjectName(QStringLiteral("addMemberButton"));
-        addMemberButton->setGeometry(QRect(37, 13, 88, 32));
+        addMemberButton->setGeometry(QRect(640, 590, 88, 32));
         sizePolicy.setHeightForWidth(addMemberButton->sizePolicy().hasHeightForWidth());
         addMemberButton->setSizePolicy(sizePolicy);
         addMemberButton->setMinimumSize(QSize(88, 32));
@@ -58,7 +58,7 @@ public:
 "QPushButton:hover,pressed{background-color:#F4F4F4;border-radius:4px;font:14px \"\345\276\256\350\275\257\351\233\205\351\273\221\";color:#333333;}"));
         labelAudit = new QLabel(EntCenterMemberWidget);
         labelAudit->setObjectName(QStringLiteral("labelAudit"));
-        labelAudit->setGeometry(QRect(670, 22, 61, 16));
+        labelAudit->setGeometry(QRect(540, 600, 61, 16));
         QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Fixed);
         sizePolicy1.setHorizontalStretch(0);
         sizePolicy1.setVerticalStretch(15);
@@ -72,7 +72,7 @@ public:
 "border-bottom:0px;"));
         label = new QLabel(EntCenterMemberWidget);
         label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(81, 74, 27, 15));
+        label->setGeometry(QRect(81, 20, 27, 15));
         QSizePolicy sizePolicy2(QSizePolicy::Preferred, QSizePolicy::Fixed);
         sizePolicy2.setHorizontalStretch(0);
         sizePolicy2.setVerticalStretch(0);
@@ -85,7 +85,7 @@ public:
 "border-bottom:0px;"));
         label_2 = new QLabel(EntCenterMemberWidget);
         label_2->setObjectName(QStringLiteral("label_2"));
-        label_2->setGeometry(QRect(195, 74, 27, 15));
+        label_2->setGeometry(QRect(195, 20, 27, 15));
         sizePolicy2.setHeightForWidth(label_2->sizePolicy().hasHeightForWidth());
         label_2->setSizePolicy(sizePolicy2);
         label_2->setMinimumSize(QSize(27, 15));
@@ -95,7 +95,7 @@ public:
 "border-bottom:0px;"));
         label_3 = new QLabel(EntCenterMemberWidget);
         label_3->setObjectName(QStringLiteral("label_3"));
-        label_3->setGeometry(QRect(330, 74, 45, 15));
+        label_3->setGeometry(QRect(330, 20, 45, 15));
         sizePolicy2.setHeightForWidth(label_3->sizePolicy().hasHeightForWidth());
         label_3->setSizePolicy(sizePolicy2);
         label_3->setMinimumSize(QSize(45, 15));
@@ -105,7 +105,7 @@ public:
 "border-bottom:0px;"));
         label_4 = new QLabel(EntCenterMemberWidget);
         label_4->setObjectName(QStringLiteral("label_4"));
-        label_4->setGeometry(QRect(510, 74, 27, 15));
+        label_4->setGeometry(QRect(510, 20, 27, 15));
         sizePolicy2.setHeightForWidth(label_4->sizePolicy().hasHeightForWidth());
         label_4->setSizePolicy(sizePolicy2);
         label_4->setMinimumSize(QSize(27, 15));
@@ -115,7 +115,7 @@ public:
 "border-bottom:0px;"));
         label_6 = new QLabel(EntCenterMemberWidget);
         label_6->setObjectName(QStringLiteral("label_6"));
-        label_6->setGeometry(QRect(700, 74, 27, 15));
+        label_6->setGeometry(QRect(700, 20, 27, 15));
         sizePolicy2.setHeightForWidth(label_6->sizePolicy().hasHeightForWidth());
         label_6->setSizePolicy(sizePolicy2);
         label_6->setMinimumSize(QSize(27, 15));
@@ -125,11 +125,11 @@ public:
 "border-bottom:0px;"));
         listWidget = new QListWidget(EntCenterMemberWidget);
         listWidget->setObjectName(QStringLiteral("listWidget"));
-        listWidget->setGeometry(QRect(10, 110, 730, 310));
+        listWidget->setGeometry(QRect(10, 50, 730, 540));
         sizePolicy.setHeightForWidth(listWidget->sizePolicy().hasHeightForWidth());
         listWidget->setSizePolicy(sizePolicy);
-        listWidget->setMinimumSize(QSize(730, 310));
-        listWidget->setMaximumSize(QSize(740, 310));
+        listWidget->setMinimumSize(QSize(730, 540));
+        listWidget->setMaximumSize(QSize(740, 540));
         listWidget->setStyleSheet(QLatin1String("QListWidget{border-bottom-left-radius:0px;}\n"
 "QListWidget::Item{background:rgb(255,255,255);}"));
         listWidget->setFrameShape(QFrame::NoFrame);
@@ -139,7 +139,7 @@ public:
         listWidget->setSelectionBehavior(QAbstractItemView::SelectItems);
         label_5 = new QLabel(EntCenterMemberWidget);
         label_5->setObjectName(QStringLiteral("label_5"));
-        label_5->setGeometry(QRect(610, 74, 28, 15));
+        label_5->setGeometry(QRect(610, 20, 28, 15));
         sizePolicy2.setHeightForWidth(label_5->sizePolicy().hasHeightForWidth());
         label_5->setSizePolicy(sizePolicy2);
         label_5->setMinimumSize(QSize(27, 15));
@@ -156,7 +156,13 @@ public:
     void retranslateUi(QWidget *EntCenterMemberWidget)
     {
         EntCenterMemberWidget->setWindowTitle(QApplication::translate("EntCenterMemberWidget", "FinanMemberWidget", 0));
+#ifndef QT_NO_TOOLTIP
+        addMemberButton->setToolTip(QApplication::translate("EntCenterMemberWidget", "\346\267\273\345\212\240\346\210\220\345\221\230", 0));
+#endif // QT_NO_TOOLTIP
         addMemberButton->setText(QApplication::translate("EntCenterMemberWidget", "\346\267\273\345\212\240\346\210\220\345\221\230", 0));
+#ifndef QT_NO_TOOLTIP
+        labelAudit->setToolTip(QApplication::translate("EntCenterMemberWidget", "\346\210\220\345\221\230\345\256\241\346\240\270", 0));
+#endif // QT_NO_TOOLTIP
         labelAudit->setText(QApplication::translate("EntCenterMemberWidget", "\346\210\220\345\221\230\345\256\241\346\240\270", 0));
         label->setText(QApplication::translate("EntCenterMemberWidget", "\345\247\223\345\220\215", 0));
         label_2->setText(QApplication::translate("EntCenterMemberWidget", "\350\264\246\345\217\267", 0));

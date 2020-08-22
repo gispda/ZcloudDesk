@@ -357,9 +357,6 @@
     <ClInclude Include="GeneratedFiles\ui_EntCenterMainWidget.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
-    <ClInclude Include="GeneratedFiles\ui_EntCenterMemberWidget.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_EntCenterWidget.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
@@ -369,13 +366,7 @@
     <ClInclude Include="GeneratedFiles\ui_EntInfoWidget.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
-    <ClInclude Include="GeneratedFiles\ui_FinanMemberWidget.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_JoinEntWidget.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GeneratedFiles\ui_MemberItemWidget.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_ModifyMemberWidget.h">
@@ -439,6 +430,15 @@
       <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_AddMemberWidget.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_MemberItemWidget.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_EntCenterMemberWidget.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_FinanMemberWidget.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
   </ItemGroup>
