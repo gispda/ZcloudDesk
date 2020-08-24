@@ -137,11 +137,14 @@ EntCenterNewWidget ::~EntCenterNewWidget(){
 		mp_EntCenterMember = NULL;
 	}
 	if (mp_EntCenterInfo != NULL){
-		mp_EntCenterInfo->deleteLater();
+
+		delete mp_EntCenterInfo;
+		//mp_EntCenterInfo->deleteLater();
 		mp_EntCenterInfo = NULL;
 	}
 	if (mp_EntCenterMain != NULL){
-		mp_EntCenterMain->deleteLater();
+		delete mp_EntCenterMain;
+		//mp_EntCenterMain->deleteLater();
 		mp_EntCenterMain = NULL;
 	}
 }

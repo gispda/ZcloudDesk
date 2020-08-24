@@ -731,6 +731,7 @@ bool EditEntInfoWidget::winHttpUpdateCompanyInfo(QString strUid, QString strToke
 	int nCodeProOffice = -999;
 	int nCodeCityOffice = -999;
 	int nCodeAreaOffice = -999;
+	QString strOfficeAddress = "";
 	if (m_codemap.contains(ui.comboBoxPro->currentText())){
 		nCodePro = this->m_codemap.find(ui.comboBoxPro->currentText()).value();
 	}
@@ -751,6 +752,8 @@ bool EditEntInfoWidget::winHttpUpdateCompanyInfo(QString strUid, QString strToke
 		if (m_codemap.contains(ui.comboBoxAreaOffice->currentText())){
 			nCodeAreaOffice = this->m_codemap.find(ui.comboBoxAreaOffice->currentText()).value();
 		}
+
+		m_pentinfo->_strOfficeaddress = m_pentinfo->_strAddress;
 	}
 	else{
 		nCodeProOffice = nCodePro;
