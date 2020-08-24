@@ -82,7 +82,7 @@ MsgCenterWidget::~MsgCenterWidget()
 	if (m_pMovieImage != NULL)
 	{
 		m_pMovieImage->stop();
-		m_pMovieImage->deleteLater();
+		//m_pMovieImage->deleteLater();
 	}
 }
 

@@ -62,7 +62,7 @@ void ZcloudMsgCenterImpl::closeAllMsgWidget()
 {
 	if (NULL != m_pMsgCenterWidget)
 	{
-		m_pMsgCenterWidget->deleteLater();
+		//m_pMsgCenterWidget->deleteLater();
 		m_pMsgCenterWidget = NULL;
 	}
 	stopPopupProcess();
@@ -103,7 +103,7 @@ void ZcloudMsgCenterImpl::reviceActivityInfo(QStringList strParamList)
 		{
 			m_processActivity->close();
 		}
-		m_processActivity->deleteLater();
+		//m_processActivity->deleteLater();
 		m_processActivity = NULL;
 	}
 	
@@ -132,7 +132,7 @@ void ZcloudMsgCenterImpl::stopMsgThread()
 		{
 			m_pZcloudMsgThread->stopImmediately();
 			m_pZcloudMsgThread->wait();
-			m_pZcloudMsgThread->deleteLater();
+			//m_pZcloudMsgThread->deleteLater();
 			m_pZcloudMsgThread = NULL;
 		}
 	}

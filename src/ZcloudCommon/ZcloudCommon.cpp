@@ -985,8 +985,8 @@ void ZcloudComFun::LoadAvatar(const std::string &strAvatarUrl, QLabel* lable)
 		{
 			QByteArray jpegData = reply->readAll();
 			QPixmap pixmap;
-			pixmap.loadFromData(jpegData);
-			if (!pixmap.isNull())
+			pixmap.loadFromData(jpegData); 
+			if (!pixmap.isNull() && lable != NULL)
 			{
 				lable->clear();
 				lable->setPixmap(pixmap);

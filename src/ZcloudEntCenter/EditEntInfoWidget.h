@@ -64,8 +64,9 @@ private:
 	///是否编辑数据,默认编辑企业信息，false为下一步用于申诉
 	bool m_beditdb;
 	EntCenterInfo* m_pentinfo;
-	EntCenterInfo* m_pFinishentinfo;
 	UserInfoStruct* m_userinfo;
+
+	EntCenterInfo m_pFinishentinfo;
 
 	//stEntInfo m_stEntInfo;
 	QString	m_strUid;

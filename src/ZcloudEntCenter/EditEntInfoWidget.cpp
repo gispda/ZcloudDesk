@@ -18,7 +18,6 @@ EditEntInfoWidget::EditEntInfoWidget(UserInfoStruct* _userinfo, EntCenterInfo* _
 	m_pentinfo = _pentinfo;
 
 	m_beditdb = beditdb;
-	m_pFinishentinfo = NULL;
 	ui.setupUi(this);
 	//resize(565, 545);
 	setWindowTitle(QString::fromLocal8Bit("编辑企业资料"));
@@ -218,9 +217,7 @@ void EditEntInfoWidget::onNextBtnClick()
 		return;
 	}
 
-		if (m_pFinishentinfo == NULL)
-			m_pFinishentinfo = new EntCenterInfo();
-		*m_pFinishentinfo = *m_pentinfo;
+
 		accept();
 	   close();
 }
@@ -240,9 +237,6 @@ void EditEntInfoWidget::onRadioBtnAddressNewClick(){
 
 EditEntInfoWidget::~EditEntInfoWidget()
 {
-	if (m_pFinishentinfo = NULL)
-		delete m_pFinishentinfo;
-	m_pFinishentinfo = NULL;
 
 	 m_areamap.clear();
 	 m_codemap.clear();
@@ -509,6 +503,7 @@ void EditEntInfoWidget::onEditOkBtnClick()
 
 	QString strRet;
 	//根据新接口修改上传内容
+
 	if (!winHttpUpdateCompanyInfo(m_strUid, m_strToken, strRet))
 	{
 		ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_TIP, QString::fromLocal8Bit("操作失败"), QString::fromLocal8Bit("\r\n更新企业资料失败，请稍后再试！"));
@@ -532,58 +527,26 @@ void EditEntInfoWidget::onEditOkBtnClick()
 		ZcloudBigDataInterface::GetInstance()->produceData("M00", "OP001", "BBD003");
 
 		{
+			m_pentinfo->_nProvinceid = m_pFinishentinfo._nProvinceid;
+			m_pentinfo->_nCityid = m_pFinishentinfo._nCityid;
+			m_pentinfo->_nAreaid = m_pFinishentinfo._nAreaid;
+			m_pentinfo->_strAddress = m_pFinishentinfo._strAddress;
 
-			m_pentinfo->_strAddress = ui.lineEditAddress->text();
-
-
-			{
-				int index = ui.comboBoxPro->currentIndex();
-				int nCode = ui.comboBoxPro->itemData(index).toInt();
-				m_pentinfo->_nProvinceid = nCode;
-
-				index = ui.comboBoxCity->currentIndex();
-				nCode = ui.comboBoxCity->itemData(index).toInt();
-				m_pentinfo->_nCityid = nCode;
-
-				index = ui.comboBoxArea->currentIndex();
-				nCode = ui.comboBoxArea->itemData(index).toInt();
-				m_pentinfo->_nAreaid = nCode;
-			}
-
-			if (ui.radioButtonAddressNew->isChecked()){
-				int index = ui.comboBoxProOffice->currentIndex();
-				int nCode = ui.comboBoxProOffice->itemData(index).toInt();
-				m_pentinfo->_nOfficeProvinceid = nCode;
-
-				index = ui.comboBoxCityOffice->currentIndex();
-				nCode = ui.comboBoxCityOffice->itemData(index).toInt();
-				m_pentinfo->_nOfficeCityid = nCode;
-
-				index = ui.comboBoxAreaOffice->currentIndex();
-				nCode = ui.comboBoxAreaOffice->itemData(index).toInt();
-				m_pentinfo->_nOfficeAreaid = nCode;
-				m_pentinfo->_strOfficeaddress = ui.lineEditOfficeOffice->text();
-			}
-			else{
-				m_pentinfo->_nOfficeProvinceid = m_pentinfo->_nProvinceid;
-				m_pentinfo->_nOfficeCityid = m_pentinfo->_nCityid;
-				m_pentinfo->_nOfficeAreaid = m_pentinfo->_nOfficeCityid;
-
-				m_pentinfo->_strOfficeaddress = m_pentinfo->_strAddress;
-			}
+			m_pentinfo->_nOfficeProvinceid = m_pFinishentinfo._nOfficeProvinceid;
+			m_pentinfo->_nOfficeCityid = m_pFinishentinfo._nOfficeCityid;
+			m_pentinfo->_nOfficeAreaid = m_pFinishentinfo._nOfficeAreaid;
+			m_pentinfo->_strOfficeaddress = m_pFinishentinfo._strOfficeaddress;
 
 
-			m_pentinfo->_strlegalboss = ui.lineEditLegalPeason->text();
-			m_pentinfo->_strlegalbossmobile = ui.lineEditPhone->text();
+			m_pentinfo->_strlegalboss = m_pFinishentinfo._strlegalboss;
+			m_pentinfo->_strlegalbossmobile = m_pFinishentinfo._strlegalbossmobile;
 		}
 
 
 		ZcloudComFun::openMessageTipDlg(ZcloudComFun::EN_CLOSE, QString::fromLocal8Bit("操作成功"), QString::fromLocal8Bit("\r\n更新企业资料成功！"));
 
 
-		if (m_pFinishentinfo == NULL)
-			m_pFinishentinfo = new EntCenterInfo();
-		*m_pFinishentinfo = *m_pentinfo;
+
 		emit sigUpdateSucessed();
 	}
 	else
@@ -735,7 +698,7 @@ bool EditEntInfoWidget::winHttpUpdateCompanyInfo(QString strUid, QString strToke
 	int nCodeProOffice = -999;
 	int nCodeCityOffice = -999;
 	int nCodeAreaOffice = -999;
-	QString strOfficeAddress = "";
+	//QString strOfficeAddress = "";
 	if (m_codemap.contains(ui.comboBoxPro->currentText())){
 		nCodePro = this->m_codemap.find(ui.comboBoxPro->currentText()).value();
 	}
@@ -745,6 +708,13 @@ bool EditEntInfoWidget::winHttpUpdateCompanyInfo(QString strUid, QString strToke
 	if (m_codemap.contains(ui.comboBoxArea->currentText())){
 		nCodeArea = this->m_codemap.find(ui.comboBoxArea->currentText()).value();
 	}
+
+	m_pFinishentinfo._strAddress = ui.lineEditAddress->text();
+	m_pFinishentinfo._nProvinceid = nCodePro;
+	m_pFinishentinfo._nCityid = nCodeCity;
+	m_pFinishentinfo._nAreaid = nCodeArea;
+
+
 
 	if (ui.radioButtonAddressNew->isChecked()){
 		if (m_codemap.contains(ui.comboBoxProOffice->currentText())){
@@ -757,22 +727,30 @@ bool EditEntInfoWidget::winHttpUpdateCompanyInfo(QString strUid, QString strToke
 			nCodeAreaOffice = this->m_codemap.find(ui.comboBoxAreaOffice->currentText()).value();
 		}
 
-		m_pentinfo->_strOfficeaddress = ui.lineEditOfficeOffice->text();
+		m_pFinishentinfo._strOfficeaddress = ui.lineEditOfficeOffice->text();
+		m_pFinishentinfo._nOfficeProvinceid = nCodeProOffice;
+		m_pFinishentinfo._nOfficeCityid = nCodeCityOffice;
+		m_pFinishentinfo._nOfficeAreaid = nCodeAreaOffice;
 	}
 	else{
 		nCodeProOffice = nCodePro;
 		nCodeCityOffice = nCodeCity;
 		nCodeAreaOffice = nCodeArea;
-		m_pentinfo->_strOfficeaddress = m_pentinfo->_strAddress;
-	}
 
+		m_pFinishentinfo._strOfficeaddress = m_pFinishentinfo._strAddress;
+		m_pFinishentinfo._nOfficeProvinceid = nCodePro;
+		m_pFinishentinfo._nOfficeCityid = nCodeCity;
+		m_pFinishentinfo._nOfficeAreaid = nCodeArea;
+	}
+	m_pFinishentinfo._strlegalboss = ui.lineEditLegalPeason->text();
+	m_pFinishentinfo._strlegalbossmobile = ui.lineEditPhone->text();
 
 	QString strUrl = QString("/ucenter/company/update-info");
 	QString strPost = QString("token=%1&company_name=%2&tax=%3&province_id=%4&city_id=%5&area_id=%6&address=%7&legal_person_phone=%8&legal_person_name=%9&office_province_id=%10&office_city_id=%11&office_area_id=%12&office_address=%13&disk_type=1")
-		.arg(strToken).arg(m_pentinfo->_strCompName).arg(m_pentinfo->_strTaxNo).arg(nCodePro)
-		.arg(nCodeCity).arg(nCodeArea).arg(m_pentinfo->_strAddress)
-		.arg(m_pentinfo->_strlegalbossmobile).arg(m_pentinfo->_strlegalboss).arg(nCodeProOffice)
-		.arg(nCodeCityOffice).arg(nCodeAreaOffice).arg(m_pentinfo->_strOfficeaddress);
+		.arg(strToken).arg(m_pFinishentinfo._strCompName).arg(m_pFinishentinfo._strTaxNo).arg(nCodePro)
+		.arg(nCodeCity).arg(nCodeArea).arg(m_pFinishentinfo._strAddress)
+		.arg(m_pFinishentinfo._strlegalbossmobile).arg(m_pFinishentinfo._strlegalboss).arg(nCodeProOffice)
+		.arg(nCodeCityOffice).arg(nCodeAreaOffice).arg(m_pFinishentinfo._strOfficeaddress);
 	//qDebug() << strPost;
 
 	return ZcloudComFun::httpPost(strUrl, strPost, 5000, strRet, false, 1);
@@ -780,7 +758,7 @@ bool EditEntInfoWidget::winHttpUpdateCompanyInfo(QString strUid, QString strToke
 ///返回完善的企业信息资料
 EntCenterInfo* EditEntInfoWidget::getFinishEnterInfo()
 {
-	return m_pFinishentinfo;
+	return m_pentinfo;
 }
 
 void EditEntInfoWidget::onOfficeAreaIndexChanged(int index)

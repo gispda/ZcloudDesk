@@ -43,7 +43,7 @@ MsgFormWidget::~MsgFormWidget()
 	{
 		m_pWebView->stop();
 		m_pWebView->close();
-		m_pWebView->deleteLater();
+		//m_pWebView->deleteLater();
 		m_pWebView = NULL;
 	}
 }

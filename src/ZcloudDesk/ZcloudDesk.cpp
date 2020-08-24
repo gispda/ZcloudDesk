@@ -159,7 +159,7 @@ ZcloudDesk::~ZcloudDesk()
 {
 	if (m_pLoginTip != NULL)
 	{
-		m_pLoginTip->deleteLater();
+		//m_pLoginTip->deleteLater();
 		m_pLoginTip = NULL;
 	}
 	release();
@@ -218,7 +218,7 @@ void ZcloudDesk::getTopTool()
 	QList<CommWidget*>	list = findChildren<CommWidget*>("AppCommWidgetWidget");
 	foreach(CommWidget *obj, list)
 	{
-		obj->deleteLater();
+		//obj->deleteLater();
 		obj = NULL;
 	}
 
@@ -1421,7 +1421,7 @@ void ZcloudDesk::closeAllWindows(int flag)
 	QList<CommWidget*>	list = findChildren<CommWidget*>("AppCommWidgetWidget");
 	foreach(CommWidget *obj, list)
 	{
-		obj->deleteLater();
+		//obj->deleteLater();
 		obj = NULL;
 	}
 
@@ -1477,7 +1477,7 @@ void ZcloudDesk::clearTopTool()
 		if (NULL != pBtn)
 		{
 			pBtn->close();
-			pBtn->deleteLater();
+			//pBtn->deleteLater();
 			pBtn = NULL;
 		}
 	}
@@ -1591,14 +1591,14 @@ void ZcloudDesk::release()
 	{
 		m_pPipeServerThread->stopThread();
 		m_pPipeServerThread->wait(-1);
-		m_pPipeServerThread->deleteLater();
+		//m_pPipeServerThread->deleteLater();
 		m_pPipeServerThread = NULL;
 	}
 	if (NULL != m_pCheckServiceThread)
 	{
 		m_pCheckServiceThread->stopImmediately();
 		m_pCheckServiceThread->wait(-1);
-		m_pCheckServiceThread->deleteLater();
+		//m_pCheckServiceThread->deleteLater();
 		m_pCheckServiceThread = NULL;
 	}
 	if (NULL != m_pMsgCenter)
@@ -1615,7 +1615,7 @@ void ZcloudDesk::release()
 	if (NULL != m_zhicloudApp)
 	{
 		m_zhicloudApp->closeAppCenter();
-		m_zhicloudApp->deleteLater();
+		//m_zhicloudApp->deleteLater();
 		m_zhicloudApp = NULL;
 	}
 

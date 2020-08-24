@@ -57,7 +57,7 @@ VipInfoWidget::~VipInfoWidget()
 {
 	if (NULL != m_pCloseBtn)
 	{
-		m_pCloseBtn->deleteLater();
+		//m_pCloseBtn->deleteLater();
 		m_pCloseBtn = NULL;
 	}
 }
