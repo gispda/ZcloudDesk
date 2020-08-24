@@ -558,6 +558,7 @@ void EditEntInfoWidget::onEditOkBtnClick()
 				index = ui.comboBoxAreaOffice->currentIndex();
 				nCode = ui.comboBoxAreaOffice->itemData(index).toInt();
 				m_pentinfo->_nOfficeAreaid = nCode;
+				m_pentinfo->_strOfficeaddress = ui.lineEditOfficeOffice->text();
 			}
 			else{
 				m_pentinfo->_nOfficeProvinceid = m_pentinfo->_nProvinceid;
@@ -710,7 +711,7 @@ void EditEntInfoWidget::onEditOkBtnClick()
 			strMsg = QString::fromLocal8Bit("请上传您的营业执照");
 			break;
 		default:
-			strMsg = QString::fromLocal8Bit("其他异常");
+			strMsg = obj.value("msg").toString();
 			break;
 		}
 
