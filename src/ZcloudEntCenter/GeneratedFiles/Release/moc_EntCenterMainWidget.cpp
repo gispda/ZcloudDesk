@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_EntCenterMainWidget_t {
-    QByteArrayData data[6];
-    char stringdata0[96];
+    QByteArrayData data[7];
+    char stringdata0[109];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -30,16 +30,17 @@ struct qt_meta_stringdata_EntCenterMainWidget_t {
 static const qt_meta_stringdata_EntCenterMainWidget_t qt_meta_stringdata_EntCenterMainWidget = {
     {
 QT_MOC_LITERAL(0, 0, 19), // "EntCenterMainWidget"
-QT_MOC_LITERAL(1, 20, 19), // "bingdingPhoneSignal"
-QT_MOC_LITERAL(2, 40, 0), // ""
-QT_MOC_LITERAL(3, 41, 23), // "sigSignBindingSucceeded"
-QT_MOC_LITERAL(4, 65, 9), // "strMobile"
-QT_MOC_LITERAL(5, 75, 20) // "onServiceFeeBtnClick"
+QT_MOC_LITERAL(1, 20, 12), // "sigNeedLogin"
+QT_MOC_LITERAL(2, 33, 0), // ""
+QT_MOC_LITERAL(3, 34, 19), // "bingdingPhoneSignal"
+QT_MOC_LITERAL(4, 54, 23), // "sigSignBindingSucceeded"
+QT_MOC_LITERAL(5, 78, 9), // "strMobile"
+QT_MOC_LITERAL(6, 88, 20) // "onServiceFeeBtnClick"
 
     },
-    "EntCenterMainWidget\0bingdingPhoneSignal\0"
-    "\0sigSignBindingSucceeded\0strMobile\0"
-    "onServiceFeeBtnClick"
+    "EntCenterMainWidget\0sigNeedLogin\0\0"
+    "bingdingPhoneSignal\0sigSignBindingSucceeded\0"
+    "strMobile\0onServiceFeeBtnClick"
 };
 #undef QT_MOC_LITERAL
 
@@ -49,23 +50,25 @@ static const uint qt_meta_data_EntCenterMainWidget[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       3,   14, // methods
+       4,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       2,       // signalCount
+       3,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    0,   29,    2, 0x06 /* Public */,
-       3,    1,   30,    2, 0x06 /* Public */,
+       1,    0,   34,    2, 0x06 /* Public */,
+       3,    0,   35,    2, 0x06 /* Public */,
+       4,    1,   36,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       5,    0,   33,    2, 0x08 /* Private */,
+       6,    0,   39,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void,
-    QMetaType::Void, QMetaType::QString,    4,
+    QMetaType::Void,
+    QMetaType::Void, QMetaType::QString,    5,
 
  // slots: parameters
     QMetaType::Void,
@@ -79,9 +82,10 @@ void EntCenterMainWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, 
         EntCenterMainWidget *_t = static_cast<EntCenterMainWidget *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
-        case 0: _t->bingdingPhoneSignal(); break;
-        case 1: _t->sigSignBindingSucceeded((*reinterpret_cast< const QString(*)>(_a[1]))); break;
-        case 2: _t->onServiceFeeBtnClick(); break;
+        case 0: _t->sigNeedLogin(); break;
+        case 1: _t->bingdingPhoneSignal(); break;
+        case 2: _t->sigSignBindingSucceeded((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 3: _t->onServiceFeeBtnClick(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -89,14 +93,20 @@ void EntCenterMainWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, 
         void **func = reinterpret_cast<void **>(_a[1]);
         {
             typedef void (EntCenterMainWidget::*_t)();
-            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&EntCenterMainWidget::bingdingPhoneSignal)) {
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&EntCenterMainWidget::sigNeedLogin)) {
                 *result = 0;
+            }
+        }
+        {
+            typedef void (EntCenterMainWidget::*_t)();
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&EntCenterMainWidget::bingdingPhoneSignal)) {
+                *result = 1;
             }
         }
         {
             typedef void (EntCenterMainWidget::*_t)(const QString & );
             if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&EntCenterMainWidget::sigSignBindingSucceeded)) {
-                *result = 1;
+                *result = 2;
             }
         }
     }
@@ -127,27 +137,33 @@ int EntCenterMainWidget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 3)
+        if (_id < 4)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 3;
+        _id -= 4;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 3)
+        if (_id < 4)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 3;
+        _id -= 4;
     }
     return _id;
 }
 
 // SIGNAL 0
-void EntCenterMainWidget::bingdingPhoneSignal()
+void EntCenterMainWidget::sigNeedLogin()
 {
     QMetaObject::activate(this, &staticMetaObject, 0, Q_NULLPTR);
 }
 
 // SIGNAL 1
+void EntCenterMainWidget::bingdingPhoneSignal()
+{
+    QMetaObject::activate(this, &staticMetaObject, 1, Q_NULLPTR);
+}
+
+// SIGNAL 2
 void EntCenterMainWidget::sigSignBindingSucceeded(const QString & _t1)
 {
     void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
-    QMetaObject::activate(this, &staticMetaObject, 1, _a);
+    QMetaObject::activate(this, &staticMetaObject, 2, _a);
 }
 QT_END_MOC_NAMESPACE

@@ -133,17 +133,17 @@ void EntCenterNewWidget::onShowMain(){
 
 EntCenterNewWidget ::~EntCenterNewWidget(){
 	if (mp_EntCenterMember != NULL){
-		mp_EntCenterMember->deleteLater();
+		//mp_EntCenterMember->deleteLater();
 		mp_EntCenterMember = NULL;
 	}
 	if (mp_EntCenterInfo != NULL){
 
-		delete mp_EntCenterInfo;
+		//delete mp_EntCenterInfo;
 		//mp_EntCenterInfo->deleteLater();
 		mp_EntCenterInfo = NULL;
 	}
 	if (mp_EntCenterMain != NULL){
-		delete mp_EntCenterMain;
+		//delete mp_EntCenterMain;
 		//mp_EntCenterMain->deleteLater();
 		mp_EntCenterMain = NULL;
 	}

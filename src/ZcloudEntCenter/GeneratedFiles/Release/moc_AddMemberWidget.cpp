@@ -20,7 +20,7 @@
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_AddMemberWidget_t {
     QByteArrayData data[8];
-    char stringdata0[131];
+    char stringdata0[133];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -36,13 +36,13 @@ QT_MOC_LITERAL(3, 30, 15), // "onAddOkBtnClick"
 QT_MOC_LITERAL(4, 46, 21), // "onNameEditingFinished"
 QT_MOC_LITERAL(5, 68, 20), // "onAccEditingFinished"
 QT_MOC_LITERAL(6, 89, 20), // "onPwdEditingFinished"
-QT_MOC_LITERAL(7, 110, 20) // "onJobEditingFinished"
+QT_MOC_LITERAL(7, 110, 22) // "onPhoneEditingFinished"
 
     },
     "AddMemberWidget\0sigAddMember\0\0"
     "onAddOkBtnClick\0onNameEditingFinished\0"
     "onAccEditingFinished\0onPwdEditingFinished\0"
-    "onJobEditingFinished"
+    "onPhoneEditingFinished"
 };
 #undef QT_MOC_LITERAL
 
@@ -74,10 +74,10 @@ static const uint qt_meta_data_AddMemberWidget[] = {
 
  // slots: parameters
     QMetaType::Void,
+    QMetaType::Bool,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void,
-    QMetaType::Void,
+    QMetaType::Bool,
 
        0        // eod
 };
@@ -90,10 +90,12 @@ void AddMemberWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int 
         switch (_id) {
         case 0: _t->sigAddMember(); break;
         case 1: _t->onAddOkBtnClick(); break;
-        case 2: _t->onNameEditingFinished(); break;
+        case 2: { bool _r = _t->onNameEditingFinished();
+            if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = _r; }  break;
         case 3: _t->onAccEditingFinished(); break;
         case 4: _t->onPwdEditingFinished(); break;
-        case 5: _t->onJobEditingFinished(); break;
+        case 5: { bool _r = _t->onPhoneEditingFinished();
+            if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = _r; }  break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -106,7 +108,6 @@ void AddMemberWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int 
             }
         }
     }
-    Q_UNUSED(_a);
 }
 
 const QMetaObject AddMemberWidget::staticMetaObject = {

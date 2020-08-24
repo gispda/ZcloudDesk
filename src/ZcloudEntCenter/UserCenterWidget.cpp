@@ -120,11 +120,11 @@ void UserCenterWidget::init(EntCenterInfo*	entinfo,UserInfoStruct*	info){
 
 UserCenterWidget ::~UserCenterWidget(){
 	if (mp_UserCenterMain != NULL){
-		mp_UserCenterMain->deleteLater();
+		//mp_UserCenterMain->deleteLater();
 		mp_UserCenterMain = NULL;
 	}
 	if (mp_UserCenterAcc != NULL){
-		mp_UserCenterAcc->deleteLater();
+		//mp_UserCenterAcc->deleteLater();
 		mp_UserCenterAcc = NULL;
 	}
 }

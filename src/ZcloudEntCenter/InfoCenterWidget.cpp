@@ -146,11 +146,11 @@ bool InfoCenterWidget::winHttpGetCompanyInfo( QString strTaxno, QString strToken
 InfoCenterWidget::~InfoCenterWidget()
 {
 	if (m_pEntCenter != NULL){
-		m_pEntCenter->deleteLater();
+		//m_pEntCenter->deleteLater();
 		m_pEntCenter = NULL;
 	}
 	if (m_pUserCenter != NULL){
-		m_pUserCenter->deleteLater();
+		//m_pUserCenter->deleteLater();
 		m_pUserCenter = NULL;
 	}
 

@@ -61,11 +61,15 @@ EditEntInfoWidget::EditEntInfoWidget(UserInfoStruct* _userinfo, EntCenterInfo* _
 
 	if (m_pentinfo->_strAddress == m_pentinfo->_strOfficeaddress){
 		ui.widgetAddressOffice->hide();
+		ui.radioButtonAddressReg->setChecked(true);
+		ui.radioButtonAddressNew->setChecked(false);
 
 		ui.widget_2->resize(540, 380);
 		this->resize(540, 382);
 	}
 	else{
+		ui.radioButtonAddressReg->setChecked(false);
+		ui.radioButtonAddressNew->setChecked(true);
 		ui.widgetAddressOffice->show();
 
 		ui.widget_2->resize(540, 510);
@@ -308,8 +312,8 @@ void EditEntInfoWidget::onProIndexChanged(int index)
 	ui.comboBoxCity->clear();
 	ui.comboBoxArea->clear();
 	int nCode = ui.comboBoxPro->itemData(index).toInt();
-	m_pentinfo->_nProvinceid = nCode;
-	m_pentinfo->_strProvince= ui.comboBoxPro->currentText();
+	//m_pentinfo->_nProvinceid = nCode;
+	//m_pentinfo->_strProvince= ui.comboBoxPro->currentText();
 	showAreaData(ui.comboBoxCity, nCode);
 	if (m_pentinfo->_nProvinceid == -999)
 	{
@@ -329,8 +333,8 @@ void EditEntInfoWidget::onCityIndexChanged(int index)
 	}
 	ui.comboBoxArea->clear();
 	int nCode = ui.comboBoxCity->itemData(index).toInt();
-	m_pentinfo->_nCityid = nCode;
-	m_pentinfo->_strCity = ui.comboBoxCity->currentText();
+	//m_pentinfo->_nCityid = nCode;
+	//m_pentinfo->_strCity = ui.comboBoxCity->currentText();
 	showAreaData(ui.comboBoxArea, nCode);
 	if (m_pentinfo->_nCityid == -999)
 	{
@@ -449,7 +453,7 @@ bool EditEntInfoWidget::showAreaData(QComboBox* pComBoBox, int nCode)
 void EditEntInfoWidget::onAreaIndexChanged(int index)
 {
 	int nCode = ui.comboBoxArea->itemData(index).toInt();
-	m_pentinfo->_nAreaid = nCode;
+	//m_pentinfo->_nAreaid = nCode;
 	if (m_pentinfo->_nAreaid == -999)
 	{
 		ui.labelAreaError->show();
@@ -753,12 +757,13 @@ bool EditEntInfoWidget::winHttpUpdateCompanyInfo(QString strUid, QString strToke
 			nCodeAreaOffice = this->m_codemap.find(ui.comboBoxAreaOffice->currentText()).value();
 		}
 
-		m_pentinfo->_strOfficeaddress = m_pentinfo->_strAddress;
+		m_pentinfo->_strOfficeaddress = ui.lineEditOfficeOffice->text();
 	}
 	else{
 		nCodeProOffice = nCodePro;
 		nCodeCityOffice = nCodeCity;
 		nCodeAreaOffice = nCodeArea;
+		m_pentinfo->_strOfficeaddress = m_pentinfo->_strAddress;
 	}
 
 
@@ -781,7 +786,7 @@ EntCenterInfo* EditEntInfoWidget::getFinishEnterInfo()
 void EditEntInfoWidget::onOfficeAreaIndexChanged(int index)
 {
 	int nCode = ui.comboBoxAreaOffice->itemData(index).toInt();
-	m_pentinfo->_nOfficeAreaid = nCode;
+	//m_pentinfo->_nOfficeAreaid = nCode;
 	if (m_pentinfo->_nOfficeAreaid == -999)
 	{
 		ui.labelAreaError->show();
@@ -801,8 +806,8 @@ void EditEntInfoWidget::onOfficeCityIndexChanged(int index)
 	}
 	ui.comboBoxAreaOffice->clear();
 	int nCode = ui.comboBoxCityOffice->itemData(index).toInt();
-	m_pentinfo->_nOfficeCityid = nCode;
-	m_pentinfo->_strOfficeCity = ui.comboBoxCity->currentText();
+	//m_pentinfo->_nOfficeCityid = nCode;
+	//m_pentinfo->_strOfficeCity = ui.comboBoxCity->currentText();
 	showAreaData(ui.comboBoxAreaOffice, nCode);
 	if (m_pentinfo->_nOfficeCityid == -999)
 	{
@@ -823,8 +828,8 @@ void EditEntInfoWidget::onOfficeProIndexChanged(int index)
 	ui.comboBoxCityOffice->clear();
 	ui.comboBoxAreaOffice->clear();
 	int nCode = ui.comboBoxProOffice->itemData(index).toInt();
-	m_pentinfo->_nOfficeProvinceid = nCode;
-	m_pentinfo->_strOfficeProvince = ui.comboBoxProOffice->currentText();
+	//m_pentinfo->_nOfficeProvinceid = nCode;
+	//m_pentinfo->_strOfficeProvince = ui.comboBoxProOffice->currentText();
 	showAreaData(ui.comboBoxCityOffice, nCode);
 	if (m_pentinfo->_nOfficeProvinceid == -999)
 	{
